@@ -1,0 +1,81 @@
+<svg width="100.00" height="100.00" 
+     viewBox="0.0 0.0 100.0 100.0" 
+     viewPort="0 0 100px 100px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <!--core-->
+    <text x="25" y="5" font-size="5">Atomic model of copper (Cu)</text>
+    <!--<circle cx="50" cy="50" r="8"  style="stroke:none;fill:#dc7f64;"/>-->
+    <circle cx="51" cy="52" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="49" cy="50" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="50" cy="44" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="47" cy="45" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="54" cy="45" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="52" cy="46" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="48" cy="47" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="56" cy="47" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="55" cy="48" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="53" cy="49" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="56" cy="50" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="48" cy="47" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="48" cy="52" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="49" cy="54" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="50" cy="49" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="45" cy="50" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="45" cy="53" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="54" cy="53" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="45" cy="48" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="55" cy="54" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="52" cy="55" r="2" style="stroke:black;stroke-width:0.3px;fill:red;"/>
+    <circle cx="47" cy="55" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+    <circle cx="50" cy="56" r="2" style="stroke:black;stroke-width:0.3px;fill:yellow;"/>
+   
+    
+    <!--layer 1-->
+    <g id="layer_1" transform="rotate(33 50 50)">
+        <circle cx="50" cy="50" r="16" style="stroke:black;fill:none;opacity:0.7;"/>
+        <circle cx="34" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="66" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+    </g>
+    
+    <!--layer 2-->
+    <circle cx="50" cy="50" r="24" style="stroke:black;fill:none;opacity:0.7;"/>
+    
+    <circle cx="50" cy="26" r="2" style="stroke:blue;fill:blue;"/>
+    <circle cx="50" cy="74" r="2" style="stroke:blue;fill:blue;"/>
+    <circle cx="26" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+    <circle cx="74" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+    
+    <circle cx="33" cy="33" r="2" style="stroke:blue;fill:blue;"/>
+    <circle cx="34" cy="68" r="2" style="stroke:blue;fill:blue;"/>
+    <circle cx="68" cy="34" r="2" style="stroke:blue;fill:blue;"/>
+    <circle cx="67" cy="67" r="2" style="stroke:blue;fill:blue;"/>
+    
+    
+    <!--layer 3-->
+    <g id="layer_3" transform="rotate(-66 50 50)">
+        <circle cx="50" cy="50" r="32" style="stroke:black;fill:none;opacity:0.7;"/>
+        
+        <circle cx="50" cy="18" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="50" cy="82" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="18" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="82" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+        
+        <circle cx="27" cy="27" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="27" cy="72.8" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="72.8" cy="27" r="2" style="stroke:blue;fill:blue;"/>
+        <circle cx="72.8" cy="72.8" r="2" style="stroke:blue;fill:blue;"/>
+    </g>
+    
+    <!--layer 4-->
+    <circle cx="50" cy="50" r="40" style="stroke:khaki;stroke-width:6px;fill:none;opacity:0.7;"/>
+    <circle cx="50" cy="50" r="40" style="stroke:black;fill:none;opacity:0.6;"/>
+    <circle cx="90" cy="50" r="2" style="stroke:blue;fill:blue;"/>
+    
+    <rect x="72" y="90"  width="2" height="8" style="stroke:none;fill:khaki;"/>
+    <text x="76" y="92" style="font-size:5">valence</text>
+    <text x="76" y="97" style="font-size:5">band / shell</text>
+     
+</svg>

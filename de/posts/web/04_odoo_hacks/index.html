@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.
+In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf
+beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen,
+ wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking)
+und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei
+sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/posts/web/04_odoo_hacks/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Odoo hacks: Entfernr Sperr-Button aus Odoo v12">
+  <meta property="og:description" content="Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte. In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen, wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking) und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-04-22T00:00:00+00:00">
+    <meta property="article:tag" content="Web">
+    <meta property="article:tag" content="Odoo">
+<title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12 | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/posts/web/04_odoo_hacks/" title="Odoo hacks: Remove Lock-Button from Odoo v12">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/posts/web/04_odoo_hacks/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.
+In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf
+beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen,
+ wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking)
+und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei
+sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../odoo_hacks.png" alt="Odoo Hacks"/></span></p>
+</div>
+<div class="listingblock">
+<div class="title">/static/src/xml/trigger_toggle.xml</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=„1.0“ encoding=„UTF-8“?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;openerp&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;data&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;template</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">„assets_backend“</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">„trigger_toggle</span> <span style="color:#960050;background-color:#1e0010">assets“</span> <span style="color:#a6e22e">inherit_id=</span><span style="color:#e6db74">„web.assets_backend“</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;xpath</span> <span style="color:#a6e22e">expr=</span><span style="color:#e6db74">„.“</span> <span style="color:#a6e22e">position=</span><span style="color:#e6db74">„inside“</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;script</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">„text/javascript“</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">„/nm_data_stock/static/src/js/trigger_toggle.js“/</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/xpath&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/template&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/data&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/openerp&gt;</span></span></span></code></pre></div></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Der Code ist ziemlich selbsterklärend. Wir verwenden die XML-Datei, um das Skript hinzuzufügen. Vergessen Sie nicht, es in der Manifest-Datei hinzuzufügen.
+Die JavaScript-Funktionen _onEdit und _onSave sind Funktionen des Kern-Webclients (genauer gesagt web.FormController),
+und wir fügen beiden Funktionen eine einfache URL-Analyse und einen AJAX-RPC-Aufruf hinzu.</p>
+</div>
+<div class="listingblock">
+<div class="title">static/src/js/trigger_toggle.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">odoo</span>.<span style="color:#a6e22e">define</span>(<span style="color:#e6db74">&#39;nm_data_stock.trigger_toggle&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">require</span>){
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;use strict&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ajax</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;web.ajax&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">FormController</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;web.FormController&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">triggerButton</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FormController</span>.<span style="color:#a6e22e">include</span>({
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_onEdit</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// wait for potential pending changes to be saved (done with widgets
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// allowing to edit in readonly)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">mutex</span>.<span style="color:#a6e22e">getUnlockedDef</span>().<span style="color:#a6e22e">then</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_setMode</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>, <span style="color:#e6db74">&#39;edit&#39;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URL</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$el</span>.<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">baseURI</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parsedHash</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>(<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">hash</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parsedHash</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;id&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">model</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parsedHash</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;model&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;mrp.production&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;stock.picking&#39;</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;OnEdit &#39;</span><span style="color:#f92672">+</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">+</span> <span style="color:#a6e22e">model</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ajax</span>.<span style="color:#a6e22e">jsonRpc</span>(<span style="color:#e6db74">&#39;/web/webclient/trigger_toggle&#39;</span>, <span style="color:#e6db74">&#39;call&#39;</span>, {<span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">id</span>,<span style="color:#e6db74">&#39;model&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">model</span>,<span style="color:#e6db74">&#39;button_state&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;edit&#39;</span>} )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>},
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_onSave</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">ev</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ev</span>.<span style="color:#a6e22e">stopPropagation</span>(); <span style="color:#75715e">// Verhindern, dass x2m-Zeilen automatisch gespeichert werden
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">self</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_disableButtons</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URL</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$el</span>.<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">baseURI</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parsedHash</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>(<span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">hash</span>.<span style="color:#a6e22e">substring</span>(<span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parsedHash</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;id&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">model</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parsedHash</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;model&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;mrp.production&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">model</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;stock.picking&#39;</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;OnSave &#39;</span><span style="color:#f92672">+</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">+</span> <span style="color:#a6e22e">model</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ajax</span>.<span style="color:#a6e22e">jsonRpc</span>(<span style="color:#e6db74">&#39;/web/webclient/trigger_toggle&#39;</span>, <span style="color:#e6db74">&#39;call&#39;</span>, {<span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">id</span>, <span style="color:#e6db74">&#39;model&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">model</span>,<span style="color:#e6db74">&#39;button_state&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;save&#39;</span>} )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">saveRecord</span>().<span style="color:#a6e22e">always</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">_enableButtons</span>();
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>},
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>})</span></span></code></pre></div></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unten sehen Sie den Webcontroller als Endpunkt für den oben gezeigten AJAX-RPC-Aufruf…​</p>
+</div>
+<div class="paragraph">
+<p>controllers/main.py</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> odoo <span style="color:#f92672">import</span> http
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> odoo <span style="color:#f92672">import</span> api,fields
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib <span style="color:#f92672">import</span> parse
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ToggleController</span>(http<span style="color:#f92672">.</span>Controller):
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@http.route</span>(<span style="color:#e6db74">&#39;/web/webclient/trigger_toggle&#39;</span>, type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;json&#39;</span>, auth<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">„</span>none<span style="color:#960050;background-color:#1e0010">“</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">trigger_toggle</span>(self, <span style="color:#f92672">**</span>kw):
+</span></span><span style="display:flex;"><span>        id <span style="color:#f92672">=</span> kw<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>)
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> kw<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;model&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> model <span style="color:#f92672">and</span> id:
+</span></span><span style="display:flex;"><span>print(model)
+</span></span><span style="display:flex;"><span>obj <span style="color:#f92672">=</span> http<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>env[model]<span style="color:#f92672">.</span>browse(int(id))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> obj<span style="color:#f92672">.</span>sudo()<span style="color:#f92672">.</span>trigger_toggle(kw<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;button_state&#39;</span>))</span></span></code></pre></div></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Zu guter Letzt die Implementierung in den beiden Klassen.</p>
+</div>
+<div class="paragraph">
+<p>models/stock.py</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StockPicking</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Inherit class StockPicking from module stock.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">trigger_toggle</span>(self, state):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> state<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;edit&#39;</span>:
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>is_locked <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> state<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;save&#39;</span>:
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>is_locked <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MrpProduction</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Inherit class MrpProduction
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">trigger_toggle</span>(self, state):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> state<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;edit&#39;</span>:
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>is_locked <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> state<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;save&#39;</span>:
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>is_locked <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span></span></span></code></pre></div></code></pre>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

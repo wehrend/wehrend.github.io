@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Electronics on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/electronics/</link>
+    <description>Recent content in Electronics on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Fri, 03 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/electronics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/19_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/19_rare_earth_elements/</guid>
+      <description>&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_einführung&#34;&gt;Einführung&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Seltene Erden, die oft von Geheimnissen umwoben sind, spielen in unserer modernen Welt eine entscheidende Rolle. Von Smartphones&#xA;über Elektrofahrzeuge und Technologien für erneuerbare Energien bis hin zu Verteidigungssystemen sind diese Elemente die unbesungenen&#xA;Helden, die unser tägliches Leben nachhaltiger, effizienter und vernetzter machen. In diesem Artikel tauchen wir&#xA;in die faszinierende Welt der Seltenen Erden ein, wobei der Schwerpunkt auf dem vielseitigen Element Neodym liegt.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_seltene_erden_ein_überblick&#34;&gt;Seltene Erden: Ein Überblick&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Seltene Erden (SE) sind eine Gruppe von siebzehn chemischen Elementen, die zusammen mit Scandium und Yttrium die Lanthanidenreihe des Periodensystems bilden.&#xA; Trotz ihres Namens sind sie nicht unbedingt selten, aber sie kommen typischerweise in&#xA;geringen Konzentrationen vor, was ihre Gewinnung und Reinigung schwierig und kostspielig macht.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/20_reducing_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/20_reducing_rare_earth_elements/</guid>
+      <description>&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_einleitung&#34;&gt;Einleitung&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Seltene Erden sind seit langem das Rückgrat von High-Tech-Magneten, wobei Metalle wie Neodym und Dysprosium&#xA;in verschiedenen Branchen eine entscheidende Rolle spielen. Die Knappheit und die steigende Nachfrage nach diesen wertvollen Ressourcen haben jedoch&#xA;Forscher dazu veranlasst, nach alternativen Lösungen zu suchen. Um unsere Abhängigkeit von Seltenerdmagneten zu verringern, erforschen Wissenschaftler&#xA;innovative Materialien und Legierungskombinationen.&#xA;Zu den vielversprechenden Kandidaten gehört Cer, ein reichlich vorhandenes und leicht zugängliches Seltenerdelement, das das Potenzial hat,&#xA;Neodym-Magnete zu ersetzen oder zu ergänzen. In diesem Artikel befassen wir uns mit der bahnbrechenden Forschung von Thomas Lograsso und seinem&#xA;Team am Ames Laboratory des US-Energieministeriums.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Operationsverstärker Einführung (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/18_op-amps_introduction/</link>
+      <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/18_op-amps_introduction/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_op_amp&#34;&gt;OP-Amp&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig&#xA;in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../op-amp.svg&#34; alt=&#34;op-amp&#34; width=&#34;„400px“&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;olist arabic&#34;&gt;&#xA;&lt;ol class=&#34;arabic&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.&#xA;\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

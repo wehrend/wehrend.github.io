@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Taktgeber, Flipflops und Register
+
+
+In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden
+.
+
+
+Register-Transfer-Level benötigt eine Taktquelle
+
+Bisher haben wir nur die kombinatorische Logik kennengelernt, die
+ohne Taktquelle auskommt – jedes Signal wird nur um die Zeit verzögert, die es
+für die Übertragung durch den Schaltkreis benötigt. Dies wird als asynchron bezeichnet.
+Für anspruchsvollere Aufgaben, wie sequentielle Schaltkreise, sind jedoch Register erforderlich,
+ die die Eingangs- und Ausgangssignale speichern,
+um korrekte Ergebnisse zu erzielen. Dies wird als synchron bezeichnet.
+Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron, da diese weniger komplex sind.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/docs/digital_logic_2/11_clocks_and_registers/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="11_Clocks_flipflops_and_registers (de)">
+  <meta property="og:description" content="Taktgeber, Flipflops und Register In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden .
+Register-Transfer-Level benötigt eine Taktquelle Bisher haben wir nur die kombinatorische Logik kennengelernt, die ohne Taktquelle auskommt – jedes Signal wird nur um die Zeit verzögert, die es für die Übertragung durch den Schaltkreis benötigt. Dies wird als asynchron bezeichnet. Für anspruchsvollere Aufgaben, wie sequentielle Schaltkreise, sind jedoch Register erforderlich, die die Eingangs- und Ausgangssignale speichern, um korrekte Ergebnisse zu erzielen. Dies wird als synchron bezeichnet. Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron, da diese weniger komplex sind.">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-03-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-03-12T00:00:00+00:00">
+<title>11_Clocks_flipflops_and_registers (de) | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/" title="11_Clocks_flipflops_and_registers">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class=" active">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>11_Clocks_flipflops_and_registers (de)</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_taktgeber_flipflops_und_register">Taktgeber, Flipflops und Register</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden
+.</p>
+</div>
+<div class="sect2">
+<h3 id="_register_transfer_level_benötigt_eine_taktquelle">Register-Transfer-Level benötigt eine Taktquelle</h3>
+<div class="paragraph">
+<p>Bisher haben wir nur die kombinatorische Logik kennengelernt, die
+ohne Taktquelle auskommt – jedes Signal wird nur um die Zeit verzögert, die es
+für die Übertragung durch den Schaltkreis benötigt. Dies wird als asynchron bezeichnet.
+Für anspruchsvollere Aufgaben, wie sequentielle Schaltkreise, sind jedoch Register erforderlich,
+ die die Eingangs- und Ausgangssignale speichern,
+um korrekte Ergebnisse zu erzielen. Dies wird als synchron bezeichnet.
+Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron, da diese weniger komplex sind.</p>
+</div>
+<div class="paragraph">
+<p><strong>Register-Transfer-Level</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/rtl_scheme.svg" alt="rtl scheme" width="„100%“"/></span></p>
+</div>
+<div class="paragraph">
+<p>Die blauen Teile im Bild oben zeigen Register, in denen die Werte
+gespeichert werden. Wir werden später sehen, wie diese implementiert werden. Schauen wir uns zunächst
+die benötigte Taktquelle an.</p>
+</div>
+<div class="paragraph">
+<p>Es gibt verschiedene Möglichkeiten, eine Taktquelle zu erzeugen:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ein Quarzoszillator</p>
+</li>
+<li>
+<p>Ein Ringoszillator</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Ersterer ist die klassische, letzterer eine modernere Variante.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Quarzoszillator</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ringoszillator</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/crystal_symbol.svg" alt="crystal symbol" width="„80%“"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/inverter_chain_symbol.svg" alt="inverter chain symbol" width="„80%“"/></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">typischer Frequenzbereich: 1Mhz..100Mhz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">typischer Frequenzbereich: 1Hz..15Mhz(diskretes Layout)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/pierce_gate_circuit.svg" alt="pierce gate circuit" width="„350px“"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/inverter_chain.svg" alt="inverter chain" width="„350px“"/></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frequenz wird durch Kristallgeometrie bestimmt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frequenz wird durch Laufzeit und Anzahl der Gates bestimmt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Genauigkeit hängt hauptsächlich von der Temperatur ab; für präzise Anwendungen werden Kristallöfen verwendet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Genauigkeit hängt hauptsächlich von der Stabilität der Stromversorgung ab</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_der_kristalloszillator">Der Kristalloszillator</h4>
+<div class="paragraph">
+<p>Der Kristalloszillator ist eine Taktquelle, die auf einem Quarzkristall basiert.
+Die Frequenz hängt von der Geometrie des Quarzes ab.
+Quarzoszillatoren sind in einem Metallgehäuse mit
+zusätzlicher Verdrahtung erhältlich, wobei der Quarz das Herzstück des Schaltkreises bildet.
+Der Schaltkreis basiert in der Regel auf dem <a href="https://en.wikipedia.org/wiki/Pierce_oscillator">Pierce-Oszillator</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/pierce_gate_circuit.svg" alt="pierce gate circuit" width="„400px“"/></span></p>
+</div>
+<div class="paragraph">
+<p>Ihre Genauigkeit hängt hauptsächlich von der Temperatur ab. Für Anwendungen mit hohen Genauigkeitsanforderungen
+werden sie daher in einem Quarzofen untergebracht, der den Quarz auf einer konstanten Temperatur hält.
+Eine interessante Zerlegung eines solchen Oszillators ist auf <a href="http://www.righto.com/2021/02/teardown-of-quartz-crystal-oscillator.html" class="bare">http://www.righto.com/2021/02/teardown-of-quartz-crystal-oscillator.html</a> [Ken Shirriffs Blog] verfügbar.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_der_ringoszillator">Der Ringoszillator</h4>
+<div class="paragraph">
+<p>Eine weitere gängige Taktgeberquelle ist der Ringoszillator.
+Der Trick besteht darin, eine ungerade Anzahl von Inverter-Gates zu verketten und den Ausgang des letzten Inverters als Eingang
+für den ersten Inverter zu verwenden. Auf diese Weise entsteht ein Schwingkreis.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/inverter_chain.svg" alt="inverter chain" width="„400px“"/></span></p>
+</div>
+<div class="paragraph">
+<p>Die Frequenz hängt von der Anzahl der Inverter sowie von der Laufzeit Tp ab (siehe Gleichung unten). Die Zeit, die das Signal benötigt, um
+durch das Gate zu laufen, wird als Laufzeit Tp bezeichnet.</p>
+</div>
+<div class="paragraph „image“">
+<p>\[f_{ro} = \frac{1}{2nT_{p}}\]</p>
+</div>
+<div class="paragraph">
+<p>Hier hängt die Genauigkeit hauptsächlich von der Stabilität der Stromversorgung ab.
+Ein Anwendungsbeispiel – z. B. die 8087, die Gleitkommaeinheit von Intel® – wird erneut von
+<a href="http://www.righto.com/2018/08/inside-die-of-intels-8087-coprocessor.html">Ken Shirriffs Blog</a>.
+ Wie dort gezeigt, kann die Frequenz durch Hinzufügen eines RC-Netzwerks zwischen den Invertern verringert werden.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_das_klassische_rs_flipflop">Das klassische RS-Flipflop</h4>
+<div class="paragraph">
+<p>Das klassische Flipflop besteht aus zwei NAND-Gattern, deren Ausgänge an das komplementäre Gatter rückgekoppelt werden,
+ wie in der folgenden Tabelle zu sehen ist. Unterhalb der Schaltung ist die Wahrheitstabelle angegeben.
+Wie zu sehen ist, sperrt das Flipflop den Ausgang auf einen Zustand, „1“ oder „0“.
+Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert (und entspricht der bevorzugten Position).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RS-Flipflop-Struktur</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RS-Flipflop-Symbol</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/flipflop_circuit.svg" alt="flipflop circuit" width="„80%“"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/flipflop_symbol.svg" alt="flipflop symbol" width="„80%“"/></span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.667%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">̅R</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">̅S</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">̅Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">invalid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setzen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Eine Anwendung des klassischen RS-Flipflops ist die Entprellung von Schaltern.</p>
+</div>
+<div class="paragraph">
+<p>Für die meisten Anwendungen ist jedoch ein weiterentwickeltes Flipflop erforderlich. Sehen wir uns
+das (D)ata-Flipflop an.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_das_d_flipflop">Das D-Flipflop</h4>
+<div class="paragraph">
+<p>Beim D-Flipflop wird der Schaltung des RS-Flipflops zwei NAND-Gatter vorgeschaltet,
+die durch einen Taktimpuls gesteuert werden. Nur wenn der Takt hoch ist (d. h. „1“), ist das
+am (D)ata-Eingang anliegende Datum gültig und wird im RS-Flipflop gespeichert. Andernfalls ist das
+anliegende Datum ungültig.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>D-Flipflop-Struktur</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>D-Flipflop-Symbol</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/dflipflop_circuit.svg" alt="dflipflop circuit" width="„80%“"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/dflipflop_symbol.svg" alt="dflipflop symbol" width="„80%“"/></span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">̅Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">🠓 &gt;&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">₯Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keine Änderung</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">🠓 &gt;&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zurücksetzen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">🠑 &gt;&gt;1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setzen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">🠑 &gt;&gt;1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">₯Q</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ein_binärzähler">Ein Binärzähler</h3>
+<div class="paragraph">
+<p>Mit dem D-Flipflop, das wir im letzten Abschnitt kennengelernt haben,
+können wir einen (asynchronen) Binärzähler konstruieren.
+Dieser Ausgang kann als Adresse für eine ROM-Tabelle verwendet werden, wie wir in einem anderen Blogbeitrag sehen werden.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Asynchroner Binärzähler mit D-Flipflops</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/dflipflop_counter.svg" alt="dflipflop counter" width="„100%“"/></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Wenn man die Ausgänge unabhängig voneinander betrachtet, kann man sehen, dass der Zähler
+auch als Frequenzteiler funktioniert: Bei jedem Ausgang wird die Frequenz
+im Verhältnis zu der vorherigen durch zwei geteilt.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register">Register</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Was sind Register? Register werden verwendet, um Werte zu halten bzw. zu speichern.
+Jede heutzutage etwas komplexere CPU verfügt über eine große Anzahl von Registern.
+Die Registergrößen variieren stark je nach Anwendung. Sie reichen von Statusregistern,
+ die nur ein Bit enthalten, über Register mit mehr als 32 und 64 Bit für reguläre Register bis hin zu Vektorregistern
+mit einer Größe von 64 Byte (= 512 Bit). Diese Register werden nach einem bestimmten Schema benannt
+Schema benannt, in einigen Architekturen mit Zahlen (z. B. MIPS und ARM), in anderen Fällen mit einem
+komplexeren Schema aus alphabetischen Zahlen (wie in x86-Architekturen).</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/register.svg" alt="register" width="„100%“"/></span></p>
+</div>
+<div class="paragraph">
+<p>In den vorherigen Abschnitten haben wir etwas über das Flipflop gelernt.
+Dies sind die Bausteine der Register. Wie im Bild oben zu sehen ist,
+wird jedes Flipflop mit demselben Signal getaktet.
+Wir werden auch oft den Begriff Akkumulator verwenden.
+Akkumulatoren sind Register, die gleichzeitig Quell- und Zielregister sind.
+ So speichern sie z. B. bei einer Addition einen Eingabewert und
+halten das Ergebnis nach der Operation im selben Register.</p>
+</div>
+<div class="paragraph">
+<p>(translation: 2024-12-29)</p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

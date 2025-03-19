@@ -1,0 +1,20 @@
+<svg width="100.00" height="110.00" 
+     viewBox="0.0 0.0 100.0 110.0" 
+     viewPort="0 0 100px 110px" 
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+    <polyline points="46,24 50,19 54,24" style="stroke:black;stroke-width:1;fill:white;"/>
+    <line x1="50" y1="20" x2="50" y2="40" style="stroke:black;stroke-width:1;fill:white;"/>
+    <rect x="47" y="35" width="6" height="18" style="stroke:black;stroke-width:1;fill:white;"/>
+    <circle cx="50" cy="62" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <line x1="50" y1="62" x2="65" y2="62" style="stroke:black;stroke-width:1;fill:white;"/>
+    <circle cx="65" cy="62" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <text x="67" y="64" font-size="6">Q</text>
+    <polyline points=" 50,53  50,70 40,70  40,85 50,85 50,100" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="38" y1="70" x2="38" y2="85" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="25" y1="77" x2="38" y2="77" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="25" cy="77" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <text x="19" y="79" font-size="6">A</text>
+    <!--ground-->
+    <polygon points="46,100 54,100 50,105" style="stroke:black;stroke-width:1;fill:white;"/>
+</svg>

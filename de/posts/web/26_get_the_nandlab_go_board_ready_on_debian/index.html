@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Hallo zusammen,
+
+
+endlich ist diese Woche das nandland go board angekommen, das ich vor einem Monat
+beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum
+geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.
+
+
+Serielle Verbindung über USB
+
+
+Zunächst einmal muss man, um
+sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer
+zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="FPGA 101: Get the Nandland Go board ready on Debian Bullseye">
+  <meta property="og:description" content="Hallo zusammen,
+endlich ist diese Woche das nandland go board angekommen, das ich vor einem Monat beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.
+Serielle Verbindung über USB Zunächst einmal muss man, um sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-03-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-03-10T00:00:00+00:00">
+    <meta property="article:tag" content="Fpga">
+    <meta property="article:tag" content="Beginners">
+    <meta property="article:tag" content="Lattice">
+    <meta property="article:tag" content="Nandland Go">
+    <meta property="article:tag" content="IceCube2">
+    <meta property="article:tag" content="Debian">
+<title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/posts/web/26_get_the_nandlab_go_board_ready_on_debian/" title="FPGA 101: Get the Nandland Go board ready on Debian Bullseye">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/posts/web/26_get_the_nandlab_go_board_ready_on_debian/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>Hallo zusammen,</p>
+</div>
+<div class="paragraph">
+<p>endlich ist diese Woche das <a href="https://nandland.com/the-go-board/">nandland go board</a> angekommen, das ich vor einem Monat
+beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum
+geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.</p>
+</div>
+<div class="sect1">
+<h2 id="_serielle_verbindung_über_usb">Serielle Verbindung über USB</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zunächst einmal muss man, um
+sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer
+zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:</p>
+</div>
+<div class="paragraph">
+<p>su -
+usermod -aG dialout $user (in meinem Fall ist $user sven)
+exit</p>
+</div>
+<div class="paragraph">
+<p>und dann den Computer neu starten. Danach erneut verbinden (nur um sicherzugehen).
+Dann Putty starten und /dev/ttyUSB1 als den Port eingeben, den Sie verwenden möchten (/dev/ttyUSB0 funktioniert hier nicht),
+und wie vorgeschlagen baudrate 115200 eingeben. Jetzt können Sie Zeichen und Ziffern eingeben, die an das Gerät und zurück gesendet werden. Das funktioniert also jetzt.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_icecube2_installieren">Icecube2 installieren</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kommen wir zum nächsten Hindernis: Der iCEcube2-Installer (und die Software) benötigen die Bibliothek libpng12.so.0. Wie Sie
+mit der Datei</p>
+</div>
+<div class="paragraph">
+<p>file ./iCEcube2setup_Dec_10_2020_2012</p>
+</div>
+<div class="paragraph">
+<p>dies gibt Folgendes aus
+./iCEcube2setup_Dec_10_2020_2012: ELF 32-Bit LSB ausführbar, Intel 80386, Version 1 (SYSV), dynamisch verknüpft, Interpreter /lib/ld-linux.so.2, für GNU/Linux 2.2.5, nicht gestrippt
+, sodass Sie wissen, dass Sie dies für die i386-Architektur installieren müssen. Sie können dies über Folgendes tun:</p>
+</div>
+<div class="paragraph">
+<p>su
+apt-get install libpng16-16:i386
+ln -s /usr/lib/i386-linux-gnu/libpng16.so.16.37.0 libpng12.so.0</p>
+</div>
+<div class="paragraph">
+<p>Jetzt sollte die Software wie erwartet starten.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lizenz_netzwerkprobleme">Lizenz-/Netzwerkprobleme</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Als Nächstes benötigen Sie eine Node-Lizenz, die an Ihre Host-ID von Lattice gebunden ist.
+Sie finden sie über</p>
+</div>
+<div class="paragraph">
+<p>ip addr show</p>
+</div>
+<div class="paragraph">
+<p>heraus. Nehmen Sie die Zeichenfolge „link/ether“ und kopieren Sie die physische MAC-Adresse (12-stelliger Hexadezimalwert) dahinter (ohne Doppelpunkte: &#39;) in den
+<a href="https://www.latticesemi.com/en/Support/Licensing/DiamondAndiCEcube2SoftwareLicensing/iceCube2">Lizenzdateigenerator</a>.
+Aktivieren Sie anschließend das Kontrollkästchen und klicken Sie auf „Lizenz generieren“. Senden.
+Sie sollten eine E-Mail mit der angehängten Lizenzdatei „license.dat“ erhalten. Legen Sie diese in das Verzeichnis Ihrer Softwareinstallation.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>export LM_LICENSE_FILE=~/software/iCEcube2.2020.12/license/license.dat;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(Machen Sie dies persistent, indem Sie es in Ihre bashrc einfügen, damit Sie dies nicht jedes Mal wiederholen müssen, wenn Sie die Software starten).
+Jetzt erhalten wir eine Fehlermeldung, die in etwa so lautet: „Ungültiger Host. Die Host-ID dieses Systems stimmt nicht mit der Host-ID überein (Fehlercode -9).“</p>
+</div>
+<div class="paragraph">
+<p>Wie sich herausstellt, tritt dieser Fehler nur auf, weil Debian den Namen der Netzwerkschnittstelle in etwas anderes als „eth0“ ändert, der Lizenzserver
+jedoch erwartet, dass er an dieser Stelle steht. Er schreibt ihn sogar selbst auf die Support-Seite, wenn Sie Lizenzprobleme eingeben:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&#34;--Wenn Sie die Fehlermeldung ‚Ungültiger Host. Die Host-ID dieses Systems stimmt nicht mit der Host-ID überein (Fehlercode -9)‘ erhalten, da Lattice-Tools den fest codierten Netzwerkschnittstellennamen (eth0) verwenden und der aktive Netzwerkschnittstellenname auf dem System auf einen anderen als eth0 eingestellt ist, kann die Lizenzdatei nicht überprüft werden und der obige Fehler wird generiert. Um dies zu vermeiden, müssen Sie den aktiven Netzwerkschnittstellennamen wie folgt in eth0 umbenennen:
+
+1). Führen Sie den folgenden Befehl mit Root-Rechten aus:
+
+a). cd /etc/udev/rules.d/
+
+b). vi 70-persistent-net.rules
+
+In der Datei 70-persistent-net.rules sehen Sie einen Wert wie:
+
+NAME =„&lt;active NIC name (for example p6p1,em1 etc)“ ändern Sie ihn in NAME=„eth0“ und speichern Sie die Datei
+
+2). Starten Sie das System neu.
+
+--Bitte überprüfen Sie, ob die MAC-Adresse, die Sie auf unserer Website erhalten haben, die MAC-ID Ihrer Ethernet-LAN-Karte ist.
+
+--Bevor Sie den Fall einreichen, geben Sie uns bitte die Informationen zur Linux-Version, einen Screenshot der Fehlermeldung, einen Screenshot des Befehls „ifconfig -a“ und Ihre aktuelle Lizenz.
+
+&#34;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Um dieses Problem zu lösen, müssen Sie eine Datei wie unten erstellen. Öffnen Sie als root einen Texteditor:</p>
+</div>
+<div class="paragraph">
+<p>su
+nano /etc/udev/rules.d/70-persistent-net.rules</p>
+</div>
+<div class="paragraph">
+<p>und geben Sie den folgenden Text ein – natürlich mit Ihrer physischen Mac-Adresse/Host-ID, wie in ip addr show angezeigt:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    SUBSYSTEM==„net“, ACTION==„add“, DRIVERS==„?*“, ATTR{address}==„&lt;your-mac-address&gt;“, ATTR{dev_id}==„0x0“, ATTR{type}==„1“,
+KERNEL==„enp11s*“, NAME=„eth0“</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Schließen Sie dann die Datei und starten Sie den Computer neu. Beim nächsten Öffnen von icecube2 sollte es funktionieren und wie erwartet starten.</p>
+</div>
+<div class="paragraph">
+<p>Ich hoffe, dass dieser Blogbeitrag Sie im richtigen Moment erreicht und Ihnen dabei hilft, schneller als ich zu sein, der einen ganzen Nachmittag damit verbracht hat, dieses Problem zu beheben.</p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

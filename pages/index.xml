@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/pages/</link>
+    <description>Recent content on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prequel: Introduction to electronics - 102</title>
+      <link>http://wehrend.uber.space/pages/short-introduction-to-electronics-102/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/pages/short-introduction-to-electronics-102/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_time_sensitive_components&#34;&gt;Time-sensitive components&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;After reviewing and extensively describing the most important component,&#xA;the resistor, in  the first part, now we want to have a look at the next important&#xA;component, the capacitor. Capacitor are also passive components, meaning&#xA;they do not amplify a signal.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_electrostatic_field&#34;&gt;Electrostatic field&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;If we take two metal planes and park them side by side, with a small thin layer of a non-conducting&#xA;substance in-between, we created an electrostatic field.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>How does a CPU work 2? Overview</title>
+      <link>http://wehrend.uber.space/pages/overview2/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/pages/overview2/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_how_does_a_cpu_work_2_table_of_contents&#34;&gt;How does a CPU work 2 - Table of contents&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_from_combinatorial_to_sequential_logic_introduction&#34;&gt;&lt;strong&gt;From Combinatorial to Sequential Logic - Introduction&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic&#34;&gt;Introduction to Sequential Logic&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We get from purely conmbinatorial logic circuits wihout any form of memeory to sequential logic circuits with some&#xA;type of memory (mostly flipflops)&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_clocksflipflops_and_registers&#34;&gt;&lt;strong&gt;Clocks,Flipflops and registers&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/&#34;&gt;Clocks,flipflops and registers&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We make a leap into the area of sequential logic and introduce some concepts vital  for the sequential logics,&#xA;like clock, flipflops and registers&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Prequel: Introduction to electronics</title>
+      <link>http://wehrend.uber.space/pages/prequel-short-introduction-to-electronics/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/pages/prequel-short-introduction-to-electronics/</guid>
+      <description>&lt;div id=&#34;preamble&#34;&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;hr/&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;While I was about to write the implementation part of the boolean algebra post, the basic logic&#xA;gates, the writing process got quickly out of hand and I caught myself to write more about less connected&#xA;topics like explaining basic electronic components and their implementation on silicon than the actual content,&#xA;here shall be the place for those excursions. This is not meant to be a complete reference more a supplement to&#xA;existing literature.&#xA;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>How does a CPU work? Overview</title>
+      <link>http://wehrend.uber.space/pages/overview/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/pages/overview/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_how_does_a_cpu_work_table_of_contents&#34;&gt;How does a CPU work - Table of contents&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_introduction_and_overview&#34;&gt;&lt;strong&gt;Introduction and overview&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;Introduction and overview&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Every topic of this course is broken up into two parts:&#xA;A part about the mathematical side of digital logic,&#xA;ideally almost independent from implementation details&#xA;and a more concrete part handling this very details.&#xA;In the concrete part we will mostly discuss the implementation&#xA;on an electrical layer, though there are still other solutions&#xA;possible based on &lt;a href=&#34;https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f&#34;&gt;fluid dynamics&lt;/a&gt;,&#xA;or &lt;a href=&#34;https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226&#34;&gt;optical gates&lt;/a&gt;,&#xA;most computers and logic gates are still based on electronics and semiconductor technology and this will not&#xA;change with &lt;a href=&#34;https://www.azom.com/article.aspx?ArticleID=17173&#34;&gt;quantum computing&lt;/a&gt;, which is mostly tied to / adjunct to&#xA;probability theory. However with quantum computing&#xA;the fundamentals behind which the author describes here will completly change.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

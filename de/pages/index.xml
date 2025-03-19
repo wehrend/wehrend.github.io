@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/pages/</link>
+    <description>Recent content on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Wed, 21 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prequel: Introduction to electronics - 102</title>
+      <link>http://wehrend.uber.space/de/pages/short-introduction-to-electronics-102/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/pages/short-introduction-to-electronics-102/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_elektronik_102&#34;&gt;Elektronik 102&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_zeitempfindliche_komponenten&#34;&gt;Zeitempfindliche Komponenten&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Nachdem wir im ersten Teil das wichtigste Bauteil, den Widerstand, betrachtet und ausführlich beschrieben haben&#xA;Widerstand, im ersten Teil ausführlich beschrieben wurde, wollen wir uns nun das nächste wichtige&#xA;Bauteil, den Kondensator, werfen. Kondensatoren sind ebenfalls passive Bauelemente, das heißt&#xA;sie verstärken ein Signal nicht.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_elektrostatisches_feld&#34;&gt;Elektrostatisches Feld&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Nimmt man zwei Metallflächen und stellt sie nebeneinander, mit einer kleinen dünnen Schicht einer nichtleitenden&#xA;Substanz dazwischen, entsteht ein elektrostatisches Feld.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>How does a CPU work 2? Overview</title>
+      <link>http://wehrend.uber.space/de/pages/overview2/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/pages/overview2/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_wie_funktioniert_eine_cpu_2_inhaltsverzeichnis&#34;&gt;Wie funktioniert eine CPU 2 - Inhaltsverzeichnis&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_von_kombinatorischer_zu_sequentieller_logik_einführung&#34;&gt;&lt;strong&gt;Von kombinatorischer zu sequentieller Logik - Einführung&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic&#34;&gt;Einführung in sequentielle Logik&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen Logikschaltungen mit irgendeiner&#xA;Art von Speicher (meistens Flipflops)&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_uhren_flipflops_und_register&#34;&gt;&lt;strong&gt;Uhren, Flipflops und Register&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/&#34;&gt;Uhren, Flipflops und Register&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,&#xA;wie Uhr, Flipflops und Register&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Prequel: Einführung in die Elektronik</title>
+      <link>http://wehrend.uber.space/de/pages/prequel-short-introduction-to-electronics/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/pages/prequel-short-introduction-to-electronics/</guid>
+      <description>&lt;div id=&#34;preamble&#34;&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;hr/&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Als ich gerade dabei war, den Implementierungsteil der Booleschen Algebra zu schreiben, die grundlegenden logischen&#xA;Gatter, lief der Schreibprozess schnell aus dem Ruder und ich ertappte mich dabei, dass ich mehr über weniger zusammenhängende Themen schrieb&#xA;Themen zu schreiben, wie z.B. die Erläuterung grundlegender elektronischer Komponenten und deren Implementierung auf Silizium, als über den eigentlichen Inhalt,&#xA;hier soll der Platz für diese Ausflüge sein. Dies soll kein vollständiges Nachschlagewerk sein, eher eine Ergänzung zu&#xA;bestehenden Literatur.&#xA;&amp;#39;&amp;#39;&amp;#39;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>How does a CPU work? Overview</title>
+      <link>http://wehrend.uber.space/de/pages/overview/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/pages/overview/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_wie_funktioniert_eine_cpu_inhaltsverzeichnis&#34;&gt;Wie funktioniert eine CPU - Inhaltsverzeichnis&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_einführung_und_überblick&#34;&gt;&lt;strong&gt;Einführung und Überblick&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;Einführung und Überblick&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Jedes Thema dieses Kurses ist in zwei Teile gegliedert:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Ein Teil über die mathematische Seite der digitalen Logik,&#xA;idealerweise fast unabhängig von Implementierungsdetails&#xA;und ein konkreterer Teil, der genau diese Details behandelt.&#xA;Im konkreten Teil werden wir hauptsächlich die Implementierung&#xA;auf einer elektrischen Ebene diskutieren, obwohl auch andere Lösungen&#xA;möglich sind, die auf &lt;a href=&#34;https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f&#34;&gt;Fluiddynamik&lt;/a&gt; oder&#xA;&lt;a href=&#34;https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226&#34;&gt;optische Gatter&lt;/a&gt; basieren.&#xA;Die meisten Computer und Logikgatter basieren immer noch auf Elektronik und Halbleitertechnologie, und das wird sich&#xA;auch mit &lt;a href=&#34;https://www.azom.com/article.aspx?ArticleID=17173&#34;&gt;Quantencomputing&lt;/a&gt; nicht ändern, das hauptsächlich an die&#xA;Wahrscheinlichkeitstheorie gebunden ist bzw. diese ergänzt. Mit dem Quantencomputing&#xA;werden sich jedoch die Grundlagen, die der Autor hier beschreibt, vollständig ändern.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

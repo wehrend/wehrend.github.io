@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Odoo on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/odoo/</link>
+    <description>Recent content in Odoo on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/odoo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</title>
+      <link>http://wehrend.uber.space/de/posts/web/04_odoo_hacks/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/04_odoo_hacks/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.&#xA;In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf&#xA;beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen,&#xA; wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking)&#xA;und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei&#xA;sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

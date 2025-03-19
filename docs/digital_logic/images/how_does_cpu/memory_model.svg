@@ -1,0 +1,30 @@
+<svg width="70.00" height="60.00" 
+     viewBox="0.0 0.0 70.0 60.0" 
+     viewPort="0 0 70px 60px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="startarrow" markerWidth="4" markerHeight="3" refX="4" refY="1.5" orient="auto">
+            <polygon points="4 0, 4 3, 0 1.5" fill="black" />
+        </marker>
+        <marker id="endarrow" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <polygon points="0 0, 4 1.5, 0 3" fill="black" />
+        </marker>
+    </defs>
+    <rect x="25" y="5" width="15" height="50"
+        style="fill:white;stroke:black;stroke-width:0.5px"/>
+    <text x="28" y="10" font-size="4">stack</text>
+    <line x1="25" y1="12" x2="40" y2="12" style="fill:white;stroke:black;stroke-width:0.5px" stroke-dasharray="2 2"/>
+    <polyline points="32,14 32,18" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#endarrow)"/>
+    <line x1="25" y1="28" x2="40" y2="28" style="fill:white;stroke:black;stroke-width:0.5px" stroke-dasharray="2 2"/>
+    <polyline points="32,26 32, 24" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#endarrow)"/>
+    <text x="28" y="34" font-size="4">heap</text>
+    <line x1="25" y1="36" x2="40" y2="36" style="fill:white;stroke:black;stroke-width:0.5px" />
+    <text x="28" y="40" font-size="4">bss</text>
+    <line x1="25" y1="42" x2="40" y2="42" style="fill:white;stroke:black;stroke-width:0.5px" />
+    <text x="28" y="46" font-size="4">data</text>
+    <line x1="25" y1="48" x2="40" y2="48" style="fill:white;stroke:black;stroke-width:0.5px" />
+    <text x="28" y="52" font-size="4">text</text>
+    <line x1="25" y1="48" x2="40" y2="48" style="fill:white;stroke:black;stroke-width:0.5px" />
+</svg>

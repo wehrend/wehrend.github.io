@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Today I want to start a blog post series about hardware programming. We start with an introduction
+to hardware programming with the FPGA-board DE0 Nano
+from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.
+
+
+
+
+
+We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure
+the programmer. In the second step we will install the simulation software Modelsim.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/posts/web/21_fpga_beginners_0/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="FPGA 101: Starting with HDLS">
+  <meta property="og:description" content="Today I want to start a blog post series about hardware programming. We start with an introduction to hardware programming with the FPGA-board DE0 Nano from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.
+We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure the programmer. In the second step we will install the simulation software Modelsim.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-12-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-12-03T00:00:00+00:00">
+    <meta property="article:tag" content="Fpga">
+    <meta property="article:tag" content="Beginners">
+    <meta property="article:tag" content="Quartus">
+    <meta property="article:tag" content="Modelsim">
+<title>FPGA 101: Starting with HDLS | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/posts/web/21_fpga_beginners_0/" title="FPGA 101: Beginne mit HDLs">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/posts/web/21_fpga_beginners_0/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>FPGA 101: Starting with HDLS</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>Today I want to start a blog post series about hardware programming. We start with an introduction
+to hardware programming with the FPGA-board <a href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;No=593">DE0 Nano</a>
+from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../de0nano.jpg" alt="DE-0 nano"/></span></p>
+</div>
+<div class="paragraph">
+<p>We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure
+the programmer. In the second step we will install the simulation software Modelsim.</p>
+</div>
+<div class="sect1">
+<h2 id="_quartus_ide">Quartus IDE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The installer can be found <a href="https://cdrdv2.intel.com/v1/dl/getContent/795187/795211?filename=qinst-lite-linux-23.1std-991.run">here</a>.
+After accepting the license agreement the 60Mb big quartus installer will be downloaded.
+In the shell console cd to Downloads and change the permissions, making it executable, and execute it</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
+$ chmod +x ./qinst-lite-linux-23.1std-991.run
+$ ./qinst-lite-linux-23.1std-991.run</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The installer GUI opens and you get to select the according packages. Do select the packages as shown below (on this system its already installed):
+Please check that you have around 20GB disk space free on the partition where you want to install the software, download size is around 4.4 - 5.0 GB.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_installer_selection.png" alt="Quartus installer"/></span></p>
+</div>
+<div class="paragraph">
+<p>Then, click the download. The download and installation takes a bit of time, so get a cup of coffee in between.
+After installation finished in your console go to the installation  - you have it probably installed in your home directory or under /opt -
+and execute the shell command to start quartus - or simply click on the Desktop icon.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd intelFPGA_lite/23.1std/quartus/bin/
+$ ./quartus</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_ide.png" alt="Quartus IDE"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now it is time to take the CD from the DE-0 nano board and copy its content on your computer…​ Or simply download it from
+<a href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;CategoryNo=139&amp;No=593&amp;PartNo=4#contents">here</a>. (You have to registrate yourself).</p>
+</div>
+<div class="paragraph">
+<p>After copying, open the project my_first_fpga. You see the different code parts in the project view left.</p>
+</div>
+<div class="paragraph">
+<p>This tutorial is in detail documented in the De0-Nano user manual page 40 - page 80
+<a href="https://github.com/caglasen/FPGA/blob/master/DE0_Nano_User_Manual.pdf">DE0-nano User Manual</a></p>
+</div>
+<div class="paragraph">
+<p>To quote the user manual (p.44):
+Create a design that causes LEDs on the development board to blink at two distinct rates. This
+design is easy to create and gives you visual feedback that the design works. Of course, you can use
+your DE0-Nano board to run other designs as well. For the LED design, you will write Verilog HDL
+code for a simple 32-bit counter, add a phase-locked loop (PLL) megafunction as the clock source,
+and add a 2-input multiplexer megafunction. When the design is running on the board, you can
+press an input switch to multiplex the counter bits that drive the output LEDs.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../my_first_fpga_view.png" alt="First FPGA"/></span></p>
+</div>
+<div class="paragraph">
+<p>The view below shows the quartus block design file (bdf) for the simple project my_first_fpga. Its depicting a PLL Megafunction and (bus)
+Multiplexer Megafunction  which is IP (=Intellectual Property from Altera / Intel).  And then there is a verilog file containing
+our custom counter logic as shown below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../my_first_fpga_bdf.png" alt="First FPGA Block Design File"/></span></p>
+</div>
+<div class="listingblock">
+<div class="title">./simple_counter.v</div>
+<div class="content">
+<pre class="highlight"><code class="language-verilog" data-lang="verilog"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-verilog" data-lang="verilog"><span style="display:flex;"><span><span style="color:#75715e">//It has a single clock input and a 32-bit output port
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">module</span> simple_counter (
+</span></span><span style="display:flex;"><span>                        CLOCK_50,
+</span></span><span style="display:flex;"><span>                        counter_out
+</span></span><span style="display:flex;"><span>                       );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">input</span>         	  CLOCK_50 ;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">output</span>	[<span style="color:#ae81ff">31</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]  counter_out;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">reg</span>      [<span style="color:#ae81ff">31</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]  counter_out;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">always</span> @ (<span style="color:#66d9ef">posedge</span> CLOCK_50)       		 <span style="color:#75715e">// on positive clock edge
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">begin</span>
+</span></span><span style="display:flex;"><span>		counter_out <span style="color:#f92672">&lt;=</span> #<span style="color:#ae81ff">1</span> counter_out <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;<span style="color:#75715e">// increment counter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endmodule</span>                        		 <span style="color:#75715e">// end of module counter
+</span></span></span></code></pre></div></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And to check the pin assignment,we open Assignments &gt;&gt; Pin Planner
+<span class="image"><img src="../quartus_pin_assignment.png" alt="Quartus Pin Assignment"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now we can run the Compiler - which in hardware programming is a bit different from software compilers - but we get to that in another
+blog post.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_compile_report.png" alt="Quartus Compile Report"/></span></p>
+</div>
+<div class="paragraph">
+<p>We can see in the compile report that 1 of 4 PLLs in total is used. Otherwise we use less than 1 percent of resources.</p>
+</div>
+<div class="paragraph">
+<p>Before we can programm the board first we have to configure the usb settings of our distribution, as documented
+<a href="https://www.intel.com/content/www/us/en/support/programmable/support-resources/download/dri-usb-b-lnx.html">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>According to &#39;Driver Setup on RedHat Linux Enterprise 5 and Above&#39; which is also valid for Debian Buster / Bullseye,
+as root user we create a new file  <strong>/etc/udev/rules.d/51-usbblaster.rules</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span># Intel FPGA Download Cable
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>SUBSYSTEM==&#34;usb&#34;, ATTR{idVendor}==&#34;09fb&#34;, ATTR{idProduct}==&#34;6001&#34;, MODE=&#34;0666&#34;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>SUBSYSTEM==&#34;usb&#34;, ATTR{idVendor}==&#34;09fb&#34;, ATTR{idProduct}==&#34;6002&#34;, MODE=&#34;0666&#34;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>SUBSYSTEM==&#34;usb&#34;, ATTR{idVendor}==&#34;09fb&#34;, ATTR{idProduct}==&#34;6003&#34;, MODE=&#34;0666&#34;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span># Intel FPGA Download Cable II
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>SUBSYSTEM==&#34;usb&#34;, ATTR{idVendor}==&#34;09fb&#34;, ATTR{idProduct}==&#34;6010&#34;, MODE=&#34;0666&#34;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>SUBSYSTEM==&#34;usb&#34;, ATTR{idVendor}==&#34;09fb&#34;, ATTR{idProduct}==&#34;6810&#34;, MODE=&#34;0666&#34;
+</span></span></code></pre></div></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we need to exit quartus and restart the computer, plug the usb cable from terasic in and connect it to your board.</p>
+</div>
+<div class="paragraph">
+<p>Then, do the following as described <a href="https://www.intel.com/content/www/us/en/support/programmable/support-resources/download/dri-quartus.html">here</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Start the Quartus® II software.</p>
+</li>
+<li>
+<p>Choose Programmer from the Tools menu. The Programmer window will open.</p>
+</li>
+<li>
+<p>Click the Hardware Setup…​ button to open the Hardware Setup window.</p>
+</li>
+<li>
+<p>The selected programming hardware is identified as Currently Selected Hardware.
+Programming hardware that is already set up appears in the Available hardware items window.</p>
+</li>
+<li>
+<p>Click the Add Hardware button to open the Add Hardware window if the programming hardware you would like to use is not listed in the Available hardware items window.</p>
+</li>
+<li>
+<p>Select the appropriate programming cable or programming hardware from the Hardware Type list.</p>
+</li>
+<li>
+<p>Select the appropriate port and baud rate if necessary.</p>
+</li>
+<li>
+<p>Click OK.</p>
+</li>
+<li>
+<p>Select the programming hardware you would like to use by choosing it in the Available hardware items list.</p>
+</li>
+<li>
+<p>Click Close.</p>
+</li>
+<li>
+<p>Your programming hardware has been set up.
+(For detailed information about how to program Intel FPGA devices, refer to Quartus II Help.)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, you can program the board with the given sof (sram object file). As the title sram suggest, this is a volatile programming
+which is lost after power supply is gone.</p>
+</div>
+<div class="paragraph">
+<p>We are still missing an important piece of software, which is the simulation software modelsim. We show this in the future</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modelsim">Modelsim</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The download link for Modelsim for quartus is given <a href="https://www.intel.com/content/www/us/en/software-kit/750666/modelsim-intel-fpgas-standard-edition-software-version-20-1-1.html">here</a> .</p>
+</div>
+<div class="paragraph">
+<p>To install Modelsim on a debian system some 32 bit libraries <a href="https://gist.github.com/Razer6/cafc172b5cffae189b4ecda06cf6c64f">have to be installed to</a>.</p>
+</div>
+<div class="paragraph">
+<p>For Ubuntu and Debian the commands are as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ sudo dpkg --add-architecture i386
+$ sudo apt-get update
+$ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32ncurses6 libxft2 libxft2:i386 libxext6 libxext6:i386</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the downloaded binary needs to be set executable and executed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ~/Downloads
+$ chmod +x ModelSimSetup-20.1.1.720-linux.run
+$ ./ModelSimSetup-20.1.1.720-linux.run</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now it is ready to be used (mostly, we have still to configure things so that it started from quartus.) Next we will do simple circuit with testbench,
+so the simulator can be tested.</p>
+</div>
+<div class="paragraph">
+<p>The simulator is started by executing qhsim in the binary folder</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">$ cd ../intelFPGA/20.1/modelsim_ase/bin
+$ ./qhsim</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../modelsim.png" alt="Modelsim"/></span></p>
+</div>
+<div class="paragraph">
+<p>To be continued…​</p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

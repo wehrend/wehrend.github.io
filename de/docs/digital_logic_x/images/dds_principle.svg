@@ -1,0 +1,42 @@
+<svg width="250px"
+     height="100px"
+     viewBox="0.0 0.0 250.00 100.00"
+     viewPort = "0 0 250 100"
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,4 L6,2z" fill="black" />
+        </marker>
+    </defs>
+
+
+    <rect x="10" y="45" width="30" height="12" style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="13" y="50" font-size="4">Frequency</text>
+    <text x="13" y="55" font-size="4">Register</text>
+    <line x1="40" y1="51" x2="55" y2="51" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <rect x="60" y="44" width="30" height="15" style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="63" y="50" font-size="3.5">Phase</text>
+    <text x="63" y="55" font-size="3.5">Accumulator</text>
+    <line x1="90" y1="51" x2="98" y2="51" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <line x1="75" y1="70" x2="75" y2="62" style="stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <text x="70" y="75" font-size="3.5">Clock</text>
+    <circle cx="110" cy="51.0" r="7" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="107" y="53.5" font-size="8">+</text>
+    <rect x="95" y="70" width="30" height="12" style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="98" y="75" font-size="4">Phase</text>
+    <text x="98" y="80" font-size="4">Register</text>
+    <line x1="110" y1="70" x2="110" y2="63" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <rect x="130" y="44" width="30" height="15" style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="133" y="52" font-size="3.5">sin ROM</text>
+    <line x1="90" y1="51" x2="98" y2="51" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <line x1="117" y1="51" x2="125" y2="51" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <line x1="160" y1="51" x2="170" y2="51" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <polyline points="175,60  175,40  190,40  195,50 190,60 175,60 175,40" style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="180" y="52" font-size="3.5">DAC</text>
+    <rect x="210" y="44" width="15" height="15" style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="212" y="52" font-size="3.5">Low-</text>
+    <text x="212" y="55" font-size="3.5">pass</text>
+    <line x1="195" y1="50" x2="205" y2="50" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+    <line x1="225" y1="50" x2="235" y2="50" style="stroke:black;stroke-width:0.8px" marker-end="url(#arrow)"/>
+</svg>
+

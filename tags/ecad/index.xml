@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ecad on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/ecad/</link>
+    <description>Recent content in Ecad on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/ecad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compiling Kicad on Debian Bullseye</title>
+      <link>http://wehrend.uber.space/posts/web/27_compiling_kicad_on_debian_bullseye/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/27_compiling_kicad_on_debian_bullseye/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;With my new hobby, there came the desire to learn to build and design my own PCB. With that in mind, I began to use the&#xA;open source ecad solution Kicad. Now I became interested in participating in this project, but, to compile the code you&#xA;have endure a few challenges - you know, collecting the dependencies,installing them, choose the right branch whiche compiles down&#xA;and so on. Here I want to show you my experience with that.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

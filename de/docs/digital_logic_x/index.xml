@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Digital Logic X on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/docs/digital_logic_x/</link>
+    <description>Recent content in Digital Logic X on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/docs/digital_logic_x/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>X2_cordic (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_x/x2_cordic/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_x/x2_cordic/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_der_cordic_algorithmus_und_die_direkte_digitale_synthese_dds&#34;&gt;Der CORDIC-Algorithmus und die direkte digitale Synthese (DDS)&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Der CORDIC-Algorithmus (Abkürzung für „Coordinate Rotation Digital Computer“) wurde 1956 von Jack.E. Volder entwickelt, um&#xA;die analogen Drehmelder, die für die Navigation von Raketen verwendet wurden, durch digitale Berechnungen auf einem Digitalcomputer zu ersetzen.&#xA;Der Algorithmus erwies sich als sehr erfolgreich und ist heute in jedem Taschenrechner zu finden, wo er&#xA;Berechnung der trigonometrischen Funktionen Sinus, Kosinus und Tangens. Der Algorithmus ist jedoch nicht darauf beschränkt,&#xA; sondern kann nach den erforderlichen Änderungen auch logarithmische und exponentielle Funktionen berechnen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>X0_multiplication (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_x/x0_multiplication/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_x/x0_multiplication/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_multiplikation_und_division&#34;&gt;Multiplikation und Division&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Multiplikationsoperationen können auf sehr unterschiedliche Weise implementiert werden&#xA;: Langsam, als serielle Operation, gesteuert durch ein&#xA;Mikroprogramm oder schnell in dedizierter Hardware.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Die Division ist eine komplexere Operation und wird daher&#xA;in einem anderen Beitrag behandelt.&#xA;Auch für die Multiplikation legen wir den Umfang auf vorzeichenlose Ganzzahlen fest.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_links_und_rechtsverschiebung&#34;&gt;Links- und Rechtsverschiebung&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Für Multiplikatoren, die Zweierpotenzen sind, ist die Operation sehr&#xA;einfach und kann durch eine Linksverschiebung implementiert werden.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

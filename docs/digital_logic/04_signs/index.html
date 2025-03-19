@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Extending the binary system
+
+
+While in the previous blog post about addition,
+the binary numbers had only one interpretation,
+we extend the system here to include negative (integer)
+numbers.
+
+
+
+
+
+The simplest approach we can think of is to use the most significant bit (MSB)
+as sign bit, where &#39;0&#39; ist intepreted as sign &#39;&#43;&#39; and &#39;1&#39; is interpreted as &#39;-&#39;.
+However as we see in the following calculation this does not work as expected:
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/docs/digital_logic/04_signs/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="04_Signs">
+  <meta property="og:description" content="Extending the binary system While in the previous blog post about addition, the binary numbers had only one interpretation, we extend the system here to include negative (integer) numbers.
+The simplest approach we can think of is to use the most significant bit (MSB) as sign bit, where &#39;0&#39; ist intepreted as sign &#39;&#43;&#39; and &#39;1&#39; is interpreted as &#39;-&#39;. However as we see in the following calculation this does not work as expected:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-02-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-02-06T00:00:00+00:00">
+<title>04_Signs | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/docs/digital_logic/04_signs/" title="04_Signs (de)">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/docs/digital_logic/04_signs/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class=" active">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>04_Signs</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_extending_the_binary_system">Extending the binary system</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While in the previous blog post about addition,
+the binary numbers had only one interpretation,
+we extend the system here to include negative (integer)
+numbers.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/binary_system.svg" alt="binary system" width="50%"/></span></p>
+</div>
+<div class="paragraph">
+<p>The simplest approach we can think of is to use the most significant bit (MSB)
+as sign bit, where &#39;0&#39; ist intepreted as sign &#39;+&#39; and &#39;1&#39; is interpreted as &#39;-&#39;.
+However as we see in the following calculation this does not work as expected:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/addition_extended.svg" alt="addition extended" width="50%"/></span></p>
+</div>
+<div class="sect2">
+<h3 id="_one_complement">One complement</h3>
+<div class="paragraph">
+<p>As the previous approach does not fullfill the requirements let us introduce
+the one complement and two complement here.
+The one complement is just an inversion of every bit, independent from its significance.</p>
+</div>
+<div class="paragraph image">
+<p>\[
+\begin{array}{l}
+00000011_{2} = +3_{10} \\
+11111100_{2} = -3_{10}
+\end{array}
+\]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_two_complement">Two complement</h3>
+<div class="paragraph">
+<p>However,as can be seen in the panel below, there is still a mismatch
+on addition. So, as a second step the inverted number is incremented by one.
+This leads us to the so-called two’s complement as seen below.</p>
+</div>
+<div class="paragraph image">
+<p>\[
+\begin{array}{l}
+00000011_{2} = +3_{10} \\
+11111101_{2} = -3_{10}
+\end{array}
+\]</p>
+</div>
+<div class="paragraph">
+<p>As can be seen in the following calculations, with the two’s complement
+we get the correct results.
+<span class="image"><img src="../images/how_does_cpu/one_and_two_complement.svg" alt="one and two complement" width="100%"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_overflow">Overflow</h3>
+<div class="paragraph">
+<p>As can be seen, in both cases, for one- and two-complement
+an arithmetic overflow is produced.
+It is very dependent on the cpu achitecture how those are handled,
+but in every case you get the information as a flag (v) .</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implementation_of_subtraction_in_a_fulladder">Implementation of subtraction in a fulladder</h3>
+<div class="paragraph">
+<p>To extend the full-adder with the logic for subtraction we do not
+need to design from scratch all again. The properties of the xor-gate
+allows the first step of the two’s complement, the inversion of every bit,
+while for the second step the increment, we simply use &#39;1&#39; of the subtraction
+switch as carry-input for the first full-adder stage.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/fulladder_subtractor.svg" alt="fulladder subtractor" width="100%"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_overview_table_for_the_number_range_7_7">Overview table for the number range -7..+7</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">decimal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">binary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">one complement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">two complement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0111</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0111</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0111</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0011</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0001</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1111</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1111</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1011</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1111</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1001</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Introduction
+
+Rare earth elements have long been the backbone of high-tech magnets, with metals like neodymium and dysprosium playing
+pivotal roles in various industries. However, the scarcity and rising demand for these valuable resources have prompted
+researchers to seek alternative solutions. In an effort to reduce our reliance on rare earth magnets, scientists are
+exploring innovative materials and alloy combinations.
+Among the promising contenders is cerium, an abundant and accessible rare earth element, showing potential to replace
+or augment neodymium magnets. In this article, we’ll delve into the groundbreaking research by Thomas Lograsso and his
+team at the Ames Laboratory of the US Department of Energy.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/posts/web/20_reducing_rare_earth_elements/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Reducing Rare Earth Dependence: The Quest for Alternative Magnetic Materials">
+  <meta property="og:description" content="Introduction Rare earth elements have long been the backbone of high-tech magnets, with metals like neodymium and dysprosium playing pivotal roles in various industries. However, the scarcity and rising demand for these valuable resources have prompted researchers to seek alternative solutions. In an effort to reduce our reliance on rare earth magnets, scientists are exploring innovative materials and alloy combinations. Among the promising contenders is cerium, an abundant and accessible rare earth element, showing potential to replace or augment neodymium magnets. In this article, we’ll delve into the groundbreaking research by Thomas Lograsso and his team at the Ames Laboratory of the US Department of Energy.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-11-03T00:00:00+00:00">
+    <meta property="article:tag" content="Chemistry">
+    <meta property="article:tag" content="Electronics">
+<title>Reducing Rare Earth Dependence: The Quest for Alternative Magnetic Materials | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/posts/web/20_reducing_rare_earth_elements/" title="Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/posts/web/20_reducing_rare_earth_elements/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Reducing Rare Earth Dependence: The Quest for Alternative Magnetic Materials</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect2">
+<h3 id="_introduction">Introduction</h3>
+<div class="paragraph">
+<p>Rare earth elements have long been the backbone of high-tech magnets, with metals like neodymium and dysprosium playing
+pivotal roles in various industries. However, the scarcity and rising demand for these valuable resources have prompted
+researchers to seek alternative solutions. In an effort to reduce our reliance on rare earth magnets, scientists are
+exploring innovative materials and alloy combinations.
+Among the promising contenders is cerium, an abundant and accessible rare earth element, showing potential to replace
+or augment neodymium magnets. In this article, we’ll delve into the groundbreaking research by Thomas Lograsso and his
+team at the Ames Laboratory of the US Department of Energy.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_rare_earth_challenge">The Rare Earth Challenge</h3>
+<div class="paragraph">
+<p>The increasing demand for rare earth elements, coupled with the limited number of reliable suppliers, has led to
+concerns over future shortages. Geopolitical factors, including China’s dominance in the rare earth market, have raised
+additional challenges. To address these issues, researchers have been on a quest to discover alternative materials for
+strong permanent magnets that could reduce our reliance on neodymium and other rare earth elements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cerium_a_promising_alternative">Cerium: A Promising Alternative</h3>
+<div class="paragraph">
+<p>Researchers have set their sights on cerium, a rare earth element that is more abundant and economically accessible.
+To transform cerium into a powerful magnet, the scientists began by exploring paramagnetic materials. These substances
+are weakly attracted to magnetic fields but are not permanently magnetized.</p>
+</div>
+<div class="paragraph">
+<p>Thomas Lograsso explains, &#34;We can essentially rehabilitate such systems and turn them into magnets by adding specific
+materials.&#34; This involves starting with alloys or compounds possessing the right properties to become ferromagnetic at
+room temperature. But which materials fit the bill?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_identifying_promising_candidates">Identifying Promising Candidates</h3>
+<div class="paragraph">
+<p>To identify promising candidates, Lograsso and his team employed a computer-based approach. This method allowed them to
+predict the magnetic behavior of a wide range of materials and determine their suitability for solid-state magnets. The
+results of this approach were promising, revealing the potential to create powerful magnets with materials like
+cerium-cobalt (CeCo₃) by introducing additives such as magnesium. Subsequent experiments validated the theory, proving
+the transformation of cerium-cobalt into a ferromagnet.</p>
+</div>
+<div class="paragraph">
+<p>Another promising candidate identified through this research is CeCo₅, a material that is already a strong ferromagnet.
+However, calculations and experiments demonstrated that the addition of copper and iron could further optimize its
+magnetic properties.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_sustainable_and_economic_solution">A Sustainable and Economic Solution</h3>
+<div class="paragraph">
+<p>These additives could pave the way for cerium-based materials to potentially replace rare earth magnets like neodymium
+and dysprosium. The advantage is that cerium belongs to the rare earth family, making it more readily available and
+easier to source than its counterparts.</p>
+</div>
+<div class="paragraph">
+<p>Lograsso emphasizes, &#34;Being able to replace the highly demanded and scarce rare earth metals makes sense both
+economically and environmentally.&#34; While the modified cerium-cobalt compounds may not yet match the strength of the
+most powerful rare earth magnets, they could still provide valuable alternatives for specific applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_beyond_cerium_exploring_further_alternatives">Beyond Cerium: Exploring Further Alternatives</h3>
+<div class="paragraph">
+<p>The research doesn’t stop at cerium-based solutions. Lograsso and his team are already experimenting with alternative
+materials that do not rely on cerium or other rare earth metals. For instance, they are working with cobalt to magnetize
+iron-germanium (Fe₃Ge) and explore the potential for these materials in high-performance applications.</p>
+</div>
+<div class="paragraph">
+<p>As we face the challenges of rare earth scarcity and increasing demand, the search for alternative materials is becoming
+more critical than ever. The groundbreaking work by researchers like Thomas Lograsso and his team offers hope that we
+can reduce our dependence on rare earth elements, providing more sustainable and accessible solutions for the
+technologies that power our modern world.</p>
+</div>
+<div class="paragraph">
+<p>(Written by chatgpt 3.5, proofread by Sven Wehrend, backed up by the source:
+<a href="https://www.scinexx.de/news/technik/alternative-magnete-gegen-den-rohstoffmangel/" class="bare">https://www.scinexx.de/news/technik/alternative-magnete-gegen-den-rohstoffmangel/</a>)</p>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

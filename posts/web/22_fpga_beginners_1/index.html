@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+So, you decided you want to learn fpga programming and have done the prerequisite from the last blog post.
+Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate
+because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/posts/web/22_fpga_beginners_1/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="FPGA 101: Starting with Quartus">
+  <meta property="og:description" content="So, you decided you want to learn fpga programming and have done the prerequisite from the last blog post. Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-12-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-12-23T00:00:00+00:00">
+    <meta property="article:tag" content="Fpga">
+    <meta property="article:tag" content="Beginners">
+    <meta property="article:tag" content="Quartus">
+<title>FPGA 101: Starting with Quartus | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/posts/web/22_fpga_beginners_1/" title="FPGA 101: Starte mit Quartus">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/posts/web/22_fpga_beginners_1/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>FPGA 101: Starting with Quartus</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>So, you decided you want to learn fpga programming and have done the prerequisite from the <a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">last blog post</a>.
+Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate
+because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.</p>
+</div>
+<div class="paragraph">
+<p>So we simply start by opening Quartus via the desktop-icon. Then we go to menu File &gt;&gt; New Project wizard as shown below, and click it.</p>
+</div>
+<div class="paragraph">
+<p>I have stolen this tutorial from <a href="https://siytek.com/quartus-hello-world/#Setup-the-project">here</a> but given it my own images and style.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_menu_new_project.png" alt="Quartus - New Project Wizard"/></span></p>
+</div>
+<div class="sect1">
+<h2 id="_setup_the_project">Setup the project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Next we see an introduction window as shown below. We click next to get to the next window where we name the Project.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_introduction.png" alt="Quartus - New Project Wizard"/></span></p>
+</div>
+<div class="paragraph">
+<p>Give it a proper AndGate or HelloWorld, as you like…​</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_project_naming.png" alt="Quartus - Project Naming"/></span></p>
+</div>
+<div class="paragraph">
+<p>Next  on the page &#39;Project Type&#39; we select &#39;Empty Project&#39;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_empty_project.png" alt="Quartus - Project Empty"/></span></p>
+</div>
+<div class="paragraph">
+<p>We skip the next page &#39;Add files&#39; and go to &#39;Family, Device and Board Settings&#39;.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_choose_device.png" alt="Quartus - Choose Device"/></span></p>
+</div>
+<div class="paragraph">
+<p>Here we select the Family Cyclone IV E and select the device with the name
+&#39;EP4CE22F17C6&#39; according to the accompanied data sheet of the DE0-nano board.
+We click next and for now skip the step &#39;EDA Tool Settings&#39;.
+Finally, we get to the Summary of the project wizard.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_project_summary.png" alt="Quartus - Project Summary"/></span></p>
+</div>
+<div class="paragraph">
+<p>After you confirmed all is as it should be, click on &#39;Finish&#39; to end the project wizard.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_the_logic">Building the logic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As described above we will use the staple features of Quartus to build our own logic in a graphical way without any HDL (Hardware Description) like VHDL or Verilog.</p>
+</div>
+<div class="paragraph">
+<p>A tab AndGate.bdf appears with a blank canvas where we can &#39;draw&#39; our circuit /logic gates.
+If we want, we can save our current state by going to File &gt;&gt; save as …​ and give a name andGate.bdf and a suitable path.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_bdf_canvas.png" alt="Quartus - BDF canvas"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now click on the symbol tool icon as shown in the image below, to open the symbol library.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_symbol_tool.png" alt="Quartus - Symbol Tool"/></span></p>
+</div>
+<div class="paragraph">
+<p>A new window opens, showing the library with the three main folders &#39;Megafunction&#39;,&#39;other&#39; and primitives…​</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_symbol_library.png" alt="Quartus - Symbol Library"/></span></p>
+</div>
+<div class="paragraph">
+<p>We are looking for and gate with two inputs, so go to &#39;Primitives&#39;, &#39;logic&#39;, &#39;and2&#39;, confirm with &#39;ok&#39;…​</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_symbol_library_ii.png" alt="Quartus - Symbol Library II"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now click in the middle of the grid canvas to enter the symbol, then click esc to exit the library modus.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_and_gate_0.png" alt="Quartus - And gate 0"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_pins">Adding pins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Next we will add some pins to the design file. Those pins define the interface between our design and the physical I/O pins.
+Later in the pin assignment we will link the pins to the physical pins of the device.</p>
+</div>
+<div class="paragraph">
+<p>The pin tool icon is right next to the symbol tool icon. Click on the arrow to open the selection menu.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_pin_tool.png" alt="Quartus - Pin tool"/></span></p>
+</div>
+<div class="paragraph">
+<p>Select output and drop the icon down somewhere next to the output of the and gate. Then draw a wire between the gate output and the pin
+by starting from either point, holding down the mouse and drawing a wire to the other point. Then we have a connection.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_link_output.png" alt="Quartus - Link output"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now, lets do the same thing equivalent for the input pins…​</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_logic_circuit.png" alt="Quartus - Logic circuit"/></span></p>
+</div>
+<div class="paragraph">
+<p>Lastly we will rename the pins to a more suitable name. Double click on the pin, and rename it.
+Another way is to click on it and in the context menu chosing properties.
+We rename the inputs to &#39;in1&#39;,&#39;in2&#39; and the output to &#39;out1&#39;, so that we find the pins correctly named in the pin assigner tool
+later on.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_logic_circuit_ii.png" alt="Quartus - Logic circuit II"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_physical_pins_pin_assignment">Physical Pins / Pin Assignment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To check out the I/O pins we need, lets check out the user manual of the DE0-nano board.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../de0nano_input.png" alt="Quartus - DE0-nano input"/></span></p>
+</div>
+<div class="paragraph">
+<p>Here - in above picture - we see the two pushbuttons of the nano board,which are buffered via the SN74AUC17 to do debouncing.</p>
+</div>
+<div class="paragraph">
+<p>And in below we see an (overly simplified) schematic of the  LEDs in the output, missing the pre-resistors.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../de0nano_output.png" alt="Quartus - DE0-nano output"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now we have all the physical pins that we need together:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>pin E1 - first push-button</p>
+</li>
+<li>
+<p>pin J15 - second push-button</p>
+</li>
+<li>
+<p>pin A15 - status LED</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now to link the design with the physical pins, in Quartus we are going to use the tool <em>Pin Planner</em>.</p>
+</div>
+<div class="paragraph">
+<p>This tool provides us with a map of available pins and functions and allows us to map parts of the design to the desired pins.</p>
+</div>
+<div class="paragraph">
+<p>In order for Quartus to understand which parts of our design can be mapped, we first need to run a partial compilation on the design called <em>analysis and elaboration</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analysis_and_elaboration">Analysis and elaboration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are different stages of processing required to convert our design into something that can be loaded on to the FPGA.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Analysis – in this part of the process Quartus checks the design for any errors such as syntax or semantic error.</p>
+</li>
+<li>
+<p>Elaboration – in the first stage of compilation, Quartus maps out the design in RTL blocks. These are the building blocks within the FPGA that perform basic functions such as memory storage, logic gates and registers.</p>
+</li>
+<li>
+<p>Synthesis – in the final stage of compilation, Quartus synthesizes a design at the logic level, converting the RTL design into a gate level design.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to get our pins to appear in the pin planner we could run a full compilation. However this is not necessary as we only need to run the analysis and elaboration stage.</p>
+</div>
+<div class="paragraph">
+<p>Quartus gives us three compilation tools that allow us to run different levels of compilation.
+We will do a closer look at these steps and what they do in a future blog post.
+As the full compilation can take some time it makes sense to only run the necessary process. Go ahead and run analysis and elaboration using the tool found in the menu bar at the top of the screen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_analysis_and_elaboration.png" alt="Quartus - Analysis &amp; Elaboration"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pin_assignment">Pin assignment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the process has completed you will have a compilation report and the analysis and elaboration process in the left-hand menu will have a green tick next to it.</p>
+</div>
+<div class="paragraph">
+<p>Now we can open the pin planner by clicking assignments &gt; pin planner from the menu at the top of the screen.</p>
+</div>
+<div class="paragraph">
+<p>The pin planner is a little complex at first glance, but it is fairly easy to use.</p>
+</div>
+<div class="paragraph">
+<p>You will see a map of the FPGA with all of the physical pins and their functions.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_pin_planner_after_run.png" alt="Quartus - Pin Planner"/></span></p>
+</div>
+<div class="paragraph">
+<p>We are interested in the list of pins at the bottom. If you have successfully completed the previous step you should see the pins listed. Go ahead and enter your switch and LED pins in the location box.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_pin_planner_pins_assigned.png" alt="Quartus - Pin Planner - pins assigned"/></span></p>
+</div>
+<div class="paragraph">
+<p>The input pins should correspond to the physical pins you have connected to the push buttons and the output pin should correspond to the output pin with the LED connected. Once you are done you can close the pin planner.</p>
+</div>
+<div class="paragraph">
+<p>You should notice that Quartus has labelled the pins with the physical outputs that we have just assigned. Note that I have detached the design window to allow a larger work area.</p>
+</div>
+<div class="paragraph">
+<p>You can detach a window by right clicking the tab at the top of the work area and selecting detach. You can also attach and detach windows from the window menu on the top menu bar.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_pins_assigned.png" alt="Quartus - Pins assigned"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hardware_compilation_synthesis">Hardware Compilation / Synthesis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now after we have our pins assigned we can run the compilation process in the hardware world called synthesis, by which the design will be transformed
+to a binary SRAM object file (sof). Meaning its only running in the volatile Static RAM not persisted and be gone after power supply is down.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_synthesis.png" alt="Quartus - Synthesis"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_programming">Programming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the synthesis has completed we can run the programmer to load this compiled program ino our FPGA.
+We can open the programmer via <em>Tools &gt;&gt; Programmer</em> or via the icon shown below</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_programmer.png" alt="Quartus - Programmer"/></span></p>
+</div>
+<div class="paragraph">
+<p>Once you’ve connected the Nano board with the usb cable, in the programmer click on &#39;Hardware Setup&#39;, in the list of the opening window the device should
+show up as &#39;USB-Blaster&#39; in the list, select it and click ok. Now we need to select Auto-detect to scan the jtag chain, looking for the fpga device EP4CE22.
+Also make sure you have the sof file generated - if nothing is shown and in doubt - just running all the steps including Timing Analysis by hand.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_programmer_sof.png" alt="Quartus - Programmer SOF"/></span></p>
+</div>
+<div class="paragraph">
+<p>If you have the sof file in place and the hardware showing up just hit the &#39;start&#39; button, then the programmer does it job.</p>
+</div>
+<div class="paragraph">
+<p>Now the LED should lit up if you press both buttons at the same time.
+But if we test the hardware we will notice a different behaviour here: We did not check that the datasheet specifies a high level for the push buttons if <em>not</em> pushed,
+so we need to modify the design, for better comparison we also add an or gate and connect it to led 1.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_circuit_extended.png" alt="Quartus - Extended Circuit"/></span></p>
+</div>
+<div class="paragraph">
+<p>I leave it open to the reader to figure out how to design the circuit as shown. If not successfull (or to lazy) the bdf file can be found here (link below).</p>
+</div>
+<div class="paragraph">
+<p><a href="../andGate.bdf">extended Circuit BDF</a></p>
+</div>
+<div class="paragraph">
+<p>And do not forget to connect the pin from the or gate output to the dedicated pin of led 1 (PIN_A13), as shown below</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../quartus_pin_planner_ii.png" alt="Quartus - Pin Planner II"/></span></p>
+</div>
+<div class="paragraph">
+<p>Run the synthesis process and program the board and test.</p>
+</div>
+<div class="paragraph">
+<p>Now, when we test the behaviour, we will see that now it behaves correctly as suggested.</p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

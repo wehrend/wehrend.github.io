@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+
+While I was about to write the implementation part of the boolean algebra post, the basic logic
+gates, the writing process got quickly out of hand and I caught myself to write more about less connected
+topics like explaining basic electronic components and their implementation on silicon than the actual content,
+here shall be the place for those excursions. This is not meant to be a complete reference more a supplement to
+existing literature.
+&#39;&#39;&#39;
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/pages/prequel-short-introduction-to-electronics/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Prequel: Introduction to electronics">
+  <meta property="og:description" content="While I was about to write the implementation part of the boolean algebra post, the basic logic gates, the writing process got quickly out of hand and I caught myself to write more about less connected topics like explaining basic electronic components and their implementation on silicon than the actual content, here shall be the place for those excursions. This is not meant to be a complete reference more a supplement to existing literature. &#39;&#39;&#39;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="pages">
+    <meta property="article:published_time" content="2021-01-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-01-23T00:00:00+00:00">
+<title>Prequel: Introduction to electronics | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/pages/prequel-short-introduction-to-electronics/" title="Prequel: Einführung in die Elektronik">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/pages/prequel-short-introduction-to-electronics/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Prequel: Introduction to electronics</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div id="preamble">
+<div class="sectionbody">
+<hr/>
+<div class="paragraph">
+<p>While I was about to write the implementation part of the boolean algebra post, the basic logic
+gates, the writing process got quickly out of hand and I caught myself to write more about less connected
+topics like explaining basic electronic components and their implementation on silicon than the actual content,
+here shall be the place for those excursions. This is not meant to be a complete reference more a supplement to
+existing literature.
+&#39;&#39;&#39;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_free_electrons_and_electric_current">Free electrons and electric current</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>What is electricity? Broadly speaken it is the flow of electrons in a conductor. In laymans term you can say,
+electrons on the outer shell - also called as valence band - of an atom are hopping from the valenece band
+of an atom to the adjacent one. So essentialy electricity constitutes the movement of electrons through matter.
+In practical application this matter is an electrical circuit, but also for example the lightning discharge
+occurs, in this case the ionised air can be considered as the (short) circuit.</p>
+</div>
+<div class="sect2">
+<h3 id="_going_atomic_conductors">Going atomic: Conductors…​</h3>
+<div class="paragraph">
+<p>The first group of elements (or compounds) we will introduce here are the conductors.
+Some important representants of this group are the elements aluminium and copper
+which both are indispensible for electric transmission lines and power grids.
+As the table below depicts, both elements have free electrons available on it’s valence
+shell, which as described above, are needed to allow the hopping of electrons from one atom
+to another and thus allow movement of electrons, making the element (in its pure form) a conductor.</p>
+</div>
+<div class="paragraph">
+<p>Of course in real world there are multiple factors counteracting to the idealized properties
+proposed here. E.g. we have to consider among others that metals oxide when coming in contact
+with oxygen, which builds up a thin but effectively isolating layer on the surface of the metal,
+preventing a good contact. We might discuss such effects later. For now just let’s continue on the topic…​</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>conductor</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_Al.svg" alt="atomic model Al" width="300px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_Cu.svg" alt="atomic model Cu" width="300px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of aluminium (13)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of copper (28)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 3 (3)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 1 (1)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/simple_circuit.svg" alt="simple circuit" width="400px"/></span></p>
+</div>
+<div class="paragraph image">
+<p>\large \[Q = N \cdot (\pm e)\]</p>
+</div>
+<div class="paragraph image">
+<p>\large \[I = \frac{\Delta Q }{\Delta t}\]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_and_not_so_conductors">…​and not so conductors</h3>
+<div class="paragraph">
+<p>The second group of elements we want to introduce here are elements which
+conductivity is (highly) dependent on its purity degree and environment
+factors like temperature. Representants of this group are called semiconductors.
+Carbon and silicon are examples showing up on the periodic table.
+The author picked those two elements as they have very exciting properties
+in regards to - but not limited to - conductivity. This is due to the number of valence
+electrons on the outer shell.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>semiconductor</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_C.svg" alt="atomic model C" width="300px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_Si.svg" alt="atomic model Si" width="300px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of carbon (6)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of silicon (14)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 4 (0)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 4 (0)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>So why does carbon and silicon have so poor conductivity properties compared to copper despite their four electrons
+on the valence shell electrons?</p>
+</div>
+<div class="paragraph">
+<p>The answer lies in the simple fact, that both carbon as well as silicon form a lattice, using up all electrons of the valence
+shell.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>covalent bonding of carbon</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>covalent bonding of silicon</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/covalent_bonding_c.svg" alt="covalent bonding c" width="400px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/covalent_bonding_si.svg" alt="covalent bonding si" width="400px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>semiconductor</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_voltage_and_potential">Voltage and potential</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The table below shows the common symbols for voltage sources. On the left side
+an ideal voltage source is shown, while on the right side a real voltage source
+is  shown. As you can see the real source resembles a battery cell. Of course the
+voltage source can differ from an actual battery cell, and also most often is not displayed implicit.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ideal voltage source</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>real voltage source</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/ideal_voltage_source.svg" alt="ideal voltage source" width="150px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/real_voltage_source.svg" alt="real voltage source" width="150px"/></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>An ideal voltage source provides a voltage of a certain level.</p>
+</div>
+<div class="paragraph">
+<p>As we can see in below shown circuit schematics a voltage is just the difference between two potentials.
+In the first example (left) the junction at the bottom is choosen as reference point, as it
+is signaled as ground. So the voltage amounts to 1.5V for U_B0 respectively to 3V for U_A0.
+Whereas in the example on the right the junction between the battery cells is choosen as reference point and ground.
+The potential differences we measure  here are: U_A0 = 1.5V and U_B0 =-1.5V.
+As a remark dual power supplies like that with - however with a voltage range of 12…​15V - are often used for
+applications with op-amps.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Single power supply</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Dual power supply</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/potential_l.svg" alt="potential l" width="250px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/potential_ll.svg" alt="potential ll" width="250px"/></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph image">
+<p>\large \[U = \phi_{1} - \phi_{0}\]</p>
+</div>
+<div class="paragraph">
+<p>The next image shows the simplest possible circuit: A voltage source with a resistor in series.
+Physically seen every resistor is just a  converter from electrical energy to thermically energy, thus heat.</p>
+</div>
+<div class="paragraph">
+<p>Resistors are generally used in circuits to drop the voltage to the desired level, respectively
+limit the current flowing between certail paths of a circuits. We will learn about it in the next section.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistor_circuit.svg" alt="resistor circuit" width="250px"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ohms_law_and_lead_resistance">Ohm’s law and lead resistance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Exercise: Measure Resistance</strong>
+To execute the following exercise you need one voltagemeter and one amperemeter (or just two multimeters), a variable voltage source and
+some sample wires of different materials but same in length and diameter.
+If you do not have the equipment, in theory you could also simulate this exercise in <a href="http://qucs.sourceforge.net">Qucs</a> or
+<a href="https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html">LTspice</a>.</p>
+</div>
+<div class="paragraph">
+<p>But as we need to upfront define the parameters of sample wires we want
+to measure, this approach kinda torpedoes the purpose of the exercise, of learning how to do an indirect measurement of electrical
+resistance.</p>
+</div>
+<div class="paragraph">
+<p>Connect the equipment according to the figure shown below, with the sample wire as the resistor Rx.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistance_measurement_l.svg" alt="resistance measurement l" width="550"/></span></p>
+</div>
+<div class="paragraph">
+<p>Now, for every wire measure the voltage and the current and plot a graph of it with voltage on x-axis and current on y-axis.
+You will see that for different materials, you get a linear graph but with a different slope. So you have find a relation
+between voltage current and resistance. In addition after measuring the different wires you can also use pen &amp; paper: draw a line with
+a pencil or scribble a small area. Now connect these with the probes of the measurement assembly. You will see, that also
+the graphit trace work as a conductor - not an optimal one but a conductor.</p>
+</div>
+<div class="paragraph">
+<p>This observance leads us to the most important formula you will encounter in an electrical engineering 101 course, Ohm’s law.</p>
+</div>
+<div class="paragraph image">
+<p>\large \[ R [\Omega] = \frac{U [V]}{I [A]}\]</p>
+</div>
+<div class="paragraph">
+<p>When we rearrange this equation to its simpler interpretable form, U = R·I, we recognize, that the voltage drop (U) on the Resistor corresponds
+to the resistance value ( R) times the current flowing thru (I). We did not speak about the current yet and we will postpone this to a later section.
+As indicated in the brakets the unit of Resistance is Ω.</p>
+</div>
+<div class="paragraph">
+<p>In the image below the rules for series and parallel connection of resistors are shown.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistor_rules.svg" alt="resistor rules" width="500px"/></span></p>
+</div>
+<div class="paragraph">
+<p>For the series connection the values simply adds up like we have seen it for the voltage sources,
+while for the parallel connection see same applies, however for the conductance G which is the reciproce
+of the resistance R and measured in S(iemens).</p>
+</div>
+<div class="paragraph">
+<p>So we discovered that the materials differ in their electrical conductivity - which is the reciprocal of the electrical resistance -
+some are good (conductor) some are pretty bad and unusable (non-conductor) but nevertheless useful as dielectric, as we will see in
+the next section and some in between.
+We also need to note, of course that the conductivity is not only dependent on the material itself but also its geometries (further it is
+also dependent on the temperature, but I will not go into this here), you know we handle with physics, so another useful formula / equation
+in this context is the following.</p>
+</div>
+<div class="paragraph image">
+<p>\large \[ R = \frac{\rho L}{A}\]</p>
+</div>
+<div class="paragraph">
+<p>For the most common rectangle form - like a strip conductor on a PCB  - area A resolves to width times height</p>
+</div>
+<div class="paragraph image">
+<p>\large \[ R = \frac{\rho L}{A} = \frac{\rho L}{w \cdot h}\]</p>
+</div>
+<div class="paragraph">
+<p>So the total resistance of a wire or a strip conductor on a PCB is dependent upon the specific resistivity ρ, the length
+of the conductor and the area used to transfer the current. Logically the specific resistivity as well as the length of the conductor
+increases the resistance while the area counteracts it.</p>
+</div>
+<div class="paragraph">
+<p><strong>Why do we need to know this?</strong></p>
+</div>
+<div class="paragraph">
+<p>At this point you may ask why it is important to know this if we can just pull a schematic of our DIY project and realize it with discrete components
+on a breakout board- the answer is simple scale - it might work for this simple hobbyist example but lack scalibility,costs and / or reliability.</p>
+</div>
+<div class="paragraph">
+<p>The further we get down on scale the more important parasitic effects become - we will learn about it in the subsequent sections.</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>Resistance measurement</p>
+</div>
+<div class="paragraph">
+<p>Below figure shows the principal of resistance measurement applied within a digital multimeter - leaving aside the range switch.
+On the left side we have a constant current source, in the middle the resistor - or wire under measurement and on the left
+a voltmeter measuring the voltage. As with the constant current source the overall current in the circuit is known, the resistance
+can be scaled from that with the voltage measured.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistance_measurement_ll.svg" alt="resistance measurement ll" width="550"/></span></p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_the_resistor">The Resistor</h3>
+<div class="paragraph">
+<p>The electrical component itself comes in all shapes and sizes dependent on the area of application.
+the miniature ones for surface mounted devices technique, used in all higher integrated electronic devices,
+the average 1/4 Watt resistor based on coal with 5 percent tolerance ( in the picture below shown central)
+and the more precise metal film resistors with 1 percent tolerance (blue, shown right in the picture).
+There are resistors with mechanically adjustable resistance called potentiometer (like the ones shown left in the picture )
+Other types are varistor where the resistance is dependent upon the voltage applied, some other types like
+NTC / PTC depending on the temperature.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/discrete_resistors_edit.jpg" alt="discrete resistors edit" width="550"/></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/smd_example.jpg" alt="smd example" width="300"/></span></p>
+</div>
+<div class="paragraph">
+<p>////Explain structure and costruction of smd resistors////</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

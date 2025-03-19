@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modelsim on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/modelsim/</link>
+    <description>Recent content in Modelsim on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/modelsim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Starting with HDLS</title>
+      <link>http://wehrend.uber.space/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/21_fpga_beginners_0/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to start a blog post series about hardware programming. We start with an introduction&#xA;to hardware programming with the FPGA-board &lt;a href=&#34;https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593&#34;&gt;DE0 Nano&lt;/a&gt;&#xA;from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../de0nano.jpg&#34; alt=&#34;DE-0 nano&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure&#xA;the programmer. In the second step we will install the simulation software Modelsim.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

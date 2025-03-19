@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Das Binärsystem
+
+
+Alle Computer, mit denen wir täglich arbeiten, wissen nichts von dem Dezimalsystem, das wir verwenden, basierend auf den zehn Ziffern, die uns zur Verfügung stehen.
+Alles, was sie wissen, sind die Zustände „an“ und „aus“. Wir bauen einen imaginären Schaltkreis mit einer Stromquelle, einer Kontrollleuchte – hier eine LED (Light Emitting Diode) – und einem Schalter,
+die Verbindung geschlossen wird, lässt das Licht blinken. Ein ausgeschaltetes Licht zählt als Null und ein eingeschaltetes Licht zählt als Eins. So einfach ist das. Wir schalten das Licht ein
+und erhalten eine Eins.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/docs/digital_logic/03_binary_system/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="03_binary_system (de)">
+  <meta property="og:description" content="Das Binärsystem Alle Computer, mit denen wir täglich arbeiten, wissen nichts von dem Dezimalsystem, das wir verwenden, basierend auf den zehn Ziffern, die uns zur Verfügung stehen. Alles, was sie wissen, sind die Zustände „an“ und „aus“. Wir bauen einen imaginären Schaltkreis mit einer Stromquelle, einer Kontrollleuchte – hier eine LED (Light Emitting Diode) – und einem Schalter, die Verbindung geschlossen wird, lässt das Licht blinken. Ein ausgeschaltetes Licht zählt als Null und ein eingeschaltetes Licht zählt als Eins. So einfach ist das. Wir schalten das Licht ein und erhalten eine Eins.">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2021-12-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-12-02T00:00:00+00:00">
+<title>03_binary_system (de) | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/docs/digital_logic/03_binary_system/" title="03_binary_system">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/docs/digital_logic/03_binary_system/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class=" active">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>03_binary_system (de)</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_das_binärsystem">Das Binärsystem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Alle Computer, mit denen wir täglich arbeiten, wissen nichts von dem Dezimalsystem, das wir verwenden, basierend auf den zehn Ziffern, die uns zur Verfügung stehen.
+Alles, was sie wissen, sind die Zustände „an“ und „aus“. Wir bauen einen imaginären Schaltkreis mit einer Stromquelle, einer Kontrollleuchte – hier eine LED (Light Emitting Diode) – und einem Schalter,
+die Verbindung geschlossen wird, lässt das Licht blinken. Ein ausgeschaltetes Licht zählt als Null und ein eingeschaltetes Licht zählt als Eins. So einfach ist das. Wir schalten das Licht ein
+und erhalten eine Eins.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/lights.png" alt="lights" title="„Ein Schaltplan des imaginären Schaltkreises.“"/></span></p>
+</div>
+<div class="paragraph">
+<p>Jetzt erweitern wir diese Installation um eine zweite Lampe und schalten auf die aktuelle Lampe links um. Wir schalten die linke Lampe ein und die rechte ein. Als Ergebnis erhalten wir eine „2“.
+Wenn wir die rechte Lampe wieder einschalten, erhalten wir eine 3. Wie in unserem Dezimalsystem ist die Wertigkeit der linken Lampe höher (zumindest in unserem Beispiel), nur der Faktor unterscheidet sich,
+statt 10 ist der Faktor 2. Wir bezeichnen die Wertigkeit mit 2^n, wobei n die Position der Lampe ist. Jeder Schalter ist ein Bit – genauer gesagt ist der Schalter der Eingang und die
+LED der Ausgang. Mit vier Schaltern – einem halben Byte, auch Nibble genannt – können wir also von 0 bis 15 zählen, während wir mit acht Schaltern – einem Byte – von 0 bis 255 zählen können. Dieses Schema kann nach Bedarf erweitert werden.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Binär</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hex</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ohne Vorzeichen Interpretation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">06</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0111</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">09</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1010</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0E</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1111</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/example.jpg" alt="example" title="„showing the binary value 9 (unsigned w/ MSB left).“"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ein_einfacher_ripple_carry_addierer">Ein einfacher Ripple-Carry-Addierer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lassen Sie uns einige einfache Berechnungen durchführen, um die notwendige Logik für eine Addierereinheit abzuleiten.
+Die Addition erfolgt wie in der Grundschule gelernt, nur dass wir diesmal Binärzahlen addieren.
+Das erste Beispiel funktioniert, während das zweite Beispiel neben dem (falschen) Ergebnis ein Übertrag-Flag erzeugt.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/addition.svg" alt="addition" width="„100%“"/></span></p>
+</div>
+</div>
+</div>
+<h1 id="_schema_für_kombinatorische_schaltkreise" class="sect0">Schema für kombinatorische Schaltkreise</h1>
+<div class="paragraph">
+<p>Wir entwickeln den RC-Addierer-Schaltkreis nach folgendem Schema,
+das zur Bewertung kombinatorischer Schaltkreise angewendet wird.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Eingänge und Ausgänge definieren .
+Wahrheitstabelle erstellen .
+Boolesche Gleichungen auswerten/vereinfachen .
+Optimierten kombinatorischen Schaltkreis zeichnen</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wahrheitstabelle für Volladdiererzelle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volladdiererzelle</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[width=„100%“,cols=„3,3,3,0,3,3“,options=„header“]
+!===
+! c_in ! A ! B !! c_out ! sum
+! 0 ! 0 ! 0 !! 0 ! 0
+! 0 ! 0 ! 1 !! 0 ! 1
+! 0 ! 1 ! 0 !! 0 ! 1
+! 0 ! 1 ! 1 !! 1 ! 0
+! 1 ! 0 ! 0 !! 0 ! 1
+! 1 ! 0 ! 1 !! 1 ! 0
+! 1 ! 1 ! 0 !! 1 ! 0
+! 1 ! 1 ! 1 !! 1 ! 1
+!===</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/fulladder_cell.svg" alt="fulladder cell" width="„100%“"/></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph „image“">
+<p>\[
+\begin{aligned}
+s &amp; = (\overline{c_{in}} \land \overline{A} \land B) \lor (\overline{c_{in}} \land A \land {\overline{B}}) \lor (c_{in} \land \overline{A} \land \overline{B}) \lor (c_{in} \land A \land B) \\
+&amp; = \overline{c_{in}}(\overline{A} \land \overline{B}) \lor (A \land \overline{B}) \lor c_{in}\overline{A} \land \overline{B}) \lor (A \land B \\
+&amp; = \overline{c_{in}}(A \oplus B) \lor c_{in}(\overline{A \oplus B}) \\
+&amp; = A \oplus B \oplus c_{in}
+\end{aligned}
+\]</p>
+</div>
+<div class="paragraph „image“">
+<p>\[
+\begin{aligned}
+c_{out} &amp; = \overline{c_{in}}(A \land B) \lor c_{in}(\overline{A} \land B) \lor c_{in}(A \land \overline{B}) \lor c_{in}(A \land B) \\
+&amp; = \overline{c_{in}}(\overline{A} \land \overline{B}) \lor (A \land \overline{B}) \lor c_{in}\overline{A} \land \overline{B}) \lor (A \land B \\
+&amp; = \overline{c_{in}}(A \land B) \lor c_{in}[(\overline{A} \land B) \lor (A\land \overline{B}) \lor A \land B] \\
+&amp; = \overline{c_{in}}AB \lor c_{in}(A \oplus B) \lor c_{in}AB \\
+&amp; = (\overline{c_{in}} \lor  c_{in})AB \lor c_{in}(A\oplus B) \\
+&amp; = AB \lor c_{in}A \oplus B
+\end{aligned}
+\]</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/fulladder_structure.svg" alt="fulladder structure" width="„75%“"/></span></p>
+</div>
+<div class="sect1">
+<h2 id="_ein_einfacherer_ansatz">Ein einfacherer Ansatz</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Anstelle der Schaltung einer Volladdierer-Zelle, bei der nur die beiden Eingangssignale
+ohne den Übertrag berücksichtigt werden, bewerten wir die Halbaddierer-Zelle.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c_out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sum</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Wie wir sehen können, besteht der Halbaddierer nur aus den beiden Gattern &#39;AND&#39; und &#39;XOR&#39;.
+Zwei Halbaddierer und ein separates &#39;OR&#39;-Gatter für das Übertragssignal ergeben einen Volladdierer.</p>
+</div>
+<div class="paragraph „image“">
+<p>\[
+\begin{array}{c}
+c = x \land y \\
+s = x \oplus y
+\end{array}
+\]</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/halfadder_structure.svg" alt="halfadder structure" width="„75%“"/></span>
+<span class="image"><img src="../images/how_does_cpu/halfadder2fulladder.svg" alt="halfadder2fulladder" width="„75%“"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_carry_lookahead_addierer">Carry-Lookahead-Addierer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Um die lange Verzögerung des Carry-Signals im RC-Addierer zu vermeiden,
+wurde der Carry-Lookahead entwickelt.
+Die Signale (g)enerate und (p)ropagate sind wie folgt definiert
+(wobei i der Index der Signifikanz ist):</p>
+</div>
+<div class="paragraph „image“">
+<p>\[
+\begin{array}{c}
+g_{i} = a_{i} \land b_{i} \\
+p_{i} = a_{i} \lor b_{i}
+\end{array}
+\]</p>
+</div>
+<div class="paragraph">
+<p>Aus diesen Hilfssignalen wird der nächste Übertrag berechnet:</p>
+</div>
+<div class="paragraph „image“">
+<p>\[
+c_{i+1} = g_{i} \lor c_{i} \land p_{i}
+\]</p>
+</div>
+<div class="paragraph „image“">
+<p>\[
+\begin{aligned}
+c_{1} &amp; = g_{0} \lor c_{0}p_{0} \\
+c_{2} &amp; = g_{1} \lor (g_{0} \lor c_{0}p_{0})p_{1} = g_{1} \lor g_{0}p_{1} \lor c_{0}p_{0})p_{1} \\
+c_{3} &amp; = g_{2} \lor c_{2}p_{2} = g_{2} \lor (g_{1} \lor g_{0}p_{1} \lor c_{0}p_{0}p_{1})p_{2} \\
+ &amp; = g_{2} \lor g_{1}p_{2} \lor g_{0}p_{1}p_{2} \lor c_{0}p_{0}p_{1}p_{2} \\
+c_{4} &amp; = g_{3} \lor c_{3}p_{3} = g_{3} \lor (g_{2} \lor g_{1}p_{2} \lor g_{0}p_{1}p_{2} \lor c_{0}p_{0}p_{1}p_{2})p_{3} \\
+ &amp; = g_{3} \lor g_{2}p_{3} \lor g_{1}p_{2}p_{3} \lor g_{0}p_{1}p_{2}p_{3} \lor c_{0}p_{0}p_{1}p_{2}p_{3} \\
+\end{aligned}
+\]</p>
+</div>
+<div class="paragraph">
+<p><strong>Carry-Lookahead-Addierer-Schaltung</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/carry_lookahead_circuit.svg" alt="carry lookahead circuit" width="„120%“"/></span></p>
+</div>
+<div class="paragraph">
+<p>Wie man sieht, steigt die Komplexität der Schaltung mit der Signifikanz.
+Die folgende Tabelle zeigt die Gesamtansicht dieser verschiedenen Addierer-Implementierungen.
+Natürlich ist das Thema Addierer viel umfassender als hier dargestellt, wir haben nur
+die Konzepte vorgestellt.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ripple-Carry-Addierer</strong></p>
+</div>
+<div class="paragraph">
+<p>iamge:../images/how_does_cpu/fulladder_array.svg[width=„120%“]</p>
+</div>
+<div class="paragraph">
+<p><strong>Carry-Lookahead Adder</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/cla_fulladder_array.svg" alt="cla fulladder array" width="„120%“"/></span></p>
+</div>
+<div class="paragraph">
+<p>Im nächsten Blogbeitrag werden wir sehen, wie man den Zahlenbereich auf den negativen Bereich ausdehnt.</p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

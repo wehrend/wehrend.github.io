@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Digitales Design trifft auf Computerarchitektur
+
+
+
+
+RISC vs. CISC und die RISC-V-Architektur
+
+Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden:
+Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen.
+Während Miniprozessoren wie ARM für eingebettete Systeme meist reduzierte Befehlssätze verwenden
+, sind heutige Workstation- und Server-Architekturen (x86, x86_64) Mischformen aus RISC und CISC.
+Die Idee eines reduzierten Befehlssatzes besteht darin, große komplexe Anweisungen und mehrere unterschiedliche
+Adressierungsmodi (wie sie typischerweise in x86-Architekturen verwendet werden) zu vermeiden.
+Zu den Vorteilen einer RISC-Architektur gehören kürzere Pipelines, die eine schnellere Taktung ermöglichen.
+RISC-Architekturen folgen einem einfachen Schema: „Abrufen → Dekodieren → Operanden abrufen → Ausführen → Zurückschreiben“
+Außerdem haben Anweisungen eine konstante Länge, Speicheroperationen sind von arithmetischen Operationen getrennt,
+was als Load/Store-Architektur bekannt ist. RISC-V ist ein offener Standard für die Befehlssatzarchitektur (ISA).
+Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/docs/digital_logic/07_risc_v/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="07_RISC-V (de)">
+  <meta property="og:description" content="Digitales Design trifft auf Computerarchitektur RISC vs. CISC und die RISC-V-Architektur Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden: Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen. Während Miniprozessoren wie ARM für eingebettete Systeme meist reduzierte Befehlssätze verwenden , sind heutige Workstation- und Server-Architekturen (x86, x86_64) Mischformen aus RISC und CISC. Die Idee eines reduzierten Befehlssatzes besteht darin, große komplexe Anweisungen und mehrere unterschiedliche Adressierungsmodi (wie sie typischerweise in x86-Architekturen verwendet werden) zu vermeiden. Zu den Vorteilen einer RISC-Architektur gehören kürzere Pipelines, die eine schnellere Taktung ermöglichen. RISC-Architekturen folgen einem einfachen Schema: „Abrufen → Dekodieren → Operanden abrufen → Ausführen → Zurückschreiben“ Außerdem haben Anweisungen eine konstante Länge, Speicheroperationen sind von arithmetischen Operationen getrennt, was als Load/Store-Architektur bekannt ist. RISC-V ist ein offener Standard für die Befehlssatzarchitektur (ISA). Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson.">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-03-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-03-21T00:00:00+00:00">
+    <meta property="article:tag" content="Draft">
+<title>07_RISC-V (de) | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/docs/digital_logic/07_risc_v/" title="07_RISC-V">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/docs/digital_logic/07_risc_v/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class=" active">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>07_RISC-V (de)</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_digitales_design_trifft_auf_computerarchitektur">Digitales Design trifft auf Computerarchitektur</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<h1 id="_risc_vs_cisc_und_die_risc_v_architektur" class="sect0">RISC vs. CISC und die RISC-V-Architektur</h1>
+<div class="paragraph">
+<p>Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden:
+Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen.
+Während Miniprozessoren wie ARM für eingebettete Systeme meist reduzierte Befehlssätze verwenden
+, sind heutige Workstation- und Server-Architekturen (x86, x86_64) Mischformen aus RISC und CISC.
+Die Idee eines reduzierten Befehlssatzes besteht darin, große komplexe Anweisungen und mehrere unterschiedliche
+Adressierungsmodi (wie sie typischerweise in x86-Architekturen verwendet werden) zu vermeiden.
+Zu den Vorteilen einer RISC-Architektur gehören kürzere Pipelines, die eine schnellere Taktung ermöglichen.
+RISC-Architekturen folgen einem einfachen Schema: „Abrufen → Dekodieren → Operanden abrufen → Ausführen → Zurückschreiben“
+Außerdem haben Anweisungen eine konstante Länge, Speicheroperationen sind von arithmetischen Operationen getrennt,
+was als Load/Store-Architektur bekannt ist. RISC-V ist ein offener Standard für die Befehlssatzarchitektur (ISA).
+Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson.</p>
+</div>
+<div class="sect1">
+<h2 id="_risc_v_assembler">RISC-V Assembler</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hier stellen wir den RISC-V Assembler vor.
+Die hier gezeigte Teilmenge ist etwas größer als die, die wir später implementieren werden.
+Zum Beispiel werden auch unmittelbare Anweisungen wie „addi“ angezeigt, die notwendig sind, um Konstanten
+in Register zu laden. Das unten gezeigte Beispielprogramm zählt von 0 bis 10 und verwendet dabei eine Schleife.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ADDI x2, x0, 1
+ADDI x3, x0, 10
+
+loop:
+   ADD x1, x1, x2
+   SW  x1, 4(x0)
+   BNE x3, x1, loop
+   HLT</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Registertyp: Anweisung [Zielreg] [Reg1] [Reg2]</p>
+</div>
+<div class="paragraph">
+<p>Lade-/Speichertyp: Anweisung [Zielreg] [Byte-Offset(Reg1)]</p>
+</div>
+<div class="paragraph">
+<p>Verzweigungstyp: Anweisung [Zielreg] [Reg1] [Zielmarke]</p>
+</div>
+<div class="paragraph">
+<p>Bei den Lade-/Speicheranweisungen enthält reg1 die Startadresse, während der Byte-Offset
+die Größe des in das Register geladenen Wertes (normalerweise 4) bzw. des in den Speicher geschriebenen Wertes enthält
+.</p>
+</div>
+<div class="paragraph">
+<p>Nachfolgend finden Sie eine Übersicht über die Befehlsformate der verschiedenen Typen:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/instruction_types.png" alt="instruction types" width="„140%“"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_eine_minimale_implementierung">Eine minimale Implementierung</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Die minimal funktionierende Teilmenge einer RISC-V-Implementierung enthält die folgenden Anweisungen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Arithmetisch-logische Anweisungen &#39;add&#39;, &#39;sub&#39;, &#39;and&#39; und &#39;or&#39; [Registertyp-Anweisungen]</p>
+</li>
+<li>
+<p>Speicherreferenzanweisungen wie load word (lw) und store word (sw) [Speichertyp-Anweisungen]</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bedingte Sprungbefehle wie „Branch-if-equal (beq)“ [Verzweigungsbefehle]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Wir werden sehen, wie sich die gewählte Befehlssatzarchitektur auf leistungsbezogene Schlüsselaspekte wie
+Taktrate und Zyklen pro Befehl (CPI) auswirkt.
+Wir werden auch sehen, dass sich die verschiedenen Befehlstypen erst in den späteren Phasen des Fetch→Decode→ Execute-Zyklus unterscheiden</p>
+</div>
+<div class="paragraph">
+<p>Die ersten beiden Schritte sind bei jeder Anweisung identisch:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Der Programmzähler (PC) zeigt auf den  aktuellen Code, der ausgeführt wird. Die Adresse wird an den Speicher gesendet, um die aktuelle Anweisung aus dem Speicher abzurufen.</p>
+</li>
+<li>
+<p>Lesen von zwei (eine für die lw-Anweisung) Registern, die Anweisungsfelder enthalten die Registernummern.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Die nächsten Schritte hängen vom Befehlstyp ab, nutzen jedoch weiterhin dieselben Ressourcen.
+Beispielsweise wird die ALU von Register-Befehlen zur Datenberechnung verwendet, während sie auch von Speicher-Befehlen
+zur Adressberechnung und von Verzweigungsbefehlen für den Gleichheitstest verwendet wird.
+Erst nach dieser ALU unterscheiden sich die verschiedenen Befehlstypen wirklich.</p>
+</div>
+<div class="paragraph">
+<p>image:../images/how_does_cpu/cpu_structure.svg</p>
+</div>
+<div class="paragraph">
+<p>Wie wir sehen werden, erklärt das unten gezeigte abstrakte Schema nicht alle Fälle.
+Wir benötigen ein weiteres erweitertes Schema, das auch die Steuerteile zeigt.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/cpu_structure_with_control.svg" alt="cpu structure with control" width="600"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_der_fetch_decode_execute_zyklus_für_die_verschiedenen_befehlstypen">Der Fetch-Decode-Execute-Zyklus für die verschiedenen Befehlstypen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wir beginnen mit dem üblichen Fetch-Decode-Execute-Zyklus eines gewöhnlichen RISC-Prozessors
+und zeigen dessen Funktionsweise für typische Befehle.</p>
+</div>
+<div class="paragraph">
+<p>Der vollständige Zyklus ist: Fetch → Decode → Fetch Operands → Execute → Write Back</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;"/>
+<col style="width: 14.2857%;"/>
+<col style="width: 14.2857%;"/>
+<col style="width: 14.2857%;"/>
+<col style="width: 14.2857%;"/>
+<col style="width: 14.2857%;"/>
+<col style="width: 14.2858%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Typ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beispielanweisung</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fetch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fetch Operands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write Back</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Register</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add, sub,and,or</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fetch instruction, increase PC by 4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decode instruction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fetch operands from registers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execute calculation in ALU</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Write value back to data memory.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Speichern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lw,sw</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abrufanweisung, PC um 4 erhöhen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dekodieranweisung</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adresse berechnen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Daten aus dem Speicher lesen/in den Speicher schreiben</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzweigung</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abrufanweisung, PC auf Zieladresse setzen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dekodieranweisung</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Operanden aus Registern abrufen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gleichheitstest (für beq)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplexer für Adressberechnung auf zweiten Addierer umschalten</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_der_anweisungsteil">Der Anweisungsteil</h3>
+<div class="paragraph">
+<p>Um eine CPU auf dieser abstrakten Ebene zu erklären, müssen wir einige weitere Konzepte einführen,
+z. B. dass eine <strong>Anweisung</strong>, die im Speicher gespeichert ist, unter einer bestimmten Adresse zugänglich ist.
+Eine <strong>Adresse</strong> in RISC-V-Standards ist ein 32 Bit langer Wert, der auf  eine bestimmte Zelle in einem Speicher-Array
+Der <strong>Program Counter (PC)</strong> ist ein Register, das auf eine bestimmte Adresse im Speicher/in der Registerdatei zeigt. Der Programmzähler ist mit dem ersten Adressaddierer mit einem konstanten Integer von 4 (dem Adressoffset, 4 * 1 Byte = 32 Bit) verbunden.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/cpu_instruction_part.svg" alt="cpu instruction part" width="500"/></span></p>
+</div>
+<div class="paragraph">
+<p>Wenn die Anweisung im Speicher eine adressmodifizierende Anweisung ist,
+wird der angegebene Wert vom zweiten Adressaddierer hinzugefügt.
+Auf diese Weise können wir Anweisungen zum <strong>Springen</strong> generieren.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/cpu_instruction_path.svg" alt="cpu instruction path" width="500"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_der_datenpfad">Der Datenpfad</h3>
+<div class="paragraph">
+<p>Der Datenpfad zeigt einige Elemente, mit denen wir bereits vertraut sind – die ALU – sowie Elemente,
+ mit denen wir noch nicht vertraut sind – die Speicherblöcke – rechts die sogenannte Registerdatei
+und links der Datenspeicher. Beide Eingänge der ALU sind mit einem (anderen) Register verbunden.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/cpu_data_path.svg" alt="cpu data path" width="600"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_der_steuerteil">Der Steuerteil</h3>
+<div class="paragraph">
+<p>Der Steuerteil ist das Element mit der größten Blackbox. Wir wissen bereits, wie die Multiplexer funktionieren,
+und wir sehen bereits eine Rückkopplungsleitung für die Verzweigungssteuerung. Die meisten Elemente in dieser abstrakten Ansicht
+bleiben dem Leser jedoch unbekannt. Dies wollen wir ändern, indem wir uns das Ganze genauer ansehen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/cpu_structure_with_control.svg" alt="cpu structure with control" width="600"/></span></p>
+</div>
+<div class="paragraph">
+<p>(translation: 2024-12-29)</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

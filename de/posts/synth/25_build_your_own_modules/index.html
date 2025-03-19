@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How to build your own synthesizer modules">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/posts/synth/25_build_your_own_modules/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Build your own synthesizer modules">
+  <meta property="og:description" content="How to build your own synthesizer modules">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-03-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-03-06T00:00:00+00:00">
+    <meta property="article:tag" content="DIY">
+    <meta property="article:tag" content="Synth">
+<title>Build your own synthesizer modules | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/posts/synth/25_build_your_own_modules/" title="Build your own synthesizer modules">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/posts/synth/25_build_your_own_modules/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Build your own synthesizer modules</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_einleitung">Einleitung</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hallo,
+heute möchte ich Ihnen das Grundwissen über den Selbstbau Ihrer eigenen Synthesizermodule vermitteln – diese benötigen
+nicht den Eurorack-Standard, obwohl sie in meinem Fall dazugehören.</p>
+</div>
+<div class="paragraph">
+<p>Wenn Sie mit <a href="https://sdiy.info/wiki/Eurorack">eurorack format</a> oder einem anderen modularen Synthesizer-Standard beginnen,
+insbesondere aber mit dem Eurorack-Standard, werden Sie höchstwahrscheinlich von
+die schiere Anzahl der Hersteller und verfügbaren Produkte überwältigt sein. Einen einfachen Überblick erhalten Sie hier
+auf <a href="https://www.modulargrid.net/e/modules/browser">ModularGrid</a>.
+Sie brauchen ein paar Wochen oder sogar Monate, um sich durch einige Testberichte auf <a href="https://www.amazona.de/">Amzona.de</a>
+zu lesen oder Synthesizer-Läden wie <a href="https://schneidersladen.de/">SchneidersLaden</a> besuchen, um sich einen groben Überblick
+über die Vielfalt des Marktes zu verschaffen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_warum_selbstbau">Warum Selbstbau?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aber warum in aller Welt sollte man sich für den Selbstbau entscheiden und Module selbst bauen, wenn es doch bereits so
+viele Optionen mit fertig montierten Modulen zu einem guten Preis gibt Module selbst zu bauen?
+Dafür kann es mehrere Gründe geben:
+- Selbstbau ist billiger als fertig erhältliche Module, obwohl dies
+<a href="https://www.modwiggler.com/forum/viewtopic.php?t=278889&amp;hilit=diy+costs">debattierbar</a> ist, da man hohe Anfangskosten für
+Werkzeuge und Material hat.
+- Selbermachen ist interessant, weil man viel darüber lernt, wie die Module funktionieren, wie Elektronik im Allgemeinen
+funktioniert, und mit der Zeit wird man schließlich besser darin, Fehler zu erkennen und zu beheben.</p>
+</div>
+<div class="paragraph">
+<p>Es lohnt sich auf jeden Fall, wenn man ein Hobby wie Elektronik in Betracht ziehen möchte, und ich persönlich denke,
+dass ein modularer Synthesizer der beste Weg ist, um als Hobby mit Elektronik und Audioschaltungen in Kontakt zu kommen.</p>
+</div>
+<div class="paragraph">
+<p>Als Nächstes werden wir kurz besprechen, welche Werkzeuge, Komponenten und Verbrauchsmaterialien Sie benötigen, um mit
+diesem Hobby zu beginnen. Nur kurz, da dies auf verschiedene Arten und Weisen im Internet unter
+<a href="https://northcoastsynthesis.com/news/tools-for-getting-started-with-sdiy/">NorthCoastSynthesis</a> diskutiert wird.
+Außerdem werde ich den Umfang auf Module beschränken, nicht auf Gehäuse und Netzteile, da dies ein ganz anderes Thema ist,
+und außerdem sollten Sie niemals ein eigenes Netzteil bauen, wenn Sie nicht wissen, was Sie tun.
+Halten Sie sich vom Stromnetz fern!!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ausrüstung">Ausrüstung</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hier ist eine Liste der Werkzeuge, die Sie auf jeden Fall als Grundausstattung benötigen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>eine Lötstation und Lötmaterialien</p>
+</li>
+<li>
+<p>ein Digitalmultimeter oder Multimeter zum Messen von Widerständen, Spannungen und Strömen</p>
+</li>
+<li>
+<p>eine dritte Hand (die das Löten erleichtert)</p>
+</li>
+<li>
+<p>ein Seitenschneider/Drahtschneider</p>
+</li>
+<li>
+<p>eine Elektronikzange</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Als Lot für THT (Durchsteckmontage, womit Sie beginnen sollten) sollten Sie bleifreies Lot mit einem Durchmesser von 1
+mm bestellen</p>
+</li>
+<li>
+<p>Einen gut beleuchteten Arbeitsplatz</p>
+</li>
+<li>
+<p>Je nach Werkbank eine Lötunterlage, um zu verhindern, dass Ihre Werkbank verbrannt wird!</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Dies sind die absoluten Grundlagen (das Digitalmultimeter könnte man theoretisch weglassen, aber es nützt einem nichts,
+da es billig ist und man es für grundlegende Tests benötigt)
+Und ich wette, ich habe noch etwas vergessen.</p>
+</div>
+<div class="paragraph">
+<p>Wenn Sie in die Welt der SMD-/SMT-Technologie einsteigen möchten (wir wollen hier nur die Größe 0805 verwenden/
+beschreiben), benötigen Sie zusätzlich:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>als Lot für SMD-Löten bleifreies Lot mit einem Durchmesser von 0,3 mm</p>
+</li>
+<li>
+<p>Pinzette</p>
+</li>
+<li>
+<p>und optional eine Lupe, aber wie gesagt, diese sind optional (z. B. habe ich sie noch nicht benötigt, da 0805 relativ
+groß ist)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testen_des_moduls">Testen des Moduls</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Das war es soweit zum Bau, aber man braucht auch etwas Ausrüstung zum Testen. Es ist sinnvoll, das Modul zunächst
+in einem separaten Rack mit separater Stromversorgung zu testen, bevor man es in das Eurorack-Gehäuse einbaut und im
+Falle einer Fehlfunktion andere Module beschädigt.
+Hier macht ein kleiner Pod absolut Sinn <a href="https://www.thomann.de/de/4ms_pod32_powered.htm">4ms pod32</a>.</p>
+</div>
+<div class="paragraph">
+<p>Außerdem benötigen Sie wahrscheinlich eine Eingangsquelle für Ihr Modul wie CV-, Audio- oder Gate-Signale. Verwenden Sie
+aus diesem Grund einen einfachen Oszillator (CV, Audio) oder Sequenzer (Gate):
+Hier kommen <a href="https://www.ericasynths.lv/shop/eurorack-modules/by-series/pico-series/pico-vco/">Erica Synth Pico VCO</a> oder
+<a href="https://www.ericasynths.lv/shop/eurorack-modules/by-series/pico-series/pico-vco2/">Erica Synth Pico VCO2</a> in den Sinn.</p>
+</div>
+<div class="paragraph">
+<p>Außerdem benötigen Sie ein Ausgangsmodul. Eigentlich können Sie mit diesem Bausatz wirklich anfangen, es ist ein
+einfacher Verstärker mit eingebautem Lautsprecher
+<a href="https://www.exploding-shed.com/clacktronics-mini-speaker-kit/100596">CLACKTRONICS - MINI SPEAKER KIT</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verpolungsschutz">Verpolungsschutz</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In diesem Zusammenhang möchte ich Sie auch daran erinnern, bei Ihren Konstruktionen immer
+<a href="https://www.allaboutcircuits.com/technical-articles/how-to-protect-your-circuits-using-only-a-diode/">Verpolungsschutzdioden</a>
+zu verwenden.
+Verwenden Sie hierfür 1N5817 (THT) oder MBR0540T1 (SMD). Ich konnte kein Bild finden, also habe ich es von einigen
+Befaco-Schaltplänen kopiert. Seien Sie also gnädig mit mir und ignorieren Sie die 100-nF-Kondensatoren.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../reverse_polarity_protection.png" alt="Verpolungsschutz"/></span></p>
+</div>
+<div class="paragraph">
+<p>Dieses Bild mag für Sie noch keinen Sinn ergeben, aber das wird sich ändern, sobald Sie lernen, Elektronikschaltpläne zu
+lesen (was Sie tun sollten, wenn Sie dieses Hobby in Betracht ziehen).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_einige_hersteller_und_module_für_den_anfang">Einige Hersteller und Module für den Anfang</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kommen wir nun zum Kern dieses Blog-Beitrags: Welche Hersteller und Module sollten Sie als Anfänger in Betracht ziehen?</p>
+</div>
+<div class="paragraph">
+<p>Ich persönlich habe meine Reise mit der gut dokumentierten <a href="https://www.ericasynths.lv/shop/diy-kits-1/">erica synths edu series</a>
+begonnen, dann ein paar <a href="https://shop.befaco.org/183-full-kits">befaco modules</a> (auch gut dokumentiert, auch etwas billiger
+bei exploding shed, was die Versandkosten betrifft ) und dann
+<a href="https://www.nonlinearcircuits.com/modules">Module von NonlinearCircuits (NLC)</a> (ebenso gut dokumentiert), aber es gibt keinen
+besonderen Grund, sie in dieser Reihenfolge zu machen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fazit_und_links">Fazit und Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zusammenfassend lässt sich sagen, dass die Welt der Eurorack-Synthesizer und -Module ein lohnendes (wenn auch
+geldaufwendiges) Unterfangen ist, bei dem man unbedingt mitmachen sollte, wenn man
+das Bedürfnis oder den Drang dazu verspüren.</p>
+</div>
+<div class="paragraph">
+<p>Zu guter Letzt noch ein paar Links, damit Sie wissen, wo Sie nach Inspiration und DIY-Kits suchen können:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.exploding-shed.com/diy-kits/">exploding Shed</a>, ein Unternehmen mit Sitz in Leipzig, Deutschland</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.3u-shop.de/">3U Shop</a>, mit Sitz in Petershagen bei Berlin, Deutschland</p>
+</div>
+<div class="paragraph">
+<p><a href="https://ppvmedien.de/Synthesizer-Klangerzeugung">Synthesizer – So funktioniert elektronische Klangerzeugung von
+Florian Anwander</a> Das Buch, das mich zu diesem Hobby gebracht hat [Deutsch]</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.modwiggler.com/forum/ucp.php?mode=register">MuffWiggler Ein sehr schönes Synthesizer-Forum</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_also_verbreitet_den_sound">Also, verbreitet den Sound!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(Noch zu tun:
+einige Bilder hinzufügen.)</p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

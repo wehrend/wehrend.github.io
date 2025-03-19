@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/debian/</link>
+    <description>Recent content in Debian on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>http://wehrend.uber.space/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo zusammen,&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;endlich ist diese Woche das &lt;a href=&#34;https://nandland.com/the-go-board/&#34;&gt;nandland go board&lt;/a&gt; angekommen, das ich vor einem Monat&#xA;beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum&#xA;geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_serielle_verbindung_über_usb&#34;&gt;Serielle Verbindung über USB&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Zunächst einmal muss man, um&#xA;sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer&#xA;zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Verilog on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/verilog/</link>
+    <description>Recent content in Verilog on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Mon, 25 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/verilog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Starte mit Quartus und Verilog</title>
+      <link>http://wehrend.uber.space/de/posts/web/23_fpga_beginners_start_with_verilog/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/23_fpga_beginners_start_with_verilog/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und haben die Voraussetzungen aus&#xA;&lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;introduction 0&lt;/a&gt; sowie&#xA;&lt;a href=&#34;https://wehrend.uber.space/posts/web/23_fpga_beginners_1/&#34;&gt;simple logic circuit&lt;/a&gt; über die BDF-Dateien von Quartus&#xA;erfüllt. Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen, indem wir ein weiteres Hardware-Äquivalent des in&#xA;der Softwarewelt verwendeten Hallo-Welt-Programms erstellen – wir programmieren einen Binärzähler, der durch die&#xA;LED-Reihe angezeigt wird, die auf unserer DE0-nano-Platine verfügbar ist. Dazu verwenden wir sowohl die Blockdiagrammdateien&#xA;(bdf) von Quartus als auch die beliebte HDL (Hardware Description Language) Verilog.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Digital Logic X on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/docs/digital_logic_x/</link>
+    <description>Recent content in Digital Logic X on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/docs/digital_logic_x/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>X2_cordic</title>
+      <link>http://wehrend.uber.space/docs/digital_logic_x/x2_cordic/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/docs/digital_logic_x/x2_cordic/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_the_cordic_algoritm_and_direct_digital_synthesis_dds&#34;&gt;The CORDIC algoritm and direct digital synthesis (DDS)&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The CORDIC (which stands for &amp;#34;coordinate rotation digital computer&amp;#34;) algorithm, was developed in 1956 by Jack.E. Volder, to&#xA;replace the analog resolvers used for missiles navigation by digital computation on digital computer.&#xA;The algorithm turned out to be very successfull, today it can be found in every pocket calculator, doing&#xA;the computation of the trigonometrical functions sinus, cosinus and tangens. But the algorithm is not limited to that&#xA;it can also calculate logarithmic and exponential functions, given the needed modifications.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>X0_multiplication</title>
+      <link>http://wehrend.uber.space/docs/digital_logic_x/x0_multiplication/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/docs/digital_logic_x/x0_multiplication/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_multiplication_and_divsion&#34;&gt;Multiplication and Divsion&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Multiplication operations can be implemented in very&#xA;different ways: Slow, as a serial operation, controlled by a&#xA;micro program or fast in dedicated hardware.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;The division is a more complex operation, and thus will be discussed&#xA;in another post.&#xA;Also for multiplication we set the scope to unsigned integer numbers.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_shift_left_and_shift_right&#34;&gt;Shift left and shift right&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;For multipliers that are powers of two, the operation is very&#xA;simple and can be implemented via a shift left.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

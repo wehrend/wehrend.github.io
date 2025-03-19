@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+The CORDIC algoritm and direct digital synthesis (DDS)
+
+
+The CORDIC (which stands for &#34;coordinate rotation digital computer&#34;) algorithm, was developed in 1956 by Jack.E. Volder, to
+replace the analog resolvers used for missiles navigation by digital computation on digital computer.
+The algorithm turned out to be very successfull, today it can be found in every pocket calculator, doing
+the computation of the trigonometrical functions sinus, cosinus and tangens. But the algorithm is not limited to that
+it can also calculate logarithmic and exponential functions, given the needed modifications.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/docs/digital_logic_x/x2_cordic/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="X2_cordic">
+  <meta property="og:description" content="The CORDIC algoritm and direct digital synthesis (DDS) The CORDIC (which stands for &#34;coordinate rotation digital computer&#34;) algorithm, was developed in 1956 by Jack.E. Volder, to replace the analog resolvers used for missiles navigation by digital computation on digital computer. The algorithm turned out to be very successfull, today it can be found in every pocket calculator, doing the computation of the trigonometrical functions sinus, cosinus and tangens. But the algorithm is not limited to that it can also calculate logarithmic and exponential functions, given the needed modifications.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-03-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-03-26T00:00:00+00:00">
+    <meta property="article:tag" content="Draft">
+<title>X2_cordic | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/docs/digital_logic_x/x2_cordic/" title="X2_cordic (de)">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/docs/digital_logic_x/x2_cordic/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class=" active">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>X2_cordic</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_the_cordic_algoritm_and_direct_digital_synthesis_dds">The CORDIC algoritm and direct digital synthesis (DDS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The CORDIC (which stands for &#34;coordinate rotation digital computer&#34;) algorithm, was developed in 1956 by Jack.E. Volder, to
+replace the analog resolvers used for missiles navigation by digital computation on digital computer.
+The algorithm turned out to be very successfull, today it can be found in every pocket calculator, doing
+the computation of the trigonometrical functions sinus, cosinus and tangens. But the algorithm is not limited to that
+it can also calculate logarithmic and exponential functions, given the needed modifications.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/unit_circle.svg" alt="unit circle" width="40%"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_cordic_algorithm">The CORDIC algorithm</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the image below, V0 shows the start vector</p>
+</div>
+<div class="paragraph image">
+<p>\[v_{0}=\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+\]
+<span class="image"><img src="../images/cordic_circle.svg" alt="cordic circle" width="40%"/></span></p>
+</div>
+<div class="paragraph">
+<p>which we now iterate, by multiplying it with the rotation matrix, given below:</p>
+</div>
+<div class="paragraph image">
+<p>\[v_{i+1}= R_i v_i\]</p>
+</div>
+<div class="paragraph image">
+<p>\[ R_i = \begin{bmatrix}
+cos(\theta) &amp; -sin(\theta) \\
+sin(\theta) &amp; cos(\theta)
+\end{bmatrix}
+\]
+We use the following two trigonometric identities:</p>
+</div>
+<div class="paragraph image">
+<p>\[
+cos(\theta) = \frac{1}{\sqrt{1+tan^2(\theta)}}
+\]</p>
+</div>
+<div class="paragraph image">
+<p>\[
+sin(\theta) = \frac{tan(\theta)}{\sqrt{1+tan^2(\theta)}}
+\]</p>
+</div>
+<div class="paragraph">
+<p>the rotation matrix becomes</p>
+</div>
+<div class="paragraph image">
+<p>\[ R_i =   \frac{1}{\sqrt{1+tan^2(\theta)}} \begin{bmatrix}
+1 &amp; -tan(\theta) \\
+tan(\theta) &amp; 1
+\end{bmatrix}
+\]</p>
+</div>
+<div class="paragraph">
+<p>Then the rotation vector $v_{i+1}= R_i v_i$ becomes:</p>
+</div>
+<div class="paragraph image">
+<p>\[ \begin{bmatrix}
+x_{i+1} \\
+y_{i+1} \\
+\end{bmatrix} =   \frac{1}{\sqrt{1+tan^2(\theta)}} \begin{bmatrix}
+1 &amp; -tan(\theta) \\
+tan(\theta) &amp; 1
+\end{bmatrix}\begin{bmatrix}
+x_{i} \\
+y_{i} \\
+\end{bmatrix}
+\]</p>
+</div>
+<div class="paragraph">
+<p>We replace the tangens function with a simpler expression, resulting in a bit shift.</p>
+</div>
+<div class="paragraph image">
+<p>\[ \begin{bmatrix}
+x_{i+1} \\
+y_{i+1} \\
+\end{bmatrix} =  K_{i} \begin{bmatrix}
+1 &amp; -\sigma 2^{-i} \\
+\sigma 2^{-i} &amp; 1
+\end{bmatrix}\begin{bmatrix}
+x_{i} \\
+y_{i} \\
+\end{bmatrix}
+\]
+where</p>
+</div>
+<div class="paragraph image">
+<p>\[ K_{i} =   \frac{1}{\sqrt{1+2^{-2i}}} \]</p>
+</div>
+<div class="paragraph">
+<p>and $\sigma_i$ is used to determine the direction of the rotation. If the angle $\theta_{i}$ is
+positive then $\sigma{i}$ is +1, otherwise -1.</p>
+</div>
+<div class="paragraph">
+<p>The factor Ki can be factored completly for the iterative process.</p>
+</div>
+<div class="paragraph image">
+<p>\[ K(n) =   \prod_{i=0}^{n-1}K_{i} = \prod_{i=0}^{n-1} \frac{1}{\sqrt{1+2^{-2i}}} \]</p>
+</div>
+<div class="paragraph image">
+<p>\[ K = lim_{n→ \infty} K \approx  0.60725293500888 \]</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/dds_principle.svg" alt="dds principle" width="75%"/></span></p>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

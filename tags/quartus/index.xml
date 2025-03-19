@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quartus on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/quartus/</link>
+    <description>Recent content in Quartus on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/quartus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Starting with Quartus and Verilog</title>
+      <link>http://wehrend.uber.space/posts/web/23_fpga_beginners_2/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/23_fpga_beginners_2/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you decided you want to learn fpga programming and have done the prerequisite from the &lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;introduction 0&lt;/a&gt; as&#xA;well as done the &lt;a href=&#34;https://wehrend.uber.space/posts/web/23_fpga_beginners_1/&#34;&gt;simple logic circuit&lt;/a&gt; via quartus’s bdf files.&#xA;Today we want to show you how to figure out Quartus by doing another hardware equivalent of the hello-World program used in the software world - we do program&#xA;a binary counter showing of by the LED array we have available on our DE0-nano board.&#xA;For this we will make use of both the Block Diagram Files (bdf) from Quartus and the popular HDL (Hardware Description Language) Verilog.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus</title>
+      <link>http://wehrend.uber.space/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/22_fpga_beginners_1/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you decided you want to learn fpga programming and have done the prerequisite from the &lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;last blog post&lt;/a&gt;.&#xA;Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate&#xA;because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with HDLS</title>
+      <link>http://wehrend.uber.space/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/21_fpga_beginners_0/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to start a blog post series about hardware programming. We start with an introduction&#xA;to hardware programming with the FPGA-board &lt;a href=&#34;https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593&#34;&gt;DE0 Nano&lt;/a&gt;&#xA;from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../de0nano.jpg&#34; alt=&#34;DE-0 nano&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure&#xA;the programmer. In the second step we will install the simulation software Modelsim.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/posts/</link>
+    <description>Recent content on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build your own synthesizer modules</title>
+      <link>http://wehrend.uber.space/de/posts/synth/25_build_your_own_modules/</link>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/25_build_your_own_modules/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_einleitung&#34;&gt;Einleitung&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo,&#xA;heute möchte ich Ihnen das Grundwissen über den Selbstbau Ihrer eigenen Synthesizermodule vermitteln – diese benötigen&#xA;nicht den Eurorack-Standard, obwohl sie in meinem Fall dazugehören.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wenn Sie mit &lt;a href=&#34;https://sdiy.info/wiki/Eurorack&#34;&gt;eurorack format&lt;/a&gt; oder einem anderen modularen Synthesizer-Standard beginnen,&#xA;insbesondere aber mit dem Eurorack-Standard, werden Sie höchstwahrscheinlich von&#xA;die schiere Anzahl der Hersteller und verfügbaren Produkte überwältigt sein. Einen einfachen Überblick erhalten Sie hier&#xA;auf &lt;a href=&#34;https://www.modulargrid.net/e/modules/browser&#34;&gt;ModularGrid&lt;/a&gt;.&#xA;Sie brauchen ein paar Wochen oder sogar Monate, um sich durch einige Testberichte auf &lt;a href=&#34;https://www.amazona.de/&#34;&gt;Amzona.de&lt;/a&gt;&#xA;zu lesen oder Synthesizer-Läden wie &lt;a href=&#34;https://schneidersladen.de/&#34;&gt;SchneidersLaden&lt;/a&gt; besuchen, um sich einen groben Überblick&#xA;über die Vielfalt des Marktes zu verschaffen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Noise Floor</title>
+      <link>http://wehrend.uber.space/de/posts/synth/16_noise_floor/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/16_noise_floor/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;On my mobile setup, the NiftyVCase I have collected my diy modules (with excepition to the Doepfer&#xA;A-124, I had to include for its great sound). It features a kick-drum from erica synths, an even&#xA;VCO, Sampling Modulator, A*B+C and Rampage from Befaco. As well as the Divebomb III for some delay.&#xA;Last but not least a Zlon skew lfo and a BCM086 Diode Ladder High pass filter.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../noise_floor.jpg&#34; alt=&#34;noise floor&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Jam Session</title>
+      <link>http://wehrend.uber.space/de/posts/synth/15_jam_session/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/15_jam_session/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;This time, we have a convoluted patch, featuring a new member, the random sequencer&#xA;from rat-king, which,as the name suggests, delivers nice randomly sequences. Also&#xA;we have a new mixer module, self-build.&#xA;We also utilize both VCOs and both LFO modules…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../jam_session.jpg&#34; alt=&#34;jam session&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../jam_session.m4a&#34;&gt;jam session Audio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another small patch</title>
+      <link>http://wehrend.uber.space/de/posts/synth/14_another_small_patch/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/14_another_small_patch/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So here is another small patch idea for the Doepfer A-100 system,&#xA;this time featuring the SEM filter from Oberheim, incarnated in the Doepfer&#xA;modul A-106-5.&#xA;We also utilize two LFO modules…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../lfo_sem_patch.jpg&#34; alt=&#34;LFO SEM Patch&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../lfo_sem_patch.m4a&#34;&gt;LFO SEM Patch Audio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../lfo_sem_patch2-3.jpg&#34; alt=&#34;LFO SEM Patch&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../lfo_sem_patch2.m4a&#34;&gt;LFO SEM Patch Audio 2&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../lfo_sem_patch3.m4a&#34;&gt;LFO SEM Patch Audio 3&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;To this day I did not find the right audio recorder,and I am recording with my smartphone,&#xA;so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another simple patch</title>
+      <link>http://wehrend.uber.space/de/posts/synth/13_another_simple_patch/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/13_another_simple_patch/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So here is another simple patch idea for the Doepfer A-100 system,&#xA;this time featuring the SEM filter from Oberheim, incarnated in the Doepfer&#xA;modul A-106-5.&#xA;We also utilize two A-110 oscillator modules (one standard, one basic), and the LFO.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../sem_patch.jpg&#34; alt=&#34;SEM Patch&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../sem_patch.m4a&#34;&gt;SEM Patch Audio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;To this day I did not find the right audio recorder,and I am recording with my smartphone,&#xA;so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - More patch ideas</title>
+      <link>http://wehrend.uber.space/de/posts/synth/11_more_patch_ideas/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/11_more_patch_ideas/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So here is another patch idea for the Doepfer A-100 system.&#xA;The results of the Doepfer oscillators are pithlily &amp;#34;knarzig-kernige&amp;#34; sounds.&#xA;We utilize two A-110 oscillator modules (one standard, one basic), a ring-modulator (A-114)&#xA;and a wasp-filter (A-124), together with some utility modules like a sequencer and an LFO.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../pithily_sounds.jpg&#34; alt=&#34;pithily&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../pithily_sounds.m4a&#34;&gt;pithily…​ Audio&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Pocket Operator Modular 400 in eurorack</title>
+      <link>http://wehrend.uber.space/de/posts/synth/09_eurorack_modular/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/09_eurorack_modular/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So I bought a low cost eurorack case from doepfer and a set of frontpanels plus power adapter&#xA;for the pocket operator modular 400 from Oddvolt to put the said machine into a eurorack modular&#xA;system. I also bought a small, but decent sequencer, since the one from teenage engineering is not&#xA;very handy to use. I have two further modules on my list, the &lt;a href=&#34;https://doepfer.de/a119.htm&#34;&gt;Doepfer A-119&lt;/a&gt;,&#xA;an input module, as well as the &lt;a href=&#34;https://doepfer.de/a124.htm&#34;&gt;Doepfer A-124&lt;/a&gt;, a wasp filter, to complete the setup.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas (II)</title>
+      <link>http://wehrend.uber.space/de/posts/synth/06_pocket_operator_modular_400/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/06_pocket_operator_modular_400/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../plong_plong_plong.jpg&#34; alt=&#34;Plong…​&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../plong_plong_plong.mp4&#34;&gt;Plong…​ Video&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;With the random module we can sample &amp;amp; hold a signal from the input. Its companionship is the noise module.&#xA;We feed the saw output to the input of the rand module.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../beep_bleep.jpg&#34; alt=&#34;Beep&#34; width=&#34;bleep…​&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../beep_bleep.mp4&#34;&gt;Beep,bleep…​ Video&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;hr/&gt;&#xA;&lt;div class=&#34;olist arabic&#34;&gt;&#xA;&lt;ol class=&#34;arabic&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;sine output → speaker right&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;envelope output → sine key&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;LFO square → envelope trig&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;LFO square → sine fm&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../sweeping_sinus.jpg&#34; alt=&#34;Sweeping sinus…​&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../sweeping_sinus.mp4&#34;&gt;sweeping sinus…​ Video&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We can expand the setup by using the sequencer and utilize the filter. Because  the nice&#xA;thing about modular synthesizers is, that the filter can be used not only in signal paths but&#xA;also in control paths ;-) .&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas</title>
+      <link>http://wehrend.uber.space/de/posts/synth/05_pocket_operator_modular_400/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/05_pocket_operator_modular_400/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Ein analoger modularer Synthesizer war schon immer mein Traum, letzte Woche habe ich mir diesen Traum erfüllt&#xA;und den Pocket Operator Modular 400 von der schwedischen Firma Teenage Engineering bestellt.&#xA;Wie bei den Möbeln der anderen beliebten schwedischen Firma muss man ihn erst selbst zusammenbauen,&#xA;bevor man damit einen Ton erzeugen kann. Das hat etwa 3 bis 4 Stunden gedauert. Aber es hat sich gelohnt.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;hr/&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgänge aller&#xA;3 Oszillatoren zusammen und steuern den Sinusoszillator mit dem Dreieckausgang des LFO und die Impulsbreite des Rechteckoszillators mit dem LFO-Rechteck.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Electronic on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/electronic/</link>
+    <description>Recent content in Electronic on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/electronic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Warum gibt es überall serielle Schnittstellen – statt paralleler?</title>
+      <link>http://wehrend.uber.space/de/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/07_serial_interfaces/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;USB, SPI, I²C, Sata – all diese Schnittstellen haben gemeinsam, dass es sich um serielle Schnittstellen handelt.&#xA;Serielle Schnittstellen sind heutzutage weit verbreitet. Aber warum ist das so, insbesondere bei der Hochgeschwindigkeits-&#xA;kommunikation? Es klingt einfach unlogisch: Parallele Drähte&#xA;können theoretisch mehr Bits pro Zeit senden als ein einzelner Draht.&#xA;Die Antwort auf diese Frage ist komplex und vielschichtig. Es gibt mehrere verschiedene Gründe, warum&#xA;serielle Schnittstellen gegenüber parallelen Schnittstellen bevorzugt werden. Beginnen wir mit den offensichtlichen Gründen:&#xA;Die Verdrahtung von Bussen mit einer Breite von 8, 16, 32 oder sogar 64 Bit auf Leiterplatten wird immer komplexer&#xA;. Das zweite damit zusammenhängende Problem besteht darin, dass die Signalflanke gleichzeitig&#xA;für alle parallelen Leitungen (Drähte) übertragen werden muss, was zu einer komplexeren Verlegung führt, da die Kanten&#xA;in der Streifenleitung ausgeglichen werden müssen.&#xA;Einfach ausgedrückt ist die zusätzliche Logik, die in Chips implementiert ist, um das serielle Signal wieder in ein&#xA;paralleles umzuwandeln (Deserializer) und umgekehrt  (Serializer), viel billiger als die Kosten für komplexe Verlegungen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

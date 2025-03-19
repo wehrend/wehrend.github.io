@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/docs/digital_logic_2/</link>
+    <description>Recent content on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/docs/digital_logic_2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10_sequential_logic</title>
+      <link>http://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_sequential_logic&#34;&gt;Sequential Logic&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Complementary to Combinatorial logic, sequential logic contains some type of memory,&#xA;making the behaviour state-dependent. We need to feed it a clock signal.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../images/how_does_cpu/sequential_logic.svg&#34; alt=&#34;sequential logic&#34; width=&#34;50%&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_mealy_and_moore_automata_synchronous&#34;&gt;Mealy and Moore Automata (synchronous)&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;There are two different types of finite automata in the digital logic.&#xA;Those are:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;olist arabic&#34;&gt;&#xA;&lt;ol class=&#34;arabic&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The mealy automata, which is dependent on the input and the state&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;The moore automata, which is only dependent on the state&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../images/how_does_cpu/mealy_logic.svg&#34; alt=&#34;mealy logic&#34; width=&#34;50%&#34;/&gt;&lt;/span&gt;&#xA;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../images/how_does_cpu/moore_logic.svg&#34; alt=&#34;moore logic&#34; width=&#34;50%&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>11_Clocks_flipflops_and_registers</title>
+      <link>http://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_clocks_flipflops_and_registers&#34;&gt;Clocks, Flipflops and registers&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In this blog post the author will introduce multiple elements needed at a later&#xA;stage.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_register_transfer_level_needs_a_clock_source&#34;&gt;Register-Transfer-Level needs a clock source&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;As for now we only learned about combinatiorial logic, which works&#xA;without any clock source - every signal is just delayed by the&#xA;time it needs to travel through the circuit. This is known as asynchronous.&#xA;But for more sophisticated tasks, sequential circuits, having registers&#xA;storing the input and output signals are necessary&#xA;to get correct results. This is known as synchronous.&#xA;Most, if not all designs used nowadays are synchronous,&#xA;due to a lower design complexity.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Digital Logic 2</title>
+      <link>http://wehrend.uber.space/docs/digital_logic_2/images/how_does_cpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/docs/digital_logic_2/images/how_does_cpu/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

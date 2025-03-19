@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/web/</link>
+    <description>Recent content in Web on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sat, 10 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zwischenspeicher und Zwischenspeichern (Caching)</title>
+      <link>http://wehrend.uber.space/de/posts/web/12_caches_and_caching/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/12_caches_and_caching/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr&#xA;wichtigen Mechanismus nicht bemerkt, der dem Browser zugrunde liegt und im Hintergrund arbeitet. Caching.&#xA;Caches werden überall eingesetzt, um Zugriffszeiten und damit die&#xA;Gesamtleistung (einer Website) zu optimieren und zu verbessern. Caching im Browser bedeutet beispielsweise, dass&#xA;im Idealfall nur die Teile der Website, die geändert wurden, aus dem Internet geladen werden. Alles andere&#xA;wurde bereits zuvor geladen und hat sich nicht geändert, sodass kein erneutes Laden erforderlich ist. Nicht mehr aktuelle Teile&#xA;werden ungültig (auch als Cache-Ungültigmachung bezeichnet) und erneut von der Quelle geladen.&#xA;Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Topics to write about - Wunschliste</title>
+      <link>http://wehrend.uber.space/de/posts/web/10_wishlist/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/10_wishlist/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;ulist&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Caches&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Interrupts&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Out-of-Order execution&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;RAW-, WAR- und WAW-Konflikte&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Filter (analog und digital)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Analogrechner&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;neuronale Netze&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;das Makrobiom&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</title>
+      <link>http://wehrend.uber.space/de/posts/web/04_odoo_hacks/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/04_odoo_hacks/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.&#xA;In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf&#xA;beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen,&#xA; wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking)&#xA;und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei&#xA;sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Separiere Blog und Inhalt (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/03_separate_form_and_content/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/03_separate_form_and_content/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da&#xA;ein Blog und sein Inhalt selbst unterschiedliche Einheiten sind. Ich wollte sie als solche behandeln,&#xA;was mich zu einer Bereinigung des ursprünglichen Quellcodes für den Blog führte, bei der ich den Inhaltsordner&#xA;in ein anderes Repo namens hugo_content verschob, das frühere Repo nannte ich hugo_blog.&#xA;---&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In meinem Fall bedeutet dies, dass Sie zuerst das Repo hugo_blog klonen müssen,&#xA; in das neue Verzeichnis wechseln (cd hugo), seinen Zweig „hugo“ auschecken und dann einen Klon des&#xA;Repos hugo_content erstellen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Umziehen zu Hugo (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/02_moving-to-hugo/</link>
+      <pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/02_moving-to-hugo/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Seit einer Woche basiert mein Blog auf dem Static-Site-Generator &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&#xA;Ich wollte schon viel früher zu Hugo wechseln, da es eine große Auswahl an Themes gibt.&#xA;Dies erforderte jedoch den Wechsel von Asciidoc zu &lt;a href=&#34;https://asciidoctor.org/&#34;&gt;Asciidoctor&lt;/a&gt;,&#xA;und ich hatte einige Probleme mit der Integration von Asciidoctor in meinen bestehenden Arbeitsablauf.&#xA;Da der Ansatz, die Latex-Gleichungen in den Asciidoc-Dokumenten darzustellen,&#xA;nicht mehr funktionierte, entschied ich mich, auf die clientbasierte Darstellung von Formeln umzusteigen,&#xA;wie sie in &lt;a href=&#34;https://gohugo.io/Katex&#34;&gt;KaTex&lt;/a&gt; und &lt;a href=&#34;https://www.mathjax.org/&#34;&gt;Mathjax&lt;/a&gt; verwendet wird.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Ein statisches Blog aufsetzen mit Nikola (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/00_setting_up_nikola/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/00_setting_up_nikola/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Um die Sache etwas interessanter und gleichzeitig einfacher zu machen, werden wir Nikola in einem Docker-Container verwenden.&#xA;Daher benötige ich hier ein fast grundlegendes Verständnis für Docker.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Erstellen Sie zunächst ein Verzeichnis auf unserem Host-System, in dem die Dateien gespeichert werden sollen, z. B. „blog“ in Ihrem Home-Verzeichnis.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

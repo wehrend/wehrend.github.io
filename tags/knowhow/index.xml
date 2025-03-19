@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Knowhow on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/knowhow/</link>
+    <description>Recent content in Knowhow on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/knowhow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analog Computers 101</title>
+      <link>http://wehrend.uber.space/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/17_analog_computers_101/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_analog_computers&#34;&gt;Analog Computers&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,&#xA;compared to their digital counterparts. But they are wonderous little machines. And that machines I mean&#xA;wordly because there exists analog mechanical computers that are models from the world and used to&#xA;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tide-predicting_machine&#34;&gt;compute and predict tides&lt;/a&gt; in certain areas of the world .&#xA;Also the brain is an enourmous analog computer with a comparatively very small&#xA;enery budget. &lt;a href=&#34;https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer&#34;&gt;It only takes 12 Watt.&lt;/a&gt;&#xA;12 Watt; that is not even a quarter of the power supply budget of a laptop, which uses 65 Watt.&#xA;And you can do very heavy lifting with the brain, but back to topic.&#xA;I want to talk mainly about analog electronic computers, during the world war two those were used to compute&#xA;&lt;a href=&#34;https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf&#34;&gt;ballistic curves&lt;/a&gt;.&#xA;So analog computers can sum up, multiply, divide, integrate and differentiate like their digital&#xA;counterparts.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Caches and Caching</title>
+      <link>http://wehrend.uber.space/posts/web/12_caches_and_caching/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/12_caches_and_caching/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;When you fire up your browser to visit a website, you most probably did not noticed a very&#xA;important mechanism underlying the browser and working in the background. Caching.&#xA;Caches are used everywhere to optimize and improve access times and such in consequence&#xA;the overall performance (of a site). Caching in the browser for example means, that&#xA;ideally only the portions of the website that changed are loaded from the www. All else&#xA;was already loaded before and did not change, thus needs no reload. Portions that are no longer&#xA;up-to-date become invalidated (also known as cache-invalidation) and are loaded anew from the source.&#xA;There are two types of very different caches in the computer&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Why are serial interfaces everywhere - instead of parallel ones</title>
+      <link>http://wehrend.uber.space/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/07_serial_interfaces/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;USB, SPI, I²C, Sata - all these interfaces is common that they are serial interfaces. Serial interfaces are todays common.&#xA;But why is that the case, especially for high-speed communication? it sounds simply counterintuitive: Parallel wires&#xA;can theoretically send more bits per time than on singular wire can.&#xA;The answer to that question is complex and multilayered. There are multiple different reasons why&#xA;serial interfaces are preferred over parallel interfaces. Lets start with the obvious ones:&#xA;The PCB routing of busses of  8, 16, 32 or even 64 bit width gets increasingly complex to route on printed circuits&#xA;boards (PCBs).The second problem, related to this, is that signal slope need to get transmitted at the same time&#xA;for all parallel lines (wires), which results in a more complex routing since edges in the strip conductor needs to be compensated.&#xA;Simply put the additional logic implemented in chips to convert the serial signal to parallel ones again (deserializer) and vice versa&#xA;(serializer) is much cheaper than the costs of complex routings.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

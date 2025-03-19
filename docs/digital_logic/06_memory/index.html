@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Memory Organization
+
+
+In this blog post the author will introduce the different
+types of semiconductor memory. This is a wide field,
+so the goal here is to focus on the most important ones
+and draw the differences between the different types.
+
+
+The Memory hierarchy
+
+As in computing all is about performance, we first have a look
+at the memory hierarchy. As you can see in the pyramid below, memory is
+ordered in layers. The slowest elements -also the ones with highest
+latency - are at the bottom of this pyramid, while the fastest ones are
+shown at the apex.
+Imagine your desk is the actual CPU, with an open book laying in front of your
+eyes. This is the register. Now you read in this book a reference to another book
+in your bookshelf. Your bookshelf is the cache here. The cache itself is again layered.
+Lets say L1-cache is the bookshelf in your room, L2-cache the bookshelf in another room
+and L3-cache books stored in a box in the same room. If you now have a reference
+in your current book (the one on your desk), that refers to a book you do not possess, you need to
+go to the public library. The public library is your RAM. The access times are really high.
+And lets say the book you need is also not available there, and they must order it from a library
+in another city. Then you got to the level at the bottom, which is the disk storage unit.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/docs/digital_logic/06_memory/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="06_Memory">
+  <meta property="og:description" content="Memory Organization In this blog post the author will introduce the different types of semiconductor memory. This is a wide field, so the goal here is to focus on the most important ones and draw the differences between the different types.
+The Memory hierarchy As in computing all is about performance, we first have a look at the memory hierarchy. As you can see in the pyramid below, memory is ordered in layers. The slowest elements -also the ones with highest latency - are at the bottom of this pyramid, while the fastest ones are shown at the apex. Imagine your desk is the actual CPU, with an open book laying in front of your eyes. This is the register. Now you read in this book a reference to another book in your bookshelf. Your bookshelf is the cache here. The cache itself is again layered. Lets say L1-cache is the bookshelf in your room, L2-cache the bookshelf in another room and L3-cache books stored in a box in the same room. If you now have a reference in your current book (the one on your desk), that refers to a book you do not possess, you need to go to the public library. The public library is your RAM. The access times are really high. And lets say the book you need is also not available there, and they must order it from a library in another city. Then you got to the level at the bottom, which is the disk storage unit.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-03-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-03-20T00:00:00+00:00">
+<title>06_Memory | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/docs/digital_logic/06_memory/" title="06_Memory (de)">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/docs/digital_logic/06_memory/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class=" active">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>06_Memory</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_memory_organization">Memory Organization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this blog post the author will introduce the different
+types of semiconductor memory. This is a wide field,
+so the goal here is to focus on the most important ones
+and draw the differences between the different types.</p>
+</div>
+<div class="sect2">
+<h3 id="_the_memory_hierarchy">The Memory hierarchy</h3>
+<div class="paragraph">
+<p>As in computing all is about performance, we first have a look
+at the memory hierarchy. As you can see in the pyramid below, memory is
+ordered in layers. The slowest elements -also the ones with highest
+latency - are at the bottom of this pyramid, while the fastest ones are
+shown at the apex.
+Imagine your desk is the actual CPU, with an open book laying in front of your
+eyes. This is the register. Now you read in this book a reference to another book
+in your bookshelf. Your bookshelf is the cache here. The cache itself is again layered.
+Lets say L1-cache is the bookshelf in your room, L2-cache the bookshelf in another room
+and L3-cache books stored in a box in the same room. If you now have a reference
+in your current book (the one on your desk), that refers to a book you do not possess, you need to
+go to the public library. The public library is your RAM. The access times are really high.
+And lets say the book you need is also not available there, and they must order it from a library
+in another city. Then you got to the level at the bottom, which is the disk storage unit.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/memhierarchy.svg" alt="memhierarchy" width="100%"/></span></p>
+</div>
+<div class="paragraph">
+<p>At the bottom is also the low-priced memory (per byte).
+The higher you go on the hierarchy the costlier the memory becomes.
+In this article we will expand our knowledge about the RAM.
+Caches are more complex and will eventually be handeled in a future
+article.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ram_and_rom">RAM and ROM</h3>
+<div class="paragraph">
+<p>The image below shows the overall organization of a ram circuit,
+RAM stand for random access memory, so it means a memory with arbitrary
+access. Simply put, you set an address in and get the data which is stored
+under the given address location out.The schematic given here also holds for
+Read only memory (ROM). Complementary to ROM, which is persistent, RAM
+is volatile. So it needs ongoing power supply,otherwise it loses
+its stored data.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/ram_schematic.svg" alt="ram schematic" width="90%"/></span></p>
+</div>
+<div class="paragraph">
+<p>As can be seen the main parts apart from the memory itself
+are column- and row-decoder, as well as read / write amplifier.
+The address-decoder just consists of well-known combinatorial logic,
+while the amplifier are a bit more complex.
+The blue dots on the intersection of rows and columns mark the
+placements of the memory cell, depending on the type of memory,
+those differ and are explained in the next section.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_different_memory_cells">The different memory cells</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>static RAM (SRAM)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>dynamic RAM (DRAM)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/sram_nmos.svg" alt="sram nmos" width="100%"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/dram.svg" alt="dram" width="100%"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>transistor # 4</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>transistor # 1</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/sram_cmos.svg" alt="sram cmos" width="100%"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>transistor # 6</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sram_vs_dram">SRAM vs. DRAM</h3>
+<div class="paragraph">
+<p>The static RAM (SRAM) cell has the advantage of holding the stored value
+as long as the power supply is not interrupted. Its clear disadvantage
+is the circuit effort of minum 4 transistor (for an nmos design) but regularly 6
+for a cmos design.That makes it ideal for small pockets of memories like registers
+and cache located near the cpu.
+Complementary the dynamic RAM (DRAM) cell needs just one transistor and one capacitor
+to hold the stored value, but needs to be refreshed periodically.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_register_file">The register file</h3>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/register_file.svg" alt="register file" width="60%"/></span></p>
+</div>
+<div class="paragraph">
+<p>At this point the author wants to introduce the so-called register
+file. This is a type of memory which can have multiple read ports.
+which is useful as input for the ALU we introduced in the last blog
+post. While the amount of read ports is theoretically unlimited,
+the amount of write ports is usually one. The reason, as the vivid
+reader can imagine is to mitigate hazards, which is with multiple
+write ports difficult to handle.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/register_file_read_ports.svg" alt="register file read ports" width="100%"/></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/register_file_write_port.svg" alt="register file write port" width="100%"/></span></p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

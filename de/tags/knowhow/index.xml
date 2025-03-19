@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Knowhow on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/knowhow/</link>
+    <description>Recent content in Knowhow on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/knowhow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analoge Rechner Grundlagen (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/17_analog_computers_101/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_analogrechner&#34;&gt;Analogrechner&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich über Analogrechner sprechen. In der heutigen Zeit führen analoge Computer ein Schattendasein,&#xA;verglichen mit ihren digitalen Gegenstücken. Aber sie sind wunderbare kleine Maschinen. Und diese Maschinen meine ich&#xA;wortlich, denn es gibt analoge mechanische Computer, die Modelle aus der Welt sind und verwendet werden zur&#xA;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tide-predicting_machine&#34;&gt;Berechnung und Vorhersage von Gezeiten&lt;/a&gt; in bestimmten Gebieten der Welt.&#xA;Auch das Gehirn ist ein riesiger analoger Computer mit einem vergleichsweise sehr kleinen&#xA;Energiebudget. &lt;a href=&#34;https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer&#34;&gt;Es braucht nur 12 Watt.&lt;/a&gt;&#xA;12 Watt, das ist nicht einmal ein Viertel des Stromverbrauchs eines Laptops von 65 Watt.&#xA;Und man kann mit dem Gehirn sehr viel anstellen, aber zurück zum Thema.&#xA;Ich möchte hauptsächlich über analoge elektronische Computer sprechen, die während des Zweiten Weltkriegs zur Berechnung von&#xA;&lt;a href=&#34;https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf&#34;&gt;ballistischen Kurven&lt;/a&gt; verwendet wurden.&#xA;Analogrechner können also summieren, multiplizieren, dividieren, integrieren und differenzieren wie ihre digitalen Gegenstücke.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Zwischenspeicher und Zwischenspeichern (Caching)</title>
+      <link>http://wehrend.uber.space/de/posts/web/12_caches_and_caching/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/12_caches_and_caching/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr&#xA;wichtigen Mechanismus nicht bemerkt, der dem Browser zugrunde liegt und im Hintergrund arbeitet. Caching.&#xA;Caches werden überall eingesetzt, um Zugriffszeiten und damit die&#xA;Gesamtleistung (einer Website) zu optimieren und zu verbessern. Caching im Browser bedeutet beispielsweise, dass&#xA;im Idealfall nur die Teile der Website, die geändert wurden, aus dem Internet geladen werden. Alles andere&#xA;wurde bereits zuvor geladen und hat sich nicht geändert, sodass kein erneutes Laden erforderlich ist. Nicht mehr aktuelle Teile&#xA;werden ungültig (auch als Cache-Ungültigmachung bezeichnet) und erneut von der Quelle geladen.&#xA;Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Warum gibt es überall serielle Schnittstellen – statt paralleler?</title>
+      <link>http://wehrend.uber.space/de/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/07_serial_interfaces/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;USB, SPI, I²C, Sata – all diese Schnittstellen haben gemeinsam, dass es sich um serielle Schnittstellen handelt.&#xA;Serielle Schnittstellen sind heutzutage weit verbreitet. Aber warum ist das so, insbesondere bei der Hochgeschwindigkeits-&#xA;kommunikation? Es klingt einfach unlogisch: Parallele Drähte&#xA;können theoretisch mehr Bits pro Zeit senden als ein einzelner Draht.&#xA;Die Antwort auf diese Frage ist komplex und vielschichtig. Es gibt mehrere verschiedene Gründe, warum&#xA;serielle Schnittstellen gegenüber parallelen Schnittstellen bevorzugt werden. Beginnen wir mit den offensichtlichen Gründen:&#xA;Die Verdrahtung von Bussen mit einer Breite von 8, 16, 32 oder sogar 64 Bit auf Leiterplatten wird immer komplexer&#xA;. Das zweite damit zusammenhängende Problem besteht darin, dass die Signalflanke gleichzeitig&#xA;für alle parallelen Leitungen (Drähte) übertragen werden muss, was zu einer komplexeren Verlegung führt, da die Kanten&#xA;in der Streifenleitung ausgeglichen werden müssen.&#xA;Einfach ausgedrückt ist die zusätzliche Logik, die in Chips implementiert ist, um das serielle Signal wieder in ein&#xA;paralleles umzuwandeln (Deserializer) und umgekehrt  (Serializer), viel billiger als die Kosten für komplexe Verlegungen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

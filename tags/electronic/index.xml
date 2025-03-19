@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Electronic on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/electronic/</link>
+    <description>Recent content in Electronic on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/electronic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why are serial interfaces everywhere - instead of parallel ones</title>
+      <link>http://wehrend.uber.space/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/07_serial_interfaces/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;USB, SPI, I²C, Sata - all these interfaces is common that they are serial interfaces. Serial interfaces are todays common.&#xA;But why is that the case, especially for high-speed communication? it sounds simply counterintuitive: Parallel wires&#xA;can theoretically send more bits per time than on singular wire can.&#xA;The answer to that question is complex and multilayered. There are multiple different reasons why&#xA;serial interfaces are preferred over parallel interfaces. Lets start with the obvious ones:&#xA;The PCB routing of busses of  8, 16, 32 or even 64 bit width gets increasingly complex to route on printed circuits&#xA;boards (PCBs).The second problem, related to this, is that signal slope need to get transmitted at the same time&#xA;for all parallel lines (wires), which results in a more complex routing since edges in the strip conductor needs to be compensated.&#xA;Simply put the additional logic implemented in chips to convert the serial signal to parallel ones again (deserializer) and vice versa&#xA;(serializer) is much cheaper than the costs of complex routings.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

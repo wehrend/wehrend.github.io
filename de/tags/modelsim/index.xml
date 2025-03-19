@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modelsim on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/modelsim/</link>
+    <description>Recent content in Modelsim on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 03 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/modelsim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Beginne mit HDLs</title>
+      <link>http://wehrend.uber.space/de/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/21_fpga_beginners_0/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich eine Blogpost-Serie über Hardware-Programmierung starten. Wir beginnen mit einer Einführung&#xA;in die Hardware-Programmierung mit dem FPGA-Board&#xA;&lt;a href=&#34;https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593&#34;&gt;DE0 Nano&lt;/a&gt;&#xA;von der ehemaligen Firma Altera, jetzt Intel. Unten sehen Sie ein Bild des kleinen Boards. Es scheint, dass man dieses&#xA;Board noch bestellen kann, aber ich habe es nicht getestet.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../de0nano.jpg&#34; alt=&#34;DE-0 nano&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wir zeigen, wie die Umgebung eingerichtet wird. Im ersten Schritt zeigen wir, wie man Quartus auf einer Debian-Distribution&#xA;herunterlädt und installiert und den Programmierer konfiguriert. Im zweiten Schritt installieren wir die Simulationssoftware Modelsim.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

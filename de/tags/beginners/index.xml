@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beginners on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/beginners/</link>
+    <description>Recent content in Beginners on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>http://wehrend.uber.space/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo zusammen,&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;endlich ist diese Woche das &lt;a href=&#34;https://nandland.com/the-go-board/&#34;&gt;nandland go board&lt;/a&gt; angekommen, das ich vor einem Monat&#xA;beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum&#xA;geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_serielle_verbindung_über_usb&#34;&gt;Serielle Verbindung über USB&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Zunächst einmal muss man, um&#xA;sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer&#xA;zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hallo Welt</title>
+      <link>http://wehrend.uber.space/de/posts/web/24_fpga_beginners_de10_board/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/24_fpga_beginners_de10_board/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich Ihnen zeigen, wie Sie eine Verbindung zum DE10-nano-Board herstellen, dem Nachfolger des DE0-nano-Boards.&#xA;Es ist etwas größer, kostet fast 300 Dollar, unterstützt aber auch sofort einsatzbereites Linux. Auf der SD-Karte ist&#xA;&lt;a href=&#34;https://web.archive.org/web/20200815133137/http://angstrom-distribution.org/&#34;&gt;Angstrom Linux&lt;/a&gt; installiert.&#xA;Um das Board über die UART-Schnittstelle anzuschließen, schalten Sie das Board mit dem Steckernetzteil ein, legen Sie&#xA;die SD-Karte ein, um das Linux-Booten zu starten, und schließen Sie schließlich das Micro-USB-Kabel (wie unten gezeigt)&#xA;an den PC an.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus und Verilog</title>
+      <link>http://wehrend.uber.space/de/posts/web/23_fpga_beginners_start_with_verilog/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/23_fpga_beginners_start_with_verilog/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und haben die Voraussetzungen aus&#xA;&lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;introduction 0&lt;/a&gt; sowie&#xA;&lt;a href=&#34;https://wehrend.uber.space/posts/web/23_fpga_beginners_1/&#34;&gt;simple logic circuit&lt;/a&gt; über die BDF-Dateien von Quartus&#xA;erfüllt. Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen, indem wir ein weiteres Hardware-Äquivalent des in&#xA;der Softwarewelt verwendeten Hallo-Welt-Programms erstellen – wir programmieren einen Binärzähler, der durch die&#xA;LED-Reihe angezeigt wird, die auf unserer DE0-nano-Platine verfügbar ist. Dazu verwenden wir sowohl die Blockdiagrammdateien&#xA;(bdf) von Quartus als auch die beliebte HDL (Hardware Description Language) Verilog.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus</title>
+      <link>http://wehrend.uber.space/de/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/22_fpga_beginners_1/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und die Voraussetzungen aus dem&#xA;&lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;letzten Blogbeitrag&lt;/a&gt; erfüllt.&#xA;Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen lernen, indem Sie ein Hardware-Äquivalent des in der Software-&#xA;welt verwendeten Hello-World-Programms erstellen – wir nennen es AndGate  , weil es einfach das ist – ein UND-Gatter,&#xA;das über zwei Taster als Eingang und eine Status-LED als Ausgang gespeist wird. Auf diese Weise verwenden wir die&#xA;Blockdiagrammdateien (bdf) von Quartus.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Beginne mit HDLs</title>
+      <link>http://wehrend.uber.space/de/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/21_fpga_beginners_0/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich eine Blogpost-Serie über Hardware-Programmierung starten. Wir beginnen mit einer Einführung&#xA;in die Hardware-Programmierung mit dem FPGA-Board&#xA;&lt;a href=&#34;https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593&#34;&gt;DE0 Nano&lt;/a&gt;&#xA;von der ehemaligen Firma Altera, jetzt Intel. Unten sehen Sie ein Bild des kleinen Boards. Es scheint, dass man dieses&#xA;Board noch bestellen kann, aber ich habe es nicht getestet.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../de0nano.jpg&#34; alt=&#34;DE-0 nano&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wir zeigen, wie die Umgebung eingerichtet wird. Im ersten Schritt zeigen wir, wie man Quartus auf einer Debian-Distribution&#xA;herunterlädt und installiert und den Programmierer konfiguriert. Im zweiten Schritt installieren wir die Simulationssoftware Modelsim.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

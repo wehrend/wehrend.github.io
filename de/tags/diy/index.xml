@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DIY on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/diy/</link>
+    <description>Recent content in DIY on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/diy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build your own synthesizer modules</title>
+      <link>http://wehrend.uber.space/de/posts/synth/25_build_your_own_modules/</link>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/synth/25_build_your_own_modules/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_einleitung&#34;&gt;Einleitung&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo,&#xA;heute möchte ich Ihnen das Grundwissen über den Selbstbau Ihrer eigenen Synthesizermodule vermitteln – diese benötigen&#xA;nicht den Eurorack-Standard, obwohl sie in meinem Fall dazugehören.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wenn Sie mit &lt;a href=&#34;https://sdiy.info/wiki/Eurorack&#34;&gt;eurorack format&lt;/a&gt; oder einem anderen modularen Synthesizer-Standard beginnen,&#xA;insbesondere aber mit dem Eurorack-Standard, werden Sie höchstwahrscheinlich von&#xA;die schiere Anzahl der Hersteller und verfügbaren Produkte überwältigt sein. Einen einfachen Überblick erhalten Sie hier&#xA;auf &lt;a href=&#34;https://www.modulargrid.net/e/modules/browser&#34;&gt;ModularGrid&lt;/a&gt;.&#xA;Sie brauchen ein paar Wochen oder sogar Monate, um sich durch einige Testberichte auf &lt;a href=&#34;https://www.amazona.de/&#34;&gt;Amzona.de&lt;/a&gt;&#xA;zu lesen oder Synthesizer-Läden wie &lt;a href=&#34;https://schneidersladen.de/&#34;&gt;SchneidersLaden&lt;/a&gt; besuchen, um sich einen groben Überblick&#xA;über die Vielfalt des Marktes zu verschaffen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

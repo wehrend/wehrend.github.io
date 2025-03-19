@@ -1,0 +1,35 @@
+<svg width="120.00" height="60.00" 
+     viewBox="0.0 0.0 120.0 60.0" 
+     viewPort="0 0 120px 60px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <line x1="25" y1="45" x2="25" y2="35" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="23" y="50" font-size="4">Sel</text>
+    <polyline points="20,10 30,15 30,35 20,40 20,10 30,15" style="fill:white;stroke:black;stroke-width:0.5px;"/>
+    <line x1="10" y1="18" x2="20" y2="18" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="5" y="19" font-size="4">A</text>
+    <line x1="10" y1="32" x2="20" y2="32" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="5" y="33" font-size="4">B</text>
+
+    <text x="22" y="19" font-size="4">0</text>
+    <text x="22" y="33" font-size="4">1</text>
+    <!--     out -->
+    <line x1="30" y1="25" x2="40" y2="25" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="42" y="26" font-size="4">Z</text>
+   
+    <line x1="75" y1="46" x2="75" y2="20" style="fill:none;stroke:black;stroke-width:0.7px;stroke-dasharray:2.2;"/>
+    <text x="73" y="50" font-size="4">Sel</text>
+    <line x1="65" y1="18" x2="82" y2="25" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    
+    <line x1="55" y1="18" x2="65" y2="18" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <circle cx="65" cy="18" r="0.5" style="fill:black;stroke:black;stroke-width:0.7px;"/>
+    <text x="50" y="19" font-size="4">A</text>
+    <line x1="55" y1="32" x2="65" y2="32" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <circle cx="65" cy="32" r="0.5" style="fill:black;stroke:black;stroke-width:0.7px;"/>
+    <text x="50" y="33" font-size="4">B</text>
+     <!--     out -->
+    <line x1="82" y1="25" x2="90" y2="25" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="92" y="26" font-size="4">Z</text>
+   
+</svg>

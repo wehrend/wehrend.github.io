@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analog on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/analog/</link>
+    <description>Recent content in Analog on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 14 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/analog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Op-Amps introduction</title>
+      <link>http://wehrend.uber.space/posts/web/18_op-amps_introduction/</link>
+      <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/18_op-amps_introduction/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_op_amp&#34;&gt;OP-Amp&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to speak about op-amps. These wonderful, but mysterious components, we have heavely often appearing&#xA;in circuit schematica of analog or analog / digital hybrid circuits. We want to demistify these components.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../op-amp.svg&#34; alt=&#34;op-amp&#34; width=&#34;400px&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;There are two basic thumb rules when handling ideal op-amp circuit. (Real-world op-amp circuits are a bit more complicated, but we will discuss this later).&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph image&#34;&gt;&#xA;&lt;div class=&#34;title&#34;&gt;1. The first thumb rule is that Vout is essentially the difference of the voltage values at the both inputs, multiplied with an arbitrary but high amplification factor A.&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Analog Computers 101</title>
+      <link>http://wehrend.uber.space/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/17_analog_computers_101/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_analog_computers&#34;&gt;Analog Computers&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,&#xA;compared to their digital counterparts. But they are wonderous little machines. And that machines I mean&#xA;wordly because there exists analog mechanical computers that are models from the world and used to&#xA;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tide-predicting_machine&#34;&gt;compute and predict tides&lt;/a&gt; in certain areas of the world .&#xA;Also the brain is an enourmous analog computer with a comparatively very small&#xA;enery budget. &lt;a href=&#34;https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer&#34;&gt;It only takes 12 Watt.&lt;/a&gt;&#xA;12 Watt; that is not even a quarter of the power supply budget of a laptop, which uses 65 Watt.&#xA;And you can do very heavy lifting with the brain, but back to topic.&#xA;I want to talk mainly about analog electronic computers, during the world war two those were used to compute&#xA;&lt;a href=&#34;https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf&#34;&gt;ballistic curves&lt;/a&gt;.&#xA;So analog computers can sum up, multiply, divide, integrate and differentiate like their digital&#xA;counterparts.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

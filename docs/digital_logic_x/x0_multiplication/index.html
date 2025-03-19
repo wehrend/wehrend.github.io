@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Multiplication and Divsion
+
+
+Multiplication operations can be implemented in very
+different ways: Slow, as a serial operation, controlled by a
+micro program or fast in dedicated hardware.
+
+
+The division is a more complex operation, and thus will be discussed
+in another post.
+Also for multiplication we set the scope to unsigned integer numbers.
+
+
+Shift left and shift right
+
+For multipliers that are powers of two, the operation is very
+simple and can be implemented via a shift left.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/docs/digital_logic_x/x0_multiplication/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="X0_multiplication">
+  <meta property="og:description" content="Multiplication and Divsion Multiplication operations can be implemented in very different ways: Slow, as a serial operation, controlled by a micro program or fast in dedicated hardware.
+The division is a more complex operation, and thus will be discussed in another post. Also for multiplication we set the scope to unsigned integer numbers.
+Shift left and shift right For multipliers that are powers of two, the operation is very simple and can be implemented via a shift left.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-04-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-04-24T00:00:00+00:00">
+    <meta property="article:tag" content="Draft">
+<title>X0_multiplication | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/docs/digital_logic_x/x0_multiplication/" title="X0_multiplication (de)">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/docs/digital_logic_x/x0_multiplication/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class=" active">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>X0_multiplication</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_multiplication_and_divsion">Multiplication and Divsion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Multiplication operations can be implemented in very
+different ways: Slow, as a serial operation, controlled by a
+micro program or fast in dedicated hardware.</p>
+</div>
+<div class="paragraph">
+<p>The division is a more complex operation, and thus will be discussed
+in another post.
+Also for multiplication we set the scope to unsigned integer numbers.</p>
+</div>
+<div class="sect2">
+<h3 id="_shift_left_and_shift_right">Shift left and shift right</h3>
+<div class="paragraph">
+<p>For multipliers that are powers of two, the operation is very
+simple and can be implemented via a shift left.</p>
+</div>
+<div class="paragraph">
+<p><strong>A shift left by one bit equals a multiplication by 2, as left shift by n
+bits equals a multiplication by 2^n.</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>A shift right is a division by 2, a right shift by n bits
+is a division by 2^n</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/arithmetic_shift.svg" alt="arithmetic shift" width="75%"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_multiplication_algorithm">The multiplication algorithm</h3>
+<div class="paragraph">
+<p>Of course we are not only interested in the special case of base two multipliers, but rather want the multiplication
+operation to work on all numbers we defined above. We begin with a serial multiplication implementation.</p>
+</div>
+<div class="paragraph">
+<p>To start with, we analyze the steps of a binary multiplication, which frankly does not differ much
+from a multiplication in the decimal system and is even simpler. We multiply 7 times 6 in the binary
+system which results in 42.</p>
+</div>
+<div class="paragraph">
+<p>multiplicand x multiplier = product</p>
+</div>
+<div class="paragraph image">
+<p>\[ \begin{aligned}
+0111_2 \times 0110_2 \\
+\hline 0000   \\
+011110 \\
+011100 \\
+0111000 \\
+\hline 0101010 \\
+\end{aligned} \]</p>
+</div>
+<div class="paragraph">
+<p>As we can see, based on that example, the multiplication operation is a sequence of shifting and addition.
+From this, we can now dissect the multiplication operation and derive an algorithm from it.</p>
+</div>
+<div class="paragraph">
+<p><strong>For details we refer to the original source: Rechnerentwurf: Rechenwerke, Mikroprogrammierung, RISC by R. Hoffman, third edition, Oldenbourg Verlag.</strong></p>
+</div>
+<div class="paragraph">
+<p>We have a multiplicator of X[n] and a multiplier of Y[m], then the product of the multiplication operation results in P[n+m],
+meaning the size of the operation, logically, is the addition of both the size of the multiplicator and the multiplier.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_booth_algorithm">Booth Algorithm</h3>
+<div class="paragraph">
+<p>The booth algorithm is one of the most efficient algorithm, as said above, it is again a series of shifting and addition.
+But here the three following rules have to be considered (see <a href="https://www.geeksforgeeks.org/computer-organization-booths-algorithm/">here</a> for reference ):
+1. The multiplicand is subtracted from the partial product upon encountering the first least significant 1 in a string of 1’s in the multiplier
+2. The multiplicand is added to the partial product upon encountering the first 0 (provided that there was a previous ‘1’) in a string of 0’s in the multiplier.
+3. The partial product does not change when the multiplier bit is identical to the previous multiplier bit.</p>
+</div>
+<div class="paragraph">
+<p>The booth algorithm applied can be watched <a href="https://www.youtube.com/watch?v=1ubyXuXxIWU">here</a>:
+<span class="image"><img src="../images/booth_algorithm.svg" alt="booth algorithm" width="65%"/></span></p>
+</div>
+<div class="sect3">
+<h4 id="_booth_hardware_implementation_and_flowchart">Booth hardware implementation and flowchart</h4>
+<div class="paragraph">
+<p>The booth multiplier, shown below, consist of the registers A,B for the multiplier and multiplicand and Q for the result.
+The register AC is the accumulator,the bit register BR and the register QR. An extra flipflop Qn+1 is used to check the multiplier.The flowchart is given below.
+<span class="image"><img src="../images/booth_hardware.svg" alt="booth hardware" width="65%"/></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/booth_flowchart.svg" alt="booth flowchart" width="65%"/></span></p>
+</div>
+<div class="paragraph">
+<p>Initially the accumulator and the flipflop Qn+1 are cleared, reset to zero.The sequence counter SC ist set to
+the number of bits n of the multiplier. Then the two bits in Qn and Qn+1 are checked. In case these are 10
+the multiplicand gets subtracted from the partial product residing in the Accumulator AC. In case they are 01
+the multiplicand gets additioned to the partial product residing in the Accumulator AC.
+When the two bit are the same (00,11) the partial product is unchanged. Since the subtraction and addition
+alternate, an overflow cannot occur. As next step the partial product and the multiplier (plus Qn+1) are
+shifted right. This is an arithmetic shift (ashr) which shifts AC and QR to the right, thus the sign bit in AC is
+unchanged. The sequence counter is decremented and the computational loop gets repeated n times.
+When multiplying negative numbers we need to find 2’s complement because it is easier to add instead of doing
+a binary subtraction.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

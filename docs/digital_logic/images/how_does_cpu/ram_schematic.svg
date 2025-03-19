@@ -1,0 +1,88 @@
+<svg width="140.00" height="150.00" 
+     viewBox="0.0 0.0 140.0 150.0" 
+     viewPort="0 0 140px 150px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="startarrow" markerWidth="4" markerHeight="3" refX="4" refY="1.5" orient="auto">
+            <polygon points="4 0, 4 3, 0 1.5" fill="green" />
+        </marker>
+        <marker id="endarrow" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <polygon points="0 0, 4 1.5, 0 3" fill="green" />
+        </marker>
+        <marker id="blackarrow" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <polygon points="0 0, 4 1.5, 0 3" fill="black" />
+        </marker>
+    </defs>
+    <text x="25" y="13" font-size="4">Address lines</text>
+    <polyline points="15,15 20,20 20,110 30,110" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <polyline points="0,15 90,15 90,20" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <text x="25" y="44" font-size="4">Data lines</text>
+    <line x1="4" y1="46" x2="46" y2="46" style="fill:none;stroke:green;stroke-width:1px;" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <rect x="10" y="8" width="125" height="137" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <g transform="translate(20,10)">
+    <polygon points="40,10 100,10 110,25 30,25" style="fill:orange;stroke:black;stroke-width:1px;"/>
+    <text x="50" y="20" font-size="5">Column Decoder</text>
+    <g transform="rotate(-90 60 60) translate(-40 0)">
+        <polygon points="40,10 100,10 110,25 30,25" style="fill:orange;stroke:black;stroke-width:1px;"/>
+    </g>
+    <text x="18" y="75" font-size="5" style="writing-mode:tb;">Row Decoder</text>
+    <line x1="35" y1="25" x2="35" y2="30" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="45" y1="25" x2="45" y2="30" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="55" y1="25" x2="55" y2="30" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="85" y1="25" x2="85" y2="30" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="95" y1="25" x2="95" y2="30" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="105" y1="25" x2="105" y2="30" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <rect x="30" y="30" width="80" height="15" style="fill:salmon;stroke:black;stroke-width:1px;"/>
+    <text x="50" y="39" font-size="5">Read / Write Amplifier</text>
+    <line x1="35" y1="45" x2="35" y2="130" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="45" y1="45" x2="45" y2="130" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="55" y1="45" x2="55" y2="130" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="85" y1="45" x2="85" y2="130" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="95" y1="45" x2="95" y2="130" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="105" y1="45" x2="105" y2="130" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="25" y1="55" x2="110" y2="55" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="25" y1="65" x2="110" y2="65" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="25" y1="75" x2="110" y2="75" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="25" y1="115" x2="110" y2="115" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <line x1="25" y1="125" x2="110" y2="125" style="fill:none;stroke:black;stroke-width:1px;"/>
+    <circle cx="85" cy="55" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="85" cy="65" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="85" cy="75" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="95" cy="55" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="95" cy="65" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="95" cy="75" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="105" cy="55" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="105" cy="65" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="105" cy="75" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="35" cy="55" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="35" cy="65" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="35" cy="75" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="45" cy="55" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="45" cy="65" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="45" cy="75" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="55" cy="55" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="55" cy="65" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="55" cy="75" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="35" cy="115" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="35" cy="125" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="45" cy="115" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="45" cy="125" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="55" cy="115" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="55" cy="125" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="85" cy="115" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="85" cy="125" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="95" cy="115" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="95" cy="125" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="105" cy="115" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    <circle cx="105" cy="125" r="0.5" style="fill:none;stroke:blue;stroke-width:1px;"/>
+    </g>
+    <text x="5" y="112" font-size="4" text-decoration="overline" style="writing-mode:tb;">WE</text>
+    <text x="5" y="120" font-size="4" text-decoration="overline" style="writing-mode:tb;">OE</text>
+    <text x="5" y="128" font-size="4" text-decoration="overline" style="writing-mode:tb;">CE</text>
+    <line x1="5" y1="136" x2="12" y2="136" style="fill:none;stroke:black;stroke-width:0.7px;" marker-end="url(#blackarrow)"/>
+    <rect x="14" y="130" width="15" height="12" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
+    <text x="15" y="135" font-size="4">Control</text>
+    <text x="15" y="140" font-size="4">Logic</text>
+</svg>

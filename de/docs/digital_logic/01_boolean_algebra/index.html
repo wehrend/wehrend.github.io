@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+(translation 2024-12-29)
+
+
+Boolesche Algebra und logische Grundgatter
+
+
+Wir beginnen (die Reise) mit drei sehr
+grundlegenden logischen Funktionen (oder Operationen), die trotz ihrer Einfachheit
+bereits gültige Anweisungen einer regulären CPU sind:
+
+
+NICHT, UND und ODER
+
+
+Logische Funktionen – auch Operationen genannt, der Autor wird hier beide Begriffe synonym verwenden –
+können auf verschiedene Weise beschrieben werden. Am häufigsten werden sie implizit
+als Boolesche Gleichung beschrieben, sie können aber auch explizit in einer Wahrheitstabelle erklärt werden.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/docs/digital_logic/01_boolean_algebra/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="01_boolean_algebra (de)">
+  <meta property="og:description" content="(translation 2024-12-29)
+Boolesche Algebra und logische Grundgatter Wir beginnen (die Reise) mit drei sehr grundlegenden logischen Funktionen (oder Operationen), die trotz ihrer Einfachheit bereits gültige Anweisungen einer regulären CPU sind:
+NICHT, UND und ODER
+Logische Funktionen – auch Operationen genannt, der Autor wird hier beide Begriffe synonym verwenden – können auf verschiedene Weise beschrieben werden. Am häufigsten werden sie implizit als Boolesche Gleichung beschrieben, sie können aber auch explizit in einer Wahrheitstabelle erklärt werden.">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2020-12-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-12-23T00:00:00+00:00">
+<title>01_boolean_algebra (de) | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/docs/digital_logic/01_boolean_algebra/" title="01_boolean_algebra">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/docs/digital_logic/01_boolean_algebra/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class=" active">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>01_boolean_algebra (de)</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>(translation 2024-12-29)</p>
+</div>
+<div class="sect1">
+<h2 id="_boolesche_algebra_und_logische_grundgatter">Boolesche Algebra und logische Grundgatter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wir beginnen (die Reise) mit drei sehr
+grundlegenden logischen Funktionen (oder Operationen), die trotz ihrer Einfachheit
+bereits gültige Anweisungen einer regulären CPU sind:</p>
+</div>
+<div class="paragraph">
+<p><strong>NICHT, UND und ODER</strong></p>
+</div>
+<div class="paragraph">
+<p>Logische Funktionen – auch Operationen genannt, der Autor wird hier beide Begriffe synonym verwenden –
+können auf verschiedene Weise beschrieben werden. Am häufigsten werden sie implizit
+als Boolesche Gleichung beschrieben, sie können aber auch explizit in einer Wahrheitstabelle erklärt werden.</p>
+</div>
+<div class="paragraph">
+<p>Eine Wahrheitstabelle ist eine Tabelle mit einer Spalte für jede Eingabe und einer Spalte für jede Ausgabe.
+Sie zeigt also die Ausgabe bzw. die Ausgaben der Funktion für alle möglichen Kombinationen von Eingaben.
+Sie kann auch Spalten mit Zwischenwerten enthalten.</p>
+</div>
+<div class="paragraph">
+<p>Die in dieser Lektion gezeigten Wahrheitstabellen sind im Allgemeinen sehr klein und zeigen nur Kombinationen von zwei Eingaben,
+obwohl alle Funktionen, die Eingaben verbinden, auf eine beliebige Anzahl von Eingaben erweitert werden können.</p>
+</div>
+<div class="paragraph">
+<p>Boolesche Gleichungen können in Wahrheitstabellen umgewandelt werden und umgekehrt. Später werden wir auch
+<a href="https://en.wikipedia.org/wiki/Karnaugh_map">Karnaugh-Diagramme</a> vorstellen, eine Möglichkeit, die Boolesche Logik auf grafische Weise zu optimieren.</p>
+</div>
+<div class="sect2">
+<h3 id="_not">NOT</h3>
+<div class="paragraph">
+<p>Die Not-Operation, auch als Inversion bezeichnet,
+wird als \[\overline{A} = \neg A = Q\] bezeichnet</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/inverter_symbol.svg" alt="inverter symbol" width="200"/></span></p>
+</div>
+<div class="paragraph">
+<p>Die Not-Operation ist die einzige mit nur einem Eingang, sie kann nicht erweitert werden.</p>
+</div>
+<div class="paragraph">
+<p>Dementsprechend ist die Gate-Level-Implementierung auch unter dem Namen Inverter bekannt.
+Trotz seiner scheinbar einfachen Funktionalität gibt es viel über den Inverter zu sagen,
+ sowohl in Bezug auf die Logik als auch auf die Implementierung. Daher wird der Autor ihm in naher Zukunft einen eigenen Beitrag widmen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_und">UND</h3>
+<div class="paragraph">
+<p>Die Und-Operation, auch als Konjunktion bezeichnet,
+ wird als \[A \land B = Q\] bezeichnet</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/and_symbol.svg" alt="and symbol" width="200"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_oder">ODER</h3>
+<div class="paragraph">
+<p>Die Oder-Operation, auch als Disjunktion bezeichnet,
+ wird als \[A \lor B = Q\] bezeichnet</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Q</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/or_symbol.svg" alt="or symbol" width="200"/></span></p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>Obwohl die Boolesche Algebra an sich ein interessantes Gebiet ist, werden wir das Thema hier nur kurz streifen,
+gerade genug, um ein Gefühl dafür zu bekommen und zu verstehen, wie man mit Booleschen Formeln arbeitet.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Wenn Sie an einer tieferen Betrachtung interessiert sind, die Induktion und Beweisführung bietet,
+verweise ich Sie auf die entsprechende Literatur (Quellen am Ende aufgeführt).
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Die Gesetze der Booleschen Algebra sind in der folgenden Tabelle aufgeführt:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gesetz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∧ (Konjunktion, UND-Operator)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">∨ (Disjunktion, ODER-Operator)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kommutativgesetz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \land q = q \land p\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \lor q = q \lor p\]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assoziativgesetz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \land (q \land r) = (p \land q) \land r = pqr\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Absorptionsgesetz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \land (p \lor q) = p\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \lor (p \land q) = p\]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Distributivgesetz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \lor (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \lor (q \lor r) = (p \lor q) \lor (p \lor r) = (p \lor q)(p \lor r)\]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">neutrale Elemente</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \land 1 = p\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[p \lor 0 = p\]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Komplementärelement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[p ∧ Ωp = 0]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[p ∨ Ωp = 1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Reference</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hans-Jochen Bartsch</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Taschenbuch Mathematischer Formeln, 20. Auflage, S. 27- 28</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Die ersten beiden in der Tabelle genannten Gesetze, das
+Kommutativgesetz und das Assoziativgesetz, kennen Sie wahrscheinlich intuitiv oder aus der Schule.</p>
+</div>
+<div class="paragraph">
+<p>Wie Sie sehen, kann jedes Gesetz sowohl auf Konjunktionen als auch auf Disjunktionen angewendet werden,
+ohne dass es Ausnahmen gibt.</p>
+</div>
+<div class="paragraph">
+<p>Das Kommutativgesetz besagt, dass die Reihenfolge der Variablen für die Operation neutral ist und vertauscht werden
+kann, ohne dass sich das Ergebnis der Operation ändert.</p>
+</div>
+<div class="paragraph">
+<p>Das Assoziativgesetz besagt, dass Klammern austauschbar sind. Konjunktionen können ohne Operator zusammengefasst werden.</p>
+</div>
+<div class="paragraph">
+<p>Das Absorptionsgesetz ist Ihnen wahrscheinlich nicht aus der Schule bekannt, da es nur in der Logik verwendet wird und
+in der Schulmathematik keine Entsprechung hat.</p>
+</div>
+<div class="paragraph">
+<p>Das Distributivgesetz wiederum ist aus der Schule bekannt. Es besagt, dass Variablen/Operationen außerhalb von Klammern
+auf alle Variablen in der Klammer angewendet werden müssen.</p>
+</div>
+<div class="paragraph">
+<p>Das Gesetz der neutralen Elemente ist wiederum etwas Besonderes in der booleschen Algebra. Die logische Eins entspricht „wahr“,
+und daher sind p und wahr gleich „wahr“, ebenso wie die logische Null „falsch“ ist und daher p oder falsch gleich p ist.</p>
+</div>
+<div class="paragraph">
+<p>Das Komplementärgesetz impliziert, dass es zu jedem Element (Variable) p ein komplementäres Element (Variable) <span class="overline">p</span> gibt,
+so dass die Konjunktion zu einer  logischen Null führt, während die Disjunktion zu einer logischen Eins führt.</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>An dieser Stelle muss der Autor etwas weiter ausholen, da einige praktische Probleme auf elektrischer Ebene einige Überlegungen auf ihrer
+logischen Ebene erfordern:
+Auf der Implementierungsebene (für eine elektrische Implementierung) ist es eher ungewöhnlich, UND, ODER und NICHT direkt zu verwenden, stattdessen
+werden die inversen Funktionen NAND und NOR verwendet.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nand_und_nor">NAND und NOR</h3>
+<div class="paragraph">
+<p>Die NAND-Operation wird als \[\overline{A \land B} = Q\]
+bezeichnet, während die NOR-Operation als \[\overline{A \lor B} = Q\] aufgeführt ist-</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NAND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/nand_symbol.svg" alt="nand symbol" width="200"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/nor_symbol.svg" alt="nor symbol" width="200"/></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Wie Sie sehen können, sind die Ergebnisse für diese beiden Funktionen genau das Gegenteil ihres jeweiligen Komplements
+(NAND ⇐⇒ AND, NOR ⇐⇒ OR). In diesem Sinne empfiehlt der Autor dem Leser, die entsprechenden Wahrheitstabellen
+als Übung zu erstellen.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_der_de_morgan_satz">Der De-Morgan-Satz</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zusätzlich zu den oben eingeführten grundlegenden Axiomen gibt es den <strong>De-Morgan-Satz</strong>,
+den wir benötigen, um NAND und NOR einfach umzuwandeln. Der Einfachheit halber zeigen wir nur für
+zwei Elemente, aber der Satz ist unabhängig von einer beliebigen Anzahl von Elementen/Eingaben.</p>
+</div>
+<div class="paragraph „image“">
+<p>\[\overline{p_1 \land p_2} = \overline{p_1} \lor \overline{p_2}\]</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 0.9803%;"/>
+<col style="width: 0.9803%;"/>
+<col style="width: 24.5098%;"/>
+<col style="width: 24.5098%;"/>
+<col style="width: 24.5098%;"/>
+<col style="width: 24.51%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>B</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>\[\overline{A}\]</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>\[\overline{B}\]</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>\[\overline{AB}\]</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>\[\overline{A} \lor \overline{B}\]</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>1</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>0</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/de_morgan_nand_equivalence.svg" alt="de morgan nand equivalence" width="400"/></span></p>
+</div>
+<div class="paragraph „image“">
+<p>\[\overline{p_1 \lor p_2} = \overline{p_1} \land \overline{p_2}\]</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.6666%;"/>
+<col style="width: 16.667%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[\overline{A}\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[\overline{B}\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[\overline{AB}\]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\[\overline{A} \lor \overline{B}\]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/de_morgan_nor_equivalence.svg" alt="de morgan nor equivalence" width="400"/></span></p>
+</div>
+<div class="paragraph">
+<p>Jetzt sind wir endlich gerüstet, um mit dem elektrischen Teil/der Beschreibung fortzufahren.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_umsetzung_auf_elektrischer_ebene">Umsetzung auf elektrischer Ebene</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zunächst stellen wir einige gängige elektronische Komponenten und ihre Symbole vor, die in
+elektrischen Schaltplänen verwendet werden.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/common_symbols.svg" alt="common symbols" width="500"/></span></p>
+</div>
+<div class="sect2">
+<h3 id="_die_diode">Die Diode</h3>
+<div class="paragraph">
+<p>Wir beginnen unsere Reise mit einem vereinfachten Schaltkreisentwurf für „und“ und „oder“, der als verdrahtete Logik bezeichnet wird.
+Dieser Schaltkreisentwurf ist so einfach, dass es nicht einmal möglich ist, einen Inverter darin zu implementieren.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verdrahtet und</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verdrahtet oder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/wire_and.svg" alt="wire and" width="250"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/wire_or.svg" alt="wire or" width="250"/></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"># diodes: 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"># diodes : 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Wie Sie sehen können, ist diese Schaltung nicht kompliziert – selbst Laien auf dem Gebiet der Elektronik sollten in der Lage sein,
+die wesentlichen Teile zu identifizieren – die Eingänge sind jeweils mit einer Diode verbunden. Eine Diode ist ein
+einfacher Halbleiter, der als Einweg-Strasse für elektrischen Strom fungiert.
+Halbleiter sind eine Gruppe von Materialien (hier sind aufgrund ihrer chemischen Eigenschaften nur Silizium und Germanium nützlich),
+nicht wirklich leitfähig, aber auch kein Isolator. Tatsächlich hängt die Leitfähigkeit des Materials von der beabsichtigten Verunreinigung
+seiner Kristallgitterstruktur mit Elementen der fünften Hauptgruppe ab, bei einem n(egativ)-dotierten Material bzw.
+der dritten Hauptgruppe
+für ein p(ositiv)-gepunktetes Material. Dieser Vorgang wird als Dotierung bezeichnet. Für den interessierten Leser
+<a href="https://www.electrical4u.com/semiconductor-physics/">hier</a>
+ein Link zu allen physikalischen Hintergründen, die der Autor zu faul war zu wiederholen, da sie oft und besser bereits
+im Internet erklärt werden ;-) .</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/diode_structure.svg" alt="diode structure" width="450"/></span></p>
+</div>
+<div class="paragraph">
+<p>Alles, was wir jetzt wissen müssen, ist, dass eine Diode aus einem Substrat (in den meisten Fällen heute Silizium) besteht,
+das auf der einen Seite n-dotiert und auf der anderen Seite p-dotiert wird,
+wodurch dazwischen ein pn-Übergang entsteht, der als Einwegbarriere fungiert: Elektronen können von der n-Seite zur
+p-Seite strömen, aber nicht umgekehrt.</p>
+</div>
+<div class="paragraph">
+<p>Die zweite Komponente der oben gezeigten Schaltkreise ist ein Widerstand, dessen einziger Zweck darin besteht, den
+fließenden Strom zu reduzieren.
+Für „wire-and“ ist er als Pull-up-Widerstand verdrahtet, während er für „wire-or“ als Pull-down-Widerstand verdrahtet ist.
+„Wire-and“ erreicht nur dann einen ausreichend hohen Pegel, wenn alle Eingänge einen hohen Pegel aufweisen. Ähnlich
+verhält es sich mit „wire-or“, das nur dann einen niedrigen Pegel aufweist, wenn keiner der Eingänge
+einen hohen Pegel annimmt. Um zu verhindern, dass Strom vom Pull-up-Widerstand zum Ausgang der vorherigen Schaltung
+(Draht und) bzw. Strom von einem Eingang zurück zum anderen Eingang (Draht-oder) fließt, sind die Dioden vorhanden.</p>
+</div>
+<div class="paragraph">
+<p>Ein Problem dieser Anordnung, auf das wir definitiv irgendwann stoßen werden, ist, dass das Signal beim Fließen vom
+Eingang zum Ausgang abgeschwächt wird
+und es keine Möglichkeit gibt, das Signal wiederherzustellen, sodass der Signalpegel am Ausgang von der nachfolgenden
+Schaltung möglicherweise nicht richtig erkannt wird.
+An dieser Stelle möchte der Autor eine Anmerkung zu einem subtilen Detail in der Terminologie machen: Obwohl es oft als
+Verstärkung beschrieben wird, möchten wir hier festhalten, dass wir hier einen
+„intelligenten“ Signalverstärker wollen, der den Signalpegel des Eingangssignals erkennt und wiederherstellt,
+im Gegensatz zu einem „dummen“ Verstärker, der lediglich das Eingangssignal verstärkt.</p>
+</div>
+<div class="paragraph">
+<p>Dioden sind also ein gutes Bauteil, z. B. nützlich, wenn Teile der Schaltung vor elektrostatischer Entladung geschützt werden sollen
+(<a href="https://www.allaboutcircuits.com/textbook/semiconductors/chpt-9/electrostatic-discharge/">ESD</a>), doch für unsere Logik ist es nicht ausreichend.</p>
+</div>
+<div class="paragraph">
+<p>Was wäre, wenn wir ein Bauteil hätten, das das Signal verstärken kann, sodass wir Schaltkreise entwerfen könnten, die auch
+die Signalpegel damit wiederherstellen?
+Glücklicherweise gibt es ein solches Bauteil, das im nächsten Abschnitt vorgestellt wird.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_der_mosfet_transistor">Der MOSFET-Transistor</h3>
+<div class="paragraph">
+<p>Der Transistortyp, den wir hier vorstellen und verwenden möchten, ist ein MOSFET (Metall-Oxid-Halbleiter-Feldeffekttransistor)
+– im Gegensatz zum klassischen Bipolartransistor.
+Wie der Name schon sagt, ist ein MOSFET ein Transistor (oder Halbleiter), bei dem der Laststrom durch die Stärke des
+elektrischen Feldes gesteuert werden kann, das am Gate-Eingang erzeugt wird</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/mosfet_model.svg" alt="mosfet model" width="500"/></span></p>
+</div>
+<div class="paragraph">
+<p>Das obige Bild skizziert die Hauptstruktur eines MOSFET auf dem Silizium. Source und Drain sind beide mit einem eigenen n-Wannen-Substrat verbunden,
+während das dazwischenliegende Gate durch eine dünne Siliziumdioxidschicht isoliert ist. Es gibt einen vierten Anschluss,
+„Bulk“, der zum Substrat führt, in diskreten MOSFETs, die mit der Source verbunden sind, aber im Moment ist dieser nicht relevant.
+Hinter der Funktionsweise eines MOSFET steckt eine Menge komplexer Physik. Alles, was wir im Moment wissen wollen, ist,
+dass beim Anlegen einer Spannung an das Gate ein elektrisches Feld induziert wird,
+das einen Kanal zwischen Source und Drain erzeugt und den Elektronenfluss von Source zu Drain ermöglicht.
+Je höher die Gatespannung, desto größer  (breiter) der Kanal, desto mehr Elektronen
+fließen (natürlich bis zu einer bestimmten Grenze). Und wenn die Gate-Spannung Null ist, ist auch der Kanal nicht vorhanden.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/inverter_nmos.svg" alt="inverter nmos" width="500"/></span></p>
+</div>
+<div class="paragraph">
+<p>Nachfolgend sind häufig verwendete Symbole für MOSFETs, die in elektrischen Schaltplänen verwendet werden, sowie einige andere, die wir aufgrund des Kurses benötigen, dargestellt. Einige haben mehr als nur eines, insbesondere der MOSFET hat eine Reihe
+verschiedene Symbole, die die Unterschiede in der physischen Komponente widerspiegeln.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/mosfet_symbols.svg" alt="mosfet symbols" width="500"/></span></p>
+</div>
+<div class="paragraph">
+<p>Mit dem eingeführten MOSFET-Element und einem einzelnen Widerstand, einem Element, das den Stromfluss reduziert, können
+wir direkt eine Inverterschaltung implementieren, wie in der obigen Abbildung dargestellt.
+Die Source ist mit der Erde verbunden und der Drain ist mit dem Inverterausgang und auch mit der Spannungsquelle über
+einen hochohmigen Widerstand verbunden. Das Gate ist der Eingang des Inverters.
+Wenn die Spannung am Gate niedrig eingestellt ist, leitet der MOSFET nicht und somit ist das am Ausgang verfügbare
+Potenzial ausreichend für eine logische Eins.
+Wenn eine Spannung an das Gate angelegt wird, wird der Drain-Source-Pfad des MOSFET leitfähig, das am Ausgang verfügbare
+Potenzial bricht zusammen und fließt über den Drain-Source-Pfad ab.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/inverter_cmos.svg" alt="inverter cmos" width="500"/></span></p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>Auf elektrischer Ebene hat der Inverter zwei verschiedene Aufgaben zu erfüllen</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Auffrischen des Signals (Pegel), das der Inverter von der vorhergehenden Schaltung erhält</p>
+</li>
+<li>
+<p>Tatsächliches Invertieren des Signals</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Es gibt auch integrierte Schaltkreise, die als Puffer oder Treiber bezeichnet werden und ausschließlich der ersten
+genannten Aufgabe gewidmet sind. Wir werden dies in einem späteren Blogbeitrag/einer späteren Lektion besprechen.
+Hier wollen wir uns nur auf den logischen Teil des Invertierens des Signals konzentrieren, obwohl beide Funktionen
+gleich wichtig sind, weshalb sie in einem Schaltkreis kombiniert werden
+Schaltung kombiniert werden. Natürlich müssen die logischen Signale auch in anderen logischen Schaltungen – wie und und
+oder – aufgefrischt werden, aber in den meisten Fällen wird diese Aufgabe ausschließlich von
+diesen Inverterstufen erledigt, danach oder davor.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/inverter_symbol.svg" alt="inverter symbol" width="200"/></span></p>
+</div>
+<div class="paragraph">
+<p>Im Symbol wird die erste Aufgabe, das Auffrischen des Signals (Pegel), durch das Dreieck angezeigt, während der kleine Kreis
+die eigentliche Invertierungsfunktion kennzeichnet.</p>
+</div>
+<hr/>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NMOS NAND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NMOS NOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/nand_nmos.svg" alt="nand nmos" width="200"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/nor_nmos.svg" alt="nor nmos" width="500"/></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"># transistor: 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"># transistor: 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Jetzt wird klar, warum die Umkehrfunktion von UND und ODER auf Gatterebene einfacher ist als die ursprüngliche Funktion.
+Weil man anschließend eine Inverterschaltung hinzufügen muss, wodurch sich die Anzahl der Transistoren erhöht.</p>
+</div>
+<div class="paragraph">
+<p>Ein großer Nachteil der Implementierung ist der hohe Stromverbrauch, der durch den Pull-up-Widerstand verursacht wird.
+Schauen wir uns an, ob es eine Möglichkeit gibt, dieses Problem zu lösen.
+Was wäre, wenn es einen Transistor mit der Bezeichnung PMOS mit einer komplementären Struktur gäbe – p-Wannen auf einem
+n-dotierten Substrat – für unsere  bisher verwendete NMOS-Schaltung?</p>
+</div>
+<div class="paragraph">
+<p>Wenn wir diese anstelle des Widerstands für den Pull-up-Pfad verwenden, können wir die Verlustleistung drastisch reduzieren.
+Wie Sie sich denken können, gibt es diese Technik, bei der beide Transistortypen kombiniert werden, und sie wird CMOS
+( kurz für Complementary Metal Oxid Semiconductor) genannt.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CMOS NAND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CMOS NOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/nand_cmos.svg" alt="nand cmos" width="250"/></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../images/how_does_cpu/nor_cmos.svg" alt="nor cmos" width="500"/></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"># Transistor: 4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"># Transistor: 4</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Jetzt wird klar, woher die CMOS-Technologie ihren Namen hat:
+Wie wir in der Implementierung von NAND und NOR in der CMOS-Technologie sehen können, ist die obige P-Schaltung genau
+das Komplement der unteren N-Schaltung. Für den Inverter war diese Eigenschaft aufgrund der Symmetrie einfach nicht
+erkennbar. Aber wir können auch den Nachteil der CMOS-Technologie erkennen: Die Anzahl der Transistoren verdoppelt sich,
+was den Aufwand und die Komplexität des Herstellungsprozesses erhöht
+(komplexere Masken und Layouts, mehr Verarbeitungsschritte aufgrund unterschiedlicher Transistortypen, nmos und pmos auf
+einem Wafer) und der integrierten Schaltung als Endprodukt.</p>
+</div>
+<div class="paragraph">
+<p>Die Toolchain, der CMOS-Prozess und die damit verbundenen Technologien sind jedoch bereits seit Jahrzehnten weiter-
+entwickelt und ausgereift, sodass dies heute keine Rolle mehr spielt. Tatsächlich hat Google kürzlich sogar das
+<a href="https://github.com/google/skywater-pdk">SkyWater Open Source PDK 130</a> veröffentlicht, ein sogenanntes Process Design Kit,
+das Elektrotechnikern eine Tool (Chain) zur Verfügung stellt, um Designs für anwendungsspezifische integrierte
+Schaltkreise (ASICS)  zu erstellen, die dann direkt mit einem 130-nm-Prozess hergestellt werden können.
+Mehr dazu gibt es unter
+<a href="https://hackaday.com/2020/06/30/your-own-open-source-asic-skywater-pdf-plans-first-130-nm-wafer-in-2020/">hier auf Hackaday</a>.</p>
+</div>
+<div class="paragraph">
+<p>Das war ein erster kleiner Einblick in die Boolesche Logik und ihre Implementierung auf Silizium.
+Natürlich steckt noch viel mehr dahinter als nur ein Referenzdesign, auch haben wir uns noch nicht mit ESD-Messungen
+und Schutzschaltungen für die Ein- und Ausgänge befasst.</p>
+</div>
+<div class="paragraph">
+<p>Im nächsten Beitrag werfen wir einen Blick auf die Exklusiv-Oder-Verknüpfung (XOR).</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

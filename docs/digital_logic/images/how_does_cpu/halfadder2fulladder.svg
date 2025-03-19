@@ -1,0 +1,48 @@
+<svg width="130.00" height="120.00" 
+     viewBox="0.0 0.0 130.0 120.0" 
+     viewPort="0 0 130px 120px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="halfadder2fulladder">
+        <rect x="10" y="10" width="80" height="60" style="fill:none;stroke:black;"/>
+        <text x="15" y="20" font-size="5">FA cell combined from 2 HA</text>
+        <!-- inputs -->
+        <line x1="0" y1="28" x2="20" y2="28" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <line x1="0" y1="38" x2="20" y2="38" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="0" y="25" font-size="4">a</text>
+        <text x="0" y="36" font-size="4">b</text>
+        <!-- HA1 -->
+        <rect x="20" y="24" width="12" height="18" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="22" y="34" font-size="4">HA</text>
+        <text x="21" y="29" font-size="4">a</text>
+        <text x="21" y="38" font-size="4">b</text>
+        <text x="29" y="29" font-size="4">c</text>
+        <text x="29" y="38" font-size="4">s</text>
+        <line x1="32" y1="28" x2="62" y2="28" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <rect x="62" y="24" width="12" height="18" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="64" y="30" font-size="6">>=1</text>
+        <!-- HA2 -->
+        <rect x="40" y="44" width="12" height="18" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="42" y="54" font-size="4">HA</text>
+        <line x1="52" y1="58" x2="100" y2="58" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="41" y="49" font-size="4">a</text>
+        <text x="41" y="58" font-size="4">b</text>
+        <text x="49" y="49" font-size="4">c</text>
+        <text x="49" y="58" font-size="4">s</text>
+        <text x="98" y="56" font-size="4">s</text>
+        <polyline points="32,38 36,38 36,48 40,48" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <polyline points="52,49 55,49 55,38 62,38" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <!-- carry -->
+        <line x1="74" y1="32" x2="100" y2="32" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="95" y="26" font-size="4">c
+            <tspan baseline-shift = "sub">out</tspan>
+        </text>
+        <line x1="0" y1="58" x2="40" y2="58" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+        <text x="0" y="55" font-size="4">c
+            <tspan baseline-shift = "sub">in</tspan>
+        </text>
+    </symbol>
+    <use x="20" y="10" href="#halfadder2fulladder"/>
+</svg>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/docs/digital_logic_2/</link>
+    <description>Recent content on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/docs/digital_logic_2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10_sequential_logic (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_2/10_sequential_logic/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_2/10_sequential_logic/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_sequentielle_logik&#34;&gt;Sequentielle Logik&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Ergänzend zur kombinatorischen Logik enthält die sequentielle Logik eine Art Speicher,&#xA;der das Verhalten zustandsabhängig macht. Wir müssen ihr ein Taktsignal zuführen.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../images/how_does_cpu/sequential_logic.svg&#34; alt=&#34;sequential logic&#34; width=&#34;50%&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_mealy_und_moore_automaten_synchron&#34;&gt;Mealy- und Moore-Automaten (synchron)&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In der digitalen Logik gibt es zwei verschiedene Arten von endlichen Automaten.&#xA;Diese sind:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Der Mealy-Automat, der von der Eingabe und dem Zustand abhängig ist.&#xA;Der Moore-Automat, der nur vom Zustand abhängig ist&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../images/how_does_cpu/mealy_logic.svg&#34; alt=&#34;mealy logic&#34; width=&#34;50%&#34;/&gt;&lt;/span&gt;&#xA;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../images/how_does_cpu/moore_logic.svg&#34; alt=&#34;moore logic&#34; width=&#34;50%&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_synchrone_und_asynchrone_sequentielle_logik&#34;&gt;Synchrone und asynchrone sequentielle Logik&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Es gibt zwei verschiedene Arten sequentieller Logik: die synchrone sequentielle Logik&#xA;mit einem zentralen Taktgeber sowie die asnychrone Logik mit mehreren Taktgeber-Domänen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>11_Clocks_flipflops_and_registers (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_2/11_clocks_and_registers/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_2/11_clocks_and_registers/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_taktgeber_flipflops_und_register&#34;&gt;Taktgeber, Flipflops und Register&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden&#xA;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_register_transfer_level_benötigt_eine_taktquelle&#34;&gt;Register-Transfer-Level benötigt eine Taktquelle&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Bisher haben wir nur die kombinatorische Logik kennengelernt, die&#xA;ohne Taktquelle auskommt – jedes Signal wird nur um die Zeit verzögert, die es&#xA;für die Übertragung durch den Schaltkreis benötigt. Dies wird als asynchron bezeichnet.&#xA;Für anspruchsvollere Aufgaben, wie sequentielle Schaltkreise, sind jedoch Register erforderlich,&#xA; die die Eingangs- und Ausgangssignale speichern,&#xA;um korrekte Ergebnisse zu erzielen. Dies wird als synchron bezeichnet.&#xA;Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron, da diese weniger komplex sind.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Digital Logic 2</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_2/images/how_does_cpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_2/images/how_does_cpu/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Time-sensitive components
+
+
+After reviewing and extensively describing the most important component,
+the resistor, in  the first part, now we want to have a look at the next important
+component, the capacitor. Capacitor are also passive components, meaning
+they do not amplify a signal.
+
+
+Electrostatic field
+
+If we take two metal planes and park them side by side, with a small thin layer of a non-conducting
+substance in-between, we created an electrostatic field.
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/pages/short-introduction-to-electronics-102/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Prequel: Introduction to electronics - 102">
+  <meta property="og:description" content="Time-sensitive components After reviewing and extensively describing the most important component, the resistor, in the first part, now we want to have a look at the next important component, the capacitor. Capacitor are also passive components, meaning they do not amplify a signal.
+Electrostatic field If we take two metal planes and park them side by side, with a small thin layer of a non-conducting substance in-between, we created an electrostatic field.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="pages">
+    <meta property="article:published_time" content="2023-06-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-06-21T00:00:00+00:00">
+<title>Prequel: Introduction to electronics - 102 | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/pages/short-introduction-to-electronics-102/" title="Prequel: Introduction to electronics - 102">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/pages/short-introduction-to-electronics-102/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Prequel: Introduction to electronics - 102</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="sect1">
+<h2 id="_time_sensitive_components">Time-sensitive components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After reviewing and extensively describing the most important component,
+the resistor, in  the first part, now we want to have a look at the next important
+component, the capacitor. Capacitor are also passive components, meaning
+they do not amplify a signal.</p>
+</div>
+<div class="sect2">
+<h3 id="_electrostatic_field">Electrostatic field</h3>
+<div class="paragraph">
+<p>If we take two metal planes and park them side by side, with a small thin layer of a non-conducting
+substance in-between, we created an electrostatic field.</p>
+</div>
+<div class="paragraph">
+<p>The build-up of the electrostatic field happens via a DC source, in the image below depicted by the generator G.
+The source voltage of the generator shifts th electrons located in the wire and the metal plates.
+This way on the right plate originates an overflowm of electrons (-Q) , while on the other plate a ahortage
+of the same amount, +Q, originates.</p>
+</div>
+<div class="paragraph">
+<p>For a short amount of time, a charging current flows with the instantaneous value i, which in tradtional direction,
+promotes a quantity of electricity +Q. The charging current i becomes zero, if the quantity of electricity +Q and -Q
+generated voltage equals out.</p>
+</div>
+<div class="paragraph">
+<p>The electrostatic field endures after detachment from the DC source, which can be verified with
+a high impedance voltmeter.The conclusion: The electrostatic field originates by the separated loads
++Q, -Q. THe existing voltage shows, that energy is stored in the field. This arrangement is called a plate capacitor.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/electrostatic_field.svg" alt="electrostatic field" width="300"/></span></p>
+</div>
+<div class="paragraph">
+<p>Reference: Dieter Zastrow, Elektrotechnik,16.Auflage, p. 120.
+It is another basic electronic component, oftentimes
+used in electronic devices. The substance in-between is called a dielectricum.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_capacitance">Capacitance</h3>
+<div class="paragraph">
+<p>The basic equation for computing the capacity, the no.-1 property of a condensator is a follows.
+The capacity C of the capacitor gives the interesting ratio of the stored charge quantity Q to the charging
+voltage U_c .</p>
+</div>
+<div class="paragraph image">
+<p>\[C= \frac{Q}{U_c}\]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parallel_and_series_circuit">Parallel- and series circuit</h3>
+<div class="paragraph">
+<p>In parallel connection of capacitors, the capacitances add up to the total capacitance.</p>
+</div>
+<div class="paragraph image">
+<p>\[C= C_{1} + C_{2} + …​ \]</p>
+</div>
+<div class="paragraph">
+<p>In series connection, the reciprocal of the total capacitance is equal to
+the sum of the reciprocals of the individual capacitances.</p>
+</div>
+<div class="paragraph image">
+<p>\[ \frac{1}{C}= \frac{1}{C_{1}} + \frac{1}{C_{2}} + …​ \]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_capacitor_and_coils">The Capacitor and Coils</h3>
+<div class="paragraph">
+<p>The elements next introduced, have a clue compared to the static of (ohmic) resistor.
+Now the time comes into focus, too, since capacitator and coils are both in a sense time-sensitive
+elements.
+So normally we would start with introducing the Capacitor with all its implication, and then go over to the coils wich
+are introduced then afterwards. Instead for this post, we show both of them in a comparision
+as they have complementary properties.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>conductor</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>coil</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/capacitor.svg" alt="capacitor" width="300px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/coil.svg" alt="coil" width="300px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>circuit symbol of a capacitor</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>circuit symbol of a coil</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/capacitor.jpg" alt="capacitor" width="300px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/coil.jpg" alt="coil" width="300px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>stores energy in electrical field</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>stores energy in a magnetic field</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>leads in phase</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>lags in phase</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>blocks in DC Mode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>in DC mode current is growing while, voltage is taken done, with the same rate</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_frequency_dependent_networks_filters">Frequency-dependent networks (Filters)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An often and very popular application of capacitors are filters,
+Simple filters of first order like shown here,are build up from
+one resistor and one capacitor. Next we want to compute the frequency
+response of a filter by getting the frequency response function,
+which is the outgoing voltage divided by the in-going voltage -
+this becomes clearer with the following examples.</p>
+</div>
+<div class="sect2">
+<h3 id="_lowpass_filter">Lowpass Filter</h3>
+<div class="paragraph">
+<p>1.order lowpass</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/lowpass.svg" alt="lowpass" width="400px"/></span></p>
+</div>
+<div class="paragraph">
+<p>frequency response</p>
+</div>
+<div class="paragraph image">
+<p>\[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{(1/j\omega C)}{(R+ 1/j \omega C)} = \frac{(1/j\omega C)\cdot j \omega C}{(R+ 1/j \omega C) \cdot j \omega C } =
+\frac{1}{1+ j\omega RC } = \frac{1}{1+ j \omega/ \omega_g}\]</p>
+</div>
+<div class="paragraph">
+<p>cutoff frequency (with example values of R=1kOhm, C= 1µF)</p>
+</div>
+<div class="paragraph image">
+<p>\[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/lowpass_bode_diagram.svg" alt="lowpass bode diagram" width="1250px"/></span></p>
+</div>
+<div class="paragraph">
+<p>We have to use some help to generate the Bode diagram for the lowpass shown above,
+to do that, please install matplotlib via the following command:</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>pip install matplotlib</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>and execute the following python script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the transfer function of a first-order low-pass filter</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lowpass_first_order</span>(frequency, cutoff_frequency):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> (frequency <span style="color:#f92672">/</span> cutoff_frequency)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Frequency range for the Bode diagram (logarithmic scale)</span>
+</span></span><span style="display:flex;"><span>frequency <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">1000</span>)  <span style="color:#75715e"># From 10^0 to 10^6 Hertz</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cutoff frequency of the low-pass filter</span>
+</span></span><span style="display:flex;"><span>cutoff_frequency <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>  <span style="color:#75715e"># Example value - You can set your own value here</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate the gain in decibels (20 * log10(Amplitude))</span>
+</span></span><span style="display:flex;"><span>gain_db <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(lowpass_first_order(frequency, cutoff_frequency))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate the phase response in degrees (angle)</span>
+</span></span><span style="display:flex;"><span>phase_deg <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>degrees(np<span style="color:#f92672">.</span>arctan(<span style="color:#f92672">-</span>frequency <span style="color:#f92672">/</span> cutoff_frequency))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create the Bode diagram with both gain and phase</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Gain plot (magnitude)</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>semilogx(frequency, gain_db, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Gain (dB)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Gain (dB)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Bode Diagram of a First-Order Low-Pass Filter&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid(which<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Phase plot</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>semilogx(frequency, phase_deg, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Phase (degrees)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Frequency (Hz)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Phase (degrees)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid(which<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Save the Bode diagram as an SVG file</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#39;lowpass_bode_phase.svg&#39;</span>, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;svg&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Optionally, display the Bode diagram</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()</span></span></code></pre></div></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_highpass_filter">Highpass Filter</h3>
+<div class="paragraph">
+<p>1.order highpass</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/highpass.svg" alt="highpass" width="400px"/></span></p>
+</div>
+<div class="paragraph">
+<p>frequency response</p>
+</div>
+<div class="paragraph image">
+<p>\[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{R}{R+ 1/j\omega C} = \frac{j \omega C}{1+ j \omega RC} =
+\frac{j\omega / \omega_g}{1+ j\omega/ \omega_g}\]</p>
+</div>
+<div class="paragraph">
+<p>cutoff frequency (with example values of R=1kOhm, C= 1µF)</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/highpass_bode_diagram.svg" alt="highpass bode diagram" width="1250px"/></span></p>
+</div>
+<div class="paragraph">
+<p>And here again the python script, this time for the high-pass:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-python" data-lang="python"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the transfer function of a first-order high-pass filter</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">highpass_first_order</span>(frequency, cutoff_frequency):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> frequency <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> (frequency <span style="color:#f92672">/</span> cutoff_frequency)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Frequency range for the Bode diagram (logarithmic scale)</span>
+</span></span><span style="display:flex;"><span>frequency <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">1000</span>)  <span style="color:#75715e"># From 10^0 to 10^6 Hertz</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Cutoff frequency of the high-pass filter</span>
+</span></span><span style="display:flex;"><span>cutoff_frequency <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>  <span style="color:#75715e"># Example value - You can set your own value here</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate the gain in decibels (20 * log10(Amplitude))</span>
+</span></span><span style="display:flex;"><span>gain_db <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(highpass_first_order(frequency, cutoff_frequency))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate the phase response in degrees (angle)</span>
+</span></span><span style="display:flex;"><span>phase_deg <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>degrees(np<span style="color:#f92672">.</span>arctan(frequency <span style="color:#f92672">/</span> cutoff_frequency))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create the Bode diagram with both gain and phase</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Gain plot (magnitude)</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>semilogx(frequency, gain_db, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Gain (dB)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Gain (dB)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Bode Diagram of a First-Order High-Pass Filter&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid(which<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Phase plot</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>semilogx(frequency, phase_deg, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Phase (degrees)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Frequency (Hz)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Phase (degrees)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>grid(which<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;both&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Save the Bode diagram as an SVG file</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#39;highpass_bode_diagram.svg&#39;</span>, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;svg&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Optionally, display the Bode diagram</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()</span></span></code></pre></div></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

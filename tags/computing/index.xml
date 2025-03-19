@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computing on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/computing/</link>
+    <description>Recent content in Computing on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Analog Computers 101</title>
+      <link>http://wehrend.uber.space/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/17_analog_computers_101/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_analog_computers&#34;&gt;Analog Computers&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,&#xA;compared to their digital counterparts. But they are wonderous little machines. And that machines I mean&#xA;wordly because there exists analog mechanical computers that are models from the world and used to&#xA;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tide-predicting_machine&#34;&gt;compute and predict tides&lt;/a&gt; in certain areas of the world .&#xA;Also the brain is an enourmous analog computer with a comparatively very small&#xA;enery budget. &lt;a href=&#34;https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer&#34;&gt;It only takes 12 Watt.&lt;/a&gt;&#xA;12 Watt; that is not even a quarter of the power supply budget of a laptop, which uses 65 Watt.&#xA;And you can do very heavy lifting with the brain, but back to topic.&#xA;I want to talk mainly about analog electronic computers, during the world war two those were used to compute&#xA;&lt;a href=&#34;https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf&#34;&gt;ballistic curves&lt;/a&gt;.&#xA;So analog computers can sum up, multiply, divide, integrate and differentiate like their digital&#xA;counterparts.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

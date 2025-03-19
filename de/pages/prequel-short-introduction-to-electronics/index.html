@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+
+Als ich gerade dabei war, den Implementierungsteil der Booleschen Algebra zu schreiben, die grundlegenden logischen
+Gatter, lief der Schreibprozess schnell aus dem Ruder und ich ertappte mich dabei, dass ich mehr über weniger zusammenhängende Themen schrieb
+Themen zu schreiben, wie z.B. die Erläuterung grundlegender elektronischer Komponenten und deren Implementierung auf Silizium, als über den eigentlichen Inhalt,
+hier soll der Platz für diese Ausflüge sein. Dies soll kein vollständiges Nachschlagewerk sein, eher eine Ergänzung zu
+bestehenden Literatur.
+&#39;&#39;&#39;
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/de/pages/prequel-short-introduction-to-electronics/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Prequel: Einführung in die Elektronik">
+  <meta property="og:description" content="Als ich gerade dabei war, den Implementierungsteil der Booleschen Algebra zu schreiben, die grundlegenden logischen Gatter, lief der Schreibprozess schnell aus dem Ruder und ich ertappte mich dabei, dass ich mehr über weniger zusammenhängende Themen schrieb Themen zu schreiben, wie z.B. die Erläuterung grundlegender elektronischer Komponenten und deren Implementierung auf Silizium, als über den eigentlichen Inhalt, hier soll der Platz für diese Ausflüge sein. Dies soll kein vollständiges Nachschlagewerk sein, eher eine Ergänzung zu bestehenden Literatur. &#39;&#39;&#39;">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="pages">
+    <meta property="article:published_time" content="2021-01-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-01-23T00:00:00+00:00">
+<title>Prequel: Einführung in die Elektronik | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="en" href="http://wehrend.uber.space/pages/prequel-short-introduction-to-electronics/" title="Prequel: Introduction to electronics">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.30499543f4171d85fb219a18d16baec1a8e3927dbebb3162d6b0c6039d086f23.js" integrity="sha256-MEmVQ/QXHYX7IZoY0Wuuwajjkn2&#43;uzFi1rDGA50IbyM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/pages/prequel-short-introduction-to-electronics/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Prequel: Einführung in die Elektronik</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div id="preamble">
+<div class="sectionbody">
+<hr/>
+<div class="paragraph">
+<p>Als ich gerade dabei war, den Implementierungsteil der Booleschen Algebra zu schreiben, die grundlegenden logischen
+Gatter, lief der Schreibprozess schnell aus dem Ruder und ich ertappte mich dabei, dass ich mehr über weniger zusammenhängende Themen schrieb
+Themen zu schreiben, wie z.B. die Erläuterung grundlegender elektronischer Komponenten und deren Implementierung auf Silizium, als über den eigentlichen Inhalt,
+hier soll der Platz für diese Ausflüge sein. Dies soll kein vollständiges Nachschlagewerk sein, eher eine Ergänzung zu
+bestehenden Literatur.
+&#39;&#39;&#39;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_freie_elektronen_und_elektrischer_strom">Freie Elektronen und elektrischer Strom</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Was ist Elektrizität? Grob gesagt ist es der Fluss von Elektronen in einem Leiter. Laienhaft ausgedrückt kann man sagen,
+Elektronen auf der äußeren Schale - auch Valenzband genannt - eines Atoms hüpfen vom Valenzband
+eines Atoms zum Nachbaratom. Elektrizität ist also im Wesentlichen die Bewegung von Elektronen durch Materie.
+In der praktischen Anwendung ist diese Materie ein Stromkreis, aber auch zum Beispiel die Blitzentladung
+auftritt, in diesem Fall kann die ionisierte Luft als (Kurz-)Stromkreis betrachtet werden.</p>
+</div>
+<div class="sect2">
+<h3 id="_wir_gehen_atomar_vor_leitende_elemente">Wir gehen atomar vor: Leitende Elemente…​</h3>
+<div class="paragraph">
+<p>Die erste Gruppe von Elementen (oder Verbindungen), die wir hier vorstellen werden, sind die Leiter.
+Einige wichtige Vertreter dieser Gruppe sind die Elemente Aluminium und Kupfer
+die beide für elektrische Übertragungsleitungen und Stromnetze unverzichtbar sind.
+Wie die folgende Tabelle zeigt, verfügen beide Elemente über freie Elektronen auf ihrer Valenz
+Valenzschale freie Elektronen, die, wie oben beschrieben, benötigt werden, um den Elektronenwechsel von einem Atom zum anderen zu ermöglichen
+von einem Atom zum anderen und damit die Bewegung von Elektronen zu ermöglichen, was das Element (in seiner reinen Form) zu einem Leiter macht.</p>
+</div>
+<div class="paragraph">
+<p>Natürlich gibt es in der realen Welt mehrere Faktoren, die den hier vorgeschlagenen idealisierten Eigenschaften entgegenwirken
+hier vorgeschlagenen Eigenschaften entgegenwirken. So müssen wir unter anderem berücksichtigen, dass Metalle bei Kontakt mit Sauerstoff oxidieren
+mit Sauerstoff oxidieren, wodurch sich eine dünne, aber effektiv isolierende Schicht auf der Oberfläche des Metalls bildet,
+die einen guten Kontakt verhindert. Auf solche Effekte können wir später eingehen. Lassen Sie uns jetzt einfach mit dem Thema weitermachen…​</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>conductor</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_Al.svg" alt="atomic model Al" width="300px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_Cu.svg" alt="atomic model Cu" width="300px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of aluminium (13)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of copper (28)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 3 (3)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 1 (1)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/simple_circuit.svg" alt="simple circuit" width="400px"/></span></p>
+</div>
+<div class="paragraph image">
+<p>\large \[Q = N \cdot (\pm e)\]</p>
+</div>
+<div class="paragraph image">
+<p>\large \[I = \frac{\Delta Q }{\Delta t}\]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_und_nicht_so_leitfähig">…​und nicht so leitfähig</h3>
+<div class="paragraph">
+<p>Die zweite Gruppe von Elementen, die wir hier vorstellen wollen, sind Elemente, deren
+Leitfähigkeit (stark) von ihrem Reinheitsgrad und von Umgebungs
+Faktoren wie Temperatur abhängt. Die Vertreter dieser Gruppe werden als Halbleiter bezeichnet.
+Kohlenstoff und Silizium sind Beispiele, die im Periodensystem auftauchen.
+Der Autor hat diese beiden Elemente ausgewählt, da sie sehr interessante Eigenschaften haben
+in Bezug auf - aber nicht nur - die Leitfähigkeit. Dies ist auf die Anzahl der Valenzelektronen
+Elektronen auf der äußeren Schale.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>semiconductor</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_C.svg" alt="atomic model C" width="300px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/atomic_model_Si.svg" alt="atomic model Si" width="300px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of carbon (6)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>atomic model of silicon (14)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 4 (0)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valence shell / free electron(s): 4 (0)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Warum also haben Kohlenstoff und Silizium trotz ihrer vier Elektronen auf der Valenzschale im Vergleich zu Kupfer so
+schlechte Leitfähigkeitseigenschaften auf der Valenzschale Elektronen?</p>
+</div>
+<div class="paragraph">
+<p>Die Antwort liegt in der einfachen Tatsache, dass sowohl Kohlenstoff als auch Silizium ein Gitter bilden,
+das alle Elektronen der Valenzschale verbraucht.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>covalent bonding of carbon</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>covalent bonding of silicon</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/covalent_bonding_c.svg" alt="covalent bonding c" width="400px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/covalent_bonding_si.svg" alt="covalent bonding si" width="400px"/></span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>semiconductor</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spannung_und_potential">Spannung und Potential</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Die folgende Tabelle zeigt die gebräuchlichen Symbole für Spannungsquellen. Auf der linken Seite
+ist eine ideale Spannungsquelle dargestellt, während auf der rechten Seite eine reale Spannungsquelle
+abgebildet ist. Wie Sie sehen können, ähnelt die reale Quelle einer Batteriezelle. Natürlich kann die
+Spannungsquelle von einer tatsächlichen Batteriezelle abweichen und wird auch meist nicht implizit dargestellt.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ideal voltage source</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>real voltage source</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/ideal_voltage_source.svg" alt="ideal voltage source" width="150px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/real_voltage_source.svg" alt="real voltage source" width="150px"/></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Eine ideale Spannungsquelle liefert eine Spannung mit einem bestimmten Wert.</p>
+</div>
+<div class="paragraph">
+<p>Wie wir in den unten gezeigten Schaltplänen sehen können, ist eine Spannung einfach die Differenz zwischen zwei Potentialen.
+Im ersten Beispiel (links) wird der untere Knotenpunkt als Referenzpunkt gewählt, da er
+als Masse signalisiert wird. Die Spannung beträgt also 1,5 V für U_B0 bzw. 3 V für U_A0.
+Im Beispiel rechts hingegen wird der Übergang zwischen den Batteriezellen als Bezugspunkt und Masse gewählt.
+Die Potentialdifferenzen, die wir hier messen, sind: U_A0 = 1,5V und U_B0 =-1,5V.
+Übrigens werden solche Doppelstromversorgungen - allerdings mit einem Spannungsbereich von 12…​15V - oft für
+Anwendungen mit Operationsverstärkern verwendet.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Single power supply</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Dual power supply</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/potential_l.svg" alt="potential l" width="250px"/></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/potential_ll.svg" alt="potential ll" width="250px"/></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph image">
+<p>\large \[U = \phi_{1} - \phi_{0}\]</p>
+</div>
+<div class="paragraph">
+<p>Das nächste Bild zeigt die einfachste mögliche Schaltung: Eine Spannungsquelle mit einem Widerstand in Reihe.
+Physikalisch gesehen ist jeder Widerstand nur ein Wandler von elektrischer Energie in thermische Energie, also Wärme.</p>
+</div>
+<div class="paragraph">
+<p>Widerstände werden in der Regel in Schaltungen verwendet, um die Spannung auf den gewünschten Wert abzusenken, bzw.
+den Strom, der zwischen bestimmten Pfaden eines Schaltkreises fließt, zu begrenzen. Wir werden im nächsten Abschnitt
+mehr darüber erfahren.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistor_circuit.svg" alt="resistor circuit" width="250px"/></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ohmsches_gesetz_und_leitungswiderstand">Ohmsches Gesetz und Leitungswiderstand</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Übung: Widerstand messen</strong>
+Zur Durchführung der folgenden Übung benötigen Sie ein Spannungs- und ein Amperemeter (oder einfach zwei Multimeter), eine variable Spannungsquelle und
+einige Probedrähte aus verschiedenen Materialien, aber mit gleicher Länge und gleichem Durchmesser.
+Wenn Sie nicht über die entsprechenden Geräte verfügen, können Sie diese Übung theoretisch auch in <a href="http://qucs.sourceforge.net">Qucs</a> oder
+<a href="https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html">LTspice</a> simulieren.</p>
+</div>
+<div class="paragraph">
+<p>Da wir aber im Voraus die Parameter der zu messenden Probedrähte festlegen müssen
+messen wollen, torpediert dieser Ansatz gewissermaßen den Zweck der Übung, nämlich zu lernen, wie man eine indirekte Messung des elektrischen
+Widerstandes.</p>
+</div>
+<div class="paragraph">
+<p>Schließen Sie die Geräte wie in der Abbildung unten dargestellt an, wobei der Probedraht den Widerstand Rx darstellt.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistance_measurement_l.svg" alt="resistance measurement l" width="550"/></span></p>
+</div>
+<div class="paragraph">
+<p>Messen Sie nun für jeden Draht die Spannung und den Strom und zeichnen Sie ein Diagramm mit der Spannung auf der x-Achse und dem Strom auf der y-Achse.
+Du wirst sehen, dass du für verschiedene Materialien ein lineares Diagramm erhältst, aber mit einer unterschiedlichen Steigung. Sie haben also eine Beziehung gefunden
+zwischen Spannung, Strom und Widerstand gefunden. Nachdem du die verschiedenen Drähte gemessen hast, kannst du auch Stift und Papier verwenden: Zeichne eine Linie mit
+Bleistift eine Linie ziehen oder eine kleine Fläche kritzeln. Verbinden Sie diese nun mit den Sonden der Messanordnung. Sie werden sehen, dass auch
+die Graphitspur wie ein Leiter wirkt - nicht optimal, aber ein Leiter.</p>
+</div>
+<div class="paragraph">
+<p>Diese Beobachtung führt uns zu der wichtigsten Formel, die Ihnen in einem Elektrotechnikkurs 101 begegnen wird, dem Ohmschen Gesetz.</p>
+</div>
+<div class="paragraph image">
+<p>\large \[ R [\Omega] = \frac{U [V]}{I [A]}\]</p>
+</div>
+<div class="paragraph">
+<p>Wenn wir diese Gleichung in ihre einfacher zu interpretierende Form U = R-I umstellen, erkennen wir, dass der Spannungsabfall (U) am Widerstand
+dem Widerstandswert ( R) mal dem durchfließenden Strom (I) entspricht. Wir haben noch nicht über den Strom gesprochen und werden dies auf einen späteren Abschnitt verschieben.
+Wie in den Bremsen angegeben, ist die Einheit des Widerstands Ω.</p>
+</div>
+<div class="paragraph">
+<p>In der folgenden Abbildung sind die Regeln für die Reihen- und Parallelschaltung von Widerständen dargestellt.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistor_rules.svg" alt="resistor rules" width="500px"/></span></p>
+</div>
+<div class="paragraph">
+<p>Bei der Reihenschaltung addieren sich die Werte einfach, wie wir es bei den Spannungsquellen gesehen haben,
+während für die Parallelschaltung dasselbe gilt, allerdings für den Leitwert G, der der Kehrwert
+des Widerstands R ist und in S(iemens) gemessen wird.</p>
+</div>
+<div class="paragraph">
+<p>So haben wir herausgefunden, dass sich die Materialien in ihrer elektrischen Leitfähigkeit - dem Kehrwert des elektrischen Widerstands - unterscheiden
+einige sind gut (Leiter), einige sind ziemlich schlecht und unbrauchbar (Nichtleiter), aber dennoch nützlich als Dielektrikum, wie wir im nächsten Abschnitt sehen werden
+im nächsten Abschnitt sehen werden, und einige dazwischen.
+Wir müssen natürlich auch beachten, dass die Leitfähigkeit nicht nur vom Material selbst, sondern auch von seiner Geometrie abhängt (außerdem ist sie
+(außerdem ist sie von der Temperatur abhängig, aber darauf gehe ich hier nicht ein), Sie wissen ja, dass wir uns mit Physik beschäftigen.
+in diesem Zusammenhang ist die folgende.</p>
+</div>
+<div class="paragraph „image“">
+<p>\large \[ R = \frac{\rho L}{A}\]</p>
+</div>
+<div class="paragraph">
+<p>Für die gebräuchlichste Rechteckform - wie eine Leiterbahn auf einer Leiterplatte - ergibt sich die Fläche A aus Breite mal Höhe</p>
+</div>
+<div class="paragraph „image“">
+<p>\large \[ R = \frac{\rho L}{A} = \frac{\rho L}{w \cdot h}\]</p>
+</div>
+<div class="paragraph">
+<p>Der Gesamtwiderstand eines Drahtes oder einer Leiterbahn auf einer Leiterplatte ist also abhängig vom spezifischen Widerstand ρ, der Länge des Leiters und der Fläche, die für die Leiterbahn verwendet wird.
+des Leiters und der für die Stromübertragung verwendeten Fläche ab. Logischerweise erhöht sowohl der spezifische Widerstand als auch die Länge des Leiters
+den Widerstand erhöhen, während die Fläche dem entgegenwirkt.</p>
+</div>
+<div class="paragraph">
+<p><strong>Warum müssen wir das wissen?</strong></p>
+</div>
+<div class="paragraph">
+<p>An dieser Stelle werden Sie sich vielleicht fragen, warum es wichtig ist, dies zu wissen, wenn wir einfach einen Schaltplan unseres Heimwerkerprojekts erstellen und es mit diskreten Bauteilen
+auf einem Breakout-Board realisieren können - die Antwort ist ganz einfach die Skalierung - für dieses einfache Bastlerbeispiel mag das funktionieren, aber es fehlt die Skalierbarkeit, die Kosten und / oder die Zuverlässigkeit.</p>
+</div>
+<div class="paragraph">
+<p>Je weiter wir in der Skala nach unten gehen, desto wichtiger werden parasitäre Effekte - wir werden in den folgenden Abschnitten mehr darüber erfahren.</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>Widerstandsmessung</p>
+</div>
+<div class="paragraph">
+<p>Die folgende Abbildung zeigt das Prinzip der Widerstandsmessung mit einem Digitalmultimeter - abgesehen vom Bereichsschalter.
+Auf der linken Seite haben wir eine Konstantstromquelle, in der Mitte den zu messenden Widerstand - oder Draht - und auf der linken Seite
+ein Voltmeter, das die Spannung misst. Wie bei der Konstantstromquelle ist der Gesamtstrom im Stromkreis bekannt, der Widerstand
+kann daraus mit der gemessenen Spannung skaliert werden.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/resistance_measurement_ll.svg" alt="resistance measurement ll" width="550"/></span></p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_der_widerstand">Der Widerstand</h3>
+<div class="paragraph">
+<p>Das elektrische Bauteil selbst gibt es in allen Formen und Größen, je nach Anwendungsbereich.
+der Miniaturwiderstand für die Aufbautechnik, der in allen höher integrierten elektronischen Geräten verwendet wird,
+der durchschnittliche 1/4-Watt-Widerstand auf Kohlebasis mit 5 Prozent Toleranz (im Bild unten mittig dargestellt)
+und die präziseren Metallfilmwiderstände mit 1 % Toleranz (blau, rechts im Bild).
+Es gibt Widerstände mit mechanisch einstellbarem Widerstand, die Potentiometer genannt werden (wie die links im Bild gezeigten).
+Andere Typen sind Varistoren, bei denen der Widerstand von der angelegten Spannung abhängt, und einige andere Typen wie
+NTC / PTC in Abhängigkeit von der Temperatur.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/discrete_resistors_edit.jpg" alt="discrete resistors edit" width="550"/></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/electronic_basics/smd_example.jpg" alt="smd example" width="300"/></span></p>
+</div>
+<div class="paragraph">
+<p>////Erklären Sie Aufbau und Struktur von SMD-Widerständen////</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

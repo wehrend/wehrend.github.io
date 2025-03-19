@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/hugo/</link>
+    <description>Recent content in Hugo on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sat, 04 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Separiere Blog und Inhalt (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/03_separate_form_and_content/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/03_separate_form_and_content/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da&#xA;ein Blog und sein Inhalt selbst unterschiedliche Einheiten sind. Ich wollte sie als solche behandeln,&#xA;was mich zu einer Bereinigung des ursprünglichen Quellcodes für den Blog führte, bei der ich den Inhaltsordner&#xA;in ein anderes Repo namens hugo_content verschob, das frühere Repo nannte ich hugo_blog.&#xA;---&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In meinem Fall bedeutet dies, dass Sie zuerst das Repo hugo_blog klonen müssen,&#xA; in das neue Verzeichnis wechseln (cd hugo), seinen Zweig „hugo“ auschecken und dann einen Klon des&#xA;Repos hugo_content erstellen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Umziehen zu Hugo (de)</title>
+      <link>http://wehrend.uber.space/de/posts/web/02_moving-to-hugo/</link>
+      <pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/posts/web/02_moving-to-hugo/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Seit einer Woche basiert mein Blog auf dem Static-Site-Generator &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&#xA;Ich wollte schon viel früher zu Hugo wechseln, da es eine große Auswahl an Themes gibt.&#xA;Dies erforderte jedoch den Wechsel von Asciidoc zu &lt;a href=&#34;https://asciidoctor.org/&#34;&gt;Asciidoctor&lt;/a&gt;,&#xA;und ich hatte einige Probleme mit der Integration von Asciidoctor in meinen bestehenden Arbeitsablauf.&#xA;Da der Ansatz, die Latex-Gleichungen in den Asciidoc-Dokumenten darzustellen,&#xA;nicht mehr funktionierte, entschied ich mich, auf die clientbasierte Darstellung von Formeln umzusteigen,&#xA;wie sie in &lt;a href=&#34;https://gohugo.io/Katex&#34;&gt;KaTex&lt;/a&gt; und &lt;a href=&#34;https://www.mathjax.org/&#34;&gt;Mathjax&lt;/a&gt; verwendet wird.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

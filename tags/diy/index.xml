@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DIY on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/diy/</link>
+    <description>Recent content in DIY on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/diy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build your own synthesizer modules</title>
+      <link>http://wehrend.uber.space/posts/synth/25_build_your_own_modules/</link>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/synth/25_build_your_own_modules/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hi,&#xA;today I want to share with you the basic knowledge of DIYing your own synthesizer modules - those do not need of the eurorack standard although in my case they are.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;If you get started with &lt;a href=&#34;https://sdiy.info/wiki/Eurorack&#34;&gt;eurorack format&lt;/a&gt; or any other modular like synth standard, but especially the eurorack standard - you will be most likely overwhelmed about&#xA;the sheer number of manufacturers and available. You can have a simple look here on &lt;a href=&#34;https://www.modulargrid.net/e/modules/browser&#34;&gt;ModularGrid&lt;/a&gt;.&#xA;You need a few weeks or even months, spending time reading some test articles on &lt;a href=&#34;https://www.amazona.de/&#34;&gt;Amzona.de&lt;/a&gt; , or visiting Synthesizer Stores like&#xA;&lt;a href=&#34;https://schneidersladen.de/&#34;&gt;SchneidersLaden&lt;/a&gt; to get a rough idea of the diversity of the market.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

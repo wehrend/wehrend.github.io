@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+Here I wanted to document how to setup a python based backend (here: Odoo, but it could also be for example Django) on a pristine Debian / Ubuntu on
+
+
+After a new installation of Debian / Ubuntu you need to install a couple of packages to start of with a usable system, we
+add the following packages via apt-get:
+
+
+
+sudo apt-get install chromium, git, qdirstat, make, build-essential, python3
+
+
+
+(Qdirstat is not needed always needed but sometimes helpful to have for a shell equivalent you can also use / install ncdu instead.)
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/posts/web/28_setup_your_python_based_project/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Setup your python based backend system on Debian Bullseye">
+  <meta property="og:description" content="Here I wanted to document how to setup a python based backend (here: Odoo, but it could also be for example Django) on a pristine Debian / Ubuntu on
+After a new installation of Debian / Ubuntu you need to install a couple of packages to start of with a usable system, we add the following packages via apt-get:
+sudo apt-get install chromium, git, qdirstat, make, build-essential, python3 (Qdirstat is not needed always needed but sometimes helpful to have for a shell equivalent you can also use / install ncdu instead.)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-01-19T00:00:00+00:00">
+    <meta property="article:tag" content="Odoo">
+    <meta property="article:tag" content="Postgres">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Debian">
+<title>Setup your python based backend system on Debian Bullseye | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Setup your python based backend system on Debian Bullseye</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>Here I wanted to document how to setup a python based backend (here: Odoo, but it could also be for example Django) on a pristine Debian / Ubuntu on</p>
+</div>
+<div class="paragraph">
+<p>After a new installation of Debian / Ubuntu you need to install a couple of packages to start of with a usable system, we
+add the following packages via apt-get:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get install chromium, git, qdirstat, make, build-essential, python3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(Qdirstat is not needed always needed but sometimes helpful to have for a shell equivalent you can also use / install ncdu instead.)</p>
+</div>
+<div class="paragraph">
+<p>Next, we install the packagemanager for python:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get install pip, pipx</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we download the odoo (pr django or flask) software by cloning the git repos to the localhost (to spare a few bytes, we only take the latest branch)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>git clone git@github.com:odoo/odoo.git --single-branch -b 18.0 odoo</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we need to download and install postgresql (the database behind Odoo) :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get install postgresql</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command will install postgresql in the version 15.</p>
+</div>
+<div class="paragraph">
+<p>After that then we need to go into the odoo directory and create a virtual environment which is done via the following three commands
+    sven@debian:~/software cd odoo
+    sven@debian:~/software/odoo$ python3 -m venv venv
+    sven@debian:~/software/odoo$ source venv/bin/activate</p>
+</div>
+<div class="paragraph">
+<p>That next command downloads a couple of all python based dependencies, for example werkzeug and pytz</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>pipx install -r requirements.txt</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">    Trigger für man-db (2.11.2-2) werden verarbeitet ...
+    Trigger für libc-bin (2.36-9+deb12u9) werden verarbeitet ...
+    (odoo-venv) sven@debian:~/software/odoo$ pip3 install -r requirements.txt
+    Ignoring asn1crypto: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring Babel: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring cbor2: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring chardet: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring cryptography: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring decorator: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring docutils: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring freezegun: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring gevent: markers &#39;sys_platform != &#34;win32&#34; and python_version == &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring gevent: markers &#39;sys_platform != &#34;win32&#34; and python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring greenlet: markers &#39;sys_platform != &#34;win32&#34; and python_version == &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring greenlet: markers &#39;sys_platform != &#34;win32&#34; and python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring idna: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring Jinja2: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring libsass: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring lxml: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring lxml: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring lxml-html-clean: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring MarkupSafe: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring MarkupSafe: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring num2words: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring openpyxl: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring Pillow: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring Pillow: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring psutil: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring psutil: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring psycopg2: markers &#39;python_version == &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring psycopg2: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring pyopenssl: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring PyPDF2: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring pypiwin32: markers &#39;sys_platform == &#34;win32&#34;&#39; don&#39;t match your environment
+    Ignoring python-dateutil: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring python-ldap: markers &#39;sys_platform != &#34;win32&#34; and python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring python-stdnum: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring qrcode: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring reportlab: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring reportlab: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring requests: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring rjsmin: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Ignoring rl-renderPM: markers &#39;sys_platform == &#34;win32&#34; and python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring urllib3: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring Werkzeug: markers &#39;python_version &lt;= &#34;3.10&#34;&#39; don&#39;t match your environment
+    Ignoring Werkzeug: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring xlrd: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring XlsxWriter: markers &#39;python_version &gt;= &#34;3.12&#34;&#39; don&#39;t match your environment
+    Ignoring zeep: markers &#39;python_version &lt; &#34;3.11&#34;&#39; don&#39;t match your environment
+    Collecting asn1crypto==1.5.1
+      Using cached asn1crypto-1.5.1-py2.py3-none-any.whl (105 kB)
+    Collecting Babel==2.10.3
+      Using cached Babel-2.10.3-py3-none-any.whl (9.5 MB)
+    Collecting cbor2==5.4.2
+      Using cached cbor2-5.4.2.tar.gz (85 kB)
+      Installing build dependencies ... done
+      Getting requirements to build wheel ... done
+      Preparing metadata (pyproject.toml) ... done
+    Requirement already satisfied: chardet==5.2.0 in ./odoo-venv/lib/python3.11/site-packages (from -r requirements.txt (line 10)) (5.2.0)
+    Collecting cryptography==3.4.8
+      Using cached cryptography-3.4.8-cp36-abi3-manylinux_2_24_x86_64.whl (3.0 MB)
+    Collecting decorator==5.1.1
+      Using cached decorator-5.1.1-py3-none-any.whl (9.1 kB)
+    Collecting docutils==0.20.1
+      Using cached docutils-0.20.1-py3-none-any.whl (572 kB)
+    Collecting freezegun==1.2.1
+      Using cached freezegun-1.2.1-py3-none-any.whl (16 kB)
+    Collecting geoip2==2.9.0
+      Using cached geoip2-2.9.0-py2.py3-none-any.whl (18 kB)
+    Collecting gevent==22.10.2
+      Using cached gevent-22.10.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.8 MB)
+    Collecting greenlet==2.0.2
+      Using cached greenlet-2.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (618 kB)
+    Collecting idna==2.10
+      Using cached idna-2.10-py2.py3-none-any.whl (58 kB)
+    Collecting Jinja2==3.1.2
+      Using cached Jinja2-3.1.2-py3-none-any.whl (133 kB)
+    Collecting libsass==0.22.0
+      Using cached libsass-0.22.0-cp36-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.whl (9.4 MB)
+    Collecting lxml==4.9.3
+      Using cached lxml-4.9.3-cp311-cp311-manylinux_2_28_x86_64.whl (7.9 MB)
+    Collecting MarkupSafe==2.1.2
+      Using cached MarkupSafe-2.1.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (27 kB)
+    Collecting num2words==0.5.10
+      Using cached num2words-0.5.10-py3-none-any.whl (101 kB)
+    Collecting ofxparse==0.21
+      Using cached ofxparse-0.21.tar.gz (53 kB)
+      Preparing metadata (setup.py) ... done
+    Collecting openpyxl==3.0.9
+      Using cached openpyxl-3.0.9-py2.py3-none-any.whl (242 kB)
+    Requirement already satisfied: passlib==1.7.4 in ./odoo-venv/lib/python3.11/site-packages (from -r requirements.txt (line 44)) (1.7.4)
+    Collecting Pillow==9.4.0
+      Using cached Pillow-9.4.0-cp311-cp311-manylinux_2_28_x86_64.whl (3.4 MB)
+    Collecting polib==1.1.1
+      Using cached polib-1.1.1-py2.py3-none-any.whl (20 kB)
+    Collecting psutil==5.9.4
+      Using cached psutil-5.9.4-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (280 kB)
+    Collecting psycopg2==2.9.5
+      Using cached psycopg2-2.9.5.tar.gz (384 kB)
+      Preparing metadata (setup.py) ... done
+    Collecting pyopenssl==21.0.0
+      Downloading pyOpenSSL-21.0.0-py2.py3-none-any.whl (55 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 55.1/55.1 kB 2.9 MB/s eta 0:00:00
+    Collecting PyPDF2==2.12.1
+      Downloading pypdf2-2.12.1-py3-none-any.whl (222 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 222.8/222.8 kB 10.3 MB/s eta 0:00:00
+    Collecting pyserial==3.5
+      Downloading pyserial-3.5-py2.py3-none-any.whl (90 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 18.5 MB/s eta 0:00:00
+    Collecting python-dateutil==2.8.2
+      Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+    Collecting python-ldap==3.4.0
+      Downloading python-ldap-3.4.0.tar.gz (376 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 376.2/376.2 kB 22.2 MB/s eta 0:00:00
+      Installing build dependencies ... done
+      Getting requirements to build wheel ... done
+      Preparing metadata (pyproject.toml) ... done
+    Collecting python-stdnum==1.19
+      Downloading python_stdnum-1.19-py2.py3-none-any.whl (1.0 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 24.3 MB/s eta 0:00:00
+    Requirement already satisfied: pytz in ./odoo-venv/lib/python3.11/site-packages (from -r requirements.txt (line 67)) (2024.2)
+    Collecting pyusb==1.2.1
+      Downloading pyusb-1.2.1-py3-none-any.whl (58 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.4/58.4 kB 19.8 MB/s eta 0:00:00
+    Collecting qrcode==7.4.2
+      Downloading qrcode-7.4.2-py3-none-any.whl (46 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.2/46.2 kB 10.2 MB/s eta 0:00:00
+    Collecting reportlab==3.6.12
+      Downloading reportlab-3.6.12-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 26.6 MB/s eta 0:00:00
+    Collecting requests==2.31.0
+      Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 20.3 MB/s eta 0:00:00
+    Collecting rjsmin==1.2.0
+      Downloading rjsmin-1.2.0.tar.gz (419 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 419.9/419.9 kB 23.4 MB/s eta 0:00:00
+      Preparing metadata (setup.py) ... done
+    Collecting urllib3==1.26.5
+      Downloading urllib3-1.26.5-py2.py3-none-any.whl (138 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 138.1/138.1 kB 26.7 MB/s eta 0:00:00
+    Collecting vobject==0.9.6.1
+      Downloading vobject-0.9.6.1.tar.gz (58 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.6/58.6 kB 18.5 MB/s eta 0:00:00
+      Preparing metadata (setup.py) ... done
+    Collecting Werkzeug==2.2.2
+      Downloading Werkzeug-2.2.2-py3-none-any.whl (232 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 232.7/232.7 kB 39.7 MB/s eta 0:00:00
+    Collecting xlrd==1.2.0
+      Downloading xlrd-1.2.0-py2.py3-none-any.whl (103 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.3/103.3 kB 21.3 MB/s eta 0:00:00
+    Collecting XlsxWriter==3.0.2
+      Downloading XlsxWriter-3.0.2-py3-none-any.whl (149 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 149.9/149.9 kB 25.5 MB/s eta 0:00:00
+    Collecting xlwt==1.3.0
+      Using cached xlwt-1.3.0-py2.py3-none-any.whl (99 kB)
+    Collecting zeep==4.2.1
+      Downloading zeep-4.2.1-py3-none-any.whl (101 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.2/101.2 kB 23.8 MB/s eta 0:00:00
+    Collecting cffi&gt;=1.12
+      Downloading cffi-1.17.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (467 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 467.2/467.2 kB 25.0 MB/s eta 0:00:00
+    Collecting maxminddb&gt;=1.4.0
+      Downloading maxminddb-2.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (88 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 88.1/88.1 kB 26.8 MB/s eta 0:00:00
+    Collecting zope.event
+      Downloading zope.event-5.0-py3-none-any.whl (6.8 kB)
+    Collecting zope.interface
+      Downloading zope.interface-7.2-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (259 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 259.8/259.8 kB 18.5 MB/s eta 0:00:00
+    Requirement already satisfied: setuptools in ./odoo-venv/lib/python3.11/site-packages (from gevent==22.10.2-&gt;-r requirements.txt (line 21)) (66.1.1)
+    Collecting docopt&gt;=0.6.2
+      Downloading docopt-0.6.2.tar.gz (25 kB)
+      Preparing metadata (setup.py) ... done
+    Collecting beautifulsoup4
+      Downloading beautifulsoup4-4.12.3-py3-none-any.whl (147 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.9/147.9 kB 22.5 MB/s eta 0:00:00
+    Collecting six
+      Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+    Collecting et-xmlfile
+      Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+    Collecting pyasn1&gt;=0.3.7
+      Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 83.1/83.1 kB 26.6 MB/s eta 0:00:00
+    Collecting pyasn1_modules&gt;=0.1.5
+      Downloading pyasn1_modules-0.4.1-py3-none-any.whl (181 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.5/181.5 kB 26.6 MB/s eta 0:00:00
+    Collecting typing-extensions
+      Downloading typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+    Collecting pypng
+      Downloading pypng-0.20220715.0-py3-none-any.whl (58 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.1/58.1 kB 19.9 MB/s eta 0:00:00
+    Collecting charset-normalizer&lt;4,&gt;=2
+      Downloading charset_normalizer-3.4.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (143 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 143.9/143.9 kB 25.7 MB/s eta 0:00:00
+    Collecting certifi&gt;=2017.4.17
+      Downloading certifi-2024.12.14-py3-none-any.whl (164 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 164.9/164.9 kB 25.2 MB/s eta 0:00:00
+    Collecting attrs&gt;=17.2.0
+      Downloading attrs-24.3.0-py3-none-any.whl (63 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.4/63.4 kB 22.2 MB/s eta 0:00:00
+    Collecting isodate&gt;=0.5.4
+      Downloading isodate-0.7.2-py3-none-any.whl (22 kB)
+    Collecting platformdirs&gt;=1.4.0
+      Downloading platformdirs-4.3.6-py3-none-any.whl (18 kB)
+    Collecting requests-toolbelt&gt;=0.7.1
+      Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.5/54.5 kB 22.0 MB/s eta 0:00:00
+    Collecting requests-file&gt;=1.5.1
+      Downloading requests_file-2.1.0-py2.py3-none-any.whl (4.2 kB)
+    Collecting pycparser
+      Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 24.9 MB/s eta 0:00:00
+    Collecting soupsieve&gt;1.2
+      Downloading soupsieve-2.6-py3-none-any.whl (36 kB)
+    Building wheels for collected packages: cbor2, python-ldap
+      Building wheel for cbor2 (pyproject.toml) ... done
+      Created wheel for cbor2: filename=cbor2-5.4.2-cp311-cp311-linux_x86_64.whl size=171878 sha256=a2561520f78ff510ee0de12d15e40d10244c8c18c1a5c4c64bff0954e91637bc
+      Stored in directory: /home/sven/.cache/pip/wheels/72/80/58/875f97226ba6eb6644fcbcdd2095bb304a64511ed3f11e6a55
+      Building wheel for python-ldap (pyproject.toml) ... error
+      error: subprocess-exited-with-error
+
+      × Building wheel for python-ldap (pyproject.toml) did not run successfully.
+      │ exit code: 1
+      ╰─&gt; [124 lines of output]
+          /tmp/pip-build-env-3ivowifu/overlay/lib/python3.11/site-packages/setuptools/_distutils/dist.py:270: UserWarning: Unknown distribution option: &#39;test_suite&#39;
+            warnings.warn(msg)
+          running bdist_wheel
+          running build
+          running build_py
+          creating build/lib.linux-x86_64-cpython-311
+          copying Lib/ldapurl.py -&gt; build/lib.linux-x86_64-cpython-311
+          copying Lib/ldif.py -&gt; build/lib.linux-x86_64-cpython-311
+          creating build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/syncrepl.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/sasl.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/resiter.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/pkginfo.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/modlist.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/logger.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/ldapobject.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/functions.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/filter.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/dn.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/constants.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/compat.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/cidict.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/asyncsearch.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/async.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          copying Lib/ldap/__init__.py -&gt; build/lib.linux-x86_64-cpython-311/ldap
+          creating build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/vlv.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/sss.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/simple.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/sessiontrack.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/readentry.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/pwdpolicy.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/psearch.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/ppolicy.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/pagedresults.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/openldap.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/libldap.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/deref.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          copying Lib/ldap/controls/__init__.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/controls
+          creating build/lib.linux-x86_64-cpython-311/ldap/extop
+          copying Lib/ldap/extop/passwd.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/extop
+          copying Lib/ldap/extop/dds.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/extop
+          copying Lib/ldap/extop/__init__.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/extop
+          creating build/lib.linux-x86_64-cpython-311/ldap/schema
+          copying Lib/ldap/schema/tokenizer.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/schema
+          copying Lib/ldap/schema/subentry.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/schema
+          copying Lib/ldap/schema/models.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/schema
+          copying Lib/ldap/schema/__init__.py -&gt; build/lib.linux-x86_64-cpython-311/ldap/schema
+          creating build/lib.linux-x86_64-cpython-311/slapdtest
+          copying Lib/slapdtest/_slapdtest.py -&gt; build/lib.linux-x86_64-cpython-311/slapdtest
+          copying Lib/slapdtest/__init__.py -&gt; build/lib.linux-x86_64-cpython-311/slapdtest
+          running egg_info
+          writing Lib/python_ldap.egg-info/PKG-INFO
+          writing dependency_links to Lib/python_ldap.egg-info/dependency_links.txt
+          writing requirements to Lib/python_ldap.egg-info/requires.txt
+          writing top-level names to Lib/python_ldap.egg-info/top_level.txt
+          reading manifest file &#39;Lib/python_ldap.egg-info/SOURCES.txt&#39;
+          reading manifest template &#39;MANIFEST.in&#39;
+          no previously-included directories found matching &#39;Doc/.build&#39;
+          adding license file &#39;LICENCE&#39;
+          writing manifest file &#39;Lib/python_ldap.egg-info/SOURCES.txt&#39;
+          /tmp/pip-build-env-3ivowifu/overlay/lib/python3.11/site-packages/setuptools/command/build_py.py:212: _Warning: Package &#39;slapdtest.certs&#39; is absent from the `packages` configuration.
+          !!
+
+                  ********************************************************************************
+                  ############################
+                  # Package would be ignored #
+                  ############################
+                  Python recognizes &#39;slapdtest.certs&#39; as an importable package[^1],
+                  but it is absent from setuptools&#39; `packages` configuration.
+
+                  This leads to an ambiguous overall configuration. If you want to distribute this
+                  package, please make sure that &#39;slapdtest.certs&#39; is explicitly added
+                  to the `packages` configuration field.
+
+                  Alternatively, you can also rely on setuptools&#39; discovery methods
+                  (for example by using `find_namespace_packages(...)`/`find_namespace:`
+                  instead of `find_packages(...)`/`find:`).
+
+                  You can read more about &#34;package discovery&#34; on setuptools documentation page:
+
+                  - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+                  If you don&#39;t want &#39;slapdtest.certs&#39; to be distributed and are
+                  already explicitly excluding &#39;slapdtest.certs&#39; via
+                  `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+                  you can try to use `exclude_package_data`, or `include-package-data=False` in
+                  combination with a more fine grained `package-data` configuration.
+
+                  You can read more about &#34;package data files&#34; on setuptools documentation page:
+
+                  - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+                  [^1]: For Python, any directory (with suitable naming) can be imported,
+                        even if it does not contain any `.py` files.
+                        On the other hand, currently there is no concept of package data
+                        directory, all directories are treated like packages.
+                  ********************************************************************************
+
+          !!
+            check.warn(importable)
+          creating build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/README -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/ca.conf -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/ca.pem -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/client.conf -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/client.key -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/client.pem -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/gencerts.sh -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/gennssdb.sh -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/server.conf -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/server.key -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          copying Lib/slapdtest/certs/server.pem -&gt; build/lib.linux-x86_64-cpython-311/slapdtest/certs
+          running build_ext
+          building &#39;_ldap&#39; extension
+          creating build/temp.linux-x86_64-cpython-311/Modules
+          x86_64-linux-gnu-gcc -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -DHAVE_SASL -DHAVE_TLS -DHAVE_LIBLDAP_R -DHAVE_LIBLDAP_R -DLDAPMODULE_VERSION=3.4.0 &#34;-DLDAPMODULE_AUTHOR=python-ldap project&#34; &#34;-DLDAPMODULE_LICENSE=Python style&#34; -IModules -I/home/sven/software/odoo/odoo-venv/include -I/usr/include/python3.11 -c Modules/LDAPObject.c -o build/temp.linux-x86_64-cpython-311/Modules/LDAPObject.o
+          In file included from Modules/LDAPObject.c:3:
+          Modules/common.h:15:10: fatal error: lber.h: Datei oder Verzeichnis nicht gefunden
+             15 | #include &lt;lber.h&gt;
+                |          ^~~~~~~~
+          compilation terminated.
+          error: command &#39;/usr/bin/x86_64-linux-gnu-gcc&#39; failed with exit code 1
+          [end of output]
+
+      note: This error originates from a subprocess, and is likely not a problem with pip.
+      ERROR: Failed building wheel for python-ldap
+    Successfully built cbor2
+    Failed to build python-ldap
+    ERROR: Could not build wheels for python-ldap, which is required to install pyproject.toml-based projects</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, if all is installed well, we should face the next error, coming from postgresql:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>psycopg2.OperationalError: connection to server on socket &#34;/var/run/postgresql/.s.PGSQL.5432&#34; failed: FATAL:  role &#34;&lt;user&gt;&#34; does not exist</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, here we need to create a user odoo and add its role to the postgresql pg_hba.conf</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo adduser --system --home=/opt/odoo --group odoo</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, open the psql commandline, and add the user / role odoo:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo -u postgres psql</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CREATE USER odoo WITH PASSWORD &#39;odoo&#39;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, allow the user to create databases:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ALTER USER odoo CREATEDB;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and leave the psql shell:
+    \q</p>
+</div>
+<div class="paragraph">
+<p>We copy over the file below to /etc/postgresql/15.0/pg_hba.conf :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">    local   all             postgres                                trust
+
+    # TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+    # &#34;local&#34; is for Unix domain socket connections only
+    local   all             all                                     trust
+    # IPv4 local connections:
+    host    all             all             127.0.0.1/32            scram-sha-256
+    # IPv6 local connections:
+    host    all             all             ::1/128                 scram-sha-256
+    # Allow replication connections from localhost, by a user with the
+    # replication privilege.
+    local   replication     all                                     peer
+    host    replication     all             127.0.0.1/32            scram-sha-256
+    host    replication     all             ::1/128                 scram-sha-256</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>…​and start odoo-bin via</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>python3 ./odoo-bin -c debian/odoo.conf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we might still need to install the one or other packages before we can visit  the site on the webbrowser.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

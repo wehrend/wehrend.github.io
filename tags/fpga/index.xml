@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fpga on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/fpga/</link>
+    <description>Recent content in Fpga on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/fpga/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>http://wehrend.uber.space/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hi there,&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;finally this week the &lt;a href=&#34;https://nandland.com/the-go-board/&#34;&gt;nandland go board&lt;/a&gt; I ordered from the developer Russell Merrick a month ago arrived.&#xA;It took a detour due to some shipping problems, but this is not about that, so.&#xA;I had to face quite a few obstacles to get this running on my Debian Bullseye.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_serial_connection_via_usb&#34;&gt;Serial Connection via USB&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;First of all, to connect&#xA;to the board via FTDI usb as suggested on Debian Bullseye you have to first add your user to the group&#xA;&amp;#39;dialout&amp;#39;, this is done like below:&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hello World</title>
+      <link>http://wehrend.uber.space/posts/web/24_fpga_beginners_3/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/24_fpga_beginners_3/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to show you, how to connect to the DE10-nano board, the successor of the DE0-nano board. It is a bit bigger, costs nearly 300 bucks,&#xA;but also supports Linux out-of-the-box. There is an &lt;a href=&#34;https://web.archive.org/web/20200815133137/http://angstrom-distribution.org/&#34;&gt;Angstrom Linux&lt;/a&gt; installed on the SD-card.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;To connect to the board via the UART interface, power-up the board with the wall-wart,enter the sd-card to start the linux booting, and finally connect the micro-b usb cable (like shown below) with the PC.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus and Verilog</title>
+      <link>http://wehrend.uber.space/posts/web/23_fpga_beginners_2/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/23_fpga_beginners_2/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you decided you want to learn fpga programming and have done the prerequisite from the &lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;introduction 0&lt;/a&gt; as&#xA;well as done the &lt;a href=&#34;https://wehrend.uber.space/posts/web/23_fpga_beginners_1/&#34;&gt;simple logic circuit&lt;/a&gt; via quartus’s bdf files.&#xA;Today we want to show you how to figure out Quartus by doing another hardware equivalent of the hello-World program used in the software world - we do program&#xA;a binary counter showing of by the LED array we have available on our DE0-nano board.&#xA;For this we will make use of both the Block Diagram Files (bdf) from Quartus and the popular HDL (Hardware Description Language) Verilog.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus</title>
+      <link>http://wehrend.uber.space/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/22_fpga_beginners_1/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;So, you decided you want to learn fpga programming and have done the prerequisite from the &lt;a href=&#34;https://wehrend.uber.space/posts/web/21_fpga_beginners/&#34;&gt;last blog post&lt;/a&gt;.&#xA;Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate&#xA;because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with HDLS</title>
+      <link>http://wehrend.uber.space/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/21_fpga_beginners_0/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to start a blog post series about hardware programming. We start with an introduction&#xA;to hardware programming with the FPGA-board &lt;a href=&#34;https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593&#34;&gt;DE0 Nano&lt;/a&gt;&#xA;from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../de0nano.jpg&#34; alt=&#34;DE-0 nano&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure&#xA;the programmer. In the second step we will install the simulation software Modelsim.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

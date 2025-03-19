@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+title: How does a CPU work? The swiss knife (Part II)
+
+
+slug: how-does-a-cpu-work-alu-2
+
+
+date: 2022-02-09
+
+
+category:
+
+
+link:
+
+
+description:
+
+
+type: text
+
+
+
+
+ALU (Arithmetic Logic Unit)
+
+
+Instruction table
+
+
+
+
+
+
+
+
+
+logic operations
+description
+implementation
+data type / size
+
+
+
+
+and
+basic boolean Op
+-
+bit
+
+
+or
+basic boolean Op
+-
+bit
+
+
+not
+basic boolean Op
+-
+bit
+
+
+xor
+complex boolean Op
+-
+bit
+
+
+shl
+shift left
+-
+various
+
+
+shr
+shift right
+-
+various
+
+
+
+
+
+
+
+
+
+
+
+control instructions
+description
+data type / size
+
+
+
+
+ld
+load
+various
+
+
+st
+store
+various
+
+
+jx
+jump (x= gt,eq, lt )
+various
+
+
+
+
+
+
+
+
+
+
+
+
+arithmetic operations
+description
+implementation
+data type / size
+
+
+
+
+ashl
+arithmetic shift left
+-
+various
+
+
+ashr
+arithmetic shift right
+-
+various
+
+
+inc
+increment
+-
+various
+
+
+dec
+decrement
+-
+various
+
+
+add
+addition
+-
+(u) integer
+
+
+sub
+subtraction
+-
+(u) integer
+
+
+mul
+multiplication
+software-routine or HW
+(u)integer
+
+
+div
+division
+software-routine or HW
+(u)integer
+
+
+sin
+sine
+software-routine (Cordic)
+(u) integer
+
+
+cos
+cosine
+software-routine (Cordic)
+(u) integer
+
+
+tan
+tangens
+software-routine (Cordic)
+(u) integer
+
+
+
+">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://wehrend.uber.space/drafts/alu2/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:description" content="title: How does a CPU work? The swiss knife (Part II)
+slug: how-does-a-cpu-work-alu-2
+date: 2022-02-09
+category:
+link:
+description:
+type: text
+ALU (Arithmetic Logic Unit) Instruction table logic operations description implementation data type / size and
+basic boolean Op
+-
+bit
+or
+basic boolean Op
+-
+bit
+not
+basic boolean Op
+-
+bit
+xor
+complex boolean Op
+-
+bit
+shl
+shift left
+-
+various
+shr
+shift right
+-
+various
+control instructions description data type / size ld
+load
+various
+st
+store
+various
+jx
+jump (x= gt,eq, lt )
+various
+arithmetic operations description implementation data type / size ashl
+arithmetic shift left
+-
+various
+ashr
+arithmetic shift right
+-
+various
+inc
+increment
+-
+various
+dec
+decrement
+-
+various
+add
+addition
+-
+(u) integer
+sub
+subtraction
+-
+(u) integer
+mul
+multiplication
+software-routine or HW
+(u)integer
+div
+division
+software-routine or HW
+(u)integer
+sin
+sine
+software-routine (Cordic)
+(u) integer
+cos
+cosine
+software-routine (Cordic)
+(u) integer
+tan
+tangens
+software-routine (Cordic)
+(u) integer">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="drafts">
+<title>Alu2 | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="http://wehrend.uber.space/de/drafts/alu2/" title="Alu2">
+<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.c077762c09ddc920bb06e511e4928bf626c0df6d840ff57642fe0fcd3c0888d2.js" integrity="sha256-wHd2LAndySC7BuUR5JKL9ibA322ED/V2Qv4PzTwIiNI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://wehrend.uber.space/de/drafts/alu2/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/tags/synth/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Alu2</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>title: How does a CPU work? The swiss knife (Part II)</p>
+</li>
+<li>
+<p>slug: how-does-a-cpu-work-alu-2</p>
+</li>
+<li>
+<p>date: 2022-02-09</p>
+</li>
+<li>
+<p>category:</p>
+</li>
+<li>
+<p>link:</p>
+</li>
+<li>
+<p>description:</p>
+</li>
+<li>
+<p>type: text</p>
+</li>
+</ol>
+</div>
+<div class="sect1">
+<h2 id="_alu_arithmetic_logic_unit">ALU (Arithmetic Logic Unit)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_instruction_table">Instruction table</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">logic operations</th>
+<th class="tableblock halign-left valign-top">description</th>
+<th class="tableblock halign-left valign-top">implementation</th>
+<th class="tableblock halign-left valign-top">data type / size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">and</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basic boolean Op</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">or</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basic boolean Op</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">basic boolean Op</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">complex boolean Op</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shift left</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shift right</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3333%;"/>
+<col style="width: 33.3334%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">control instructions</th>
+<th class="tableblock halign-left valign-top">description</th>
+<th class="tableblock halign-left valign-top">data type / size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ld</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">st</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jump (x= gt,eq, lt )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+<col style="width: 25%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">arithmetic operations</th>
+<th class="tableblock halign-left valign-top">description</th>
+<th class="tableblock halign-left valign-top">implementation</th>
+<th class="tableblock halign-left valign-top">data type / size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ashl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">arithmetic shift left</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ashr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">arithmetic shift right</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">increment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">decrement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">various</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">addition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u) integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subtraction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u) integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multiplication</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">software-routine or HW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u)integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">div</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">division</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">software-routine or HW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u)integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">software-routine (Cordic)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u) integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cosine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">software-routine (Cordic)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u) integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tangens</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">software-routine (Cordic)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(u) integer</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_compare_operations">Compare operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first type of instructions we have nor called not even discussed
+are compare instructions. We first show a comparator for a single bit,
+and then derive an comparator for arithmetic operations.This whole section
+is just a quotation, the original source is found
+<a href="https://www.electrical4u.com/digital-comparator/">here</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">A</th>
+<th class="tableblock halign-left valign-top">B</th>
+<th class="tableblock halign-left valign-top">&gt; (G)</th>
+<th class="tableblock halign-left valign-top">= (E)</th>
+<th class="tableblock halign-left valign-top">&lt; (L)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This leads us to three simple boolean equations (greater than, equal, less than):</p>
+</div>
+<div class="paragraph image">
+<p>\[ G = A\overline{B} \]</p>
+</div>
+<div class="paragraph image">
+<p>\[ E = \overline {A \oplus B} \]</p>
+</div>
+<div class="paragraph image">
+<p>\[ L = \overline{A}B \]</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/single-bit-comparator.svg" alt="single bit comparator" width="80%"/></span></p>
+</div>
+<div class="paragraph">
+<p>We extend this scheme to a  4 bit width comparator as follows:</p>
+</div>
+<div class="paragraph image">
+<p>\[ A = A_{1}A_{2}A_{3}A_{4} \quad and \quad B=B_{1}B_{2}B_{3}B_{4} \]</p>
+</div>
+<hr/>
+<div class="sect2">
+<h3 id="_greater_than">Greater than</h3>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+(1) \quad A_{1} &gt; B_{1} ⇒ A &gt; B \quad or \quad G=1 \\
+(2) \quad A_{1} = B_{1};A_{2} &gt; B_{2} ⇒ A &gt; B  \quad or \quad G=1 \\
+(3) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} &gt; B_{3} ⇒ A &gt; B  \quad or \quad G=1 \\
+(4) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} = B_{3};A_{4} &gt; B_{4} ⇒ A &gt; B  \quad or \quad G=1
+\end{array}
+\]</p>
+</div>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+For \quad (1) \quad G = A_{1}\overline{B}_{1} \\
+For \quad (2) \quad G= \overline {A_{1} \oplus B_{1}} (A_{2}\overline{B_{2}}) \\
+For \quad (3) \quad G= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (A_{3}\overline{B_{3}}) \\
+For \quad (4) \quad G= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}}  (A_{4}\overline{B_{4}})
+\end{array}
+\]</p>
+</div>
+<div class="paragraph">
+<p>From this follows, that G=1 when either of the above equations holds…​</p>
+</div>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+G= A_{1}\overline{B}_{1} + \overline {A_{1} \oplus B_{1}} (A_{2}\overline{B_{2}})<br/>
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (A_{3}\overline{B_{3}}) + \\
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}}  (A_{4}\overline{B_{4}})
+\end{array}
+\]</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_less_than">Less than</h3>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+(5) \quad A_{1} &lt; B_{1} ⇒ A &lt; B \quad or \quad L=1 \\
+(6) \quad A_{1} = B_{1};A_{2} &lt; B_{2} ⇒ A &lt; B  \quad or \quad L=1 \\
+(7) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} &lt; B_{3} ⇒ A &lt; B  \quad or \quad L=1 \\
+(8) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} = B_{3};A_{4} &lt; B_{4} ⇒ A &lt; B  \quad or \quad L=1
+\end{array}
+\]</p>
+</div>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+For \quad (5) \quad L= \overline{A}_{1}B_{1} \\
+For \quad (6) \quad L= \overline {A_{1} \oplus B_{1}} (\overline{A_{2}}B_{2}) \\
+For \quad (7) \quad L= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (\overline{A_{3}}B_{3}) \\
+For \quad (8) \quad L= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}}  (A_{4}\overline{B_{4}})
+\end{array}
+\]</p>
+</div>
+<div class="paragraph">
+<p>From this follows, that L=1 when either of the above equations holds…​</p>
+</div>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+L= \overline{A}_{1}B_{1} + \overline {A_{1} \oplus B_{1}} (\overline{A_{2}}B_{2})<br/>
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (\overline{A_{3}B_{3}}) + \\
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}} (\overline{A_{4}}B_{4})
+\end{array}
+\]</p>
+</div>
+<hr/>
+</div>
+<div class="sect2">
+<h3 id="_equal">Equal</h3>
+<div class="paragraph">
+<p>Last but not least for equal holds:</p>
+</div>
+<div class="paragraph image">
+<p>\huge
+\[
+\begin{array}{l}
+A_{1}=B_{1}; A_{2}=B_{2};A_{3}=B_{3};A_{4}=B_{4} ⇒  E=1 \\
+E = \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}} \quad \overline {A_{4} \oplus B_{4}}
+\end{array}
+\]</p>
+</div>
+<div class="paragraph">
+<p>Thus, the logical circuit is designed as follows:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/four-bit-comparator.svg" alt="four bit comparator" width="120%"/></span></p>
+</div>
+<div class="sect3">
+<h4 id="_comparator_circuit">Comparator circuit</h4>
+<div class="paragraph">
+<p>The 4063 cmos IC is a 4 bit comparator IC.
+It can be cascaded to cover wider bit ranges.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shift_operations">Shift operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next important set of operations are the shift
+operations. Those can be divided in logical as
+well as arithmetic shift operations.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/logical_shift.svg" alt="logical shift" width="100%"/></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/arithmetic_shift.svg" alt="arithmetic shift" width="100%"/></span></p>
+</div>
+<div class="paragraph">
+<p>As you may have noticed, in the last posts we have not even mentioned
+the two more advanced fundamental arithmetic operations multiplication and divison of integers.
+mul and div are very elaborate operations compared to addition and subtraction.</p>
+</div>
+<div class="paragraph">
+<p>Simple CPUs and microprocessors do not even have multiplier units or division units.
+The instructions have to be programmed as a software routine,
+we go into this in more details in another blogpost.
+(And then there is of course also floating point arithmetic, even more complex than our currently discussed
+integers).</p>
+</div>
+<div class="paragraph">
+<p>The now introduced arithmetic shift operations solves multiplication and division operations at least
+for a subset of powers of two:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>An arithmetic left shift of a two’s complement value by n bits equals a multiplication by 2<sup>n</sup>.
+(Given no overflow is produced)</p>
+</div>
+</blockquote>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>An arithmetic right shift equals the floor of a division by 2<sup>n</sup>.</p>
+</div>
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="_a_simple_shifter">A simple Shifter</h3>
+<div class="paragraph">
+<p>The gate-level implementation of a simple shifter
+is shown below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/shifter_register_level.svg" alt="shifter register level" width="100%"/></span></p>
+</div>
+<div class="paragraph">
+<p>Next we see the truth table for the decoder logic,
+the derivation of the netlist is left as excercise
+for the reader.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Sel1</th>
+<th class="tableblock halign-left valign-top">Sel0</th>
+<th class="tableblock halign-left valign-top">R</th>
+<th class="tableblock halign-left valign-top">nop</th>
+<th class="tableblock halign-left valign-top">L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We see the gate-level implementation of such a shifter- is shown for
+the operations is realised in pass-transistor-logic (Reference: VLSI
+ Design by K.Lal Kishore and V.S.V Prabhakar).</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/shifter_ptl.svg" alt="shifter ptl" width="100%"/></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_barrel_shifter">Barrel Shifter</h3>
+<div class="paragraph">
+<p>A more sophisticated shifter implementation is the so known barrel shifter.
+The barrel shifter allows a shift over multiple bits in one go.</p>
+</div>
+<div class="paragraph">
+<p>An implementation in pass-transistor-logic is shown below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/how_does_cpu/barrel_shifter_ptl.svg" alt="barrel shifter ptl" width="100%"/></span></p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: March 19, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

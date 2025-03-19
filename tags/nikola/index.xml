@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nikola on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/nikola/</link>
+    <description>Recent content in Nikola on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 12 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/nikola/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up a static blog with Nikola</title>
+      <link>http://wehrend.uber.space/posts/web/00_setting_up_nikola/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/00_setting_up_nikola/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;I picked up Nikola some months ago as I was searching for a simple static-site-generator to setup a blog with minimal effort.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;To make things a bit more interesting and at the same time easier we will use Nikola in a Docker container.&#xA;So I require an almost basic understanding for Docker here.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;First create a directory on our host system, where you want the files stored, e.g. &amp;#39;blog&amp;#39; in your home directory.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Odoo on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/tags/odoo/</link>
+    <description>Recent content in Odoo on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 26 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/tags/odoo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modify the Odoo Frontend</title>
+      <link>http://wehrend.uber.space/posts/web/29_odoo_with_frontend/</link>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/29_odoo_with_frontend/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today, I want to show you how you can modify your Odoo frontend, I wont go to deep into owl and&#xA;instead just show the basic steps for implementing modifications and changes via HTML5, CSS und javascript.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Lets dive in and wet the toes.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We begin by writing a short cut-through css file to change and modify the view&#xA;(in my example case here removing carets on the provisioning reports) but feel free to change any other element (or attribute)&#xA;you want&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Setup your python based backend system on Debian Bullseye</title>
+      <link>http://wehrend.uber.space/posts/web/28_setup_your_python_based_project/</link>
+      <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/28_setup_your_python_based_project/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Here I wanted to document how to setup a python based backend (here: Odoo, but it could also be for example Django) on a pristine Debian / Ubuntu on&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;After a new installation of Debian / Ubuntu you need to install a couple of packages to start of with a usable system, we&#xA;add the following packages via apt-get:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;literalblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;pre&gt;sudo apt-get install chromium, git, qdirstat, make, build-essential, python3&lt;/pre&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;(Qdirstat is not needed always needed but sometimes helpful to have for a shell equivalent you can also use / install ncdu instead.)&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Odoo hacks: Remove Lock-Button from Odoo v12</title>
+      <link>http://wehrend.uber.space/posts/web/04_odoo_hacks/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/posts/web/04_odoo_hacks/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Today I want to introduce a solution for a usability-problem I had in Odoo recently.&#xA;In Odoo 12 there is a lock button next to the edit / save button, and you have to click&#xA;both to (1) unlock the page and (2) make it editable. This should be done in one&#xA;step, effectively removing the locking mechanism used in the Delivery Orders (class StockPicking)&#xA;and Manufacturing Orders (class MrpProduction). The solution requires an xml and a javascript-file&#xA;as well as a dedicated web-controller. The soliution is presented below.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

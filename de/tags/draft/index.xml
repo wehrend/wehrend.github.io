@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Draft on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://wehrend.uber.space/de/tags/draft/</link>
+    <description>Recent content in Draft on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://wehrend.uber.space/de/tags/draft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How does a CPU work 2? Overview</title>
+      <link>http://wehrend.uber.space/de/pages/overview2/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/pages/overview2/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_wie_funktioniert_eine_cpu_2_inhaltsverzeichnis&#34;&gt;Wie funktioniert eine CPU 2 - Inhaltsverzeichnis&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_von_kombinatorischer_zu_sequentieller_logik_einführung&#34;&gt;&lt;strong&gt;Von kombinatorischer zu sequentieller Logik - Einführung&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://wehrend.uber.space/docs/digital_logic_2/10_sequential_logic&#34;&gt;Einführung in sequentielle Logik&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen Logikschaltungen mit irgendeiner&#xA;Art von Speicher (meistens Flipflops)&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_uhren_flipflops_und_register&#34;&gt;&lt;strong&gt;Uhren, Flipflops und Register&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://wehrend.uber.space/docs/digital_logic_2/11_clocks_and_registers/&#34;&gt;Uhren, Flipflops und Register&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,&#xA;wie Uhr, Flipflops und Register&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>X2_cordic (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_x/x2_cordic/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_x/x2_cordic/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_der_cordic_algorithmus_und_die_direkte_digitale_synthese_dds&#34;&gt;Der CORDIC-Algorithmus und die direkte digitale Synthese (DDS)&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Der CORDIC-Algorithmus (Abkürzung für „Coordinate Rotation Digital Computer“) wurde 1956 von Jack.E. Volder entwickelt, um&#xA;die analogen Drehmelder, die für die Navigation von Raketen verwendet wurden, durch digitale Berechnungen auf einem Digitalcomputer zu ersetzen.&#xA;Der Algorithmus erwies sich als sehr erfolgreich und ist heute in jedem Taschenrechner zu finden, wo er&#xA;Berechnung der trigonometrischen Funktionen Sinus, Kosinus und Tangens. Der Algorithmus ist jedoch nicht darauf beschränkt,&#xA; sondern kann nach den erforderlichen Änderungen auch logarithmische und exponentielle Funktionen berechnen.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>X0_multiplication (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic_x/x0_multiplication/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic_x/x0_multiplication/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_multiplikation_und_division&#34;&gt;Multiplikation und Division&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Multiplikationsoperationen können auf sehr unterschiedliche Weise implementiert werden&#xA;: Langsam, als serielle Operation, gesteuert durch ein&#xA;Mikroprogramm oder schnell in dedizierter Hardware.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Die Division ist eine komplexere Operation und wird daher&#xA;in einem anderen Beitrag behandelt.&#xA;Auch für die Multiplikation legen wir den Umfang auf vorzeichenlose Ganzzahlen fest.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect2&#34;&gt;&#xA;&lt;h3 id=&#34;_links_und_rechtsverschiebung&#34;&gt;Links- und Rechtsverschiebung&lt;/h3&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Für Multiplikatoren, die Zweierpotenzen sind, ist die Operation sehr&#xA;einfach und kann durch eine Linksverschiebung implementiert werden.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>07_RISC-V (de)</title>
+      <link>http://wehrend.uber.space/de/docs/digital_logic/07_risc_v/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/docs/digital_logic/07_risc_v/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_digitales_design_trifft_auf_computerarchitektur&#34;&gt;Digitales Design trifft auf Computerarchitektur&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;h1 id=&#34;_risc_vs_cisc_und_die_risc_v_architektur&#34; class=&#34;sect0&#34;&gt;RISC vs. CISC und die RISC-V-Architektur&lt;/h1&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden:&#xA;Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen.&#xA;Während Miniprozessoren wie ARM für eingebettete Systeme meist reduzierte Befehlssätze verwenden&#xA;, sind heutige Workstation- und Server-Architekturen (x86, x86_64) Mischformen aus RISC und CISC.&#xA;Die Idee eines reduzierten Befehlssatzes besteht darin, große komplexe Anweisungen und mehrere unterschiedliche&#xA;Adressierungsmodi (wie sie typischerweise in x86-Architekturen verwendet werden) zu vermeiden.&#xA;Zu den Vorteilen einer RISC-Architektur gehören kürzere Pipelines, die eine schnellere Taktung ermöglichen.&#xA;RISC-Architekturen folgen einem einfachen Schema: „Abrufen → Dekodieren → Operanden abrufen → Ausführen → Zurückschreiben“&#xA;Außerdem haben Anweisungen eine konstante Länge, Speicheroperationen sind von arithmetischen Operationen getrennt,&#xA;was als Load/Store-Architektur bekannt ist. RISC-V ist ein offener Standard für die Befehlssatzarchitektur (ISA).&#xA;Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>How does a CPU work? Overview</title>
+      <link>http://wehrend.uber.space/de/pages/overview/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://wehrend.uber.space/de/pages/overview/</guid>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_wie_funktioniert_eine_cpu_inhaltsverzeichnis&#34;&gt;Wie funktioniert eine CPU - Inhaltsverzeichnis&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_einführung_und_überblick&#34;&gt;&lt;strong&gt;Einführung und Überblick&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;em&gt;Einführung und Überblick&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Jedes Thema dieses Kurses ist in zwei Teile gegliedert:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Ein Teil über die mathematische Seite der digitalen Logik,&#xA;idealerweise fast unabhängig von Implementierungsdetails&#xA;und ein konkreterer Teil, der genau diese Details behandelt.&#xA;Im konkreten Teil werden wir hauptsächlich die Implementierung&#xA;auf einer elektrischen Ebene diskutieren, obwohl auch andere Lösungen&#xA;möglich sind, die auf &lt;a href=&#34;https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f&#34;&gt;Fluiddynamik&lt;/a&gt; oder&#xA;&lt;a href=&#34;https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226&#34;&gt;optische Gatter&lt;/a&gt; basieren.&#xA;Die meisten Computer und Logikgatter basieren immer noch auf Elektronik und Halbleitertechnologie, und das wird sich&#xA;auch mit &lt;a href=&#34;https://www.azom.com/article.aspx?ArticleID=17173&#34;&gt;Quantencomputing&lt;/a&gt; nicht ändern, das hauptsächlich an die&#xA;Wahrscheinlichkeitstheorie gebunden ist bzw. diese ergänzt. Mit dem Quantencomputing&#xA;werden sich jedoch die Grundlagen, die der Autor hier beschreibt, vollständig ändern.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>
