@@ -1,6 +1,6 @@
 ---
 title: "Move Hugo Web-presence to GH-Pages"
-date: 2025-02-26
+date: 2025-03-16
 tags: ["hugo","web","gh-pages"]
 draft: false
 type: blog
@@ -12,52 +12,42 @@ We start with the Makefile. My new setup looks like the following:
 
 ----
 {{<highlight Makefile>}}
-# ~/development/hugo/blog#
 include credentials.mk
 
-# Name des Ordners, in dem Hugo die Website baut
-BUILD_DIR := wehrend.github.io
+build_dir := wehrend.github.io
 
-.PHONY: up deployment cleanup
-
-# Lokalen Hugo-Server starten
 up:
 	hugo serve --disableFastRender --renderStaticToDisk --ignoreCache --config ./content/config.toml
 
-# Deployment:
-# 1. Baut die Website in BUILD_DIR.
-# 2. Prüft, ob es Änderungen im BUILD_DIR gibt (im Vergleich zum HEAD).
-#    Falls ja, wird interaktiv eine Commit-Nachricht abgefragt und
-#    nur der Inhalt von BUILD_DIR wird gestaged und committet.
-# 3. Anschließend wird mit "git subtree push" der Inhalt des BUILD_DIR in den Remote-Branch "gh-pages" übertragen.
 deployment:
 	@echo "Building site..."
-	hugo -D -d $(BUILD_DIR) --config ./content/config.toml
-	@echo "Checking for changes in $(BUILD_DIR)..."
-	@if ! git diff --quiet HEAD -- $(BUILD_DIR); then \
+	hugo -D -d $(build_dir) --config ./content/config.toml
+	@echo "Changing directory to output folder..."
+	@cd $(build_dir) && \
+	if [ -n "$$(git status --porcelain)" ]; then \
+		echo "Adding changes..."; \
+		git add .; \
 		read -p "Enter commit message: " COMMIT_MSG; \
-		echo "Staging changes in $(BUILD_DIR)..."; \
-		git add $(BUILD_DIR); \
 		echo "Committing changes..."; \
 		git commit -m "$$COMMIT_MSG"; \
+		echo "Pushing to GitHub via SSH with credentials..."; \
+		GIT_SSH_COMMAND="sshpass -p $(SSH_PASS) ssh" git push git@github.com:wehrend/hugo_blog.git main; \
 	else \
-		echo "No changes in $(BUILD_DIR) to commit."; \
+		echo "No changes to commit."; \
 	fi
-	@echo "Pushing subtree to gh-pages branch..."
-	@git subtree push --prefix=$(BUILD_DIR) https://$(GIT_USER):$(GIT_PASS)@github.com/wehrend/wehrend.github.io.git gh-pages
 
-# Cleanup: Löscht das Build-Verzeichnis
+
 cleanup:
 	@echo "Cleaning up..."
-	rm -rf $(BUILD_DIR)
+	rm -rf ./wehrend.github.io
 	@echo "Cleanup complete."
+
 {{</highlight>}}
 ----
 and the credentials.mk file shown below which should be explicit in the .gitignore tp prevent secrets fromm being leaked.
 
 ----
-GIT_USER = <user>
-GIT_PASS = <password or token>
+SSH_PASS = <password or token>
 ----
 
 Next, before doing incremental changes, first we need to create a repository for the pages as is described https://pages.github.com/[here]:

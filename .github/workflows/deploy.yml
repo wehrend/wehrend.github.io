@@ -1,0 +1,58 @@
+name: Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'hugo_blog/**'
+      - 'hugo_content/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_VERSION: "0.0.80"   # Update this version number as needed.
+    defaults:
+      run:
+        working-directory: hugo_blog
+
+      steps:
+      - name: Checkout Hugo Blog repository
+        uses: actions/checkout@v3
+        with:
+          path: hugo_blog
+          fetch-depth: 0
+
+      - name: Checkout Hugo Content repository
+        uses: actions/checkout@v3
+        with:
+          repository: wehrend/hugo_content
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: hugo_blog/hugo_content
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build the site with Hugo
+        run: hugo -D -d wehrend.github.io --config config.toml --contentDir hugo_content
+
+      - name: Write version number to file
+        working-directory: wehrend.github.io
+        run: |
+          echo "Deploy version: $DEPLOY_VERSION"
+          echo "$DEPLOY_VERSION" > version.txt
+
+      - name: 'Deployment: Commit and push build changes'
+        working-directory: wehrend.github.io
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Automated deployment commit - version $DEPLOY_VERSION" || true
+          git push origin main
