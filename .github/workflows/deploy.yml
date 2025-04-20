@@ -29,7 +29,7 @@ jobs:
           sudo dpkg -i hugo.deb
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --config /home/runner/work/content/content/config.toml
+          hugo --gc --minify --config /home/runner/work/content/content/config.toml --debug --verbose
           ls -la wehrend.github.io
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
