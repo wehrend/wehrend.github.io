@@ -30,7 +30,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --config /home/runner/work/content/content/config.toml
+          hugo --gc --minify --config content/config.toml
           echo "Build complete. Contents of content/wehrend.github.io/:"
           ls -la content/wehrend.github.io
 
@@ -39,7 +39,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: wehrend.github.io
+          publish_dir: content/wehrend.github.io
           user_name: wehrend
           user_email: sven.wehrend@gmail.com
           disable_nojekyll: true
