@@ -31,7 +31,7 @@ jobs:
           sudo dpkg -i hugo.deb
 
       - name: Build Hugo site
-        working-directory: content/content
+        working-directory: contennt
         run: |
           hugo --gc --minify
           echo "Build complete. Contents of wehrend.github.io/:"
@@ -42,7 +42,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: content/content/wehrend.github.io
+          publish_dir: content/wehrend.github.io
           user_name: wehrend
           user_email: sven.wehrend@gmail.com
           disable_nojekyll: true
