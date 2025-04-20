@@ -30,7 +30,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --source content
+          hugo --gc --minify --source content/content
           echo "Build complete. Contents of wehrend.github.io/:"
           ls -la content/wehrend.github.io
 
