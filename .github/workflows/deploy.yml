@@ -31,7 +31,7 @@ jobs:
           sudo dpkg -i hugo.deb
 
       - name: Build Hugo site
-        working-directory: contennt
+        working-directory: content
         run: |
           hugo --gc --minify
           echo "Build complete. Contents of wehrend.github.io/:"
