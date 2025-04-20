@@ -1,0 +1,21 @@
+---
+title: Separiere Blog und Inhalt (de)
+date: 2023-02-04
+tags: ["web", "Hugo"]
+draft: false
+type: blog
+---
+
+Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da
+ein Blog und sein Inhalt selbst unterschiedliche Einheiten sind. Ich wollte sie als solche behandeln,
+was mich zu einer Bereinigung des ursprünglichen Quellcodes für den Blog führte, bei der ich den Inhaltsordner
+in ein anderes Repo namens hugo_content verschob, das frühere Repo nannte ich hugo_blog.
+---
+
+In meinem Fall bedeutet dies, dass Sie zuerst das Repo hugo_blog klonen müssen,
+ in das neue Verzeichnis wechseln (cd hugo), seinen Zweig „hugo“ auschecken und dann einen Klon des
+Repos hugo_content erstellen.
+
+Edit / Update vom 31.12.2024:
+Idealerweise kann auch die config.toml in das Inhaltsverzeichnis gelegt und über hugo serve -c ../content/config.toml aufgerufen werden,
+ aber das habe ich noch nicht gemacht ...

@@ -1,0 +1,124 @@
+---
+title: X2_cordic
+date: 2023-03-26
+category:
+link:
+description:
+tags: ['draft']
+type: text
+menu:
+  docs:
+    parent: "digital_logic_3"
+    identifier: "x2_cordic"
+    weight: 35
+---
+
+== The CORDIC algoritm and direct digital synthesis (DDS)
+
+The CORDIC (which stands for "coordinate rotation digital computer") algorithm, was developed in 1956 by Jack.E. Volder, to
+replace the analog resolvers used for missiles navigation by digital computation on digital computer.
+The algorithm turned out to be very successfull, today it can be found in every pocket calculator, doing
+the computation of the trigonometrical functions sinus, cosinus and tangens. But the algorithm is not limited to that
+it can also calculate logarithmic and exponential functions, given the needed modifications.
+
+image:../images/unit_circle.svg[width=40%]
+
+== The CORDIC algorithm
+In the image below, V0 shows the start vector
+
+[role="image","../images/startvector.svg",imgfmt="svg", width="70%"]
+\[v_{0}=\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+\]
+image:../images/cordic_circle.svg[width=40%]
+
+
+
+which we now iterate, by multiplying it with the rotation matrix, given below:
+[role="image","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
+\[v_{i+1}= R_i v_i\]
+
+[role="image","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
+\[ R_i = \begin{bmatrix}
+cos(\theta) & -sin(\theta) \\
+sin(\theta) & cos(\theta)
+\end{bmatrix}
+\]
+We use the following two trigonometric identities:
+
+[role="image","../images/trigonometric_identity_cos.svg",imgfmt="svg", width="70%"]
+\[
+cos(\theta) = \frac{1}{\sqrt{1+tan^2(\theta)}}
+\]
+
+[role="image","../images/trigonometric_identity_cos.svg",imgfmt="svg", width="70%"]
+\[
+sin(\theta) = \frac{tan(\theta)}{\sqrt{1+tan^2(\theta)}}
+\]
+
+the rotation matrix becomes
+
+[role="image","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
+\[ R_i =   \frac{1}{\sqrt{1+tan^2(\theta)}} \begin{bmatrix}
+1 & -tan(\theta) \\
+tan(\theta) & 1
+\end{bmatrix}
+\]
+
+Then the rotation vector $v_{i+1}= R_i v_i$ becomes:
+
+
+[role="image","../images/vector_rotation_1.svg",imgfmt="svg", width="70%"]
+\[ \begin{bmatrix}
+x_{i+1} \\
+y_{i+1} \\
+\end{bmatrix} =   \frac{1}{\sqrt{1+tan^2(\theta)}} \begin{bmatrix}
+1 & -tan(\theta) \\
+tan(\theta) & 1
+\end{bmatrix}\begin{bmatrix}
+x_{i} \\
+y_{i} \\
+\end{bmatrix}
+\]
+
+We replace the tangens function with a simpler expression, resulting in a bit shift.
+[role="image","../images/vector_rotation_2.svg",imgfmt="svg", width="70%"]
+\[ \begin{bmatrix}
+x_{i+1} \\
+y_{i+1} \\
+\end{bmatrix} =  K_{i} \begin{bmatrix}
+1 & -\sigma 2^{-i} \\
+\sigma 2^{-i} & 1
+\end{bmatrix}\begin{bmatrix}
+x_{i} \\
+y_{i} \\
+\end{bmatrix}
+\]
+where
+
+[role="image","../images/vector_rotation_Ki.svg",imgfmt="svg", width="70%"]
+\[ K_{i} =   \frac{1}{\sqrt{1+2^{-2i}}} \]
+
+and $\sigma_i$ is used to determine the direction of the rotation. If the angle $\theta_{i}$ is
+positive then $\sigma{i}$ is +1, otherwise -1.
+
+The factor Ki can be factored completly for the iterative process.
+
+[role="image","../images/vector_rotation_Kn.svg",imgfmt="svg", width="70%"]
+\[ K(n) =   \prod_{i=0}^{n-1}K_{i} = \prod_{i=0}^{n-1} \frac{1}{\sqrt{1+2^{-2i}}} \]
+
+[role="image","../images/vector_rotation_Kn.svg",imgfmt="svg", width="70%"]
+\[ K = lim_{n-> \infty} K \approx  0.60725293500888 \]
+
+
+
+
+
+
+image:../images/dds_principle.svg[width=75%]
+
+
+
+

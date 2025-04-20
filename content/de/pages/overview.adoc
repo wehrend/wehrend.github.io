@@ -1,0 +1,94 @@
+---
+title: How does a CPU work? Overview
+date: 2020-12-20
+tags: [ 'draft']
+category:
+link:
+description:
+---
+== Wie funktioniert eine CPU - Inhaltsverzeichnis
+
+== *Einführung und Überblick*
+
+_Einführung und Überblick_
+
+Jedes Thema dieses Kurses ist in zwei Teile gegliedert:
+
+Ein Teil über die mathematische Seite der digitalen Logik,
+idealerweise fast unabhängig von Implementierungsdetails
+und ein konkreterer Teil, der genau diese Details behandelt.
+Im konkreten Teil werden wir hauptsächlich die Implementierung
+auf einer elektrischen Ebene diskutieren, obwohl auch andere Lösungen
+möglich sind, die auf https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f[Fluiddynamik] oder
+https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226[optische Gatter] basieren.
+Die meisten Computer und Logikgatter basieren immer noch auf Elektronik und Halbleitertechnologie, und das wird sich
+auch mit https://www.azom.com/article.aspx?ArticleID=17173[Quantencomputing] nicht ändern, das hauptsächlich an die
+Wahrscheinlichkeitstheorie gebunden ist bzw. diese ergänzt. Mit dem Quantencomputing
+werden sich jedoch die Grundlagen, die der Autor hier beschreibt, vollständig ändern.
+
+== *Kombinatorische Logik*
+_https://wehrend.uber.space/docs/digital_logic/00_combinatorial_logic[Einführung in die kombinatorische Logik]_
+
+Kurze Einführung in die kombinatorische Logik und ihre verschiedenen Beschreibungsmodelle.
+
+== *Ein erster Blick auf die digitale Logik*
+
+_https://wehrend.uber.space/de/docs/digital_logic/01_boolean_algebra/[Boolesche Algebra, grundlegende Logikgatter und ihre
+Implementierung]_
+
+In dieser Lektion werden wir Wahrheitstabellen und Boolesche Notation entdecken und etwas über
+De Morgans Gesetze lernen.
+
+Außerdem werfen wir einen Blick auf die grundlegendsten Logikgatter und warum sie in der Elektronik normalerweise nicht
+als solche implementiert werden, sondern sehen uns stattdessen NAND und NOR an.
+
+== *Sie müssen wählen!*
+
+_https://wehrend.uber.space/de/docs/digital_logic/02_xor/[Ein komplexes Gatter: XOR]_
+
+Eine weitere CPU-Anweisung und als Randbemerkung und Vorbereitung auf das nächste Thema
+sehen wir uns das XOR-Gatter an. Wie in der ersten Lektion sehen wir uns zuerst den logischen
+Teil und dann seine Übersetzung in eine elektrische Implementierung an.
+
+== *01+01 = 10*
+
+_http://wehrend.uber.space/de/docs/digital_logic/03_binary_system/[Binärsysteme (Teil I) und kombinatorische Logik (Teil I)]_
+
+Hier erklären wir das grundlegende Konzept des Zählens mit nur zwei verschiedenen Zuständen.
+
+Außerdem lernen wir, wie man zwei positive ganzzahlige Werte im Binärsystem summiert, leiten
+die für einen Volladdierer erforderliche Logik ab und tauchen in das Thema der kombinatorischen Logik ein.
+
+== *Im negativen Raum ist viel Platz*
+
+_http://wehrend.uber.space/de/docs/digital_logic/04_signs/[Binärsysteme (Teil II) vorzeichenbehaftete Ganzzahlen]_
+
+Zweiter Teil über das Binärsystem. In diesem Beitrag lernen wir Einser- und Zweierkomplement sowie Subtraktion.
+
+== *Addieren ist nicht alles*
+
+_http://wehrend.uber.space/de/docs/digital_logic/05_alu/[Kombinatorische Logik (Teil II), eine einfache ALU]_
+
+Wir wollen die erste Serie mit diesem zweiten Kapitel über kombinatorische Logik abschließen.
+
+Wir werden den Addierer zu einer einfachen ALU erweitern.
+
+== *Überblick, was als nächstes kommt*
+
+_Von kombinatorisch zu sequentiell_
+
+In diesem ersten Kurs haben wir einige Grundlagen der digitalen Logik gelernt. Aber all diese Beispiele
+verwenden nur statische Logik, uns fehlt noch ein Konzept, wie berechnete Werte gespeichert werden.
+
+Wir müssen das Konzept von Registern und sequentieller Logik lernen.
+Dies wird das Hauptthema der zweiten Beitragsreihe sein.
+
+= Extra
+
+== *Lass mich das nachschlagen*
+
+_Erster Blick auf Speicher und Look-Up-Tables (LUTs)_
+
+In dieser Lektion lernen wir, dass – im Prinzip – jede Form kombinatorischer Logik
+in „Software“ umgewandelt werden kann, indem man sie in den Speicher legt. In einem praktischen Beispiel werden wir
+zeigen, wie ein DDS-Sinuswellengenerator eine Look-Up-Table (LUT) verwendet, um den Sinus zu replizieren.

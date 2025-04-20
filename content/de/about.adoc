@@ -1,0 +1,25 @@
+---
+title: About
+slug: about
+date: 2020-12-12
+---
+
+Ein einfaches, statisches Blog, in dem ich über Themen wie Elektronik & Computer und - vielleicht - Philosophie schreibe.
+
+'''
+Lieber Leser meines bescheidenen Blogs, ich bin Sven Wehrend, eine 1987 geborene Scanner-Persönlichkeit, die sich für ein breites Spektrum an verschiedenen Themen interessiert, das von Technik über Psychologie bis hin zu Spiritualität reicht.
+
+Ich habe Technische Informatik an der HTW Berlin (Bachelor) und der TU Berlin (Master) studiert.
+
+'''
+
+Impressum und Addresse:
+Sven Wehrend
+Eythstrasse 20
+12105 Berlin
+
+Email: sven.wehrend[at]gmail.com
+
+
+Übersetzt mit DeepL.com (kostenlose Version)
+

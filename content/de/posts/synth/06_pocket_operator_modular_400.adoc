@@ -1,0 +1,38 @@
+---
+title: "The Pocket Operator Modular 400 patch ideas (II)"
+date: 2023-05-14
+tags: ["audio", "Synth"]
+draft: false
+type: blog
+---
+
+image:../plong_plong_plong.jpg[Plong...]
+
+link:../plong_plong_plong.mp4[Plong... Video]
+
+With the random module we can sample & hold a signal from the input. Its companionship is the noise module.
+We feed the saw output to the input of the rand module.
+
+image:../beep_bleep.jpg[Beep,bleep...]
+
+link:../beep_bleep.mp4[Beep,bleep... Video]
+
+'''
+
+. sine output -> speaker right
+. envelope output -> sine key
+. LFO square -> envelope trig
+. LFO square -> sine fm
+
+
+image:../sweeping_sinus.jpg[Sweeping sinus...]
+
+link:../sweeping_sinus.mp4[sweeping sinus... Video]
+
+We can expand the setup by using the sequencer and utilize the filter. Because  the nice
+thing about modular synthesizers is, that the filter can be used not only in signal paths but
+also in control paths ;-) .
+
+. filter output -> sine control
+. sequencer output -> filter input
+---

@@ -1,0 +1,248 @@
+.. title: How does a CPU work? The swiss knife (Part II)
+.. slug: how-does-a-cpu-work-alu-2
+.. date: 2022-02-09
+.. category:
+.. link: 
+.. description: 
+.. type: text
+
+== ALU (Arithmetic Logic Unit)
+
+=== Instruction table
+
+[options="header"]
+|==================
+| logic operations | description| implementation | data type / size
+| and              | basic boolean Op| -            | bit
+| or               | basic boolean Op|-             | bit
+| not              | basic boolean Op|-             | bit
+| xor              | complex boolean Op|-             | bit
+| shl              | shift left |- |various
+| shr              | shift right|- |various 
+|==================
+
+[options="header"]
+|==================
+| control instructions | description| data type / size
+| ld  | load  | various
+| st  | store | various
+| jx  | jump (x= gt,eq, lt )   | various
+
+|==================
+
+[options="header"]
+|==================
+| arithmetic operations|description| implementation | data type / size
+| ashl             | arithmetic shift left |- | various
+| ashr             | arithmetic shift right|- | various
+| inc             | increment |- | various
+| dec             | decrement |- | various
+| add |addition | - | (u) integer
+| sub |subtraction | - | (u) integer
+| mul | multiplication | software-routine or HW | (u)integer
+| div | division | software-routine or HW | (u)integer
+| sin | sine     | software-routine (Cordic) | (u) integer
+| cos | cosine     | software-routine (Cordic) | (u) integer
+| tan | tangens    | software-routine (Cordic) | (u) integer
+|==================
+
+
+== Compare operations
+The first type of instructions we have nor called not even discussed
+are compare instructions. We first show a comparator for a single bit,
+and then derive an comparator for arithmetic operations.This whole section 
+is just a quotation, the original source is found 
+https://www.electrical4u.com/digital-comparator/[here].
+
+
+
+[options="header"]
+|==================
+| A | B | > (G) | = (E)| < (L)
+| 0 | 0 | 0 | 1 | 0
+| 0 | 1 | 0 | 0 | 1
+| 1 | 0 | 1 | 0 | 0
+| 1 | 1 | 0 | 1 | 0
+|==================
+
+This leads us to three simple boolean equations (greater than, equal, less than):
+
+
+[role="image","../images/greater_than.svg",imgfmt="svg", width="22%"]
+\[ G = A\overline{B} \]
+
+[role="image","../images/equal.svg",imgfmt="svg", width="30%"]
+\[ E = \overline {A \oplus B} \]
+
+[role="image","../images/less_than.svg",imgfmt="svg", width="22%"]
+\[ L = \overline{A}B \]
+
+image:../images/how_does_cpu/single-bit-comparator.svg[width="80%"]
+
+We extend this scheme to a  4 bit width comparator as follows:
+
+[role="image","../images/A_B.svg",imgfmt="svg", width="70%"]
+\[ A = A_{1}A_{2}A_{3}A_{4} \quad and \quad B=B_{1}B_{2}B_{3}B_{4} \]
+
+''''
+=== Greater than
+
+[role="image","../images/G_equations.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+(1) \quad A_{1} > B_{1} => A > B \quad or \quad G=1 \\
+(2) \quad A_{1} = B_{1};A_{2} > B_{2} => A > B  \quad or \quad G=1 \\
+(3) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} > B_{3} => A > B  \quad or \quad G=1 \\
+(4) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} = B_{3};A_{4} > B_{4} => A > B  \quad or \quad G=1
+\end{array}
+\]
+
+[role="image","../images/G_equations2.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+For \quad (1) \quad G = A_{1}\overline{B}_{1} \\
+For \quad (2) \quad G= \overline {A_{1} \oplus B_{1}} (A_{2}\overline{B_{2}}) \\
+For \quad (3) \quad G= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (A_{3}\overline{B_{3}}) \\
+For \quad (4) \quad G= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}}  (A_{4}\overline{B_{4}})
+\end{array}
+\]
+
+From this follows, that G=1 when either of the above equations holds...
+
+[role="image","../images/G_equations3.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+G= A_{1}\overline{B}_{1} + \overline {A_{1} \oplus B_{1}} (A_{2}\overline{B_{2}}) + 
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (A_{3}\overline{B_{3}}) + \\
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}}  (A_{4}\overline{B_{4}})
+\end{array}
+\]
+
+''''
+=== Less than
+
+[role="image","../images/L_equations.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+(5) \quad A_{1} < B_{1} => A < B \quad or \quad L=1 \\
+(6) \quad A_{1} = B_{1};A_{2} < B_{2} => A < B  \quad or \quad L=1 \\
+(7) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} < B_{3} => A < B  \quad or \quad L=1 \\
+(8) \quad A_{1} = B_{1};A_{2} = B_{2};A_{3} = B_{3};A_{4} < B_{4} => A < B  \quad or \quad L=1
+\end{array}
+\]
+
+[role="image",,"../images/L_equations2.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+For \quad (5) \quad L= \overline{A}_{1}B_{1} \\
+For \quad (6) \quad L= \overline {A_{1} \oplus B_{1}} (\overline{A_{2}}B_{2}) \\
+For \quad (7) \quad L= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (\overline{A_{3}}B_{3}) \\
+For \quad (8) \quad L= \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}}  (A_{4}\overline{B_{4}})
+\end{array}
+\]
+
+From this follows, that L=1 when either of the above equations holds...
+
+[role="image","../images/L_equations3.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+L= \overline{A}_{1}B_{1} + \overline {A_{1} \oplus B_{1}} (\overline{A_{2}}B_{2}) + 
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} (\overline{A_{3}B_{3}}) + \\
+\overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}} (\overline{A_{4}}B_{4})
+\end{array}
+\]
+
+''''
+=== Equal
+
+Last but not least for equal holds:
+
+[role="image","../images/E_equation.svg",imgfmt="svg", width="100%"]
+\huge
+\[ 
+\begin{array}{l}
+A_{1}=B_{1}; A_{2}=B_{2};A_{3}=B_{3};A_{4}=B_{4} =>  E=1 \\
+E = \overline {A_{1} \oplus B_{1}} \quad \overline {A_{2} \oplus B_{2}} \quad \overline {A_{3} \oplus B_{3}} \quad \overline {A_{4} \oplus B_{4}} 
+\end{array}
+\]
+
+Thus, the logical circuit is designed as follows:
+
+image:../images/how_does_cpu/four-bit-comparator.svg[width="120%"]
+
+==== Comparator circuit
+
+The 4063 cmos IC is a 4 bit comparator IC.
+It can be cascaded to cover wider bit ranges.
+
+
+== Shift operations
+
+The next important set of operations are the shift 
+operations. Those can be divided in logical as
+well as arithmetic shift operations.
+
+image:../images/how_does_cpu/logical_shift.svg[width="100%"]
+
+image:../images/how_does_cpu/arithmetic_shift.svg[width="100%"]
+
+As you may have noticed, in the last posts we have not even mentioned 
+the two more advanced fundamental arithmetic operations multiplication and divison of integers.
+mul and div are very elaborate operations compared to addition and subtraction.
+
+Simple CPUs and microprocessors do not even have multiplier units or division units.
+The instructions have to be programmed as a software routine, 
+we go into this in more details in another blogpost.
+(And then there is of course also floating point arithmetic, even more complex than our currently discussed
+integers).
+
+
+The now introduced arithmetic shift operations solves multiplication and division operations at least 
+for a subset of powers of two: 
+____
+An arithmetic left shift of a two's complement value by n bits equals a multiplication by 2^n^.
+(Given no overflow is produced)
+____
+
+____
+An arithmetic right shift equals the floor of a division by 2^n^.
+____
+
+=== A simple Shifter
+The gate-level implementation of a simple shifter
+is shown below.
+
+image:../images/how_does_cpu/shifter_register_level.svg[width="100%"]
+
+Next we see the truth table for the decoder logic,
+the derivation of the netlist is left as excercise 
+for the reader.
+
+[options="header"]
+|==================
+| Sel1 |Sel0 | R |  nop | L
+| 0 | 0 | 0 | 1 | 0
+| 0 | 1 | 0 | 0 | 1
+| 1 | 0 | 1 | 0 | 0
+|==================
+
+
+We see the gate-level implementation of such a shifter- is shown for
+the operations is realised in pass-transistor-logic (Reference: VLSI
+ Design by K.Lal Kishore and V.S.V Prabhakar).
+
+image:../images/how_does_cpu/shifter_ptl.svg[width="100%"]
+
+=== Barrel Shifter
+A more sophisticated shifter implementation is the so known barrel shifter. 
+The barrel shifter allows a shift over multiple bits in one go.
+
+An implementation in pass-transistor-logic is shown below.
+
+image:../images/how_does_cpu/barrel_shifter_ptl.svg[width="100%"]

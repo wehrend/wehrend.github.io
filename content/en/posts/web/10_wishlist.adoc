@@ -1,0 +1,17 @@
+---
+title: "Topics to write about - Wishlist"
+date: 2023-05-21
+tags: ["web", "blog"]
+draft: false
+type: blog
+---
+This is a small, incomplete list of topics I'd like to write about in the mid- to far future.
+
+- Caches
+- Interrupts
+- Out-of-Order execution
+- RAW, WAR and WAW conflicts
+- Filters (analog and digital)
+- Analog computers
+- neuronal networks
+- the macrobiom

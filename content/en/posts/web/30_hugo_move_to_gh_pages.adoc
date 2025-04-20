@@ -1,0 +1,63 @@
+---
+title: "Move Hugo Web-presence to GH-Pages"
+date: 2025-03-16
+tags: ["hugo","web","gh-pages"]
+draft: false
+type: blog
+---
+
+Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money. Although its only a few bucks, I thought it would be time to move on…​So this is basically a tutorial to move over to github pages…​
+
+We start with the Makefile. My new setup looks like the following:
+
+----
+{{<highlight Makefile>}}
+include credentials.mk
+
+build_dir := wehrend.github.io
+
+up:
+	hugo serve --disableFastRender --renderStaticToDisk --ignoreCache --config ./content/config.toml
+
+deployment:
+	@echo "Building site..."
+	hugo -D -d $(build_dir) --config ./content/config.toml
+	@echo "Changing directory to output folder..."
+	@cd $(build_dir) && \
+	if [ -n "$$(git status --porcelain)" ]; then \
+		echo "Adding changes..."; \
+		git add .; \
+		read -p "Enter commit message: " COMMIT_MSG; \
+		echo "Committing changes..."; \
+		git commit -m "$$COMMIT_MSG"; \
+		echo "Pushing to GitHub via SSH with credentials..."; \
+		GIT_SSH_COMMAND="sshpass -p $(SSH_PASS) ssh" git push git@github.com:wehrend/hugo_blog.git main; \
+	else \
+		echo "No changes to commit."; \
+	fi
+
+
+cleanup:
+	@echo "Cleaning up..."
+	rm -rf ./wehrend.github.io
+	@echo "Cleanup complete."
+
+{{</highlight>}}
+----
+and the credentials.mk file shown below which should be explicit in the .gitignore tp prevent secrets fromm being leaked.
+
+----
+SSH_PASS = <password or token>
+----
+
+Next, before doing incremental changes, first we need to create a repository for the pages as is described https://pages.github.com/[here]:
+
+first create a new public reposiory under  https://github.com/<username>/<username>.github.io which is in my case
+
+https://github.com/wehrend/wehrend.github.io, then we need to go to our main directory hugo and manipulatre the
+publishDir URL in the config file, so that it points to <username>.github.io instead of public,
+then do an add *, followed by a git commit and git push origin main .
+
+
+
+

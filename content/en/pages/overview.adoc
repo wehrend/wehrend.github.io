@@ -1,0 +1,97 @@
+---
+title: How does a CPU work? Overview
+date: 2020-12-20
+tags: [ 'draft']
+category:
+link:
+description:
+---
+
+== How does a CPU work - Table of contents
+
+==  *Introduction and overview*
+
+_Introduction and overview_
+
+Every topic of this course is broken up into two parts:
+A part about the mathematical side of digital logic,
+ideally almost independent from implementation details
+and a more concrete part handling this very details.
+In the concrete part we will mostly discuss the implementation
+on an electrical layer, though there are still other solutions
+possible based on https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f[fluid dynamics], 
+or https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226[optical gates], 
+most computers and logic gates are still based on electronics and semiconductor technology and this will not 
+change with https://www.azom.com/article.aspx?ArticleID=17173[quantum computing], which is mostly tied to / adjunct to
+probability theory. However with quantum computing
+the fundamentals behind which the author describes here will completly change.
+
+==  *Combinatorial Logic*
+_https://wehrend.uber.space/docs/digital_logic/00_combinatorial_logic[Introduction to Combinatorial Logic]_
+
+Short introduction to combinatorial logic,and its various description models.
+
+==  *A first look at digital logic*
+
+_https://wehrend.uber.space/docs/digital_logic/01_boolean_algebra/[Boolean Algebra, basic logic gates and their implementation]_
+
+In this lesson we will discover truth tables, boolean notation and learn about
+De Morgan's laws.
+Also we have a look at the most basic logic gates and why their are usually are not
+implemented as such in electronics, having a look at NAND and NOR instead.
+
+==  *You have to choose!*
+
+_https://wehrend.uber.space/docs/digital_logic/02_xor/[A complex gate: XOR]_
+
+Another CPU instrucion and as a side-note and preparation for the next topic, 
+we have a look at the XOR gate. As in the first lesson we'll see first the logic 
+part and then its translation into an electrical implementation.
+
+
+==  *01+01 = 10*
+
+_http://wehrend.uber.space/docs/digital_logic/03_binary_system/[Binary systems (Part I) and Combinatorial Logic (Part I)]_
+
+Here we explain the basic concept of how to count with only two different states at hand.
+Also we will learn how to sum up two positive integer values in the binary system, derivate
+the logic needed for a full-adder, to dive into the topic of combinatorial logic.
+
+==  *There is plenty room in the negative space*
+
+_http://wehrend.uber.space/docs/digital_logic/04_signs/[Binary Systems (Part II) signed integer]_
+
+Second part about the binary system. In this post we learn about one- and two-
+complement and subtraction.
+
+
+==  *Adding is not all*
+
+_http://wehrend.uber.space/docs/digital_logic/05_alu/[Combinatorial Logic (Part II), a simple ALU]_
+
+We want close the first series by this second chapter about combinatorial logic.
+We will extend the adder to a simple ALU
+
+
+==  *Outline, what comes next*
+
+_From combinatorial to sequential_
+
+In this first course we learned some basics about digital logic. But all these examples
+use only static logic, we are still lacking a concept of how to store computed values.
+We need to learn the concept of registers and sequential logic.
+This will be the main topic of the second post series.
+
+
+= Extra
+
+==  *Let me look that up*
+
+_First look into Memory and Look-Up-Tables (LUTs)_
+
+In this lesson we learn, that - in principal - every form of combinatorial logic
+can be transformed into 'software' by putting it into memory. In a practical example we will
+show how a DDS sine wave generator use a Look-Up-Table (LUT) to replicate the sine.
+
+
+

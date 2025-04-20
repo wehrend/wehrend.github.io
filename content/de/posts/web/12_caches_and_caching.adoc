@@ -1,0 +1,49 @@
+---
+title: "Zwischenspeicher und Zwischenspeichern (Caching)"
+date: 2023-06-10
+tags: ["knowhow","web"]
+draft: false
+type: blog
+---
+
+Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr
+wichtigen Mechanismus nicht bemerkt, der dem Browser zugrunde liegt und im Hintergrund arbeitet. Caching.
+Caches werden überall eingesetzt, um Zugriffszeiten und damit die
+Gesamtleistung (einer Website) zu optimieren und zu verbessern. Caching im Browser bedeutet beispielsweise, dass
+im Idealfall nur die Teile der Website, die geändert wurden, aus dem Internet geladen werden. Alles andere
+wurde bereits zuvor geladen und hat sich nicht geändert, sodass kein erneutes Laden erforderlich ist. Nicht mehr aktuelle Teile
+werden ungültig (auch als Cache-Ungültigmachung bezeichnet) und erneut von der Quelle geladen.
+Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.
+
+ Hardware-Caches, echte physische Teile aus Silizium, die sich in der Nähe der CPU befinden,
+Software-Caches, die in der Anwendung bzw. den zugrunde liegenden Bibliotheken implementiert sind
+
+Die Art von Caches, die wir hier besprechen wollen, sind die letzteren.
+
+Es gibt mehrere verschiedene Caching-Strategien, siehe auch https://realpython.com/lru-cache-python/#caching-strategies[hier],
+aber wir wollen uns hier auf die Caching-Strategie „Last-recently-Used (LRU)“ konzentrieren.
+Die Python-Bibliothek „functools“ bietet einen Dekorator @lru_cache für diese Caching-Strategie.
+Bevor Sie den Dekorator @lru_cache jedoch gedankenlos verwenden, sollten Sie über das Problem selbst nachdenken, wie
+https://msol.io/blog/tech/youre-probably-wrong-about-caching/[bereits erwähnt].
+
+
+Einfaches Beispiel aus der https://docs.python.org/3/library/functools.html#functools.lru_cache[Python-Dokumentation]:
+
+[source, python]
+----
+{{<highlight python>}}
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+>>> [fib(n) for n in range(16)]
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+
+>>> fib.cache_info()
+CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
+{{</highlight>}}
+----

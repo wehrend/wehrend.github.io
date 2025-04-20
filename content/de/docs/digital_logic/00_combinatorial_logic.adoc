@@ -1,0 +1,37 @@
+---
+title: 00_combinatorial_logic (de)
+date: 2022-04-16
+tags:
+math:
+category: 
+link: 
+description: 
+type: text
+menu:
+  docs:
+    parent: "digital_logic"
+    weight: 1
+--- 
+(translation 2024-12-29)
+
+Dieser Kurs über digitale Logik ist in zwei große Abschnitte unterteilt:
+
+1. Kombinatorische Schaltkreise (ohne Speicherelemente)
+2. Sequentielle Schaltkreise (mit Speicherelementen)
+
+image:../images/how_does_cpu/digital_logic.svg[width=500px]
+
+Während kombinatorische Schaltkreise aus booleschen Gattern bestehen, die ohne Rückkopplungsfunktion miteinander
+verbunden sind, besitzen sequentielle Gatter eine Speicherfunktion, die es ihnen ermöglicht, in einen anderen Zustand
+überzugehen.
+
+Ein kombinatorischer Schaltkreis kann einen Vektor von Eingängen mit einer Breite von _n_ und einen Vektor von Ausgängen
+mit einer Breite von _m_ haben.
+
+Kombinatorische Schaltkreise können auf verschiedene Weise beschrieben werden: als Formel, als Schaltkreis, als
+Wahrheitstabelle oder als Karnaugh-Diagramm. Alle diese Beschreibungen sind ineinander überführbar.
+
+image:../images/how_does_cpu/transition_scheme.svg[width=500px]
+
+Beginnen wir also mit den grundlegenden Logikgattern und der booleschen Algebra im
+nächsten Beitrag.

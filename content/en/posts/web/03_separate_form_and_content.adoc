@@ -1,0 +1,17 @@
+---
+title: Separating blog and content
+date: 2023-02-04
+tags: ["web", "Hugo"]
+draft: false
+type: blog
+---
+
+As the blog grow bigger and after the move to odoo, I noticed a gap in the workflow,since
+a blog and its content itself are different entities, I wanted to handle them as such,
+that led me to a cleanup of the original source code for blog, where I moved teh content folder
+into a different repo, called hugo_content, the former repo I called hugo_blog.
+---
+
+In my case, this means you have to clone the repo hugo_blog first
+go inside the new directory (cd hugo ), checkout its branch 'hugo' and then do a clone of
+the repo hugo_content.

@@ -1,0 +1,100 @@
+---
+title: 04_Signs (de)
+date: 2022-02-06
+category:
+link: 
+description: 
+type: text
+menu:
+  docs:
+    parent: "digital_logic"
+    weight: 20
+---
+
+== Erweiterung des Binärsystems
+
+Während wir im vorherigen Blogbeitrag über Addition
+die Binärzahlen nur eine Interpretation hatten,
+erweitern wir das System hier um negative (ganze)
+Zahlen.
+
+image:../images/how_does_cpu/binary_system.svg[width=300]
+
+Der einfachste Ansatz, den wir uns vorstellen können, ist die Verwendung des höchstwertigen Bits (MSB)
+als Vorzeichenbit, wobei „0“ als Vorzeichen „+“ und „1“ als Vorzeichen „-“ interpretiert wird.
+Wie wir jedoch in der folgenden Berechnung sehen, funktioniert dies nicht wie erwartet:
+
+image:../images/how_does_cpu/addition_extended.svg[width=300]
+
+=== Einerkomplement
+
+Da der vorherige Ansatz die Anforderungen nicht erfüllt, wollen wir
+hier das Einerkomplement und das Zweikomplement einführen.
+Das Einerkomplement ist einfach eine Inversion jedes Bits, unabhängig von seiner Bedeutung.
+
+[role=„image“,„../images/one-complement.svg“,imgfmt=„svg“, width=„70%“]
+\[
+\begin{array}{l}
+00000011_{2} = +3_{10} \\
+11111100_{2} = -3_{10}
+\end{array}
+\]
+
+=== Zweierkomplement
+
+Wie jedoch in der folgenden Tabelle zu sehen ist, gibt es bei der Addition immer noch eine Abweichung.
+ Daher wird in einem zweiten Schritt die invertierte Zahl um eins erhöht.
+Dies führt uns zum sogenannten Zweierkomplement, wie unten dargestellt.
+
+[role=„image“,„../images/two-complement.svg“,imgfmt=„svg“, width=„70%“]
+\[
+\begin{array}{l}
+00000011_{2} = +3_{10} \\
+11111101_{2} = -3_{10}
+\end{array}
+\]
+
+Wie in den folgenden Berechnungen zu sehen ist, erhalten wir mit dem Zweierkomplement
+die richtigen Ergebnisse.
+
+image:../images/how_does_cpu/one_and_two_complement.svg[width=500]
+
+=== Überlauf
+Wie in beiden Fällen zu sehen ist, wird sowohl beim Ein- als auch beim Zweierkomplement ein arithmetischer Überlauf erzeugt.
+Es hängt sehr stark von der CPU-Architektur ab, wie diese gehandhabt werden,
+aber in jedem Fall erhält man die Information als Flag (v).
+
+=== Implementierung der Subtraktion in einem Volladdierer
+
+Um den Volladdierer um die Logik für die Subtraktion zu erweitern, müssen wir nicht alles von Grund auf neu entwerfen. Die Eigenschaften des XOR-Gatters erlauben den ersten Schritt des Zweierkomplements, die Invertierung jedes Bits, während wir für
+den zweiten Schritt, die Inkrementierung, einfach die '1' des Subtraktionsschalters als Übertragseingang für die erste Volladdierer-Stufe verwenden.
+
+image:../images/how_does_cpu/fulladder_subtractor.svg[width=600]
+
+
+
+=== Übersichtstabelle für den Zahlenbereich -7..+7
+
+|==============================================================
+| dezimal |binär | ein Komplement | zwei Komplemente
+| +7 | 0111| 0111 | 0111
+| +6 | 0110| 0110 | 0110
+| +5 | 0101| 0101 | 0101
+| +4 | 0100| 0100 | 0100
+| +3 | 0011| 0011 | 0011
+| +2 | 0010| 0010 | 0010
+| +1 | 0001| 0001 | 0001
+| +0 | 0000| 0000 | 0000
+| -0 | 1000| 1111 | -
+| -1 | 1001| 1110 | 1111
+| - 2 | 1010| 1101 | 1110
+| -3 | 1011| 1100 | 1101
+| -4 | 1100| 1011 | 1100
+| -5 | 1101| 1010 | 1011
+| -6 | 1110| 1001 | 1010
+| -7 | 1111| 1000 | 1001
+|==============================================================
+
+// image: . ./images/how_does_cpu/digitcircle.svg[width=„100%“]
+
+(translation 2024-12-29)

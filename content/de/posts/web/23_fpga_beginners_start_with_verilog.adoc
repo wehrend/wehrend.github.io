@@ -1,0 +1,217 @@
+---
+title: "FPGA 101: Starte mit Quartus und Verilog"
+date: 2023-12-25
+tags: ["fpga","beginners","quartus", "verilog"]
+draft: false
+type: blog
+---
+Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und haben die Voraussetzungen aus
+https://wehrend.uber.space/posts/web/21_fpga_beginners/[introduction 0] sowie
+https://wehrend.uber.space/posts/web/23_fpga_beginners_1/[simple logic circuit] über die BDF-Dateien von Quartus
+erfüllt. Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen, indem wir ein weiteres Hardware-Äquivalent des in
+der Softwarewelt verwendeten Hallo-Welt-Programms erstellen – wir programmieren einen Binärzähler, der durch die
+LED-Reihe angezeigt wird, die auf unserer DE0-nano-Platine verfügbar ist. Dazu verwenden wir sowohl die Blockdiagrammdateien
+(bdf) von Quartus als auch die beliebte HDL (Hardware Description Language) Verilog.
+
+Wir öffnen also zunächst Quartus über das Desktop-Symbol. Dann gehen wir zum Menü „Datei >> Assistent für neues Projekt“,
+wie unten dargestellt, und klicken darauf.
+Dann geben wir ihm den Namen „counter“, klicken uns schnell durch die Schritte des Assistenten, es gibt nichts weiter zu
+tun, klicken Sie einfach auf OK, bis der Assistent abgeschlossen ist
+.
+In diesem Tutorial erstellen wir die folgenden Dateien:
+
+- binarycounter.v - Das Verilog-Modul mit dem Binärzähler
+- clock_divider.v - Ein Clock-Teiler, um den Systemtakt auf eine niedrige Frequenz zu verlangsamen, der das Auge noch
+folgen kann - counter.bdf - Eine Quartus-Schaltplan-Datei, um beide oben genannten Module zu verbinden und sie mit den Pins zu verbinden
+
+Wir beginnen mit dem Binärzähler.
+
+== Binärzähler in Verilog
+
+Zuerst definieren wir das Modul und geben ihm einen Namen sowie die in(s) und out(s), die es als Parameter trägt.
+Im Moment ist das sehr einfach: Wir haben clk, was kurz für clock als Eingang steht, und einen Ausgang namens out.
+[source,verilog]
+----
+{{<highlight verilog>}}
+module bin_counter(clk, out);
+{{</highlight>}}
+----
+Als Nächstes definieren wir die Eingänge bzw. Ausgänge. Der Taktgeber wird als Eingang von einem Draht definiert,
+da er in das Modul geht und nur ein einziges Signal, das hoch oder niedrig werden kann.
+Für den Ausgang definieren wir ein Register – es wird durch das Schlüsselwort reg definiert –, um die Werte zu speichern,
+gefolgt von eckigen Klammern, um zu definieren, dass der Ausgang  ein Array von 8 Bits ist,
+[0:7] bedeutet, dass wir 8 Bits haben, beginnend mit Index 0 und endend mit Index 7.
+
+[source,verilog]
+----
+{{<highlight verilog>}}
+module bin_counter(clk, out);
+
+input wire clk;
+output reg [0:7] out;
+{{</highlight>}}
+----
+
+Dann definieren wir das wesentliche Modul, indem wir angeben, was
+zwischen der begin- und der end-Anweisung geschieht, bevor wir das Schlüsselwort
+always, gefolgt von einem '@', und die Sensibilitätsliste in Klammern verwenden.
+Die Sensibilitätsliste listet den Taktgeber mit podsedge auf, d. h. er reagiert
+auf Übergänge von niedrig (0) zu hoch (1).
+Zwischen begin und end erhöhen wir einfach den Zähler des out-Signals.
+
+[source,verilog]
+----
+{{<highlight verilog>}}
+module bin_counter(clk, out);
+
+input wire clk;
+output reg [0:7] out;
+
+always @ (posedge clk)
+begin
+out <= out + 1;
+end
+{{</highlight>}}
+----
+
+Schließlich beenden wir die Modulbeschreibung mit der Anweisung „endmodule“.
+
+./binarycounter.v
+[source,verilog]
+----
+{{<highlight verilog>}}
+module bin_counter(clk, out);
+
+input wire clk;
+output reg [0:7] out;
+
+always @ (posedge clk)
+begin
+out <= out + 1;
+end
+
+endmodule
+{{</highlight>}}
+----
+
+== Taktgeber-Teiler in Verilog
+Jetzt können wir unser Taktsignal von der FPGA-Platine
+mit dem Eingang unseres Binärzählers verbinden. Aber halt – es gibt ein Problem:
+Wenn Sie einen Blick in das Datenblatt oder das Benutzerhandbuch der Platine werfen,
+sehen Sie, dass der externe Taktgeber auf der DE0-nano-Platine eine Frequenz
+von 50 MHz hat. Wir müssen diese auf eine Frequenz von etwa 1 Hz herunterteilen, was einem Zyklus pro Sekunde entspricht.
+Dazu müssen wir das Signal durch etwa 50.000.000 teilen. Um zu berechnen, wie viel Bitbreite wir
+benötigen, müssen wir eine kleine Berechnung durchführen:
+
+[role=„image“,„../images/compute_bitwidth.svg“ ,imgfmt=„svg“]
+\[50.000.000 = 2^x\]
+
+[role=„image“,„../images/compute_bitwidth_2.svg“ ,imgfmt=„svg“]
+\[x = log_{2}(50.000.000)= 25.575\]
+
+Da wir das Ergebnis aufrunden müssen, benötigen wir eine Bitbreite von 26 Bit.
+Damit hätten wir eine Frequenz von (50 MHz / 2^26) = 0,745 Hz als Ergebnis.
+Das ist weniger als 1 Hz, aber damit können wir vorerst leben.
+Was nun folgt, ist die einfache Implementierung des Zählers:
+
+./clock_divider.v
+[source,verilog]
+----
+{{<highlight verilog>}}
+module clock_divider(clk,out);
+
+input wire clk;
+output reg [0:25] out = 0;
+
+always @ (posedge clk)
+begin
+out <= out + 1;
+end
+
+endmodule
+{{</highlight>}}
+----
+
+== Zähler BDF
+
+Zuletzt erstellen wir die Datei counter.bdf, die alles zusammenhält, wie unten dargestellt.
+
+Zuerst müssen wir die Datei binarycounter.v öffnen und auf _File >> Create / Update >>
+Create Symbol Files for Current File_ klicken, wie in der folgenden Abbildung dargestellt.
+image:../quartus_create_symbol_files.png[Quartus - Symbol Files]
+
+Wir öffnen die Datei/Registerkarte clock_divider.v und wiederholen den obigen Schritt.
+
+Nach diesem Schritt finden wir die gerade neu erstellten Dateien in der Symbolbibliothek,
+öffnen die Symbolbibliothek (siehe Bild unten)
+image:../quartus_symbol_tool.png[Quartus - Symbol Tool]
+und finden die Module im Verzeichnis project.
+
+image:../quartus_library_window.png[Quartus - Library Window]
+
+image:../quartus_counter_bdf_wo_pins.png[Quartus - Counter.bdf]
+
+Als Nächstes folgen Sie den verschiedenen Build-Schritten in der Schaltplan-Datei:
+
+image:../quartus_counter_schematic_0.png[Quartus - Counter.bdf 0]
+
+image:../quartus_counter_schematic_1.png[Quartus - Counter.bdf 1]
+
+Bild:../quartus_counter_schematic_2.png[Quartus - Counter.bdf 2]
+
+Beachten Sie bei der Zuweisung der Busbreite unter „Eigenschaften“, dass die Syntax „..“ anstelle von „:“ (Semikolon) lautet!
+
+Bild:../quartus_counter_schematic_3.png[Quartus - Counter.bdf 3]
+
+Bild:../quartus_counter_schematic_4.png[Quartus - Counter.bdf 4]
+
+Bild:../quartus_counter_schematic_5.png[Quartus - Counter.bdf 5]
+
+Bild:../quartus_counter_schematic_6.png[Quartus - Counter.bdf 6]
+
+Bild:../quartus_counter_schematic_7.png[Quartus - Counter.bdf 7]
+
+== Pin-Zuordnung
+
+Als Nächstes müssen wir die Design-Eingänge und -Ausgänge mit den physischen Pins verknüpfen.
+Unten sehen Sie das Bild des Clock-Pins.
+Vergessen Sie nicht, vorher die Synthese oder zumindest die Analyse durchzuführen.
+
+Bild:../de0nano_clock.png[DE0-nano Clock]
+
+Und das Bild der LED-Ausgänge.
+
+image:../de0nano_output.png[DE0-nano Output]
+
+Und hier das Bild des Pin-Planers
+
+Für die DE0-nano-Platine müssen wir die Pins also wie folgt zuweisen:
+
+- clock50 | PIN_R8
+- led1| PIN_A15
+- led2| PIN_A13
+- led3| PIN_B13
+- led4| PIN_A11
+- led5| PIN_D1
+- led6| PIN_F3
+- led7| PIN_B1
+- led8| PIN_L3
+
+image:../quartus_pin_planner_counter.png[Quartus - Pin Planner counter]
+
+== Programmierung des Geräts
+
+Jetzt, da wir mit der ganzen Arbeit fertig sind, können wir die vollständige Synthese durchführen und unsere Platine
+programmieren.
+Gehen Sie zu „_Tools“ >> „Programmer“_ oder klicken Sie einfach auf das Programmierersymbol und verbinden Sie Ihr
+schönes FPGA-Board über USB mit dem Computer. Die Hardware sollte erkannt und angezeigt werden, ebenso
+die ausgewählte Sof-Software-Datei.
+
+image:../quartus_programmer_counter.png[Quartus - Programmer Counter]
+
+Schließlich sollten Sie sehen, wie die LEDs auf der Platine mit einer Frequenz von 0,745 Hz zählen.
+
+Hier sind auch die Projektdateien: Link:../counter.tar.gz[Counter-Projektdateien]
+
+Hinweis: Ich habe dieses Tutorial von https://siytek.com/verilog-quartus/[hier] gestohlen, aber meine eigenen Bilder und
+meinen eigenen Stil hinzugefügt.

@@ -1,0 +1,100 @@
+---
+title: Ein statisches Blog aufsetzen mit Nikola (de)
+date: 2020-12-11
+tags: ["Web", "Nikola"]
+category:
+link:
+description: How to setup Nikola (on Docker)
+type: blog
+---
+
+Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.
+
+Um die Sache etwas interessanter und gleichzeitig einfacher zu machen, werden wir Nikola in einem Docker-Container verwenden.
+Daher benötige ich hier ein fast grundlegendes Verständnis für Docker.
+
+Erstellen Sie zunächst ein Verzeichnis auf unserem Host-System, in dem die Dateien gespeichert werden sollen, z. B. „blog“ in Ihrem Home-Verzeichnis.
+
+Sie können inoffizielle Images mit der neuesten Version von Nikola wie folgt abrufen:
+
+
+ docker pull dragas/nikola
+
+und das Image ausführen, um eine (Bash-)Shell zu erhalten:
+
+
+ docker run -it --network=„host“ -v ~/blog:/nikola dragas/nikola
+
+
+Hier steht die Option „-it“ für „interaktiv“ – was sie zwar nicht tut, aber sie ist leicht zu merken, also lassen wir es so.
+Außerdem müssen wir unser Volume hinzufügen, eine Speicherressource, die vom Hostsystem und dem Docker-Container gemeinsam genutzt wird. Wir fügen also
+-v ~/blog für unseren Blog hinzu, der sich in unserem Home-Verzeichnis befindet (unter Linux, auf Windows-Systemen unterscheiden sich die Pfade).
+Außerdem müssen wir die Option --network=„host“ hinzufügen, da wir sonst nicht von unserem Host-System und damit von unserem Browser aus auf die Webseite zugreifen können.
+Wenn Sie interessiert sind, besuchen Sie https://docs.docker.com/engine/reference/run/[Docker run]
+
+Hier können Sie die üblichen Bash-Befehle wie cd, ls, ps usw. ausführen. Sie können gerne testen und erkunden
+https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je[Grundlegende Bash-Befehle] :-)
+
+Nachdem Sie sich nun ein wenig mit dem System vertraut gemacht haben, können Sie ein grundlegendes Nikola-Projekt über Folgendes starten:
+
+
+ nikola init
+
+
+Sie werden durch einige Fragen zu Ihrem Blog geführt. Als Ziel geben Sie einfach . ein.
+
+Wir erstellen einen ersten Beitrag mit:
+
+ nikola new_page -t „Hello World“
+
+
+Schreiben Sie den Beitrag auf Ihrem Host-System in einem Editor Ihrer Wahl. Er befindet sich in blog/posts/hello-world.rst und wird dann mit:
+
+
+ nikola build
+
+
+Um die Website zu testen, starten Sie den Testserver mit:
+
+ nikola serve
+
+und öffnen Sie Ihren Browser auf http://localhost:8080[http://localhost:8080] .
+
+image:../nikola_default.png[Unbenanntes Bild]
+
+
+Das ist cool, aber wir wollen jetzt sicher ein bisschen Styling und Anpassung vornehmen, da das aktuelle Aussehen ziemlich standardisiert ist.
+Der Autor bevorzugt einen schlichten und einfachen Stil ohne viel unnötigen Ballast. Also habe ich nach einem solchen Thema gesucht, aber sie waren nicht
+nach meinem Geschmack. Dann fand ich das https://themes.getnikola.com/v8/hyde/[Nikola port of Hyde]
+
+Das Thema kann installiert werden mit:
+
+ nikola theme -i hyde
+
+Nach der Installation musste das Thema in der „About“-Sektion der Seitenleiste angepasst werden. Daher weicht die hier gezeigte Version
+vom ursprünglichen Aussehen ab. Die Datei assets/css/hyde.css im Verzeichnis des frisch installierten Themas wurde angepasst.
+Idealerweise sollten die Änderungen in einer zusätzlichen Datei custom.css vorgenommen werden
+
+image:../nikola_hyde.png[Unbenanntes Bild]
+
+Jetzt viel besser!
+
+Wenn wir mit dem Ergebnis zufrieden sind, können wir unsere neue statische Website auf einem Webspace unserer Wahl bereitstellen. Dazu passen wir die Bereitstellungseinstellung
+in der Datei conf.py an. Dies kann wie folgt aussehen.
+
+[source,python]
+....
+
+DEPLOY_COMMANDS = {
+'default': [
+'rsync -rav --delete output/ user@server:/var/www/virtual/user/html',
+'rdiff-backup output ~/blog-backup',
+]
+}
+....
+
+Jetzt können wir diesen Befehl einfach durch Eingabe von
+
+ nikola deploy
+
+ausführen und die neue Website ist Teil von www.

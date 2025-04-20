@@ -1,0 +1,45 @@
+name: Build and Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.146.6
+      TZ: Europe/Berlin
+
+    steps:
+      - name: Checkout repository (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install Hugo
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i hugo.deb
+      - name: Install Asciidoctor
+        run: | 
+          sudo apt update && sudo apt install asciidoctor
+
+      - name: Build Hugo site
+        run: |
+          hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
+          ls -la wehrend.github.io
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh_pages
+          publish_dir: content/content/wehrend.github.io
+          user_name: wehrend
+          user_email: sven.wehrend@gmail.com

@@ -1,0 +1,41 @@
+---
+title: Writing about math with Asciidoc
+date: 2020-12-12
+tags: 
+category: 
+link: 
+description: 
+type: blog
+---
+
+While drafting a blog post, part of a series of posts intended to be published in the future,
+I discovered a lack of my tooling in Nikola. When adding mathematical formulas, 
+I realized that there is no default-way of rendering images from those math formulas,
+and inserting them as image-tags into the html. Instead math formulas are handled via JS, which I try 
+to reduce to an absolute minimum on my site.
+So I started to implement a rather quick-and-dirty plugin to do exactly this transformation, using 
+latex and dvipng or dvisvgm. 
+Then I come across https://erikwinter.nl/articles/2020/why-i-built-my-own-shitty-static-site-generator/[this blog post] 
+where reading about https://asciidoc.org/[asciidoc] written in python and its successor https://asciidoctor.org/[asciidoctor] written
+in ruby supporting different display formats. Ideal for the content I had in mind. So I installed the Nikola plugin asciidoc 
+(which is mostly a wrapper to the asciidoc binary called as a subprocess), via
+
+ nikola plugin -i asciidoc
+
+in my local environment and converted my blogpost(s) first semi-automatically which is, due to the metadata-section from 
+Nikola, not the very best idea and continued manually.
+After some frustrations with the paths for the latex filter inside asciidoc it was working.
+
+So as a sample of one of the future blogposts here one or rather two math-equations rendered this way:
+
+[role="image","../images/half-adder.svg",imgfmt="svg",width="45%"]
+\[
+\begin{array}{c}
+c = x \land y \\
+s = x \oplus y
+\end{array}
+\]
+
+Just as side-note: It describes a halfadder.
+
+*Edit* Improved grammar.
