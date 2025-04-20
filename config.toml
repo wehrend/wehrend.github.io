@@ -137,3 +137,7 @@ publishDir = "wehrend.github.io"
   [languages.de.markup.goldmark]
     [languages.de.markup.goldmark.renderer]
       unsafe = true
+
+[frontmatter]
+  [frontmatter.handlers]
+    adoc = "yaml"
