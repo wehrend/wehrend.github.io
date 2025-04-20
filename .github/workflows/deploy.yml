@@ -30,7 +30,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --config content/config.toml
+          hugo --gc --minify --config config.toml
           echo "Build complete. Contents of content/wehrend.github.io/:"
           ls -la content/wehrend.github.io
 
