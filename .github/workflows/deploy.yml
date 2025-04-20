@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   build-and-deploy:
@@ -19,7 +17,7 @@ jobs:
       TZ: Europe/Berlin
 
     steps:
-      - name: Checkout repository (with submodules)
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -31,11 +29,10 @@ jobs:
           sudo dpkg -i hugo.deb
 
       - name: Build Hugo site
-        working-directory: content
         run: |
-          hugo --gc --minify
+          hugo --gc --minify --source content
           echo "Build complete. Contents of wehrend.github.io/:"
-          ls -la wehrend.github.io
+          ls -la content/wehrend.github.io
 
       - name: Deploy to GitHub Pages (same repo)
         uses: peaceiris/actions-gh-pages@v4
