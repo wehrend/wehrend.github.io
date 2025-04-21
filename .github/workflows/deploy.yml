@@ -42,12 +42,6 @@ jobs:
           echo "--- Built site files ---"
           find public -type f | sort
 
-      - name: Preload artifact action (SHA-pinned workaround)
-        uses: actions/upload-artifact@3e6b6b75c47cf7f87097f551d6077f663236a989
-        with:
-          name: noop
-          path: ./   # required dummy path
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
