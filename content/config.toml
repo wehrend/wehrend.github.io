@@ -2,8 +2,6 @@ baseURL = "http://wehrend.uber.space/"
 languageCode = "en-us"
 title = "Bits & pieces - Sven Wehrend"
 theme = "hugo-book"
-defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = "en"
 publishDir = "wehrend.github.io"
 
 
