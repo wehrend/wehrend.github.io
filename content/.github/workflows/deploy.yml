@@ -34,12 +34,14 @@ jobs:
       - name: Build Hugo site
         run: |
           hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
-          ls -la wehrend.github.io
+          ls -la public
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh_pages
-          publish_dir: content/content/wehrend.github.io
+          publish_dir: public
           user_name: wehrend
           user_email: sven.wehrend@gmail.com
+          clean: true
+          force_orphan: true
