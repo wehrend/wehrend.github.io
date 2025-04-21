@@ -1,8 +1,8 @@
-baseURL = "http://wehrend.uber.space/"
+baseURL = "http://wehrend.github.io/"
 languageCode = "en-us"
 title = "Bits & pieces - Sven Wehrend"
 theme = "hugo-book"
-publishDir = "wehrend.github.io"
+publishDir = "public"
 
 
 [languages.en]
