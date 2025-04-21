@@ -8,11 +8,11 @@ on:
 
 permissions:
   contents: write
-  pages: write   # ✅ needed for actions/deploy-pages
+  pages: write
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.6
@@ -41,17 +41,20 @@ jobs:
           hugo --gc --minify --cleanDestinationDir --config content/config.toml
           echo "--- Built site files ---"
           find public -type f | sort
-      - name: Preload artifact action to avoid missing download info
-        uses: actions/upload-artifact@v3
+
+      - name: Preload artifact action (SHA-pinned workaround)
+        uses: actions/upload-artifact@3e6b6b75c47cf7f87097f551d6077f663236a989
+        with:
+          name: noop
+          path: ./   # required dummy path
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: public
 
-  # Separate deployment job for GitHub Pages
   deploy:
-    needs: build-and-deploy
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
