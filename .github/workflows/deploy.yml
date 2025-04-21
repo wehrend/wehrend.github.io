@@ -33,7 +33,8 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
+          pwd 
+          hugo --gc --minify --config /home/runner/work/hugo/config.toml --logLevel debug
           ls -la wehrend.github.io
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
