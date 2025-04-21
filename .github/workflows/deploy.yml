@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.6
+      ASCIIDOC_VERSION: 2.0.18-2
+      RUBY_ASCIIDOC_VERSION: 2.2.0-1
       TZ: Europe/Berlin
 
     steps:
@@ -28,9 +30,12 @@ jobs:
           wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
           sudo dpkg -i hugo.deb
       - name: Install Asciidoctor
-        run: | 
-          sudo apt update && sudo apt install asciidoctor
-
+        run: |
+          sudo apt install ruby
+          sudo gem install asciidoctor
+#          wget -O adoc.deb https://deb.debian.org/debian/pool/main/a/asciidoctor/asciidoctor_${ASCIIDOC_VERSION}_all.deb
+#          wget -O ruby-asciidoc.deb https://deb.debian.org/debian/pool/main/r/ruby-asciidoctor/ruby-asciidoctor_2.2.0-1_all.deb
+#          sudo dpkg -i adoc.deb ruby-asciidoc.deb
       - name: Build Hugo site
         run: |
           hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
