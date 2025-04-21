@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>//localhost:1313/de/posts/web/</link>
+    <description>Recent content on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/de/posts/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ein Lieblingshobby von mir: Lustiges Taschenbuch Nr. 162</title>
+      <link>//localhost:1313/de/posts/web/ltb162/25_ltb162/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/ltb162/25_ltb162/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hallo Welt</title>
+      <link>//localhost:1313/de/posts/web/24_fpga_beginners_de10_board/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/24_fpga_beginners_de10_board/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus und Verilog</title>
+      <link>//localhost:1313/de/posts/web/23_fpga_beginners_start_with_verilog/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/23_fpga_beginners_start_with_verilog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus</title>
+      <link>//localhost:1313/de/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/22_fpga_beginners_1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Beginne mit HDLs</title>
+      <link>//localhost:1313/de/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/21_fpga_beginners_0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)</title>
+      <link>//localhost:1313/de/posts/web/19_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/19_rare_earth_elements/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)</title>
+      <link>//localhost:1313/de/posts/web/20_reducing_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/20_reducing_rare_earth_elements/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Operationsverstärker Einführung (de)</title>
+      <link>//localhost:1313/de/posts/web/18_op-amps_introduction/</link>
+      <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/18_op-amps_introduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Analoge Rechner Grundlagen (de)</title>
+      <link>//localhost:1313/de/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/17_analog_computers_101/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zwischenspeicher und Zwischenspeichern (Caching)</title>
+      <link>//localhost:1313/de/posts/web/12_caches_and_caching/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/12_caches_and_caching/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Topics to write about - Wunschliste</title>
+      <link>//localhost:1313/de/posts/web/10_wishlist/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/10_wishlist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Religion vs. Spiritualität – warum ich Letztere bevorzuge</title>
+      <link>//localhost:1313/de/posts/web/08_religion_spirituality/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/08_religion_spirituality/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Warum gibt es überall serielle Schnittstellen – statt paralleler?</title>
+      <link>//localhost:1313/de/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/07_serial_interfaces/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</title>
+      <link>//localhost:1313/de/posts/web/04_odoo_hacks/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/04_odoo_hacks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Separiere Blog und Inhalt (de)</title>
+      <link>//localhost:1313/de/posts/web/03_separate_form_and_content/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/03_separate_form_and_content/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Umziehen zu Hugo (de)</title>
+      <link>//localhost:1313/de/posts/web/02_moving-to-hugo/</link>
+      <pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/02_moving-to-hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Über Mathematik schreiben mit Asciidoc (de)</title>
+      <link>//localhost:1313/de/posts/web/01_writing-about-math-with-asciidoc/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/01_writing-about-math-with-asciidoc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ein statisches Blog aufsetzen mit Nikola (de)</title>
+      <link>//localhost:1313/de/posts/web/00_setting_up_nikola/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/00_setting_up_nikola/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/de/posts/web/27_compiling_kicad_on_debian_bullseye/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/27_compiling_kicad_on_debian_bullseye/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

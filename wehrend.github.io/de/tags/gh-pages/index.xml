@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gh-Pages on Bits &amp; pieces - Sven Wehrend</title>
+    <link>http://localhost:1313/de/tags/gh-pages/</link>
+    <description>Recent content in Gh-Pages on Bits &amp; pieces - Sven Wehrend</description>
+    <generator>Hugo</generator>
+    <language>de</language>
+    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/de/tags/gh-pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Move Hugo Web-presence to GH-Pages</title>
+      <link>http://localhost:1313/de/posts/web/30_hugo_move_to_gh_pages/</link>
+      <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/de/posts/web/30_hugo_move_to_gh_pages/</guid>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.&#xA;Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

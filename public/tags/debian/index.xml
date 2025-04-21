@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian on </title>
+    <link>//localhost:1313/tags/debian/</link>
+    <description>Recent content in Debian on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 19 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup your python based backend system on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/28_setup_your_python_based_project/</link>
+      <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/28_setup_your_python_based_project/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Compiling Kicad on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/27_compiling_kicad_on_debian_bullseye/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/27_compiling_kicad_on_debian_bullseye/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

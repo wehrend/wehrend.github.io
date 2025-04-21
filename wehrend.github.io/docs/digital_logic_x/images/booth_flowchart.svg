@@ -1,0 +1,51 @@
+<svg width="145px"
+     height="140px"
+     viewBox="0.0 0.0 145.00 140.00"
+     viewPort = "0 0 145 140"
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,4 L6,2z" fill="black" />
+        </marker>
+    </defs>
+    <rect x="70" y="10" width="20" height="10" rx="5" style="fill:lightblue"/>
+    <text x="75" y="16.5" font-size="4">Start</text>
+    <rect x="57.5" y="30" width="45" height="20" style="fill:lightblue"/>
+    <line x1="80" y1="20" x2="80"  y2="27" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <text x="72" y="35" font-size="4">AC ← 0</text>
+    <text x="72" y="40" font-size="4">Qn+1 ← 0</text>
+    <text x="72" y="45" font-size="4">SC ← 0</text>
+    <text x="60" y="48.5" font-size="2.8">Br,Multiplicand,Qr - Multiplier</text>
+    <line x1="80" y1="50" x2="80" y2="52.2" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <polyline points="80,55 95,65 80,75 65,65 80,55 95,65" style="fill:lightblue;stroke:black;stroke-width:0.25px"/>
+    <text x="70" y="67" font-size="4">Qn Qn+1</text>
+    <line x1="80" y1="75" x2="80" y2="77" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <rect x="65.5" y="80" width="30" height="15" style="fill:lightblue"/>
+    <text x="66" y="87" font-size="4">ashr(AC &amp; QR)</text>
+    <text x="75" y="92" font-size="4">SC ← 0</text>
+    <line x1="80" y1="95" x2="80" y2="97" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <polyline points="80,100 95,110 80,120 65,110 80,100 95,110" style="fill:lightblue;stroke:black;stroke-width:0.25px"/>
+    <text x="78" y="112" font-size="4">SC</text>
+    <!--outer rects -->
+    <polyline points=" 65,65 35,65 35,72" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <polyline points="80,100 95,110 80,120 65,110 80,100 95,110" style="fill:lightblue;stroke:black;stroke-width:0.25px"/>
+     <text x="77" y="111" font-size="4">SC</text>
+    <rect x="20" y="75" width="30" height="5" style="fill:lightblue"/>
+    <text x="22" y="79" font-size="3">AC ← AC + BR +1</text>
+    <polyline points="35,80  35,88 62,88" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <polyline points="95,65  125,65  125,72" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <polyline points="125,80 125,88  98,88" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <rect x="110" y="75" width="30" height="5" style="fill:lightblue"/>
+    <text x="111" y="79" font-size="3">AC ← AC + BR</text>
+    <line x1="80" y1="120" x2="80" y2="122" style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#arrow)"/>
+    <text x="60" y="107" font-size="3.5">≠0</text>
+    <text x="82" y="123" font-size="3.5">=0</text>
+    <polyline points="65,110  10,110 10,54 77,54" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <rect x="70" y="125" width="20" height="10" rx="5" style="fill:lightblue"/>
+    <text x="77" y="131" font-size="4">End</text>
+    <text x="50" y="62" font-size="3">10</text>
+    <text x="110" y="62" font-size="3">01</text>
+    <text x="82" y="76" font-size="3">= 00</text>
+    <text x="82" y="79" font-size="3">= 11</text>
+</svg>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beginners on </title>
+    <link>//localhost:1313/tags/beginners/</link>
+    <description>Recent content in Beginners on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hallo Welt</title>
+      <link>//localhost:1313/de/posts/web/24_fpga_beginners_de10_board/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/24_fpga_beginners_de10_board/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hello World</title>
+      <link>//localhost:1313/en/posts/web/24_fpga_beginners_3/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/24_fpga_beginners_3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus und Verilog</title>
+      <link>//localhost:1313/de/posts/web/23_fpga_beginners_start_with_verilog/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/23_fpga_beginners_start_with_verilog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus and Verilog</title>
+      <link>//localhost:1313/en/posts/web/23_fpga_beginners_2/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/23_fpga_beginners_2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus</title>
+      <link>//localhost:1313/de/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/22_fpga_beginners_1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus</title>
+      <link>//localhost:1313/en/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/22_fpga_beginners_1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Beginne mit HDLs</title>
+      <link>//localhost:1313/de/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/21_fpga_beginners_0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with HDLS</title>
+      <link>//localhost:1313/en/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/21_fpga_beginners_0/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

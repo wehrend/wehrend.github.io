@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Audio on </title>
+    <link>//localhost:1313/tags/audio/</link>
+    <description>Recent content in Audio on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/audio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eurorack Synthesizer - Noise Floor</title>
+      <link>//localhost:1313/de/posts/synth/16_noise_floor/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/16_noise_floor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Noise Floor</title>
+      <link>//localhost:1313/en/posts/synth/16_noise_floor/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/16_noise_floor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Jam Session</title>
+      <link>//localhost:1313/de/posts/synth/15_jam_session/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/15_jam_session/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Jam Session</title>
+      <link>//localhost:1313/en/posts/synth/15_jam_session/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/15_jam_session/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another small patch</title>
+      <link>//localhost:1313/de/posts/synth/14_another_small_patch/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/14_another_small_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another small patch</title>
+      <link>//localhost:1313/en/posts/synth/14_another_small_patch/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/14_another_small_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another simple patch</title>
+      <link>//localhost:1313/de/posts/synth/13_another_simple_patch/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/13_another_simple_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another simple patch</title>
+      <link>//localhost:1313/en/posts/synth/13_another_simple_patch/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/13_another_simple_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - More patch ideas</title>
+      <link>//localhost:1313/de/posts/synth/11_more_patch_ideas/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/11_more_patch_ideas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - More patch ideas</title>
+      <link>//localhost:1313/en/posts/synth/11_more_patch_ideas/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/11_more_patch_ideas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pocket Operator Modular 400 in eurorack</title>
+      <link>//localhost:1313/de/posts/synth/09_eurorack_modular/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/09_eurorack_modular/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pocket Operator Modular 400 in eurorack</title>
+      <link>//localhost:1313/en/posts/synth/09_eurorack_modular/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/09_eurorack_modular/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas (II)</title>
+      <link>//localhost:1313/de/posts/synth/06_pocket_operator_modular_400/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/06_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas (II)</title>
+      <link>//localhost:1313/en/posts/synth/06_pocket_operator_modular_400/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/06_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas</title>
+      <link>//localhost:1313/de/posts/synth/05_pocket_operator_modular_400/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/05_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas</title>
+      <link>//localhost:1313/en/posts/synth/05_pocket_operator_modular_400/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/05_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Move Hugo Web-presence to GH-Pages</title>
+      <link>//localhost:1313/en/posts/web/30_hugo_move_to_gh_pages/</link>
+      <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/30_hugo_move_to_gh_pages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Modify the Odoo Frontend</title>
+      <link>//localhost:1313/en/posts/web/29_odoo_with_frontend/</link>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/29_odoo_with_frontend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Setup your python based backend system on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/28_setup_your_python_based_project/</link>
+      <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/28_setup_your_python_based_project/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Compiling Kicad on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/27_compiling_kicad_on_debian_bullseye/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/27_compiling_kicad_on_debian_bullseye/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
+      <link>//localhost:1313/en/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
+      <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Build your own synthesizer modules</title>
+      <link>//localhost:1313/de/posts/synth/25_build_your_own_modules/</link>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/25_build_your_own_modules/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Build your own synthesizer modules</title>
+      <link>//localhost:1313/en/posts/synth/25_build_your_own_modules/</link>
+      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/25_build_your_own_modules/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>A favorite hobby of mine: Lustiges Taschenbuch Nr. 162</title>
+      <link>//localhost:1313/en/posts/web/ltb162/25_ltb162/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/ltb162/25_ltb162/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ein Lieblingshobby von mir: Lustiges Taschenbuch Nr. 162</title>
+      <link>//localhost:1313/de/posts/web/ltb162/25_ltb162/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/ltb162/25_ltb162/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hallo Welt</title>
+      <link>//localhost:1313/de/posts/web/24_fpga_beginners_de10_board/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/24_fpga_beginners_de10_board/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: DE10-nano board: Hello World</title>
+      <link>//localhost:1313/en/posts/web/24_fpga_beginners_3/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/24_fpga_beginners_3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus und Verilog</title>
+      <link>//localhost:1313/de/posts/web/23_fpga_beginners_start_with_verilog/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/23_fpga_beginners_start_with_verilog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus and Verilog</title>
+      <link>//localhost:1313/en/posts/web/23_fpga_beginners_2/</link>
+      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/23_fpga_beginners_2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starte mit Quartus</title>
+      <link>//localhost:1313/de/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/22_fpga_beginners_1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with Quartus</title>
+      <link>//localhost:1313/en/posts/web/22_fpga_beginners_1/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/22_fpga_beginners_1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Beginne mit HDLs</title>
+      <link>//localhost:1313/de/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/21_fpga_beginners_0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FPGA 101: Starting with HDLS</title>
+      <link>//localhost:1313/en/posts/web/21_fpga_beginners_0/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/21_fpga_beginners_0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)</title>
+      <link>//localhost:1313/de/posts/web/19_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/19_rare_earth_elements/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reducing Rare Earth Dependence: The Quest for Alternative Magnetic Materials</title>
+      <link>//localhost:1313/en/posts/web/20_reducing_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/20_reducing_rare_earth_elements/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Unlocking the Secrets of Rare Earth Elements: The Remarkable Case of Neodymium</title>
+      <link>//localhost:1313/en/posts/web/19_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/19_rare_earth_elements/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)</title>
+      <link>//localhost:1313/de/posts/web/20_reducing_rare_earth_elements/</link>
+      <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/20_reducing_rare_earth_elements/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Op-Amps introduction</title>
+      <link>//localhost:1313/en/posts/web/18_op-amps_introduction/</link>
+      <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/18_op-amps_introduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Operationsverstärker Einführung (de)</title>
+      <link>//localhost:1313/de/posts/web/18_op-amps_introduction/</link>
+      <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/18_op-amps_introduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Analog Computers 101</title>
+      <link>//localhost:1313/en/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/17_analog_computers_101/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Analoge Rechner Grundlagen (de)</title>
+      <link>//localhost:1313/de/posts/web/17_analog_computers_101/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/17_analog_computers_101/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Noise Floor</title>
+      <link>//localhost:1313/de/posts/synth/16_noise_floor/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/16_noise_floor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Noise Floor</title>
+      <link>//localhost:1313/en/posts/synth/16_noise_floor/</link>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/16_noise_floor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Jam Session</title>
+      <link>//localhost:1313/de/posts/synth/15_jam_session/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/15_jam_session/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Jam Session</title>
+      <link>//localhost:1313/en/posts/synth/15_jam_session/</link>
+      <pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/15_jam_session/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another small patch</title>
+      <link>//localhost:1313/de/posts/synth/14_another_small_patch/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/14_another_small_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another small patch</title>
+      <link>//localhost:1313/en/posts/synth/14_another_small_patch/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/14_another_small_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prequel: Introduction to electronics - 102</title>
+      <link>//localhost:1313/de/pages/short-introduction-to-electronics-102/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/pages/short-introduction-to-electronics-102/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prequel: Introduction to electronics - 102</title>
+      <link>//localhost:1313/en/pages/short-introduction-to-electronics-102/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/pages/short-introduction-to-electronics-102/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another simple patch</title>
+      <link>//localhost:1313/de/posts/synth/13_another_simple_patch/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/13_another_simple_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - Another simple patch</title>
+      <link>//localhost:1313/en/posts/synth/13_another_simple_patch/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/13_another_simple_patch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Caches and Caching</title>
+      <link>//localhost:1313/en/posts/web/12_caches_and_caching/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/12_caches_and_caching/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - More patch ideas</title>
+      <link>//localhost:1313/de/posts/synth/11_more_patch_ideas/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/11_more_patch_ideas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eurorack Synthesizer - More patch ideas</title>
+      <link>//localhost:1313/en/posts/synth/11_more_patch_ideas/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/11_more_patch_ideas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zwischenspeicher und Zwischenspeichern (Caching)</title>
+      <link>//localhost:1313/de/posts/web/12_caches_and_caching/</link>
+      <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/12_caches_and_caching/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pocket Operator Modular 400 in eurorack</title>
+      <link>//localhost:1313/de/posts/synth/09_eurorack_modular/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/09_eurorack_modular/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pocket Operator Modular 400 in eurorack</title>
+      <link>//localhost:1313/en/posts/synth/09_eurorack_modular/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/09_eurorack_modular/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Topics to write about - Wishlist</title>
+      <link>//localhost:1313/en/posts/web/10_wishlist/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/10_wishlist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Topics to write about - Wunschliste</title>
+      <link>//localhost:1313/de/posts/web/10_wishlist/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/10_wishlist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Religion vs. Spiritualität – warum ich Letztere bevorzuge</title>
+      <link>//localhost:1313/de/posts/web/08_religion_spirituality/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/08_religion_spirituality/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Religion vs. spirituality - why I prefer the latter</title>
+      <link>//localhost:1313/en/posts/web/08_religion_spirituality/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/08_religion_spirituality/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Warum gibt es überall serielle Schnittstellen – statt paralleler?</title>
+      <link>//localhost:1313/de/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/07_serial_interfaces/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Why are serial interfaces everywhere - instead of parallel ones</title>
+      <link>//localhost:1313/en/posts/web/07_serial_interfaces/</link>
+      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/07_serial_interfaces/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>How does a CPU work 2? Overview</title>
+      <link>//localhost:1313/de/pages/overview2/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/pages/overview2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>How does a CPU work 2? Overview</title>
+      <link>//localhost:1313/en/pages/overview2/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/pages/overview2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas (II)</title>
+      <link>//localhost:1313/de/posts/synth/06_pocket_operator_modular_400/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/06_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas (II)</title>
+      <link>//localhost:1313/en/posts/synth/06_pocket_operator_modular_400/</link>
+      <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/06_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>10_sequential_logic</title>
+      <link>//localhost:1313/en/docs/digital_logic_2/10_sequential_logic/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic_2/10_sequential_logic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>10_sequential_logic (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic_2/10_sequential_logic/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic_2/10_sequential_logic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas</title>
+      <link>//localhost:1313/de/posts/synth/05_pocket_operator_modular_400/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/synth/05_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>The Pocket Operator Modular 400 patch ideas</title>
+      <link>//localhost:1313/en/posts/synth/05_pocket_operator_modular_400/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/synth/05_pocket_operator_modular_400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</title>
+      <link>//localhost:1313/de/posts/web/04_odoo_hacks/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/04_odoo_hacks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Odoo hacks: Remove Lock-Button from Odoo v12</title>
+      <link>//localhost:1313/en/posts/web/04_odoo_hacks/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/04_odoo_hacks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>X2_cordic</title>
+      <link>//localhost:1313/en/docs/digital_logic_x/x2_cordic/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic_x/x2_cordic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>X2_cordic (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic_x/x2_cordic/</link>
+      <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic_x/x2_cordic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Separating blog and content</title>
+      <link>//localhost:1313/en/posts/web/03_separate_form_and_content/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/03_separate_form_and_content/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Separiere Blog und Inhalt (de)</title>
+      <link>//localhost:1313/de/posts/web/03_separate_form_and_content/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/03_separate_form_and_content/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>X0_multiplication</title>
+      <link>//localhost:1313/en/docs/digital_logic_x/x0_multiplication/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic_x/x0_multiplication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>X0_multiplication (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic_x/x0_multiplication/</link>
+      <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic_x/x0_multiplication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>00_combinatorial_logic</title>
+      <link>//localhost:1313/en/docs/digital_logic/00_combinatorial_logic/</link>
+      <pubDate>Sat, 16 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/00_combinatorial_logic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>00_combinatorial_logic (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/00_combinatorial_logic/</link>
+      <pubDate>Sat, 16 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/00_combinatorial_logic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Moving to Hugo</title>
+      <link>//localhost:1313/en/posts/web/02_moving-to-hugo/</link>
+      <pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/02_moving-to-hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Umziehen zu Hugo (de)</title>
+      <link>//localhost:1313/de/posts/web/02_moving-to-hugo/</link>
+      <pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/02_moving-to-hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>07_RISC-V</title>
+      <link>//localhost:1313/en/docs/digital_logic/07_risc_v/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/07_risc_v/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>07_RISC-V (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/07_risc_v/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/07_risc_v/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>06_Memory</title>
+      <link>//localhost:1313/en/docs/digital_logic/06_memory/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/06_memory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>06_Memory (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/06_memory/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/06_memory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>11_Clocks_flipflops_and_registers</title>
+      <link>//localhost:1313/en/docs/digital_logic_2/11_clocks_and_registers/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic_2/11_clocks_and_registers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>11_Clocks_flipflops_and_registers (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic_2/11_clocks_and_registers/</link>
+      <pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic_2/11_clocks_and_registers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>05_ALU</title>
+      <link>//localhost:1313/en/docs/digital_logic/05_alu/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/05_alu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>05_ALU (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/05_alu/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/05_alu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>04_Signs</title>
+      <link>//localhost:1313/en/docs/digital_logic/04_signs/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/04_signs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>04_Signs (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/04_signs/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/04_signs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>03_binary_system</title>
+      <link>//localhost:1313/en/docs/digital_logic/03_binary_system/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/03_binary_system/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>03_binary_system (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/03_binary_system/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/03_binary_system/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>02_XOR</title>
+      <link>//localhost:1313/en/docs/digital_logic/02_xor/</link>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/02_xor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>02_XOR (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/02_xor/</link>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/02_xor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prequel: Einführung in die Elektronik</title>
+      <link>//localhost:1313/de/pages/prequel-short-introduction-to-electronics/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/pages/prequel-short-introduction-to-electronics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prequel: Introduction to electronics</title>
+      <link>//localhost:1313/en/pages/prequel-short-introduction-to-electronics/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/pages/prequel-short-introduction-to-electronics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>01_boolean_algebra</title>
+      <link>//localhost:1313/en/docs/digital_logic/01_boolean_algebra/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/01_boolean_algebra/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>01_boolean_algebra (de)</title>
+      <link>//localhost:1313/de/docs/digital_logic/01_boolean_algebra/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/01_boolean_algebra/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>How does a CPU work? Overview</title>
+      <link>//localhost:1313/de/pages/overview/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/pages/overview/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>How does a CPU work? Overview</title>
+      <link>//localhost:1313/en/pages/overview/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/pages/overview/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>//localhost:1313/de/about/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/about/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>//localhost:1313/en/about/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/about/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Setting up a static blog with Nikola</title>
+      <link>//localhost:1313/en/posts/web/00_setting_up_nikola/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/00_setting_up_nikola/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Über Mathematik schreiben mit Asciidoc (de)</title>
+      <link>//localhost:1313/de/posts/web/01_writing-about-math-with-asciidoc/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/01_writing-about-math-with-asciidoc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Writing about math with Asciidoc</title>
+      <link>//localhost:1313/en/posts/web/01_writing-about-math-with-asciidoc/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/posts/web/01_writing-about-math-with-asciidoc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ein statisches Blog aufsetzen mit Nikola (de)</title>
+      <link>//localhost:1313/de/posts/web/00_setting_up_nikola/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/00_setting_up_nikola/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/de/docs/digital_logic/agenda2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/agenda2/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;&#xA;&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN&#34; &#34;http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd&#34;&gt;&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.--&gt;&lt;head profile=&#34;http://dublincore.org/documents/dcmi-terms/&#34;&gt;&lt;meta http-equiv=&#34;Content-Type&#34; content=&#34;application/xhtml+xml; charset=utf-8&#34;/&gt;&lt;title xml:lang=&#34;en-US&#34;&gt;- no title specified&lt;/title&gt;&lt;meta name=&#34;DCTERMS.title&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&lt;meta name=&#34;DCTERMS.language&#34; content=&#34;en-US&#34; scheme=&#34;DCTERMS.RFC4646&#34;/&gt;&lt;meta name=&#34;DCTERMS.source&#34; content=&#34;http://xml.openoffice.org/odf2xhtml&#34;/&gt;&lt;meta name=&#34;DCTERMS.issued&#34; content=&#34;2022-04-15T18:22:57.383394805&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&lt;meta name=&#34;DCTERMS.modified&#34; content=&#34;2023-03-18T15:25:00.926735488&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&lt;meta name=&#34;DCTERMS.provenance&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&lt;meta name=&#34;DCTERMS.subject&#34; content=&#34;,&#34; xml:lang=&#34;en-US&#34;/&gt;&lt;link rel=&#34;schema.DC&#34; href=&#34;http://purl.org/dc/elements/1.1/&#34; hreflang=&#34;en&#34;/&gt;&lt;link rel=&#34;schema.DCTERMS&#34; href=&#34;http://purl.org/dc/terms/&#34; hreflang=&#34;en&#34;/&gt;&lt;link rel=&#34;schema.DCTYPE&#34; href=&#34;http://purl.org/dc/dcmitype/&#34; hreflang=&#34;en&#34;/&gt;&lt;link rel=&#34;schema.DCAM&#34; href=&#34;http://purl.org/dc/dcam/&#34; hreflang=&#34;en&#34;/&gt;&lt;style type=&#34;text/css&#34;&gt;&#xA;    @page {  }&#xA;    table { border-collapse:collapse; border-spacing:0; empty-cells:show }&#xA;    td, th { vertical-align:top; font-size:10pt;}&#xA;    h1, h2, h3, h4, h5, h6 { clear:both;}&#xA;    p { white-space: nowrap; }&#xA;    ol, ul { margin:0; padding:0;}&#xA;    li { list-style: none; margin:0; padding:0;}&#xA;    /* &#34;li span.odfLiEnd&#34; - IE 7 issue*/&#xA;    li span. { clear: both; line-height:0; width:0; height:0; margin:0; padding:0; }&#xA;    span.footnodeNumber { padding-right:1em; }&#xA;    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }&#xA;    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}&#xA;    .ta1 { writing-mode:horizontal-tb; direction:ltr; }&#xA;    .Default { font-family:Liberation Sans; }&#xA;    .ce1 { font-family:Liberation Sans; font-weight:bold; }&#xA;    .ce11 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; font-weight:bold; }&#xA;    .ce12 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; }&#xA;    .ce13 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; font-weight:bold; }&#xA;    .ce14 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; }&#xA;    .ce15 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; font-weight:bold; }&#xA;    .ce16 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; }&#xA;    .ce17 { font-family:Liberation Sans; background-color:#00a933; color:#666666; font-weight:bold; }&#xA;    .ce18 { font-family:Liberation Sans; background-color:#00a933; color:#666666; }&#xA;    .ce2 { font-family:Liberation Sans; background-color:#00a933; font-weight:bold; }&#xA;    .ce3 { font-family:Liberation Sans; background-color:#00a933; }&#xA;    .ce7 { font-family:Liberation Sans; background-color:#00a933; color:#000000; }&#xA;    .co1 { width:1.6598in; }&#xA;    .co2 { width:2.1283in; }&#xA;    .co3 { width:0.889in; }&#xA;    .ro1 { height:0.178in; }&#xA;    .T1 { font-size:10pt; font-weight:normal; text-decoration:none ! important; font-style:normal; text-shadow:none; font-family:Liberation Sans; }&#xA;    /* ODF styles with no properties representable as CSS */&#xA;     { }&#xA;    &lt;/style&gt;&lt;/head&gt;&lt;body dir=&#34;ltr&#34;&gt;&lt;table border=&#34;0&#34; cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; class=&#34;ta1&#34;&gt;&lt;colgroup&gt;&lt;col width=&#34;184&#34;/&gt;&lt;col width=&#34;236&#34;/&gt;&lt;col width=&#34;99&#34;/&gt;&lt;/colgroup&gt;&lt;tr class=&#34;ro1&#34;&gt;&lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr class=&#34;ro1&#34;&gt;&lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr class=&#34;ro1&#34;&gt;&lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;ce2&#34;&gt;&lt;p&gt;Combinatorial Logic&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/de/docs/digital_logic/agenda3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic/agenda3/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;&#xA;&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN&#34;&#xA;        &#34;http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd&#34;&gt;&#xA;&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&#xA;&lt;!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.--&gt;&#xA;&lt;head profile=&#34;http://dublincore.org/documents/dcmi-terms/&#34;&gt;&#xA;    &lt;meta http-equiv=&#34;Content-Type&#34; content=&#34;application/xhtml+xml; charset=utf-8&#34;/&gt;&#xA;    &lt;title xml:lang=&#34;en-US&#34;&gt;- no title specified&lt;/title&gt;&#xA;    &lt;meta name=&#34;DCTERMS.title&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.language&#34; content=&#34;en-US&#34; scheme=&#34;DCTERMS.RFC4646&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.source&#34; content=&#34;http://xml.openoffice.org/odf2xhtml&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.issued&#34; content=&#34;2022-04-15T18:22:57.383394805&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.modified&#34; content=&#34;2023-04-22T14:56:22.387538699&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.provenance&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.subject&#34; content=&#34;,&#34; xml:lang=&#34;en-US&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DC&#34; href=&#34;http://purl.org/dc/elements/1.1/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DCTERMS&#34; href=&#34;http://purl.org/dc/terms/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DCTYPE&#34; href=&#34;http://purl.org/dc/dcmitype/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DCAM&#34; href=&#34;http://purl.org/dc/dcam/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;style type=&#34;text/css&#34;&gt;&#xA;    @page {  }&#xA;    table { border-collapse:collapse; border-spacing:0; empty-cells:show }&#xA;    td, th { vertical-align:top; font-size:10pt;}&#xA;    h1, h2, h3, h4, h5, h6 { clear:both;}&#xA;    p { white-space: nowrap; }&#xA;    ol, ul { margin:0; padding:0;}&#xA;    li { list-style: none; margin:0; padding:0;}&#xA;    /* &#34;li span.odfLiEnd&#34; - IE 7 issue*/&#xA;    li span. { clear: both; line-height:0; width:0; height:0; margin:0; padding:0; }&#xA;    span.footnodeNumber { padding-right:1em; }&#xA;    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }&#xA;    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}&#xA;    .ta1 { writing-mode:horizontal-tb; direction:ltr; }&#xA;    .Default { font-family:Liberation Sans; }&#xA;    .ce1 { font-family:Liberation Sans; font-weight:bold; }&#xA;    .ce11 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; font-weight:bold; }&#xA;    .ce12 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; }&#xA;    .ce13 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; font-weight:bold; }&#xA;    .ce14 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; }&#xA;    .ce15 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; font-weight:bold; }&#xA;    .ce16 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; }&#xA;    .ce18 { font-family:Liberation Sans; background-color:#00a933; color:#666666; }&#xA;    .ce2 { font-family:Liberation Sans; background-color:#00a933; font-weight:bold; }&#xA;    .ce22 { font-family:Liberation Sans; background-color:#00a933; color:#000000; font-weight:bold; }&#xA;    .ce3 { font-family:Liberation Sans; background-color:#00a933; }&#xA;    .ce7 { font-family:Liberation Sans; background-color:#00a933; color:#000000; }&#xA;    .co1 { width:1.6598in; }&#xA;    .co2 { width:2.1283in; }&#xA;    .co3 { width:0.889in; }&#xA;    .ro1 { height:0.178in; }&#xA;    .T1 { font-size:10pt; font-weight:normal; text-decoration:none ! important; font-style:normal; text-shadow:none; font-family:Liberation Sans; }&#xA;    /* ODF styles with no properties representable as CSS */&#xA;     { }&#xA;&#xA;    &lt;/style&gt;&#xA;&lt;/head&gt;&#xA;&lt;body dir=&#34;ltr&#34;&gt;&#xA;&lt;table border=&#34;0&#34; cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; class=&#34;ta1&#34;&gt;&#xA;    &lt;colgroup&gt;&#xA;        &lt;col width=&#34;184&#34;/&gt;&#xA;        &lt;col width=&#34;236&#34;/&gt;&#xA;        &lt;col width=&#34;99&#34;/&gt;&#xA;    &lt;/colgroup&gt;&#xA;    &lt;tr class=&#34;ro1&#34;&gt;&#xA;        &lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr class=&#34;ro1&#34;&gt;&#xA;        &lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr class=&#34;ro1&#34;&gt;&#xA;        &lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;ce2&#34;&gt;&lt;p&gt;Combinatorial Logic&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/de/drafts/alu2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/drafts/alu2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/de/posts/web/27_compiling_kicad_on_debian_bullseye/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/posts/web/27_compiling_kicad_on_debian_bullseye/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/en/docs/digital_logic/agenda2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/agenda2/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;&#xA;&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN&#34; &#34;http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd&#34;&gt;&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.--&gt;&lt;head profile=&#34;http://dublincore.org/documents/dcmi-terms/&#34;&gt;&lt;meta http-equiv=&#34;Content-Type&#34; content=&#34;application/xhtml+xml; charset=utf-8&#34;/&gt;&lt;title xml:lang=&#34;en-US&#34;&gt;- no title specified&lt;/title&gt;&lt;meta name=&#34;DCTERMS.title&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&lt;meta name=&#34;DCTERMS.language&#34; content=&#34;en-US&#34; scheme=&#34;DCTERMS.RFC4646&#34;/&gt;&lt;meta name=&#34;DCTERMS.source&#34; content=&#34;http://xml.openoffice.org/odf2xhtml&#34;/&gt;&lt;meta name=&#34;DCTERMS.issued&#34; content=&#34;2022-04-15T18:22:57.383394805&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&lt;meta name=&#34;DCTERMS.modified&#34; content=&#34;2023-03-18T15:25:00.926735488&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&lt;meta name=&#34;DCTERMS.provenance&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&lt;meta name=&#34;DCTERMS.subject&#34; content=&#34;,&#34; xml:lang=&#34;en-US&#34;/&gt;&lt;link rel=&#34;schema.DC&#34; href=&#34;http://purl.org/dc/elements/1.1/&#34; hreflang=&#34;en&#34;/&gt;&lt;link rel=&#34;schema.DCTERMS&#34; href=&#34;http://purl.org/dc/terms/&#34; hreflang=&#34;en&#34;/&gt;&lt;link rel=&#34;schema.DCTYPE&#34; href=&#34;http://purl.org/dc/dcmitype/&#34; hreflang=&#34;en&#34;/&gt;&lt;link rel=&#34;schema.DCAM&#34; href=&#34;http://purl.org/dc/dcam/&#34; hreflang=&#34;en&#34;/&gt;&lt;style type=&#34;text/css&#34;&gt;&#xA;    @page {  }&#xA;    table { border-collapse:collapse; border-spacing:0; empty-cells:show }&#xA;    td, th { vertical-align:top; font-size:10pt;}&#xA;    h1, h2, h3, h4, h5, h6 { clear:both;}&#xA;    p { white-space: nowrap; }&#xA;    ol, ul { margin:0; padding:0;}&#xA;    li { list-style: none; margin:0; padding:0;}&#xA;    /* &#34;li span.odfLiEnd&#34; - IE 7 issue*/&#xA;    li span. { clear: both; line-height:0; width:0; height:0; margin:0; padding:0; }&#xA;    span.footnodeNumber { padding-right:1em; }&#xA;    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }&#xA;    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}&#xA;    .ta1 { writing-mode:horizontal-tb; direction:ltr; }&#xA;    .Default { font-family:Liberation Sans; }&#xA;    .ce1 { font-family:Liberation Sans; font-weight:bold; }&#xA;    .ce11 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; font-weight:bold; }&#xA;    .ce12 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; }&#xA;    .ce13 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; font-weight:bold; }&#xA;    .ce14 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; }&#xA;    .ce15 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; font-weight:bold; }&#xA;    .ce16 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; }&#xA;    .ce17 { font-family:Liberation Sans; background-color:#00a933; color:#666666; font-weight:bold; }&#xA;    .ce18 { font-family:Liberation Sans; background-color:#00a933; color:#666666; }&#xA;    .ce2 { font-family:Liberation Sans; background-color:#00a933; font-weight:bold; }&#xA;    .ce3 { font-family:Liberation Sans; background-color:#00a933; }&#xA;    .ce7 { font-family:Liberation Sans; background-color:#00a933; color:#000000; }&#xA;    .co1 { width:1.6598in; }&#xA;    .co2 { width:2.1283in; }&#xA;    .co3 { width:0.889in; }&#xA;    .ro1 { height:0.178in; }&#xA;    .T1 { font-size:10pt; font-weight:normal; text-decoration:none ! important; font-style:normal; text-shadow:none; font-family:Liberation Sans; }&#xA;    /* ODF styles with no properties representable as CSS */&#xA;     { }&#xA;    &lt;/style&gt;&lt;/head&gt;&lt;body dir=&#34;ltr&#34;&gt;&lt;table border=&#34;0&#34; cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; class=&#34;ta1&#34;&gt;&lt;colgroup&gt;&lt;col width=&#34;184&#34;/&gt;&lt;col width=&#34;236&#34;/&gt;&lt;col width=&#34;99&#34;/&gt;&lt;/colgroup&gt;&lt;tr class=&#34;ro1&#34;&gt;&lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr class=&#34;ro1&#34;&gt;&lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr class=&#34;ro1&#34;&gt;&lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;ce2&#34;&gt;&lt;p&gt;Combinatorial Logic&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/en/docs/digital_logic/agenda3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic/agenda3/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;&#xA;&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN&#34;&#xA;        &#34;http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd&#34;&gt;&#xA;&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&#xA;&lt;!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.--&gt;&#xA;&lt;head profile=&#34;http://dublincore.org/documents/dcmi-terms/&#34;&gt;&#xA;    &lt;meta http-equiv=&#34;Content-Type&#34; content=&#34;application/xhtml+xml; charset=utf-8&#34;/&gt;&#xA;    &lt;title xml:lang=&#34;en-US&#34;&gt;- no title specified&lt;/title&gt;&#xA;    &lt;meta name=&#34;DCTERMS.title&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.language&#34; content=&#34;en-US&#34; scheme=&#34;DCTERMS.RFC4646&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.source&#34; content=&#34;http://xml.openoffice.org/odf2xhtml&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.issued&#34; content=&#34;2022-04-15T18:22:57.383394805&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.modified&#34; content=&#34;2023-04-22T14:56:22.387538699&#34; scheme=&#34;DCTERMS.W3CDTF&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.provenance&#34; content=&#34;&#34; xml:lang=&#34;en-US&#34;/&gt;&#xA;    &lt;meta name=&#34;DCTERMS.subject&#34; content=&#34;,&#34; xml:lang=&#34;en-US&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DC&#34; href=&#34;http://purl.org/dc/elements/1.1/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DCTERMS&#34; href=&#34;http://purl.org/dc/terms/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DCTYPE&#34; href=&#34;http://purl.org/dc/dcmitype/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;link rel=&#34;schema.DCAM&#34; href=&#34;http://purl.org/dc/dcam/&#34; hreflang=&#34;en&#34;/&gt;&#xA;    &lt;style type=&#34;text/css&#34;&gt;&#xA;    @page {  }&#xA;    table { border-collapse:collapse; border-spacing:0; empty-cells:show }&#xA;    td, th { vertical-align:top; font-size:10pt;}&#xA;    h1, h2, h3, h4, h5, h6 { clear:both;}&#xA;    p { white-space: nowrap; }&#xA;    ol, ul { margin:0; padding:0;}&#xA;    li { list-style: none; margin:0; padding:0;}&#xA;    /* &#34;li span.odfLiEnd&#34; - IE 7 issue*/&#xA;    li span. { clear: both; line-height:0; width:0; height:0; margin:0; padding:0; }&#xA;    span.footnodeNumber { padding-right:1em; }&#xA;    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }&#xA;    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}&#xA;    .ta1 { writing-mode:horizontal-tb; direction:ltr; }&#xA;    .Default { font-family:Liberation Sans; }&#xA;    .ce1 { font-family:Liberation Sans; font-weight:bold; }&#xA;    .ce11 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; font-weight:bold; }&#xA;    .ce12 { font-family:Liberation Sans; background-color:#729fcf; color:#666666; }&#xA;    .ce13 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; font-weight:bold; }&#xA;    .ce14 { font-family:Liberation Sans; background-color:#ffff00; color:#666666; }&#xA;    .ce15 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; font-weight:bold; }&#xA;    .ce16 { font-family:Liberation Sans; background-color:#c9211e; color:#666666; }&#xA;    .ce18 { font-family:Liberation Sans; background-color:#00a933; color:#666666; }&#xA;    .ce2 { font-family:Liberation Sans; background-color:#00a933; font-weight:bold; }&#xA;    .ce22 { font-family:Liberation Sans; background-color:#00a933; color:#000000; font-weight:bold; }&#xA;    .ce3 { font-family:Liberation Sans; background-color:#00a933; }&#xA;    .ce7 { font-family:Liberation Sans; background-color:#00a933; color:#000000; }&#xA;    .co1 { width:1.6598in; }&#xA;    .co2 { width:2.1283in; }&#xA;    .co3 { width:0.889in; }&#xA;    .ro1 { height:0.178in; }&#xA;    .T1 { font-size:10pt; font-weight:normal; text-decoration:none ! important; font-style:normal; text-shadow:none; font-family:Liberation Sans; }&#xA;    /* ODF styles with no properties representable as CSS */&#xA;     { }&#xA;&#xA;    &lt;/style&gt;&#xA;&lt;/head&gt;&#xA;&lt;body dir=&#34;ltr&#34;&gt;&#xA;&lt;table border=&#34;0&#34; cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; class=&#34;ta1&#34;&gt;&#xA;    &lt;colgroup&gt;&#xA;        &lt;col width=&#34;184&#34;/&gt;&#xA;        &lt;col width=&#34;236&#34;/&gt;&#xA;        &lt;col width=&#34;99&#34;/&gt;&#xA;    &lt;/colgroup&gt;&#xA;    &lt;tr class=&#34;ro1&#34;&gt;&#xA;        &lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr class=&#34;ro1&#34;&gt;&#xA;        &lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:2.1283in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;        &lt;td style=&#34;text-align:left;width:0.889in; &#34; class=&#34;Default&#34;&gt; &lt;/td&gt;&#xA;    &lt;/tr&gt;&#xA;    &lt;tr class=&#34;ro1&#34;&gt;&#xA;        &lt;td style=&#34;text-align:left;width:1.6598in; &#34; class=&#34;ce2&#34;&gt;&lt;p&gt;Combinatorial Logic&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/en/drafts/alu2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/drafts/alu2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>//localhost:1313/wehrend.github.io/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/wehrend.github.io/</guid>
+      <description>&lt;!DOCTYPE html&gt;&#xA;&lt;html lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&#xA;&lt;head&gt;&#xA;&#x9;&lt;meta name=&#34;generator&#34; content=&#34;Hugo 0.146.6&#34;&gt;&#xA;  &lt;meta charset=&#34;UTF-8&#34;&gt;&#xA;&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;&#xA;&lt;meta name=&#34;description&#34; content=&#34;&#34;&gt;&#xA;&lt;meta name=&#34;theme-color&#34; content=&#34;#FFFFFF&#34;&gt;&#xA;&lt;meta name=&#34;color-scheme&#34; content=&#34;light dark&#34;&gt;&lt;meta property=&#34;og:url&#34; content=&#34;http://wehrend.uber.space/&#34;&gt;&#xA;  &lt;meta property=&#34;og:site_name&#34; content=&#34;Bits &amp; pieces - Sven Wehrend&#34;&gt;&#xA;  &lt;meta property=&#34;og:title&#34; content=&#34;Bits &amp; pieces - Sven Wehrend&#34;&gt;&#xA;  &lt;meta property=&#34;og:locale&#34; content=&#34;en&#34;&gt;&#xA;  &lt;meta property=&#34;og:type&#34; content=&#34;website&#34;&gt;&#xA;&lt;title&gt;Bits &amp;amp; pieces - Sven Wehrend | Bits &amp;amp; pieces - Sven Wehrend&lt;/title&gt;&#xA;&lt;link rel=&#34;manifest&#34; href=&#34;//localhost:1313/manifest.json&#34;&gt;&#xA;&lt;link rel=&#34;icon&#34; href=&#34;//localhost:1313/favicon.png&#34; type=&#34;image/x-icon&#34;&gt;&#xA;  &lt;link rel=&#34;alternate&#34; hreflang=&#34;de&#34; href=&#34;http://wehrend.uber.space/de/&#34; title=&#34;Bits &amp;amp; pieces - Sven Wehrend&#34;&gt;&#xA;&lt;link rel=&#34;stylesheet&#34; href=&#34;//localhost:1313/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css&#34; integrity=&#34;sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=&#34; crossorigin=&#34;anonymous&#34;&gt;&#xA;  &lt;script defer src=&#34;//localhost:1313/flexsearch.min.js&#34;&gt;&lt;/script&gt;&#xA;  &lt;script defer src=&#34;//localhost:1313/en.search.min.78166b9d46e23e0ea915cb6887a30b633e7bc4fad10c8b6b9f6fa532271c19ba.js&#34; integrity=&#34;sha256-eBZrnUbiPg6pFctoh6MLYz57xPrRDItrn2&amp;#43;lMiccGbo=&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;&#xA;&lt;link rel=&#34;alternate&#34; type=&#34;application/rss+xml&#34; href=&#34;http://wehrend.uber.space/index.xml&#34; title=&#34;Bits &amp; pieces - Sven Wehrend&#34; /&gt;&#xA;&lt;!--&#xA;Made with Book Theme&#xA;https://github.com/alex-shpak/hugo-book&#xA;--&gt;&#xA;  &#xA;&lt;/head&gt;&#xA;&lt;body dir=&#34;ltr&#34;&gt;&#xA;  &lt;input type=&#34;checkbox&#34; class=&#34;hidden toggle&#34; id=&#34;menu-control&#34; /&gt;&#xA;  &lt;input type=&#34;checkbox&#34; class=&#34;hidden toggle&#34; id=&#34;toc-control&#34; /&gt;&#xA;  &lt;main class=&#34;container flex&#34;&gt;&#xA;    &lt;aside class=&#34;book-menu&#34;&gt;&#xA;      &lt;div class=&#34;book-menu-content&#34;&gt;&#xA;        &#xA;  &lt;nav&gt;&#xA;&lt;h2 class=&#34;book-brand&#34;&gt;&#xA;  &lt;a class=&#34;flex align-center&#34; href=&#34;//localhost:1313/&#34;&gt;&lt;span&gt;Bits &amp;amp; pieces - Sven Wehrend&lt;/span&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&#xA;&#xA;&lt;div class=&#34;book-search&#34;&gt;&#xA;  &lt;input type=&#34;text&#34; id=&#34;book-search-input&#34; placeholder=&#34;Search&#34; aria-label=&#34;Search&#34; maxlength=&#34;64&#34; data-hotkeys=&#34;s/&#34; /&gt;&#xA;  &lt;div class=&#34;book-search-spinner hidden&#34;&gt;&lt;/div&gt;&#xA;  &lt;ul id=&#34;book-search-results&#34;&gt;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;  &#xA;&#xA;&#xA;&#xA;  &#xA;    &#xA;  &#xA;&#xA;&#xA;  &#xA;&#xA;&#xA;&lt;ul class=&#34;book-languages&#34;&gt;&#xA;  &lt;li&gt;&#xA;    &lt;input type=&#34;checkbox&#34; id=&#34;languages&#34; class=&#34;toggle&#34; /&gt;&#xA;    &lt;label for=&#34;languages&#34; class=&#34;flex justify-between&#34;&gt;&#xA;      &lt;a role=&#34;button&#34; class=&#34;flex align-center&#34;&gt;&#xA;        &lt;img src=&#34;//localhost:1313/svg/translate.svg&#34; class=&#34;book-icon&#34; alt=&#34;Languages&#34; /&gt;&#xA;        English&#xA;      &lt;/a&gt;&#xA;    &lt;/label&gt;&#xA;&#xA;    &lt;ul&gt;&#xA;      &#xA;      &lt;li&gt;&#xA;        &lt;a href=&#34;http://wehrend.uber.space/de/&#34;&gt;&#xA;          Deutsch&#xA;        &lt;/a&gt;&#xA;      &lt;/li&gt;&#xA;      &#xA;    &lt;/ul&gt;&#xA;  &lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;&lt;ul&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/docs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        &#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/posts/web/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Web-Blog&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/tags/synth/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Synth-Blog&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/pages/overview2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Digital Logic 2 (Overview)&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/pages/prequel-short-introduction-to-electronics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Electronics 101&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/posts/synth/25_build_your_own_modules/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Synthesizer-DIY&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/pages/short-introduction-to-electronics-102&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Electronics 102&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;&lt;/ul&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;  &#xA;&lt;ul&gt;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;//localhost:1313/pages/overview/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;        Digital Logic 1 (Overview)&#xA;      &lt;/a&gt;&#xA;  &lt;/li&gt;&#xA;  &#xA;&lt;/ul&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;/nav&gt;&#xA;&#xA;&#xA;&#xA;&#xA;  &lt;script&gt;(function(){var e=document.querySelector(&#34;aside .book-menu-content&#34;);addEventListener(&#34;beforeunload&#34;,function(){localStorage.setItem(&#34;menu.scrollTop&#34;,e.scrollTop)}),e.scrollTop=localStorage.getItem(&#34;menu.scrollTop&#34;)})()&lt;/script&gt;&#xA;&#xA;&#xA; &#xA;      &lt;/div&gt;&#xA;    &lt;/aside&gt;&#xA;&#xA;    &lt;div class=&#34;book-page&#34;&gt;&#xA;      &lt;header class=&#34;book-header&#34;&gt;&#xA;        &#xA;  &lt;div class=&#34;flex align-center justify-between&#34;&gt;&#xA;  &lt;label for=&#34;menu-control&#34;&gt;&#xA;    &lt;img src=&#34;//localhost:1313/svg/menu.svg&#34; class=&#34;book-icon&#34; alt=&#34;Menu&#34; /&gt;&#xA;  &lt;/label&gt;&#xA;&#xA;  &lt;strong&gt;Bits &amp;amp; pieces - Sven Wehrend&lt;/strong&gt;&#xA;&#xA;  &lt;label for=&#34;toc-control&#34;&gt;&#xA;    &#xA;  &lt;/label&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;  &#xA; &#xA;      &lt;/header&gt;&#xA;&#xA;      &#xA;      &#xA;  &lt;article class=&#34;markdown&#34;&gt;&lt;/article&gt;&#xA; &#xA;      &#xA;&#xA;      &lt;footer class=&#34;book-footer&#34;&gt;&#xA;        &#xA;  &lt;div class=&#34;flex flex-wrap justify-between&#34;&gt;&#xA;&#xA;&#xA;Last update: April 20, 2025 &#xA;&#xA;&#xA;&lt;/div&gt;&#xA; &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css&#34; integrity=&#34;sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB&#34; crossorigin=&#34;anonymous&#34;&gt;&#xA;&#xA;    &#xA;    &lt;script defer src=&#34;https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js&#34; integrity=&#34;sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;&#xA;&#xA;    &#xA;    &lt;script defer src=&#34;https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js&#34; integrity=&#34;sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR&#34; crossorigin=&#34;anonymous&#34;&#xA;        onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&#xA;        &#xA;&#xA;&#xA;&#xA;  &lt;script&gt;(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll(&#34;pre code&#34;).forEach(t=&gt;{t.addEventListener(&#34;click&#34;,function(){e(t.parentElement),navigator.clipboard&amp;&amp;navigator.clipboard.writeText(t.parentElement.textContent)})})})()&lt;/script&gt;&#xA;&#xA;&#xA;&#xA; &#xA;        &#xA;      &lt;/footer&gt;&#xA;&#xA;      &#xA;  &#xA; &#xA;&#xA;      &lt;label for=&#34;menu-control&#34; class=&#34;hidden book-menu-overlay&#34;&gt;&lt;/label&gt;&#xA;    &lt;/div&gt;&#xA;&#xA;    &#xA;  &lt;/main&gt;&#xA;&#xA;  &#xA;&lt;/body&gt;&#xA;&lt;/html&gt;</description>
+    </item>
+    <item>
+      <title>Digital Logic 2</title>
+      <link>//localhost:1313/de/docs/digital_logic_2/images/how_does_cpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/de/docs/digital_logic_2/images/how_does_cpu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Digital Logic 2</title>
+      <link>//localhost:1313/en/docs/digital_logic_2/images/how_does_cpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/en/docs/digital_logic_2/images/how_does_cpu/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
