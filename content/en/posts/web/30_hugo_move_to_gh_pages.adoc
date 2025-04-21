@@ -1,6 +1,6 @@
 ---
 title: "Move Hugo Web-presence to GH-Pages"
-date: 2025-04-21s
+date: 2025-04-21
 tags: ["hugo","web","gh-pages","gh-actions"]
 draft: false
 type: blog
