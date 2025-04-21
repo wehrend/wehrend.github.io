@@ -227,5 +227,3 @@ Wenn wir unsere Änderungen committen und pushen, beginnt die Build-and-Deploy-P
 Herzlichen Glückwunsch, Sie haben soeben gelernt, wie Sie einen Beitrag zur Community leisten und einen Eckpfeiler auf den Schultern von Giganten errichten können.
 
 Übersetzt mit DeepL.com (kostenlose Version)
-
-Übersetzt mit DeepL.com (kostenlose Version)

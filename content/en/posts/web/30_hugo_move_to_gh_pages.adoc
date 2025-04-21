@@ -1,63 +1,233 @@
 ---
 title: "Move Hugo Web-presence to GH-Pages"
 date: 2025-03-16
-tags: ["hugo","web","gh-pages"]
+tags: ["hugo","web","gh-pages","gh-actions"]
 draft: false
 type: blog
 ---
 
-Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money. Although its only a few bucks, I thought it would be time to move on…​So this is basically a tutorial to move over to github pages…​
+Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money.
+Although it's only a few bucks, I thought it would be time to move on... this is basically a tutorial to move over to github pages...
 
-We start with the Makefile. My new setup looks like the following:
+*Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead*
+
+We start with the workflow file deploy.yml . My new setup looks like the following:
 
 ----
-{{<highlight Makefile>}}
-include credentials.mk
+{{<highlight yaml>}}
+name: Build and Deploy Hugo Site
 
-build_dir := wehrend.github.io
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-up:
-	hugo serve --disableFastRender --renderStaticToDisk --ignoreCache --config ./content/config.toml
+permissions:
+  contents: write
 
-deployment:
-	@echo "Building site..."
-	hugo -D -d $(build_dir) --config ./content/config.toml
-	@echo "Changing directory to output folder..."
-	@cd $(build_dir) && \
-	if [ -n "$$(git status --porcelain)" ]; then \
-		echo "Adding changes..."; \
-		git add .; \
-		read -p "Enter commit message: " COMMIT_MSG; \
-		echo "Committing changes..."; \
-		git commit -m "$$COMMIT_MSG"; \
-		echo "Pushing to GitHub via SSH with credentials..."; \
-		GIT_SSH_COMMAND="sshpass -p $(SSH_PASS) ssh" git push git@github.com:wehrend/hugo_blog.git main; \
-	else \
-		echo "No changes to commit."; \
-	fi
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.146.6
+      TZ: Europe/Berlin
+
+    steps:
+      - name: Checkout repository (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install Hugo
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i hugo.deb
+      - name: Install Asciidoctor
+        run: |
+          sudo apt update && sudo apt install asciidoctor
+
+      - name: Build Hugo site
+        run: |
+          hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
+          ls -la wehrend.github.io
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh_pages
+          publish_dir: content/content/wehrend.github.io
+          user_name: wehrend
+          user_email: sven.wehrend[at]gmail.com
+{{</highlight>}}
+----
+
+and here for reasons of completeness the config.toml residing in the content directory...
+
+----
+{{<highlight toml>}}
+baseURL = "http://wehrend.uber.space/"
+languageCode = "en-us"
+title = "Bits & pieces - Sven Wehrend"
+publishDir = "wehrend.github.io"
+
+[module]
+  [[module.imports]]
+    path = "github.com/alex-shpak/hugo-book"
 
 
-cleanup:
-	@echo "Cleaning up..."
-	rm -rf ./wehrend.github.io
-	@echo "Cleanup complete."
+[languages.en]
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 1
+
+[languages.de]
+  languageName = "Deutsch"
+  contentDir = "content/de"
+  weight = 2
+
+
+[[languages.en.menu.before]]
+  name = "Web-Blog"
+  url = "/posts/web/"
+  weight = 10
+
+[[languages.en.menu.before]]
+  name = "Synth-Blog"
+  url = "/tags/synth/"
+  weight = 20
+
+
+[[languages.en.menu.before]]
+  name = ""
+  url = "/docs/"
+  weight = 10
+
+
+[[languages.en.menu.before]]
+  name = "Electronics 101"
+  url = "/pages/prequel-short-introduction-to-electronics"
+  weight = 26
+
+[[languages.en.menu.before]]
+  name = "Electronics 102"
+  url = "/pages/short-introduction-to-electronics-102"
+  weight = 27
+
+
+[[languages.en.menu.after]]
+  name = "Digital Logic 1 (Overview)"
+  url = "/pages/overview/"
+  weight = 20
+
+[[languages.en.menu.before]]
+  name = "Digital Logic 2 (Overview)"
+  url = "/pages/overview2/"
+  weight = 25
+
+[[languages.en.menu.before]]
+  name = "Synthesizer-DIY"
+  url = "/posts/synth/25_build_your_own_modules/"
+  weight = 26
+
+
+[[languages.de.menu.before]]
+  name = "Web-Blog"
+  url = "/posts/web/"
+  weight = 10
+
+[[languages.de.menu.before]]
+  name = "Synth-Blog"
+  url = "/tags/synth/"
+  weight = 20
+
+
+[[languages.de.menu.before]]
+  name = ""
+  url = "/docs/"
+  weight = 10
+
+
+[[languages.de.menu.before]]
+  name = "Elektronik 101"
+  url = "/de/pages/prequel-short-introduction-to-electronics"
+  weight = 26
+
+[[languages.de.menu.before]]
+  name = "Elektronik 102"
+  url = "/de/pages/short-introduction-to-electronics-102"
+  weight = 27
+
+
+[[languages.de.menu.after]]
+  name = "Digitale Logik 1 (Übersicht)"
+  url = "/de/pages/overview/"
+  weight = 20
+
+[[languages.de.menu.before]]
+  name = "Digitale Logik 2 (Übersicht)"
+  url = "/de/pages/overview2/"
+  weight = 25
+
+
+[[languages.de.menu.before]]
+  name = "Synthesizer-DIY"
+  url = "/de/posts/synth/25_build_your_own_modules/"
+  weight = 26
+
+[params]
+  date_format = "2006-01-02"
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = 'light'
+
+  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # You can also specify this parameter per page in front matter.
+  BookToC = false
+
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+
+[markup.asciidocext]
+    extensions = ["asciidoctor"]
+    workingFolderCurrent = true
+    trace = true
+    verbose = true
+
+[languages.en.markup]
+  [languages.en.markup.goldmark]
+    [languages.en.markup.goldmark.renderer]
+      unsafe = true
+
+[languages.de.markup]
+  [languages.de.markup.goldmark]
+    [languages.de.markup.goldmark.renderer]
+      unsafe = true
+
+  [frontmatter.handlers]
+    adoc = "yaml"
 
 {{</highlight>}}
 ----
-and the credentials.mk file shown below which should be explicit in the .gitignore tp prevent secrets fromm being leaked.
 
-----
-SSH_PASS = <password or token>
-----
+Thanks to the github-token documented https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#supported-tokens[here]
+we even do not need to setup a key or token by using the default github_token which do not need any configuration, in case the
+github pages stem from the same repository. So I decided to ease my setup and throw away the parent directory respectively added
+the parent directory to the repository
 
-Next, before doing incremental changes, first we need to create a repository for the pages as is described https://pages.github.com/[here]:
+With this setup you should be able to let hugo create the publishDir <user>.github.io AKA public folder which gets populated in
+the branch gh-pages.
 
-first create a new public reposiory under  https://github.com/<username>/<username>.github.io which is in my case
+If we commit and push our changes the build-and-deploy pipeline immediately begins to work and churn out the website for you
+in the background...
 
-https://github.com/wehrend/wehrend.github.io, then we need to go to our main directory hugo and manipulatre the
-publishDir URL in the config file, so that it points to <username>.github.io instead of public,
-then do an add *, followed by a git commit and git push origin main .
-
+Congratulations, you just learned a way to contribute to the community and build a cornerstone on the shoulders of giants.
 
 
 
