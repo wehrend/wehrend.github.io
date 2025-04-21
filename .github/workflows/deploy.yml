@@ -41,6 +41,8 @@ jobs:
           hugo --gc --minify --cleanDestinationDir --config content/config.toml
           echo "--- Built site files ---"
           find public -type f | sort
+      - name: Preload artifact action to avoid missing download info
+        uses: actions/upload-artifact@v3
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
