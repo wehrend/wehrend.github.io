@@ -8,14 +8,14 @@ on:
 
 permissions:
   contents: write
+  pages: write   # ✅ needed for actions/deploy-pages
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.6
-      ASCIIDOC_VERSION: 2.0.18-2
-      RUBY_ASCIIDOC_VERSION: 2.2.0-1
       TZ: Europe/Berlin
 
     steps:
@@ -29,22 +29,33 @@ jobs:
         run: |
           wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
           sudo dpkg -i hugo.deb
+
       - name: Install Asciidoctor
         run: |
-          sudo apt install ruby
+          sudo apt update
+          sudo apt install -y ruby
           sudo gem install asciidoctor
-#          wget -O adoc.deb https://deb.debian.org/debian/pool/main/a/asciidoctor/asciidoctor_${ASCIIDOC_VERSION}_all.deb
-#          wget -O ruby-asciidoc.deb https://deb.debian.org/debian/pool/main/r/ruby-asciidoctor/ruby-asciidoctor_2.2.0-1_all.deb
-#          sudo dpkg -i adoc.deb ruby-asciidoc.deb
+
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
-          ls -la public
+          hugo --gc --minify --cleanDestinationDir --config content/config.toml
+          echo "--- Built site files ---"
+          find public -type f | sort
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: public
 
+  # Separate deployment job for GitHub Pages
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
