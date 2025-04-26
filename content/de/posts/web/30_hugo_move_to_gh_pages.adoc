@@ -1,6 +1,6 @@
 ---
 title: "Move Hugo Web-presence to GH-Pages"
-date: 2025-04-21
+date: 2025-03-16
 tags: ["hugo", "web", "gh-pages", "gh-actions"]
 draft: false
 type: blog
@@ -18,48 +18,55 @@ Wir beginnen mit der Workflow-Datei deploy.yml . Mein neues Setup sieht wie folg
 name: Build and Deploy Hugo Site
 
 on:
- push:
- branches:
+  push:
+    branches:
       - main
- workflow_dispatch:
+  workflow_dispatch:
 
 permissions:
- contents: write
+  contents: write
 
 jobs:
- build-and-deploy:
- runs-on: ubuntu-latest
- env:
- HUGO_VERSION: 0.146.6
- TZ: Europe/Berlin
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.146.6
+      TZ: Europe/Berlin
 
- steps:
+    steps:
       - name: Checkout repository (with submodules)
- uses: actions/checkout@v4
- with:
- submodules: recursive
- fetch-depth: 0
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 3
 
- - name: Install Hugo
- run: |
- wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
- sudo dpkg -i hugo.deb
- - name: Asciidoctor installieren
- ausführen: |
- sudo apt update && sudo apt install asciidoctor
+      - name: Install Hugo
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i hugo.deb
 
- - name: Build Hugo site
- run: |
- hugo --gc --minify --config /home/runner/work/content/content/config.toml --logLevel debug
- ls -la wehrend.github.io
- - name: Deploy to GitHub Pages
- uses: peaceiris/actions-gh-pages@v4
- with:
- github_token: ${{ secrets. GITHUB_TOKEN }}
- publish_branch: gh_pages
- publish_dir: content/content/wehrend.github.io
- user_name: wehrend
- user_email: sven.wehrend[at]gmail.com
+      - name: Install Asciidoctor
+        run: |
+          sudo apt update
+          sudo apt install -y ruby
+          sudo gem install asciidoctor
+
+      - name: Build Hugo site
+        run: |
+          hugo --gc --minify --cleanDestinationDir --config content/config.toml
+          echo "--- Built site files ---"
+          find public -type f | sort
+
+      - name: Deploy to gh_pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh_pages
+          publish_dir: public
+          force_orphan: true
+          user_name: wehrend
+          user_email: sven.wehrend@gmail.com
+
 {{</highlight>}}
 ----
 
@@ -70,7 +77,6 @@ und hier der Vollständigkeit halber die config.toml, die im content-Verzeichnis
 baseURL = "http://wehrend.uber.space/"
 languageCode = "en-us"
 title = "Bits & pieces - Sven Wehrend"
-publishDir = "wehrend.github.io"
 
 [module]
   [[module.imports]]
