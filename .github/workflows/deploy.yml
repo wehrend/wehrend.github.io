@@ -36,7 +36,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --gc --minify --cleanDestinationDir --config content/config.toml
+          hugo --gc --minify --cleanDestinationDir
           echo "--- Built site files ---"
           find public -type f | sort
 
