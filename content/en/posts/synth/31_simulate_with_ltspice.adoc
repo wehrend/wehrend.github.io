@@ -1,0 +1,59 @@
+---
+title: Simulation of modules with LTSpice
+date: 2025-04-30
+tags: ["LTspice", "SPICE"]
+category:
+link:
+description: How to simulate analog circuits
+type: blog
+draft: true
+---
+
+Hello folks,
+
+today I want to start with a topic that I had already longer in my mind and finally took hands on.
+
+We want to simulate a simple LFO (or a normal oscillator, depending on the chosen dimensions) and for that
+we use the relative well-known tool https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html[LTSpice]
+that thankfully also works on Linux machines thanks to using the non-emulator https://www.winehq.org/[wine].
+
+A simple tutorial how to start that is found https://github.com/joaocarvalhoopen/LTSpice_on_Linux_Ubuntu__How_to_install_and_use[here].
+
+Simple, after installation in the shell we enter (or copy):
+
+----
+# Start lstpice through wine
+wine ~/.wine/drive_c/Program\ Files/LTC/LTspiceXVII/XVIIx64.exe
+----
+
+image:../ltspice.png[LT-Spice]
+
+We start with a schmitt-inverter based oscillator, utilizing a 40106 IC with six schmitt-inverters
+
+image:../cd40106_schematic.png[cd40106 Schematic]
+
+For more details, see the datasheet below
+
+https://www.ti.com/lit/ds/symlink/cd40106b.pdf[Datasheet]
+
+
+
+The important piece here is the following use case as astable multivibrator
+
+image:../cd40106_as_osci.png[Astable Multivibrator]
+
+We add two antiparallel diodes to the circuit, allowing to usse different timings for pulse and pause..
+
+image:../schmitt_oscillator_circuit.png[Schmitt Oscillator Circuit]
+
+After implementing the circuit part by part we end up with simulation, for that we need to set some initial condition .ic, the whole
+spice command is as below
+
+----
+.ic V(n001) 0
+----
+
+That allows us to run the simulator:
+
+
+image:../schmitt_oscillator.png[Schmitt Oscillator]
