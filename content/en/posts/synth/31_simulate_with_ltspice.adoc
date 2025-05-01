@@ -79,4 +79,8 @@ image:../schmitt_oscillator.png[Schmitt Oscillator]
 
 Next, we can modify the resistor values and note that they control the pulse-pause-ratio .
 
+Dont forget that, in a real circuit, you need an op-amp designed as voltage follower or impedance converter,
+like sketched blue in the cicuit schematic in order to be able to encumber the output with the next stage.
+Last but not least we have an RC filter on the end, a first-order high-pass filter...
+
 Thats it for now, see you later in other articles.
