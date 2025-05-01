@@ -6,7 +6,6 @@ category:
 link:
 description: How to simulate analog circuits
 type: blog
-draft: true
 ---
 
 Hello folks,
@@ -30,6 +29,12 @@ image:../ltspice.png[LT-Spice]
 
 We start with a schmitt-inverter based oscillator, utilizing a 40106 IC with six schmitt-inverters
 
+Its based ont the VCO cicuit schematic from erica synths, see as below
+
+image:../erica_edu_osc.png[erica edu oscillator]
+
+Below the schematic from the datasheet
+
 image:../cd40106_schematic.png[cd40106 Schematic]
 
 For more details, see the datasheet below
@@ -46,6 +51,9 @@ We add two antiparallel diodes to the circuit, allowing to usse different timing
 
 image:../schmitt_oscillator_circuit.png[Schmitt Oscillator Circuit]
 
+Dont forget to set values for the schmitt-inverter, otherwise it will not behave like it should, but like an ideal component,
+so do a right click on the schmitt inverter and under value add this: Vhigh=9 Vt=4.45 Vh=.85 Trise=.1u Tfall=.1u
+
 After implementing the circuit part by part we end up with simulation, for that we need to set some initial condition .ic, the whole
 spice command is as below
 
@@ -53,7 +61,22 @@ spice command is as below
 .ic V(n001) 0
 ----
 
+additionally we need to set the transition times and how long the simulation should go..
+
+----
+.tran 2s
+----
+
+A finished version of the oscillator to download:
+
+link:../osc.asc[osc.asc]
+
 That allows us to run the simulator:
 
 
 image:../schmitt_oscillator.png[Schmitt Oscillator]
+
+
+Next, we can modify the resistor values and note that they control the pulse-pause-ratio .
+
+Thats it for now, see you later in other articles.
