@@ -1,0 +1,35 @@
+---
+title: Simulation of NLC sloth with LTSpice
+date: 2025-05-01
+tags: ["LTspice", "SPICE", "NLC", "sloth"]
+category:
+link:
+description: How to simulate analog circuits
+type: blog
+---
+
+Hello folks,
+
+today I want to continue the series about simulation of synth modules with LTspice.
+
+We want to analyze the https://www.nonlinearcircuits.com/modules/p/4hp-sloth-chaos[sloth module from NLC].
+
+Lets start with the schematic:
+
+image:../sloth_circuit.png[Sloth schematic]
+
+Right below is a copy of the schematic, created in ltspice, however missing the potentiometer(s).
+
+image:../sloth_simulation.png[Sloth Simulation]
+
+Whats important here to note here is that for the fourth op-amp we needed to add some voltage offset
+of 1 µV to get it working.
+Additionally to that we need to simulation the power-on cycle of the power supply, by adding the Voltage
+with PieceWiseLinear function given ze values (t0,v0,  t1, t2 ) with the Values 1ms 0V 100ms 12V ..
+
+Here are the files to tinker with
+
+link:../sloth.asc[sloth.asc]
+
+But thats it for now - see you in another blog post.
+
