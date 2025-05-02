@@ -1,12 +1,11 @@
 ---
 title: Simulation of NLC sloth with LTSpice
-date: 2025-05-01
+date: 2025-05-02
 tags: ["LTspice", "SPICE", "NLC", "sloth"]
 category:
 link:
 description: How to simulate analog circuits
 type: blog
-draft: true
 ---
 
 Hello folks,

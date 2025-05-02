@@ -6,7 +6,6 @@ category:
 link:
 description: How to simulate analog circuits
 type: blog
-draft: true
 ---
 
 Hello folks,
