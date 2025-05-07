@@ -14,47 +14,98 @@ and so on. Here I want to show you my experience with that.
 First, clone the gitlab repository:
 
     git clone https://gitlab.com/kicad/code/kicad.git
-    git checkout 8.0
+    git checkout 9.0
 
 Then, you need to install a couple of dependencies I list them in a hopefully complete list
 
-    sudo apt-get install cmake libgl-dev libglew-dev libcurl4-openssl-dev ngspice xfonts-scalable libocct-data-exchange-dev
-    libocct-draw-dev libocct-foundation-dev libocct-modeling-algorithms-dev libocct-modeling-data-dev libocct-ocaf-dev
-    libocct-visualization-dev protobuf-compiler libprotobuf-dev swig python3 python3-pip libwxgtk3.0-gtk3-dev
+    sudo apt-get install cmake libgl-dev libglew-dev libcurl4-openssl-dev ngspice xfonts-scalable libocct-data-exchange-dev \
+    libocct-draw-dev libocct-foundation-dev libocct-modeling-algorithms-dev libocct-modeling-data-dev libocct-ocaf-dev \
+    libocct-visualization-dev protobuf-compiler libprotobuf-dev swig python3 python3-pip libwxgtk3.0-gtk3-dev \
     unixodbc unixodbc-dev libsecret1
 
 
-But cmake and wxwidgets both are too old under Debian Bullseye,so you need to install them separately...
+// But cmake and wxwidgets both are too old under Debian Bullseye,so you need to install them separately...
+//
+// For cmake it is straightforward, you clone the repository and build the program from source:
+//
+//     git clone https://github.com/Kitware/CMake.git
+//     cd CMake
+//     ./bootstrap && make && sudo make install
+//
+// For wxwidgets its a bit harder, you clone the repository with:
+//
+//     git clone https://github.com/wxWidgets/wxWidgets.git
+//     git checkout v3.2.4
+//     cd wxWidgets/
+//     git submodule update --init src/jpeg
+//     git submodule update --init src/tiff
+//     git submodule update --init src/stc/scintilla
+//     git submodule update --init 3rdparty/catch
+//     git submodule update --init 3rdparty/nanosvg
+//     mkdir buildgtk
+//     cd buildgtk/
+//     ../configure --with-gtk --prefix=/usr
+//     make -j3
+//     sudo make install
+//
+building protobuff
 
-For cmake it is straightforward, you clone the repository and build the program from source:
+    # Install build tools
+    sudo apt install cmake git g++ autoconf automake libtool curl make unzip
 
-    git clone https://github.com/Kitware/CMake.git
-    cd CMake
-    ./bootstrap && make && sudo make install
-
-For wxwidgets its a bit harder, you clone the repository with:
-
-    git clone https://github.com/wxWidgets/wxWidgets.git
-    git checkout v3.2.4
-    cd wxWidgets/
-    git submodule update --init src/jpeg
-    git submodule update --init src/tiff
-    git submodule update --init src/stc/scintilla
-    git submodule update --init 3rdparty/catch
-    git submodule update --init 3rdparty/nanosvg
-    mkdir buildgtk
-    cd buildgtk/
-    ../configure --with-gtk --prefix=/usr
-    make -j3
+    # Clone and build Protobuf
+    cd ~
+    git clone https://github.com/protocolbuffers/protobuf.git
+    cd protobuf
+    git submodule update --init --recursive
+    mkdir build && cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/protobuf
+    make -j$(nproc)
     sudo make install
 
+    cd ~/protobuf/build
+    # Configure build without external deps
+    cmake .. \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/protobuf \
+      -Dprotobuf_BUILD_SHARED_LIBS=OFF \
+      -Dprotobuf_USE_EXTERNAL_UTF8_RANGE=OFF \
+      -Dprotobuf_ABSL_PROVIDER=none \
+      -Dprotobuf_BUILD_TESTS=OFF
 
+
+        cd ~/software/protobuf
+        git fetch --tags
+        git checkout v21.12
+
+        # Clean old builds
+        rm -rf build CMakeCache.txt
+        mkdir build && cd build
+
+    cmake .. \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/protobuf \
+      -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+      -Dprotobuf_BUILD_TESTS=OFF
+
+        make -j$(nproc)
+        sudo make install
+
+        sudo apt-get install libnng-dev
+
+sudo apt update
+sudo apt install libgl-dev libglu1-mesa-dev freeglut3-dev
+Additionally, KiCad may require:
+
+sudo apt install libglew-dev libglm-dev
 
 Now you are finally ready to build Kicad itself...
 
     git clone https://gitlab.com/kicad/code/kicad.git
     git checkout 8.0
     mkdir -p build/release
-    cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DKICAD_USE_EGL=ON -DKICAD_WAYLAND=OFF  ../../
-    make -j3
+    cd build/release
+    cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DProtobuf_DIR=/opt/protobuf/lib/cmake/protobuf \
+-DKICAD_USE_EGL=ON -DKICAD_WAYLAND=OFF  ../../
+    make -j8
 
