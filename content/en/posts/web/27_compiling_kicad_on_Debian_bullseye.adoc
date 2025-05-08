@@ -1,10 +1,12 @@
 ---
-title: "Compiling Kicad on Debian Bullseye"
+title: "Compiling Kicad on Debian Bookworm"
 date: 2024-03-10
 tags: ["kicad","ecad","eda", "debian"]
 draft: false
 type: blog
 ---
+
+*This is an updated blog post from the 08-05-2025, to ensure that you can enjoy to compile the latest version of Kicad and its dependencies.*
 
 With my new hobby, there came the desire to learn to build and design my own PCB. With that in mind, I began to use the
 open source ecad solution Kicad. Now I became interested in participating in this project, but, to compile the code you
@@ -21,66 +23,23 @@ Then, you need to install a couple of dependencies I list them in a hopefully co
     sudo apt-get install cmake libgl-dev libglew-dev libcurl4-openssl-dev ngspice xfonts-scalable libocct-data-exchange-dev \
     libocct-draw-dev libocct-foundation-dev libocct-modeling-algorithms-dev libocct-modeling-data-dev libocct-ocaf-dev \
     libocct-visualization-dev protobuf-compiler libprotobuf-dev swig python3 python3-pip libwxgtk3.0-gtk3-dev \
-    unixodbc unixodbc-dev libsecret1
+    unixodbc unixodbc-dev libsecret1 libgl-dev libglu1-mesa-dev freeglut3-dev libglew-dev libglm-dev libnng-dev
 
-
-// But cmake and wxwidgets both are too old under Debian Bullseye,so you need to install them separately...
-//
-// For cmake it is straightforward, you clone the repository and build the program from source:
-//
-//     git clone https://github.com/Kitware/CMake.git
-//     cd CMake
-//     ./bootstrap && make && sudo make install
-//
-// For wxwidgets its a bit harder, you clone the repository with:
-//
-//     git clone https://github.com/wxWidgets/wxWidgets.git
-//     git checkout v3.2.4
-//     cd wxWidgets/
-//     git submodule update --init src/jpeg
-//     git submodule update --init src/tiff
-//     git submodule update --init src/stc/scintilla
-//     git submodule update --init 3rdparty/catch
-//     git submodule update --init 3rdparty/nanosvg
-//     mkdir buildgtk
-//     cd buildgtk/
-//     ../configure --with-gtk --prefix=/usr
-//     make -j3
-//     sudo make install
-//
-building protobuff
+First building protobuff (we use the tagged version, to prevents issues with Abseil and utf8_range )
 
     # Install build tools
     sudo apt install cmake git g++ autoconf automake libtool curl make unzip
 
     # Clone and build Protobuf
-    cd ~
+    cd software
     git clone https://github.com/protocolbuffers/protobuf.git
-    cd protobuf
-    git submodule update --init --recursive
+    cd ./protobuf
+    git fetch --tags
+    git checkout v21.12
+
+    # Clean old builds
+    rm -rf build CMakeCache.txt
     mkdir build && cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/protobuf
-    make -j$(nproc)
-    sudo make install
-
-    cd ~/protobuf/build
-    # Configure build without external deps
-    cmake .. \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/opt/protobuf \
-      -Dprotobuf_BUILD_SHARED_LIBS=OFF \
-      -Dprotobuf_USE_EXTERNAL_UTF8_RANGE=OFF \
-      -Dprotobuf_ABSL_PROVIDER=none \
-      -Dprotobuf_BUILD_TESTS=OFF
-
-
-        cd ~/software/protobuf
-        git fetch --tags
-        git checkout v21.12
-
-        # Clean old builds
-        rm -rf build CMakeCache.txt
-        mkdir build && cd build
 
     cmake .. \
       -DCMAKE_BUILD_TYPE=Release \
@@ -88,16 +47,8 @@ building protobuff
       -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
       -Dprotobuf_BUILD_TESTS=OFF
 
-        make -j$(nproc)
-        sudo make install
-
-        sudo apt-get install libnng-dev
-
-sudo apt update
-sudo apt install libgl-dev libglu1-mesa-dev freeglut3-dev
-Additionally, KiCad may require:
-
-sudo apt install libglew-dev libglm-dev
+    make -j8
+    sudo make install
 
 Now you are finally ready to build Kicad itself...
 
@@ -105,7 +56,15 @@ Now you are finally ready to build Kicad itself...
     git checkout 8.0
     mkdir -p build/release
     cd build/release
-    cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DProtobuf_DIR=/opt/protobuf/lib/cmake/protobuf \
--DKICAD_USE_EGL=ON -DKICAD_WAYLAND=OFF  ../../
+    cmake ../.. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/opt/kicad \
+    -DUSE_GLEW=ON \
+    -DGLEW_INCLUDE_DIR=/usr/include/GL \
+    -DGLEW_LIBRARY=/usr/lib/x86_64-linux-gnu/libGLEW.so \
+    -DGLU_LIBRARY=/usr/lib/x86_64-linux-gnu/libGLU.so \
+    -DOPENGL_gl_LIBRARY=/usr/lib/x86_64-linux-gnu/libGL.so \
+    -DOPENGL_INCLUDE_DIR=/usr/include/GL
     make -j8
+    sudo make install
 
