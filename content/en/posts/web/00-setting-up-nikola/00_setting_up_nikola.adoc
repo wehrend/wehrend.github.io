@@ -1,6 +1,6 @@
 ---
 title: Setting up a static blog with Nikola
-date: 2020-12-12
+date: 2020-12-11
 tags: ["Web", "Nikola"]
 category:
 link:

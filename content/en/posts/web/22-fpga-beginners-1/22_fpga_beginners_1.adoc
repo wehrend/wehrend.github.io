@@ -19,7 +19,7 @@ image:../quartus_menu_new_project.png[Quartus - New Project Wizard]
 
 Next we see an introduction window as shown below. We click next to get to the next window where we name the Project.
 
-image:../quartus_introduction.png[Quartus - New Project Wizard]
+image:../quartus_project_introduction.png[Quartus - New Project Wizard]
 
 Give it a proper AndGate or HelloWorld, as you like...
 
