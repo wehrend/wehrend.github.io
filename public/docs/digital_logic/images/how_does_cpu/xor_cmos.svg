@@ -1,0 +1,122 @@
+<svg width="170.00" height="150.00" 
+     viewBox="0.0 0.0 170.0 150.0" 
+     viewPort="0 0 170px 150px" 
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+    <!--power-->
+    <polyline points="81,6 85,0 90,6" style="stroke:black;stroke-width:1;fill:white;"/>
+    <line x1="85" y1="0" x2="85" y2="10" style="stroke:black;stroke-width:1;fill:white;"/>
+    <line x1="49" y1="10" x2="150" y2="10" style="stroke:black;stroke-width:1;fill:white;"/>
+    <circle cx="85" cy="10" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <!--n-mos, strang #1-->
+    <polyline points="85,70 85,80 75,80 75,95 85,95 85,110 75,110 75,125 85,125 85,135"
+              style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <line x1="73" y1="80" x2="73" y2="95" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="30" y1="87" x2="73" y2="87" style="stroke:black;stroke-width:1;fill:none;"/>
+   
+<!--     <text x="59" y="89" font-size="6">A</text> -->
+    <line x1="73" y1="110" x2="73" y2="125" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="20" y1="117" x2="73" y2="117" style="stroke:black;stroke-width:1;fill:none;"/>
+<!--     <text x="59" y="119" font-size="6">B</text> -->
+    <!--n-mos, strang #2-->
+    <polyline points="150,70 150,80 140,80 140,95 150,95 150,110 140,110 140,125 150,125 150,135"
+              style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <line x1="138" y1="80" x2="138" y2="95" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="120" y1="87" x2="138" y2="87" style="stroke:black;stroke-width:1;fill:none;"/>
+<!--     <text x="110" y="89" font-size="6">¬A</text> -->
+    <line x1="138" y1="110" x2="138" y2="125" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="130" y1="117" x2="138" y2="117" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="130" cy="100" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <line x1="115" y1="100" x2="130" y2="100" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="115" cy="100" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+
+    
+    <!--ground-->
+    <line x1="49" y1="135" x2="150" y2="135" style="stroke:black;stroke-width:1;fill:white;"/>
+    <line x1="85" y1="135" x2="85" y2="140" style="stroke:black;stroke-width:1;fill:white;"/>
+    <polygon points="80,140 90,140 85,145" style="stroke:black;stroke-width:1;fill:white;"/>
+    <circle cx="85" cy="135" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <!--output line-->
+    <circle cx="85" cy="72" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <circle cx="150" cy="72" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <circle cx="162" cy="72" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <line x1="85" y1="72" x2="162" y2="72" style="stroke:black;stroke-width:1;fill:white;"/>
+    <text x="165" y="72" font-size="6">Q</text>
+    
+    <!--inverter A-->
+    <rect x="25" y="13" width="27" height="55" style="fill:none;stroke:red;stroke-dasharray:4,2;"/>
+    <polyline points="49,10 49,20 39,20 39,35 49,35 49,50 39,50 39,65 49,65 49,135"
+            style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="36" cy="27" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="37" y1="20" x2="37" y2="35" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="37" y1="50" x2="37" y2="65" style="stroke:black;stroke-width:1;fill:none;"/>
+<!--     <polyline points="35,27 28,27 28,57 37,57" style="stroke:black;stroke-width:1;fill:none;"/> -->
+    <line x1="30" y1="27" x2="35" y2="27" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="30" cy="57" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <line x1="30" y1="57" x2="37" y2="57" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="49" cy="40" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    
+    
+    
+    
+    <!--inverter B-->
+    <rect x="91" y="75" width="27" height="55" style="fill:none;stroke:red;stroke-dasharray:4,2;"/>
+    <line x1="60" y1="100" x2="95" y2="100" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="60" cy="100" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <circle cx="95" cy="100" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <circle cx="115" cy="10" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <circle cx="115" cy="135" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <polyline points="115,10 115,80 105,80 105,95 115,95 115,110 105,110 105,125 115,125 115,135"
+            style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="102" cy="87" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="103" y1="80" x2="103" y2="95" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="103" y1="110" x2="103" y2="125" style="stroke:black;stroke-width:1;fill:none;"/>
+    <polyline points="101,87 95,87 95,117 103,117 " style="stroke:black;stroke-width:1;fill:none;"/>
+    <text x="105" y="102" font-size="6">¬B</text>-->
+    
+    <!--     A -->
+    <circle cx="20" cy="27" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <polyline points="20,27 30,27 30,15 120,15 120,27 120,27, 136,27"
+              style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    
+    
+    <!--p-mos,strang #1-->
+    <polyline points="85,10 85,20 75,20 75,35 85,35 85,50 75,50 75,65 85,65 85,70"
+              style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="72" cy="27" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="73" y1="20" x2="73" y2="35" style="stroke:black;stroke-width:1;fill:none;"/>
+    <polyline points="60,40 60,27 71,27"
+              style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="60" cy="40" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <line x1="30" y1="27" x2="30" y2="87" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="30" cy="27" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <text x="9" y="29" font-size="6">A</text>
+    <circle cx="71" cy="57" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="72" y1="50" x2="72" y2="65" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="60" y1="57" x2="70" y2="57" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="60" cy="117" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <line x1="60" y1="57" x2="60" y2="117" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="20" cy="117" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <text x="9" y="119" font-size="6">B</text>
+   
+     <!--p-mos, strang #2-->
+    <polyline points="150,10 150,20 140,20 140,35 150,35 150,50 140,50 140,65 150,65 150,75"
+              style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round;"/>
+    <circle cx="137" cy="27" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="138" y1="20" x2="138" y2="35" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="120" y1="27" x2="136" y2="27" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="120" y1="40" x2="120" y2="87" style="stroke:black;stroke-width:1;fill:none;
+          stroke-linecap:round;"/>
+<!--     <circle cx="120" cy="40" r="1" style="stroke:black;stroke-width:1;fill:black;"/> -->
+    <line x1="49" y1="40" x2="120" y2="40" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="49" cy="40" r="1" style="stroke:black;stroke-width:1;fill:black;"/>
+    <text x="40" y="42" font-size="6">¬A</text>
+    <circle cx="137" cy="57" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="138" y1="50" x2="138" y2="65" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="130" y1="57" x2="136" y2="57" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="130" y1="57" x2="130" y2="117" style="stroke:black;stroke-width:1;fill:none;
+          stroke-linecap:round;"/>
+    
+    
+    
+</svg>
