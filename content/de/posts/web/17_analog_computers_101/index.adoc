@@ -42,6 +42,6 @@ Rückkopplungsdiode zwischen Ausgang und nicht-invertierendem Eingang. Dann sehe
 Und schließlich haben wir einen antilogarithmischen Verstärker, der die Signale in den linearen Raum zurückführt.
 Beachten Sie, dass der Ausgang tatsächlich invertiert ist und wir einen zusätzlichen invertierenden Verstärker benötigen, um das resultierende Signal zu korrigieren.
 
-Bild:../analog_multiplier.png[analoger Vervielfacher]
+image:../analog_multiplier.png[analoger Vervielfacher]
 
 Fortsetzung folgt...

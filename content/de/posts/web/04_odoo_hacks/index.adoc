@@ -1,5 +1,5 @@
 ---
-title: "Odoo hacks: Entfernr Sperr-Button aus Odoo v12"
+title: "Odoo hacks: Entferne Sperr-Button aus Odoo v12"
 date: 2023-04-22
 tags: ["web", "Odoo"]
 draft: false

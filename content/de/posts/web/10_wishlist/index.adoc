@@ -14,4 +14,5 @@ Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mit
 - Filter (analog und digital)
 - Analogrechner
 - neuronale Netze
-- das Makrobiom
+- das Mikrobiom
+- Transistoren und VLSI
