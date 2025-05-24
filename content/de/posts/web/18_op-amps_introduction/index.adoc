@@ -1,0 +1,75 @@
+---
+title: "Operationsverstärker Einführung (de)"
+date: 2023-10-14
+tags: ["analog", "electronics"]
+draft: false
+type: blog
+---
+
+== OP-Amp
+
+Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
+in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.
+
+image::../op-amp.svg[op-amp, width=33%]
+
+Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).
+
+1. Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.
+[role=„image“,„../op-amp_rule_1.svg“, imgfmt=„svg“]
+\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu
+
+[role=„image“,„../op-amp_rule_1-5.svg“, imgfmt=„svg“]
+\[ V_{in+} = V_{in-}\]
+
+
+
+
+.2. Die zweite Faustregel besagt, dass es keinen Eingangsstrom gibt.
+
+//fixme
+----
+----
+
+=== Der nichtinvertierende Verstärker
+
+image::../op-amp-non-inverting.svg[non-inverting op-amp, width=33%]
+
+Der nichtinvertierende Verstärker ist einfach und leicht zu berechnen: Die Verstärkung A ist die Ausgangsspannung geteilt durch die Eingangsspannung, die wie folgt berechnet werden kann:
+
+[role=„image“,„../op-amp_rule_non-inverting.svg“, imgfmt=„svg“]
+\[ A = \frac{U_{out}}{U_{in}} = \frac{R1 + R2}{R1}=1 + \frac{R2}{R1}\]
+
+[role=„image“,„../op-amp_rule_non-inverting_0.svg“, imgfmt=„svg“]
+\[U_{in}= 5V; R_{1} = 100 k\Omega; R_{2} = 100 k\Omega \]
+
+
+[role=„image“,„../op-amp_rule_non-inverting_1.svg“, imgfmt=„svg“]
+\[ \frac{U_{out}}{U_{in}} = 1 + \frac{R2}{R1}\]
+
+[role=„image“,„../op-amp_rule_non-inverting_1.svg“, imgfmt=„svg“]
+\[ U_{out} = ( 1 + \frac{R2}{R1}) \cdot U_{in} = ( 1 + \frac{100k\Omega}{100k\Omega}) \cdot 5V  = (1 + 1) \cdot 5V = 10V\]
+
+[role=„image“,„../op-amp_rule_non-inverting_1.svg“, imgfmt=„svg“]
+\[ A = 2 \]
+
+
+=== Der Spannungsfolger
+
+Ein Sonderfall des nichtinvertierenden Verstärkers ist der Spannungsfolger. Ein Spannungsfolger, auch Impedanzwandler genannt, wird verwendet, um eine Stufe von ihrer vorherigen Stufe zu puffern und zu entkoppeln.
+Er hat eine niedrige Impedanz am Eingang, aber eine hohe Impedanz am Ausgang. Dies wird verwendet, damit spätere Stufen die vorherigen Stufen nicht in Bezug auf die Spannung belasten.
+
+image::../voltage-follower.svg[voltage-follower, width=33%]
+
+
+=== Der (invertierende) Gleichrichter
+
+//fixme add image source
+Ein weiteres Beispiel für eine kleine Schaltung ist der Wechselrichter. Er lässt nur die negative Halbwelle eines sinusförmigen Wechselstroms durch.
+
+image:../inverting_rectifier.png[inverting-rectifier,width=„800px“]
+
+image:../inverting_rectifier_signal.png[inverting-rectifier-signal,width=„800px“]
+
+Fortsetzung folgt...
+
