@@ -1,6 +1,6 @@
 ---
 title: Simulation of a reversed engineered LFO
-date: 2025-05-02
+date: 2025-05-24
 tags: ["LTspice", "SPICE", "synth"]
 category:
 link:
