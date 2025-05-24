@@ -211,7 +211,7 @@ image:../quartus_programmer_counter.png[Quartus - Programmer Counter]
 
 Schließlich sollten Sie sehen, wie die LEDs auf der Platine mit einer Frequenz von 0,745 Hz zählen.
 
-Hier sind auch die Projektdateien: Link:../counter.tar.gz[Counter-Projektdateien]
+Hier sind auch die Projektdateien: link:../counter.tar.gz[Counter-Projektdateien]
 
 Hinweis: Ich habe dieses Tutorial von https://siytek.com/verilog-quartus/[hier] gestohlen, aber meine eigenen Bilder und
 meinen eigenen Stil hinzugefügt.
