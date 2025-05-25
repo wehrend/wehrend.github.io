@@ -52,7 +52,7 @@ Wir speisen den Sägezahnausgang in den Eingang des Zufallsmoduls ein.
 
 image:../beep_bleep.jpg[Beep,bleep...]
 
-Link:../beep_bleep.mp4[Beep,bleep... Video]
+link:../beep_bleep.mp4[Beep,bleep... Video]
 
 '''.
 
