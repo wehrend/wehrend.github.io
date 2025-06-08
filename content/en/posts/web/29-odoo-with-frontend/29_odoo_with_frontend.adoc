@@ -1,0 +1,106 @@
+---
+title: "Modify the Odoo Frontend"
+date: 2025-02-26
+tags: ["odoo","frontend","web"]
+draft: false
+type: blog
+---
+Today, I want to show you how you can modify your Odoo frontend, I wont go to deep into owl and
+instead just show the basic steps for implementing modifications and changes via HTML5, CSS und javascript.
+
+Lets dive in and wet the toes.
+
+We begin by writing a short cut-through css file to change and modify the view
+(in my example case here removing carets on the provisioning reports) but feel free to change any other element (or attribute)
+you want
+
+
+provisions.css
+[source,css]
+----
+{{<highlight css>}}
+.fa-caret-down {
+    display: none: !important
+    }
+{{</highlight>}}
+----
+and put this file into the file path: static/src/css/provision.css
+
+
+Finally we need to make Odoo aware of the newly added files, by putting it into the frontend assets and here into the backend
+
+
+__manifest__.py
+[source,python]
+----
+{{<highlight python>}}
+# Asset Bundles
+    'assets': {
+        'web.assets_backend': [
+            'my_module_provisions/static/src/css/provisions.css',
+        ],
+    },
+
+{{</highlight>}}
+----
+
+which looks in the full file like these:
+
+__manifest__.py
+[source,python]
+----
+{{<highlight python>}}
+{
+    # App Information
+    'name': '<your module>',
+    'summary': '<your module description>',
+    'version': '16.0.1.0.2',
+    'category': 'Base',
+    'license': 'OPL-1',
+    # Author
+    'author': 'foo bar',
+    'maintainer': 'fizz buzz',
+    'website': <website>,
+    'support': '<mail>',
+    # Odoo Apps Store
+    'price': 0.00,
+    'currency': 'EUR',
+    'images': [],
+    # 'live_test_url': 'https://...',
+    # App Installation
+    'application': False,
+    'installable': True,
+    'auto_install': False,
+    # Dependencies
+    'depends': [
+        'account',
+        'account_reports',
+    ],
+    'external_dependencies': {},
+    # Data
+    'data': [
+        'views/account_account.xml',
+        'views/account_move.xml',
+        'views/provision_category.xml',
+        'security/ir.model.access.csv',
+        'data/provisions_schedule.xml',
+        'data/account_report_actions.xml',
+        'data/menuitems.xml',
+    ],
+    # Demo files - only installed and updated in demo Mode
+    'demo': [],
+    # Asset Bundles
+    'assets': {
+        'web.assets_backend': [
+            'my_module_provisions/static/src/css/provisions.css',
+        ],
+    },
+    # Hooks
+    'pre_init_hook': '',
+    'post_init_hook': '',
+    'uninstall_init_hook': '',
+}
+{{</highlight>}}
+----
+
+So,we created the first module involvin frontend stuff.

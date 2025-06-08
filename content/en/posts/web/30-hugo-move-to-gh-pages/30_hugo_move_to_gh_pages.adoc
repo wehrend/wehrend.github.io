@@ -1,0 +1,298 @@
+---
+title: "Move Hugo Web-presence to GH-Pages"
+date: 2025-03-16
+tags: ["hugo","web","gh-pages","gh-actions"]
+draft: false
+type: blog
+---
+
+Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money.
+Although it's only a few bucks, I thought it would be time to move on... this is basically a tutorial to move over to github pages...
+
+*Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead*
+
+We start of with a tree view here to show how the pieces are screwed together:
+
+----
+sven@debian:~/development/hugo$ tree -L 2
+.
+├── config.toml
+├── content
+│   ├── de
+│   └── en
+├── public
+│   ├── 404.html
+│   ├── about
+│   ├── About _ Interdependent_files
+│   ├── agenda.png
+│   ├── book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css
+│   ├── categories
+│   ├── de
+│   ├── de.search-data.min.cc10ee5d6f454883af3d2c31576a2ad90ef1ecae0a79fd2f36e9af9fb3ff3c84.json
+│   ├── de.search.min.2adf38a9a0cb592541f5b8f227b9091ac117d1667e43dca86a4d336f453b4606.js
+│   ├── docs
+│   ├── drafts
+│   ├── en
+│   ├── en.search-data.min.b083db226cd7541947b6dd0fdf7a563f455a790763f341883dc37963899504c8.json
+│   ├── en.search.min.004100e27f248b7e46aef29f1b0ae4e8d53aed5c868e797c8696fa00f834cd5f.js
+│   ├── favicon.png
+│   ├── favicon.svg
+│   ├── flexsearch.min.js
+│   ├── fonts
+│   ├── index.html
+│   ├── index.xml
+│   ├── katex
+│   ├── Makefile
+│   ├── manifest.json
+│   ├── mermaid.min.js
+│   ├── pages
+│   ├── posts
+│   ├── sitemap.xml
+│   ├── svg
+│   └── tags
+├── resources
+│   └── _gen
+└── themes
+    └── hugo-book
+
+----
+As can be seen the public directory here is shown after the population, foremost we have config.toml (could also be just a .yaml,
+but somehow i started with toml, whatever it doesnt matter), then we see the content directory housing the different languages (here german,
+english) . then there is a resources directory containing generated assets. And last but not lrast, there is the themes dirctory,
+here including the hugo-book theme...
+
+
+
+----
+
+----
+
+
+
+We start with the workflow file deploy.yml . My new setup looks like the following:
+
+----
+{{<highlight yaml>}}
+name: Build and Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.146.6
+      TZ: Europe/Berlin
+
+    steps:
+      - name: Checkout repository (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 3
+
+      - name: Install Hugo
+        run: |
+          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i hugo.deb
+
+      - name: Install Asciidoctor
+        run: |
+          sudo apt update
+          sudo apt install -y ruby
+          sudo gem install asciidoctor
+
+      - name: Build Hugo site
+        run: |
+          hugo --gc --minify --cleanDestinationDir --config content/config.toml
+          echo "--- Built site files ---"
+          find public -type f | sort
+
+      - name: Deploy to gh_pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh_pages
+          publish_dir: public
+          force_orphan: true
+          user_name: wehrend
+          user_email: sven.wehrend@gmail.com
+
+{{</highlight>}}
+----
+
+and here for reasons of completeness the config.toml residing in the content directory...
+
+----
+{{<highlight toml>}}
+baseURL = "http://wehrend.uber.space/"
+languageCode = "en-us"
+title = "Bits & pieces - Sven Wehrend"
+publishDir = "wehrend.github.io"
+
+[module]
+  [[module.imports]]
+    path = "github.com/alex-shpak/hugo-book"
+
+
+[languages.en]
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 1
+
+[languages.de]
+  languageName = "Deutsch"
+  contentDir = "content/de"
+  weight = 2
+
+
+[[languages.en.menu.before]]
+  name = "Web-Blog"
+  url = "/posts/web/"
+  weight = 10
+
+[[languages.en.menu.before]]
+  name = "Synth-Blog"
+  url = "/tags/synth/"
+  weight = 20
+
+
+[[languages.en.menu.before]]
+  name = ""
+  url = "/docs/"
+  weight = 10
+
+
+[[languages.en.menu.before]]
+  name = "Electronics 101"
+  url = "/pages/prequel-short-introduction-to-electronics"
+  weight = 26
+
+[[languages.en.menu.before]]
+  name = "Electronics 102"
+  url = "/pages/short-introduction-to-electronics-102"
+  weight = 27
+
+
+[[languages.en.menu.after]]
+  name = "Digital Logic 1 (Overview)"
+  url = "/pages/overview/"
+  weight = 20
+
+[[languages.en.menu.before]]
+  name = "Digital Logic 2 (Overview)"
+  url = "/pages/overview2/"
+  weight = 25
+
+[[languages.en.menu.before]]
+  name = "Synthesizer-DIY"
+  url = "/posts/synth/25_build_your_own_modules/"
+  weight = 26
+
+
+[[languages.de.menu.before]]
+  name = "Web-Blog"
+  url = "/posts/web/"
+  weight = 10
+
+[[languages.de.menu.before]]
+  name = "Synth-Blog"
+  url = "/tags/synth/"
+  weight = 20
+
+
+[[languages.de.menu.before]]
+  name = ""
+  url = "/docs/"
+  weight = 10
+
+
+[[languages.de.menu.before]]
+  name = "Elektronik 101"
+  url = "/de/pages/prequel-short-introduction-to-electronics"
+  weight = 26
+
+[[languages.de.menu.before]]
+  name = "Elektronik 102"
+  url = "/de/pages/short-introduction-to-electronics-102"
+  weight = 27
+
+
+[[languages.de.menu.after]]
+  name = "Digitale Logik 1 (Übersicht)"
+  url = "/de/pages/overview/"
+  weight = 20
+
+[[languages.de.menu.before]]
+  name = "Digitale Logik 2 (Übersicht)"
+  url = "/de/pages/overview2/"
+  weight = 25
+
+
+[[languages.de.menu.before]]
+  name = "Synthesizer-DIY"
+  url = "/de/posts/synth/25_build_your_own_modules/"
+  weight = 26
+
+[params]
+  date_format = "2006-01-02"
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = 'light'
+
+  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # You can also specify this parameter per page in front matter.
+  BookToC = false
+
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+
+[markup.asciidocext]
+    extensions = ["asciidoctor"]
+    workingFolderCurrent = true
+    trace = true
+    verbose = true
+
+[languages.en.markup]
+  [languages.en.markup.goldmark]
+    [languages.en.markup.goldmark.renderer]
+      unsafe = true
+
+[languages.de.markup]
+  [languages.de.markup.goldmark]
+    [languages.de.markup.goldmark.renderer]
+      unsafe = true
+
+  [frontmatter.handlers]
+    adoc = "yaml"
+
+{{</highlight>}}
+----
+
+Thanks to the github-token documented https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#supported-tokens[here]
+we even do not need to setup a key or token by using the default github_token which do not need any configuration, in case the
+github pages stem from the same repository. So I decided to ease my setup and throw away the parent directory respectively added
+the parent directory to the repository
+
+With this setup you should be able to let hugo create the publishDir <user>.github.io AKA public folder which gets populated in
+the branch gh-pages.
+
+If we commit and push our changes the build-and-deploy pipeline immediately begins to work and churn out the website for you
+in the background...
+
+Congratulations, you just learned a way to contribute to the community and build a cornerstone on the shoulders of giants.
+
+
+
