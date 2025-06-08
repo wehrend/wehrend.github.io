@@ -6,16 +6,16 @@ draft: false
 type: blog
 ---
 
-image:../plong_plong_plong.jpg[Plong...]
+image:./plong_plong_plong.jpg[Plong...]
 
-link:../plong_plong_plong.mp4[Plong... Video]
+link:./plong_plong_plong.mp4[Plong... Video]
 
 With the random module we can sample & hold a signal from the input. Its companionship is the noise module.
 We feed the saw output to the input of the rand module.
 
-image:../beep_bleep.jpg[Beep,bleep...]
+image:./beep_bleep.jpg[Beep,bleep...]
 
-link:../beep_bleep.mp4[Beep,bleep... Video]
+link:./beep_bleep.mp4[Beep,bleep... Video]
 
 '''
 
@@ -25,9 +25,9 @@ link:../beep_bleep.mp4[Beep,bleep... Video]
 . LFO square -> sine fm
 
 
-image:../sweeping_sinus.jpg[Sweeping sinus...]
+image:./sweeping_sinus.jpg[Sweeping sinus...]
 
-link:../sweeping_sinus.mp4[sweeping sinus... Video]
+link:./sweeping_sinus.mp4[sweeping sinus... Video]
 
 We can expand the setup by using the sequencer and utilize the filter. Because  the nice
 thing about modular synthesizers is, that the filter can be used not only in signal paths but
