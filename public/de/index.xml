@@ -16,13 +16,6 @@
       <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.&#xA;Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Move Hugo Web-presence to GH-Pages</title>
-      <link>http://localhost:1313/de/posts/web/31_hugo_move_to_gh_pages/</link>
-      <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/de/posts/web/31_hugo_move_to_gh_pages/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.&#xA;Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
       <title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title>
       <link>http://localhost:1313/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
@@ -38,9 +31,9 @@
     </item>
     <item>
       <title>Ein Lieblingshobby von mir: Lustiges Taschenbuch Nr. 162</title>
-      <link>http://localhost:1313/de/posts/web/ltb162/25_ltb162/</link>
+      <link>http://localhost:1313/de/posts/web/ltb162/</link>
       <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/de/posts/web/ltb162/25_ltb162/</guid>
+      <guid>http://localhost:1313/de/posts/web/ltb162/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Es ist an der Zeit, einen weiteren meiner Favoriten mit Ihnen zu teilen, und das ist Entenhausen und das Entenuniversum.&#xA;Ich nehme das LTB (Lustiges Taschenbuch) Nr. 162 als Beispiel aus der goldenen Ära der Comic-Serie „Lustiges&#xA;Taschenbuch“&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../title.jpg&#34; alt=&#34;Titel&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../content.jpg&#34; alt=&#34;Inhaltsverzeichnis&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_der_goldene_totempfahl_the_golden_totem_pole&#34;&gt;Der goldene Totempfahl (The golden totem pole)&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;In der Geschichte „Der goldene Totempfahl“ (englisch: „The golden totem pole“) dreht Onkel Dagobert einen Film über sein Leben.&#xA;Die Geschichte spielt in der Grafschaft Dawson, wo sie sich nach einem Sturm verirren. Sie treffen den Indianer „großer Elch“&#xA;„Big Moose“ und suchen nach den Goldnuggets, die Big Moose für Onkel Dagobert in der Vergangenheit aufbewahrt hat.&#xA;Der Film endet damit, dass Big Moose als Filmstar endet.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
@@ -90,7 +83,7 @@
       <link>http://localhost:1313/de/posts/web/18_op-amps_introduction/</link>
       <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/de/posts/web/18_op-amps_introduction/</guid>
-      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_op_amp&#34;&gt;OP-Amp&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig&#xA;in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../op-amp.svg&#34; alt=&#34;op-amp&#34; width=&#34;„400px“&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;olist arabic&#34;&gt;&#xA;&lt;ol class=&#34;arabic&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.&#xA;\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;sect1&#34;&gt;&#xA;&lt;h2 id=&#34;_op_amp&#34;&gt;OP-Amp&lt;/h2&gt;&#xA;&lt;div class=&#34;sectionbody&#34;&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig&#xA;in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;imageblock&#34;&gt;&#xA;&lt;div class=&#34;content&#34;&gt;&#xA;&lt;img src=&#34;../op-amp.svg&#34; alt=&#34;op-amp&#34; width=&#34;33%&#34;/&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;olist arabic&#34;&gt;&#xA;&lt;ol class=&#34;arabic&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.&#xA;\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Analoge Rechner Grundlagen (de)</title>
@@ -160,7 +153,7 @@
       <link>http://localhost:1313/de/posts/web/10_wishlist/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/de/posts/web/10_wishlist/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;ulist&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Caches&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Interrupts&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Out-of-Order execution&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;RAW-, WAR- und WAW-Konflikte&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Filter (analog und digital)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Analogrechner&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;neuronale Netze&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;das Makrobiom&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;ulist&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Caches&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Interrupts&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Out-of-Order execution&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;RAW-, WAR- und WAW-Konflikte&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Filter (analog und digital)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Analogrechner&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;neuronale Netze&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;das Mikrobiom&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Transistoren und VLSI&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Religion vs. Spiritualität – warum ich Letztere bevorzuge</title>
@@ -205,7 +198,7 @@
       <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Ein analoger modularer Synthesizer war schon immer mein Traum, letzte Woche habe ich mir diesen Traum erfüllt&#xA;und den Pocket Operator Modular 400 von der schwedischen Firma Teenage Engineering bestellt.&#xA;Wie bei den Möbeln der anderen beliebten schwedischen Firma muss man ihn erst selbst zusammenbauen,&#xA;bevor man damit einen Ton erzeugen kann. Das hat etwa 3 bis 4 Stunden gedauert. Aber es hat sich gelohnt.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;hr/&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgänge aller&#xA;3 Oszillatoren zusammen und steuern den Sinusoszillator mit dem Dreieckausgang des LFO und die Impulsbreite des Rechteckoszillators mit dem LFO-Rechteck.&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</title>
+      <title>Odoo hacks: Entferne Sperr-Button aus Odoo v12</title>
       <link>http://localhost:1313/de/posts/web/04_odoo_hacks/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/de/posts/web/04_odoo_hacks/</guid>

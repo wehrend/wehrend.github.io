@@ -14,9 +14,9 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
   <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/web/" title="Web">
-<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/de.search.min.b74ee043e13b911a511cbc5e8bc039ad11ad6b4d33d4b1706bb10ebdf472d2df.js" integrity="sha256-t07gQ&#43;E7kRpRHLxei8A5rRGta00z1LFwa7EOvfRy0t8=" crossorigin="anonymous"></script>
+  <script defer src="/de.search.min.6e668b4ad65cb3bdc91ecf28e97d9c107842bdfe356eaf54cbbb81bcf70909d0.js" integrity="sha256-bmaLStZcs73JHs8o6X2cEHhCvf41bq9Uy7uBvPcJCdA=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/de/posts/web/index.xml" title="Bits & pieces - Sven Wehrend" />
 <!--
 Made with Book Theme
@@ -451,54 +451,6 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/de/posts/web/18_op-amps_introduction/">Operationsverstärker Einführung (de)</a>
-    </h2>
-    
-  <h5>October 14, 2023</h5>
-
-
-
-  
-
-  
-  <div>
-    
-      <a href="/de/tags/analog/">Analog</a>, 
-      <a href="/de/tags/electronics/">Electronics</a>
-  </div>
-  
-
-
-
-
-    <p><div class="sect1">
-<h2 id="_op_amp">OP-Amp</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
-in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../op-amp.svg" alt="op-amp" width="„400px“"/></span></p>
-</div>
-<div class="paragraph">
-<p>Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.
-\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu</p>
-</li>
-</ol>
-</div>
-        <a href="/de/posts/web/18_op-amps_introduction/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
       <a href="/de/posts/web/17_analog_computers_101/">Analoge Rechner Grundlagen (de)</a>
     </h2>
     
@@ -627,7 +579,10 @@ Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.</p>
 <p>neuronale Netze</p>
 </li>
 <li>
-<p>das Makrobiom</p>
+<p>das Mikrobiom</p>
+</li>
+<li>
+<p>Transistoren und VLSI</p>
 </li>
 </ul>
 </div>
@@ -711,7 +666,7 @@ paralleles umzuwandeln (Deserializer) und umgekehrt  (Serializer), viel billiger
   
   <article class="markdown book-post">
     <h2>
-      <a href="/de/posts/web/04_odoo_hacks/">Odoo hacks: Entfernr Sperr-Button aus Odoo v12</a>
+      <a href="/de/posts/web/04_odoo_hacks/">Odoo hacks: Entferne Sperr-Button aus Odoo v12</a>
     </h2>
     
   <h5>April 22, 2023</h5>
@@ -853,6 +808,43 @@ in Ruby, las, die verschiedene Anzeigeformate unterstützen. Ideal für den Inha
     </p>
   </article>
   
+  <article class="markdown book-post">
+    <h2>
+      <a href="/de/posts/web/00_setting_up_nikola/">Ein statisches Blog aufsetzen mit Nikola (de)</a>
+    </h2>
+    
+  <h5>December 11, 2020</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/de/tags/web/">Web</a>, 
+      <a href="/de/tags/nikola/">Nikola</a>
+  </div>
+  
+
+
+
+
+    <p><div class="paragraph">
+<p>Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.</p>
+</div>
+<div class="paragraph">
+<p>Um die Sache etwas interessanter und gleichzeitig einfacher zu machen, werden wir Nikola in einem Docker-Container verwenden.
+Daher benötige ich hier ein fast grundlegendes Verständnis für Docker.</p>
+</div>
+<div class="paragraph">
+<p>Erstellen Sie zunächst ein Verzeichnis auf unserem Host-System, in dem die Dateien gespeichert werden sollen, z. B. „blog“ in Ihrem Home-Verzeichnis.</p>
+</div>
+        <a href="/de/posts/web/00_setting_up_nikola/">...</a>
+      
+    </p>
+  </article>
+  
 
   
     <ul class="pagination pagination-default">
@@ -886,7 +878,7 @@ in Ruby, las, die verschiedene Anzeigeformate unterstützen. Ideal für den Inha
   <div class="flex flex-wrap justify-between">
 
 
-Last update: May 24, 2025 
+Last update: June 8, 2025 
 
 
 </div>
@@ -903,7 +895,6 @@ Last update: May 24, 2025
 
 
   <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
 
 
  

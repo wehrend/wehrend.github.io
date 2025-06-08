@@ -103,4 +103,4 @@ __manifest__.py
 {{</highlight>}}
 ----
 
-So,we created the first module involvin frontend stuff.
+So,we created the first module involving frontend stuff.

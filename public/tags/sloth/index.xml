@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/sloth/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simulation of NLC sloth with LTSpice</title>
-      <link>http://localhost:1313/posts/synth/33_simulate_nlc_sloth/</link>
+      <link>http://localhost:1313/posts/synth/33-simulate-nlc-sloth/</link>
       <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/synth/33_simulate_nlc_sloth/</guid>
+      <guid>http://localhost:1313/posts/synth/33-simulate-nlc-sloth/</guid>
       <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hello folks,&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;today I want to continue the series about simulation of synth modules with LTspice.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;We want to analyze the &lt;a href=&#34;https://www.nonlinearcircuits.com/modules/p/4hp-sloth-chaos&#34;&gt;sloth module from NLC&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Lets start with the schematic:&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../sloth_circuit.png&#34; alt=&#34;Sloth schematic&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Right below is a copy of the schematic, created in ltspice, however missing the potentiometer(s).&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;span class=&#34;image&#34;&gt;&lt;img src=&#34;../sloth_simulation.png&#34; alt=&#34;Sloth Simulation&#34;/&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Whats important here to note here is that for the fourth op-amp we needed to add some voltage offset&#xA;of 1 µV to get it working.&#xA;Additionally to that we need to simulation the power-on cycle of the power supply, by adding the Voltage&#xA;with PieceWiseLinear function given ze values (t0,v0,  t1, t2 ) with the Values 1ms 0V 100ms 12V ..&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

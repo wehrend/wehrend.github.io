@@ -68,7 +68,7 @@ https://www.exploding-shed.com/clacktronics-mini-speaker-kit/100596[CLACKTRONICS
 In this regard I also want to remind you to always use https://www.allaboutcircuits.com/technical-articles/how-to-protect-your-circuits-using-only-a-diode/[reverse polarity protection diodes] in your builds.
 Use 1N5817 (THT) or MBR0540T1 (smd) for this matter. I could not find a picture so I copied from some befaco schematics so bear with me and ignore the 100nF capacitors.
 
-image:../reverse_polarity_protection.png[Reverse polarity protection]
+image:./reverse_polarity_protection.png[Reverse polarity protection]
 
 While this picture might make not sense to you yet, it will as soon as you get learning to read electronics schematics (which you should if you wanna consider this hobby).
 

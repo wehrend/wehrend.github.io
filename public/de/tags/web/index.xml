@@ -16,13 +16,6 @@
       <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.&#xA;Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Move Hugo Web-presence to GH-Pages</title>
-      <link>http://localhost:1313/de/posts/web/31_hugo_move_to_gh_pages/</link>
-      <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/de/posts/web/31_hugo_move_to_gh_pages/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.&#xA;Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
       <title>Zwischenspeicher und Zwischenspeichern (Caching)</title>
       <link>http://localhost:1313/de/posts/web/12_caches_and_caching/</link>
       <pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate>
@@ -34,10 +27,10 @@
       <link>http://localhost:1313/de/posts/web/10_wishlist/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/de/posts/web/10_wishlist/</guid>
-      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;ulist&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Caches&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Interrupts&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Out-of-Order execution&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;RAW-, WAR- und WAW-Konflikte&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Filter (analog und digital)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Analogrechner&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;neuronale Netze&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;das Makrobiom&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;paragraph&#34;&gt;&#xA;&lt;p&gt;Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;ulist&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Caches&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Interrupts&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Out-of-Order execution&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;RAW-, WAR- und WAW-Konflikte&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Filter (analog und digital)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Analogrechner&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;neuronale Netze&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;das Mikrobiom&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Transistoren und VLSI&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Odoo hacks: Entfernr Sperr-Button aus Odoo v12</title>
+      <title>Odoo hacks: Entferne Sperr-Button aus Odoo v12</title>
       <link>http://localhost:1313/de/posts/web/04_odoo_hacks/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/de/posts/web/04_odoo_hacks/</guid>

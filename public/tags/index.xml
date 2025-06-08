@@ -6,13 +6,27 @@
     <description>Recent content in Tags on Bits &amp; pieces - Sven Wehrend</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 02 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LTspice</title>
       <link>http://localhost:1313/tags/ltspice/</link>
-      <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/ltspice/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SPICE</title>
+      <link>http://localhost:1313/tags/spice/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/spice/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Synth</title>
+      <link>http://localhost:1313/tags/synth/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/synth/</guid>
       <description></description>
     </item>
     <item>
@@ -27,20 +41,6 @@
       <link>http://localhost:1313/tags/sloth/</link>
       <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/sloth/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SPICE</title>
-      <link>http://localhost:1313/tags/spice/</link>
-      <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/spice/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Synth</title>
-      <link>http://localhost:1313/tags/synth/</link>
-      <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/synth/</guid>
       <description></description>
     </item>
     <item>
@@ -277,7 +277,7 @@
     <item>
       <title>Nikola</title>
       <link>http://localhost:1313/tags/nikola/</link>
-      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/nikola/</guid>
       <description></description>
     </item>
