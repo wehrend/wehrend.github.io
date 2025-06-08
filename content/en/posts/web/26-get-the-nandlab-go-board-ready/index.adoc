@@ -1,0 +1,100 @@
+---
+title: "FPGA 101: Get the Nandland Go board ready on Debian Bullseye"
+date: 2024-03-10
+tags: ["fpga","beginners", "Lattice","Nandland Go", "IceCube2", "debian"]
+draft: false
+type: blog
+---
+
+Hi there,
+
+finally this week the https://nandland.com/the-go-board/[nandland go board] I ordered from the developer Russell Merrick a month ago arrived.
+It took a detour due to some shipping problems, but this is not about that, so.
+I had to face quite a few obstacles to get this running on my Debian Bullseye.
+
+== Serial Connection via USB
+
+First of all, to connect
+to the board via FTDI usb as suggested on Debian Bullseye you have to first add your user to the group
+'dialout', this is done like below:
+
+    su -
+    usermod -aG dialout $user (in my case $user is sven)
+    exit
+
+and then reboot the machine. After that connect it again (just to be sure).
+And then start putty, and enter /dev/ttyUSB1 as the port you want to use (/dev/ttyUSB0 does not work here) and type baudrate 115200 as suggested.
+Now you can type in chars and digits and they will be send to the device and back. So this works now.
+
+== Install Icecube2
+
+Lets get to the next obstacle, the iCEcube2 installer (and the software) needs to have the library libpng12.so.0 in place and as you can
+find out with
+
+    file ./iCEcube2setup_Dec_10_2020_2012
+
+this outputs
+./iCEcube2setup_Dec_10_2020_2012: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.2.5, not stripped
+so you know that you need to install that for the i386 architecture.You can do this via:
+
+    su
+    apt-get install libpng16-16:i386
+    ln -s /usr/lib/i386-linux-gnu/libpng16.so.16.37.0 libpng12.so.0
+
+Now the software should launch as expected.
+
+== License / Network Issues
+Next you need to get a Node license that is tied to your hostid from Lattice,
+you find it out via
+
+    ip addr show
+
+and take the string 'link/ether' and copy the Physical MAC address (12-digit hexadecimal value) behind (without colons ':'), into the
+https://www.latticesemi.com/en/Support/Licensing/DiamondAndiCEcube2SoftwareLicensing/iceCube2[license file generator].
+Next check the checkbox and click 'Generate License'. Submit.
+You should get an email with the license file 'license.dat' attached. Put that into the directory of your software installation.
+
+    export LM_LICENSE_FILE=~/software/iCEcube2.2020.12/license/license.dat;
+
+(Make this persistent by putting it in your bashrc. so you dont have to repeat this every time you start the software).
+Now we get an error that contains something like: ‘Invalid host. The hostid of this system does not match the hostid (error code -9)’
+
+As turns out, this error only exists, since debian changes the network interface name to something other than 'eth0', but the license
+server expect it to be at this point they even write it itself on the support page if you enter license issues:
+
+----
+"--If you are getting the error ‘Invalid host. The hostid of this system does not match the hostid (error code -9)’, As Lattice tools use the hardcoded Network Interface Name (eth0) and if the active Network Interface name on the system is set to other than eth0, it fails to check the license file and generate the above error. To avoid this you need to rename the active Network Interface Name to eth0 as follows:-
+
+1). Run the following command with root privileges:
+
+a). cd /etc/udev/rules.d/
+
+b). vi 70-persistent-net.rules
+
+In the 70-persistent-net.rules file you will see a value as:
+
+NAME =”<active NIC name (for example p6p1,em1 etc)” change it to NAME=”eth0” and save the file
+
+2). Reboot the system.
+
+--Please check the MAC address provided by you at our website should be the MAC ID of your Ethernet LAN card.
+
+--Before submitting the case Please provide us the info regarding Linux version , Output screenshot of error, Output screenshot of the command ‘ifconfig -a’ and your current license”
+
+."
+----
+
+So to solve this issue, you need to create a file like below, as root open a text-editor:
+
+    su
+    nano /etc/udev/rules.d/70-persistent-net.rules
+
+and enter the text below into it - of course with your physical mac adress / hostid as shown in ip addr show:
+
+    SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="<your-mac-address>", ATTR{dev_id}=="0x0", ATTR{type}=="1",
+    KERNEL=="enp11s*", NAME="eth0"
+
+then close the file and reboot the machine. Next time you open icecube2 it should work and launch as expected.
+
+So, I hope this blog post finds to you in the right moment, and helps you to do it faster than me, spending a whole afternoon to fix this issues.
+
