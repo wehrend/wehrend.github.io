@@ -138,38 +138,38 @@ Zuletzt erstellen wir die Datei counter.bdf, die alles zusammenhält, wie unten 
 
 Zuerst müssen wir die Datei binarycounter.v öffnen und auf _File >> Create / Update >>
 Create Symbol Files for Current File_ klicken, wie in der folgenden Abbildung dargestellt.
-image:../quartus_create_symbol_files.png[Quartus - Symbol Files]
+image:./00_quartus_create_symbol_files.png[Quartus - Symbol Files]
 
 Wir öffnen die Datei/Registerkarte clock_divider.v und wiederholen den obigen Schritt.
 
 Nach diesem Schritt finden wir die gerade neu erstellten Dateien in der Symbolbibliothek,
 öffnen die Symbolbibliothek (siehe Bild unten)
-image:../quartus_symbol_tool.png[Quartus - Symbol Tool]
+image:./01_quartus_symbol_tool.png[Quartus - Symbol Tool]
 und finden die Module im Verzeichnis project.
 
-image:../quartus_library_window.png[Quartus - Library Window]
+image:./02_quartus_library_window.png[Quartus - Library Window]
 
-image:../quartus_counter_bdf_wo_pins.png[Quartus - Counter.bdf]
+image:./03_quartus_counter_bdf_wo_pins.png[Quartus - Counter.bdf]
 
 Als Nächstes folgen Sie den verschiedenen Build-Schritten in der Schaltplan-Datei:
 
-image:../quartus_counter_schematic_0.png[Quartus - Counter.bdf 0]
+image:./04_quartus_counter_schematic_0.png[Quartus - Counter.bdf 0]
 
-image:../quartus_counter_schematic_1.png[Quartus - Counter.bdf 1]
+image:./05_quartus_counter_schematic_1.png[Quartus - Counter.bdf 1]
 
-Bild:../quartus_counter_schematic_2.png[Quartus - Counter.bdf 2]
+image:./06_quartus_counter_schematic_2.png[Quartus - Counter.bdf 2]
 
 Beachten Sie bei der Zuweisung der Busbreite unter „Eigenschaften“, dass die Syntax „..“ anstelle von „:“ (Semikolon) lautet!
 
-Bild:../quartus_counter_schematic_3.png[Quartus - Counter.bdf 3]
+image:./07_quartus_counter_schematic_3.png[Quartus - Counter.bdf 3]
 
-Bild:../quartus_counter_schematic_4.png[Quartus - Counter.bdf 4]
+iamge:./quartus_counter_schematic_4.png[Quartus - Counter.bdf 4]
 
-Bild:../quartus_counter_schematic_5.png[Quartus - Counter.bdf 5]
+image:./09_quartus_counter_schematic_5.png[Quartus - Counter.bdf 5]
 
-Bild:../quartus_counter_schematic_6.png[Quartus - Counter.bdf 6]
+image:./10_quartus_counter_schematic_6.png[Quartus - Counter.bdf 6]
 
-Bild:../quartus_counter_schematic_7.png[Quartus - Counter.bdf 7]
+image:./11_quartus_counter_schematic_7.png[Quartus - Counter.bdf 7]
 
 == Pin-Zuordnung
 
@@ -177,11 +177,11 @@ Als Nächstes müssen wir die Design-Eingänge und -Ausgänge mit den physischen
 Unten sehen Sie das Bild des Clock-Pins.
 Vergessen Sie nicht, vorher die Synthese oder zumindest die Analyse durchzuführen.
 
-Bild:../de0nano_clock.png[DE0-nano Clock]
+image:./12_de0nano_clock.png[DE0-nano Clock]
 
 Und das Bild der LED-Ausgänge.
 
-image:../de0nano_output.png[DE0-nano Output]
+image:./13_de0nano_output.png[DE0-nano Output]
 
 Und hier das Bild des Pin-Planers
 
@@ -197,7 +197,7 @@ Für die DE0-nano-Platine müssen wir die Pins also wie folgt zuweisen:
 - led7| PIN_B1
 - led8| PIN_L3
 
-image:../quartus_pin_planner_counter.png[Quartus - Pin Planner counter]
+image:./14_quartus_pin_planner_counter.png[Quartus - Pin Planner counter]
 
 == Programmierung des Geräts
 
@@ -207,11 +207,11 @@ Gehen Sie zu „_Tools“ >> „Programmer“_ oder klicken Sie einfach auf das 
 schönes FPGA-Board über USB mit dem Computer. Die Hardware sollte erkannt und angezeigt werden, ebenso
 die ausgewählte Sof-Software-Datei.
 
-image:../quartus_programmer_counter.png[Quartus - Programmer Counter]
+image:./15_quartus_programmer_counter.png[Quartus - Programmer Counter]
 
 Schließlich sollten Sie sehen, wie die LEDs auf der Platine mit einer Frequenz von 0,745 Hz zählen.
 
-Hier sind auch die Projektdateien: link:../counter.tar.gz[Counter-Projektdateien]
+Hier sind auch die Projektdateien: link:./counter.tar.gz[Counter-Projektdateien]
 
 Hinweis: Ich habe dieses Tutorial von https://siytek.com/verilog-quartus/[hier] gestohlen, aber meine eigenen Bilder und
 meinen eigenen Stil hinzugefügt.

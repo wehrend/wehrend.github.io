@@ -10,9 +10,9 @@ Es ist an der Zeit, einen weiteren meiner Favoriten mit Ihnen zu teilen, und das
 Ich nehme das LTB (Lustiges Taschenbuch) Nr. 162 als Beispiel aus der goldenen Ära der Comic-Serie „Lustiges
 Taschenbuch“
 
-image:../title.jpg[Titel]
+image:./00_title.jpg[Titel]
 
-image:../content.jpg[Inhaltsverzeichnis]
+image:./01_content.jpg[Inhaltsverzeichnis]
 
 == Der goldene Totempfahl (The golden totem pole)
 
@@ -22,9 +22,9 @@ Die Geschichte spielt in der Grafschaft Dawson, wo sie sich nach einem Sturm ver
 Der Film endet damit, dass Big Moose als Filmstar endet.
 
 
-image:../totem_pole.jpg[Der goldene Totempfahl]
+image:./02_totem_pole.jpg[Der goldene Totempfahl]
 
-image:../totem_pole1.jpg[Der goldene Totempfahl]
+image:./03_totem_pole.jpg[Der goldene Totempfahl]
 
 
 == Der reichste Mann des Universums (The richest men in universe)
@@ -34,6 +34,6 @@ seinen Verwandten (Neffe Donald Duck und Großneffen Tick, Trick und Track) eine
 Männer im Universum mit einem anderen Typen im Weltraum, der eine Wunschmaschine hat... Durch die Anwesenheit von Onkel Dagobert
 wird das empfindliche Gleichgewicht des Ökosystems gestört... (die Geschichte muss man selbst lesen ;-) )
 
-image:../richest_men.jpg[Die reichsten Männer im Universum]
+image:./04_richest_men.jpg[Die reichsten Männer im Universum]
 
-image:../richest_men1.jpg[der goldene Totempfahl]
+image:./05_richest_men1.jpg[der goldene Totempfahl]

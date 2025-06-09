@@ -14,7 +14,7 @@ die SD-Karte ein, um das Linux-Booten zu starten, und schließen Sie schließlic
 an den PC an.
 
 
-image:../de10nano.jpg[DE10-nano]
+image:./00_de10nano.jpg[DE10-nano]
 
 Gehen Sie dann zur Konsole und geben Sie (als root) Folgendes ein
 
@@ -52,11 +52,11 @@ $ putty
 
 Geben Sie das Gerät /dev/ttyUSB0 ein, wie in der ftdi-Ausgabe oben gezeigt, geben Sie die Baudrate von 115200 ein und speichern Sie die Konfiguration.
 
-image:../putty.png[Putty]
+image:./01_putty.png[Putty]
 
 Drücken Sie auf „Öffnen“ und im Idealfall sollte eine Verbindung zum Board hergestellt werden. Wenn keine Warnung angezeigt wird, drücken Sie die Eingabetaste und Sie erhalten das folgende Bild:
 
-image:../angstrom.png[Angstrom]
+image:./02_angstrom.png[Angstrom]
 
 Geben Sie root als Benutzernamen und als Passwort ein.
 
