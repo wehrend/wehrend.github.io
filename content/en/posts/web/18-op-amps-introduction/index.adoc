@@ -11,7 +11,7 @@ type: blog
 Today I want to speak about op-amps. These wonderful, but mysterious components, we have heavely often appearing
 in circuit schematica of analog or analog / digital hybrid circuits. We want to demistify these components.
 
-image:./op-amp.svg[op-amp,width="400px"]
+image:./00_op-amp.svg[op-amp,width="400px"]
 
 There are two basic thumb rules when handling ideal op-amp circuit. (Real-world op-amp circuits are a bit more complicated, but we will discuss this later).
 
@@ -32,7 +32,7 @@ There are two basic thumb rules when handling ideal op-amp circuit. (Real-world 
 
 === The non-inverting amplifier
 
-image:./op-amp-non-inverting.svg[non-inverting op-amp,width="400px"]
+image:./01_op-amp-non-inverting.svg[non-inverting op-amp,width="400px"]
 
 The non-inverting amplifier is simple and easy to calculate: The Amplification A is the output voltage divided by the input voltage, which can be computed as follows:
 
@@ -58,7 +58,7 @@ The non-inverting amplifier is simple and easy to calculate: The Amplification A
 A special case of the non-inversting amplifier is the voltage follower. A voltage follower also called impedance converter is used to buffer and decouple a stage from its previous stage.
 It has a low impedance on the input but a high impedance on the output. So this is used so that later stages do not burden previous stages in terms of voltage.
 
-image:./voltage-follower.svg[voltage-follower,width="400px"]
+image:./02_voltage-follower.svg[voltage-follower,width="400px"]
 
 
 === The (inverting) rectifier
@@ -66,9 +66,9 @@ image:./voltage-follower.svg[voltage-follower,width="400px"]
 Another small circuit example is the inverting rectifier. It only lets pass the negative half-wave of an alternating sine current.
 (See also: https://shorturl.at/hivAL[here] )
 
-image:./inverting_rectifier.png[inverting-rectifier,width="800px"]
+image:./03_inverting_rectifier.png[inverting-rectifier,width="800px"]
 
-image:./inverting_rectifier_signal.png[inverting-rectifier-signal,width="800px"]
+image:./04_inverting_rectifier_signal.png[inverting-rectifier-signal,width="800px"]
 
 To be continued...
 

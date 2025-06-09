@@ -60,7 +60,7 @@ To test the website, start the test server with:
 
 and head your browser to http://localhost:8080[http://localhost:8080] .
 
-image:./nikola_default.png[Unnamed image]
+image:./00_nikola_default.png[Unnamed image]
 
 
 This is cool, but surely we want do a bit of styling and customization now, as the current look is pretty standard.
@@ -75,7 +75,7 @@ After installation the theme needed some tweaking of the about section in the si
 from the original look. Adjustments were made to the file assets/css/hyde.css in the directory of the freshly installed theme.
 Ideally the changes should be made in an additional file custom.css
 
-image:./nikola_hyde.png[Unnamed image]
+image:./01_nikola_hyde.png[Unnamed image]
 
 Much better now!
 
