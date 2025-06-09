@@ -11,7 +11,7 @@ type: blog
 Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
 in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.
 
-image::../op-amp.svg[op-amp, width=33%]
+image::./00_op-amp.svg[op-amp, width=33%]
 
 Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).
 
@@ -33,7 +33,7 @@ Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsvers
 
 === Der nichtinvertierende Verstärker
 
-image::../op-amp-non-inverting.svg[non-inverting op-amp, width=33%]
+image::./01_op-amp-non-inverting.svg[non-inverting op-amp, width=33%]
 
 Der nichtinvertierende Verstärker ist einfach und leicht zu berechnen: Die Verstärkung A ist die Ausgangsspannung geteilt durch die Eingangsspannung, die wie folgt berechnet werden kann:
 
@@ -59,7 +59,7 @@ Der nichtinvertierende Verstärker ist einfach und leicht zu berechnen: Die Vers
 Ein Sonderfall des nichtinvertierenden Verstärkers ist der Spannungsfolger. Ein Spannungsfolger, auch Impedanzwandler genannt, wird verwendet, um eine Stufe von ihrer vorherigen Stufe zu puffern und zu entkoppeln.
 Er hat eine niedrige Impedanz am Eingang, aber eine hohe Impedanz am Ausgang. Dies wird verwendet, damit spätere Stufen die vorherigen Stufen nicht in Bezug auf die Spannung belasten.
 
-image::../voltage-follower.svg[voltage-follower, width=33%]
+image::./02_voltage-follower.svg[voltage-follower, width=33%]
 
 
 === Der (invertierende) Gleichrichter
@@ -67,9 +67,9 @@ image::../voltage-follower.svg[voltage-follower, width=33%]
 //fixme add image source
 Ein weiteres Beispiel für eine kleine Schaltung ist der Wechselrichter. Er lässt nur die negative Halbwelle eines sinusförmigen Wechselstroms durch.
 
-image:../inverting_rectifier.png[inverting-rectifier,width=„800px“]
+image:./03_inverting_rectifier.png[inverting-rectifier,width=„800px“]
 
-image:../inverting_rectifier_signal.png[inverting-rectifier-signal,width=„800px“]
+image:./04_inverting_rectifier_signal.png[inverting-rectifier-signal,width=„800px“]
 
 Fortsetzung folgt...
 

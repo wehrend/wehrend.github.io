@@ -60,7 +60,7 @@ Um die Website zu testen, starten Sie den Testserver mit:
 
 und öffnen Sie Ihren Browser auf http://localhost:8080[http://localhost:8080] .
 
-image:../nikola_default.png[Unbenanntes Bild]
+image:./00_nikola_default.png[Unbenanntes Bild]
 
 
 Das ist cool, aber wir wollen jetzt sicher ein bisschen Styling und Anpassung vornehmen, da das aktuelle Aussehen ziemlich standardisiert ist.
@@ -75,7 +75,7 @@ Nach der Installation musste das Thema in der „About“-Sektion der Seitenleis
 vom ursprünglichen Aussehen ab. Die Datei assets/css/hyde.css im Verzeichnis des frisch installierten Themas wurde angepasst.
 Idealerweise sollten die Änderungen in einer zusätzlichen Datei custom.css vorgenommen werden
 
-image:../nikola_hyde.png[Unbenanntes Bild]
+image:./01_nikola_hyde.png[Unbenanntes Bild]
 
 Jetzt viel besser!
 
