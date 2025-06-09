@@ -9,9 +9,9 @@ type: blog
 Hier ist also eine weitere einfache Patch-Idee für das Doepfer A-100-System, diesmal mit dem SEM-Filter von Oberheim, verkörpert im Doepfer Modul A-106-5.
 Wir verwenden auch zwei A-110-Oszillatormodule (ein Standard- und ein Basis-Modul) und den LFO.
 
-image:./sem_patch.jpg[SEM Patch ]
+image:./00_lfo_sem_patch.jpg[SEM Patch ]
 
-Link:./sem_patch.m4a[SEM Patch Audio]
+link:./00_lfo_sem_patch.m4a[SEM Patch Audio]
 
 Bis heute habe ich nicht den richtigen Audiorecorder gefunden und nehme mit meinem Smartphone auf,
 sodass die Tonqualität eher schlecht ist. Ich bin immer noch auf der Suche nach der idealen Aufnahmehardware.

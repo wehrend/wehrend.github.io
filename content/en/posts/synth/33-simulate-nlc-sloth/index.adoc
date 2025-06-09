@@ -16,11 +16,11 @@ We want to analyze the https://www.nonlinearcircuits.com/modules/p/4hp-sloth-cha
 
 Lets start with the schematic:
 
-image:./sloth_circuit.png[Sloth schematic]
+image:./00_sloth_circuit.png[Sloth schematic]
 
 Right below is a copy of the schematic, created in ltspice, however missing the potentiometer(s).
 
-image:./sloth_simulation.png[Sloth Simulation]
+image:./01_sloth_simulation.png[Sloth Simulation]
 
 Whats important here to note here is that for the fourth op-amp we needed to add some voltage offset
 of 1 µV to get it working.

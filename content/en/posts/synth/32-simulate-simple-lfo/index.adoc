@@ -17,7 +17,7 @@ It was the very first module I began my dives into the world of diy.
 
 Quite simple and not to complicated to begin with...
 
-image:./simpleLFO.png[Simple LFO schematic].
+image:./00_simpleLFO.png[Simple LFO schematic].
 
 If you do not shy away from mathematical deep-dive explanations - (I sometimes do),
 you can view the details https://www.electronics-tutorials.ws/opamp/opamp_6.html[here (intgrator)]
@@ -30,7 +30,7 @@ link:./simpleLFO.asc[So here is my interpretation of the Simple LFO circuit].
 
 And here ist the graphical representation of the circuit.
 
-image:./SimpleLFO_simulation.png[Circuit Simulation]
+image:./01_SimpleLFO_simulation.png[Circuit Simulation]
 
 Last but not least the https://www.davidhaillant.com/wp/wp-content/uploads/lfo-with-pot-20160207.asc[original sources by David Haillant],
 and https://www.davidhaillant.com/wp/wp-content/uploads/pot.zip[here the potentiometer].

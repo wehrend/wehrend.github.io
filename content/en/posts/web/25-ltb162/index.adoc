@@ -10,9 +10,9 @@ It is about time, to share another favorite of mine with you, and this is duckbu
 I take the LTB (Lustiges Taschenbuch) Nr. 162 as an example from the golden era of the comic series "Lustiges
 Taschenbuch"
 
-image:./title.jpg[Title]
+image:./00_title.jpg[Title]
 
-image:./content.jpg[ToC]
+image:./01_content.jpg[ToC]
 
 == Der goldene Totempfahl (The golden totem pole)
 
@@ -22,9 +22,9 @@ english "big moose" and are searching for the gold nuggets big moose saved for u
 The movie ends with big moose ending as a movie star.
 
 
-image:./totem_pole.jpg[The golden totem pole]
+image:./02_totem_pole.jpg[The golden totem pole]
 
-image:./totem_pole1.jpg[the golden totem pole]
+image:./03_totem_pole.jpg[the golden totem pole]
 
 
 == Der reichste Mann des Universums (The richest men in universe)
@@ -34,7 +34,7 @@ his kins (the nephew Donald Duck and grandnephews Tick, Trick and Track). They b
 men in universe with some other guy out in space, who has a wish-machine... Due to uncle scrooge presence,
 the sensitive balance of the ecosystem gets disturbed... (you have to read the story for yourself ;-) )
 
-image:./richest_men.jpg[The richest men in universe]
+image:./04_richest_men.jpg[The richest men in universe]
 
-image:./richest_men1.jpg[the golden totem pole]
+image:./05_richest_men.jpg[the golden totem pole]
 
