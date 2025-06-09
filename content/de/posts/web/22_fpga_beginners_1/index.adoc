@@ -219,7 +219,7 @@ image:../quartus_circuit_extended.png[Quartus - Erweiterter Schaltkreis]
 Ich überlasse es dem Leser, herauszufinden, wie der Schaltkreis wie abgebildet entworfen werden kann. Wenn dies nicht
 gelingt (oder zu faul ist), kann die BDF-Datei hier gefunden werden (Link unten).
 
-Link:../andGate.bdf[erweiterter Schaltkreis BDF]
+link:./andGate.bdf[erweiterter Schaltkreis BDF]
 
 Und vergessen Sie nicht, den Pin vom Ausgang des Oder-Gatters mit dem dedizierten Pin von LED 1 (PIN_A13) zu verbinden,
 wie unten dargestellt
