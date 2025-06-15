@@ -28,6 +28,8 @@ but in its dual variant, ne556.
 image:./punk_console_oscillator.png[punk console osciallatore]
 
 
+link:./punk_console.asc[punk console asc]
+
 Since this module is missing in the LT-SPice Library, I looked around online and found it (see next line)...
 
 link:./ne556_ltspice.zip[Download Link NE556]
