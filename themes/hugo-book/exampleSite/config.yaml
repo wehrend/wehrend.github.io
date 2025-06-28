@@ -51,7 +51,7 @@ params:
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
-  # You can also specify this parameter per page in front matter.
+  # You can also specify this parameter per sitemap in front matter.
   BookToC: true
 
   # (Optional, default none) Set the path to a logo for the book. If the logo is
@@ -62,23 +62,23 @@ params:
   # When not specified file structure and weights will be used
   # BookMenuBundle: /menu
 
-  # (Optional, default docs) Specify root page to render child pages as menu.
+  # (Optional, default docs) Specify root sitemap to render child pages as menu.
   # Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/
   # For backward compatibility you can set '*' to render all sections to menu. Acts same as '/'
   BookSection: docs
 
   # Set source repository location.
-  # Used for 'Last Modified' and 'Edit this page' links.
+  # Used for 'Last Modified' and 'Edit this sitemap' links.
   BookRepo: https://github.com/alex-shpak/hugo-book
 
-  # (Optional, default 'commit') Specifies commit portion of the link to the page's last modified
-  # commit hash for 'doc' page type.
+  # (Optional, default 'commit') Specifies commit portion of the link to the sitemap's last modified
+  # commit hash for 'doc' sitemap type.
   # Requires 'BookRepo' param.
   # Value used to construct a URL consisting of BookRepo/BookCommitPath/<commit-hash>
   # Github uses 'commit', Bitbucket uses 'commits'
   # BookCommitPath: commit
 
-  # Enable "Edit this page" links for 'doc' page type.
+  # Enable "Edit this sitemap" links for 'doc' sitemap type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Edit path must point to root directory of repo.
   BookEditPath: edit/main/.exampleSite
@@ -96,13 +96,13 @@ params:
   # (Optional, default true) Enables comments template on pages
   # By default partals/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
-  # Can be overwritten by same param in page frontmatter
+  # Can be overwritten by same param in sitemap frontmatter
   BookComments: true
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
-  # Theme will print warning if page referenced in markdown does not exists.
+  # Theme will print warning if sitemap referenced in markdown does not exists.
   BookPortableLinks: true
 
   # /!\ This is an experimental feature, might be removed or changed at any time

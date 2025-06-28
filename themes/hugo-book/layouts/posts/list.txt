@@ -1,0 +1,38 @@
+{{ define "main" }}
+  {{ range sort .Paginator.Pages }}
+  <article class="markdown book-post">
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
+    </h2>
+    {{ partial "docs/post-meta" . }}
+
+  {{ $images := .Resources.ByType "image" }}
+  {{ if gt (len $images) 0 }}
+    <div class="thumbnails">
+      {{ range first 2 $images }}
+        {{ if ne .MediaType.SubType "svg" }}
+          {{ $thumb := .Fit "200x200" }}
+          <img src="{{ $thumb.RelPermalink }}" alt="Thumbnail for {{ $.Title }}">
+        {{ else }}
+          <!-- Optional: Display SVG without resizing -->
+          <img src="{{ .RelPermalink }}" alt="SVG Thumbnail for {{ $.Title }}">
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+      <p>
+      {{- .Summary -}}
+      {{ if .Truncated }}
+        <a href="{{ .RelPermalink }}">...</a>
+      {{ end }}
+    </p>
+  </article>
+  {{ end }}
+
+  {{ template "_internal/pagination.html" . }}
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/taxonomy" . }}
+{{ end }}
+Q

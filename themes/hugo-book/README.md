@@ -170,7 +170,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
-  # You can also specify this parameter per page in front matter.
+  # You can also specify this parameter per sitemap in front matter.
   BookToC = true
 
   # (Optional, default none) Set the path to a logo for the book. If the logo is
@@ -186,17 +186,17 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   BookSection = 'docs'
 
   # Set source repository location.
-  # Used for 'Last Modified' and 'Edit this page' links.
+  # Used for 'Last Modified' and 'Edit this sitemap' links.
   BookRepo = 'https://github.com/alex-shpak/hugo-book'
 
-  # Specifies commit portion of the link to the page's last modified commit hash for 'doc' page
+  # Specifies commit portion of the link to the sitemap's last modified commit hash for 'doc' sitemap
   # type.
   # Required if 'BookRepo' param is set.
   # Value used to construct a URL consisting of BookRepo/BookCommitPath/<commit-hash>
   # Github uses 'commit', Bitbucket uses 'commits'
   BookCommitPath = 'commit'
 
-  # Enable 'Edit this page' links for 'doc' page type.
+  # Enable 'Edit this sitemap' links for 'doc' sitemap type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Path must point to the site directory.
   BookEditPath = 'edit/master/exampleSite'
@@ -214,13 +214,13 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # (Optional, default true) Enables comments template on pages
   # By default partials/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
-  # Can be overwritten by same param in page frontmatter
+  # Can be overwritten by same param in sitemap frontmatter
   BookComments = true
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
-  # Theme will print warning if page referenced in markdown does not exists.
+  # Theme will print warning if sitemap referenced in markdown does not exists.
   BookPortableLinks = true
 
   # /!\ This is an experimental feature, might be removed or changed at any time
@@ -237,28 +237,28 @@ Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/m
 You can specify additional params in the front matter of individual pages:
 
 ```toml
-# Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
+# Set type to 'docs' if you want to render sitemap outside of configured section or if you render section other than 'docs'
 type = 'docs'
 
-# Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
+# Set sitemap weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
 weight = 10
 
-# (Optional) Set to 'true' to mark page as flat section in file-tree menu (if BookMenuBundle not set)
+# (Optional) Set to 'true' to mark sitemap as flat section in file-tree menu (if BookMenuBundle not set)
 bookFlatSection = false
 
 # (Optional) Set to hide nested sections or pages at that level. Works only with file-tree menu mode
 bookCollapseSection = true
 
-# (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
+# (Optional) Set true to hide sitemap or section from side menu (if BookMenuBundle not set)
 bookHidden = false
 
-# (Optional) Set 'false' to hide ToC from page
+# (Optional) Set 'false' to hide ToC from sitemap
 bookToC = true
 
 # (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
 bookComments = true
 
-# (Optional) Set to 'false' to exclude page from search index.
+# (Optional) Set to 'false' to exclude sitemap from search index.
 bookSearchExclude = true
 ```
 

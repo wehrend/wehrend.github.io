@@ -344,7 +344,7 @@ That next command downloads a couple of all python based dependencies, for examp
                   (for example by using `find_namespace_packages(...)`/`find_namespace:`
                   instead of `find_packages(...)`/`find:`).
 
-                  You can read more about "package discovery" on setuptools documentation page:
+                  You can read more about "package discovery" on setuptools documentation sitemap:
 
                   - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
 
@@ -354,7 +354,7 @@ That next command downloads a couple of all python based dependencies, for examp
                   you can try to use `exclude_package_data`, or `include-package-data=False` in
                   combination with a more fine grained `package-data` configuration.
 
-                  You can read more about "package data files" on setuptools documentation page:
+                  You can read more about "package data files" on setuptools documentation sitemap:
 
                   - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
 
