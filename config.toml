@@ -4,6 +4,7 @@ title = "Bits & pieces - Sven Wehrend"
 theme = "hugo-book"
 publishDir = "public"
 
+
 [languages.en]
   languageName = "English"
   contentDir = "content/en"
@@ -13,7 +14,6 @@ publishDir = "public"
   languageName = "Deutsch"
   contentDir = "content/de"
   weight = 2
-
 
 [[languages.en.menu.before]]
   name = "Web-Blog"
@@ -55,9 +55,14 @@ publishDir = "public"
 
 [[languages.en.menu.before]]
   name = "Synthesizer-DIY"
-  url = "/posts/synth/25_build_your_own_modules/"
+  url = "/posts/synth/25-build-your-own-modules/"
   weight = 26
 
+
+[[languages.en.menu.before]]
+  name = "Sitemap (EN)"
+  url = "/sitemap/"
+  weight = 10
 
 [[languages.de.menu.before]]
   name = "Web-Blog"
@@ -68,6 +73,13 @@ publishDir = "public"
   name = "Synth-Blog"
   url = "/posts/"
   weight = 20
+
+
+[[languages.de.menu.before]]
+  name = "Sitemap (DE)"
+  url = "/de/sitemap/"
+  weight = 10
+
 
 
 [[languages.de.menu.before]]
@@ -111,7 +123,7 @@ publishDir = "public"
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
-  # You can also specify this parameter per page in front matter.
+  # You can also specify this parameter per sitemap in front matter.
   BookToC = false
 
 
@@ -139,3 +151,15 @@ publishDir = "public"
 
   [frontmatter.handlers]
     adoc = "yaml"
+
+[outputs]
+  home = ["HTML", "RSS", "SITEMAP", "sitemaphtml"]
+
+[outputFormats]
+  [outputFormats.sitemaphtml]
+    name = "sitemaphtml"
+    mediaType = "text/html"
+    baseName = "/sitemap"
+    isPlainText = false
+    notAlternative = true
+    permalinkable = true
