@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=34643&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=36977&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -12,7 +12,7 @@ und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfor
 sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.
 ">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:34643/de/posts/web/04_odoo_hacks/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:36977/de/posts/web/04_odoo_hacks/">
   <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
   <meta property="og:title" content="Odoo hacks: Entferne Sperr-Button aus Odoo v12">
   <meta property="og:description" content="Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte. In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen, wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking) und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.">
@@ -28,7 +28,7 @@ sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/de.search.min.6e668b4ad65cb3bdc91ecf28e97d9c107842bdfe356eaf54cbbb81bcf70909d0.js" integrity="sha256-bmaLStZcs73JHs8o6X2cEHhCvf41bq9Uy7uBvPcJCdA=" crossorigin="anonymous"></script>
+  <script defer src="/de.search.min.25d1d60fccd4251068a8c01d81c336504abd5a9108f36ce9ff535eeeab8f8ef9.js" integrity="sha256-JdHWD8zUJRBoqMAdgcM2UEq9WpEI82zp/1Ne7quPjvk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -80,7 +80,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://localhost:34643/">
+        <a href="http://localhost:36977/">
           English
         </a>
       </li>
@@ -472,7 +472,7 @@ und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfor
 sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../odoo_hacks.png" alt="Odoo Hacks"/></span></p>
+<p><span class="image"><img src="./odoo_hacks.png" alt="Odoo Hacks"/></span></p>
 </div>
 <div class="listingblock">
 <div class="title">/static/src/xml/trigger_toggle.xml</div>

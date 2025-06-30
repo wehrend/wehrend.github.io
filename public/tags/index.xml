@@ -2,283 +2,234 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Bits &amp; pieces - Sven Wehrend</title>
-    <link>http://localhost:34643/tags/</link>
+    <link>http://localhost:36977/tags/</link>
     <description>Recent content in Tags on Bits &amp; pieces - Sven Wehrend</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:34643/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>LTspice</title>
-      <link>http://localhost:34643/tags/ltspice/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/ltspice/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SPICE</title>
-      <link>http://localhost:34643/tags/spice/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/spice/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Synth</title>
-      <link>http://localhost:34643/tags/synth/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/synth/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>NLC</title>
-      <link>http://localhost:34643/tags/nlc/</link>
-      <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/nlc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sloth</title>
-      <link>http://localhost:34643/tags/sloth/</link>
-      <pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/sloth/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:36977/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gh-Actions</title>
-      <link>http://localhost:34643/tags/gh-actions/</link>
+      <link>http://localhost:36977/tags/gh-actions/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/gh-actions/</guid>
+      <guid>http://localhost:36977/tags/gh-actions/</guid>
       <description></description>
     </item>
     <item>
       <title>Gh-Pages</title>
-      <link>http://localhost:34643/tags/gh-pages/</link>
+      <link>http://localhost:36977/tags/gh-pages/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/gh-pages/</guid>
+      <guid>http://localhost:36977/tags/gh-pages/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>http://localhost:34643/tags/hugo/</link>
+      <link>http://localhost:36977/tags/hugo/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/hugo/</guid>
+      <guid>http://localhost:36977/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Web</title>
-      <link>http://localhost:34643/tags/web/</link>
+      <link>http://localhost:36977/tags/web/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/web/</guid>
+      <guid>http://localhost:36977/tags/web/</guid>
       <description></description>
     </item>
     <item>
       <title>Frontend</title>
-      <link>http://localhost:34643/tags/frontend/</link>
+      <link>http://localhost:36977/tags/frontend/</link>
       <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/frontend/</guid>
+      <guid>http://localhost:36977/tags/frontend/</guid>
       <description></description>
     </item>
     <item>
       <title>Odoo</title>
-      <link>http://localhost:34643/tags/odoo/</link>
+      <link>http://localhost:36977/tags/odoo/</link>
       <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/odoo/</guid>
+      <guid>http://localhost:36977/tags/odoo/</guid>
       <description></description>
     </item>
     <item>
       <title>Debian</title>
-      <link>http://localhost:34643/tags/debian/</link>
+      <link>http://localhost:36977/tags/debian/</link>
       <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/debian/</guid>
+      <guid>http://localhost:36977/tags/debian/</guid>
       <description></description>
     </item>
     <item>
       <title>Postgres</title>
-      <link>http://localhost:34643/tags/postgres/</link>
+      <link>http://localhost:36977/tags/postgres/</link>
       <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/postgres/</guid>
+      <guid>http://localhost:36977/tags/postgres/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:34643/tags/python/</link>
+      <link>http://localhost:36977/tags/python/</link>
       <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/python/</guid>
+      <guid>http://localhost:36977/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Beginners</title>
-      <link>http://localhost:34643/tags/beginners/</link>
+      <link>http://localhost:36977/tags/beginners/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/beginners/</guid>
+      <guid>http://localhost:36977/tags/beginners/</guid>
       <description></description>
     </item>
     <item>
       <title>Ecad</title>
-      <link>http://localhost:34643/tags/ecad/</link>
+      <link>http://localhost:36977/tags/ecad/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/ecad/</guid>
+      <guid>http://localhost:36977/tags/ecad/</guid>
       <description></description>
     </item>
     <item>
       <title>Eda</title>
-      <link>http://localhost:34643/tags/eda/</link>
+      <link>http://localhost:36977/tags/eda/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/eda/</guid>
+      <guid>http://localhost:36977/tags/eda/</guid>
       <description></description>
     </item>
     <item>
       <title>Fpga</title>
-      <link>http://localhost:34643/tags/fpga/</link>
+      <link>http://localhost:36977/tags/fpga/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/fpga/</guid>
+      <guid>http://localhost:36977/tags/fpga/</guid>
       <description></description>
     </item>
     <item>
       <title>IceCube2</title>
-      <link>http://localhost:34643/tags/icecube2/</link>
+      <link>http://localhost:36977/tags/icecube2/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/icecube2/</guid>
+      <guid>http://localhost:36977/tags/icecube2/</guid>
       <description></description>
     </item>
     <item>
       <title>Kicad</title>
-      <link>http://localhost:34643/tags/kicad/</link>
+      <link>http://localhost:36977/tags/kicad/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/kicad/</guid>
+      <guid>http://localhost:36977/tags/kicad/</guid>
       <description></description>
     </item>
     <item>
       <title>Lattice</title>
-      <link>http://localhost:34643/tags/lattice/</link>
+      <link>http://localhost:36977/tags/lattice/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/lattice/</guid>
+      <guid>http://localhost:36977/tags/lattice/</guid>
       <description></description>
     </item>
     <item>
       <title>Nandland Go</title>
-      <link>http://localhost:34643/tags/nandland-go/</link>
+      <link>http://localhost:36977/tags/nandland-go/</link>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/nandland-go/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DIY</title>
-      <link>http://localhost:34643/tags/diy/</link>
-      <pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/diy/</guid>
+      <guid>http://localhost:36977/tags/nandland-go/</guid>
       <description></description>
     </item>
     <item>
       <title>Duckburg</title>
-      <link>http://localhost:34643/tags/duckburg/</link>
+      <link>http://localhost:36977/tags/duckburg/</link>
       <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/duckburg/</guid>
+      <guid>http://localhost:36977/tags/duckburg/</guid>
       <description></description>
     </item>
     <item>
       <title>LTB</title>
-      <link>http://localhost:34643/tags/ltb/</link>
+      <link>http://localhost:36977/tags/ltb/</link>
       <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/ltb/</guid>
+      <guid>http://localhost:36977/tags/ltb/</guid>
       <description></description>
     </item>
     <item>
       <title>Quartus</title>
-      <link>http://localhost:34643/tags/quartus/</link>
+      <link>http://localhost:36977/tags/quartus/</link>
       <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/quartus/</guid>
+      <guid>http://localhost:36977/tags/quartus/</guid>
       <description></description>
     </item>
     <item>
       <title>Verilog</title>
-      <link>http://localhost:34643/tags/verilog/</link>
+      <link>http://localhost:36977/tags/verilog/</link>
       <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/verilog/</guid>
+      <guid>http://localhost:36977/tags/verilog/</guid>
       <description></description>
     </item>
     <item>
       <title>Modelsim</title>
-      <link>http://localhost:34643/tags/modelsim/</link>
+      <link>http://localhost:36977/tags/modelsim/</link>
       <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/modelsim/</guid>
+      <guid>http://localhost:36977/tags/modelsim/</guid>
       <description></description>
     </item>
     <item>
       <title>Chemistry</title>
-      <link>http://localhost:34643/tags/chemistry/</link>
+      <link>http://localhost:36977/tags/chemistry/</link>
       <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/chemistry/</guid>
+      <guid>http://localhost:36977/tags/chemistry/</guid>
       <description></description>
     </item>
     <item>
       <title>Electronics</title>
-      <link>http://localhost:34643/tags/electronics/</link>
+      <link>http://localhost:36977/tags/electronics/</link>
       <pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/electronics/</guid>
+      <guid>http://localhost:36977/tags/electronics/</guid>
       <description></description>
     </item>
     <item>
       <title>Analog</title>
-      <link>http://localhost:34643/tags/analog/</link>
+      <link>http://localhost:36977/tags/analog/</link>
       <pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/analog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Audio</title>
-      <link>http://localhost:34643/tags/audio/</link>
-      <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/audio/</guid>
+      <guid>http://localhost:36977/tags/analog/</guid>
       <description></description>
     </item>
     <item>
       <title>Computing</title>
-      <link>http://localhost:34643/tags/computing/</link>
+      <link>http://localhost:36977/tags/computing/</link>
       <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/computing/</guid>
+      <guid>http://localhost:36977/tags/computing/</guid>
       <description></description>
     </item>
     <item>
       <title>Knowhow</title>
-      <link>http://localhost:34643/tags/knowhow/</link>
+      <link>http://localhost:36977/tags/knowhow/</link>
       <pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/knowhow/</guid>
+      <guid>http://localhost:36977/tags/knowhow/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:34643/tags/blog/</link>
+      <link>http://localhost:36977/tags/blog/</link>
       <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/blog/</guid>
+      <guid>http://localhost:36977/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Consciousness</title>
-      <link>http://localhost:34643/tags/consciousness/</link>
+      <link>http://localhost:36977/tags/consciousness/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/consciousness/</guid>
+      <guid>http://localhost:36977/tags/consciousness/</guid>
       <description></description>
     </item>
     <item>
       <title>Electronic</title>
-      <link>http://localhost:34643/tags/electronic/</link>
+      <link>http://localhost:36977/tags/electronic/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/electronic/</guid>
+      <guid>http://localhost:36977/tags/electronic/</guid>
       <description></description>
     </item>
     <item>
       <title>Draft</title>
-      <link>http://localhost:34643/tags/draft/</link>
+      <link>http://localhost:36977/tags/draft/</link>
       <pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/draft/</guid>
+      <guid>http://localhost:36977/tags/draft/</guid>
       <description></description>
     </item>
     <item>
       <title>Nikola</title>
-      <link>http://localhost:34643/tags/nikola/</link>
+      <link>http://localhost:36977/tags/nikola/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:34643/tags/nikola/</guid>
+      <guid>http://localhost:36977/tags/nikola/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=34643&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=36977&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -11,7 +11,7 @@ a binary counter showing of by the LED array we have available on our DE0-nano b
 For this we will make use of both the Block Diagram Files (bdf) from Quartus and the popular HDL (Hardware Description Language) Verilog.
 ">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:34643/posts/web/23-fpga-beginners-2/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:36977/posts/web/23-fpga-beginners-2/">
   <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
   <meta property="og:title" content="FPGA 101: Starting with Quartus and Verilog">
   <meta property="og:description" content="So, you decided you want to learn fpga programming and have done the prerequisite from the introduction 0 as well as done the simple logic circuit via quartus’s bdf files. Today we want to show you how to figure out Quartus by doing another hardware equivalent of the hello-World program used in the software world - we do program a binary counter showing of by the LED array we have available on our DE0-nano board. For this we will make use of both the Block Diagram Files (bdf) from Quartus and the popular HDL (Hardware Description Language) Verilog.">
@@ -29,7 +29,7 @@ For this we will make use of both the Block Diagram Files (bdf) from Quartus and
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.6c8ef297fb58ceb194af2e07134bdb1cb64d241e31ac2690c0178cb3176b2858.js" integrity="sha256-bI7yl/tYzrGUry4HE0vbHLZNJB4xrCaQwBeMsxdrKFg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b07904cac2f0fe9a5003fc18f6f996eacd36ae5749fc199f8490f7a72867486d.js" integrity="sha256-sHkEysLw/ppQA/wY9vmW6s02rldJ/BmfhJD3pyhnSG0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -81,7 +81,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://localhost:34643/de/">
+        <a href="http://localhost:36977/de/">
           Deutsch
         </a>
       </li>
@@ -116,7 +116,7 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/" target="_blank" rel="noopener">
+    <a href="/posts/synth" target="_blank" rel="noopener">
         Synth-Blog
       </a>
   </li>
@@ -134,7 +134,7 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
         Synthesizer-DIY
       </a>
   </li>
@@ -613,7 +613,7 @@ What now follows is the simple implementation of the counter:</p>
 <div class="paragraph">
 <p>First we have to open the file binarycounter.v and clicking <em>File &gt;&gt; Create / Update &gt;&gt;
 Create Symbol Files for Current File</em>  like shown in the image below.
-<span class="image"><img src="../quartus_create_symbol_files.png" alt="Quartus - Symbol Files"/></span></p>
+<span class="image"><img src="./quartus_create_symbol_files.png" alt="Quartus - Symbol Files"/></span></p>
 </div>
 <div class="paragraph">
 <p>We open the file / tab clock_divider.v and repeat the step above.</p>
@@ -621,44 +621,44 @@ Create Symbol Files for Current File</em>  like shown in the image below.
 <div class="paragraph">
 <p>After that step we find the just newly created files in the Symbol Library,
 open the symbol library (see picture below)
-<span class="image"><img src="../quartus_symbol_tool.png" alt="Quartus - Symbol Tool"/></span>
+<span class="image"><img src="./quartus_symbol_tool.png" alt="Quartus - Symbol Tool"/></span>
 and you find the modules under directory project.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_library_window.png" alt="Quartus - Library Window"/></span></p>
+<p><span class="image"><img src="./quartus_library_window.png" alt="Quartus - Library Window"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_bdf_wo_pins.png" alt="Quartus - Counter.bdf"/></span></p>
+<p><span class="image"><img src="./quartus_counter_bdf_wo_pins.png" alt="Quartus - Counter.bdf"/></span></p>
 </div>
 <div class="paragraph">
 <p>Next, follow the different buildsteps throughout the schematic file:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_0.png" alt="Quartus - Counter.bdf 0"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_0.png" alt="Quartus - Counter.bdf 0"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_1.png" alt="Quartus - Counter.bdf 1"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_1.png" alt="Quartus - Counter.bdf 1"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_2.png" alt="Quartus - Counter.bdf 2"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_2.png" alt="Quartus - Counter.bdf 2"/></span></p>
 </div>
 <div class="paragraph">
 <p>When under properties assigning the bus width, be aware that the syntax is &#39;..&#39; instead of &#39;:&#39; (semicolon) !!</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_3.png" alt="Quartus - Counter.bdf 3"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_3.png" alt="Quartus - Counter.bdf 3"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_4.png" alt="Quartus - Counter.bdf 4"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_4.png" alt="Quartus - Counter.bdf 4"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_5.png" alt="Quartus - Counter.bdf 5"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_5.png" alt="Quartus - Counter.bdf 5"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_6.png" alt="Quartus - Counter.bdf 6"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_6.png" alt="Quartus - Counter.bdf 6"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_counter_schematic_7.png" alt="Quartus - Counter.bdf 7"/></span></p>
+<p><span class="image"><img src="./quartus_counter_schematic_7.png" alt="Quartus - Counter.bdf 7"/></span></p>
 </div>
 </div>
 </div>
@@ -671,13 +671,13 @@ Below the picture of the clock pin.
 Do not forget to run the synthesis or at least the analysis before.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../de0nano_clock.png" alt="DE0-nano Clock"/></span></p>
+<p><span class="image"><img src="./de0nano_clock.png" alt="DE0-nano Clock"/></span></p>
 </div>
 <div class="paragraph">
 <p>And the picture of the LED outputs.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../de0nano_output.png" alt="DE0-nano Output"/></span></p>
+<p><span class="image"><img src="./de0nano_output.png" alt="DE0-nano Output"/></span></p>
 </div>
 <div class="paragraph">
 <p>And here the image of the pin planner</p>
@@ -717,7 +717,7 @@ Do not forget to run the synthesis or at least the analysis before.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_pin_planner_counter.png" alt="Quartus - Pin Planner counter"/></span></p>
+<p><span class="image"><img src="./quartus_pin_planner_counter.png" alt="Quartus - Pin Planner counter"/></span></p>
 </div>
 </div>
 </div>
@@ -733,7 +733,7 @@ FPGA board to the computer via usb. The hardware should be detected displayed, a
 as the sof software file chosen.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_programmer_counter.png" alt="Quartus - Programmer Counter"/></span></p>
+<p><span class="image"><img src="./quartus_programmer_counter.png" alt="Quartus - Programmer Counter"/></span></p>
 </div>
 <div class="paragraph">
 <p>Finally, you should see the leds on the board counting with a frequency of 0.745 Hz.</p>

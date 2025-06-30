@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=34643&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=36977&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -9,7 +9,7 @@ Today we want to show you how to figure out Quartus by doing a hardware equivale
 because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.
 ">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:34643/posts/web/22-fpga-beginners-1/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:36977/posts/web/22-fpga-beginners-1/">
   <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
   <meta property="og:title" content="FPGA 101: Starting with Quartus">
   <meta property="og:description" content="So, you decided you want to learn fpga programming and have done the prerequisite from the last blog post. Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.">
@@ -26,7 +26,7 @@ because it is simply that - an and gate feed by to push-buttons as input and a s
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.6c8ef297fb58ceb194af2e07134bdb1cb64d241e31ac2690c0178cb3176b2858.js" integrity="sha256-bI7yl/tYzrGUry4HE0vbHLZNJB4xrCaQwBeMsxdrKFg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b07904cac2f0fe9a5003fc18f6f996eacd36ae5749fc199f8490f7a72867486d.js" integrity="sha256-sHkEysLw/ppQA/wY9vmW6s02rldJ/BmfhJD3pyhnSG0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -78,7 +78,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://localhost:34643/de/">
+        <a href="http://localhost:36977/de/">
           Deutsch
         </a>
       </li>
@@ -113,7 +113,7 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/" target="_blank" rel="noopener">
+    <a href="/posts/synth" target="_blank" rel="noopener">
         Synth-Blog
       </a>
   </li>
@@ -131,7 +131,7 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
         Synthesizer-DIY
       </a>
   </li>
@@ -473,7 +473,7 @@ because it is simply that - an and gate feed by to push-buttons as input and a s
 <p>I have stolen this tutorial from <a href="https://siytek.com/quartus-hello-world/#Setup-the-project">here</a> but given it my own images and style.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_menu_new_project.png" alt="Quartus - New Project Wizard"/></span></p>
+<p><span class="image"><img src="./quartus_menu_new_project.png" alt="Quartus - New Project Wizard"/></span></p>
 </div>
 <div class="sect1">
 <h2 id="_setup_the_project">Setup the project</h2>
@@ -482,25 +482,25 @@ because it is simply that - an and gate feed by to push-buttons as input and a s
 <p>Next we see an introduction window as shown below. We click next to get to the next window where we name the Project.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_project_introduction.png" alt="Quartus - New Project Wizard"/></span></p>
+<p><span class="image"><img src="./quartus_project_introduction.png" alt="Quartus - New Project Wizard"/></span></p>
 </div>
 <div class="paragraph">
 <p>Give it a proper AndGate or HelloWorld, as you like…​</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_project_naming.png" alt="Quartus - Project Naming"/></span></p>
+<p><span class="image"><img src="./quartus_project_naming.png" alt="Quartus - Project Naming"/></span></p>
 </div>
 <div class="paragraph">
 <p>Next  on the page &#39;Project Type&#39; we select &#39;Empty Project&#39;</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_empty_project.png" alt="Quartus - Project Empty"/></span></p>
+<p><span class="image"><img src="./quartus_empty_project.png" alt="Quartus - Project Empty"/></span></p>
 </div>
 <div class="paragraph">
 <p>We skip the next page &#39;Add files&#39; and go to &#39;Family, Device and Board Settings&#39;.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_choose_device.png" alt="Quartus - Choose Device"/></span></p>
+<p><span class="image"><img src="./quartus_choose_device.png" alt="Quartus - Choose Device"/></span></p>
 </div>
 <div class="paragraph">
 <p>Here we select the Family Cyclone IV E and select the device with the name
@@ -509,7 +509,7 @@ We click next and for now skip the step &#39;EDA Tool Settings&#39;.
 Finally, we get to the Summary of the project wizard.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_project_summary.png" alt="Quartus - Project Summary"/></span></p>
+<p><span class="image"><img src="./quartus_project_summary.png" alt="Quartus - Project Summary"/></span></p>
 </div>
 <div class="paragraph">
 <p>After you confirmed all is as it should be, click on &#39;Finish&#39; to end the project wizard.</p>
@@ -527,31 +527,31 @@ Finally, we get to the Summary of the project wizard.</p>
 If we want, we can save our current state by going to File &gt;&gt; save as …​ and give a name andGate.bdf and a suitable path.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_bdf_canvas.png" alt="Quartus - BDF canvas"/></span></p>
+<p><span class="image"><img src="./quartus_bdf_canvas.png" alt="Quartus - BDF canvas"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now click on the symbol tool icon as shown in the image below, to open the symbol library.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_symbol_tool.png" alt="Quartus - Symbol Tool"/></span></p>
+<p><span class="image"><img src="./quartus_symbol_tool.png" alt="Quartus - Symbol Tool"/></span></p>
 </div>
 <div class="paragraph">
 <p>A new window opens, showing the library with the three main folders &#39;Megafunction&#39;,&#39;other&#39; and primitives…​</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_symbol_library.png" alt="Quartus - Symbol Library"/></span></p>
+<p><span class="image"><img src="./quartus_symbol_library.png" alt="Quartus - Symbol Library"/></span></p>
 </div>
 <div class="paragraph">
 <p>We are looking for and gate with two inputs, so go to &#39;Primitives&#39;, &#39;logic&#39;, &#39;and2&#39;, confirm with &#39;ok&#39;…​</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_symbol_library_ii.png" alt="Quartus - Symbol Library II"/></span></p>
+<p><span class="image"><img src="./quartus_symbol_library_ii.png" alt="Quartus - Symbol Library II"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now click in the middle of the grid canvas to enter the symbol, then click esc to exit the library modus.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_and_gate_0.png" alt="Quartus - And gate 0"/></span></p>
+<p><span class="image"><img src="./quartus_and_gate_0.png" alt="Quartus - And gate 0"/></span></p>
 </div>
 </div>
 </div>
@@ -566,20 +566,20 @@ Later in the pin assignment we will link the pins to the physical pins of the de
 <p>The pin tool icon is right next to the symbol tool icon. Click on the arrow to open the selection menu.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_pin_tool.png" alt="Quartus - Pin tool"/></span></p>
+<p><span class="image"><img src="./quartus_pin_tool.png" alt="Quartus - Pin tool"/></span></p>
 </div>
 <div class="paragraph">
 <p>Select output and drop the icon down somewhere next to the output of the and gate. Then draw a wire between the gate output and the pin
 by starting from either point, holding down the mouse and drawing a wire to the other point. Then we have a connection.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_link_output.png" alt="Quartus - Link output"/></span></p>
+<p><span class="image"><img src="./quartus_link_output.png" alt="Quartus - Link output"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now, lets do the same thing equivalent for the input pins…​</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_logic_circuit.png" alt="Quartus - Logic circuit"/></span></p>
+<p><span class="image"><img src="./quartus_logic_circuit.png" alt="Quartus - Logic circuit"/></span></p>
 </div>
 <div class="paragraph">
 <p>Lastly we will rename the pins to a more suitable name. Double click on the pin, and rename it.
@@ -588,7 +588,7 @@ We rename the inputs to &#39;in1&#39;,&#39;in2&#39; and the output to &#39;out1&
 later on.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_logic_circuit_ii.png" alt="Quartus - Logic circuit II"/></span></p>
+<p><span class="image"><img src="./quartus_logic_circuit_ii.png" alt="Quartus - Logic circuit II"/></span></p>
 </div>
 </div>
 </div>
@@ -599,7 +599,7 @@ later on.</p>
 <p>To check out the I/O pins we need, lets check out the user manual of the DE0-nano board.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../de0nano_input.png" alt="Quartus - DE0-nano input"/></span></p>
+<p><span class="image"><img src="./de0nano_input.png" alt="Quartus - DE0-nano input"/></span></p>
 </div>
 <div class="paragraph">
 <p>Here - in above picture - we see the two pushbuttons of the nano board,which are buffered via the SN74AUC17 to do debouncing.</p>
@@ -608,7 +608,7 @@ later on.</p>
 <p>And in below we see an (overly simplified) schematic of the  LEDs in the output, missing the pre-resistors.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../de0nano_output.png" alt="Quartus - DE0-nano output"/></span></p>
+<p><span class="image"><img src="./de0nano_output.png" alt="Quartus - DE0-nano output"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now we have all the physical pins that we need together:</p>
@@ -665,7 +665,7 @@ We will do a closer look at these steps and what they do in a future blog post.
 As the full compilation can take some time it makes sense to only run the necessary process. Go ahead and run analysis and elaboration using the tool found in the menu bar at the top of the screen.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_analysis_and_elaboration.png" alt="Quartus - Analysis &amp; Elaboration"/></span></p>
+<p><span class="image"><img src="./quartus_analysis_and_elaboration.png" alt="Quartus - Analysis &amp; Elaboration"/></span></p>
 </div>
 </div>
 </div>
@@ -685,13 +685,13 @@ As the full compilation can take some time it makes sense to only run the necess
 <p>You will see a map of the FPGA with all of the physical pins and their functions.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_pin_planner_after_run.png" alt="Quartus - Pin Planner"/></span></p>
+<p><span class="image"><img src="./quartus_pin_planner_after_run.png" alt="Quartus - Pin Planner"/></span></p>
 </div>
 <div class="paragraph">
 <p>We are interested in the list of pins at the bottom. If you have successfully completed the previous step you should see the pins listed. Go ahead and enter your switch and LED pins in the location box.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_pin_planner_pins_assigned.png" alt="Quartus - Pin Planner - pins assigned"/></span></p>
+<p><span class="image"><img src="./quartus_pin_planner_pins_assigned.png" alt="Quartus - Pin Planner - pins assigned"/></span></p>
 </div>
 <div class="paragraph">
 <p>The input pins should correspond to the physical pins you have connected to the push buttons and the output pin should correspond to the output pin with the LED connected. Once you are done you can close the pin planner.</p>
@@ -703,7 +703,7 @@ As the full compilation can take some time it makes sense to only run the necess
 <p>You can detach a window by right clicking the tab at the top of the work area and selecting detach. You can also attach and detach windows from the window menu on the top menu bar.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_pins_assigned.png" alt="Quartus - Pins assigned"/></span></p>
+<p><span class="image"><img src="./quartus_pins_assigned.png" alt="Quartus - Pins assigned"/></span></p>
 </div>
 </div>
 </div>
@@ -715,7 +715,7 @@ As the full compilation can take some time it makes sense to only run the necess
 to a binary SRAM object file (sof). Meaning its only running in the volatile Static RAM not persisted and be gone after power supply is down.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_synthesis.png" alt="Quartus - Synthesis"/></span></p>
+<p><span class="image"><img src="./quartus_synthesis.png" alt="Quartus - Synthesis"/></span></p>
 </div>
 </div>
 </div>
@@ -727,7 +727,7 @@ to a binary SRAM object file (sof). Meaning its only running in the volatile Sta
 We can open the programmer via <em>Tools &gt;&gt; Programmer</em> or via the icon shown below</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_programmer.png" alt="Quartus - Programmer"/></span></p>
+<p><span class="image"><img src="./quartus_programmer.png" alt="Quartus - Programmer"/></span></p>
 </div>
 <div class="paragraph">
 <p>Once you’ve connected the Nano board with the usb cable, in the programmer click on &#39;Hardware Setup&#39;, in the list of the opening window the device should
@@ -735,7 +735,7 @@ show up as &#39;USB-Blaster&#39; in the list, select it and click ok. Now we nee
 Also make sure you have the sof file generated - if nothing is shown and in doubt - just running all the steps including Timing Analysis by hand.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_programmer_sof.png" alt="Quartus - Programmer SOF"/></span></p>
+<p><span class="image"><img src="./quartus_programmer_sof.png" alt="Quartus - Programmer SOF"/></span></p>
 </div>
 <div class="paragraph">
 <p>If you have the sof file in place and the hardware showing up just hit the &#39;start&#39; button, then the programmer does it job.</p>
@@ -746,19 +746,19 @@ But if we test the hardware we will notice a different behaviour here: We did no
 so we need to modify the design, for better comparison we also add an or gate and connect it to led 1.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_circuit_extended.png" alt="Quartus - Extended Circuit"/></span></p>
+<p><span class="image"><img src="./quartus_circuit_extended.png" alt="Quartus - Extended Circuit"/></span></p>
 </div>
 <div class="paragraph">
 <p>I leave it open to the reader to figure out how to design the circuit as shown. If not successfull (or to lazy) the bdf file can be found here (link below).</p>
 </div>
 <div class="paragraph">
-<p><a href="../andGate.bdf">extended Circuit BDF</a></p>
+<p><a href="./andGate.bdf">extended Circuit BDF</a></p>
 </div>
 <div class="paragraph">
 <p>And do not forget to connect the pin from the or gate output to the dedicated pin of led 1 (PIN_A13), as shown below</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_pin_planner_ii.png" alt="Quartus - Pin Planner II"/></span></p>
+<p><span class="image"><img src="./quartus_pin_planner_ii.png" alt="Quartus - Pin Planner II"/></span></p>
 </div>
 <div class="paragraph">
 <p>Run the synthesis process and program the board and test.</p>

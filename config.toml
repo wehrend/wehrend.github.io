@@ -22,7 +22,7 @@ publishDir = "public"
 
 [[languages.en.menu.before]]
   name = "Synth-Blog"
-  url = "/posts/"
+  url = "/posts/synth"
   weight = 20
 
 
@@ -55,7 +55,7 @@ publishDir = "public"
 
 [[languages.en.menu.before]]
   name = "Synthesizer-DIY"
-  url = "/posts/synth/25-build-your-own-modules/"
+  url = "/posts/synth/25_build_your_own_modules/"
   weight = 26
 
 

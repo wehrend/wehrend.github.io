@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=34643&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=36977&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -16,7 +16,7 @@ We will show how to setup the environment, in the first step we will (show how t
 the programmer. In the second step we will install the simulation software Modelsim.
 ">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:34643/posts/web/21-fpga-beginners-0/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:36977/posts/web/21-fpga-beginners-0/">
   <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
   <meta property="og:title" content="FPGA 101: Starting with HDLS">
   <meta property="og:description" content="Today I want to start a blog post series about hardware programming. We start with an introduction to hardware programming with the FPGA-board DE0 Nano from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.
@@ -35,7 +35,7 @@ We will show how to setup the environment, in the first step we will (show how t
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.6c8ef297fb58ceb194af2e07134bdb1cb64d241e31ac2690c0178cb3176b2858.js" integrity="sha256-bI7yl/tYzrGUry4HE0vbHLZNJB4xrCaQwBeMsxdrKFg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b07904cac2f0fe9a5003fc18f6f996eacd36ae5749fc199f8490f7a72867486d.js" integrity="sha256-sHkEysLw/ppQA/wY9vmW6s02rldJ/BmfhJD3pyhnSG0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -87,7 +87,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://localhost:34643/de/">
+        <a href="http://localhost:36977/de/">
           Deutsch
         </a>
       </li>
@@ -122,7 +122,7 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/" target="_blank" rel="noopener">
+    <a href="/posts/synth" target="_blank" rel="noopener">
         Synth-Blog
       </a>
   </li>
@@ -140,7 +140,7 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
         Synthesizer-DIY
       </a>
   </li>
@@ -476,7 +476,7 @@ to hardware programming with the FPGA-board <a href="https://www.terasic.com.tw/
 from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../de0nano.jpg" alt="DE-0 nano"/></span></p>
+<p><span class="image"><img src="./de0nano.jpg" alt="DE-0 nano"/></span></p>
 </div>
 <div class="paragraph">
 <p>We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure
@@ -502,7 +502,7 @@ $ ./qinst-lite-linux-23.1std-991.run</code></pre>
 Please check that you have around 20GB disk space free on the partition where you want to install the software, download size is around 4.4 - 5.0 GB.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_installer_selection.png" alt="Quartus installer"/></span></p>
+<p><span class="image"><img src="./quartus_installer_selection.png" alt="Quartus installer"/></span></p>
 </div>
 <div class="paragraph">
 <p>Then, click the download. The download and installation takes a bit of time, so get a cup of coffee in between.
@@ -516,7 +516,7 @@ $ ./quartus</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_ide.png" alt="Quartus IDE"/></span></p>
+<p><span class="image"><img src="./quartus_ide.png" alt="Quartus IDE"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now it is time to take the CD from the DE-0 nano board and copy its content on your computer…​ Or simply download it from
@@ -539,7 +539,7 @@ and add a 2-input multiplexer megafunction. When the design is running on the bo
 press an input switch to multiplex the counter bits that drive the output LEDs.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../my_first_fpga_view.png" alt="First FPGA"/></span></p>
+<p><span class="image"><img src="./my_first_fpga_view.png" alt="First FPGA"/></span></p>
 </div>
 <div class="paragraph">
 <p>The view below shows the quartus block design file (bdf) for the simple project my_first_fpga. Its depicting a PLL Megafunction and (bus)
@@ -547,7 +547,7 @@ Multiplexer Megafunction  which is IP (=Intellectual Property from Altera / Inte
 our custom counter logic as shown below.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../my_first_fpga_bdf.png" alt="First FPGA Block Design File"/></span></p>
+<p><span class="image"><img src="./my_first_fpga_bdf.png" alt="First FPGA Block Design File"/></span></p>
 </div>
 <div class="listingblock">
 <div class="title">./simple_counter.v</div>
@@ -571,14 +571,14 @@ our custom counter logic as shown below.</p>
 </div>
 <div class="paragraph">
 <p>And to check the pin assignment,we open Assignments &gt;&gt; Pin Planner
-<span class="image"><img src="../quartus_pin_assignment.png" alt="Quartus Pin Assignment"/></span></p>
+<span class="image"><img src="./quartus_pin_assignment.png" alt="Quartus Pin Assignment"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now we can run the Compiler - which in hardware programming is a bit different from software compilers - but we get to that in another
 blog post.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../quartus_compile_report.png" alt="Quartus Compile Report"/></span></p>
+<p><span class="image"><img src="./quartus_compile_report.png" alt="Quartus Compile Report"/></span></p>
 </div>
 <div class="paragraph">
 <p>We can see in the compile report that 1 of 4 PLLs in total is used. Otherwise we use less than 1 percent of resources.</p>
@@ -706,7 +706,7 @@ $ ./qhsim</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../modelsim.png" alt="Modelsim"/></span></p>
+<p><span class="image"><img src="./modelsim.png" alt="Modelsim"/></span></p>
 </div>
 <div class="paragraph">
 <p>To be continued…​</p>

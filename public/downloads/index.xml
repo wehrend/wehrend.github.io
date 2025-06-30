@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Downloads on Bits &amp; pieces - Sven Wehrend</title>
-    <link>http://localhost:1313/downloads/</link>
+    <link>http://localhost:36977/downloads/</link>
     <description>Recent content in Downloads on Bits &amp; pieces - Sven Wehrend</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/downloads/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:36977/downloads/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

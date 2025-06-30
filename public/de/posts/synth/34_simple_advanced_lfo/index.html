@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=36977&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How to simulate analog circuits">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:36977/de/posts/synth/34_simple_advanced_lfo/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Simulation of a reversed engineered LFO">
+  <meta property="og:description" content="How to simulate analog circuits">
+  <meta property="og:locale" content="de">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-24T00:00:00+00:00">
+    <meta property="article:tag" content="LTspice">
+    <meta property="article:tag" content="SPICE">
+    <meta property="article:tag" content="Synth">
+<title>Simulation of a reversed engineered LFO | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/de.search.min.25d1d60fccd4251068a8c01d81c336504abd5a9108f36ce9ff535eeeab8f8ef9.js" integrity="sha256-JdHWD8zUJRBoqMAdgcM2UEq9WpEI82zp/1Ne7quPjvk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/de/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Suche" aria-label="Suche" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Deutsch
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:36977/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/sitemap/" target="_blank" rel="noopener">
+        Sitemap (DE)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview2/" target="_blank" rel="noopener">
+        Digitale Logik 2 (Übersicht)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Elektronik 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Elektronik 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers (de)</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x2_cordic/" class="">X2_cordic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication (de)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/07_risc_v/" class="">07_RISC-V (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/06_memory/" class="">06_Memory (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/05_alu/" class="">05_ALU (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/04_signs/" class="">04_Signs (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/03_binary_system/" class="">03_binary_system (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/02_xor/" class="">02_XOR (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra (de)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/de/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/de/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/pages/overview/" target="_blank" rel="noopener">
+        Digitale Logik 1 (Übersicht)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Simulation of a reversed engineered LFO</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>Hello folks,</p>
+</div>
+<div class="paragraph">
+<p>today I want to continue the series about simulation of synth modules with LTspice.</p>
+</div>
+<div class="paragraph">
+<p>We start with this module from etsy which we disect and reverse engineer, so that
+we can build it with reverse polarity protection diodes…​</p>
+</div>
+<div class="paragraph">
+<p>We want to analyze <a href="https://www.etsy.com/de-en/listing/983875302/lfo-eurorack-module-full-kit">this module</a>.</p>
+</div>
+<div class="paragraph">
+<p>Lets start with the pcbs:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./lfo_front.jpg" alt="PCB front"/>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./lfo_back.jpg" alt="PCB back"/>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To begin with, we first want to reversse enginnering the two sides of the pcb, to build another pcb, with reverse polarity protection
+diodes in the mind, following the schematic in LTSpice: Also here is the download link for the LTSpice file:</p>
+</div>
+<div class="paragraph">
+<p><a href="./LFO.asc">LTspice file</a></p>
+</div>
+<div class="paragraph">
+<p>First of all here the link to <a href="https://www.modwiggler.com/forum/viewtopic.php?t=292778">this ModWiggler-Forum post</a> which helped me to realize this idea and proofread my reverse engineered circuit,
+without <a href="https://www.modwiggler.com/forum/memberlist.php?mode=viewprofile&amp;u=3566a">Synthiq</a> I could not have made it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../ltspice_advanced_lfo.png" alt="LTspice"/>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../ltspice_advanced_lfo_with_simulation.png" alt="LTspice"/>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 50%;"/>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./kicad_lfo_front.png" alt="PCB front"/>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="./kicad_lfo_back.png" alt="PCB back"/>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(To bes continued, when the ordered PCBs arrive)</p>
+</div>
+<div class="paragraph">
+<p>And here the iBoM:
+<a href="./ibom.html">iBoM</a></p>
+</div>
+<div class="sect1">
+<h2 id="_bom">bom:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#34;Reference&#34;,&#34;Value&#34;,&#34;Footprint&#34;,&#34;Datasheet&#34;,&#34;Qty&#34;,&#34;DNP&#34;,&#34;Exclude from BOM&#34;,&#34;Exclude from Board&#34;
+&#34;C1,C4&#34;,&#34;100nFC&#34;,&#34;Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm&#34;,&#34;~&#34;,&#34;2&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;C2,C5&#34;,&#34;2.2µFC_Polarized&#34;,&#34;Capacitor_THT:CP_Radial_D5.0mm_P2.00mm&#34;,&#34;~&#34;,&#34;2&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;C3,C7&#34;,&#34;10µFC_Polarized&#34;,&#34;Capacitor_THT:CP_Radial_D5.0mm_P2.00mm&#34;,&#34;~&#34;,&#34;2&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;C8&#34;,&#34;470pFC&#34;,&#34;Capacitor_THT:C_Disc_D9.0mm_W2.5mm_P5.00mm&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;D1&#34;,&#34;1N4148&#34;,&#34;Diode_THT:D_DO-41_SOD81_P2.54mm_Vertical_AnodeUp&#34;,&#34;https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;D2&#34;,&#34;LED&#34;,&#34;LED_THT:LED_D5.0mm&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;D3&#34;,&#34;1N5817&#34;,&#34;Diode_THT:D_DO-201AD_P3.81mm_Vertical_AnodeUp&#34;,&#34;http://www.vishay.com/docs/88525/1n5817.pdf&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;D4&#34;,&#34;1N5817&#34;,&#34;Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal&#34;,&#34;http://www.vishay.com/docs/88525/1n5817.pdf&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;J1&#34;,&#34;PJ398SM-12 (Tri)&#34;,&#34;Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles&#34;,&#34;&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;J2&#34;,&#34;PJ398SM-12 (square)&#34;,&#34;Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles&#34;,&#34;&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;J3&#34;,&#34;PJ398SM-12 (weird)&#34;,&#34;Connector_Audio:Jack_3.5mm_QingPu_WQP-PJ398SM_Vertical_CircularHoles&#34;,&#34;&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;J4&#34;,&#34;Conn_02x05_Odd_Even&#34;,&#34;Connector_PinSocket_2.54mm:PinSocket_2x05_P2.54mm_Vertical&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;Q1&#34;,&#34;BC547&#34;,&#34;Package_TO_SOT_THT:TO-92_Inline&#34;,&#34;https://www.onsemi.com/pub/Collateral/BC550-D.pdf&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R1&#34;,&#34;100R&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R2,R4,R7&#34;,&#34;2.2kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;3&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R3,R5&#34;,&#34;4.7kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;2&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R6,R9&#34;,&#34;1kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;2&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R8&#34;,&#34;15kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R10,R11,R14,R15,R16&#34;,&#34;100kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;5&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R12&#34;,&#34;47kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;R13&#34;,&#34;100kR&#34;,&#34;Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;RV1&#34;,&#34;R_Potentiometer&#34;,&#34;Potentiometer_THT:Potentiometer_Alpha_RD901F-40-00D_Single_Vertical&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;SW1&#34;,&#34;SW_SPDT&#34;,&#34;100SP1T1B4M2QE:SW_100SP1T1B4M2QE&#34;,&#34;~&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;
+&#34;U1&#34;,&#34;TL084&#34;,&#34;Package_DIP:DIP-14_W7.62mm_Socket_LongPads&#34;,&#34;http://www.ti.com/lit/ds/symlink/tl081.pdf&#34;,&#34;1&#34;,&#34;&#34;,&#34;&#34;,&#34;&#34;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: June 30, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
