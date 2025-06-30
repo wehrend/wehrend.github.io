@@ -50,7 +50,6 @@ And here the iBoM:
 link:./ibom.html[iBoM]
 
 
-bom:
 ----
 "Reference","Value","Footprint","Datasheet","Qty","DNP","Exclude from BOM","Exclude from Board"
 "C1,C4","100nFC","Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm","~","2","","",""
