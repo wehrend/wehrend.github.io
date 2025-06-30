@@ -92,7 +92,7 @@ zu verwenden.
 Verwenden Sie hierfür 1N5817 (THT) oder MBR0540T1 (SMD). Ich konnte kein Bild finden, also habe ich es von einigen
 Befaco-Schaltplänen kopiert. Seien Sie also gnädig mit mir und ignorieren Sie die 100-nF-Kondensatoren.
 
-image:../reverse_polarity_protection.png[Verpolungsschutz]
+image:./reverse_polarity_protection.png[Verpolungsschutz]
 
 Dieses Bild mag für Sie noch keinen Sinn ergeben, aber das wird sich ändern, sobald Sie lernen, Elektronikschaltpläne zu
 lesen (was Sie tun sollten, wenn Sie dieses Hobby in Betracht ziehen).

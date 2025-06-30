@@ -26,21 +26,21 @@ Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgän
 . LFO Dreieck -> Sinus-Steuerung.
 . LFO Rechteck -> Rechteck-PWM
 
-image:../pom400_patch_idea.jpg[POM 400]
+image:./pom400_patch_idea.jpg[POM 400]
 
-link:../pom400_patch_idea0.mp4[POM 400 Video]
-
-'''
-
-image:../patch_idea_song_from_tibet.jpg[Song from Tibet]
-
-Link:../song_from_tibet.mp4[Song from Tibet Video]
+link:./pom400_patch_idea0.mp4[POM 400 Video]
 
 '''
 
-image:../plong_plong_plong.jpg[Plong...]
+image:./patch_idea_song_from_tibet.jpg[Song from Tibet]
 
-link:../plong_plong_plong.mp4[Plong... Video]
+link:./song_from_tibet.mp4[Song from Tibet Video]
+
+'''
+
+image:./plong_plong_plong.jpg[Plong...]
+
+link:./plong_plong_plong.mp4[Plong... Video]
 
 (Ich entschuldige mich für die schlechte Video- und Tonqualität, die Einrichtung
 wird verbessert.) Das Schöne an modularen Synthesizern ist, dass sie
@@ -50,9 +50,9 @@ es ermöglichen, dass die gesamte Kreativität in experimentellen Setups gipfelt
 Mit dem Zufallsmodul können wir ein Signal vom Eingang abtasten und halten. Sein Begleiter ist das Rauschmodul.
 Wir speisen den Sägezahnausgang in den Eingang des Zufallsmoduls ein.
 
-image:../beep_bleep.jpg[Beep,bleep...]
+image:./beep_bleep.jpg[Beep,bleep...]
 
-link:../beep_bleep.mp4[Beep,bleep... Video]
+link:./beep_bleep.mp4[Beep,bleep... Video]
 
 '''.
 
@@ -62,9 +62,9 @@ link:../beep_bleep.mp4[Beep,bleep... Video]
  LFO-Rechteck -> Sinus fm
 
 
-image:../sweeping_sinus.jpg[Sweeping Sinus...]
+image:./sweeping_sinus.jpg[Sweeping Sinus...]
 
-link:../sweeping_sinus.mp4[Sweeping Sinus... Video]
+link:./sweeping_sinus.mp4[Sweeping Sinus... Video]
 
 Wir können das Setup erweitern, indem wir den Sequenzer verwenden und den Filter nutzen. Denn
 das Schöne an modularen Synthesizern ist, dass der Filter nicht nur in Signalpfaden, sondern

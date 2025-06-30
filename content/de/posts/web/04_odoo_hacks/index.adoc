@@ -13,7 +13,7 @@ beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen.
 und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei
 sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.
 
-image:../odoo_hacks.png[Odoo Hacks]
+image:./odoo_hacks.png[Odoo Hacks]
 
 
 ./static/src/xml/trigger_toggle.xml

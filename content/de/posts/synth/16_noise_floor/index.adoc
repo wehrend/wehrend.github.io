@@ -11,6 +11,6 @@ VCO, Sampling Modulator, A*B+C and Rampage from Befaco. As well as the Divebomb 
 Last but not least a Zlon skew lfo and a BCM086 Diode Ladder High pass filter.
 
 
-image:../noise_floor.jpg[noise floor]
+image:./noise_floor.jpg[noise floor]
 
-link:../noise_floor.m4a[noise floor Audio]
+link:./noise_floor.m4a[noise floor Audio]

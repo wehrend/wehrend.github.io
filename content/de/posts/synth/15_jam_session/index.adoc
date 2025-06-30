@@ -11,6 +11,6 @@ from rat-king, which,as the name suggests, delivers nice randomly sequences. Als
 we have a new mixer module, self-build.
 We also utilize both VCOs and both LFO modules...
 
-image:../jam_session.jpg[jam session ]
+image:./jam_session.jpg[jam session ]
 
-link:../jam_session.m4a[jam session Audio]
+link:./jam_session.m4a[jam session Audio]

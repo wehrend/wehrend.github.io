@@ -11,7 +11,7 @@ https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=593[DE0 N
 von der ehemaligen Firma Altera, jetzt Intel. Unten sehen Sie ein Bild des kleinen Boards. Es scheint, dass man dieses
 Board noch bestellen kann, aber ich habe es nicht getestet.
 
-image:../de0nano.jpg[DE-0 nano]
+image:./de0nano.jpg[DE-0 nano]
 
 Wir zeigen, wie die Umgebung eingerichtet wird. Im ersten Schritt zeigen wir, wie man Quartus auf einer Debian-Distribution
 herunterlädt und installiert und den Programmierer konfiguriert. Im zweiten Schritt installieren wir die Simulationssoftware Modelsim.
@@ -34,7 +34,7 @@ Wählen Sie die Pakete wie unten gezeigt aus (auf diesem System sind sie bereits
 Bitte überprüfen Sie, ob auf der Partition, auf der Sie die Software installieren möchten, etwa 20 GB Speicherplatz frei
 sind. Die Downloadgröße beträgt etwa 4,4 bis 5,0 GB.
 
-image:../quartus_installer_selection.png[Quartus-Installationsprogramm]
+image:./quartus_installer_selection.png[Quartus-Installationsprogramm]
 
 Klicken Sie dann auf den Download. Der Download und die Installation nehmen etwas Zeit in Anspruch, holen Sie sich also
 zwischendurch eine Tasse Kaffee. Nach Abschluss der Installation in Ihrer Konsole gehen Sie zur Installation  – Sie haben
@@ -48,7 +48,7 @@ $ ./quartus
 ----
 
 
-image:../quartus_ide.png[Quartus IDE]
+image:./quartus_ide.png[Quartus IDE]
 
 
 Jetzt ist es an der Zeit, die CD aus dem DE-0-Nano-Board zu nehmen und ihren Inhalt auf Ihren Computer zu kopieren ...
@@ -69,13 +69,13 @@ und fügen eine 2-Input-Multiplexer-Megafunktion hinzu. Wenn das Design auf dem 
 einen Eingangsschalter drücken, um die Zählerbits zu multiplexen, die die Ausgangs-LEDs steuern.
 
 
-image:../my_first_fpga_view.png[Erstes FPGA]
+image:./my_first_fpga_view.png[Erstes FPGA]
 
 Die Ansicht unten zeigt die Quartus-Block-Designdatei (bdf) für das einfache Projekt my_first_fpga. Sie zeigt eine
 PLL-Megafunktion und eine (Bus-) Multiplexer-Megafunktion, die IP (=Intellectual Property von Altera/Intel) ist. Und
 dann gibt es eine Verilog-Datei, die unsere benutzerdefinierte Zählerlogik enthält, wie unten dargestellt.
 
-image:../my_first_fpga_bdf.png[Erste FPGA-Block-Design-Datei]
+image:./my_first_fpga_bdf.png[Erste FPGA-Block-Design-Datei]
 
 
 
@@ -103,12 +103,12 @@ endmodule // Ende des Moduls counter
 
 
 Und um die Pin-Zuordnung zu überprüfen, öffnen wir „Assignments >> Pin Planner“
-image:../quartus_pin_assignment.png [Quartus Pin Assignment]
+image:./quartus_pin_assignment.png [Quartus Pin Assignment]
 
 Jetzt können wir den Compiler ausführen – der sich bei der Hardware-Programmierung etwas von Software-Compilern
 unterscheidet –, aber darauf gehen wir in einem anderen Blogbeitrag ein.
 
-image:../quartus_compile_report.png [Quartus Compile Report]
+image:./quartus_compile_report.png [Quartus Compile Report]
 
 Aus dem Kompilierungsbericht geht hervor, dass eine von insgesamt vier PLLs verwendet wird. Ansonsten verbrauchen wir
 weniger als 1 Prozent der Ressourcen.
@@ -199,7 +199,7 @@ $ cd ../intelFPGA/20.1/modelsim_ase/bin
 $ ./qhsim
 ----
 
-image:../modelsim.png[Modelsim]
+image:./modelsim.png[Modelsim]
 
 
 Fortsetzung folgt...

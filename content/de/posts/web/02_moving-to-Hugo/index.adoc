@@ -103,7 +103,7 @@ docker run -it -v $(pwd):/src -p 1313:1313 swehrend/hugo-ext-asciidoctor:edge-ex
 
 Dies führt zu einem Ergebnis, das in etwa so aussieht:
 
-image:../hugo_server.png[unnamed image]
+image:./hugo_server.png[unnamed image]
 
 Wenn wir mit dem Ergebnis zufrieden sind, können wir unsere Website mit einem `rsync` auf unserem Webspace bereitstellen,
 etwa mit dem folgenden Befehl:
@@ -113,4 +113,4 @@ etwa mit dem folgenden Befehl:
 rsync -rav public/ wehrend@giclas.uberspace.de:/var/www/virtual/wehrend/html
 ----
 
-image:../new_site.png[unnamed image]
+image:./new_site.png[unnamed image]

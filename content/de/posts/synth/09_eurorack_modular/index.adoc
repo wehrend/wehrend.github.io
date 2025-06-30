@@ -12,6 +12,6 @@ system. I also bought a small, but decent sequencer, since the one from teenage 
 very handy to use. I have two further modules on my list, the https://doepfer.de/a119.htm[Doepfer A-119],
 an input module, as well as the https://doepfer.de/a124.htm[Doepfer A-124], a wasp filter, to complete the setup.
 
-image:../eurorack_modular.jpg[Eurorack Modular...]
+image:./eurorack_modular.jpg[Eurorack Modular...]
 
-link:../eurorack_modular.mp4[Eurorack Modular... Video]
+link:./eurorack_modular.mp4[Eurorack Modular... Video]
