@@ -16,11 +16,11 @@ We want to analyze the https://www.nonlinearcircuits.com/modules/p/4hp-sloth-cha
 
 Lets start with the schematic:
 
-image:../sloth_circuit.png[Sloth schematic]
+image:./sloth_circuit.png[Sloth schematic]
 
 Right below is a copy of the schematic, created in ltspice, however missing the potentiometer(s).
 
-image:../sloth_simulation.png[Sloth Simulation]
+image:./sloth_simulation.png[Sloth Simulation]
 
 Whats important here to note here is that for the fourth op-amp we needed to add some voltage offset
 of 1 µV to get it working.
@@ -29,7 +29,7 @@ with PieceWiseLinear function given ze values (t0,v0,  t1, t2 ) with the Values 
 
 Here are the files to tinker with
 
-link:../sloth.asc[sloth.asc]
+link:./sloth.asc[sloth.asc]
 
 But thats it for now - see you in another blog post.
 

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How to simulate analog circuits">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/synth/31-simulate-with-ltspice/">
+  <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
+  <meta property="og:title" content="Simulation of modules with LTSpice">
+  <meta property="og:description" content="How to simulate analog circuits">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-30T00:00:00+00:00">
+    <meta property="article:tag" content="LTspice">
+    <meta property="article:tag" content="SPICE">
+<title>Simulation of modules with LTSpice | Bits &amp; pieces - Sven Wehrend</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2f11efedb288f9d657256f0c283c967654a5418c7c424fa82d61f56f627decd9.js" integrity="sha256-LxHv7bKI&#43;dZXJW8MKDyWdlSlQYx8Qk&#43;oLWH1b2J97Nk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Bits &amp; pieces - Sven Wehrend</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/de/">
+          Deutsch
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/" target="_blank" rel="noopener">
+        
+      </a>
+  </li>
+  
+  <li>
+    <a href="/sitemap/" target="_blank" rel="noopener">
+        Sitemap (EN)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/web/" target="_blank" rel="noopener">
+        Web-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/" target="_blank" rel="noopener">
+        Synth-Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview2/" target="_blank" rel="noopener">
+        Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
+        Electronics 101
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/10_sequential_logic/" class="">10_sequential_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_2/11_clocks_and_registers/" class="">11_Clocks_flipflops_and_registers</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic X</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x2_cordic/" class="">X2_cordic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic_x/x0_multiplication/" class="">X0_multiplication</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Digital Logic</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/00_combinatorial_logic/" class="">00_combinatorial_logic</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/07_risc_v/" class="">07_RISC-V</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/06_memory/" class="">06_Memory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/05_alu/" class="">05_ALU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/03_binary_system/" class="">03_binary_system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/02_xor/" class="">02_XOR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/01_boolean_algebra/" class="">01_boolean_algebra</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda2/" class="">Agenda2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/digital_logic/agenda3/" class="">Agenda3</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/docs/digital_logic_2/images/how_does_cpu/" >
+        Digital Logic 2
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/overview/" target="_blank" rel="noopener">
+        Digital Logic 1 (Overview)
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Simulation of modules with LTSpice</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><div class="paragraph">
+<p>Hello folks,</p>
+</div>
+<div class="paragraph">
+<p>today I want to start with a topic that I had already longer in my mind and finally took hands on.</p>
+</div>
+<div class="paragraph">
+<p>We want to simulate a simple LFO (or a normal oscillator, depending on the chosen dimensions) and for that
+we use the relative well-known tool <a href="https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html">LTSpice</a>
+that thankfully also works on Linux machines thanks to using the non-emulator <a href="https://www.winehq.org/">wine</a>.</p>
+</div>
+<div class="paragraph">
+<p>A simple tutorial how to start that is found <a href="https://github.com/joaocarvalhoopen/LTSpice_on_Linux_Ubuntu__How_to_install_and_use">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Simple, after installation in the shell we enter (or copy):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># Start lstpice through wine
+wine ~/.wine/drive_c/Program\ Files/LTC/LTspiceXVII/XVIIx64.exe</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./ltspice.png" alt="LT-Spice"/></span></p>
+</div>
+<div class="paragraph">
+<p>We start with a schmitt-inverter based oscillator, utilizing a 40106 IC with six schmitt-inverters</p>
+</div>
+<div class="paragraph">
+<p>Its based ont the VCO cicuit schematic from erica synths, see as below</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./erica_edu_osc.png" alt="erica edu oscillator"/></span></p>
+</div>
+<div class="paragraph">
+<p>Below the schematic from the datasheet</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./cd40106_schematic.png" alt="cd40106 Schematic"/></span></p>
+</div>
+<div class="paragraph">
+<p>For more details, see the datasheet below</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.ti.com/lit/ds/symlink/cd40106b.pdf">Datasheet</a></p>
+</div>
+<div class="paragraph">
+<p>The important piece here is the following use case as astable multivibrator</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./cd40106_as_osci.png" alt="Astable Multivibrator"/></span></p>
+</div>
+<div class="paragraph">
+<p>We add two antiparallel diodes to the circuit, allowing to usse different timings for pulse and pause..</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./schmitt_oscillator_circuit.png" alt="Schmitt Oscillator Circuit"/></span></p>
+</div>
+<div class="paragraph">
+<p>Dont forget to set values for the schmitt-inverter, otherwise it will not behave like it should, but like an ideal component,
+so do a right click on the schmitt inverter and under value add this: Vhigh=9 Vt=4.45 Vh=.85 Trise=.1u Tfall=.1u</p>
+</div>
+<div class="paragraph">
+<p>After implementing the circuit part by part we end up with simulation, for that we need to set some initial condition .ic, the whole
+spice command is as below</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>.ic V(n001) 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>additionally we need to set the transition times and how long the simulation should go..</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>.tran 2s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A finished version of the oscillator to download:</p>
+</div>
+<div class="paragraph">
+<p><a href="./osc.asc">osc.asc</a></p>
+</div>
+<div class="paragraph">
+<p>That allows us to run the simulator:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./schmitt_oscillator.png" alt="Schmitt Oscillator"/></span></p>
+</div>
+<div class="paragraph">
+<p>Next, we can modify the resistor values and note that they control the pulse-pause-ratio .</p>
+</div>
+<div class="paragraph">
+<p>Dont forget that, in a real circuit, you need an op-amp designed as voltage follower or impedance converter,
+like sketched blue in the cicuit schematic in order to be able to encumber the output with the next stage.
+Last but not least we have an RC filter on the end, a first-order high-pass filter…​</p>
+</div>
+<div class="paragraph">
+<p>Thats it for now, see you later in other articles.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+Last update: June 30, 2025 
+
+
+</div>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

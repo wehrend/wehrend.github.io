@@ -125,7 +125,7 @@ publishDir = "public"
   # Start and end levels can be controlled with markup.tableOfContents setting.
   # You can also specify this parameter per sitemap in front matter.
   BookToC = false
-
+  thumbnailsPerPost = 2
 
 [security]
   enableInlineShortcodes = false

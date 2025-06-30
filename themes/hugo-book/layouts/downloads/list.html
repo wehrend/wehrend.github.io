@@ -1,0 +1,20 @@
+{{ define "main" }}
+<h1>Downloads</h1>
+<ul>
+  {{ range .Pages }}
+  <p>Page: {{ .Pages }} </p>
+    <h2>{{ .Title }}</h2>
+    <ul>
+      <p>Page: {{ .Title }} | Resources: {{ len .Resources }}</p>
+      {{ range .Resources }}
+        {{ if not (or (in .MediaType.Type "audio") (in .MediaType.Type "video")) }}
+          <li>
+            <a href="{{ .RelPermalink }}" download>{{ .Name }}</a>
+            <span class="text-gray-500 text-sm ml-2">({{ .MediaType.Type }}/{{ .MediaType.SubType }})</span>
+          </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  {{ end }}
+</ul>
+{{ end }}

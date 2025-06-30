@@ -21,14 +21,14 @@ Lets start with the pcbs:
 
 [cols="2"]
 |===
-a| image::../lfo_front.jpg[PCB front]
-a| image::../lfo_back.jpg[PCB back]
+a| image::./lfo_front.jpg[PCB front]
+a| image::./lfo_back.jpg[PCB back]
 |===
 
 To begin with, we first want to reversse enginnering the two sides of the pcb, to build another pcb, with reverse polarity protection
 diodes in the mind, following the schematic in LTSpice: Also here is the download link for the LTSpice file:
 
-link:../LFO.asc[LTspice file]
+link:./LFO.asc[LTspice file]
 
 First of all here the link to https://www.modwiggler.com/forum/viewtopic.php?t=292778[this ModWiggler-Forum post] which helped me to realize this idea and proofread my reverse engineered circuit,
 without https://www.modwiggler.com/forum/memberlist.php?mode=viewprofile&u=3566a[Synthiq] I could not have made it.
@@ -40,13 +40,15 @@ image::../ltspice_advanced_lfo_with_simulation.png[LTspice]
 
 [cols="2"]
 |===
-a| image::../kicad_lfo_front.png[PCB front]
-a| image::../kicad_lfo_back.png[PCB back]
+a| image::./kicad_lfo_front.png[PCB front]
+a| image::./kicad_lfo_back.png[PCB back]
 |===
 
 (To bes continued, when the ordered PCBs arrive)
 
-And here the BoM:
+And here the iBoM:
+link:/posts/synth/34-simple-advanced-lfo/ibom.html[Some Page]
+
 ----
 "Reference","Value","Footprint","Datasheet","Qty","DNP","Exclude from BOM","Exclude from Board"
 "C1,C4","100nFC","Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm","~","2","","",""

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=34643&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -9,6 +9,8 @@ OP-Amp
 
 Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
 in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.
+
+
 
 
 
@@ -25,7 +27,7 @@ Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannun
 
 ">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/de/posts/web/18_op-amps_introduction/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:34643/de/posts/web/18_op-amps_introduction/">
   <meta property="og:site_name" content="Bits & pieces - Sven Wehrend">
   <meta property="og:title" content="Operationsverstärker Einführung (de)">
   <meta property="og:description" content="OP-Amp Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.
@@ -41,10 +43,9 @@ Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannun
 <title>Operationsverstärker Einführung (de) | Bits &amp; pieces - Sven Wehrend</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-  <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/web/18_op-amps_introduction/" title="Op-Amps introduction">
-<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/de.search.min.b74ee043e13b911a511cbc5e8bc039ad11ad6b4d33d4b1706bb10ebdf472d2df.js" integrity="sha256-t07gQ&#43;E7kRpRHLxei8A5rRGta00z1LFwa7EOvfRy0t8=" crossorigin="anonymous"></script>
+  <script defer src="/de.search.min.6e668b4ad65cb3bdc91ecf28e97d9c107842bdfe356eaf54cbbb81bcf70909d0.js" integrity="sha256-bmaLStZcs73JHs8o6X2cEHhCvf41bq9Uy7uBvPcJCdA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -82,8 +83,6 @@ https://github.com/alex-shpak/hugo-book
   
 
 
-  
-
 
 <ul class="book-languages">
   <li>
@@ -98,7 +97,7 @@ https://github.com/alex-shpak/hugo-book
     <ul>
       
       <li>
-        <a href="http://localhost:1313/posts/web/18_op-amps_introduction/">
+        <a href="http://localhost:34643/">
           English
         </a>
       </li>
@@ -117,6 +116,12 @@ https://github.com/alex-shpak/hugo-book
   <li>
     <a href="/docs/" target="_blank" rel="noopener">
         
+      </a>
+  </li>
+  
+  <li>
+    <a href="/de/sitemap/" target="_blank" rel="noopener">
+        Sitemap (DE)
       </a>
   </li>
   
@@ -482,8 +487,10 @@ https://github.com/alex-shpak/hugo-book
 <p>Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
 in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.</p>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="../op-amp.svg" alt="op-amp" width="„400px“"/></span></p>
+<div class="imageblock">
+<div class="content">
+<img src="../op-amp.svg" alt="op-amp" width="33%"/>
+</div>
 </div>
 <div class="paragraph">
 <p>Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).</p>
@@ -507,8 +514,10 @@ in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir w
 </div>
 <div class="sect2">
 <h3 id="_der_nichtinvertierende_verstärker">Der nichtinvertierende Verstärker</h3>
-<div class="paragraph">
-<p><span class="image"><img src="../op-amp-non-inverting.svg" alt="non-inverting op-amp" width="„400px“"/></span></p>
+<div class="imageblock">
+<div class="content">
+<img src="../op-amp-non-inverting.svg" alt="non-inverting op-amp" width="33%"/>
+</div>
 </div>
 <div class="paragraph">
 <p>Der nichtinvertierende Verstärker ist einfach und leicht zu berechnen: Die Verstärkung A ist die Ausgangsspannung geteilt durch die Eingangsspannung, die wie folgt berechnet werden kann:</p>
@@ -535,8 +544,10 @@ in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir w
 <p>Ein Sonderfall des nichtinvertierenden Verstärkers ist der Spannungsfolger. Ein Spannungsfolger, auch Impedanzwandler genannt, wird verwendet, um eine Stufe von ihrer vorherigen Stufe zu puffern und zu entkoppeln.
 Er hat eine niedrige Impedanz am Eingang, aber eine hohe Impedanz am Ausgang. Dies wird verwendet, damit spätere Stufen die vorherigen Stufen nicht in Bezug auf die Spannung belasten.</p>
 </div>
-<div class="paragraph">
-<p>Bild:../voltage-follower.svg[voltage-follower,width=„400px“]</p>
+<div class="imageblock">
+<div class="content">
+<img src="../voltage-follower.svg" alt="voltage-follower" width="33%"/>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -545,10 +556,10 @@ Er hat eine niedrige Impedanz am Eingang, aber eine hohe Impedanz am Ausgang. Di
 <p>Ein weiteres Beispiel für eine kleine Schaltung ist der Wechselrichter. Er lässt nur die negative Halbwelle eines sinusförmigen Wechselstroms durch.</p>
 </div>
 <div class="paragraph">
-<p>Bild:../inverting_rectifier.png[inverting-rectifier,width=„800px“]</p>
+<p><span class="image"><img src="../inverting_rectifier.png" alt="inverting-rectifier" width="„800px“"/></span></p>
 </div>
 <div class="paragraph">
-<p>Bild:../inverting_rectifier_signal.png[inverting-rectifier-signal,width=„800px“]</p>
+<p><span class="image"><img src="../inverting_rectifier_signal.png" alt="inverting-rectifier-signal" width="„800px“"/></span></p>
 </div>
 <div class="paragraph">
 <p>Fortsetzung folgt…​</p>
@@ -565,7 +576,7 @@ Er hat eine niedrige Impedanz am Eingang, aber eine hohe Impedanz am Ausgang. Di
   <div class="flex flex-wrap justify-between">
 
 
-Last update: May 24, 2025 
+Last update: June 30, 2025 
 
 
 </div>
