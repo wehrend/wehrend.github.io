@@ -47,8 +47,10 @@ a| image::./kicad_lfo_back.png[PCB back]
 (To bes continued, when the ordered PCBs arrive)
 
 And here the iBoM:
-link:/posts/synth/34-simple-advanced-lfo/ibom.html[Some Page]
+link:./ibom.html[iBoM]
 
+
+bom:
 ----
 "Reference","Value","Footprint","Datasheet","Qty","DNP","Exclude from BOM","Exclude from Board"
 "C1,C4","100nFC","Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm","~","2","","",""

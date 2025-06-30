@@ -10,7 +10,7 @@ Today I want to start a blog post series about hardware programming. We start wi
 to hardware programming with the FPGA-board https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=593[DE0 Nano]
 from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.
 
-image:../de0nano.jpg[DE-0 nano]
+image:./de0nano.jpg[DE-0 nano]
 
 We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure
 the programmer. In the second step we will install the simulation software Modelsim.
@@ -30,7 +30,7 @@ $ ./qinst-lite-linux-23.1std-991.run
 The installer GUI opens and you get to select the according packages. Do select the packages as shown below (on this system its already installed):
 Please check that you have around 20GB disk space free on the partition where you want to install the software, download size is around 4.4 - 5.0 GB.
 
-image:../quartus_installer_selection.png[Quartus installer]
+image:./quartus_installer_selection.png[Quartus installer]
 
 Then, click the download. The download and installation takes a bit of time, so get a cup of coffee in between.
 After installation finished in your console go to the installation  - you have it probably installed in your home directory or under /opt -
@@ -43,7 +43,7 @@ $ ./quartus
 ----
 
 
-image:../quartus_ide.png[Quartus IDE]
+image:./quartus_ide.png[Quartus IDE]
 
 
 Now it is time to take the CD from the DE-0 nano board and copy its content on your computer... Or simply download it from
@@ -63,13 +63,13 @@ and add a 2-input multiplexer megafunction. When the design is running on the bo
 press an input switch to multiplex the counter bits that drive the output LEDs.
 
 
-image:../my_first_fpga_view.png[First FPGA]
+image:./my_first_fpga_view.png[First FPGA]
 
 The view below shows the quartus block design file (bdf) for the simple project my_first_fpga. Its depicting a PLL Megafunction and (bus)
 Multiplexer Megafunction  which is IP (=Intellectual Property from Altera / Intel).  And then there is a verilog file containing
 our custom counter logic as shown below.
 
-image:../my_first_fpga_bdf.png[First FPGA Block Design File]
+image:./my_first_fpga_bdf.png[First FPGA Block Design File]
 
 
 
@@ -97,12 +97,12 @@ endmodule                        		 // end of module counter
 
 
 And to check the pin assignment,we open Assignments >> Pin Planner
-image:../quartus_pin_assignment.png[Quartus Pin Assignment]
+image:./quartus_pin_assignment.png[Quartus Pin Assignment]
 
 Now we can run the Compiler - which in hardware programming is a bit different from software compilers - but we get to that in another
 blog post.
 
-image:../quartus_compile_report.png[Quartus Compile Report]
+image:./quartus_compile_report.png[Quartus Compile Report]
 
 We can see in the compile report that 1 of 4 PLLs in total is used. Otherwise we use less than 1 percent of resources.
 
@@ -188,7 +188,7 @@ $ cd ../intelFPGA/20.1/modelsim_ase/bin
 $ ./qhsim
 ----
 
-image:../modelsim.png[Modelsim]
+image:./modelsim.png[Modelsim]
 
 
 To be continued...

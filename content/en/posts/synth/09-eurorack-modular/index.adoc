@@ -13,6 +13,6 @@ nicht sehr handlich ist. Ich habe noch zwei weitere Module auf meiner Liste, das
 ein Eingangsmodul, sowie das https://doepfer.de/a124.htm[Doepfer A-124], ein Wasp-Filter [natürlich die Special-Edition in
 schwarz-gelb, da dies auch noch farblich passt], um das Setup zu vervollständigen.
 
-image:../eurorack_modular.jpg[Eurorack Modular...]
+image:./eurorack_modular.jpg[Eurorack Modular...]
 
-link:../eurorack_modular.mp4[Eurorack Modular... Video]
+link:./eurorack_modular.mp4[Eurorack Modular... Video]

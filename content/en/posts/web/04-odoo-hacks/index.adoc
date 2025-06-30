@@ -13,7 +13,7 @@ step, effectively removing the locking mechanism used in the Delivery Orders (cl
 and Manufacturing Orders (class MrpProduction). The solution requires an xml and a javascript-file
 as well as a dedicated web-controller. The soliution is presented below.
 
-image:../odoo_hacks.png[Odoo Hacks]
+image:./odoo_hacks.png[Odoo Hacks]
 
 
 ./static/src/xml/trigger_toggle.xml

@@ -6,16 +6,16 @@ draft: false
 type: blog
 ---
 
-image:../plong_plong_plong.jpg[Plong...]
+image:./plong_plong_plong.jpg[Plong...]
 
-link:../plong_plong_plong.mp4[Plong... Video]
+link:./plong_plong_plong.mp4[Plong... Video]
 
 Mit dem Zufallsmodul können wir ein Signal vom Eingang abtasten und halten. Sein Gegenstück ist das Rauschmodul.
 Wir speisen den Sägeausgang in den Eingang des Zufallsmoduls ein.
 
-image:../beep_bleep.jpg[Beep,bleep...]
+image:./beep_bleep.jpg[Beep,bleep...]
 
-link:../beep_bleep.mp4[Beep,bleep... Video]
+link:./beep_bleep.mp4[Beep,bleep... Video]
 
 '''.
 
@@ -25,9 +25,9 @@ link:../beep_bleep.mp4[Beep,bleep... Video]
  LFO-Rechteck -> Sinus fm
 
 
-image:../sweeping_sinus.jpg[Sweeping Sinus...]
+image:./sweeping_sinus.jpg[Sweeping Sinus...]
 
-link:../sweeping_sinus.mp4[Sweeping Sinus... Video]
+link:./sweeping_sinus.mp4[Sweeping Sinus... Video]
 
 Wir können das Setup erweitern, indem wir den Sequenzer verwenden und den Filter nutzen. Denn  das Schöne
 an modularen Synthesizern ist, dass der Filter nicht nur in Signalpfaden, sondern

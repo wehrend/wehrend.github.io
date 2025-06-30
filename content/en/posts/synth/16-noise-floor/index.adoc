@@ -10,6 +10,6 @@ A-124, den ich wegen seines großartigen Klangs einbauen musste). Es verfügt ü
 Zu guter Letzt ein Zlon-Skew-LFO und ein BCM086-Diodenleiter-Hochpassfilter.
 
 
-image:../noise_floor.jpg[noise floor]
+image:./noise_floor.jpg[noise floor]
 
-Link:../noise_floor.m4a[noise floor Audio]
+Link:./noise_floor.m4a[noise floor Audio]

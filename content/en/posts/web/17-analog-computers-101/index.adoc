@@ -28,7 +28,7 @@ wiring, that just sums up the signals on its inputs. As it is inverting we need 
 the right signal at the end. The same circuit is used  as a mixer circuit for audio signals, from which I also bought
 the photo.
 
-image:../sum_up.png[sum up]
+image:./sum_up.png[sum up]
 
 === Multiply
 
@@ -43,7 +43,7 @@ feedbacking diode between output and non-inverting input. Then we see a simple a
 And lastly we have an antilogarithmic amplifier, putting the signals back into the linear space.
 Be aware that the output is actually inverted and we need an additional inverting amplifier to correct the resulting signal.
 
-image:../analog_multiplier.png[analog Multiplier]
+image:./analog_multiplier.png[analog Multiplier]
 
 
 
