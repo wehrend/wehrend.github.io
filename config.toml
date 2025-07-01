@@ -22,7 +22,7 @@ publishDir = "public"
 
 [[languages.en.menu.before]]
   name = "Synth-Blog"
-  url = "/posts/synth"
+  url = "/posts"
   weight = 20
 
 

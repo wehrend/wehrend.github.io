@@ -47,7 +47,10 @@ a| image::./kicad_lfo_back.png[PCB back]
 (To bes continued, when the ordered PCBs arrive)
 
 And here the iBoM:
-link:./ibom.html[iBoM]
+
+link:/ibom.html[View iBOM]
+
+
 
 
 ----
