@@ -20,7 +20,7 @@ All they know about are the states `on` and `off`. We build an imaginary circuit
 closing the connection let the light flash. An off light counts as zero, and on light counts as one. Simple as it.We switch the light on
 and get a one.
 
-image:../images/how_does_cpu/lights.png[title="A schematic of the imaginary circuit."]
+image:./images/how_does_cpu/lights.png[title="A schematic of the imaginary circuit."]
 
 
 Now we extend this installation with a second light and switch left to current one. We switch the left light on and the right on. What we get as a result is a '2'.
@@ -49,7 +49,7 @@ LED is the output. So with four switches -half a byte - we can count from 0 to 1
 |==============================================================
 
 
-image:../images/how_does_cpu/example.jpg[title="showing the binary value 9 (unsigned w/ MSB left)."]
+image:./images/how_does_cpu/example.jpg[title="showing the binary value 9 (unsigned w/ MSB left)."]
 
 
 == A simple Ripple-Carry adder
@@ -58,7 +58,7 @@ Let us do some simple calculations with the goal to derive the necessary logic f
 The addition is done like learned in elementary school, just that this time we add binary numbers.
 The first example works while the second one producesa carry flag besides the (wrong) result.
 
-image:../images/how_does_cpu/addition.svg[width="100%"]
+image:./images/how_does_cpu/addition.svg[width="100%"]
 
 = Scheme for combinatorial circuit
 We develop the RC-adder circuit according to the following scheme, 
@@ -85,7 +85,7 @@ applied to evaluate combinatorial circuits
 ! 1 ! 1 ! 0 !! 1 ! 0
 ! 1 ! 1 ! 1 !! 1 ! 1
 !===
-|image:../images/how_does_cpu/fulladder_cell.svg[width="100%"] 
+|image:./images/how_does_cpu/fulladder_cell.svg[width="100%"]
 |====
 
 [role="image","../images/sum-equations.svg",imgfmt="svg", width="100%"]
@@ -114,7 +114,7 @@ c_{out} & = \overline{c_{in}}(A \land B) \lor c_{in}(\overline{A} \land B) \lor 
 \end{aligned}
 \]
 
-image:../images/how_does_cpu/fulladder_structure.svg[width="75%"]
+image:./images/how_does_cpu/fulladder_structure.svg[width="75%"]
 
 == A simpler approach
 
@@ -141,8 +141,8 @@ s = x \oplus y
 \end{array}
 \]
 
-image:../images/how_does_cpu/halfadder_structure.svg[width="75%"]
-image:../images/how_does_cpu/halfadder2fulladder.svg[width="75%"]
+image:./images/how_does_cpu/halfadder_structure.svg[width="75%"]
+image:./images/how_does_cpu/halfadder2fulladder.svg[width="75%"]
 
 == Carry-Lookahead Adder
 
@@ -181,7 +181,7 @@ c_{4} & = g_{3} \lor c_{3}p_{3} = g_{3} \lor (g_{2} \lor g_{1}p_{2} \lor g_{0}p_
 
 *Carry-Lookahead Adder circuit* 
 
-image:../images/how_does_cpu/carry_lookahead_circuit.svg[width="120%"]
+image:./images/how_does_cpu/carry_lookahead_circuit.svg[width="120%"]
 
 
 As can be seen the circuit complexity increases with the significance.
@@ -191,11 +191,11 @@ the concepts.
 
 *Ripple-Carry Adder*
 
-image:../images/how_does_cpu/fulladder_array.svg[width="120%"]
+image:./images/how_does_cpu/fulladder_array.svg[width="120%"]
 
 *Carry-Lookahead Adder* 
 
-image:../images/how_does_cpu/cla_fulladder_array.svg[width="120%"]
+image:./images/how_does_cpu/cla_fulladder_array.svg[width="120%"]
 
 
 In the next blog post we will see, how to extend the range of numbers to the negative space.

@@ -39,7 +39,7 @@ is denoted as A ⊕ B = Q. Its truth table is shown below
 | 1   | 1   |  0  
 |================
   
-image:../images/how_does_cpu/xor_symbol.svg[width=250]
+image:./images/how_does_cpu/xor_symbol.svg[width=250]
 
 [width="100%" cols="a"]
 |======
@@ -59,7 +59,7 @@ The author selected a simple example of a 3-bit LFSR found in a
 https://www.ti.com/lit/an/scta036a/scta036a.pdf[white paper from Texas Instruments].
 
 
-image:../images/how_does_cpu/lfsr.svg[width=800]
+image:./images/how_does_cpu/lfsr.svg[width=800]
 
 For this example we need to take a big leap and enter the area of sequential circuits.
 These are circuits which make use of feedback. The chosen example generates pseudo-random 

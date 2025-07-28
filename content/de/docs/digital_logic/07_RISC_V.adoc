@@ -58,7 +58,7 @@ die Größe des in das Register geladenen Wertes (normalerweise 4) bzw. des in d
 
 Nachfolgend finden Sie eine Übersicht über die Befehlsformate der verschiedenen Typen:
 
-image:../images/how_does_cpu/instruction_types.png[width=„140%“]
+image:./images/how_does_cpu/instruction_types.png[width=„140%“]
 
 
 == Eine minimale Implementierung
@@ -90,7 +90,7 @@ image:../images/how_does_cpu/cpu_structure.svg
 Wie wir sehen werden, erklärt das unten gezeigte abstrakte Schema nicht alle Fälle.
 Wir benötigen ein weiteres erweitertes Schema, das auch die Steuerteile zeigt.
 
-image:../images/how_does_cpu/cpu_structure_with_control.svg[width=600]
+image:./images/how_does_cpu/cpu_structure_with_control.svg[width=600]
 
 
 
@@ -118,13 +118,13 @@ z. B. dass eine **Anweisung**, die im Speicher gespeichert ist, unter einer best
 Eine **Adresse** in RISC-V-Standards ist ein 32 Bit langer Wert, der auf  eine bestimmte Zelle in einem Speicher-Array
 Der **Program Counter (PC)** ist ein Register, das auf eine bestimmte Adresse im Speicher/in der Registerdatei zeigt. Der Programmzähler ist mit dem ersten Adressaddierer mit einem konstanten Integer von 4 (dem Adressoffset, 4 * 1 Byte = 32 Bit) verbunden.
 
-image:../images/how_does_cpu/cpu_instruction_part.svg[width=500]
+image:./images/how_does_cpu/cpu_instruction_part.svg[width=500]
 
 Wenn die Anweisung im Speicher eine adressmodifizierende Anweisung ist,
 wird der angegebene Wert vom zweiten Adressaddierer hinzugefügt.
 Auf diese Weise können wir Anweisungen zum **Springen** generieren.
 
-image:../images/how_does_cpu/cpu_instruction_path.svg[width=500]
+image:./images/how_does_cpu/cpu_instruction_path.svg[width=500]
 
 === Der Datenpfad
 
@@ -133,7 +133,7 @@ Der Datenpfad zeigt einige Elemente, mit denen wir bereits vertraut sind – die
 und links der Datenspeicher. Beide Eingänge der ALU sind mit einem (anderen) Register verbunden.
 
 
-image:../images/how_does_cpu/cpu_data_path.svg[width=600]
+image:./images/how_does_cpu/cpu_data_path.svg[width=600]
 
 === Der Steuerteil
 
@@ -141,6 +141,6 @@ Der Steuerteil ist das Element mit der größten Blackbox. Wir wissen bereits, w
 und wir sehen bereits eine Rückkopplungsleitung für die Verzweigungssteuerung. Die meisten Elemente in dieser abstrakten Ansicht
 bleiben dem Leser jedoch unbekannt. Dies wollen wir ändern, indem wir uns das Ganze genauer ansehen.
 
-image:../images/how_does_cpu/cpu_structure_with_control.svg[width=600]
+image:./images/how_does_cpu/cpu_structure_with_control.svg[width=600]
 
 (translation: 2024-12-29)

@@ -18,13 +18,13 @@ die Binärzahlen nur eine Interpretation hatten,
 erweitern wir das System hier um negative (ganze)
 Zahlen.
 
-image:../images/how_does_cpu/binary_system.svg[width=300]
+image:./images/how_does_cpu/binary_system.svg[width=300]
 
 Der einfachste Ansatz, den wir uns vorstellen können, ist die Verwendung des höchstwertigen Bits (MSB)
 als Vorzeichenbit, wobei „0“ als Vorzeichen „+“ und „1“ als Vorzeichen „-“ interpretiert wird.
 Wie wir jedoch in der folgenden Berechnung sehen, funktioniert dies nicht wie erwartet:
 
-image:../images/how_does_cpu/addition_extended.svg[width=300]
+image:./images/how_does_cpu/addition_extended.svg[width=300]
 
 === Einerkomplement
 
@@ -57,7 +57,7 @@ Dies führt uns zum sogenannten Zweierkomplement, wie unten dargestellt.
 Wie in den folgenden Berechnungen zu sehen ist, erhalten wir mit dem Zweierkomplement
 die richtigen Ergebnisse.
 
-image:../images/how_does_cpu/one_and_two_complement.svg[width=500]
+image:./images/how_does_cpu/one_and_two_complement.svg[width=500]
 
 === Überlauf
 Wie in beiden Fällen zu sehen ist, wird sowohl beim Ein- als auch beim Zweierkomplement ein arithmetischer Überlauf erzeugt.
@@ -69,7 +69,7 @@ aber in jedem Fall erhält man die Information als Flag (v).
 Um den Volladdierer um die Logik für die Subtraktion zu erweitern, müssen wir nicht alles von Grund auf neu entwerfen. Die Eigenschaften des XOR-Gatters erlauben den ersten Schritt des Zweierkomplements, die Invertierung jedes Bits, während wir für
 den zweiten Schritt, die Inkrementierung, einfach die '1' des Subtraktionsschalters als Übertragseingang für die erste Volladdierer-Stufe verwenden.
 
-image:../images/how_does_cpu/fulladder_subtractor.svg[width=600]
+image:./images/how_does_cpu/fulladder_subtractor.svg[width=600]
 
 
 

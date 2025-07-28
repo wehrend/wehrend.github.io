@@ -50,7 +50,7 @@ is denoted as \[\overline{A} = \neg A = Q\]
 | 1   | 0    
 |==========
 
-image:../images/how_does_cpu/inverter_symbol.svg[width=200]
+image:./images/how_does_cpu/inverter_symbol.svg[width=200]
 
 The not operation is the only one with only one input, it can not be expanded.
 
@@ -74,7 +74,7 @@ is denoted as \[A \land B = Q\]
 |================
 
 
-image:../images/how_does_cpu/and_symbol.svg[width=200]
+image:./images/how_does_cpu/and_symbol.svg[width=200]
 
 === OR 
 
@@ -90,7 +90,7 @@ is denoted as \[A \lor B = Q\]
 | 1   | 1   |  1  
 |================
   
-image:../images/how_does_cpu/or_symbol.svg[width=200]
+image:./images/how_does_cpu/or_symbol.svg[width=200]
 
 ////
 === XOR 
@@ -181,7 +181,7 @@ while the NOR operation is denoted as \[\overline{A \lor B} = Q\]
 [width="100%" cols="a,a"]
 |======
 | NAND | NOR
-|image:../images/how_does_cpu/nand_symbol.svg[width=200] |image:../images/how_does_cpu/nor_symbol.svg[width=200]
+|image:./images/how_does_cpu/nand_symbol.svg[width=200] |image:./images/how_does_cpu/nor_symbol.svg[width=200]
 |======
 
 As you can see, for those two functions the results are exactly the inverse of their respective complement 
@@ -211,7 +211,7 @@ two elements however the theorem is independent from any number of elements / in
 
 
 
-image:../images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
+image:./images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
 
 
 [role="image","../images/demorgan_nor.svg",imgfmt="svg", width="75%"]
@@ -228,7 +228,7 @@ image:../images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
 |==========================================================================================
 
 
-image:../images/how_does_cpu/de_morgan_nor_equivalence.svg[width=400]
+image:./images/how_does_cpu/de_morgan_nor_equivalence.svg[width=400]
 
 
 
@@ -239,7 +239,7 @@ Now we are finally equipped to continue with the electrical part / description.
 First we are introducing some common electronic components and their symbols used in 
 electric circuit schematics.
 
-image:../images/how_does_cpu/common_symbols.svg[width=500]
+image:./images/how_does_cpu/common_symbols.svg[width=500]
 
 === The diode
 
@@ -262,7 +262,7 @@ of their crystall lattice structure with elements of the fifth main group, for a
 for a p(ositive) dotted material. This process is called dotting. For the interested reader https://www.electrical4u.com/semiconductor-physics/[here]
 is a link to all the physical background the author was to lazy to repeat since it is often and better explained on the internet already ;-) .
 
-image:../images/how_does_cpu/diode_structure.svg[width=450] 
+image:./images/how_does_cpu/diode_structure.svg[width=450]
 
 All we need to know right know is that a diode consist of one substrate (in most cases today silicon) which becomes n-dotted on one side and p-dotted on the other, 
 forming a pn-junction in between acting as said one-way barrier: It is possible for electrons to rush from n-side to the p-side but not the other way round. 
@@ -319,7 +319,7 @@ As the name suggests a MOSFET is a transistor (or semiconductor) where the load 
 //https://www.power-and-beyond.com/whats-the-difference-between-mosfet-and-bjt-a-909006/
 
 
-image:../images/how_does_cpu/mosfet_model.svg[width=500]
+image:./images/how_does_cpu/mosfet_model.svg[width=500]
 
 The image above sketches the principal structure of a mosfet on the silicon. Source and drain are both connected to an own n-well, in the p dotted substrate,
 while the gate in between is isolated by a thin silicon dioxide layer. There is a forth connector 'bulk', leading to the substrate, in discrete MOSFETs connected to the source,
@@ -328,19 +328,19 @@ There is a lot of complex physics behind the workings of a MOSFET all we want to
 which creates a chanel between source and drain and allows electrons to flow from source to drain. The higher the gate voltage the bigger  (wider) the channel, the more electrons 
 flowing (until a certain boundary of course). And if the gate voltage is zero, also the channel is non-existent.
 
-image:../images/how_does_cpu/inverter_nmos.svg[width=500]
+image:./images/how_does_cpu/inverter_nmos.svg[width=500]
 
 Common used symbols for MOSFET used in electrical schematics as well as some other we need due to course are shown below, some has more then only one, especially the MOSFET has a number 
 of sligthly various symbols reflecting the differences in the physical component.
 
-image:../images/how_does_cpu/mosfet_symbols.svg[width=500]
+image:./images/how_does_cpu/mosfet_symbols.svg[width=500]
 
 With the MOSFET element introduced and a single resistor,an element which reduces the current flow, added, we can straight-forward implement an inverter circuit as shown in the image above.
 Source is connected to the ground and Drain is connected to the inverter output and also to the voltage source via a high-impedance resitor. Gate is the input of the inverter.
 When the voltage is set to low on the gate, the MOSFET does not conduct and so the potential available on the output is sufficient for a logic one.
 Whene a voltage is set to the gate,the drain-source path of the MOSFET becomes conductive, the potential available on the output breaks down an drains away via the drain-source path.
 
-image:../images/how_does_cpu/inverter_cmos.svg[width=500]
+image:./images/how_does_cpu/inverter_cmos.svg[width=500]
 
 '''
 On the electrical level inverter has two different tasks to fullfill
@@ -353,7 +353,7 @@ Here we want to focus only on the logical part of inverting the signal, although
 circuit. Of course, the logic signals have to be refreshed also in other logical circuits - like and and or - but in most cases this task is solely handeled by 
 those inverter stages, afterwards or before.
 
-image:../images/how_does_cpu/inverter_symbol.svg[width=200]
+image:./images/how_does_cpu/inverter_symbol.svg[width=200]
 
 In the symbol the first task, the refreshing of the signal (level), is indicated by the triangle, while the little circle denotes the actual inverting function.
 
@@ -362,7 +362,7 @@ In the symbol the first task, the refreshing of the signal (level), is indicated
 [width="100%" cols="a,a"]
 |======
 | NMOS NAND | NMOS NOR
-|image:../images/how_does_cpu/nand_nmos.svg[width=200] | image:../images/how_does_cpu/nor_nmos.svg[width=500] 
+|image:./images/how_does_cpu/nand_nmos.svg[width=200] | image:./images/how_does_cpu/nor_nmos.svg[width=500]
 | # transistor: 2 | # transistor: 2 
 |======
 
@@ -379,7 +379,7 @@ As you guess this technique, both types of transistor combined, exists and is na
 [width="100%" cols="a,a"]
 |======
 | CMOS NAND | CMOS NOR 
-|image:../images/how_does_cpu/nand_cmos.svg[width=250] | image:../images/how_does_cpu/nor_cmos.svg[width=500] 
+|image:./images/how_does_cpu/nand_cmos.svg[width=250] | image:./images/how_does_cpu/nor_cmos.svg[width=500]
 | # transistor: 4 | # transistor: 4 
 |======
 

@@ -32,7 +32,7 @@ in die öffentliche Bibliothek gehen. Die öffentliche Bibliothek ist Ihr RAM. D
 Und nehmen wir an, das Buch, das Sie benötigen, ist auch dort nicht verfügbar und muss aus einer Bibliothek
 in einer anderen Stadt bestellt werden. Dann kommen Sie auf die unterste Ebene, die Festplattenspeichereinheit.
 
-image:../images/how_does_cpu/memhierarchy.svg[width=700]
+image:./images/how_does_cpu/memhierarchy.svg[width=700]
 
 Ganz unten befindet sich auch der günstigste Speicher (pro Byte).
 Je höher man in der Hierarchie steigt, desto teurer wird der Speicher.
@@ -48,7 +48,7 @@ unter der angegebenen Adresse gespeichert sind. Das hier gezeigte Schema gilt au
 Nur-Lese-Speicher (ROM). Im Gegensatz zum ROM, das persistent ist, ist der RAM
 flüchtig. Er benötigt also eine kontinuierliche Stromversorgung, da er sonst seine gespeicherten Daten verliert.
 
-image:../images/how_does_cpu/ram_schematic.svg[width=500]
+image:./images/how_does_cpu/ram_schematic.svg[width=500]
 
 Wie zu sehen ist, sind die Hauptbestandteile neben dem Speicher selbst
 der Spalten- und Zeilendecoder sowie der Lese-/Schreibverstärker.
@@ -64,10 +64,10 @@ unterschiedlich sind und im nächsten Abschnitt erläutert werden.
 [cols=„a,a“ width=„100%“]
 |===
 | statischer RAM (SRAM) | dynamischer RAM (DRAM)
-| image:../images/how_does_cpu/sram_nmos.svg[width=350]
-| image:../images/how_does_cpu/dram.svg[width=350]
+| image:./images/how_does_cpu/sram_nmos.svg[width=350]
+| image:./images/how_does_cpu/dram.svg[width=350]
 | Transistor Nr. 4 | Transistor Nr. 1
-| image:../images/how_does_cpu/sram_cmos.svg[width=350] |
+| image:./images/how_does_cpu/sram_cmos.svg[width=350] |
 | Transistor Nr. 6 |
 |===
 
@@ -84,7 +84,7 @@ Ergänzend dazu benötigt die dynamische RAM-Zelle (DRAM) nur einen Transistor u
 
 === Die Registerdatei
 
-image:../images/how_does_cpu/register_file.svg[width=300]
+image:./images/how_does_cpu/register_file.svg[width=300]
 
 An dieser Stelle möchte der Autor die sogenannte Registerdatei vorstellen.
  Dabei handelt es sich um einen Speichertyp, der über mehrere Leseports verfügen kann.
@@ -94,9 +94,9 @@ beträgt die Anzahl der Schreibports in der Regel eins. Der Grund dafür ist, wi
 Leser vorstellen kann, die Minderung von Gefahren, die bei mehreren
 Schreibports schwer zu handhaben sind.
 
-image:../images/how_does_cpu/register_file_read_ports.svg[width=450]
+image:./images/how_does_cpu/register_file_read_ports.svg[width=450]
 
-image:../images/how_does_cpu/register_file_write_port.svg[width=450]
+image:./images/how_does_cpu/register_file_write_port.svg[width=450]
 
 ////
 ==== Der Buszyklus

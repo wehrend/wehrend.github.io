@@ -18,13 +18,13 @@ the binary numbers had only one interpretation,
 we extend the system here to include negative (integer)
 numbers.
 
-image:../images/how_does_cpu/binary_system.svg[width="50%"]
+image:./images/how_does_cpu/binary_system.svg[width="50%"]
 
 The simplest approach we can think of is to use the most significant bit (MSB)
 as sign bit, where '0' ist intepreted as sign '+' and '1' is interpreted as '-'.
 However as we see in the following calculation this does not work as expected:
 
-image:../images/how_does_cpu/addition_extended.svg[width="50%"]
+image:./images/how_does_cpu/addition_extended.svg[width="50%"]
 
 === One complement
 
@@ -56,7 +56,7 @@ This leads us to the so-called two's complement as seen below.
 
 As can be seen in the following calculations, with the two's complement
 we get the correct results.
-image:../images/how_does_cpu/one_and_two_complement.svg[width="100%"]
+image:./images/how_does_cpu/one_and_two_complement.svg[width="100%"]
 
 === Overflow 
 As can be seen, in both cases, for one- and two-complement
@@ -72,7 +72,7 @@ allows the first step of the two's complement, the inversion of every bit,
 while for the second step the increment, we simply use '1' of the subtraction
 switch as carry-input for the first full-adder stage.
 
-image:../images/how_does_cpu/fulladder_subtractor.svg[width="100%"]
+image:./images/how_does_cpu/fulladder_subtractor.svg[width="100%"]
 
 
 
