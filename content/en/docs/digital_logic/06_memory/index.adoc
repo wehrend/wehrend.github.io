@@ -34,7 +34,7 @@ go to the public library. The public library is your RAM. The access times are r
 And lets say the book you need is also not available there, and they must order it from a library 
 in another city. Then you got to the level at the bottom, which is the disk storage unit.
 
-image:../images/how_does_cpu/memhierarchy.svg[width="100%"]
+image:./memhierarchy.svg[width="100%"]
 
 At the bottom is also the low-priced memory (per byte). 
 The higher you go on the hierarchy the costlier the memory becomes.
@@ -51,7 +51,7 @@ Read only memory (ROM). Complementary to ROM, which is persistent, RAM
 is volatile. So it needs ongoing power supply,otherwise it loses
 its stored data.
 
-image:./images/how_does_cpu/ram_schematic.svg[width="90%"]
+image:./ram_schematic.svg[width="90%"]
 
 As can be seen the main parts apart from the memory itself
 are column- and row-decoder, as well as read / write amplifier.
@@ -67,10 +67,10 @@ those differ and are explained in the next section.
 [cols="a,a" width="100%"]
 |===
 | static RAM (SRAM)  | dynamic RAM (DRAM)
-| image:./images/how_does_cpu/sram_nmos.svg[width="100%"]
-| image:./images/how_does_cpu/dram.svg[width="100%"]
+| image:./sram_nmos.svg[width="100%"]
+| image:./dram.svg[width="100%"]
 | transistor # 4 | transistor # 1 
-|image:./images/how_does_cpu/sram_cmos.svg[width="100%"] |
+|image:./sram_cmos.svg[width="100%"] |
 | transistor # 6 |
 |===
 
@@ -87,7 +87,7 @@ to hold the stored value, but needs to be refreshed periodically.
 
 === The register file
 
-image:./images/how_does_cpu/register_file.svg[width="60%"]
+image:./register_file.svg[width="60%"]
 
 At this point the author wants to introduce the so-called register
 file. This is a type of memory which can have multiple read ports.
@@ -97,9 +97,9 @@ the amount of write ports is usually one. The reason, as the vivid
 reader can imagine is to mitigate hazards, which is with multiple 
 write ports difficult to handle.
 
-image:./images/how_does_cpu/register_file_read_ports.svg[width="100%"]
+image:./register_file_read_ports.svg[width="100%"]
 
-image:./images/how_does_cpu/register_file_write_port.svg[width="100%"]
+image:./register_file_write_port.svg[width="100%"]
 
 ////
 ==== The bus cycle

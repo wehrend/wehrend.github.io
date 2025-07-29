@@ -18,7 +18,7 @@ This course about digital logic is splitted into two big chunks:
 1. Combinatorial circuits (without memory elements)
 2. Sequential circuits (with memory elements)
 
-image:./images/how_does_cpu/digital_logic.svg[width=500px]
+image:./digital_logic.svg[width=500px]
 
 While combinatorial circuits consists of boolean gates interconnected without feedback function, sequential gates posses 
 a memory function,which makes them able to progress to another state.
@@ -28,7 +28,7 @@ of outputs.
 
 Combinatorial circuits can be described in different ways: As a formula, a circuit, a truth table or a Karnaugh map. All these descriptions are convertible into each other.
 
-image:./images/how_does_cpu/transition_scheme.svg[width=500px]
+image:./transition_scheme.svg[width=500px]
 
 So lets get started with the fundamental logic gates and boolean algebra in the 
 next post.
