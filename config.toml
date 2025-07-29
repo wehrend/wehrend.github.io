@@ -5,15 +5,16 @@ theme = "hugo-book"
 publishDir = "public"
 
 
+# englisch
 [languages.en]
   languageName = "English"
   contentDir = "content/en"
   weight = 1
 
-[languages.de]
-  languageName = "Deutsch"
-  contentDir = "content/de"
-  weight = 2
+[[languages.en.menu.before]]
+  name = ""
+  url = "/docs/"
+  weight = 10
 
 [[languages.en.menu.before]]
   name = "Web-Blog"
@@ -25,12 +26,10 @@ publishDir = "public"
   url = "/posts/"
   weight = 20
 
-
 [[languages.en.menu.before]]
-  name = ""
-  url = "/docs/"
-  weight = 10
-
+  name = "Synthesizer-DIY"
+  url = "/posts/synth/25-build-your-own-modules/"
+  weight = 21
 
 [[languages.en.menu.before]]
   name = "Electronics 101"
@@ -42,26 +41,48 @@ publishDir = "public"
   url = "/pages/short-introduction-to-electronics-102"
   weight = 27
 
+[[languages.en.menu.before]]
+  name = "Electronics 103"
+  url = "/pages/electronics-103"
+  weight = 28
+
+[[languages.en.menu.before]]
+  name = "Storytelling and the order of things"
+  url = "/pages/storytelling"
+  weight = 25
+
+
+[[languages.en.menu.before]]
+  name = "Download Archive"
+  url = "/downloads"
+  weight = 24
 
 [[languages.en.menu.after]]
   name = "Digital Logic 1 (Overview)"
   url = "/pages/overview/"
-  weight = 20
+  weight = 23
 
 [[languages.en.menu.before]]
   name = "Digital Logic 2 (Overview)"
   url = "/pages/overview2/"
-  weight = 25
-
-[[languages.en.menu.before]]
-  name = "Synthesizer-DIY"
-  url = "/posts/synth/25-build-your-own-modules/"
-  weight = 26
-
+  weight = 24
 
 [[languages.en.menu.before]]
   name = "Sitemap (EN)"
   url = "/sitemap/"
+  weight = 10
+
+# german
+
+[languages.de]
+  languageName = "Deutsch"
+  contentDir = "content/de"
+  weight = 2
+
+
+[[languages.de.menu.before]]
+  name = "Sitemap (DE)"
+  url = "/de/sitemap/"
   weight = 10
 
 [[languages.de.menu.before]]
@@ -74,19 +95,25 @@ publishDir = "public"
   url = "/posts/"
   weight = 20
 
-
-[[languages.de.menu.before]]
-  name = "Sitemap (DE)"
-  url = "/de/sitemap/"
-  weight = 10
-
-
-
 [[languages.de.menu.before]]
   name = ""
   url = "/docs/"
   weight = 10
 
+[[languages.de.menu.before]]
+  name = "Synthesizer-DIY"
+  url = "/de/posts/synth/25_build_your_own_modules/"
+  weight = 21
+
+[[languages.de.menu.after]]
+  name = "Digitale Logik 1 (Übersicht)"
+  url = "/de/pages/overview/"
+  weight = 22
+
+[[languages.de.menu.before]]
+  name = "Digitale Logik 2 (Übersicht)"
+  url = "/de/pages/overview2/"
+  weight = 23
 
 [[languages.de.menu.before]]
   name = "Elektronik 101"
@@ -99,21 +126,6 @@ publishDir = "public"
   weight = 27
 
 
-[[languages.de.menu.after]]
-  name = "Digitale Logik 1 (Übersicht)"
-  url = "/de/pages/overview/"
-  weight = 20
-
-[[languages.de.menu.before]]
-  name = "Digitale Logik 2 (Übersicht)"
-  url = "/de/pages/overview2/"
-  weight = 25
-
-
-[[languages.de.menu.before]]
-  name = "Synthesizer-DIY"
-  url = "/de/posts/synth/25_build_your_own_modules/"
-  weight = 26
 
 [params]
   date_format = "2006-01-02"
@@ -123,8 +135,8 @@ publishDir = "public"
 
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
-  # You can also specify this parameter per sitemap in front matter.
-  BookToC = false
+  # You can also specify this parameter per page in front matter.
+  BookToC = true
 
 
 [security]

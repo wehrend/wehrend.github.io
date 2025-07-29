@@ -38,9 +38,9 @@ Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
   <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/digital_logic/07_risc_v/" title="07_RISC-V">
-<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/de.search.min.b74ee043e13b911a511cbc5e8bc039ad11ad6b4d33d4b1706bb10ebdf472d2df.js" integrity="sha256-t07gQ&#43;E7kRpRHLxei8A5rRGta00z1LFwa7EOvfRy0t8=" crossorigin="anonymous"></script>
+  <script defer src="/de.search.min.b51532784860ade97640936a224e0f34803271dbbbd855d3012b7030e8585ab4.js" integrity="sha256-tRUyeEhgrel2QJNqIk4PNIAycdu72FXTAStwMOhYWrQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -117,6 +117,12 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/de/sitemap/" target="_blank" rel="noopener">
+        Sitemap (DE)
+      </a>
+  </li>
+  
+  <li>
     <a href="/posts/web/" target="_blank" rel="noopener">
         Web-Blog
       </a>
@@ -129,6 +135,12 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
     <a href="/de/pages/overview2/" target="_blank" rel="noopener">
         Digitale Logik 2 (Übersicht)
       </a>
@@ -137,12 +149,6 @@ https://github.com/alex-shpak/hugo-book
   <li>
     <a href="/de/pages/prequel-short-introduction-to-electronics" target="_blank" rel="noopener">
         Elektronik 101
-      </a>
-  </li>
-  
-  <li>
-    <a href="/de/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
-        Synthesizer-DIY
       </a>
   </li>
   
@@ -461,10 +467,21 @@ https://github.com/alex-shpak/hugo-book
 
   <label for="toc-control">
     
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
+  
+  <aside class="hidden clearfix">
+    
+  
+
+
+
+
+  </aside>
   
  
       </header>
@@ -530,7 +547,7 @@ die Größe des in das Register geladenen Wertes (normalerweise 4) bzw. des in d
 <p>Nachfolgend finden Sie eine Übersicht über die Befehlsformate der verschiedenen Typen:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/instruction_types.png" alt="instruction types" width="„140%“"/></span></p>
+<p><span class="image"><img src="./instruction_types.png" alt="instruction types" width="„140%“"/></span></p>
 </div>
 </div>
 </div>
@@ -582,14 +599,14 @@ zur Adressberechnung und von Verzweigungsbefehlen für den Gleichheitstest verwe
 Erst nach dieser ALU unterscheiden sich die verschiedenen Befehlstypen wirklich.</p>
 </div>
 <div class="paragraph">
-<p>image:../images/how_does_cpu/cpu_structure.svg</p>
+<p><span class="image"><img src="./cpu_structure.svg" alt="cpu structure"/></span></p>
 </div>
 <div class="paragraph">
 <p>Wie wir sehen werden, erklärt das unten gezeigte abstrakte Schema nicht alle Fälle.
 Wir benötigen ein weiteres erweitertes Schema, das auch die Steuerteile zeigt.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/cpu_structure_with_control.svg" alt="cpu structure with control" width="600"/></span></p>
+<p><span class="image"><img src="./cpu_structure_with_control.svg" alt="cpu structure with control" width="600"/></span></p>
 </div>
 </div>
 </div>
@@ -661,7 +678,7 @@ Eine <strong>Adresse</strong> in RISC-V-Standards ist ein 32 Bit langer Wert, de
 Der <strong>Program Counter (PC)</strong> ist ein Register, das auf eine bestimmte Adresse im Speicher/in der Registerdatei zeigt. Der Programmzähler ist mit dem ersten Adressaddierer mit einem konstanten Integer von 4 (dem Adressoffset, 4 * 1 Byte = 32 Bit) verbunden.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/cpu_instruction_part.svg" alt="cpu instruction part" width="500"/></span></p>
+<p><span class="image"><img src="./cpu_instruction_part.svg" alt="cpu instruction part" width="500"/></span></p>
 </div>
 <div class="paragraph">
 <p>Wenn die Anweisung im Speicher eine adressmodifizierende Anweisung ist,
@@ -669,7 +686,7 @@ wird der angegebene Wert vom zweiten Adressaddierer hinzugefügt.
 Auf diese Weise können wir Anweisungen zum <strong>Springen</strong> generieren.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/cpu_instruction_path.svg" alt="cpu instruction path" width="500"/></span></p>
+<p><span class="image"><img src="./cpu_instruction_path.svg" alt="cpu instruction path" width="500"/></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -680,7 +697,7 @@ Auf diese Weise können wir Anweisungen zum <strong>Springen</strong> generieren
 und links der Datenspeicher. Beide Eingänge der ALU sind mit einem (anderen) Register verbunden.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/cpu_data_path.svg" alt="cpu data path" width="600"/></span></p>
+<p><span class="image"><img src="./cpu_data_path.svg" alt="cpu data path" width="600"/></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -691,7 +708,7 @@ und wir sehen bereits eine Rückkopplungsleitung für die Verzweigungssteuerung.
 bleiben dem Leser jedoch unbekannt. Dies wollen wir ändern, indem wir uns das Ganze genauer ansehen.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/cpu_structure_with_control.svg" alt="cpu structure with control" width="600"/></span></p>
+<p><span class="image"><img src="./cpu_structure_with_control.svg" alt="cpu structure with control" width="600"/></span></p>
 </div>
 <div class="paragraph">
 <p>(translation: 2024-12-29)</p>
@@ -708,7 +725,7 @@ bleiben dem Leser jedoch unbekannt. Dies wollen wir ändern, indem wir uns das G
   <div class="flex flex-wrap justify-between">
 
 
-Last update: May 24, 2025 
+Last update: July 29, 2025 
 
 
 </div>
@@ -743,6 +760,17 @@ Last update: May 24, 2025
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+
+
+
+ 
+      </div>
+    </aside>
     
   </main>
 

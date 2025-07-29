@@ -26,9 +26,9 @@ and get a one.
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
   <link rel="alternate" hreflang="de" href="http://localhost:1313/de/docs/digital_logic/03_binary_system/" title="03_binary_system (de)">
-<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.c42de7f52a5f869a7a2c2ae4044a3f37da4684601a94c5c71199c482e0a68b24.js" integrity="sha256-xC3n9Spfhpp6LCrkBEo/N9pGhGAalMXHEZnEguCmiyQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.97ab9475d0eeeb3b07521ad40f177c3f0042b1acffe58ea876567faa46614237.js" integrity="sha256-l6uUddDu6zsHUhrUDxd8PwBCsaz/5Y6odlZ/qkZhQjc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -105,6 +105,12 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/sitemap/" target="_blank" rel="noopener">
+        Sitemap (EN)
+      </a>
+  </li>
+  
+  <li>
     <a href="/posts/web/" target="_blank" rel="noopener">
         Web-Blog
       </a>
@@ -117,8 +123,26 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
     <a href="/pages/overview2/" target="_blank" rel="noopener">
         Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/downloads" target="_blank" rel="noopener">
+        Download Archive
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/storytelling" target="_blank" rel="noopener">
+        Storytelling and the order of things
       </a>
   </li>
   
@@ -129,14 +153,14 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
-        Synthesizer-DIY
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
       </a>
   </li>
   
   <li>
-    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
-        Electronics 102
+    <a href="/pages/electronics-103" target="_blank" rel="noopener">
+        Electronics 103
       </a>
   </li>
   
@@ -316,7 +340,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+    <a href="/docs/digital_logic/04_signs04_signs/" class="">04_Signs</a>
   
 
         </li>
@@ -449,10 +473,21 @@ https://github.com/alex-shpak/hugo-book
 
   <label for="toc-control">
     
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
+  
+  <aside class="hidden clearfix">
+    
+  
+
+
+
+
+  </aside>
   
  
       </header>
@@ -469,7 +504,7 @@ closing the connection let the light flash. An off light counts as zero, and on 
 and get a one.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/lights.png" alt="lights" title="A schematic of the imaginary circuit."/></span></p>
+<p><span class="image"><img src="./lights.png" alt="lights" title="A schematic of the imaginary circuit."/></span></p>
 </div>
 <div class="paragraph">
 <p>Now we extend this installation with a second light and switch left to current one. We switch the left light on and the right on. What we get as a result is a &#39;2&#39;.
@@ -572,7 +607,7 @@ LED is the output. So with four switches -half a byte - we can count from 0 to 1
 </tbody>
 </table>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/example.jpg" alt="example" title="showing the binary value 9 (unsigned w/ MSB left)."/></span></p>
+<p><span class="image"><img src="./example.jpg" alt="example" title="showing the binary value 9 (unsigned w/ MSB left)."/></span></p>
 </div>
 </div>
 </div>
@@ -585,7 +620,7 @@ The addition is done like learned in elementary school, just that this time we a
 The first example works while the second one producesa carry flag besides the (wrong) result.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/addition.svg" alt="addition" width="100%"/></span></p>
+<p><span class="image"><img src="./addition.svg" alt="addition" width="100%"/></span></p>
 </div>
 </div>
 </div>
@@ -714,7 +749,7 @@ applied to evaluate combinatorial circuits</p>
 </tbody>
 </table></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/fulladder_cell.svg" alt="fulladder cell" width="100%"/></span></p>
+<p><span class="image"><img src="./fulladder_cell.svg" alt="fulladder cell" width="100%"/></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -742,7 +777,7 @@ c_{out} &amp; = \overline{c_{in}}(A \land B) \lor c_{in}(\overline{A} \land B) \
 \]</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/fulladder_structure.svg" alt="fulladder structure" width="75%"/></span></p>
+<p><span class="image"><img src="./fulladder_structure.svg" alt="fulladder structure" width="75%"/></span></p>
 </div>
 <div class="sect1">
 <h2 id="_a_simpler_approach">A simpler approach</h2>
@@ -812,8 +847,8 @@ s = x \oplus y
 \]</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/halfadder_structure.svg" alt="halfadder structure" width="75%"/></span>
-<span class="image"><img src="../images/how_does_cpu/halfadder2fulladder.svg" alt="halfadder2fulladder" width="75%"/></span></p>
+<p><span class="image"><img src="./halfadder_structure.svg" alt="halfadder structure" width="75%"/></span>
+<span class="image"><img src="./halfadder2fulladder.svg" alt="halfadder2fulladder" width="75%"/></span></p>
 </div>
 </div>
 </div>
@@ -858,7 +893,7 @@ c_{4} &amp; = g_{3} \lor c_{3}p_{3} = g_{3} \lor (g_{2} \lor g_{1}p_{2} \lor g_{
 <p><strong>Carry-Lookahead Adder circuit</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/carry_lookahead_circuit.svg" alt="carry lookahead circuit" width="120%"/></span></p>
+<p><span class="image"><img src="./carry_lookahead_circuit.svg" alt="carry lookahead circuit" width="120%"/></span></p>
 </div>
 <div class="paragraph">
 <p>As can be seen the circuit complexity increases with the significance.
@@ -870,13 +905,13 @@ the concepts.</p>
 <p><strong>Ripple-Carry Adder</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/fulladder_array.svg" alt="fulladder array" width="120%"/></span></p>
+<p><span class="image"><img src="./fulladder_array.svg" alt="fulladder array" width="120%"/></span></p>
 </div>
 <div class="paragraph">
 <p><strong>Carry-Lookahead Adder</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/cla_fulladder_array.svg" alt="cla fulladder array" width="120%"/></span></p>
+<p><span class="image"><img src="./cla_fulladder_array.svg" alt="cla fulladder array" width="120%"/></span></p>
 </div>
 <div class="paragraph">
 <p>In the next blog post we will see, how to extend the range of numbers to the negative space.</p>
@@ -892,7 +927,7 @@ the concepts.</p>
   <div class="flex flex-wrap justify-between">
 
 
-Last update: May 24, 2025 
+Last update: July 29, 2025 
 
 
 </div>
@@ -927,6 +962,17 @@ Last update: May 24, 2025
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+
+
+
+ 
+      </div>
+    </aside>
     
   </main>
 

@@ -30,9 +30,9 @@ the 1-bit alu cell.
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
   <link rel="alternate" hreflang="de" href="http://localhost:1313/de/docs/digital_logic/05_alu/" title="05_ALU (de)">
-<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.c42de7f52a5f869a7a2c2ae4044a3f37da4684601a94c5c71199c482e0a68b24.js" integrity="sha256-xC3n9Spfhpp6LCrkBEo/N9pGhGAalMXHEZnEguCmiyQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.97ab9475d0eeeb3b07521ad40f177c3f0042b1acffe58ea876567faa46614237.js" integrity="sha256-l6uUddDu6zsHUhrUDxd8PwBCsaz/5Y6odlZ/qkZhQjc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -109,6 +109,12 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/sitemap/" target="_blank" rel="noopener">
+        Sitemap (EN)
+      </a>
+  </li>
+  
+  <li>
     <a href="/posts/web/" target="_blank" rel="noopener">
         Web-Blog
       </a>
@@ -121,8 +127,26 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
     <a href="/pages/overview2/" target="_blank" rel="noopener">
         Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/downloads" target="_blank" rel="noopener">
+        Download Archive
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/storytelling" target="_blank" rel="noopener">
+        Storytelling and the order of things
       </a>
   </li>
   
@@ -133,14 +157,14 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
-        Synthesizer-DIY
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
       </a>
   </li>
   
   <li>
-    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
-        Electronics 102
+    <a href="/pages/electronics-103" target="_blank" rel="noopener">
+        Electronics 103
       </a>
   </li>
   
@@ -320,7 +344,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+    <a href="/docs/digital_logic/04_signs04_signs/" class="">04_Signs</a>
   
 
         </li>
@@ -453,10 +477,21 @@ https://github.com/alex-shpak/hugo-book
 
   <label for="toc-control">
     
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
+  
+  <aside class="hidden clearfix">
+    
+  
+
+
+
+
+  </aside>
   
  
       </header>
@@ -477,7 +512,7 @@ were shown. Now we want to build most of those functionalities in one unit,
 the 1-bit alu cell.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/alu_symbol.svg" alt="alu symbol" width="100%"/></span></p>
+<p><span class="image"><img src="./alu_symbol.svg" alt="alu symbol" width="100%"/></span></p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
 <colgroup>
@@ -558,7 +593,7 @@ by Hennessey and Peterson, quoted from the popular book
 Computer Organization and Design (RISC-V) Edition by Hennessey and Patterson.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/1bit_alu_cell.svg" alt="1bit alu cell" width="80%"/></span></p>
+<p><span class="image"><img src="./1bit_alu_cell.svg" alt="1bit alu cell" width="80%"/></span></p>
 </div>
 <div class="paragraph">
 <p>The implementation will support the fundamental operations
@@ -574,10 +609,10 @@ The last ALU-cell in the chain, differs a bit from the regular cell as it also i
 an overflow-detection circuit. We will get to it later in the article.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/1bit_alu_cell_with_overflow.svg" alt="1bit alu cell with overflow" width="80%"/></span></p>
+<p><span class="image"><img src="./1bit_alu_cell_with_overflow.svg" alt="1bit alu cell with overflow" width="80%"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/alu_array_with_less.svg" alt="alu array with less" width="60%"/></span></p>
+<p><span class="image"><img src="./alu_array_with_less.svg" alt="alu array with less" width="60%"/></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -605,7 +640,7 @@ This is - however - not true, in case the subtraction might result in an overflo
 <p>Also, we add a nor-gate with inputs from all result bits to detect zero.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/alu_array_with_zero.svg" alt="alu array with zero" width="60%"/></span></p>
+<p><span class="image"><img src="./alu_array_with_zero.svg" alt="alu array with zero" width="60%"/></span></p>
 </div>
 <div class="sect3">
 <h4 id="_overflow_detection">Overflow Detection</h4>
@@ -615,7 +650,7 @@ of the addition of two integer values.
 The encourages the inclined reader to derive the truth table and circuit as an exercise.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/1bit_alu_cell_with_overflow.svg" alt="1bit alu cell with overflow" width="120%"/></span></p>
+<p><span class="image"><img src="./1bit_alu_cell_with_overflow.svg" alt="1bit alu cell with overflow" width="120%"/></span></p>
 </div>
 <div class="paragraph">
 <p>For a two’s complement interpretation overflow occurs in two cases:</p>
@@ -770,7 +805,7 @@ be found <a href="http://teaching.idallen.com/dat2343/01f/notes/overflow.txt">he
 <p>The circuit generated by Logisim is accordingly:</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/overflow_detection_gates.png" alt="overflow detection gates" width="45%"/></span></p>
+<p><span class="image"><img src="./overflow_detection_gates.png" alt="overflow detection gates" width="45%"/></span></p>
 </div>
 </div>
 </div>
@@ -784,10 +819,10 @@ however in an ALU it used to select one of the logic
 or arithmetic operations, we will see that later.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/multiplexer_symbol.svg" alt="multiplexer symbol" width="60%"/></span></p>
+<p><span class="image"><img src="./multiplexer_symbol.svg" alt="multiplexer symbol" width="60%"/></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/multiplexer_principle.svg" alt="multiplexer principle" width="75%"/></span></p>
+<p><span class="image"><img src="./multiplexer_principle.svg" alt="multiplexer principle" width="75%"/></span></p>
 </div>
 <div class="paragraph">
 <p>The demultiplexer- as the name suggest- does the exact opposite task
@@ -795,7 +830,7 @@ and distributes signal on one line (input) to one
 of multiple outputs, depending on the selection bit(s).</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/demultiplexer_principle.svg" alt="demultiplexer principle" width="75%"/></span></p>
+<p><span class="image"><img src="./demultiplexer_principle.svg" alt="demultiplexer principle" width="75%"/></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -805,7 +840,7 @@ of multiple outputs, depending on the selection bit(s).</p>
 as this is the most resource-efficient design…​</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/mux_ptl.svg" alt="mux ptl" width="65%"/></span></p>
+<p><span class="image"><img src="./mux_ptl.svg" alt="mux ptl" width="65%"/></span></p>
 </div>
 </div>
 </div>
@@ -819,7 +854,7 @@ as this is the most resource-efficient design…​</p>
   <div class="flex flex-wrap justify-between">
 
 
-Last update: May 24, 2025 
+Last update: July 29, 2025 
 
 
 </div>
@@ -854,6 +889,17 @@ Last update: May 24, 2025
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+
+
+
+ 
+      </div>
+    </aside>
     
   </main>
 

@@ -35,9 +35,9 @@ Logical functions - also called operations, the author will use both terms inter
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
   <link rel="alternate" hreflang="de" href="http://localhost:1313/de/docs/digital_logic/01_boolean_algebra/" title="01_boolean_algebra (de)">
-<link rel="stylesheet" href="/book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css" integrity="sha256-pjipf0iQKfPtqDOwkFcX1aLaC1cUI9uFXdfOQzYjjnc=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.707c0d358d31d00dec61f6f521ee9e647a304eaee646d5b79664238b2ca1f1ff.css" integrity="sha256-cHwNNY0x0A3sYfb1Ie6eZHowTq7mRtW3lmQjiyyh8f8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.c42de7f52a5f869a7a2c2ae4044a3f37da4684601a94c5c71199c482e0a68b24.js" integrity="sha256-xC3n9Spfhpp6LCrkBEo/N9pGhGAalMXHEZnEguCmiyQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.97ab9475d0eeeb3b07521ad40f177c3f0042b1acffe58ea876567faa46614237.js" integrity="sha256-l6uUddDu6zsHUhrUDxd8PwBCsaz/5Y6odlZ/qkZhQjc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -114,6 +114,12 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/sitemap/" target="_blank" rel="noopener">
+        Sitemap (EN)
+      </a>
+  </li>
+  
+  <li>
     <a href="/posts/web/" target="_blank" rel="noopener">
         Web-Blog
       </a>
@@ -126,8 +132,26 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
+    <a href="/posts/synth/25-build-your-own-modules/" target="_blank" rel="noopener">
+        Synthesizer-DIY
+      </a>
+  </li>
+  
+  <li>
     <a href="/pages/overview2/" target="_blank" rel="noopener">
         Digital Logic 2 (Overview)
+      </a>
+  </li>
+  
+  <li>
+    <a href="/downloads" target="_blank" rel="noopener">
+        Download Archive
+      </a>
+  </li>
+  
+  <li>
+    <a href="/pages/storytelling" target="_blank" rel="noopener">
+        Storytelling and the order of things
       </a>
   </li>
   
@@ -138,14 +162,14 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="/posts/synth/25_build_your_own_modules/" target="_blank" rel="noopener">
-        Synthesizer-DIY
+    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
+        Electronics 102
       </a>
   </li>
   
   <li>
-    <a href="/pages/short-introduction-to-electronics-102" target="_blank" rel="noopener">
-        Electronics 102
+    <a href="/pages/electronics-103" target="_blank" rel="noopener">
+        Electronics 103
       </a>
   </li>
   
@@ -325,7 +349,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/digital_logic/04_signs/" class="">04_Signs</a>
+    <a href="/docs/digital_logic/04_signs04_signs/" class="">04_Signs</a>
   
 
         </li>
@@ -458,10 +482,21 @@ https://github.com/alex-shpak/hugo-book
 
   <label for="toc-control">
     
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
+  
+  <aside class="hidden clearfix">
+    
+  
+
+
+
+
+  </aside>
   
  
       </header>
@@ -524,7 +559,7 @@ is denoted as \[\overline{A} = \neg A = Q\]</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/inverter_symbol.svg" alt="inverter symbol" width="200"/></span></p>
+<p><span class="image"><img src="./inverter_symbol.svg" alt="inverter symbol" width="200"/></span></p>
 </div>
 <div class="paragraph">
 <p>The not operation is the only one with only one input, it can not be expanded.</p>
@@ -577,7 +612,7 @@ is denoted as \[A \land B = Q\]</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/and_symbol.svg" alt="and symbol" width="200"/></span></p>
+<p><span class="image"><img src="./and_symbol.svg" alt="and symbol" width="200"/></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -621,7 +656,7 @@ is denoted as \[A \lor B = Q\]</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/or_symbol.svg" alt="or symbol" width="200"/></span></p>
+<p><span class="image"><img src="./or_symbol.svg" alt="or symbol" width="200"/></span></p>
 </div>
 <hr/>
 <div class="paragraph">
@@ -781,10 +816,10 @@ while the NOR operation is denoted as \[\overline{A \lor B} = Q\]</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/nand_symbol.svg" alt="nand symbol" width="200"/></span></p>
+<p><span class="image"><img src="./nand_symbol.svg" alt="nand symbol" width="200"/></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/nor_symbol.svg" alt="nor symbol" width="200"/></span></p>
+<p><span class="image"><img src="./nor_symbol.svg" alt="nor symbol" width="200"/></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -921,7 +956,7 @@ two elements however the theorem is independent from any number of elements / in
 </tbody>
 </table>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/de_morgan_nand_equivalence.svg" alt="de morgan nand equivalence" width="400"/></span></p>
+<p><span class="image"><img src="./de_morgan_nand_equivalence.svg" alt="de morgan nand equivalence" width="400"/></span></p>
 </div>
 <div class="paragraph image">
 <p>\[\overline{p_1 \lor p_2} = \overline{p_1} \land \overline{p_2}\]</p>
@@ -1039,7 +1074,7 @@ two elements however the theorem is independent from any number of elements / in
 </tbody>
 </table>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/de_morgan_nor_equivalence.svg" alt="de morgan nor equivalence" width="400"/></span></p>
+<p><span class="image"><img src="./de_morgan_nor_equivalence.svg" alt="de morgan nor equivalence" width="400"/></span></p>
 </div>
 <div class="paragraph">
 <p>Now we are finally equipped to continue with the electrical part / description.</p>
@@ -1054,7 +1089,7 @@ two elements however the theorem is independent from any number of elements / in
 electric circuit schematics.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/common_symbols.svg" alt="common symbols" width="500"/></span></p>
+<p><span class="image"><img src="./common_symbols.svg" alt="common symbols" width="500"/></span></p>
 </div>
 <div class="sect2">
 <h3 id="_the_diode">The diode</h3>
@@ -1078,10 +1113,10 @@ This circuit design is so simple it is even not possible to implement an inverte
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/wire_and.svg" alt="wire and" width="250"/></span></p>
+<p><span class="image"><img src="./wire_and.svg" alt="wire and" width="250"/></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/wire_or.svg" alt="wire or" width="250"/></span></p>
+<p><span class="image"><img src="./wire_or.svg" alt="wire or" width="250"/></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1100,10 +1135,10 @@ for a p(ositive) dotted material. This process is called dotting. For the intere
 is a link to all the physical background the author was to lazy to repeat since it is often and better explained on the internet already ;-) .</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/diode_structure.svg" alt="diode structure" width="450"/></span></p>
+<p><span class="image"><img src="./diode_structure.svg" alt="diode structure" width="450"/></span></p>
 </div>
 <div class="paragraph">
-<p>All we need to know right know is that a diode consist of one substrate (in most cases today silicon) which becomes n-dotted on one side and p-dotted on the other,
+<p>All we need to know right now is that a diode consist of one substrate (in most cases today silicon) which becomes n-dotted on one side and p-dotted on the other,
 forming a pn-junction in between acting as said one-way barrier: It is possible for electrons to rush from n-side to the p-side but not the other way round.</p>
 </div>
 <div class="paragraph">
@@ -1136,7 +1171,7 @@ Luckily such a component exists and is introduced in the next section.</p>
 As the name suggests a MOSFET is a transistor (or semiconductor) where the load currrent can be controlled by the strength of the electrical field, created on the gate input</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/mosfet_model.svg" alt="mosfet model" width="500"/></span></p>
+<p><span class="image"><img src="./mosfet_model.svg" alt="mosfet model" width="500"/></span></p>
 </div>
 <div class="paragraph">
 <p>The image above sketches the principal structure of a mosfet on the silicon. Source and drain are both connected to an own n-well, in the p dotted substrate,
@@ -1147,14 +1182,14 @@ which creates a chanel between source and drain and allows electrons to flow fro
 flowing (until a certain boundary of course). And if the gate voltage is zero, also the channel is non-existent.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/inverter_nmos.svg" alt="inverter nmos" width="500"/></span></p>
+<p><span class="image"><img src="./inverter_nmos.svg" alt="inverter nmos" width="500"/></span></p>
 </div>
 <div class="paragraph">
 <p>Common used symbols for MOSFET used in electrical schematics as well as some other we need due to course are shown below, some has more then only one, especially the MOSFET has a number
 of sligthly various symbols reflecting the differences in the physical component.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/mosfet_symbols.svg" alt="mosfet symbols" width="500"/></span></p>
+<p><span class="image"><img src="./mosfet_symbols.svg" alt="mosfet symbols" width="500"/></span></p>
 </div>
 <div class="paragraph">
 <p>With the MOSFET element introduced and a single resistor,an element which reduces the current flow, added, we can straight-forward implement an inverter circuit as shown in the image above.
@@ -1163,7 +1198,7 @@ When the voltage is set to low on the gate, the MOSFET does not conduct and so t
 Whene a voltage is set to the gate,the drain-source path of the MOSFET becomes conductive, the potential available on the output breaks down an drains away via the drain-source path.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/inverter_cmos.svg" alt="inverter cmos" width="500"/></span></p>
+<p><span class="image"><img src="./inverter_cmos.svg" alt="inverter cmos" width="500"/></span></p>
 </div>
 <hr/>
 <div class="paragraph">
@@ -1186,7 +1221,7 @@ circuit. Of course, the logic signals have to be refreshed also in other logical
 those inverter stages, afterwards or before.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/inverter_symbol.svg" alt="inverter symbol" width="200"/></span></p>
+<p><span class="image"><img src="./inverter_symbol.svg" alt="inverter symbol" width="200"/></span></p>
 </div>
 <div class="paragraph">
 <p>In the symbol the first task, the refreshing of the signal (level), is indicated by the triangle, while the little circle denotes the actual inverting function.</p>
@@ -1208,10 +1243,10 @@ those inverter stages, afterwards or before.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/nand_nmos.svg" alt="nand nmos" width="200"/></span></p>
+<p><span class="image"><img src="./nand_nmos.svg" alt="nand nmos" width="200"/></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/nor_nmos.svg" alt="nor nmos" width="500"/></span></p>
+<p><span class="image"><img src="./nor_nmos.svg" alt="nor nmos" width="500"/></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1249,10 +1284,10 @@ As you guess this technique, both types of transistor combined, exists and is na
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/nand_cmos.svg" alt="nand cmos" width="250"/></span></p>
+<p><span class="image"><img src="./nand_cmos.svg" alt="nand cmos" width="250"/></span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../images/how_does_cpu/nor_cmos.svg" alt="nor cmos" width="500"/></span></p>
+<p><span class="image"><img src="./nor_cmos.svg" alt="nor cmos" width="500"/></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1293,7 +1328,7 @@ also we did not had a look yet for ESD measurements and protection circuits for 
   <div class="flex flex-wrap justify-between">
 
 
-Last update: May 24, 2025 
+Last update: July 29, 2025 
 
 
 </div>
@@ -1328,6 +1363,17 @@ Last update: May 24, 2025
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+
+
+
+ 
+      </div>
+    </aside>
     
   </main>
 
