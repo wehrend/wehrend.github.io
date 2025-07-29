@@ -40,12 +40,12 @@ Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
 | 1 | 1 | 0
 |================
 
-image:./images/how_does_cpu/xor_symbol.svg[width=250]
+image:./xor_symbol.svg[width=250]
 
 [width=„100%“ cols=„a“]
 |======
 | CMOS XOR
-|image:./images/how_does_cpu/xor_cmos.svg[width=800]
+|image:./xor_cmos.svg[width=800]
 | # transistor: 12
 |======
 
@@ -60,7 +60,7 @@ Der Autor hat ein einfaches Beispiel eines 3-Bit-LFSR ausgewählt, das in einem
 https://www.ti.com/lit/an/scta036a/scta036a.pdf[Whitepaper von Texas Instruments] erwähnt wird.
 
 
-image:./images/how_does_cpu/lfsr.svg[width=800]
+image:./lfsr.svg[width=800]
 
 Für dieses Beispiel müssen wir einen großen Sprung machen und in den Bereich der sequenziellen Schaltkreise einsteigen.
 Dies sind Schaltkreise, die Rückkopplung nutzen. Das gewählte Beispiel erzeugt

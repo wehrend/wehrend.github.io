@@ -52,7 +52,7 @@ wird als \[\overline{A} = \neg A = Q\] bezeichnet
 | 1 | 0
 |==========
 
-image:./images/how_does_cpu/inverter_symbol.svg[width=200]
+image:./inverter_symbol.svg[width=200]
 
 Die Not-Operation ist die einzige mit nur einem Eingang, sie kann nicht erweitert werden.
 
@@ -75,7 +75,7 @@ Die Und-Operation, auch als Konjunktion bezeichnet,
 |================
 
 
-image:./images/how_does_cpu/and_symbol.svg[width=200]
+image:./and_symbol.svg[width=200]
 
 === ODER
 
@@ -91,7 +91,7 @@ Die Oder-Operation, auch als Disjunktion bezeichnet,
 | 1 | 1 | 1
 |================
 
-image:./images/how_does_cpu/or_symbol.svg[width=200]
+image:./or_symbol.svg[width=200]
 
 ////
 === XOR
@@ -184,7 +184,7 @@ bezeichnet, während die NOR-Operation als \[\overline{A \lor B} = Q\] aufgefüh
 [width=„100%“ cols=„a,a“]
 |======
 | NAND | NOR
-|image:./images/how_does_cpu/nand_symbol.svg[width=200] |image:./images/how_does_cpu/nor_symbol.svg[width=200]
+|image:./nand_symbol.svg[width=200] |image:./nor_symbol.svg[width=200]
 |======
 
 Wie Sie sehen können, sind die Ergebnisse für diese beiden Funktionen genau das Gegenteil ihres jeweiligen Komplements
@@ -212,7 +212,7 @@ zwei Elemente, aber der Satz ist unabhängig von einer beliebigen Anzahl von Ele
 |==========================================================================================
 
 
-image:./images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
+image:./de_morgan_nand_equivalence.svg[width=400]
 
 
 [role=„image“,„../images/demorgan_nor.svg“,imgfmt=„svg“, width=„75%“]
@@ -229,7 +229,7 @@ image:./images/how_does_cpu/de_morgan_nand_equivalence.svg[width=400]
 |==========================================================================================
 
 
-image:./images/how_does_cpu/de_morgan_nor_equivalence.svg[width=400]
+image:./de_morgan_nor_equivalence.svg[width=400]
 
 
 
@@ -242,7 +242,7 @@ Jetzt sind wir endlich gerüstet, um mit dem elektrischen Teil/der Beschreibung 
 Zunächst stellen wir einige gängige elektronische Komponenten und ihre Symbole vor, die in
 elektrischen Schaltplänen verwendet werden.
 
-image:./images/how_does_cpu/common_symbols.svg[width=500]
+image:./common_symbols.svg[width=500]
 
 === Die Diode
 
@@ -253,7 +253,7 @@ Dieser Schaltkreisentwurf ist so einfach, dass es nicht einmal möglich ist, ein
 [width=„100%“ cols=„100a,100a“]
 |======
 | verdrahtet und | verdrahtet oder
-|image:./images/how_does_cpu/wire_and.svg[width=250] | image:./images/how_does_cpu/wire_or.svg[width=250]
+|image:./wire_and.svg[width=250] | image:./wire_or.svg[width=250]
 | # diodes: 2 | # diodes : 2
 |======
 
@@ -269,7 +269,7 @@ https://www.electrical4u.com/semiconductor-physics/[hier]
 ein Link zu allen physikalischen Hintergründen, die der Autor zu faul war zu wiederholen, da sie oft und besser bereits
 im Internet erklärt werden ;-) .
 
-image:./images/how_does_cpu/diode_structure.svg[width=450]
+image:./diode_structure.svg[width=450]
 
 Alles, was wir jetzt wissen müssen, ist, dass eine Diode aus einem Substrat (in den meisten Fällen heute Silizium) besteht,
 das auf der einen Seite n-dotiert und auf der anderen Seite p-dotiert wird,
@@ -336,7 +336,7 @@ elektrischen Feldes gesteuert werden kann, das am Gate-Eingang erzeugt wird
 //https://www.power-and-beyond.com/whats-the-difference-between-mosfet-and-bjt-a-909006/
 
 
-image:./images/how_does_cpu/mosfet_model.svg[width=500]
+image:./mosfet_model.svg[width=500]
 
 Das obige Bild skizziert die Hauptstruktur eines MOSFET auf dem Silizium. Source und Drain sind beide mit einem eigenen n-Wannen-Substrat verbunden,
 während das dazwischenliegende Gate durch eine dünne Siliziumdioxidschicht isoliert ist. Es gibt einen vierten Anschluss,
@@ -347,12 +347,12 @@ das einen Kanal zwischen Source und Drain erzeugt und den Elektronenfluss von So
 Je höher die Gatespannung, desto größer  (breiter) der Kanal, desto mehr Elektronen
 fließen (natürlich bis zu einer bestimmten Grenze). Und wenn die Gate-Spannung Null ist, ist auch der Kanal nicht vorhanden.
 
-image:./images/how_does_cpu/inverter_nmos.svg[width=500]
+image:./inverter_nmos.svg[width=500]
 
 Nachfolgend sind häufig verwendete Symbole für MOSFETs, die in elektrischen Schaltplänen verwendet werden, sowie einige andere, die wir aufgrund des Kurses benötigen, dargestellt. Einige haben mehr als nur eines, insbesondere der MOSFET hat eine Reihe
 verschiedene Symbole, die die Unterschiede in der physischen Komponente widerspiegeln.
 
-image:./images/how_does_cpu/mosfet_symbols.svg[width=500]
+image:./mosfet_symbols.svg[width=500]
 
 Mit dem eingeführten MOSFET-Element und einem einzelnen Widerstand, einem Element, das den Stromfluss reduziert, können
 wir direkt eine Inverterschaltung implementieren, wie in der obigen Abbildung dargestellt.
@@ -363,7 +363,7 @@ Potenzial ausreichend für eine logische Eins.
 Wenn eine Spannung an das Gate angelegt wird, wird der Drain-Source-Pfad des MOSFET leitfähig, das am Ausgang verfügbare
 Potenzial bricht zusammen und fließt über den Drain-Source-Pfad ab.
 
-image:./images/how_does_cpu/inverter_cmos.svg[width=500]
+image:./inverter_cmos.svg[width=500]
 
 '''
 Auf elektrischer Ebene hat der Inverter zwei verschiedene Aufgaben zu erfüllen
@@ -379,7 +379,7 @@ Schaltung kombiniert werden. Natürlich müssen die logischen Signale auch in an
 oder – aufgefrischt werden, aber in den meisten Fällen wird diese Aufgabe ausschließlich von
 diesen Inverterstufen erledigt, danach oder davor.
 
-image:./images/how_does_cpu/inverter_symbol.svg[width=200]
+image:./inverter_symbol.svg[width=200]
 
 Im Symbol wird die erste Aufgabe, das Auffrischen des Signals (Pegel), durch das Dreieck angezeigt, während der kleine Kreis
 die eigentliche Invertierungsfunktion kennzeichnet.
@@ -389,7 +389,7 @@ die eigentliche Invertierungsfunktion kennzeichnet.
 [width=„100%“ cols=„a,a“]
 |======
 | NMOS NAND | NMOS NOR
-|image:./images/how_does_cpu/nand_nmos.svg[width=200] | image:./images/how_does_cpu/nor_nmos.svg[width=500]
+|image:./nand_nmos.svg[width=200] | image:./nor_nmos.svg[width=500]
 | # transistor: 2 | # transistor: 2
 |======
 
@@ -408,7 +408,7 @@ Wie Sie sich denken können, gibt es diese Technik, bei der beide Transistortype
 [width=„100%“ cols=„a,a“]
 |======
 | CMOS NAND | CMOS NOR
-|image:./images/how_does_cpu/nand_cmos.svg[width=250] | image:./images/how_does_cpu/nor_cmos.svg[width=500]
+|image:./nand_cmos.svg[width=250] | image:./nor_cmos.svg[width=500]
 | # Transistor: 4 | # Transistor: 4
 |======
 
