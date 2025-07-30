@@ -904,6 +904,18 @@
                 href="http://localhost:1313/docs/digital_logic_2/images/how_does_cpu/"
                 />
   </url><url>
+    <loc>http://localhost:1313/downloads/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://localhost:1313/downloads/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/downloads/"
+                />
+  </url><url>
     <loc>http://localhost:1313/drafts/</loc>
     <xhtml:link
                 rel="alternate"

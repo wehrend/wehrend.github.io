@@ -54,6 +54,18 @@
                 href="http://localhost:1313/about/"
                 />
   </url><url>
+    <loc>http://localhost:1313/downloads/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://localhost:1313/downloads/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/downloads/"
+                />
+  </url><url>
     <loc>http://localhost:1313/drafts/</loc>
     <xhtml:link
                 rel="alternate"
