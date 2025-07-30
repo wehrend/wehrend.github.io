@@ -30,7 +30,7 @@ due to a lower design complexity.
 *Register-Transfer-Level*
 
 
-image:../images/how_does_cpu/rtl_scheme.svg[width="100%"]
+image:./rtl_scheme.svg[width="100%"]
 
 The blue parts in the image above are showing registers where the values are 
 stored, we will see later how those are implemented, lets first have a look 
@@ -46,11 +46,11 @@ The former one is the classical, the later one a more modern variant.
 [cols="a,a" width="100%"]
 |===
 | *crystal oscillator* | *ring oscillator*
-|image:../images/how_does_cpu/crystal_symbol.svg[width="80%"]
-|image:../images/how_does_cpu/inverter_chain_symbol.svg[width="80%"]
+|image:./crystal_symbol.svg[width="80%"]
+|image:./inverter_chain_symbol.svg[width="80%"]
 |typical frequence range: 1Mhz..100Mhz | typical frequence range: 1Hz..15Mhz(discrete layout)
-|image:../images/how_does_cpu/pierce_gate_circuit.svg[width="350px"]
-|image:../images/how_does_cpu/inverter_chain.svg[width="350px"]
+|image:./pierce_gate_circuit.svg[width="350px"]
+|image:./inverter_chain.svg[width="350px"]
 | frequency determined by crystal geometry 
 | frequency determined by propagation delay and number of gates
 | accuracy mostly dependent from temperature; for precise applications crystal ovens are used
@@ -64,7 +64,7 @@ Crystal oscillators are available in a metal box housing, with
 additional wiring, with the quartz being the heart of the circuit. 
 The circuit is commonly based on the https://en.wikipedia.org/wiki/Pierce_oscillator[Pierce oscillator].
 
-image:../images/how_does_cpu/pierce_gate_circuit.svg[width="400px"]
+image:./pierce_gate_circuit.svg[width="400px"]
 
 Their accuracy is mostly dependent on the temperature,so for applications with high accuracy needs, 
 they are housed in a quartz oven, holding the quartz on a constant temperature.
@@ -76,7 +76,7 @@ Another common source of a clock source is the ring oscillator.
 The trick here is to chain an odd number of inverter gates and feedback the output of the last inverter as input 
 to the first inverter. This way we create an oscillating circuit. 
 
-image:../images/how_does_cpu/inverter_chain.svg[width="400px"]
+image:./inverter_chain.svg[width="400px"]
 
 The frequency is dependent on the number of inverters as well as the propagation time Tp (see the equation below). The time the signal needs to travel 
 trough the gate is known as propagation time Tp.
@@ -101,8 +101,8 @@ If both inputs are set low, the output is undefined (and conforms to the preferr
 [cols="a,a" width="100%"]
 |===
 | *RS-flipflop structure* | *RS-flipflop symbol*
-|image:../images/how_does_cpu/flipflop_circuit.svg[width="80%"]
-|image:../images/how_does_cpu/flipflop_symbol.svg[width="80%"]
+|image:./flipflop_circuit.svg[width="80%"]
+|image:./flipflop_symbol.svg[width="80%"]
 |===
 
 [width="50%"]
@@ -128,8 +128,8 @@ input is invalid.
 [cols="a,a" width="100%"]
 |===
 | *D-flipflop structure* | *D-flipflop symbol*
-|image:../images/how_does_cpu/dflipflop_circuit.svg[width="80%"]
-|image:../images/how_does_cpu/dflipflop_symbol.svg[width="80%"]
+|image:./dflipflop_circuit.svg[width="80%"]
+|image:./dflipflop_symbol.svg[width="80%"]
 |===
 
 [width="50%"]
@@ -151,7 +151,7 @@ This output can be used as adresses for a ROM table, as we will see in another b
 [cols="a" width="100%"]
 |===
 | *Asynchronous binary counter with D-flipflops* 
-|image:../images/how_does_cpu/dflipflop_counter.svg[width="100%"]
+|image:./dflipflop_counter.svg[width="100%"]
 |===
 
 Using the outputs independent, it can be seen that the counter 
@@ -168,7 +168,7 @@ scheme, in some architectures with numbers (e.g. MIPS and ARM), other times with
 comnplex scheme of alphabetic numbers (like in x86 architectures).
 
 
-image:../images/how_does_cpu/register.svg[width="100%"]
+image:./register.svg[width="100%"]
 
 In the previous sections we have learned about the flipflop.
 These are the building blocks of registers. As can be seen in the picture

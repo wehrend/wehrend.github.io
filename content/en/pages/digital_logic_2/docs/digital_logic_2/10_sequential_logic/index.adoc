@@ -16,7 +16,7 @@ menu:
 Complementary to Combinatorial logic, sequential logic contains some type of memory,
 making the behaviour state-dependent. We need to feed it a clock signal.
 
-image:../images/how_does_cpu/sequential_logic.svg[width=50%]
+image:./sequential_logic.svg[width=50%]
 
 === Mealy and Moore Automata (synchronous)
 There are two different types of finite automata in the digital logic.
@@ -25,8 +25,8 @@ Those are:
 . The mealy automata, which is dependent on the input and the state
 . The moore automata, which is only dependent on the state
 
-image:../images/how_does_cpu/mealy_logic.svg[width=50%]
-image:../images/how_does_cpu/moore_logic.svg[width=50%]
+image:./mealy_logic.svg[width=50%]
+image:./moore_logic.svg[width=50%]
 
 === Synchronous and Asynchronous sequential Logic
 
@@ -34,7 +34,7 @@ There are two different types of sequential logic, the synchronous sequential lo
 with one central clock, as well as the asnychonous logic which has multiple clock
 domains.
 
-image:../images/how_does_cpu/sequential_logic2.svg[width=50%]
+image:./sequential_logic2.svg[width=50%]
 
 When we add a clock function to our automata shown above the synchronous
 automata becomes an asynchronous automata.
