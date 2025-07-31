@@ -27,13 +27,13 @@ Wahrscheinlichkeitstheorie gebunden ist bzw. diese ergänzt. Mit dem Quantencomp
 werden sich jedoch die Grundlagen, die der Autor hier beschreibt, vollständig ändern.
 
 == *Kombinatorische Logik*
-_link:./docs/digital_logic/00_combinatorial_logic[Einführung in die kombinatorische Logik]_
+_link:./pages/00_combinatorial_logic[Einführung in die kombinatorische Logik]_
 
 Kurze Einführung in die kombinatorische Logik und ihre verschiedenen Beschreibungsmodelle.
 
 == *Ein erster Blick auf die digitale Logik*
 
-_link:./docs/digital_logic/01_boolean_algebra/[Boolesche Algebra, grundlegende Logikgatter und ihre
+_link:./pages/01_boolean_algebra/[Boolesche Algebra, grundlegende Logikgatter und ihre
 Implementierung]_
 
 In dieser Lektion werden wir Wahrheitstabellen und Boolesche Notation entdecken und etwas über
@@ -44,7 +44,7 @@ als solche implementiert werden, sondern sehen uns stattdessen NAND und NOR an.
 
 == *Sie müssen wählen!*
 
-_link:./docs/digital_logic/02_xor/[Ein komplexes Gatter: XOR]_
+_link:./pages/02_xor/[Ein komplexes Gatter: XOR]_
 
 Eine weitere CPU-Anweisung und als Randbemerkung und Vorbereitung auf das nächste Thema
 sehen wir uns das XOR-Gatter an. Wie in der ersten Lektion sehen wir uns zuerst den logischen
@@ -52,7 +52,7 @@ Teil und dann seine Übersetzung in eine elektrische Implementierung an.
 
 == *01+01 = 10*
 
-_link:./docs/digital_logic/03_binary_system/[Binärsysteme (Teil I) und kombinatorische Logik (Teil I)]_
+_link:./pages/03_binary_system/[Binärsysteme (Teil I) und kombinatorische Logik (Teil I)]_
 
 Hier erklären wir das grundlegende Konzept des Zählens mit nur zwei verschiedenen Zuständen.
 
@@ -61,13 +61,13 @@ die für einen Volladdierer erforderliche Logik ab und tauchen in das Thema der 
 
 == *Im negativen Raum ist viel Platz*
 
-_link:./docs/digital_logic/04_signs/[Binärsysteme (Teil II) vorzeichenbehaftete Ganzzahlen]_
+_link:./pages/04_signs/[Binärsysteme (Teil II) vorzeichenbehaftete Ganzzahlen]_
 
 Zweiter Teil über das Binärsystem. In diesem Beitrag lernen wir Einser- und Zweierkomplement sowie Subtraktion.
 
 == *Addieren ist nicht alles*
 
-_link:./docs/digital_logic/05_alu/[Kombinatorische Logik (Teil II), eine einfache ALU]_
+_link:./pages/05_alu/[Kombinatorische Logik (Teil II), eine einfache ALU]_
 
 Wir wollen die erste Serie mit diesem zweiten Kapitel über kombinatorische Logik abschließen.
 

@@ -57,7 +57,7 @@ publishDir = "public"
   url = "/downloads"
   weight = 24
 
-[[languages.en.menu.after]]
+[[languages.en.menu.before]]
   name = "Digital Logic 1 (Overview)"
   url = "/pages/digital_logic_1/"
   weight = 23
