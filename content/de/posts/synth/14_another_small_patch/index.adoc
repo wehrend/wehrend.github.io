@@ -11,15 +11,15 @@ this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
 modul A-106-5.
 We also utilize two LFO modules...
 
-image:../lfo_sem_patch.jpg[LFO SEM Patch ]
+image:./lfo_sem_patch.jpg[LFO SEM Patch ]
 
-link:../lfo_sem_patch.m4a[LFO SEM Patch Audio]
+link:./lfo_sem_patch.mp4[LFO SEM Patch video]
 
-image:../lfo_sem_patch2-3.jpg[LFO SEM Patch ]
+image:./lfo_sem_patch2-3.jpg[LFO SEM Patch ]
 
-link:../lfo_sem_patch2.m4a[LFO SEM Patch Audio 2]
+link:./lfo_sem_patch2.mp4[LFO SEM Patch video 2]
 
-link:../lfo_sem_patch3.m4a[LFO SEM Patch Audio 3]
+link:./lfo_sem_patch3.mp4[LFO SEM Patch video 3]
 
 To this day I did not find the right audio recorder,and I am recording with my smartphone,
 so the sound quality is rather bad. I am still searching for the ideal recording hardware.
