@@ -18,33 +18,33 @@ wie unten dargestellt, und klicken darauf.
 Ich habe dieses Tutorial von https://siytek.com/quartus-hello-world/#Setup-the-project[hier] gestohlen, aber meine
 eigenen Bilder und meinen eigenen Stil hinzugefügt.
 
-image:../quartus_menu_new_project.png[Quartus - New Project Wizard]
+image:./quartus_menu_new_project.png[Quartus - New Project Wizard]
 
 == Setup the project
 
 Als Nächstes sehen wir ein Einführungsfenster, wie unten dargestellt. Wir klicken auf „Weiter“, um zum nächsten Fenster
 zu gelangen, in dem wir das Projekt benennen.
 
-image:../quartus_introduction.png[Quartus - New Project Wizard]
+image:./quartus_introduction.png[Quartus - New Project Wizard]
 
 Geben Sie ihm einen passenden Namen wie AndGate oder HelloWorld, ganz wie Sie möchten...
 
-image:../quartus_project_naming.png[Quartus - Project Naming]
+image:./quartus_project_naming.png[Quartus - Project Naming]
 
 Als Nächstes wählen wir auf der Seite „Project Type“ die Option „Empty Project“ aus
 
-image:../quartus_empty_project.png[Quartus - Project Empty]
+image:./quartus_empty_project.png[Quartus - Project Empty]
 
 Wir überspringen die nächste Seite „Dateien hinzufügen“ und gehen zu „Familien-, Geräte- und Board-Einstellungen“.
 
-Bild: ../quartus_choose_device.png[Quartus - Gerät auswählen]
+image:./quartus_choose_device.png[Quartus - Gerät auswählen]
 
 Hier wählen wir die Familie Cyclone IV E und das Gerät mit dem Namen
 „EP4CE22F17C6“ gemäß dem beiliegenden Datenblatt des DE0-nano-Boards aus.
 Wir klicken auf „Weiter“ und überspringen vorerst den Schritt „EDA-Tool-Einstellungen“.
 Schließlich gelangen wir zur Zusammenfassung des Projektassistenten.
 
-image:../quartus_project_summary.png[Quartus - Projektzusammenfassung]
+image:./quartus_project_summary.png[Quartus - Projektzusammenfassung]
 
 Nachdem Sie bestätigt haben, dass alles so ist, wie es sein sollte, klicken Sie auf „Fertigstellen“, um den Projekt-
 assistenten zu beenden.
@@ -59,25 +59,25 @@ Es erscheint eine Registerkarte AndGate.bdf mit einer leeren Leinwand, auf der w
 Wenn wir möchten, können wir unseren aktuellen Status speichern, indem wir zu „Datei >> Speichern unter ...“ gehen und
 einen Namen und Gate.bdf sowie einen geeigneten Pfad eingeben.
 
-Bild: ../quartus_bdf_canvas.png [Quartus - BDF-Zeichenfläche]
+image:./quartus_bdf_canvas.png[Quartus - BDF-Zeichenfläche]
 
 Klicken Sie nun auf das Symbol-Werkzeug-Symbol, wie in der Abbildung unten gezeigt, um die Symbolbibliothek zu öffnen.
 
-Bild: ../quartus_symbol_tool.png [Quartus - Symbol-Werkzeug]
+image:./quartus_symbol_tool.png[Quartus - Symbol-Werkzeug]
 
 Es öffnet sich ein neues Fenster, das die Bibliothek mit den drei Hauptordnern „Megafunction“, „other“ und „primitives“
 anzeigt ...
 
-image:../quartus_symbol_library.png[Quartus - Symbolbibliothek]
+image:./quartus_symbol_library.png[Quartus - Symbolbibliothek]
 
 Wir suchen nach einem Gatter mit zwei Eingängen, also gehen Sie zu „Primitives“, „logic“, „and2“, bestätigen Sie mit „ok“...
 
-image:../quartus_symbol_library_ii.png[Quartus - Symbolbibliothek II]
+image:./quartus_symbol_library_ii.png[Quartus - Symbolbibliothek II]
 
 Klicken Sie nun in die Mitte der Raster-Zeichenfläche, um das Symbol einzugeben, und klicken Sie dann auf „Esc“, um den
 Bibliotheksmodus zu verlassen.
 
-image:../quartus_and_gate_0.png[Quartus - Und-Gatter 0]
+image:./quartus_and_gate_0.png[Quartus - Und-Gatter 0]
 
 == Hinzufügen von Pins
 
@@ -88,37 +88,37 @@ Später in der Pin-Zuweisung werden wir die Pins mit den physischen Pins des Ger
 Das Pin-Werkzeug-Symbol befindet sich direkt neben dem Symbol-Werkzeug-Symbol. Klicken Sie auf den Pfeil, um das Auswahl-
 menü zu öffnen.
 
-image:../quartus_pin_tool.png[Quartus - Pin-Werkzeug]
+image:./quartus_pin_tool.png[Quartus - Pin-Werkzeug]
 
 Wählen Sie „Ausgabe“ aus und ziehen Sie das Symbol irgendwo neben die Ausgabe des „and gate“. Zeichnen Sie dann eine
 Leitung zwischen dem Gate-Ausgang und dem Pin, indem Sie an einem der Punkte beginnen, die Maustaste gedrückt halten und
 eine Leitung zum anderen Punkt ziehen. Dann haben wir eine Verbindung.
 
-image:../quartus_link_output.png[Quartus - Verbindung der Ausgabe]
+image:./quartus_link_output.png[Quartus - Verbindung der Ausgabe]
 
 Jetzt machen wir dasselbe für die Eingangspins...
 
-image:../quartus_logic_circuit.png[Quartus - Logikschaltung]
+image:./quartus_logic_circuit.png[Quartus - Logikschaltung]
 
 Zuletzt benennen wir die Pins um, damit sie besser passen. Doppelklicken Sie auf den Pin und benennen Sie ihn um.
 Eine andere Möglichkeit ist, darauf zu klicken und im Kontextmenü Eigenschaften auszuwählen.
 Wir benennen die Eingänge in „in1“, „in2“ und den Ausgang in „out1“ um, damit wir die Pins später im Pin-Zuweisungs-
 werkzeug richtig benennen können.
 
-image:../quartus_logic_circuit_ii.png[Quartus - Logic circuit II]
+image:./quartus_logic_circuit_ii.png[Quartus - Logic circuit II]
 
 == Physische Pins / Pin-Zuweisung
 
 Um die benötigten E/A-Pins zu überprüfen, sehen wir uns das Benutzerhandbuch des DE0-nano-Boards an.
 
-image:../de0nano_input.png[Quartus - DE0-nano input]
+image:./de0nano_input.png[Quartus - DE0-nano input]
 
 Hier – im obigen Bild – sehen wir die beiden Taster des Nano-Boards, die über den SN74AUC17 gepuffert werden, um eine
 Entprellung zu erreichen.
 
 Und unten sehen wir ein (stark vereinfachtes) Schaltbild der  LEDs im Ausgang, bei dem die Vorwiderstände fehlen.
 
-image:../de0nano_output.png[Quartus - DE0-nano output]
+image:./de0nano_output.png[Quartus - DE0-nano output]
 
 Jetzt haben wir alle physischen Pins, die wir brauchen:
 
@@ -151,7 +151,7 @@ Wir werden uns diese Schritte und ihre Funktion in einem zukünftigen Blogbeitra
 Da die vollständige Kompilierung einige Zeit in Anspruch nehmen kann, ist es sinnvoll, nur den erforderlichen Prozess
 auszuführen. Führen Sie die Analyse und Ausarbeitung mit dem Tool aus, das Sie in der Menüleiste oben auf dem Bildschirm finden.
 
-image:../quartus_analysis_and_elaboration.png[Quartus - Analysis & Elaboration]
+image:./quartus_analysis_and_elaboration.png[Quartus - Analysis & Elaboration]
 
 
 == Pin-Zuweisung
@@ -164,12 +164,12 @@ Der Pin-Planer ist auf den ersten Blick etwas komplex, aber recht einfach zu bed
 
 Sie sehen eine Karte des FPGA mit allen physischen Pins und ihren Funktionen.
 
-image:../quartus_pin_planner_after_run.png[Quartus - Pin Planner]
+image:./quartus_pin_planner_after_run.png[Quartus - Pin Planner]
 
 Wir interessieren uns für die Liste der Pins unten. Wenn Sie den vorherigen Schritt erfolgreich abgeschlossen haben,
 sollten die Pins aufgelistet werden. Geben Sie Ihre Schalter- und LED-Pins in das Feld „Location“ ein.
 
-image:../quartus_pin_planner_pins_assigned.png[Quartus - Pin Planner - Pins zugewiesen]
+image:./quartus_pin_planner_pins_assigned.png[Quartus - Pin Planner - Pins zugewiesen]
 
 Die Eingangspins sollten den physischen Pins entsprechen, die Sie mit den Drucktasten verbunden haben, und der Ausgangs-
 pin sollte dem Ausgangspin mit der angeschlossenen LED entsprechen. Wenn Sie fertig sind, können Sie den Pin-Planer schließen.
@@ -180,7 +180,7 @@ haben. Beachten Sie, dass ich das Design-Fenster abgetrennt habe, um einen grö�
 Sie können ein Fenster abtrennen, indem Sie mit der rechten Maustaste auf die Registerkarte oben im Arbeitsbereich
 klicken und „abtrennen“ auswählen. Sie können Fenster auch über das Fenstermenü in der oberen Menüleiste anhängen und abtrennen.
 
-image:../quartus_pins_assigned.png[Quartus - Pins zugewiesen]
+image:./quartus_pins_assigned.png[Quartus - Pins zugewiesen]
 
 
 == Hardware-Kompilierung/Synthese
@@ -189,14 +189,14 @@ Nachdem wir unsere Pins zugewiesen haben, können wir den Kompilierungsprozess i
 führen, durch den das Design in eine binäre SRAM-Objektdatei (sof) umgewandelt wird. Das bedeutet, dass es nur im flüchtigen
 statischen RAM läuft, nicht persistent ist und nach dem Abschalten der Stromversorgung weg ist.
 
-image: ../quartus_synthesis.png [Quartus - Synthesis]
+image:./quartus_synthesis.png[Quartus - Synthesis]
 
 == Programmierung
 
 Nach Abschluss der Synthese können wir den Programmierer ausführen, um dieses kompilierte Programm in unser FPGA zu laden.
 Wir können den Programmierer über „__Tools >> Programmer__“ oder über das unten gezeigte Symbol öffnen
 
-Bild: ../quartus_programmer.png [Quartus - Programmer]
+image:./quartus_programmer.png[Quartus - Programmer]
 
 Nachdem Sie das Nano-Board mit dem USB-Kabel verbunden haben, klicken Sie im Programmiergerät auf „Hardware Setup“. In
 der Liste des sich öffnenden Fensters sollte das Gerät als „USB-Blaster“ angezeigt werden. Wählen Sie es aus und klicken
@@ -204,7 +204,7 @@ Sie auf „OK“. Nun müssen wir „Auto-detect“ auswählen, um die JTAG-Kett
 suchen. Vergewissern Sie sich außerdem, dass die SOF-Datei generiert wurde. Wenn nichts angezeigt wird und Sie Zweifel
 haben, führen Sie einfach alle Schritte einschließlich der Timing-Analyse manuell aus.
 
-image:../quartus_programmer_sof.png[Quartus - Programmer SOF]
+image:./quartus_programmer_sof.png[Quartus - Programmer SOF]
 
 Wenn die SOF-Datei vorhanden ist und die Hardware angezeigt wird, klicken Sie einfach auf die Schaltfläche „Start“. Dann
 erledigt der Programmierer seine Aufgabe.
@@ -214,17 +214,17 @@ Wenn wir jedoch die Hardware testen, werden wir hier ein anderes Verhalten fests
 das Datenblatt einen hohen Pegel für die Drucktasten angibt, wenn sie nicht gedrückt werden,
 also müssen wir das Design ändern. Zum besseren Vergleich fügen wir außerdem ein Oder-Gatter hinzu und verbinden es mit LED 1.
 
-image:../quartus_circuit_extended.png[Quartus - Erweiterter Schaltkreis]
+image:./quartus_circuit_extended.png[Quartus - Erweiterter Schaltkreis]
 
 Ich überlasse es dem Leser, herauszufinden, wie der Schaltkreis wie abgebildet entworfen werden kann. Wenn dies nicht
 gelingt (oder zu faul ist), kann die BDF-Datei hier gefunden werden (Link unten).
 
-Link:../andGate.bdf[erweiterter Schaltkreis BDF]
+Link:./andGate.bdf[erweiterter Schaltkreis BDF]
 
 Und vergessen Sie nicht, den Pin vom Ausgang des Oder-Gatters mit dem dedizierten Pin von LED 1 (PIN_A13) zu verbinden,
 wie unten dargestellt
 
-image:../quartus_pin_planner_ii.png[Quartus - Pin Planner II]
+image:./quartus_pin_planner_ii.png[Quartus - Pin Planner II]
 
 Führen Sie den Syntheseprozess aus und programmieren Sie die Platine und testen Sie sie.
 
