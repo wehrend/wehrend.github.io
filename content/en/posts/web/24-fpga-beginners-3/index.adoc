@@ -12,7 +12,7 @@ but also supports Linux out-of-the-box. There is an https://web.archive.org/web/
 To connect to the board via the UART interface, power-up the board with the wall-wart,enter the sd-card to start the linux booting, and finally connect the micro-b usb cable (like shown below) with the PC.
 
 
-image:../de10nano.jpg[DE10-nano]
+image:./de10nano.jpg[DE10-nano]
 
 Then go to the console and enter (as root)
 
@@ -50,11 +50,11 @@ $ putty
 
 enter the device /dev/ttyUSB0, like shown in the ftdi output above, enter the baud-speed of 115200 and then save the configuration.
 
-image:../putty.png[Putty]
+image:./putty.png[Putty]
 
 Press 'open' and ideally it should connect to the board. If no warning appears,press enter, and you get belows picture:
 
-image:../angstrom.png[Angstrom]
+image:./angstrom.png[Angstrom]
 
 enter root as login and enter as password.
 

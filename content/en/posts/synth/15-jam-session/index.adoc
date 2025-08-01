@@ -11,6 +11,6 @@ von rat-king, der, wie der Name schon sagt, schöne zufällige Sequenzen liefert
 haben wir ein neues Mixer-Modul, selbstgebaut.
 Wir verwenden auch beide VCOs und beide LFO-Module...
 
-image:../jam_session.jpg[Jam-Session ]
+image:./jam_session.jpg[Jam-Session ]
 
-link:../jam_session.m4a[Jam-Session Audio]
+link:./jam_session.m4a[Jam-Session Audio]
