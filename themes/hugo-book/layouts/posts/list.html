@@ -18,5 +18,7 @@
 {{ end }}
 
 {{ define "toc" }}
-  {{ partial "docs/taxonomy" . }}
+  {{ if and (.Params.toc) (ne .Kind "section") }}
+    {{ partial "docs/taxonomy" . }}
+  {{ end }}
 {{ end }}
