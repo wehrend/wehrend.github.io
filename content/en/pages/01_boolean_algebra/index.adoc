@@ -403,5 +403,3 @@ also we did not had a look yet for ESD measurements and protection circuits for 
 
 In the next post we have a look on the exclusive-or (XOR) operation.
 
-
-

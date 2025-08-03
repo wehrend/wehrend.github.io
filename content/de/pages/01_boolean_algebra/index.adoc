@@ -438,4 +438,3 @@ und Schutzschaltungen für die Ein- und Ausgänge befasst.
 
 Im nächsten Beitrag werfen wir einen Blick auf die Exklusiv-Oder-Verknüpfung (XOR).
 
-
