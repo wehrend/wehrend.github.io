@@ -59,12 +59,12 @@ publishDir = "public"
 
 [[languages.en.menu.before]]
   name = "Digital Logic 1 (Overview)"
-  url = "/pages/digital_logic_1/"
+  url = "/pages/000_digital_logic_1/"
   weight = 23
 
 [[languages.en.menu.before]]
   name = "Digital Logic 2 (Overview)"
-  url = "/pages/digital_logic_2/"
+  url = "/pages/000_digital_logic_2/"
   weight = 24
 
 [[languages.en.menu.before]]

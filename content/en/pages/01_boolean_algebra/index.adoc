@@ -3,7 +3,7 @@ title: 01_boolean_algebra
 date: 2020-12-23
 tags:
 math:
-category:
+category: "digital_logic_1"
 link:
 description:
 type: text

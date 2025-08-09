@@ -2,7 +2,7 @@
 title: 03_binary_system
 date: 2021-12-02
 tags: 
-category:
+category: "digital_logic_1"
 link:
 description:
 type: text

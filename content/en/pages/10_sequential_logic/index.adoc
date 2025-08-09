@@ -1,7 +1,7 @@
 ---
 title: 10_sequential_logic
 date: 2023-05-01
-category:
+category: "digital_logic_2"
 link:
 description:
 type: text

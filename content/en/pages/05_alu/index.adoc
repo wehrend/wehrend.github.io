@@ -1,7 +1,7 @@
 ---
 title: 05_ALU
 date: 2022-03-11
-category:
+category: "digital_logic_1"
 link: 
 description: 
 type: text
