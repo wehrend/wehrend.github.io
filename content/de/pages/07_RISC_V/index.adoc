@@ -2,7 +2,7 @@
 title: 07_RISC-V (de)
 date: 2022-03-21
 tags: ['draft']
-category:
+category: "digital_logik_1"
 link:
 description:
 type: text

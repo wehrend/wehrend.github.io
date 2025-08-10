@@ -1,7 +1,7 @@
 ---
 title: 11_Clocks_flipflops_and_registers (de)
 date: 2022-03-12
-category:
+category: "digital_logik_2"
 link:
 description:
 type: text
@@ -29,7 +29,7 @@ Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron,
 *Register-Transfer-Level*
 
 
-image:../images/how_does_cpu/rtl_scheme.svg[width=„100%“]
+image:./rtl_scheme.svg[width=200%]
 
 Die blauen Teile im Bild oben zeigen Register, in denen die Werte
 gespeichert werden. Wir werden später sehen, wie diese implementiert werden. Schauen wir uns zunächst
@@ -45,11 +45,11 @@ Ersterer ist die klassische, letzterer eine modernere Variante.
 [cols=„a,a“ width=„100%“]
 |===
 | *Quarzoszillator* | *Ringoszillator*
-|image:../images/how_does_cpu/crystal_symbol.svg[width=„80%“]
-|image:../images/how_does_cpu/inverter_chain_symbol.svg[width=„80%“]
+|image:./crystal_symbol.svg[width=50%]
+|image:./inverter_chain_symbol.svg[width=50%]
 |typischer Frequenzbereich: 1Mhz..100Mhz | typischer Frequenzbereich: 1Hz..15Mhz(diskretes Layout)
-|image:../images/how_does_cpu/pierce_gate_circuit.svg[width=„350px“]
-|image:../images/how_does_cpu/inverter_chain.svg[width=„350px“]
+|image:./pierce_gate_circuit.svg[width=50%]
+|image:./inverter_chain.svg[width=50%]
 | Frequenz wird durch Kristallgeometrie bestimmt
 | Frequenz wird durch Laufzeit und Anzahl der Gates bestimmt
 | Genauigkeit hängt hauptsächlich von der Temperatur ab; für präzise Anwendungen werden Kristallöfen verwendet
@@ -63,7 +63,7 @@ Quarzoszillatoren sind in einem Metallgehäuse mit
 zusätzlicher Verdrahtung erhältlich, wobei der Quarz das Herzstück des Schaltkreises bildet.
 Der Schaltkreis basiert in der Regel auf dem https://en.wikipedia.org/wiki/Pierce_oscillator[Pierce-Oszillator].
 
-image:../images/how_does_cpu/pierce_gate_circuit.svg[width=„400px“]
+image:./pierce_gate_circuit.svg[width=50%]
 
 Ihre Genauigkeit hängt hauptsächlich von der Temperatur ab. Für Anwendungen mit hohen Genauigkeitsanforderungen
 werden sie daher in einem Quarzofen untergebracht, der den Quarz auf einer konstanten Temperatur hält.
@@ -75,7 +75,7 @@ Eine weitere gängige Taktgeberquelle ist der Ringoszillator.
 Der Trick besteht darin, eine ungerade Anzahl von Inverter-Gates zu verketten und den Ausgang des letzten Inverters als Eingang
 für den ersten Inverter zu verwenden. Auf diese Weise entsteht ein Schwingkreis.
 
-image:../images/how_does_cpu/inverter_chain.svg[width=„400px“]
+image:./inverter_chain.svg[width=50%]
 
 Die Frequenz hängt von der Anzahl der Inverter sowie von der Laufzeit Tp ab (siehe Gleichung unten). Die Zeit, die das Signal benötigt, um
 durch das Gate zu laufen, wird als Laufzeit Tp bezeichnet.
@@ -100,8 +100,8 @@ Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert
 [cols=„a,a“ width=„100%“]
 |===
 | *RS-Flipflop-Struktur* | *RS-Flipflop-Symbol*
-|image:../images/how_does_cpu/flipflop_circuit.svg[width=„80%“]
-|image:../images/how_does_cpu/flipflop_symbol.svg[width=„80%“]
+|image:./flipflop_circuit.svg[width=50%]
+|image:./flipflop_symbol.svg[width=50%]
 |===
 
 [width=„50%“]
@@ -110,7 +110,7 @@ Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert
 | 0 | 0 | 1 | 1 | invalid
 | 0 | 1 | 1 | 0 | Reset
 | 1 | 0 | 0 | 1 | Setzen
-| 1 | 1 | Q | ΩQ | --
+| 1 | 1 | Q | Q | --
 |===
 Eine Anwendung des klassischen RS-Flipflops ist die Entprellung von Schaltern.
 
@@ -127,8 +127,8 @@ anliegende Datum ungültig.
 [cols=„a,a“ width=„100%“]
 |===
 | *D-Flipflop-Struktur* | *D-Flipflop-Symbol*
-|image:../images/how_does_cpu/dflipflop_circuit.svg[width=„80%“]
-|image:../images/how_does_cpu/dflipflop_symbol.svg[width=„80%“]
+|image:./dflipflop_circuit.svg[width=90%]
+|image:./dflipflop_symbol.svg[width=90%]
 |===
 
 [width=„50%“]
@@ -150,7 +150,7 @@ Dieser Ausgang kann als Adresse für eine ROM-Tabelle verwendet werden, wie wir 
 [cols=„a“ width=„100%“]
 |===
 | *Asynchroner Binärzähler mit D-Flipflops*
-|image:../images/how_does_cpu/dflipflop_counter.svg[width=„100%“]
+|image:./dflipflop_counter.svg[width=100%]
 |===
 
 Wenn man die Ausgänge unabhängig voneinander betrachtet, kann man sehen, dass der Zähler
@@ -167,7 +167,7 @@ Schema benannt, in einigen Architekturen mit Zahlen (z. B. MIPS und ARM), in and
 komplexeren Schema aus alphabetischen Zahlen (wie in x86-Architekturen).
 
 
-image:../images/how_does_cpu/register.svg[width=„100%“]
+image:./register.svg[width=80%]
 
 In den vorherigen Abschnitten haben wir etwas über das Flipflop gelernt.
 Dies sind die Bausteine der Register. Wie im Bild oben zu sehen ist,

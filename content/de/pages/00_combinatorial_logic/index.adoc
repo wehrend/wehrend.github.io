@@ -3,7 +3,7 @@ title: 00_combinatorial_logic (de)
 date: 2022-04-16
 tags:
 math:
-category: 
+category: "digital_logik_1"
 link: 
 description: 
 type: text

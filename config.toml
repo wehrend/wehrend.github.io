@@ -107,12 +107,12 @@ publishDir = "public"
 
 [[languages.de.menu.after]]
   name = "Digitale Logik 1 (Übersicht)"
-  url = "/de/pages/digital_logic_1/"
+  url = "/de/pages/000_digital_logic_1/"
   weight = 22
 
 [[languages.de.menu.before]]
   name = "Digitale Logik 2 (Übersicht)"
-  url = "/de/pages/digital_logic_2/"
+  url = "/de/pages/000_digital_logic_2/"
   weight = 23
 
 [[languages.de.menu.before]]

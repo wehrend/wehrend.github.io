@@ -1,7 +1,7 @@
 ---
 title: 05_ALU (de)
 date: 2022-03-11
-category:
+category: "digital_logik_1"
 link: 
 description: 
 type: text
