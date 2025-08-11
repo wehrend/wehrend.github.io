@@ -1,0 +1,16 @@
+---
+title: Agenda 
+date: 2022-04-15
+tags: 
+slug: 
+category: 
+link: 
+description: 
+type: text
+---
+
+*So, you want to learn about electronics, digital logic and how a cpu is able to do what she is doing?*
+
+*We'll get you started here*
+
+image:./cpu_structure_with_control.svg[width=80%]
