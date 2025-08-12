@@ -25,13 +25,13 @@ Last update: {{ now.Format "January 2, 2006 "  }}
 {{ $current  := . }}
 {{ $category := .Params.category }}
 
-{{/* Nur reguläre Seiten, gleiche Sprache, NICHT im Section "posts"
-     + optional: alles aus Pfad /posts/ ausschließen */}}
+{{/* Nur reguläre Seiten, gleiche Sprache, NICHT in posts oder about */}}
 {{ $all := where .Site.RegularPages "Kind" "page" }}
 {{ $all = where $all "Lang" .Lang }}
-{{ $all = where $all "Section" "!=" "posts" }}
-{{/* Optional extra-Schutz, falls Section nicht sauber gesetzt ist: */}}
-{{ $all = where $all ".File.Dir" "not in" (slice "posts/" "posts\\") }}
+{{ $all = where $all "Section" "not in" (slice "posts" "about") }}
+
+{{/* Optional zusätzlicher Schutz: falls About-Seite nicht in Section "about" liegt */}}
+{{ $all = where $all ".File.Path" "not in" (slice "content/about.md" "content/about/index.adoc") }}
 
 {{/* Nur gleiche Kategorie wie aktuelle Seite */}}
 {{ $pages := where $all "Params.category" $category }}
