@@ -5,200 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a1682a-648f-4caa-9333-9963bbe0d71e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/content/de/posts/synth/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/de/posts/web/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/de/posts/web/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/de/posts/web/_index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/categories/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/categories/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/categories/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/docs/digital_logic_x/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/docs/digital_logic_x/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/docs/digital_logic_x/x0_multiplication/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/docs/digital_logic_x/x0_multiplication/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/docs/digital_logic_x/x2_cordic/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/docs/digital_logic_x/x2_cordic/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/drafts/alu2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/drafts/alu2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/drafts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/drafts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/pages/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/pages/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/pages/prequel-short-introduction-to-electronics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/pages/prequel-short-introduction-to-electronics/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/pages/short-introduction-to-electronics-102/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/pages/short-introduction-to-electronics-102/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/05_pocket_operator_modular_400/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/05_pocket_operator_modular_400/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/06_pocket_operator_modular_400/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/06_pocket_operator_modular_400/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/09_eurorack_modular/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/09_eurorack_modular/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/11_more_patch_ideas/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/11_more_patch_ideas/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/13_another_simple_patch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/13_another_simple_patch/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/14_another_small_patch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/14_another_small_patch/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/15_jam_session/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/15_jam_session/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/16_noise_floor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/16_noise_floor/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/synth/25_build_your_own_modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/synth/25_build_your_own_modules/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/00_setting_up_nikola/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/00_setting_up_nikola/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/01_writing-about-math-with-asciidoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/01_writing-about-math-with-asciidoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/02_moving-to-hugo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/02_moving-to-hugo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/03_separate_form_and_content/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/03_separate_form_and_content/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/04_odoo_hacks/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/04_odoo_hacks/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/07_serial_interfaces/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/07_serial_interfaces/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/08_religion_spirituality/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/08_religion_spirituality/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/10_wishlist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/10_wishlist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/12_caches_and_caching/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/12_caches_and_caching/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/17_analog_computers_101/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/17_analog_computers_101/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/18_op-amps_introduction/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/18_op-amps_introduction/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/19_rare_earth_elements/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/19_rare_earth_elements/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/20_reducing_rare_earth_elements/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/20_reducing_rare_earth_elements/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/21_fpga_beginners_0/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/21_fpga_beginners_0/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/22_fpga_beginners_1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/22_fpga_beginners_1/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/23_fpga_beginners_start_with_verilog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/23_fpga_beginners_start_with_verilog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/24_fpga_beginners_de10_board/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/24_fpga_beginners_de10_board/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/27_compiling_kicad_on_debian_bullseye/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/27_compiling_kicad_on_debian_bullseye/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/30_hugo_move_to_gh_pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/30_hugo_move_to_gh_pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/ltb162/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/ltb162/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/posts/web/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/posts/web/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/sitemap.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/sitemap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/sitemap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/sitemap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/analog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/analog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/audio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/audio/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/beginners/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/beginners/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/blog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/chemistry/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/chemistry/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/computing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/computing/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/consciousness/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/consciousness/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/debian/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/debian/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/diy/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/diy/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/draft/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/draft/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/draft/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/draft/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/duckburg/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/duckburg/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/electronic/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/electronic/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/electronics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/electronics/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/fpga/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/fpga/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/gh-actions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/gh-actions/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/gh-pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/gh-pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/hugo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/hugo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/icecube2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/icecube2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/knowhow/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/knowhow/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/lattice/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/lattice/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/ltb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/ltb/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/modelsim/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/modelsim/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/nandland-go/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/nandland-go/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/nikola/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/nikola/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/odoo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/odoo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/quartus/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/quartus/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/synth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/synth/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/verilog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/verilog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/de/tags/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/de/tags/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/downloads/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/downloads/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/drafts/alu2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/drafts/alu2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/drafts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/drafts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/en/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/en/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/electronics-103/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/electronics-103/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/prequel-short-introduction-to-electronics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/prequel-short-introduction-to-electronics/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/short-introduction-to-electronics-102/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/short-introduction-to-electronics-102/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/pages/storytelling/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/storytelling/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/05-pocket-operator-modular-400/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/05-pocket-operator-modular-400/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/06-pocket-operator-modular-400/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/06-pocket-operator-modular-400/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/09-eurorack-modular/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/09-eurorack-modular/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/11-more-patch-ideas/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/11-more-patch-ideas/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/13-another-simple-patch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/13-another-simple-patch/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/14-another-small-patch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/14-another-small-patch/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/15-jam-session/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/15-jam-session/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/16-noise-floor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/16-noise-floor/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/25-build-your-own-modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/25-build-your-own-modules/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/31-simulate-with-ltspice/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/31-simulate-with-ltspice/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/32-simulate-simple-lfo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/32-simulate-simple-lfo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/33-simulate-nlc-sloth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/33-simulate-nlc-sloth/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/synth/34-simple-advanced-lfo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/synth/34-simple-advanced-lfo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/00-setting-up-nikola/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/00-setting-up-nikola/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/01-writing-about-math/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/01-writing-about-math/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/02-moving-to-hugo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/02-moving-to-hugo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/03-separate-form-and-content/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/03-separate-form-and-content/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/04-odoo-hacks/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/04-odoo-hacks/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/07-serial-interfaces/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/07-serial-interfaces/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/08-religion-spirituality/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/08-religion-spirituality/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/10-wishlist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/10-wishlist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/12-caches-and-caching/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/12-caches-and-caching/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/17-analog-computers-101/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/17-analog-computers-101/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/18-op-amps-introduction/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/18-op-amps-introduction/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/19-rare-earth-elements/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/19-rare-earth-elements/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/20-reducing-rare-earth-elements/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/20-reducing-rare-earth-elements/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/21-fpga-beginners-0/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/21-fpga-beginners-0/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/22-fpga-beginners-1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/22-fpga-beginners-1/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/23-fpga-beginners-2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/23-fpga-beginners-2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/24-fpga-beginners-3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/24-fpga-beginners-3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/25-ltb162/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/25-ltb162/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/26-get-the-nandlab-go-board-ready/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/26-get-the-nandlab-go-board-ready/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/27-compiling-kicad-on-debian/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/27-compiling-kicad-on-debian/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/28-setup-your-python-based-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/28-setup-your-python-based-project/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/29-odoo-with-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/29-odoo-with-frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/30-hugo-move-to-gh-pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/30-hugo-move-to-gh-pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/posts/web/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/web/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sitemap.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sitemap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/analog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/analog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/audio/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/audio/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/beginners/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/beginners/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/blog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/chemistry/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/chemistry/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/computing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/computing/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/consciousness/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/consciousness/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/debian/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/debian/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/diy/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/diy/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/draft/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/draft/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/draft/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/draft/index.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/duckburg/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/duckburg/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/ecad/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/ecad/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/eda/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/eda/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/electronic/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/electronic/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/electronics/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/electronics/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/fpga/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/fpga/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/gh-actions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/gh-actions/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/gh-pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/gh-pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/hugo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/hugo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/icecube2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/icecube2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/kicad/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/kicad/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/knowhow/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/knowhow/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/lattice/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/lattice/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/ltb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/ltb/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/ltspice/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/ltspice/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/modelsim/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/modelsim/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/nandland-go/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/nandland-go/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/nikola/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/nikola/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/nlc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/nlc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/odoo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/odoo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/page/4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/postgres/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/postgres/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/python/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/python/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/quartus/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/quartus/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/sloth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/sloth/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/spice/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/spice/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/synth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/synth/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/verilog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/verilog/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/hugo-book/layouts/posts/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/hugo-book/layouts/posts/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_gen/assets/book.scss_b807c86e8030af4cdc30edccea379f5f.content" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_gen/assets/book.scss_b807c86e8030af4cdc30edccea379f5f.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +25,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/hugo-book" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo">{
@@ -235,7 +45,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/home/sven/development/hugo/content/de/posts/web",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "configurable.group.project"
@@ -250,11 +60,11 @@
       <recent name="$PROJECT_DIR$/content/en" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/de/pages/000_digital_logic_2" />
+      <recent name="$PROJECT_DIR$/content/de/pages/000_digital_logic_1" />
+      <recent name="$PROJECT_DIR$/content/en/pages/000_digital_logic_1" />
       <recent name="$PROJECT_DIR$/content/en/pages" />
       <recent name="$PROJECT_DIR$/content/de/pages" />
-      <recent name="$PROJECT_DIR$/content/de/pages/digital_logic_2/docs" />
-      <recent name="$PROJECT_DIR$/content/de/pages/digital_logic_2" />
-      <recent name="$PROJECT_DIR$/content/de/pages/digital_logic_1/docs" />
     </key>
   </component>
   <component name="RunManager">
@@ -273,7 +83,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
+        <option value="bundled-python-sdk-03e874896e21-d902c0275401-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.23892.439" />
       </set>
     </attachedChunks>
   </component>
