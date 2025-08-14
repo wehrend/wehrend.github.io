@@ -1,0 +1,33 @@
+<svg width="60px" 
+     height="60px" 
+     viewBox="0.0 0.0 60.00 60.00" 
+     viewPort = "0 0 60 60" 
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,3 L4.5,2 z" fill="black" />
+        </marker>
+        <marker id="arrowblue" markerWidth="10" markerHeight="10" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,3 L4.5,2 z" fill="blue" />
+        </marker>
+    </defs>
+    <!--     data path -->
+    <rect x="10" y="10" width="40" height="40" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="20" y="30" font-size="3" font-weight="bold">Register file</text>
+    <text x="12" y="15" font-size="3">Read reg 1</text>
+    <text x="12" y="20" font-size="3">Read reg 2</text>
+    <polyline points="2,14 8,14" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="2,19 8,19" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="12" y="40" font-size="3">Write register</text>
+    <text x="12" y="45" font-size="3">Write data</text>
+    <polyline points="2,39 8,39" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="2,44 8,44" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="24" y="48" font-size="3" style="fill:blue">Write</text>
+    <polyline points="28,60 28,52" style="fill:none;stroke:blue;stroke-width:0.5px;" marker-end="url(#arrowblue)"/>
+    <text x="35" y="21" font-size="3">Read port 1</text>
+    <text x="35" y="41" font-size="3">Read port 2</text>
+    <polyline points="50,20 55,20" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="50,40 55,40" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+   
+</svg>
+

@@ -4,7 +4,6 @@ title = "Bits & pieces - Sven Wehrend"
 theme = "hugo-book"
 publishDir = "public"
 
-
 # englisch
 [languages.en]
   languageName = "English"
