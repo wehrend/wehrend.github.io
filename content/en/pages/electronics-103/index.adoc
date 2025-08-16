@@ -133,7 +133,14 @@ What Happens at the Junction?
 Electrons from the N-side move to the P-side (because electrons want to fill the holes).
 Holes from the P-side move to the N-side.
 
-image:./pn-junction.svg[width="350px"]
+
+[cols="2"]
+|===
+a| image:./pn-junction.svg[width="350px"]
+a| image:./diode_behaviour.png[width="350px"]
+|===
+
+
 
 (2.) Depletion Region Forms:
 When electrons and holes meet, they cancel each other out.
@@ -153,7 +160,8 @@ Pulls electrons and holes away from the junction.
 Depletion region gets wider.
 Very little current flows.
 
-== Poor Mans Logic: Wired-And and Wired-Or
+Here we want to take a deep dive to
+
 //To be continued: Next topics are diodes and transistors.
 //
 // == The diode
