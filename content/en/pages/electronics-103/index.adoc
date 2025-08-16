@@ -10,7 +10,7 @@ type: text
 outdir: ~/development/blog
 draft: true
 ---
-{{< katex />}}
+
 == Electronics 103 - nonlinear components
 
 From the first view on electronics, we now want to deepen the understanding components like diodes and -more important -
@@ -160,19 +160,17 @@ Pulls electrons and holes away from the junction.
 Depletion region gets wider.
 Very little current flows.
 
-Here we want to take a deep dive to
+Here we want to take a deep dive into the workings of semiconductors:
+link:/pages/01_boolean_algebra/#_implementation_on_electrical_level[the workings of semiconductors:]
 
-//To be continued: Next topics are diodes and transistors.
-//
-// == The diode
-//
-// // svg of a diode n and p dotation
-//
-// // the diode as lock,
-// // the diode as rectifier
-//
-// //rectifier with op-amp
-//
+
+== Applications of diodes
+
+=== The diode as one-way street
+
+=== The diode as rectifier
+
+
 // == From the diode to the transistor
 //
 // // from the diode to the transistor
