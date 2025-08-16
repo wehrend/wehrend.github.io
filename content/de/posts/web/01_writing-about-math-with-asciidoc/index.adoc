@@ -7,7 +7,7 @@ link:
 description: 
 type: blog
 ---
-
+{{< katex />}}
 
 Beim Verfassen eines Blog-Beitrags, der Teil einer Reihe von Beiträgen ist, die in Zukunft veröffentlicht werden sollen,
 stellte ich fest, dass mir in Nikola einige Tools fehlten. Beim Hinzufügen mathematischer Formeln

@@ -10,7 +10,7 @@ type: text
 outdir: ~/development/blog
 draft: true
 ---
-
+{{< katex />}}
 == Electronics 103 - nonlinear components
 
 From the first view on electronics, we now want to deepen the understanding components like diodes and -more important -

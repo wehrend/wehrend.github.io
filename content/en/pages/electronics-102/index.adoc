@@ -9,7 +9,7 @@ description:
 type: text
 outdir: ~/development/blog
 ---
-
+{{< katex />}}
 = Electronics 102
 
 == Time-sensitive components

@@ -12,7 +12,7 @@ menu:
     parent: "digital_logic"
     weight: 1
 --- 
-
+{{< katex />}}
 This course about digital logic is splitted into two big chunks:
 
 1. Combinatorial circuits (without memory elements)

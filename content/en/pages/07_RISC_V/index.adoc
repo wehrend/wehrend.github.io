@@ -11,7 +11,7 @@ menu:
     parent: "digital_logic"
     weight: 35
 ---
-
+{{< katex />}}
 == Digital design meets computer architecture
 
 = RISC vs CISC and The RISC-V architecture 

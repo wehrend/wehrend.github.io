@@ -11,7 +11,7 @@ menu:
     parent: "digital_logic"
     weight: 15
 ---
-
+{{< katex />}}
 == Das Binärsystem
 
 Alle Computer, mit denen wir täglich arbeiten, wissen nichts von dem Dezimalsystem, das wir verwenden, basierend auf den zehn Ziffern, die uns zur Verfügung stehen.

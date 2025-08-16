@@ -9,6 +9,7 @@ description:
 type: text
 outdir: ~/development/blog
 ---
+{{< katex />}}
 = Prequel Introduction to electronics 
 
 '''

@@ -10,7 +10,7 @@ menu:
     parent: "digital_logic"
     weight: 25
 ---
-
+{{< katex />}}
 == The ALU, the swiss knife of every cpu
 
 Today the author wants to introduce an important part of every cpu:

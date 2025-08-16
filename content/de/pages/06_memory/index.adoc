@@ -10,7 +10,7 @@ menu:
     parent: "digital_logic"
     weight: 30
 ---
-
+{{< katex />}}
 == Speicherorganisation
 In diesem Blogbeitrag stellt der Autor die verschiedenen
 Arten von Halbleiterspeichern vor. Dies ist ein weites Feld,

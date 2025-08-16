@@ -10,7 +10,7 @@ menu:
     parent: "digital_logic"
     weight: 20
 ---
-
+{{< katex />}}
 == Extending the binary system
 
 While in the previous blog post about addition,

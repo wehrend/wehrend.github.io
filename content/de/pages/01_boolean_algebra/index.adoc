@@ -13,7 +13,7 @@ menu:
     identifier: "01_boolean_algebra"
     weight: 5
 ---
-
+{{< katex />}}
 (translation 2024-12-29)
 
 == Boolesche Algebra und logische Grundgatter

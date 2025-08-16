@@ -10,7 +10,7 @@ menu:
     parent: "digital_logic"
     weight: 25
 ---
-
+{{< katex />}}
 == Die ALU, das Schweizer Taschenmesser jeder CPU
 
 Heute möchte der Autor einen wichtigen Teil jeder CPU vorstellen:

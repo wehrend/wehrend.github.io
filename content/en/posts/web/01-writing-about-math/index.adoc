@@ -7,7 +7,7 @@ link:
 description: 
 type: blog
 ---
-
+{{< katex />}}
 While drafting a blog post, part of a series of posts intended to be published in the future,
 I discovered a lack of my tooling in Nikola. When adding mathematical formulas, 
 I realized that there is no default-way of rendering images from those math formulas,

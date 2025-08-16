@@ -10,7 +10,7 @@ menu:
     parent: "digital_logic_2"
     weight: 10
 ---
-
+{{< katex />}}
 == Clocks, Flipflops and registers
 In this blog post the author will introduce multiple elements needed at a later 
 stage.

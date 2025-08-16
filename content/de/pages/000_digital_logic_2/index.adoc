@@ -6,7 +6,7 @@ category: "digital_logik_2"
 link:
 description:
 ---
-
+{{< katex />}}
 == Wie funktioniert eine CPU 2 - Inhaltsverzeichnis
 
 == *Von kombinatorischer zu sequentieller Logik - Einführung*
@@ -44,7 +44,7 @@ Wir stellen das Konzept der programmierbaren Logik sowohl für kombinatorische a
 
 == *Gründlich testen*
 
-_link:/dev/pages/15_testable_logic/[Testable Logic]_
+_link:/de/pages/15_testable_logic/[Testable Logic]_
 
 Jede eingebettete Schaltung oder Logik benötigt eine Infrastruktur zum Testen. Hier stellen wir
 JTAG- und Boundary-Scan-Tests vor.

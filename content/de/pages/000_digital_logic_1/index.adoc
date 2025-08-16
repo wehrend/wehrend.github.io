@@ -6,6 +6,7 @@ category: "digital_logik_1"
 link:
 description:
 ---
+{{< katex />}}
 == Wie funktioniert eine CPU - Inhaltsverzeichnis
 
 == *Einführung und Überblick*

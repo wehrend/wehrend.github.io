@@ -7,7 +7,7 @@ type: 'docs'
 link:
 description:
 ---
-
+{{< katex />}}
 == How does a CPU work 2 - Table of contents
 
 

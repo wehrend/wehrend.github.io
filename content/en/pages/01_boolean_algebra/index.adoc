@@ -13,6 +13,7 @@ menu:
     identifier: "01_boolean_algebra"
     weight: 5
 ---
+{{< katex />}}
 
 == Boolean Algebra and Basic Logic Gates
 
