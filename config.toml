@@ -147,6 +147,7 @@ publishDir = "public"
   BookToC = true
 
   BookSection = "pages"
+  BookMenuBundle = "/pages/menu"
 
 
 [markup]

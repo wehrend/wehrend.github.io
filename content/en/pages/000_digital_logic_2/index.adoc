@@ -3,6 +3,7 @@ title: How does a CPU work 2? Overview
 date: 2023-05-14
 tags: ['draft']
 category: "digital_logic_2"
+type: 'docs'
 link:
 description:
 ---

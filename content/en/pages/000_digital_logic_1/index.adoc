@@ -2,6 +2,7 @@
 title: How does a CPU work? Overview
 date: 2020-12-20
 tags: ['draft']
+type: 'docs'
 category: "digital_logic_1"
 link:
 description:
