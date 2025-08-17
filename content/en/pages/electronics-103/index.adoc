@@ -10,6 +10,7 @@ type: text
 outdir: ~/development/blog
 draft: true
 ---
+{{< katex />}}
 
 == Electronics 103 - nonlinear components
 
@@ -17,49 +18,7 @@ From the first view on electronics, we now want to deepen the understanding comp
 Transistors and CMOS technology. We want to show that a transistor is both analog and also digital depending only on which
 level - or layer of abstraction you want to look at...
 
-== The (simple) LED circuit
-
-First we want to show one of the simplest possible circuits, some that lighten your day (or night, pun intdnded).
-
-[cols="2"]
-|===
-a| image:./simple_led_circuit.svg[width="400px"] Diodes in schematic circuit
-a| image:./simple_led_circuit.png[Diodes as LED circuit in LTspice]
-|===
-
-A light emitting diode (LED) does not go without its pre-resistor which is there to limit the currents that goes thru the LED.
-You can take a resistor from 1kOhm to 10kOhm,the precise vale is in most csases uncritical...
-But for you to verify the equation is as follows:
-
-[image src="./pre-resistor.svg" format="svg" alt="pre-resistor"]
-\large \[ R_{V} = \frac{U_{\text{Total}} - U_{R}}{I} \]
-
-With that equation we can calculate the value for the resistor - after calculation we just use the next-higher available resistor
-in the E24 series.
-For the purposes I describe here, 1/4 Watt resistor are sufficient, even 1/8 Watt resistors are
-
-
-
-Now, we want to see happens when we switch the poles, then the diode is working in reverse polarity and so not lighting up...
-
-image:./simple_led_circuit_reversed.svg[width="350px"]
-
-
-LEDs came in a big variety of diffenrent sizes, shapes and colors, for example size differs in different smd sizes e.g.
-0805 as well as in different shapes (see https://makezine.com/article/craft/what-shape-of-led-should-i-use-for-my-project/[here]).
-But first and foremost color is crucial. The different dotation make up for different colors.
-
-image:./simple_led_comparison.png[Diodes as LED circuit]
-
-image:./led_colors.png[Diodes as LED circuit]
-
-https://www.electricaltechnology.org/2022/06/led-light-emitting-diode.html[see here]
-
-// LEDs like all the other ordinary diodes do only work in one direction, and block in counter directory,
-// we get to this behaviour in the next chapter...
-
-
-== semiconductor materials
+== Semiconductor materials
 
 [cols="3"]
 |===
@@ -67,8 +26,6 @@ a| image:./atomic_model_C.svg[width="350px"]
 a| image:./atomic_model_Si.svg[width="350px"]
 a| image:./atomic_model_Ge.svg[width="350px"]
 |===
-
-
 
 Let us start our tour over semiconductor devices with a small repetition of this topic from
 https://wehrend.github.io/pages/prequel-short-introduction-to-electronics[electronics 101]
@@ -166,9 +123,86 @@ link:/pages/01_boolean_algebra/#_implementation_on_electrical_level[the workings
 
 == Applications of diodes
 
-=== The diode as one-way street
-
 === The diode as rectifier
+
+==== The half wave rectifier
+
+The simplest possible - but highly inefficient rectifier is the half wave rectifier we introduce here.
+It is a simple diode put in the forward direction...
+image:./half_wave_rectifier.png[half wave rectifier]
+
+As diode we introducing here the 1N4148 which is a popular signal diode but untypical as a rectifer
+diode...
+As we can see only pne half of the sine wave is used...
+
+link:./half_wave_rectifier.asc[LTspice file]
+
+Below, there is the same circuit but with a capacitor to eliminate the ripples...
+image:./half_wave_rectifier_with_C.png[half wave rectifier with C]
+
+link:./half_wave_rectifier_with_C.asc[LTspice file]
+
+==== The full wave rectifier
+
+image:./full_wave_rectifier.png[full wave rectifier]
+
+link:./full_wave_rectifier.asc[LTspice file]
+
+image:./full_wave_rectifier_with_C.png[full wave rectifier with C]
+
+link:./full_wave_rectifier_with_C.asc[LTspice file]
+
+
+== The (simple) LED circuit
+
+First we want to show one of the simplest possible circuits, some that lighten your day (or night, pun intended).
+
+[cols="2"]
+|===
+a| image:./simple_led_circuit.svg[width="400px"] Diodes in schematic circuit
+a| image:./simple_led_circuit.png[Diodes as LED circuit in LTspice]
+|===
+
+A light emitting diode (LED) does not go without its pre-resistor which is there to limit the currents that goes thru the LED.
+You can take a resistor from 1kOhm to 10kOhm,the precise vale is in most csases uncritical...
+But for you to verify the equation is as follows:
+
+[image src="./pre-resistor.svg" format="svg" alt="pre-resistor"]
+\large \[ R_{V} = \frac{U_{\text{Total}} - U_{R}}{I} \]
+
+With that equation we can calculate the value for the resistor - after calculation we just use the next-higher available resistor
+in the E24 series.
+For the purposes I describe here, 1/4 Watt resistor are sufficient, even 1/8 Watt resistors are
+
+
+
+Now, we want to see happens when we switch the poles, then the diode is working in reverse polarity and so not lighting up...
+
+image:./simple_led_circuit_reversed.svg[width="350px"]
+
+
+LEDs came in a big variety of diffenrent sizes, shapes and colors, for example size differs in different smd sizes e.g.
+0805 as well as in different shapes (see https://makezine.com/article/craft/what-shape-of-led-should-i-use-for-my-project/[here]).
+But first and foremost color is crucial. The different dotation make up for different colors.
+
+image:./simple_led_comparison.png[Diodes as LED circuit]
+
+image:./led_colors.png[Diodes as LED circuit]
+
+https://www.electricaltechnology.org/2022/06/led-light-emitting-diode.html[see here]
+
+// LEDs like all the other ordinary diodes do only work in one direction, and block in counter directory,
+// we get to this behaviour in the next chapter...
+
+
+
+// == Applications of bipolar transistors
+//
+// === Applications as switch
+//
+// === Applications as Amplifier
+//
+// === MOSFET transistors
 
 
 // == From the diode to the transistor
