@@ -52,7 +52,7 @@ a| image:./covalent_bonding_Ge.svg[width="350px"]
 == negative doping (or pentavalent elements)
 Pentavalent elements (for example Bor)
 
-[cols="3"]
+[cols="2"]
 |===
 a| Examples of pentavalent elements: +
     - Stickstoff (N) +
@@ -61,14 +61,13 @@ a| Examples of pentavalent elements: +
     - Antimon (Sb) +
     - Bismut (Bi) +
 a| image:./covalent_bonding_As.svg[width="350px"]
-a|
 |===
 
 == positive doping
 
 Trivalent elements (for example Arsen)
 
-[cols="3"]
+[cols="2"]
 |===
 a| Examples of tetravalent elements: +
     - #Bor (B)# +
@@ -77,7 +76,6 @@ a| Examples of tetravalent elements: +
     - Indium (In) +
     - Thallium (Tl) +
 a| image:./covalent_bonding_B.svg[width="350px"]
-a|
 |===
 
 When we put both of the elements mentioned above together, (1.)
@@ -132,8 +130,7 @@ It is a simple diode put in the forward direction...
 image:./half_wave_rectifier.png[half wave rectifier]
 
 As diode we introducing here the 1N4148 which is a popular signal diode but untypical as a rectifer
-diode...
-As we can see only pne half of the sine wave is used...
+diode -  As we can see only one half of the sine wave is used...
 
 link:./half_wave_rectifier.asc[LTspice file]
 
@@ -143,6 +140,8 @@ image:./half_wave_rectifier_with_C.png[half wave rectifier with C]
 link:./half_wave_rectifier_with_C.asc[LTspice file]
 
 ==== The full wave rectifier
+
+To make the rectifer more efficient we also utilize the negative part of the sine wave to create our DC Voltage
 
 image:./full_wave_rectifier.png[full wave rectifier]
 
@@ -174,16 +173,19 @@ With that equation we can calculate the value for the resistor - after calculati
 in the E24 series.
 For the purposes I describe here, 1/4 Watt resistor are sufficient, even 1/8 Watt resistors are
 
-
-
 Now, we want to see happens when we switch the poles, then the diode is working in reverse polarity and so not lighting up...
 
 image:./simple_led_circuit_reversed.svg[width="350px"]
 
-
-LEDs came in a big variety of diffenrent sizes, shapes and colors, for example size differs in different smd sizes e.g.
+LEDs came in a big variety of different sizes, shapes and colors, for example size differs in different smd sizes e.g.
 0805 as well as in different shapes (see https://makezine.com/article/craft/what-shape-of-led-should-i-use-for-my-project/[here]).
 But first and foremost color is crucial. The different dotation make up for different colors.
+
+[cols="2"]
+|===
+a| image:./led_querschnitt.svg[width="350px"]
+a| image:./led_die.svg[width="350px"]
+|===
 
 image:./simple_led_comparison.png[Diodes as LED circuit]
 
