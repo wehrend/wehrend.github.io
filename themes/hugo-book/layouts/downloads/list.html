@@ -1,0 +1,19 @@
+{{ define "main" }}
+<h1>Download Archive</h1>
+
+<ul>
+  {{ $files := readDir "static" }}
+  {{ range $files }}
+    {{ $file := . }}
+    {{ $name := $file.Name }}
+    {{ $ext := lower (path.Ext $name) }}
+
+    {{ if and (not $file.IsDir) (not (in $ext ".html,.htm")) }}
+      <li>
+        <a href="/{{ $name }}" download>{{ $name }}</a>
+        ({{ printf "%.1f" (div $file.Size 1048576.0) }} MB)
+      </li>
+    {{ end }}
+  {{ end }}
+</ul>
+{{ end }}
