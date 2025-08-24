@@ -106,7 +106,7 @@ publishDir = "public"
 
 [[languages.de.menu.before]]
   name = "Über"
-  url = "/about/"
+  url = "/de/about/"
   weight = 10
 
 [[languages.de.menu.before]]
