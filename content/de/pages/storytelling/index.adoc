@@ -1,0 +1,30 @@
+---
+title: "Storytelling and the order of things"
+slug: storytelling
+date: 2025-07-12
+tags:
+category:
+link:
+description:
+type: text
+outdir: ~/development/blog
+---
+
+== Storytelling und die Reihenfolge der Dinge
+
+Hallo Leser,
+
+heute möchte ich mit Ihnen über die (richtige) Reihenfolge der Dinge und ihre Bedeutung sprechen.
+Als ich meine ersten Blog-Artikel über Elektronik verfasste, stieß ich mehrfach auf dasselbe Hindernis, nämlich die Reihenfolge der Dinge.
+
+Wenn ich versuche, Menschen etwas über eines meiner Lieblingsthemen beizubringen, denke ich fast genauso lange über
+den pädagogischen Zweck für den Leser nach.
+Das ist mir vor Jahren passiert, als ich diesen Blog gestartet habe, und seitdem passiert es mir regelmäßig.
+Für die bestehenden Blog-Beiträge habe ich daher die folgende Reihenfolge festgelegt (beginnend mit linearen Komponenten): (1) Widerstände,
+dann (2) Kondensatoren und ihre Gegenstücke, die Spulen, und als letzte Gruppe (3) alle nichtlinearen Komponenten.
+Zu guter Letzt wollen wir integrierte Schaltkreise (IC) besprechen, die aus allen zuvor genannten Komponenten bestehen – mit Ausnahme der
+Spulen, die sich nur schwer aus Silizium herstellen lassen.
+Für die nichtlinearen Komponenten werde ich ebenfalls versuchen, eine lehrreiche Reihenfolge zu finden, also beginnen wir hier mit der Diode,
+dann kommen LEDs und dann  (MOSFET-)Transistoren...
+
+Übersetzt mit DeepL.com (kostenlose Version)

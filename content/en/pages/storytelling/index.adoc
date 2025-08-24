@@ -24,6 +24,6 @@ So, for the existing blog posts, I came up with the following order (starting wi
 then (2) capacitors and its counterpart coils, then - as last group, (3) - all the nonlinear components.
 Last but not least we want to discuss integrated circuits (IC) which are made of all components before - with exception to the
 coils which are hardly to made up in silicon.
-For the nonlinear components I will also try to get an educational purposeful order, so we want start here with the LED,
-then get to normal diodes then  to (MOSFET) transistors...
+For the nonlinear components I will also try to get an educational purposeful order, so we want start here with the diode,
+then get to LEDs then  to (MOSFET) transistors...
 
