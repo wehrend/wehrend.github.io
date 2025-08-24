@@ -18,13 +18,13 @@ the binary numbers had only one interpretation,
 we extend the system here to include negative (integer)
 numbers.
 
-image:./images/how_does_cpu/binary_system.svg[width="50%"]
+image:./binary_system.svg[width="50%"]
 
 The simplest approach we can think of is to use the most significant bit (MSB)
 as sign bit, where '0' ist intepreted as sign '+' and '1' is interpreted as '-'.
-However as we see in the following calculation this does not work as expected:
+However, as we see in the following calculation this does not work as expected:
 
-image:./images/how_does_cpu/addition_extended.svg[width="50%"]
+image:./addition_extended.svg[width="50%"]
 
 === One complement
 
