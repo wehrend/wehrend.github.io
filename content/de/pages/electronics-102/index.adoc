@@ -80,12 +80,12 @@ da sie komplementäre Eigenschaften haben.
 
 [width=„100%“ cols=„a,a“]
 |=====
-| Leiter | Spule
-| image:../images/electronic_basics/capacitor.svg[width=„300px“]
-| image:../images/electronic_basics/coil.svg[width=„300px“]
+| Kondensator | Spule
+| image:./capacitor.svg[width=„300px“]
+| image:./coil.svg[width=„300px“]
 | Schaltsymbol eines Kondensators | Schaltsymbol einer Spule
-| Bild:../images/electronic_basics/capacitor.jpg[width=„300px“]
-| Bild:../images/electronic_basics/coil.jpg[width=„300px“]
+| Bild:./capacitor.jpg[width=„300px“]
+| Bild:./coil.jpg[width=„300px“]
 | speichert Energie in einem elektrischen Feld | speichert Energie in einem magnetischen Feld
 | führt in Phase | verzögert in Phase
 | blockiert im Gleichstrombetrieb | im Gleichstrombetrieb wächst der Strom, während die Spannung mit der gleichen Geschwindigkeit abgenommen wird
@@ -110,7 +110,7 @@ Dies wird anhand der folgenden Beispiele deutlicher.
 === Tiefpassfilter
 Tiefpass 1. Ordnung
 
-image:../images/electronic_basics/lowpass.svg[width=„400px“]
+image:./lowpass.svg[width=„800px“]
 
 Frequenzgang
 
@@ -124,7 +124,7 @@ Grenzfrequenz (mit Beispielwerten von R=1kOhm, C= 1µF)
 
 
 
-image:../images/electronic_basics/lowpass_bode_diagram.svg[width=„1250px“]
+image:./lowpass_bode_diagram.svg[width=„1250px“]
 
 Um das Bode-Diagramm für den oben gezeigten Tiefpass zu erzeugen, brauchen wir eine Hilfe,
 Dazu installieren Sie bitte matplotlib mit dem folgenden Befehl:
@@ -189,7 +189,7 @@ plt.show()
 === Hochpass-Filter
 Hochpass-Filter erster Ordnung
 
-image:../images/electronic_basics/highpass.svg[width="400px"]
+image:./highpass.svg[width="400px"]
 
 Frequenzantwort
 
@@ -207,7 +207,7 @@ Cutoff Frequenz (mit Beispiel Werten R=1kOhm, C= 1µF)
 
 
 
-image:../images/electronic_basics/highpass_bode_diagram.svg[width="1250px"]
+image:./highpass_bode_diagram.svg[width="1250px"]
 
 Und hier wieder ein Python Skript, diesmal für den Hochpass:
 
