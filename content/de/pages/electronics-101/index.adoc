@@ -52,13 +52,13 @@ die einen guten Kontakt verhindert. Auf solche Effekte können wir später einge
 [width="100%" cols="a,a"]
 |=====
 2+>| conductor
-| image:../images/electronic_basics/atomic_model_Al.svg[width="300px"]
-| image:../images/electronic_basics/atomic_model_Cu.svg[width="300px"]
+| image:./atomic_model_Al.svg[width="300px"]
+| image:./atomic_model_Cu.svg[width="300px"]
 | atomic model of aluminium (13) | atomic model of copper (28)
 | valence shell / free electron(s): 3 (3) | valence shell / free electron(s): 1 (1)
 |=====
 
-image:../images/electronic_basics/simple_circuit.svg[width="400px"]
+image:./simple_circuit.svg[width="400px"]
 
 
 [role="image", "../images/electronic_basics/elemental_charge.svg", imgfmt="svg"]
@@ -71,7 +71,7 @@ image:../images/electronic_basics/simple_circuit.svg[width="400px"]
 === ...und nicht so leitfähig
 
 Die zweite Gruppe von Elementen, die wir hier vorstellen wollen, sind Elemente, deren
-Leitfähigkeit (stark) von ihrem Reinheitsgrad und von Umgebungs
+Leitfähigkeit (stark) von ihrem Reinheitsgrad und von Umgebungs-
 Faktoren wie Temperatur abhängt. Die Vertreter dieser Gruppe werden als Halbleiter bezeichnet.
 Kohlenstoff und Silizium sind Beispiele, die im Periodensystem auftauchen.
 Der Autor hat diese beiden Elemente ausgewählt, da sie sehr interessante Eigenschaften haben
@@ -81,8 +81,8 @@ Elektronen auf der äußeren Schale.
 [width="100%" cols="a,a"]
 |=====
 2+>| semiconductor 
-| image:../images/electronic_basics/atomic_model_C.svg[width="300px"]
-| image:../images/electronic_basics/atomic_model_Si.svg[width="300px"]
+| image:./atomic_model_C.svg[width="300px"]
+| image:./atomic_model_Si.svg[width="300px"]
 | atomic model of carbon (6) | atomic model of silicon (14)
 | valence shell / free electron(s): 4 (0) | valence shell / free electron(s): 4 (0)
 |=====
@@ -96,8 +96,8 @@ das alle Elektronen der Valenzschale verbraucht.
 [width="100%" cols="a,a"]
 |=====
 | covalent bonding of carbon | covalent bonding of silicon 
-| image:../images/electronic_basics/covalent_bonding_c.svg[width="400px"]
-| image:../images/electronic_basics/covalent_bonding_si.svg[width="400px"]
+| image:./covalent_bonding_c.svg[width="400px"]
+| image:./covalent_bonding_si.svg[width="400px"]
 2+>|semiconductor | conductor
 |=====
 
@@ -111,8 +111,8 @@ Spannungsquelle von einer tatsächlichen Batteriezelle abweichen und wird auch m
 [width="100%" cols="a,a"]
 |=====
 | ideal voltage source | real voltage source
-| image:../images/electronic_basics/ideal_voltage_source.svg[width="150px"]
-| image:../images/electronic_basics/real_voltage_source.svg[width="150px"]
+| image:./ideal_voltage_source.svg[width="150px"]
+| image:./real_voltage_source.svg[width="150px"]
 |=====
 
 Eine ideale Spannungsquelle liefert eine Spannung mit einem bestimmten Wert.
@@ -128,7 +128,7 @@ Anwendungen mit Operationsverstärkern verwendet.
 [width="100%" cols="a,a"]
 |=====
 | Single power supply | Dual power supply
-| image:../images/electronic_basics/potential_l.svg[width="250px"] | image:../images/electronic_basics/potential_ll.svg[width="250px"]
+| image:./potential_l.svg[width="250px"] | image:./potential_ll.svg[width="250px"]
 |=====
 
 
@@ -145,7 +145,7 @@ Widerstände werden in der Regel in Schaltungen verwendet, um die Spannung auf d
 den Strom, der zwischen bestimmten Pfaden eines Schaltkreises fließt, zu begrenzen. Wir werden im nächsten Abschnitt
 mehr darüber erfahren.
 
-image:../images/electronic_basics/resistor_circuit.svg[width="250px"]
+image:./resistor_circuit.svg[width="250px"]
 
 == Ohmsches Gesetz und Leitungswiderstand
 
@@ -162,7 +162,7 @@ Widerstandes.
 Schließen Sie die Geräte wie in der Abbildung unten dargestellt an, wobei der Probedraht den Widerstand Rx darstellt.
 
 //.Resistance measurement principal
-image:../images/electronic_basics/resistance_measurement_l.svg[width=550]
+image:./resistance_measurement_l.svg[width=550]
 
 
 Messen Sie nun für jeden Draht die Spannung und den Strom und zeichnen Sie ein Diagramm mit der Spannung auf der x-Achse und dem Strom auf der y-Achse.
@@ -188,7 +188,7 @@ Add rules for series and parallel wiring
 ////
 In der folgenden Abbildung sind die Regeln für die Reihen- und Parallelschaltung von Widerständen dargestellt.
 
-image:../images/electronic_basics/resistor_rules.svg[width="500px"]
+image:./resistor_rules.svg[width="500px"]
 
 Bei der Reihenschaltung addieren sich die Werte einfach, wie wir es bei den Spannungsquellen gesehen haben,
 während für die Parallelschaltung dasselbe gilt, allerdings für den Leitwert G, der der Kehrwert
@@ -235,7 +235,7 @@ ein Voltmeter, das die Spannung misst. Wie bei der Konstantstromquelle ist der G
 kann daraus mit der gemessenen Spannung skaliert werden.
 
 // Widerstandsmessung mit einem Digitalmultimeter
-image:../images/electronic_basics/resistance_measurement_ll.svg[width=550]
+image:./resistance_measurement_ll.svg[width=550]
 
 '''
 
@@ -249,9 +249,9 @@ Es gibt Widerstände mit mechanisch einstellbarem Widerstand, die Potentiometer 
 Andere Typen sind Varistoren, bei denen der Widerstand von der angelegten Spannung abhängt, und einige andere Typen wie
 NTC / PTC in Abhängigkeit von der Temperatur.
 
-image:../images/electronic_basics/discrete_resistors_edit.jpg[width=550]
+image:./discrete_resistors_edit.jpg[width=550]
 
-image:../images/electronic_basics/smd_example.jpg[width=300]
+image:./smd_example.jpg[width=300]
 
 ////Erklären Sie Aufbau und Struktur von SMD-Widerständen////
 
