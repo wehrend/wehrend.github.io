@@ -196,9 +196,21 @@ https://www.electricaltechnology.org/2022/06/led-light-emitting-diode.html[see h
 // LEDs like all the other ordinary diodes do only work in one direction, and block in counter directory,
 // we get to this behaviour in the next chapter...
 
+== Applications of bipolar transistors
+
+[cols="2"]
+|===
+a| image:./bjt_npn_symbol.svg[width="400px"]
+a| image:./transistor_npn_schema.svg[width="400px"]
+|===
+
+[cols="2"]
+|===
+a| image:./bjt_pnp_symbol.svg[width="400px"]
+a| image:./transistor_pnp_schema.svg[width="400px"]
+|===
 
 
-// == Applications of bipolar transistors
 //
 // === Applications as switch
 //
