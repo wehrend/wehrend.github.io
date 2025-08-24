@@ -7,7 +7,7 @@
     
     <!--power -->
     <text x="10" y="14" font-size="6">Power</text>
-    <polyline points="36,14 40,9 44,14" style="stroke:black;stroke-width:1;fill:white"/>
+    <polyline points="36,14 40,9 44,14" style="stroke:red;stroke-width:1;fill:white"/>
     <line x1="40" y1="10" x2="40" y2="15" style="stroke:black;stroke-width:1;"/>
     <!--ground(s)-->
     <text x="10" y="26" font-size="6">Ground</text>
