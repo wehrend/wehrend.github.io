@@ -8,7 +8,7 @@ link:
 description:
 type: text
 outdir: ~/development/blog
-draft: true
+# draft: true
 ---
 {{< katex />}}
 
@@ -196,7 +196,11 @@ https://www.electricaltechnology.org/2022/06/led-light-emitting-diode.html[see h
 // LEDs like all the other ordinary diodes do only work in one direction, and block in counter directory,
 // we get to this behaviour in the next chapter...
 
-== Applications of bipolar transistors
+== Bipolar transistors and their applications
+
+When we extend the pn-junction used in diodes as shown in the section above now we get from simple to the
+the so called BJT (bipolar junction transistor). There are two different versions of https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/bipolar-junction-transistors-bjt/[BJTs] (named after
+their dotations): The NPN transistor and the PNP transistor.
 
 [cols="2"]
 |===
