@@ -215,6 +215,29 @@ a| image:./transistor_pnp_schema.svg[width="400px"]
 |===
 
 
+=== Transistor in emitter circuit
+
+image:./emitter_circuit.png[width="750px"]
+
+link:./emitter_circuit.asc[ltspice file]
+
+
+=== Transistor in collector circuit
+
+image:./collector_circuit.png[width="750px"]
+
+link:./collector_circuit.asc[ltspice file]
+
+
+=== Transistor in base circuit
+
+image:./base_circuit.png[width="750px"]
+
+link:./base_circuit.asc[ltspice file]
+
+
+
+
 //
 // === Applications as switch
 //

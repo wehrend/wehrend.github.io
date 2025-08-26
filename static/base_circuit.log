@@ -1,0 +1,21 @@
+Circuit: * Z:\home\sven\development\hugo\static\base_circuit.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Tue Aug 26 21:29:15 2025
+Total elapsed time: 0.081 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2192
+traniter = 2183
+tranpoints = 1050
+accept = 1044
+rejected = 6
+matrix size = 8
+fillins = 0
+solver = Normal
+Matrix Compiler1:      20 opcodes  0.2/[0.1]/0.2
+Matrix Compiler2: off  [0.2]/0.2/0.2
+
