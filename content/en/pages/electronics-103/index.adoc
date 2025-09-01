@@ -8,7 +8,7 @@ link:
 description:
 type: text
 outdir: ~/development/blog
-# draft: true
+draft: true
 ---
 {{< katex />}}
 
@@ -214,6 +214,34 @@ a| image:./bjt_pnp_symbol.svg[width="400px"]
 a| image:./transistor_pnp_schema.svg[width="400px"]
 |===
 
+
+=== The simple circuit
+
+There are a gazillion of appilications for either BJTs as switch as well as amplifier - in the following
+we only want to visit the most vital applications (of both types).
+For the following example it works as an amplifier. But we also use it for logic circuit as shown http://localhost:1313/pages/01_boolean_algebra/[here].
+
+image:./simple_circuit.png[width="600px"]
+
+== BJT as Switch
+
+=== The astable multivibrator
+
+image:./astable_multivibrator_circuit.png[width="700px"]
+
+[image src="./multivibrator_frequency.svg" format="svg" alt="frequency"]
+\large \[ f = \frac{1}{T}= \frac{1}{R_{B1} * C_1 + R_{B2} * C_2 * ln(2)} \]
+
+image:./astable_multivibrator.png[width="700px"]
+
+link:./astable_multivibrator.asc[ltspice file]
+
+Amother vital application, we already visited some time ago, is the application as a flip-flop
+as shown http://localhost:1313/pages/11_clocks_and_registers/#_a_binary_counter[here].
+
+== BJT as Amplifier
+
+=== Transistor basic circuits
 
 === Transistor in emitter circuit
 
