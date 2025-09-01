@@ -1,2 +1,5 @@
 public/
 resources/
+*.raw
+*.log
+*.net
