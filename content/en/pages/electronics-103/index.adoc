@@ -237,22 +237,39 @@ The formula to compute the desired frequency from the given paraameters is as fo
 image:./astable_multivibrator.png[width="700px"]
 
 link:./astable_multivibrator.asc[ltspice file]
-Another vital application, we already visited some time ago, is the application as a flip-flop
-as shown http://localhost:1313/pages/11_clocks_and_registers/#_a_binary_counter[here].
 
 == The flipflop
 
+Another vital application, we already visited some time ago, is the application as a flip-flop
+as shown http://localhost:1313/pages/11_clocks_and_registers/#_a_binary_counter[here].
+
 [cols="3"]
 |===
+a| Symbol
+a| logic Circuit
+a| detailed circuit
 a| image:./flipflop_symbol.svg[width="400px"]
-a| image:./flipflop_circuit.svg[width="400px"]
-a| image:./flipflop_discrete.svg[width="400px"]
+a| image:./flipflop_circuit.svg[width="500px"]
+a| image:./flipflop_discrete.svg[width="600px"]
 |===
 
 
 == BJT as Amplifier
 
-=== Transistor basic circuits
+=== Basic transistor circuits (Overview)
+
+[cols="3"]
+|===
+a| base circuit
+a| emitter  Circuit
+a| collector circuit
+a| image:./transistor_base.webp[width="400px"]
+a| image:./transistor_emitter.webp[width="400px"]
+a| image:./transistor_collector.webp[width="400px"]
+
+
+|===
+
 
 === Transistor in emitter circuit
 
