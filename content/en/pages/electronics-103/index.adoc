@@ -238,10 +238,11 @@ image:./astable_multivibrator.png[width="700px"]
 
 link:./astable_multivibrator.asc[ltspice file]
 
-== The flipflop
+=== The flipflop
 
 Another vital application, we already visited some time ago, is the application as a flip-flop
 as shown http://localhost:1313/pages/11_clocks_and_registers/#_a_binary_counter[here].
+The flipflop is a central component in almost all digital circuit, which stores digital values (0 and 1)
 
 [cols="3"]
 |===
@@ -263,9 +264,9 @@ a| image:./flipflop_discrete.svg[width="600px"]
 a| base circuit
 a| emitter  Circuit
 a| collector circuit
-a| image:./transistor_base.webp[width="400px"]
-a| image:./transistor_emitter.webp[width="400px"]
-a| image:./transistor_collector.webp[width="400px"]
+a| image:./common_base.svg[width="600px"]
+a| image:./common_emitter.svg[width="400px"]
+a| image:./common_collector.svg[width="400px"]
 
 
 |===
