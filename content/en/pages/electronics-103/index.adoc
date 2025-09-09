@@ -277,7 +277,7 @@ a| principle
 a| image:./common_emitter.svg[width="400px"]
 a| image:./common_base.svg[width="400px"]
 a| image:./common_collector.svg[width="400px"]
-a| current gain
+a| Current gain
 a|
 [image src="./current_gain_emitter.svg" format="svg" alt="none"]
 \[ V_{i} = \frac{\beta * r_{CE}}{r_{CE} + R_{C}} \]
@@ -287,9 +287,22 @@ a|
 \[ V_{i} = \frac{\beta }{1  + \beta } \]
     (< 1)
 a|
-[image src="./current_gain_emitter.svg" format="svg" alt="none"]
+[image src="./current_gain_collector.svg" format="svg" alt="none"]
 \[ V_{i} = \frac{\beta * r_{CE}}{ R_{E} + r_{CE} } \]
     (10...500)
+a| Voltage gain
+a|
+[image src="./voltage_gain_emitter.svg" format="svg" alt="none"]
+\[V_{u} = \frac{\beta \cdot (R_{C} \parallel r_{CE})}{r_{BE}}\]
+(50...1000)
+a|
+[image src="./voltage_gain_base.svg" format="svg" alt="none"]
+\[V_{u} = \frac{\beta \cdot R_{C} \parallel r_{CE}}{r_{BE}}\]
+(50...1000)
+a|
+[image src="./voltage_gain_base.svg" format="svg" alt="none"]
+\[V_{u} = 1- \frac{r_{BE}}{\beta \cdot R_{E} \parallel r_{CE}}\]
+(<1)
 a| phase position
 a| 180°
 a| in phase
@@ -299,7 +312,6 @@ a| standard application for low frequency and high frequency amplifier
 a| for very high frequencies (UKW, VHF, UHF)
 a| amplifier inputs, "impedance converter", power amps
 |===
-
 
 === Transistor in emitter circuit
 
