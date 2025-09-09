@@ -257,7 +257,10 @@ a| image:./flipflop_discrete.svg[width="600px"]
 
 == BJT as Amplifier
 
+
 === Basic transistor circuits (Overview)
+
+image:./amplifier_symbol.svg[width="280px"]
 
 [cols="3"]
 |===
