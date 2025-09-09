@@ -265,16 +265,39 @@ link:./astable_multivibrator.asc[ltspice file]
 
 image:./amplifier_symbol.svg[width="280px"]
 
-[cols="3"]
+
+
+[cols="4"]
 |===
-a| base circuit
+a|
 a| emitter  Circuit
+a| base circuit
 a| collector circuit
-a| image:./common_base.svg[width="600px"]
+a| principle
 a| image:./common_emitter.svg[width="400px"]
+a| image:./common_base.svg[width="400px"]
 a| image:./common_collector.svg[width="400px"]
-
-
+a| current gain
+a|
+[image src="./current_gain_emitter.svg" format="svg" alt="none"]
+\[ V_{i} = \frac{\beta * r_{CE}}{r_{CE} + R_{C}} \]
+    (10...500)
+a|
+[image src="./current_gain_base.svg" format="svg" alt="none"]
+\[ V_{i} = \frac{\beta }{1  + \beta } \]
+    (< 1)
+a|
+[image src="./current_gain_emitter.svg" format="svg" alt="none"]
+\[ V_{i} = \frac{\beta * r_{CE}}{ R_{E} + r_{CE} } \]
+    (10...500)
+a| phase position
+a| 180°
+a| in phase
+a| in phase
+a| typical applications
+a| standard application for low frequency and high frequency amplifier
+a| for very high frequencies (UKW, VHF, UHF)
+a| amplifier inputs, "impedance converter", power amps
 |===
 
 
