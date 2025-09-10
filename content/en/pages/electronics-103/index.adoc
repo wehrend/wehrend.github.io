@@ -273,7 +273,7 @@ a|
 a| emitter  Circuit
 a| base circuit
 a| collector circuit
-a| principle
+a| Principle
 a| image:./common_emitter.svg[width="400px"]
 a| image:./common_base.svg[width="400px"]
 a| image:./common_collector.svg[width="400px"]
@@ -303,11 +303,41 @@ a|
 [image src="./voltage_gain_base.svg" format="svg" alt="none"]
 \[V_{u} = 1- \frac{r_{BE}}{\beta \cdot R_{E} \parallel r_{CE}}\]
 (<1)
-a| phase position
+a| Power gain
+a| 5000...1000
+a| 100...1000
+a| 50...500
+a| Input impedance
+a|
+[image src="./input_impedance_emitter.svg" format="svg" alt="none"]
+\[r_{e} = r_{BE} \parallel R_{1} \parallel R_{2}\]
+(10 Ohm...5kOhm )
+a|
+[image src="./input_impedance_base.svg" format="svg" alt="none"]
+\[r_{e} = \frac{r_{BE}}{\beta} \parallel R_{E} \]
+(< 1 Ohm...1 kOhm)
+a|
+[image src="./input_impedance_collector.svg" format="svg" alt="none"]
+\[r_{e} = (r_{BE}+\beta \cdot R_{E}) \parallel R_{1} \]
+(500 Ohm...5 MOhm)
+a| Output impedance
+a|
+[image src="./output_impedance_emitter.svg" format="svg" alt="none"]
+\[r_{a} = r_{C} \parallel r_{CE} \]
+(10 Ohm...500kOhm )
+a|
+[image src="./output_impedance_base.svg" format="svg" alt="none"]
+\[r_{a} = r_{C} \parallel r_{CE} \]
+(100kOhm...10MOhm)
+a|
+[image src="./output_impedance_collector.svg" format="svg" alt="none"]
+\[r_{e} = r_{E} \parallel \frac{r_{BE} + R_{Generator}}{\beta} \]
+(10 Ohm...1kOhm)
+a| Phase position
 a| 180°
 a| in phase
 a| in phase
-a| typical applications
+a| Typical applications
 a| standard application for low frequency and high frequency amplifier
 a| for very high frequencies (UKW, VHF, UHF)
 a| amplifier inputs, "impedance converter", power amps
