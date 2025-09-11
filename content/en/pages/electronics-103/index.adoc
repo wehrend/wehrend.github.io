@@ -277,6 +277,10 @@ a| Principle
 a| image:./common_emitter.svg[width="400px"]
 a| image:./common_base.svg[width="400px"]
 a| image:./common_collector.svg[width="400px"]
+a| Schematic
+a| image:./emitter_circuit.svg[width="400px"]
+a| image: [width="400px"]
+a| image:./collector_circuit.svg[width="400px"]
 a| Current gain
 a|
 [image src="./current_gain_emitter.svg" format="svg" alt="none"]
@@ -370,9 +374,13 @@ link:./base_circuit.asc[ltspice file]
 // === Applications as switch
 //
 // === Applications as Amplifier
+
+// power amps (optional)
 //
 // === MOSFET transistors
 
+
+// electronics 104 should contain basic IC knowledge; op-amps and their applications
 
 // == From the diode to the transistor
 //
