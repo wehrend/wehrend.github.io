@@ -279,7 +279,7 @@ a| image:./common_base.svg[width="400px"]
 a| image:./common_collector.svg[width="400px"]
 a| Schematic
 a| image:./emitter_circuit.svg[width="400px"]
-a| image: [width="400px"]
+a| image:./base_circuit.svg[width="500px"]
 a| image:./collector_circuit.svg[width="400px"]
 a| Current gain
 a|
