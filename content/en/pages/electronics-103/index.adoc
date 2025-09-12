@@ -132,12 +132,13 @@ image:./half_wave_rectifier.png[half wave rectifier]
 As diode we introducing here the 1N4148 which is a popular signal diode but untypical as a rectifer
 diode -  As we can see only one half of the sine wave is used...
 
-link:./half_wave_rectifier.asc[LTspice file]
+link:./half_wave_rectifier.asc[ half wave rectifier - LTspice file]
 
 Below, there is the same circuit but with a capacitor to eliminate the ripples...
 image:./half_wave_rectifier_with_C.png[half wave rectifier with C]
 
-link:./half_wave_rectifier_with_C.asc[LTspice file]
+link:./half_wave_rectifier_with_C.asc[half wave rectifier w/ capacitor - LTspice file]
+
 
 ==== The full wave rectifier
 
@@ -145,11 +146,11 @@ To make the rectifer more efficient we also utilize the negative part of the sin
 
 image:./full_wave_rectifier.png[full wave rectifier]
 
-link:./full_wave_rectifier.asc[LTspice file]
+link:./full_wave_rectifier.asc[full wave rectifier - LTspice file]
 
 image:./full_wave_rectifier_with_C.png[full wave rectifier with C]
 
-link:./full_wave_rectifier_with_C.asc[LTspice file]
+link:./full_wave_rectifier_with_C.asc[full wave rectifier w/ capacitor - LTspice file]
 
 
 == The (simple) LED circuit
@@ -256,7 +257,7 @@ The formula to compute the desired frequency from the given paraameters is as fo
 
 image:./astable_multivibrator.png[width="700px"]
 
-link:./astable_multivibrator.asc[ltspice file]
+link:./astable_multivibrator.asc[astable multivibrator - ltspice file]
 
 == BJT as Amplifier
 
@@ -351,21 +352,21 @@ a| amplifier inputs, "impedance converter", power amps
 
 image:./emitter_circuit.png[width="750px"]
 
-link:./emitter_circuit.asc[ltspice file]
+link:./emitter_circuit.asc[emitter circuit - ltspice file]
 
 
 === Transistor in collector circuit
 
 image:./collector_circuit.png[width="750px"]
 
-link:./collector_circuit.asc[ltspice file]
+link:./collector_circuit.asc[collector circuit - ltspice file]
 
 
 === Transistor in base circuit
 
 image:./base_circuit.png[width="750px"]
 
-link:./base_circuit.asc[ltspice file]
+link:./base_circuit.asc[ base circuit - ltspice file]
 
 
 
