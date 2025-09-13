@@ -369,7 +369,7 @@ image:./base_circuit.png[width="750px"]
 link:./base_circuit.asc[ base circuit - ltspice file]
 
 
-
+== From the BJT to the FET
 
 //
 // === Applications as switch

@@ -76,25 +76,52 @@
     <circle cx="70" cy="70" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
     <circle cx="70" cy="75" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
 
+
+    <use href="#capacitor" transform="translate(-2,-17.5) scale(0.5,0.5)"/>
+    <use href="#capacitor" transform="translate(60,-17) scale(0.5,0.5)"/>
+
     <!-- Masse-Leitung -->
-    <line x1="12" y1="59" x2="92" y2="59" stroke="currentColor" stroke-width="0.7"/>
-    <circle cx="12" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <line x1="5" y1="59" x2="62" y2="59" stroke="currentColor" stroke-width="0.7"/>
+    <line x1="72" y1="59" x2="92" y2="59" stroke="currentColor" stroke-width="0.7"/>
+    <use href="#capacitor" transform="translate(42,34) scale(0.5,0.5)"/>
+    <circle cx="5" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
     <circle cx="46" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
     <circle cx="91" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
     <circle cx="57" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
 
     <!-- obere Versorgung -->
-    <line x1="12" y1="7.5" x2="30" y2="7.5" stroke="currentColor" stroke-width="0.7"/>
-    <line x1="60" y1="7.5" x2="90" y2="7.5" stroke="currentColor" stroke-width="0.7"/>
-    <circle cx="12" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <line x1="60" y1="7.5" x2="80" y2="7.5" stroke="currentColor" stroke-width="0.7"/>
+    <circle cx="5" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
     <circle cx="91" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
 
     <circle cx="57" cy="65" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
 
     <!-- Beschriftung -->
-    <!--  <text x="10" y="32" fill="blue" font-size="6">E</text>-->
-    <!--  <text x="85" y="32" fill="blue" font-size="6">C</text>-->
-    <!--  <text x="35" y="55" fill="blue" font-size="6">B</text>-->
+      <text x="55" y="69.5" fill="blue" font-size="6">0</text>
+      <text x="64" y="79" fill="blue" font-size="6">+ U </text>
+
+    <text x="15" y="40" font-size="4">
+        <tspan>R</tspan>
+        <tspan dx="-1" dy="2" font-size="3" font-family="arial">E</tspan>
+    </text>
+    <text x="75" y="40" font-size="4">
+        <tspan>R</tspan>
+        <tspan dx="-1" dy="2" font-size="3" font-family="arial">C</tspan>
+    </text>
+    <text x="80" y="40" font-size="4">
+        <tspan>=</tspan>
+    </text>
+        <text x="85" y="40" font-size="4">
+        <tspan>R</tspan>
+        <tspan dx="1" dy="2" font-size="3" font-family="arial">L</tspan>
+
+    </text>
+
+
+    <text x="60" y="40" font-size="4">
+        <tspan>C</tspan>
+        <tspan dx="-1" dy="2" font-size="3" font-family="arial">1</tspan>
+    </text>
     <text x="25" y="77" font-size="6">Common base</text>
 
 </svg>
