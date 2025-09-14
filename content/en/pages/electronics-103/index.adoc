@@ -222,7 +222,7 @@ There are a gazillion of applications for either BJTs as switch as well as ampli
 we only want to visit the most vital applications (of both types).
 For the following example it works as an amplifier. But we also use it for logic circuit as shown http://localhost:1313/pages/01_boolean_algebra/[here].
 
-image:./simple_circuit.png[width="600px"]
+image:./the_simple_circuit.svg[width="600px"]
 
 == BJT as Switch
 
