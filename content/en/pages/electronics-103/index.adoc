@@ -9,6 +9,7 @@ description:
 type: text
 outdir: ~/development/blog
 draft: false
+stem: latexmath
 ---
 {{< katex />}}
 
@@ -205,12 +206,21 @@ their dotations): The NPN transistor and the PNP transistor.
 
 [cols="2"]
 |===
-a| image:./bjt_npn_symbol.svg[width="400px"]
-a| image:./transistor_npn_schema.svg[width="400px"]
+| Case
+| Picture
+| TO-92
+a| image:./to-92.png[width="400px"]
 |===
 
-[cols="2"]
+[cols="3"]
 |===
+| Type
+| Symbol
+| Structure
+| BC-547 (TO-92)
+a| image:./bjt_npn_symbol.svg[width="400px"]
+a| image:./transistor_npn_schema.svg[width="400px"]
+| BC-557 (TO-92)
 a| image:./bjt_pnp_symbol.svg[width="400px"]
 a| image:./transistor_pnp_schema.svg[width="400px"]
 |===
@@ -247,8 +257,8 @@ a| image:./flipflop_discrete.svg[width="600px"]
 
 image:./astable_multivibrator.svg[width="700px"]
 
-The so-called astable multivibration in laymnen terms is a blinker circuit.
-The formula to compute the desired frequency from the given paraameters is as follows:
+The so-called astable multivibrator in laymen terms is a blinker circuit.
+The formula to compute the desired frequency from the given parameters is as follows:
 
 [image src="./multivibrator_frequency.svg" format="svg" alt="frequency"]
 \large \[ f = \frac{1}{T}= \frac{1}{R_{B1} * C_1 + R_{B2} * C_2 * ln(2)} \]
@@ -259,21 +269,26 @@ link:./astable_multivibrator.asc[astable multivibrator - ltspice file]
 
 == BJT as Amplifier
 
-==== Two-Port-Theory and  h-parameters
+==== Two-Port-Theory Basic cricuits and  h-parameters
 
 The two-port-theory and the h-parameters are theoretical foundation for two-port-schematics.
-It is utlized for example to describe amplifierrs, all circuits discusseed here have a common ground
-in common.
+It is utlized for example to describe amplifiers, all circuits discussed here have a common ground
+in common. All three basic circuits are named after their in- and output:
+emitter circuit, base circuit and collector circuit.
 
 [cols="3"]
 |===
 a|
 a| image:./amplifier_symbol.svg[width="280px"]
-
 a|
 |===
 
+Depending on circuit the transistor-based amplifier has different properties as shown in the
+table below...
+To compute tha amplifier factor of a circuit the dynamic input (alternate current) stem:[r_{BE} = h_{11}]
+and dynamic output impedance stem:[r_{CE}= 1: h_22] and the alternate current gain stem:[\beta = h_{21}]
 
+Those h-parameters where discussed and explained later - first we want to have a look at the different circuits...
 
 
 === Basic transistor circuits (Overview)
@@ -360,33 +375,63 @@ a| amplifier inputs, "impedance converter", power amps
 
 === Transistor in emitter circuit
 
+The emitter circuit is mostly used in small signal solutions, (also for power amplifiers).
+It is used as handyman. The other both circuits (base and collector circuit) are only used
+for special occasions...
+The emitter circuit gains both current and voltage, it is also the circuit with the biggest
+power amplification. The input inpedance consists of the BE-Diode and fluctuates between very
+small (big $I_B$ ) and big values (minimal $I_B$). The output voltage builds up on R_{L}.
+It is measured against the commmon ground (practically U_{CE}= U_{b} - U_{RL}).
+Thus, there is a phase lag of 180° from the input voltage to the output voltage.
+For "normal" amplifiers this id not very interesting. But this changess as soon as the output
+signal is feedbacked to the input again...
+
+
 image:./emitter_circuit.png[width="750px"]
 
 link:./emitter_circuit.asc[emitter circuit - ltspice file]
 
+=== Transistor in base circuit
+
+The base circuit has an extremly low input impedance, which is also minimized by the parallel connected
+necessary low emitter resistance. The output impedance however is very high. The current gain is always
+smaller 1 (<1), due to the emitter current (=I_{B}+I_{C}) which is always bigger then the current collector
+respectively the output current. The advantage of the base circuit is that she can manage the highest frequencie.
+Also, this circuit has the smallest influences to the input. Thus, the typically applications are receiver
+for very high frequencies.
+
+
+image:./base_circuit.png[width="750px"]
+
+link:./base_circuit.asc[ base circuit - ltspice file]
 
 === Transistor in collector circuit
+
+The collector circuit is awarded by a high input - but low output impedance.
+The high input impedance is caused by the input current as well as the output current which flows over
+the common emitter resistor (R_{L}). A low base current calls for a \beta multiplied collector / emitter current;
+which is caused by R_{L}. This ends up in voltage drop over the input impedance.
+
 
 image:./collector_circuit.png[width="750px"]
 
 link:./collector_circuit.asc[collector circuit - ltspice file]
 
 
-=== Transistor in base circuit
-
-image:./base_circuit.png[width="750px"]
-
-link:./base_circuit.asc[ base circuit - ltspice file]
-
-
 == From the BJT to the FET
 
 [cols="3"]
 |===
+a| Source circuit
+a| Gate circuit
+a| Drain circuit
 a| image:./source_circuit.svg[width="280px"]
 a| image:./gate_circuit.svg[width="280px"]
 a| image:./drain_circuit.svg[width="280px"]
 |===
+
+image:./mosfet_model.svg[width="750px"]
+
 
 This page is still under construction
 

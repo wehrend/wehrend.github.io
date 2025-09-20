@@ -1,0 +1,20 @@
+---
+title: "Introduction to electronics - 104 - amplifier circuits"
+slug: electronics-104
+date: 2025-09-25
+tags:
+category:
+link:
+description:
+type: text
+outdir: ~/development/blog
+draft: false
+---
+
+This page is still under construction
+
+image:./under_construction.png[width="350px"]
+
+// === Applications as Amplifier
+
+// power amps (optional)

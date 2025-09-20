@@ -46,6 +46,18 @@ publishDir = "public"
   weight = 28
 
 [[languages.en.menu.before]]
+  name = "Electronics 104"
+  url = "/pages/electronics-104"
+  weight = 29
+
+[[languages.en.menu.before]]
+  name = "Electronics 105"
+  url = "/pages/electronics-105"
+  weight = 30
+
+
+
+[[languages.en.menu.before]]
   name = "Storytelling and the order of things"
   url = "/pages/storytelling"
   weight = 25
@@ -152,10 +164,15 @@ publishDir = "public"
 [markup]
   [markup.asciidocExt]
     workingFolderCurrent = true
-    [markup.asciidocExt.attributes]
-      toc = "left"
-      toclevels = "2"
+        toc = "left"
+        toclevels = "2"
+        # Asciidoctor settings for Hugo
+        backend = "html5"
+        safeMode = "unsafe"
+        noHeaderOrFooter = true
 
+  [markup.asciidocExt.attributes]
+        stem = ""
 
 [security]
   enableInlineShortcodes = false
@@ -193,3 +210,4 @@ publishDir = "public"
     isPlainText = false
     notAlternative = true
     permalinkable = true
+
