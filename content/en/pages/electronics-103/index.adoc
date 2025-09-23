@@ -386,13 +386,12 @@ Thus, there is a phase lag of 180° from the input voltage to the output voltage
 For "normal" amplifiers this id not very interesting. But this changess as soon as the output
 signal is feedbacked to the input again...
 
+link:./emitter_circuit.asc[emitter circuit - ltspice file]
 
 image:./emitter_circuit.png[width="750px"]
 
-link:./emitter_circuit.asc[emitter circuit - ltspice file]
 
 === Transistor in base circuit
-
 The base circuit has an extremly low input impedance, which is also minimized by the parallel connected
 necessary low emitter resistance. The output impedance however is very high. The current gain is always
 smaller 1 (<1), due to the emitter current (=I_{B}+I_{C}) which is always bigger then the current collector
@@ -400,10 +399,11 @@ respectively the output current. The advantage of the base circuit is that she c
 Also, this circuit has the smallest influences to the input. Thus, the typically applications are receiver
 for very high frequencies.
 
+link:./base_circuit.asc[ base circuit - ltspice file]
 
 image:./base_circuit.png[width="750px"]
 
-link:./base_circuit.asc[ base circuit - ltspice file]
+
 
 === Transistor in collector circuit
 
@@ -411,11 +411,20 @@ The collector circuit is awarded by a high input - but low output impedance.
 The high input impedance is caused by the input current as well as the output current which flows over
 the common emitter resistor (R_{L}). A low base current calls for a \beta multiplied collector / emitter current;
 which is caused by R_{L}. This ends up in voltage drop over the input impedance.
+If a small current causes a big voltage drop at the resistor, the resistance has to be big.
+Without considering the base current it amounts to \beta \cdot R_{L} -
+The output voltage u_{2} is always smaller than then the input voltage u_{1} - its amount is the threshold
+voltage from the BE-Diode.If u_{1} becomes bigger, the bigger amounts the voltage drop at R_{L} becomes due to
+the bigger emitter current. If u_{1} drops, so u_{2} drops due to the lower emitter current.
 
+Thus this circuit is also called emitter follower. There is no voltage gain in this circuit (u_{2}
+is allways smaller than u_{1}). Only the current gain gets \beta times multiplied
+The emitter follower is often used in amplifier inputs for his big input impedance but low output impedance.
 
-image:./collector_circuit.png[width="750px"]
 
 link:./collector_circuit.asc[collector circuit - ltspice file]
+
+image:./collector_circuit.png[width="750px"]
 
 
 == From the BJT to the FET
