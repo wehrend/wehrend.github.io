@@ -269,6 +269,9 @@ link:./astable_multivibrator.asc[astable multivibrator - ltspice file]
 
 == BJT as Amplifier
 
+This chapter I will mostly be written 1:1 from the book "Wege in die Elektonik" from Joseph Glagla and Gert Lindner; 1980.
+
+
 ==== Two-Port-Theory Basic cricuits and  h-parameters
 
 The two-port-theory and the h-parameters are theoretical foundation for two-port-schematics.
@@ -428,6 +431,14 @@ image:./collector_circuit.png[width="750px"]
 
 
 == From the BJT to the FET
+
+Corresponding to the basic circuits for bipolar junction transisitors (BJT)
+the same rules apply to the Field-Effect-Transistors,  introduced in link:/pages/01_boolean_algebra/#_implementation_on_electrical_level[this blog post].
+The emiitter circuit is the source circuit, the base circuit ist the gate circuit and the collector circuit the drain circuit.
+
+
+The gate circuit is seldom used, because the biggest advantage of the FET, the high input impedance cannot be applied with thaat.
+
 
 [cols="3"]
 |===
