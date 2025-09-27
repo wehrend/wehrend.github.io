@@ -9,7 +9,7 @@ description:
 type: text
 outdir: ~/development/blog
 draft: false
-stem: latexmath
+:stem: latexmath
 ---
 {{< katex />}}
 
@@ -430,6 +430,49 @@ link:./collector_circuit.asc[collector circuit - ltspice file]
 image:./collector_circuit.png[width="750px"]
 
 
+=== Amplifier coupling
+
+One amplifier stage is regularly not sufficient, and you need to put together multiple units.
+But doing the coupling needs a bit of thought to not shift bias points uncontrollable.
+
+[cols="3"]
+|===
+a| inductive coupling
+a| RC coupling
+a| direct coupling
+a| image:./induction-coupling.svg[width="450px"]
+a| image:./rc-coupling.svg[width="450px"]
+a| image:./direct-coupling.svg[width="450px"]
+|===
+
+
+==== Transformer coupling
+This is the oldest but in these days unconventional more or less obsolete technique.
+Disadvantages are price, size and weight of the transformer.
+Today it is sseldom used for that reason.
+However it has an advantage in selectign the right signals by resonance effects.
+
+image:./induction-coupling.svg[width="450px"]
+
+==== RC coupling
+The RC-coupling is probably the most used technique to de-couple amplifier stages.
+the attentive reader will note, that the capacitor and the resistor are forming a high-pass
+filter which we have seen first in https://wehrend.github.io/pages/short-introduction-to-electronics-102/#_highpass_filter[here...]
+This coupling is easy anc cheap; but has the disadvantage of also being a high-pass filter shaping the signal.
+Very low frequencies cannot be transmitted that way...
+
+image:./rc-coupling.svg[width="450px"]
+
+==== Direct coupling
+
+The simplest possible coupling is a coupling by wire - this is also known as direct current coupling.
+Here the disadvantage is that the bias points of the different amplifier stages shifts in the different stages.
+
+The advantag is that it allows for direct current ampplification; therefore it ist use in measurements and op-amp.
+It is also easy to implement in integrated circuits...
+
+image:./direct-coupling.svg[width="450px"]
+
 == From the BJT to the FET
 
 Corresponding to the basic circuits for bipolar junction transisitors (BJT)
@@ -449,6 +492,9 @@ a| image:./source_circuit.svg[width="280px"]
 a| image:./gate_circuit.svg[width="280px"]
 a| image:./drain_circuit.svg[width="280px"]
 |===
+
+
+
 
 image:./mosfet_model.svg[width="750px"]
 
