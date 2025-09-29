@@ -435,22 +435,12 @@ image:./collector_circuit.png[width="750px"]
 One amplifier stage is regularly not sufficient, and you need to put together multiple units.
 But doing the coupling needs a bit of thought to not shift bias points uncontrollable.
 
-[cols="3"]
-|===
-a| inductive coupling
-a| RC coupling
-a| direct coupling
-a| image:./induction-coupling.svg[width="450px"]
-a| image:./rc-coupling.svg[width="450px"]
-a| image:./direct-coupling.svg[width="450px"]
-|===
-
 
 ==== Transformer coupling
 This is the oldest but in these days unconventional more or less obsolete technique.
 Disadvantages are price, size and weight of the transformer.
-Today it is sseldom used for that reason.
-However it has an advantage in selectign the right signals by resonance effects.
+Today it is seldom used for that reason.
+However, it has an advantage in selecting the right signals by resonance effects.
 
 image:./induction-coupling.svg[width="450px"]
 
@@ -468,10 +458,28 @@ image:./rc-coupling.svg[width="450px"]
 The simplest possible coupling is a coupling by wire - this is also known as direct current coupling.
 Here the disadvantage is that the bias points of the different amplifier stages shifts in the different stages.
 
-The advantag is that it allows for direct current ampplification; therefore it ist use in measurements and op-amp.
+The advantage is that it allows for direct current amplification; therefore it ist use in measurements and op-amp.
 It is also easy to implement in integrated circuits...
 
 image:./direct-coupling.svg[width="450px"]
+
+
+==== negative feedback
+Another quite proper method ist to engage a negative feedback...
+If part of the output voltage is fed back to the input of an amplifier,
+this is called feedback.  In-phase feedback is called “positive feedback”;
+in this case, the fed-back output signal is added to the input signal,
+leading to self-excitation (resonance). Opposite-phase feedback is called negative feedback;
+in this case, the returned output voltage cancels out part of the input voltage. In relation
+to the magnitude of the output signal, negative feedback therefore acts as a significant
+reduction in amplification (a reduced input signal leads to a correspondingly smaller output signal).
+
+So why use negative feedback?
+
+the negative feedback results in a signal with less amplification but also a lowere distortion factor.
+This is the big advantage of this principle.
+
+image:./negative-feedback-circuit.svg[width="450px"]
 
 == From the BJT to the FET
 
