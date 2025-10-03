@@ -232,7 +232,19 @@ There are a gazillion of applications for either BJTs as switch as well as ampli
 we only want to visit the most vital applications (of both types).
 For the following example it works as an amplifier. But we also use it for logic circuit as shown http://localhost:1313/pages/01_boolean_algebra/[here].
 
-image:./the_simple_circuit.svg[width="600px"]
+image:./the_simple_circuit.svg[width="500px"]
+
+=== The simple circuit with negative feedback
+Imagine you bought a bag full of BC547 , the most popular npn Transistors.
+If you measure them out, you will notice that there is a wide distribution of their properties.
+If you decide some BC547 from different charges respectively different companies, you will notice
+an even wider distribution of their mein parameters.
+
+Therefore, we introduce the systemic principle of a negative feedback loop.
+
+image:./the_simple_circuit_w_feedback_wo_poti.svg[width="500px"]
+
+
 
 == BJT as Switch
 
