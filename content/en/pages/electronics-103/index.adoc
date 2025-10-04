@@ -245,6 +245,23 @@ Therefore, we introduce the systemic principle of a negative feedback loop.
 image:./the_simple_circuit_w_feedback_wo_poti.svg[width="500px"]
 
 
+==== Negative feedback
+Another quite proper method ist to engage a negative feedback...
+If part of the output voltage is fed back to the input of an amplifier,
+this is called feedback.  In-phase feedback is called “positive feedback”;
+in this case, the fed-back output signal is added to the input signal,
+leading to self-excitation (resonance). Opposite-phase feedback is called negative feedback;
+in this case, the returned output voltage cancels out part of the input voltage. In relation
+to the magnitude of the output signal, negative feedback therefore acts as a significant
+reduction in amplification (a reduced input signal leads to a correspondingly smaller output signal).
+
+So why use negative feedback?
+
+This negative feedback has one disadvqantage but multiple great advantages over the normal circcuit without the control
+loop. We make a lesser great amplification gain, but adopt a far better amplifier circuit - greater bandwith, less
+distortion factor...
+
+Values fo this feedback resistor should be 30 to 70kOhm...
 
 == BJT as Switch
 
@@ -475,23 +492,6 @@ It is also easy to implement in integrated circuits...
 
 image:./direct-coupling.svg[width="450px"]
 
-
-==== negative feedback
-Another quite proper method ist to engage a negative feedback...
-If part of the output voltage is fed back to the input of an amplifier,
-this is called feedback.  In-phase feedback is called “positive feedback”;
-in this case, the fed-back output signal is added to the input signal,
-leading to self-excitation (resonance). Opposite-phase feedback is called negative feedback;
-in this case, the returned output voltage cancels out part of the input voltage. In relation
-to the magnitude of the output signal, negative feedback therefore acts as a significant
-reduction in amplification (a reduced input signal leads to a correspondingly smaller output signal).
-
-So why use negative feedback?
-
-the negative feedback results in a signal with less amplification but also a lowere distortion factor.
-This is the big advantage of this principle.
-
-image:./negative-feedback-circuit.svg[width="450px"]
 
 == From the BJT to the FET
 
