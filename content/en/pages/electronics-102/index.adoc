@@ -265,3 +265,5 @@ plt.show()
 
 {{</highlight>}}
 ----
+
+image:./mosfet_model.svg[size="750px"]

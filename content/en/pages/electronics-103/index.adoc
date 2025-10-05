@@ -493,6 +493,97 @@ It is also easy to implement in integrated circuits...
 image:./direct-coupling.svg[width="450px"]
 
 
+== JFETs and MOSFETs
+
+Compared to the electron tube, the bipolar transistor has many advantages but one significant disadvantage: it requires a control current and
+therefore control power. Its input resistance is low, it loads the source (e.g., antenna, microphone), and it can often only be controlled from high-impedance
+sources  using special techniques.
+The electron tube, on the other hand, requires no power and can be controlled solely by the field strength of the applied control voltage. The practical significance of this is that
+its input resistance is very high and the source (e.g., microphone) is not loaded.
+No wonder, then, that a component was sought that combined the advantages of the transistor with those of the tube. The result of this development
+is the group of field-effect transistors (abbreviated FET). The name refers to the operating principle: the FET is controlled only by the field strength
+of the applied control voltage, without control current, i.e., without power (apart from leakage currents and losses). Since only charge carriers of one
+polarity are moved in it – either electrons or “holes” – FETs are called unipolar transistors.
+
+== Functional principle of the field-effect transistor
+
+The principle of field-effect control is “old” compared to the bipolar transistor. As early as 1928, Julius Edgar Lilienfeld received a patent for the principle of
+changing the resistance of an electric field.
+However, this discovery could not yet be put to practical use, because an electric field does not penetrate deeply into good (metallic) conductors;
+although the penetration depth in insulators is very large, they cannot be used as resistors ( =conductors). The development of semiconductors provided the
+suitable material that conducts on the one hand and allows the electric field to penetrate deeply on the other. In 1952, Shockley was able to present the first usable FET.
+However, it took many years before it was ready for production.
+
+To understand the operating principle of the FET, let us recall the following basics:
+
+1. A conductor only conducts if it contains mobile charge carriers (electrons or “holes”).
+2. The resistance of a conductor (made of the same material) increases as its cross-section decreases: the resistance of a thick copper wire is
+lower than that of a thin one.
+3. Like charges repel each other, unlike charges attract each other.
+
+The main part of the FET is a current path (“channel”) made of weakly doped silicon. Depending on whether the channel is n-doped or p-doped, it is called an n-channel or p-channel.
+The channel is a resistor and conducts in both directions. Its ends are called the source (abbreviated S) and drain (abbreviated D).
+An electrode, the gate (abbreviated G), is insulated around the channel.
+
+The mode of operation is explained using an n-channel FET: The n-channel conducts because it contains freely moving electrons. If the gate receives a negative voltage relative to the channel
+(source),
+ the electrons in the gate repel those in the channel and push them from the edge zone to the center. In the edge zone, the channel becomes a
+pure crystal again, i.e., an insulator. This narrows the conductive cross-section of the channel and increases its resistance.
+If the (negative) gate voltage is increased, more and more electrons are displaced from the channel, i.e., its conductive part becomes increasingly narrower. At a
+certain gate voltage (the “cut-off voltage”), all electrons are finally displaced at one point, the channel is “cut off,” and it no longer conducts.
+
+The control also works in reverse: a very weakly doped p-channel is initially non-conductive. A positive gate voltage draws electrons into the channel
+and makes it conductive. The channel resistance decreases with increasing U_{GS}.
+'‘’
+The FET is a resistor that can be controlled by the field strength of the control voltage.
+‘’'
+The control range is very large. In principle, D and S can be swapped, but since FETs are not manufactured to be exactly symmetrical, the “correct”
+connection method achieves better results.
+Depending on how the FET principle is implemented, a distinction is made between different families of FETs.
+The two main groups are the junction FET  (JFET) and the MOSFET.
+
+== The junction field-effect transistor (JFET)
+
+The gate is located as a heavily doped zone around the lightly doped channel. It is doped in the opposite direction to the channel, creating a pn junction whose barrier layer
+acts as insulation. This group of field-effect transistors is therefore called a junction FET or JFET (J for junction).
+
+image:./JFET.jpg[width=“750px”]
+
+The function is again illustrated using the n-channel FET (see image above): U_{DS} lies between D and S. The electrons flow from S to D. Now the voltage U_{GS}
+(negative pole at G) is applied to the gate. The pn junction between G and the channel is in the reverse direction. As with the https://en.wikipedia.org/wiki/Varicap[capacitance diode],
+ the barrier layer becomes wider as the voltage increases. Since the channel is weakly doped in relation to the gate, the barrier layer grows predominantly into the channel, i.e.
+the electrons are displaced from part of the channel. This part becomes non-conductive as pure crystal. The conductive part of the channel becomes narrower, its resistance increases,
+until the channel is “cut off” at a certain gate voltage and no longer conducts – see above. No control current flows – with the exception of the small
+leakage current present in all diodes. The p-channel JFET works in exactly the same way, only with reverse-polarized batteries (voltage sources).
+
+
+== The MOSFET
+
+In the second group of FETs, the insulation between the gate and the channel consists of an extremely thin layer of silicon dioxide (SiO_{2});
+the gate is designed as a metallic coating (vacuum-deposited Al). According to their structure, these FETs are named after the metal of the gate, the oxide of the insulating layer, and the semiconductor
+of the channel: MOS-FET.
+
+image:./mosfet_model.svg[size="500px"]
+
+In the figure above, the channel consists of weakly p-doped material, D and S of strongly n-doped islands. The substrate, the “base” of the crystal (B, from bulk = mass, main part)
+is connected to S internally or by external wiring.
+
+
+Regardless of how voltage is applied to S and D, one of the pn junctions between the channel and the connection island is in the reverse direction. The MOSFET blocks if no voltage is applied to G.
+If G receives a positive voltage U_{GS}, the holes as positive charge carriers are immediately displaced from the channel area opposite the gate electrode, electrons from the substrate present with S (negative pole
+of the voltage source) are attracted, so that an n-conducting bridge, the “inversion layer,” is formed between D and S opposite G.
+The resistance of this layer decreases as U_{GS} increases.
+This type of MOSFET only becomes conductive when the channel region is enriched with electrons; it is therefore called an “enrichment type” and is also self-blocking because it does not conduct when the gate is open
+or U_{GS} = 0V.
+Another type is manufactured in such a way that the channel region is already weakly n-doped. When G is open or U_{GS} = 0V, it conducts; it is “self-conducting.” With negative U_{GS}, the electrons can be displaced from
+the channel region until they are cut off; with positive U_{GS}, electrons can be sucked into the channel area, so that the channel resistance decreases further and I_{D} increases accordingly.
+Control with negative U_{GS}, i.e., with the displacement of electrons, is preferred. Therefore, this family of MOSFETs is called “depletion type.”
+The special feature of self-conducting MOSFETs is that they can be controlled by both positive and negative gate voltages.
+
+The other MOSFET types are derivatives of the two main groups above, which will not be described in this introduction.
+
+Translated with DeepL.com (free version)
+
 == From the BJT to the FET
 
 Corresponding to the basic circuits for bipolar junction transisitors (BJT)
@@ -514,14 +605,10 @@ a| image:./drain_circuit.svg[width="280px"]
 |===
 
 
-
-
-image:./mosfet_model.svg[width="750px"]
-
-
-This page is still under construction
-
-image:./under_construction.png[width="350px"]
+//
+// This page is still under construction
+//
+// image:./under_construction.png[width="350px"]
 
 //
 // === Applications as switch
