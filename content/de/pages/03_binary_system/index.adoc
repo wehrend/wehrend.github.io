@@ -6,6 +6,7 @@ category: "digital_logik_1"
 link:
 description:
 type: text
+bookHidden: true
 menu:
   docs:
     parent: "digital_logic"

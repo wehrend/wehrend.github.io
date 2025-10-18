@@ -3,8 +3,8 @@ title: 02_XOR
 date: 2021-11-08
 category: "digital_logic_1"
 link: 
-description: 
-type: text
+description:
+bookHidden: true
 menu:
   docs:
     parent: "digital_logic"
