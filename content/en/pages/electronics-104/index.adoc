@@ -60,7 +60,9 @@ temperature monitor, an ECG device, etc., which must be bridged with correspondi
 affect both cables, are in common mode at the inputs, and are thus suppressed.
 In a normal single-ended amplifier, they would be amplified as well and lead to considerable distortion of the measurement signal.
 
+link:./differential_amp.asc[LTSpice file]
 
+image:./differential_amp.png[width=700]
 
 == The Operational Amplifier
 
