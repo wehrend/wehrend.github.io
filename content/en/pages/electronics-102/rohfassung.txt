@@ -1,0 +1,89 @@
+
+
+== Complex Calculation
+
+To calculate circuits using capacitors (and / or coils) with ease and accurately, we need to extend
+our range of numbers from real-valued numbers to complex-valued numbers. That means, in the end we have
+not only one but two dimensions of numbers like shown below:
+
+
+
+image:./complex_number.png[width="400px"]
+
+
+[role="image","./complex_numbers.svg", imgfmt="svg"]
+\[ z = x + yi  \]
+
+where i is:
+
+[role="image","./imaginary_numbers.svg", imgfmt="svg"]
+\[ i = \sqrt(-1) \]
+
+Complex numbers can be expressed in  both, the cartresian coordinate system like shown above,
+or like polar coordinates with a phase \phi and a radius r .
+
+
+[width="100%" cols="a,a"]
+|=====
+| image:./cart.svg[width="450px"]
+| image:./polar.svg[width="450px"]
+|=====
+
+=== Calculation rules for complex numbers
+
+Complex numbers can be calculated either in cartesian coordinates or in polar coordinates.
+We will analyze that in the next subsection
+
+==== Calculation rules for cartesian coordinates
+
+===== Addition and Subtraction of cartesian coordinates
+
+[role="image","./addition-rule.svg", imgfmt="svg"]
+\[ z = a + bi   w =  c + di \]
+
+[role="image","./addition-rule2.svg", imgfmt="svg"]
+\[ z + w = (a + c) + (b +d) i \]
+
+===== Multiplication of cartesian coordinates
+
+[role="image","./multiplication-rule.svg", imgfmt="svg"]
+\[ z = a + bi   w =  c + di \]
+
+[role="image","./multiplication-rule2.svg", imgfmt="svg"]
+\[ z \cdot w = (a + ci) \cdot (b +di)  = (ac -bd)+ (ad +bc)i with i^2 = -1 \]
+
+
+===== Division of cartesian coordinates
+To divide a complex number
+z {\displaystyle z} by a complex number  w≠ 0
+{\displaystyle w\neq 0}, extend the fraction with the complex number conjugate to the denominator.
+
+[role="image","./conjugated-complex-rule.svg", imgfmt="svg"]
+\[ \overline{w} = c -di\]
+
+
+[role="image","./division-rule2.svg", imgfmt="svg"]
+\[ \frac{z}{w} = \frac{z \cdot \overline{w} }{w \cdot \overline{w}} = \frac{(a + bi) (c-di)}{(c+di)(c - di )} = \frac{ac+bd}{c^2 + d^2} +\frac{bc-ad}{c^2 + d^2} i \]
+
+==== Calculation rules for polar coordinates
+
+
+===== Addition and Subtraction of polar coordinates
+
+For the polar coordinates addition and subtraction are not defined, we have to calculating them by computing into cartesian coordinates,
+and eventually convert them back to polar coordinates.
+
+===== Multiplication of polar coordinates
+
+[role="image","./multiplication-polar-rule.svg", imgfmt="svg"]
+\[ z_{1} = a + bi   z_{2} =  c + di \]
+
+[role="image","./multiplication-polar-rule2.svg", imgfmt="svg"]
+\[ z_{1} \cdot z_{2} = r_{1} r_{2} \cdot e^{i{(\phi_{1} + \phi_{2})}}\]
+
+===== Division of polar coordinates
+To divide a complex number
+z {\displaystyle z} by a complex number  w≠ 0
+
+[role="image","./conjugated-divison-rule.svg", imgfmt="svg"]
+\[ \frac{z_{1}}{z_{2}} =\frac{r_{1}}{r_{2}} \cdot e^{{i(\phi_{1} - \phi_{2})}}, with  r_{2} \neq 0\]

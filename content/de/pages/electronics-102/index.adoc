@@ -85,8 +85,8 @@ da sie komplementäre Eigenschaften haben.
 | image:./capacitor.svg[width=„300px“]
 | image:./coil.svg[width=„300px“]
 | Schaltsymbol eines Kondensators | Schaltsymbol einer Spule
-| Bild:./capacitor.jpg[width=„300px“]
-| Bild:./coil.jpg[width=„300px“]
+| image:./capacitor.jpg[width=„300px“]
+| image:./coil.jpg[width=„300px“]
 | speichert Energie in einem elektrischen Feld | speichert Energie in einem magnetischen Feld
 | führt in Phase | verzögert in Phase
 | blockiert im Gleichstrombetrieb | im Gleichstrombetrieb wächst der Strom, während die Spannung mit der gleichen Geschwindigkeit abgenommen wird
@@ -111,7 +111,9 @@ Dies wird anhand der folgenden Beispiele deutlicher.
 === Tiefpassfilter
 Tiefpass 1. Ordnung
 
-image:./lowpass.svg[width=„800px“]
+
+image:./lowpass.svg[width="400px"]
+
 
 Frequenzgang
 
