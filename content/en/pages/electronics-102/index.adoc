@@ -221,6 +221,8 @@ cutoff frequency (with example values of R=1kOhm, C= 1µF)
 
 image:./lowpass_bode_diagram.svg[width="1250px"]
 
+image:./lowpass_pz_plot.svg[width="400px"]
+
 We have to use some help to generate the Bode diagram for the lowpass shown above,
 to do that, please install matplotlib via the following command:
 
@@ -237,9 +239,10 @@ and execute the following python script:
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Define the transfer function of a first-order low-pass filter
+# Define the transfer function of a first-order low-pass filter (magnitude only)
 def lowpass_first_order(frequency, cutoff_frequency):
-    return 1 / np.sqrt(1 + (frequency / cutoff_frequency)**2)
+    x = frequency / cutoff_frequency
+    return 1 / np.sqrt(1 + x**2)
 
 # Frequency range for the Bode diagram (logarithmic scale)
 frequency = np.logspace(0, 6, 1000)  # From 10^0 to 10^6 Hertz
@@ -247,13 +250,14 @@ frequency = np.logspace(0, 6, 1000)  # From 10^0 to 10^6 Hertz
 # Cutoff frequency of the low-pass filter
 cutoff_frequency = 1000  # Example value - You can set your own value here
 
+# --- BODE DIAGRAM --------------------------------------------------------
+
 # Calculate the gain in decibels (20 * log10(Amplitude))
 gain_db = 20 * np.log10(lowpass_first_order(frequency, cutoff_frequency))
 
-# Calculate the phase response in degrees (angle)
+# Calculate the phase response in degrees
 phase_deg = np.degrees(np.arctan(-frequency / cutoff_frequency))
 
-# Create the Bode diagram with both gain and phase
 plt.figure(figsize=(10, 6))
 
 # Gain plot (magnitude)
@@ -273,19 +277,60 @@ plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
 plt.tight_layout()
-
-# Save the Bode diagram as an SVG file
 plt.savefig('lowpass_bode_phase.svg', format='svg')
+plt.show()
 
-# Optionally, display the Bode diagram
+# --- S-PLANE POLE-ZERO PLOT ---------------------------------------------
+
+# Für den 1. Ordnung Tiefpass: H(s) = 1 / (1 + s/ωc)
+# Pol bei s = -ωc, keine endliche Nullstelle
+
+omega_c = 2 * np.pi * cutoff_frequency
+
+pole_real = -omega_c
+pole_imag = 0.0
+
+plt.figure(figsize=(5, 5))
+
+# Achsen zuerst (damit Marker oben liegen)
+plt.axhline(0, linewidth=0.5, zorder=0)
+plt.axvline(0, linewidth=0.5, zorder=0)
+
+# Pol(e) – gut sichtbar machen
+plt.scatter(pole_real, pole_imag,
+            marker='x', s=150,
+            label='Pole', zorder=3)
+
+# Hier gäbe es theoretisch keine endliche Nullstelle.
+# Wenn du eine hypothetische Nullstelle plotten willst, kannst du z.B. s = ∞ nicht darstellen,
+# daher lassen wir sie weg.
+
+plt.xlabel('Re{s}')
+plt.ylabel('Im{s}')
+plt.title('Pole-Zero Plot (s-plane) of 1st-Order Low-Pass')
+plt.grid(True, linestyle='--')
+plt.legend()
+plt.tight_layout()
+plt.savefig('lowpass_pz_plot.svg', format='svg')
 plt.show()
 {{</highlight>}}
 ----
+
+=== Simple Lowpass in LTspice
+
+We can verify our results by utilizing LTSpice and building our model in this software.0
+If you need to know how to use LTspice on Linux (Debian/Ubuntu) by using wine take a look
+link:https://github.com/joaocarvalhoopen/LTSpice_on_Linux_Ubuntu__How_to_install_and_use[here]
+
+image:./lowpass_ltspice.png[width="1400px"]
+
+link:./lowpass.asc[LTSpice Lowpass]
 
 === Highpass Filter
 1.order highpass
 
 image:./highpass.svg[width="400px"]
+
 
 frequency response
 
@@ -300,10 +345,9 @@ cutoff frequency (with example values of R=1kOhm, C= 1µF)
 \[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]
 ////
 
-
-
-
 image:./highpass_bode_diagram.svg[width="1250px"]
+
+image:./highpass_pz_plot.svg[width="400px"]
 
 And here again the python script, this time for the high-pass:
 
@@ -314,9 +358,11 @@ And here again the python script, this time for the high-pass:
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Define the transfer function of a first-order high-pass filter
+# Define the transfer function of a first-order high-pass filter (magnitude only)
 def highpass_first_order(frequency, cutoff_frequency):
-    return frequency / np.sqrt(1 + (frequency / cutoff_frequency)**2)
+    # Normierter Hochpass: |H(jw)| = (f/fc) / sqrt(1 + (f/fc)^2)
+    x = frequency / cutoff_frequency
+    return x / np.sqrt(1 + x**2)
 
 # Frequency range for the Bode diagram (logarithmic scale)
 frequency = np.logspace(0, 6, 1000)  # From 10^0 to 10^6 Hertz
@@ -328,9 +374,11 @@ cutoff_frequency = 1000  # Example value - You can set your own value here
 gain_db = 20 * np.log10(highpass_first_order(frequency, cutoff_frequency))
 
 # Calculate the phase response in degrees (angle)
-phase_deg = np.degrees(np.arctan(frequency / cutoff_frequency))
+# Für H(s) = s / (s + ωc) gilt: φ = 90° - arctan(ω/ωc)
+phase_deg = 90 - np.degrees(np.arctan(frequency / cutoff_frequency))
 
-# Create the Bode diagram with both gain and phase
+# --- BODE DIAGRAM --------------------------------------------------------
+
 plt.figure(figsize=(10, 6))
 
 # Gain plot (magnitude)
@@ -357,5 +405,111 @@ plt.savefig('highpass_bode_diagram.svg', format='svg')
 # Optionally, display the Bode diagram
 plt.show()
 
+# --- S-PLANE POLE-ZERO PLOT ---------------------------------------------
+
+omega_c = 2 * np.pi * cutoff_frequency
+
+pole_real = -omega_c
+pole_imag = 0.0
+
+zero_real = 0.0
+zero_imag = 0.0
+
+plt.figure(figsize=(5, 5))
+
+# Achsen zuerst, mit kleinem zorder
+plt.axhline(0, linewidth=0.5, zorder=0)
+plt.axvline(0, linewidth=0.5, zorder=0)
+
+# Pol(e) – etwas größer und nach vorne
+plt.scatter(pole_real, pole_imag,
+            marker='x', s=150,
+            label='Pole', zorder=3)
+
+# Nullstelle(n) – deutlich sichtbar
+plt.scatter(zero_real, zero_imag,
+            marker='o', s=150,
+            facecolors='none', edgecolors='red',
+            linewidths=2,
+            label='Zero', zorder=4)
+
+plt.xlabel('Re{s}')
+plt.ylabel('Im{s}')
+plt.title('Pole-Zero Plot (s-plane) of 1st-Order High-Pass')
+plt.grid(True, linestyle='--')
+plt.legend()
+plt.tight_layout()
+plt.savefig('highpass_pz_plot.svg', format='svg')
+plt.show()
+
 {{</highlight>}}
 ----
+=== Simple Highpass in LTspice
+
+We can verify our results by utilizing LTSpice and building our model in this software.
+
+image:./highpass_ltspice.png[width="1400px"]
+
+link:./highpass.asc[LTSpice Highpass]
+
+=== Twin -T notch filter
+
+Next, we want to take a look at a bit different filter, which is mostly for a notch filter -
+https://electronicscoach.com/band-stop-filter.html[see the twin T's].
+
+You must note here that the capacitors in the above design are in such configuration that the upper two capacitors are C
+while the capacitor in the middle of the network is 2C. Similarly, the two resistors at the bottom are R but the one present
+in the middle is R/2.
+To have the proper narrow band reject operation this described configuration must always be maintained.
+image:./notch_filter.svg[width="1000px"]
+
+The formula for this filter is as follows:
+
+[role="image","./formula.svg", imgfmt="svg"]
+\[ f_0 = \frac{1}{2\pi RC}\]
+
+So if we want to create a notch filter for 50Hz we need to calculate the values for R as well as C.lowpass_pz_plot
+The value for the RC constant is computed by the following equation:
+
+[role="image","./formula2.svg", imgfmt="svg"]
+\[ RC = \frac{1}{2\pi f_0}= 0.00318\]
+
+If we set the Value for R = 10 kOhm , this leaves us with the following result(s):
+
+[role="image","./formula2.svg", imgfmt="svg"]
+\[ C = \frac{RC}{R}= \frac{0.00318}{10000}= \approx 0.0000003183 F = 318nF\]
+
+Which results in the following values for the particular components:
+
+[cols="3"]
+|===
+| component
+| calculated value
+| selected standard  value
+| R
+| 10.0kΩ
+| 10.0kΩ
+| R/2
+| 5.0kΩ
+| two 10.0kΩ in parallel
+| C
+| 318.3nF
+| 330 nF
+| 2C
+|636.6nF
+| 680 nF
+|===
+
+image:./twin_t_notch.png[width="1400px"]
+
+link:./twin_notch.asc[LTSpice - notch filter]
+
+=== Lookahead (active Filters)
+
+We want to give a short heads-up to active Filterd built with op-amp which are shown and explained in
+https://wehrend.github.io/pages/electronics-104/[electronics-104].
+The op-amp wwe find in the image below is an op-amp switched as an voltage follower.
+This means that the filter can be encumbered with a circuit with a resistor at the output without changing the behaviour
+ot the precedented filter circuit...
+
+image:./notch_filter_active.svg[width="1000px"]

@@ -1,24 +1,26 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Define the transfer function of a first-order low-pass filter (magnitude only)
-def lowpass_first_order(frequency, cutoff_frequency):
+# Define the transfer function of a first-order high-pass filter (magnitude only)
+def highpass_first_order(frequency, cutoff_frequency):
+    # Normierter Hochpass: |H(jw)| = (f/fc) / sqrt(1 + (f/fc)^2)
     x = frequency / cutoff_frequency
-    return 1 / np.sqrt(1 + x**2)
+    return x / np.sqrt(1 + x**2)
 
 # Frequency range for the Bode diagram (logarithmic scale)
 frequency = np.logspace(0, 6, 1000)  # From 10^0 to 10^6 Hertz
 
-# Cutoff frequency of the low-pass filter
+# Cutoff frequency of the high-pass filter
 cutoff_frequency = 1000  # Example value - You can set your own value here
 
-# --- BODE DIAGRAM --------------------------------------------------------
-
 # Calculate the gain in decibels (20 * log10(Amplitude))
-gain_db = 20 * np.log10(lowpass_first_order(frequency, cutoff_frequency))
+gain_db = 20 * np.log10(highpass_first_order(frequency, cutoff_frequency))
 
-# Calculate the phase response in degrees
-phase_deg = np.degrees(np.arctan(-frequency / cutoff_frequency))
+# Calculate the phase response in degrees (angle)
+# Für H(s) = s / (s + ωc) gilt: φ = 90° - arctan(ω/ωc)
+phase_deg = 90 - np.degrees(np.arctan(frequency / cutoff_frequency))
+
+# --- BODE DIAGRAM --------------------------------------------------------
 
 plt.figure(figsize=(10, 6))
 
@@ -26,7 +28,7 @@ plt.figure(figsize=(10, 6))
 plt.subplot(2, 1, 1)
 plt.semilogx(frequency, gain_db, label='Gain (dB)')
 plt.ylabel('Gain (dB)')
-plt.title('Bode Diagram of a First-Order Low-Pass Filter')
+plt.title('Bode Diagram of a First-Order High-Pass Filter')
 plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
@@ -39,39 +41,46 @@ plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
 plt.tight_layout()
-plt.savefig('lowpass_bode_phase.svg', format='svg')
+
+# Save the Bode diagram as an SVG file
+plt.savefig('highpass_bode_diagram.svg', format='svg')
+
+# Optionally, display the Bode diagram
 plt.show()
 
 # --- S-PLANE POLE-ZERO PLOT ---------------------------------------------
-
-# Für den 1. Ordnung Tiefpass: H(s) = 1 / (1 + s/ωc)
-# Pol bei s = -ωc, keine endliche Nullstelle
 
 omega_c = 2 * np.pi * cutoff_frequency
 
 pole_real = -omega_c
 pole_imag = 0.0
 
+zero_real = 0.0
+zero_imag = 0.0
+
 plt.figure(figsize=(5, 5))
 
-# Achsen zuerst (damit Marker oben liegen)
+# Achsen zuerst, mit kleinem zorder
 plt.axhline(0, linewidth=0.5, zorder=0)
 plt.axvline(0, linewidth=0.5, zorder=0)
 
-# Pol(e) – gut sichtbar machen
+# Pol(e) – etwas größer und nach vorne
 plt.scatter(pole_real, pole_imag,
             marker='x', s=150,
             label='Pole', zorder=3)
 
-# Hier gäbe es theoretisch keine endliche Nullstelle.
-# Wenn du eine hypothetische Nullstelle plotten willst, kannst du z.B. s = ∞ nicht darstellen,
-# daher lassen wir sie weg.
+# Nullstelle(n) – deutlich sichtbar
+plt.scatter(zero_real, zero_imag,
+            marker='o', s=150,
+            facecolors='none', edgecolors='red',
+            linewidths=2,
+            label='Zero', zorder=4)
 
 plt.xlabel('Re{s}')
 plt.ylabel('Im{s}')
-plt.title('Pole-Zero Plot (s-plane) of 1st-Order Low-Pass')
+plt.title('Pole-Zero Plot (s-plane) of 1st-Order High-Pass')
 plt.grid(True, linestyle='--')
 plt.legend()
 plt.tight_layout()
-plt.savefig('lowpass_pz_plot.svg', format='svg')
+plt.savefig('highpass_pz_plot.svg', format='svg')
 plt.show()
