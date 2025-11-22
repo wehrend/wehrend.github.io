@@ -11,10 +11,10 @@ bookHidden: true
 outdir: ~/development/blog
 ---
 {{< katex />}}
-= Prequel Introduction to electronics 
+= Prequel Introduction to electronics
 
 '''
-While I was about to write the implementation part of the boolean algebra post, the basic logic 
+While I was about to write the implementation part of the boolean algebra post, the basic logic
 gates, the writing process got quickly out of hand and I caught myself to write more about less connected
 topics like explaining basic electronic components and their implementation on silicon than the actual content,
 here shall be the place for those excursions. This is not meant to be a complete reference more a supplement to
@@ -24,9 +24,9 @@ existing literature.
 == Free electrons and electric current
 
 What is electricity? Broadly speaken it is the flow of electrons in a conductor. In laymans term you can say,
-electrons on the outer shell - also called as valence band - of an atom are hopping from the valenece band 
+electrons on the outer shell - also called as valence band - of an atom are hopping from the valenece band
 of an atom to the adjacent one. So essentialy electricity constitutes the movement of electrons through matter.
-In practical application this matter is an electrical circuit, but also for example the lightning discharge 
+In practical application this matter is an electrical circuit, but also for example the lightning discharge
 occurs, in this case the ionised air can be considered as the (short) circuit.
 
 ////
@@ -44,11 +44,11 @@ The first group of elements (or compounds) we will introduce here are the conduc
 Some important representants of this group are the elements aluminium and copper
 which both are indispensible for electric transmission lines and power grids.
 As the table below depicts, both elements have free electrons available on it's valence
-shell, which as described above, are needed to allow the hopping of electrons from one atom 
+shell, which as described above, are needed to allow the hopping of electrons from one atom
 to another and thus allow movement of electrons, making the element (in its pure form) a conductor.
 
 Of course in real world there are multiple factors counteracting to the idealized properties
-proposed here. E.g. we have to consider among others that metals oxide when coming in contact 
+proposed here. E.g. we have to consider among others that metals oxide when coming in contact
 with oxygen, which builds up a thin but effectively isolating layer on the surface of the metal,
 preventing a good contact. We might discuss such effects later. For now just let's continue on the topic...
 
@@ -74,18 +74,18 @@ image:./simple_circuit.svg[width="400px"]
 
 === ...and not so conductors
 
-The second group of elements we want to introduce here are elements which 
+The second group of elements we want to introduce here are elements which
 conductivity is (highly) dependent on its purity degree and environment
 factors like temperature. Representants of this group are called semiconductors.
 Carbon and silicon are examples showing up on the periodic table.
-The author picked those two elements as they have very exciting properties 
+The author picked those two elements as they have very exciting properties
 in regards to - but not limited to - conductivity. This is due to the number of valence
 electrons on the outer shell.
 
 
 [width="100%" cols="a,a"]
 |=====
-2+>| semiconductor 
+2+>| semiconductor
 | image:./atomic_model_C.svg[width="300px"]
 | image:./atomic_model_Si.svg[width="300px"]
 | atomic model of carbon (6) | atomic model of silicon (14)
@@ -93,8 +93,8 @@ electrons on the outer shell.
 |=====
 
 
-So why does carbon and silicon have so poor conductivity properties compared to copper despite their four electrons 
-on the valence shell electrons? 
+So why does carbon and silicon have so poor conductivity properties compared to copper despite their four electrons
+on the valence shell electrons?
 
 The answer lies in the simple fact, that both carbon as well as silicon form a lattice, using up all electrons of the valence
 shell.
@@ -102,7 +102,7 @@ shell.
 
 [width="100%" cols="a,a"]
 |=====
-| covalent bonding of carbon | covalent bonding of silicon 
+| covalent bonding of carbon | covalent bonding of silicon
 | image:./covalent_bonding_c.svg[width="400px"]
 | image:./covalent_bonding_si.svg[width="400px"]
 2+>|semiconductor | conductor
@@ -110,8 +110,8 @@ shell.
 
 == Voltage and potential
 
-The table below shows the common symbols for voltage sources. On the left side 
-an ideal voltage source is shown, while on the right side a real voltage source 
+The table below shows the common symbols for voltage sources. On the left side
+an ideal voltage source is shown, while on the right side a real voltage source
 is  shown. As you can see the real source resembles a battery cell. Of course the
 voltage source can differ from an actual battery cell, and also most often is not displayed implicit.
 
@@ -122,12 +122,12 @@ voltage source can differ from an actual battery cell, and also most often is no
 | image:./real_voltage_source.svg[width="150px"]
 |=====
 
-An ideal voltage source provides a voltage of a certain level. 
+An ideal voltage source provides a voltage of a certain level.
 
 As we can see in below shown circuit schematics a voltage is just the difference between two potentials.
-In the first example (left) the junction at the bottom is choosen as reference point, as it 
-is signaled as ground. So the voltage amounts to 1.5V for U_B0 respectively to 3V for U_A0. 
-Whereas in the example on the right the junction between the battery cells is choosen as reference point and ground. 
+In the first example (left) the junction at the bottom is choosen as reference point, as it
+is signaled as ground. So the voltage amounts to 1.5V for U_B0 respectively to 3V for U_A0.
+Whereas in the example on the right the junction between the battery cells is choosen as reference point and ground.
 The potential differences we measure  here are: U_A0 = 1.5V and U_B0 =-1.5V.
 As a remark dual power supplies like that with - however with a voltage range of 12...15V - are often used for
 applications with op-amps.
@@ -147,7 +147,7 @@ applications with op-amps.
 Simple circuit with voltage source and resistor, bridge to next section
 ////
 The next image shows the simplest possible circuit: A voltage source with a resistor in series.
-Physically seen every resistor is just a  converter from electrical energy to thermically energy, thus heat. 
+Physically seen every resistor is just a  converter from electrical energy to thermically energy, thus heat.
 
 Resistors are generally used in circuits to drop the voltage to the desired level, respectively
 limit the current flowing between certail paths of a circuits. We will learn about it in the next section.
@@ -155,29 +155,29 @@ limit the current flowing between certail paths of a circuits. We will learn abo
 image:./resistor_circuit.svg[width="250px"]
 
 
-== Ohm's law and lead resistance 
+== Ohm's law and lead resistance
 
-*Exercise: Measure Resistance* 
+*Exercise: Measure Resistance*
 To execute the following exercise you need one voltagemeter and one amperemeter (or just two multimeters), a variable voltage source and
 some sample wires of different materials but same in length and diameter.
-If you do not have the equipment, in theory you could also simulate this exercise in http://qucs.sourceforge.net[Qucs] or 
-https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html[LTspice]. 
+If you do not have the equipment, in theory you could also simulate this exercise in http://qucs.sourceforge.net[Qucs] or
+https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html[LTspice].
 
 But as we need to upfront define the parameters of sample wires we want
 to measure, this approach kinda torpedoes the purpose of the exercise, of learning how to do an indirect measurement of electrical
 resistance.
 
-Connect the equipment according to the figure shown below, with the sample wire as the resistor Rx. 
+Connect the equipment according to the figure shown below, with the sample wire as the resistor Rx.
 
 //.Resistance measurement principal
 image:./resistance_measurement_l.svg[width=550]
 
 
-Now, for every wire measure the voltage and the current and plot a graph of it with voltage on x-axis and current on y-axis. 
-You will see that for different materials, you get a linear graph but with a different slope. So you have find a relation 
-between voltage current and resistance. In addition after measuring the different wires you can also use pen & paper: draw a line with 
+Now, for every wire measure the voltage and the current and plot a graph of it with voltage on x-axis and current on y-axis.
+You will see that for different materials, you get a linear graph but with a different slope. So you have find a relation
+between voltage current and resistance. In addition after measuring the different wires you can also use pen & paper: draw a line with
 a pencil or scribble a small area. Now connect these with the probes of the measurement assembly. You will see, that also
-the graphit trace work as a conductor - not an optimal one but a conductor. 
+the graphit trace work as a conductor - not an optimal one but a conductor.
 
 This observance leads us to the most important formula you will encounter in an electrical engineering 101 course, Ohm's law.
 
@@ -187,7 +187,7 @@ This observance leads us to the most important formula you will encounter in an 
 // .Ohm's law
 // :figure-caption: Equation
 
-When we rearrange this equation to its simpler interpretable form, U = R·I, we recognize, that the voltage drop (U) on the Resistor corresponds 
+When we rearrange this equation to its simpler interpretable form, U = R·I, we recognize, that the voltage drop (U) on the Resistor corresponds
 to the resistance value ( R) times the current flowing thru (I). We did not speak about the current yet and we will postpone this to a later section.
 As indicated in the brakets the unit of Resistance is Ω.
 // Todo: write more about / to the ohms law.
@@ -210,9 +210,9 @@ Add explanation for parallel connection
 
 So we discovered that the materials differ in their electrical conductivity - which is the reciprocal of the electrical resistance -
 some are good (conductor) some are pretty bad and unusable (non-conductor) but nevertheless useful as dielectric, as we will see in
-the next section and some in between. 
+the next section and some in between.
 We also need to note, of course that the conductivity is not only dependent on the material itself but also its geometries (further it is
-also dependent on the temperature, but I will not go into this here), you know we handle with physics, so another useful formula / equation 
+also dependent on the temperature, but I will not go into this here), you know we handle with physics, so another useful formula / equation
 in this context is the following.
 
 [role="image","../images/electronic_basics/wire_resistance.svg" ,imgfmt="svg"]
@@ -226,12 +226,12 @@ For the most common rectangle form - like a strip conductor on a PCB  - area A r
 
 
 So the total resistance of a wire or a strip conductor on a PCB is dependent upon the specific resistivity ρ, the length
-of the conductor and the area used to transfer the current. Logically the specific resistivity as well as the length of the conductor 
+of the conductor and the area used to transfer the current. Logically the specific resistivity as well as the length of the conductor
 increases the resistance while the area counteracts it.
 
 *Why do we need to know this?*
 
-At this point you may ask why it is important to know this if we can just pull a schematic of our DIY project and realize it with discrete components 
+At this point you may ask why it is important to know this if we can just pull a schematic of our DIY project and realize it with discrete components
 on a breakout board- the answer is simple scale - it might work for this simple hobbyist example but lack scalibility,costs and / or reliability.
 
 The further we get down on scale the more important parasitic effects become - we will learn about it in the subsequent sections.
@@ -240,8 +240,8 @@ The further we get down on scale the more important parasitic effects become - w
 Resistance measurement
 
 Below figure shows the principal of resistance measurement applied within a digital multimeter - leaving aside the range switch.
-On the left side we have a constant current source, in the middle the resistor - or wire under measurement and on the left 
-a voltmeter measuring the voltage. As with the constant current source the overall current in the circuit is known, the resistance 
+On the left side we have a constant current source, in the middle the resistor - or wire under measurement and on the left
+a voltmeter measuring the voltage. As with the constant current source the overall current in the circuit is known, the resistance
 can be scaled from that with the voltage measured.
 
 // .Resistance measurement applied in a digital multimeter
@@ -249,26 +249,115 @@ image:./resistance_measurement_ll.svg[width=550]
 
 '''
 
+== Basic circuits
+
+Basic circuits in electrical engineering consist of a source with internal resistance and a load. Depending on how the source is viewed,
+a distinction is made between a basic circuit with a voltage source and a basic circuit with a current source.
+In circuit analysis, the aim is to reduce complex circuits to basic circuits. Basic circuits are defined as
+series and parallel connections of components.
+
+=== Basic laws of circuits
+
+What generally applicable laws apply to every circuit, regardless of whether the resistors in it are linear or nonlinear?
+The three laws described below form the basis for circuit calculations.
+
+==== Ohm's law
+
+For every resistor, if the current and resistance value are known, the following applies
+
+[role=“image”,“./ohms_law.svg” ,imgfmt=“svg”]
+ \large n\[ U [V] = {I [A]} \cdot {R [ \Omega ] \]
+
+However, only linear resistors exhibit proportionality between voltage and current.
+
+==== Kirchhoff's first law
+
+Kirchhoff's 1st law states: The sum of all signed currents belonging to a node is equal to zero:
+
+[role=“image”,“./kirchhoff_law1.svg” ,imgfmt=“svg”]
+\large \[ \sum_{i=1}^{n} I_i = 0\]
+
+A node is any connection point of lines in an electrical circuit. Since no charges are generated, lost, or stored at a node,
+the amount of charge flowing into the node during the time \Delta t must be equal to the sum of the charges flowing out of the node.
+
+
+==== Kirchhoff's Second Law
+
+Kirchhoff's second law states: The sum of all signed voltages in a mesh is equal to zero:
+
+
+[role=“image”,“./kirchhoff_law2.svg” ,imgfmt=“svg”]
+\large \[ \sum_{i=1}^{n} U_i = 0\]
+
+A mesh is any closed loop in a circuit. For each mesh, the same applies as for an unbranched circuit:
+The sum of all voltages is equal to zero, since the charge has returned to the same potential as the starting point after completing a loop.
+.
+
+==== Example
+
+Let's consider a typical mesh configuration and apply Kirchhoff's first and second laws to it.
+
+image:./example.svg[Example svg]
+
+==== Solution:
+
+Kirchhoff's first law
+
+The mesh in the above figure contains three nodes. When applying the above equation (Kirchhoff's first law) to a node,
+the incoming currents are assigned a positive sign and the outgoing currents a negative sign.
+
+The following applies to node P1:
+ (+ I_a) + (-I_1) + (-I_2) = 0
+ Furthermore, the equation also applies in extended form to the external currents I_a, I_b, I_c of a mesh. The following applies to the nodes:
+
+     P1: +I_a - I_1 - I_2 = 0  => I_a = I_1 + I_2
+
+     P2: +I_2 - I_c - I_3 = 0  => I_c = I_2 - I_3
+
+     P3: +I_b + I_3 + I_1 = 0  => I_b = -I_1 - I_3
+
+According to the node rule, the following must apply to the three external currents:
+
++ I_a  + I_b -I_c = 0
+
+Check:
+
+  + I_1 + I_2 - I_1 -I_3 -I_2 + I_3 = 0
+
+2. Kirchhoff's law
+
+In general, it is not possible to make any predictions about the direction of the currents. Therefore, the current directions are assumed.
+The voltage arrows on the resistors then point in the selected current direction. The source voltage arrows point from the positive
+to the negative pole of the voltage source. The direction of circulation was chosen at our discretion to be counterclockwise, and the
+voltage arrows pointing in the direction of circulation were counted as positive, the others as negative. For the network mesh shown above,
+we obtain:
+
+(+ U_R3) + (-U_R1) + (+ U_R2) + (-U_q) = 0
+
+(+ I_3 * R_3) + (-I_1 * R_1) + (+ I_2 * R_2) + (-U_q) = 0
+
+
 === The Resistor
 
 The electrical component itself comes in all shapes and sizes dependent on the area of application.
-the miniature ones for surface mounted devices technique, used in all higher integrated electronic devices, 
-the average 1/4 Watt resistor based on coal with 5 percent tolerance ( in the picture below shown central) 
+the miniature ones for surface mounted devices technique, used in all higher integrated electronic devices,
+the average 1/4 Watt resistor based on coal with 5 percent tolerance ( in the picture below shown central)
 and the more precise metal film resistors with 1 percent tolerance (blue, shown right in the picture).
 There are resistors with mechanically adjustable resistance called potentiometer (like the ones shown left in the picture )
-Other types are varistor where the resistance is dependent upon the voltage applied, some other types like 
+Other types are varistor where the resistance is dependent upon the voltage applied, some other types like
 NTC / PTC depending on the temperature.
 
 image:./discrete_resistors_edit.jpg[width=550]
 
 image:./smd_example.jpg[width=300]
 
+
 ////Explain structure and costruction of smd resistors////
 
-//// 
-Explain this whole thing on a physical level 
+////
+Explain this whole thing on a physical level
 rho and geometry thing (same for Capacitors and coils)
 Why? Because mostly we not only handle lumped components
-but rather distributed ones - especially in HF but dont get 
-me started about HF. Network thingies also - Why do we need this? 
-////
+but rather distributed ones - especially in HF but dont get
+me started about HF. Network thingies also - Why do we need this?
+///

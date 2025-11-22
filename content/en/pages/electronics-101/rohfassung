@@ -1,0 +1,87 @@
+== Grundstromkreise
+
+Grundstromkreise der Elektrotechnik bestehen aus einer Quelle mit Innenwiderstand und einem Verbraucher.Je nach Betrachtungsweise
+der Quelle unterscheidet man zwischen einem Grundstromkreis mit Spannungsquelle oder einem Grundstromkreis mit Stromquelle.
+Bei der Schaltungsanalyse versucht man, komplexe Schaltungen auf Grundstromkreise zu reduzieren. Als Grundstromkreis bezeichnet
+man Reihenschaltungen und Parallelschaltungen von Bauelementen.
+
+=== Grundgesetze der Stromkreise
+
+Welche allgemein gültigen Gesetzmäßigkeiten gelten für jeden Stromkreis, gleichgültig ob darin vorkommenden Widerstände linear oder nichtlinear sind?
+Die drei nachfolgend beschriebenen Gesetze bilden die Grundlage der Stromkreisberechnungen.
+
+==== Ohm'sches Gesetz
+
+Für jeden Widerstand gilt bei bekannter Stromstärke und bekanntem Widerstandswert
+
+[role="image","./ohms_law.svg" ,imgfmt="svg"]
+ \[ \large U [V] = {I [A]} \cdot {R [ \Omega]}\]
+
+Nur bei linearen Widerständen besteht jedoch Proportionalität zwischen Spannung und Stromstärke.
+
+==== Erstes Kirchhoff'sches Gesetz
+
+Der 1. Kirchhoffsche Satz besagt: Die Summe aller vorzeichenbehafteten Ströme, die zu einem Knotenpunkt gehören, ist gleich null:
+
+[role="image","./kirchhoff_law1.svg" ,imgfmt="svg"]
+\large \[ \sum_{i=1}^{n} I_i = 0\]
+
+Als Knotenpunkt gilt jeder Verbindungspunkt von Leitungen in einem Stromkreis. Da in einem Knotenpunkt weder Ladungen entstehen, untergehen noch
+gespeichert werden, müssen die in der Zeit \Delta t dem Knotenpunkt zufließenden Ladungsmengen gleich der Summe der aus dem Knotenpunkt abfließenden
+Ladungen sein.
+
+
+
+==== Zweites Kirchhoff'sches Gesetz
+
+Der 2. Kirchhoff'sche Satz besagt: Die Summe aller vorzeichenbahafteten Spannungen in einer Netzmasche ist gleich null:
+
+
+[role="image","./kirchhoff_law2.svg" ,imgfmt="svg"]
+\large \[ \sum_{i=1}^{n} U_i = 0\]
+
+Als Netzmasche gilt jeder geschlossene Umlauf in einer Schaltung. Für jede Netzmasche gilt genau wie für den unverzweigten Stromkreis:
+Die Summe aller Spannungen ist gleich null, da die Ladung nach Beendigung eines Umlaufs wieder auf dem gleichen Potenzial des Ausgangspunktes
+angekommen ist.
+
+==== Beispiel
+
+Wir betrachten eine typische Netzmaschenkonfiguration und setzen für sie den ersten und zweiten Kirchhoff'schen Satz an.
+
+image:./example.svg[Example svg]
+
+==== Lösung:
+
+1. Kirchhoff'scher Satz
+
+Die Netzmasche im obigen Bild enthält drei Knotenpunkte. Beim Ansatz von obiger Gleichung (erstem kirhhoffschen Gesetz) für einen Knotenpunkt
+teilt man den zufließenden Strömen das positive Vorzeichen, den abfließenden Strömen das Minuszeichen zu.
+
+Für Knotenpunkt P1 gilt:
+ (+ I_a) + (-I_1) + (-I_2) = 0
+ Ferner gilt die Gleichung auch in erwiterter Form für die Außenströme I_a, I_b, I_c einer Netzmasche. Für die Knotenpunkte gelten;
+
+     P1: +I_a - I_1 - I_2 = 0  => I_a = I_1 + I_2
+
+     P2: +I_2 - I_c - I_3 = 0  => I_c = I_2 - I_3
+
+     P3: +I_b + I_3 + I_1 = 0  => I_b = -I_1 - I_3
+
+ Gemäß der Knotenpunktregel muss für die drei Außenströme gelten:
+
+ + I_a  + I_b -I_c = 0
+
+ Kontrolle:
+
+    + I_1 + I_2 - I_1 -I_3 -I_2 + I_3 = 0
+
+  2. Kirchhoff'scher Satz
+
+ Im allgemeinen Fall kann man über die Richtung der Ströme keine Voraussagen machen. Man nimmt deshalb die Stromrichtungen an.
+ Die Spannungspfeile an den Widerständen zeigen dann in die gewählte Stromrichtung. Die Quellenspannungspfeile zeigen vom Plus-
+ zum Minuspol der Spannungsquelle. Die Umlaufrichtung wurdde nach freiem Ermessen im Gegenuhrzeigersinn gewählt und die in
+ Umlaufrichtung zeigenden Spannungspfeile positiv gezählt, die anderen negativ. Für die obige dargestellte Netzmasche
+ erhält man:
+
+    (+ U_R3) + (-U_R1) + (+ U_R2) + (-U_q) = 0
+    (+ I_3 * R_3) + (-I_1 * R_1) + (+ I_2 * R_2) + (-U_q) = 0
