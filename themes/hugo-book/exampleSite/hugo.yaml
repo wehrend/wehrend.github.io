@@ -1,8 +1,14 @@
 # hugo server --minify --themesDir ../..
 
+# for maximum cleanups and rebuilds, run where you checked out the repository
+# hugo server --printPathWarnings --disableFastRender --cleanDestinationDir=true --logLevel=debug \
+# --gc -M -s exampleSite --themesDir ../.. -b http://127.0.0.1/
+
 baseURL: http://0.0.0.0:1313/hugo-book/
 title: Hugo Book
 theme: hugo-book
+
+copyright: "[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)"
 
 # Book configuration
 disablePathToLower: true
@@ -15,6 +21,8 @@ markup:
       unsafe: true
   tableOfContents:
     startLevel: 1
+  highlight:
+    style: base16-snazzy
 
 # Multi-lingual mode config
 # There are different options to translate files
@@ -38,10 +46,17 @@ languages:
 menu:
   home:
     - name: "Documentation"
-      url: "/docs/example/"
+      pageRef: "/docs/example/"
       weight: 1
+    - pageRef: "/docs/example/"
+      weight: 10
+      parent: "Documentation"
+    - name: "Shortcodes"
+      pageRef: "/docs/shortcodes/buttons/"
+      weight: 20
+      parent: "Documentation"
     - name: "Showcases"
-      url: "/showcases/"
+      pageRef: "/showcases/"
       weight: 2
     - name: "Github"
       url: "https://github.com/alex-shpak/hugo-book/"
@@ -61,10 +76,10 @@ params:
   # Theme 'auto' switches between dark and light modes based on browser/os preferences
   BookTheme: "light"
 
-  # (Optional, default true) Controls table of contents visibility on right side of pages.
-  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # (Optional, default none) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled globally with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
-  BookToC: true
+  # BookToC: true
 
   # (Optional, default favicon.png) Set the path to a favicon file.
   # If the favicon is /static/favicon.png then the path would be favicon.png
@@ -101,7 +116,7 @@ params:
   BookSearch: true
 
   # (Optional, default true) Enables comments template on pages
-  # By default partals/docs/comments.html includes Disqus template
+  # By default partials/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
   BookComments: true
@@ -109,12 +124,15 @@ params:
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
-  # Theme will print warning if page referenced in markdown does not exists.
-  BookPortableLinks: true
+  # Hugo Book will print warning or error if page referenced in markdown does not exists.
+  # Possible values are false | 'warning' | 'error'
+  BookPortableLinks: 'warning'
 
   # /!\ This is an experimental feature, might be removed or changed at any time
-  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
-  BookServiceWorker: true
+  # (Optional, experimental, default false)
+  # When set to 'preache' it enables a service worker that caches visited pages and resources for offline use.
+  # Possible values are false | true | 'precache'
+  BookServiceWorker: "precache"
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
