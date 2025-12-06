@@ -5,8 +5,10 @@
 
 {{ with .Site.GetPage $bookSection }}
   {{ $pages := partialCached "docs/prev-next-cache" .Pages }}
-  {{ $prev := $pages.Next $ }}
-  {{ $next := $pages.Prev $ }}
+
+  {{/* HIER ändern: */}}
+  {{ $prev := $pages.Prev $ }}
+  {{ $next := $pages.Next $ }}
 
   {{- if or $prev $next }}
   <div class="flex flex-wrap justify-between">

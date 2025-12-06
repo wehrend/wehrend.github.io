@@ -9,7 +9,7 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic"
-    weight: 25
+    weight: 50
 ---
 {{< katex />}}
 == The ALU, the swiss knife of every cpu

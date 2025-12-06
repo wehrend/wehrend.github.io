@@ -9,7 +9,7 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic_2"
-    weight: 10
+    weight: 120
 ---
 {{< katex />}}
 == Clocks, Flipflops and registers

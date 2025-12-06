@@ -9,6 +9,7 @@ description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
+weight: 1200
 ---
 {{< katex />}}
 = Electronics 102

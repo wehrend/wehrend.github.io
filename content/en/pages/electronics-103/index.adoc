@@ -11,6 +11,7 @@ bookHidden: true
 outdir: ~/development/blog
 draft: false
 :stem: latexmath
+weight: 1300
 ---
 {{< katex />}}
 

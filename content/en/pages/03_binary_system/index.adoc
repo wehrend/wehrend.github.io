@@ -10,7 +10,7 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic"
-    weight: 15
+    weight: 30
 ---
 {{< katex />}}
 ==  The Binary System

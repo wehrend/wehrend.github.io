@@ -12,7 +12,7 @@ menu:
   docs:
     parent: "digital_logic"
     identifier: "01_boolean_algebra"
-    weight: 5
+    weight: 10
 ---
 {{< katex />}}
 

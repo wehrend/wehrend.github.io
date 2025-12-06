@@ -6,6 +6,7 @@ type: 'docs'
 category: "digital_logic_1"
 link:
 description:
+weight: 00
 ---
 {{< katex />}}
 == How does a CPU work – Table of Contents

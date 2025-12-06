@@ -10,6 +10,7 @@ type: text
 bookHidden: true
 outdir: ~/development/blog
 draft: false
+weight: 1500
 ---
 
 This page is still under construction

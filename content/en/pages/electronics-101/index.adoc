@@ -9,6 +9,7 @@ description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
+weight: 1100
 ---
 {{< katex />}}
 = Prequel Introduction to electronics

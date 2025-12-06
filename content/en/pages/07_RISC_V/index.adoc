@@ -10,7 +10,7 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic"
-    weight: 35
+    weight: 70
 ---
 {{< katex />}}
 == Digital design meets computer architecture
