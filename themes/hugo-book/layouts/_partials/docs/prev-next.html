@@ -4,7 +4,7 @@
 {{ end }}
 
 {{ with .Site.GetPage $bookSection }}
-  {{ $pages := partialCached "docs/prev-next-cache" .Pages }}
+    {{ $pages := (partialCached "docs/prev-next-cache" .Pages).ByTitle.Reverse }}
 
   {{/* HIER ändern: */}}
   {{ $prev := $pages.Prev $ }}
