@@ -10,7 +10,7 @@ type: text
 bookHidden: true
 menu:
   docs:
-    parent: "digital_logic"
+    parent: "digital_logic_1"
     identifier: "01_boolean_algebra"
     weight: 10
 ---

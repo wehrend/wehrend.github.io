@@ -6,10 +6,10 @@ link:
 description: 
 type: text
 bookHidden: true
+weight: 60
 menu:
   docs:
-    parent: "digital_logic"
-weight: 60
+    parent: "digital_logic_1"
 ---
 {{< katex />}}
 == Memory Organization

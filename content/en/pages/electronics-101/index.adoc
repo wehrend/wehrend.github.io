@@ -65,10 +65,10 @@ preventing a good contact. We might discuss such effects later. For now just let
 image:./simple_circuit.svg[width="400px"]
 
 
-[role="image", "../images/electronic_basics/elemental_charge.svg", imgfmt="svg"]
+[role="image", "./elemental_charge.svg", imgfmt="svg"]
 \large \[Q = N \cdot (\pm e)\]
 
-[role="image", "../images/electronic_basics/current.svg", imgfmt="svg"]
+[role="image", "./current.svg", imgfmt="svg"]
 \large \[I = \frac{\Delta Q }{\Delta t}\]
 
 

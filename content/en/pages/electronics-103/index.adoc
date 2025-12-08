@@ -15,11 +15,11 @@ weight: 1300
 ---
 {{< katex />}}
 
-== Electronics 103 - nonlinear components
+== Electronics 103 – nonlinear components
 
-From the first view on electronics, we now want to deepen the understanding components like diodes and -more important -
-Transistors and CMOS technology. We want to show that a transistor is both analog and also digital depending only on which
-level - or layer of abstraction you want to look at...
+After our first look into electronics, we now want to deepen our understanding of components such as diodes and – even more importantly –
+transistors and CMOS technology. We want to show that a transistor can behave both as an analog and as a digital device,
+depending only on the level – or layer of abstraction – from which you observe it.
 
 == Semiconductor materials
 
@@ -30,97 +30,54 @@ a| image:./atomic_model_Si.svg[width="350px"]
 a| image:./atomic_model_Ge.svg[width="350px"]
 |===
 
-Let us start our tour over semiconductor devices with a small repetition of this topic from
-https://wehrend.github.io/pages/prequel-short-introduction-to-electronics[electronics 101]
+Let us start our tour of semiconductor devices with a short repetition of this topic from
+https://wehrend.github.io/pages/prequel-short-introduction-to-electronics[electronics 101].
 
-If we can make sure that the semiconductor material, here silicon, is not polluted oder doped,
-with any tri- or pentavalent material the only interesting factor here is the temperature - given, this
-is room-temperatured (25°C), silicon is a non-conductor..
+If we make sure that the semiconductor material, here silicon, is not contaminated or *doped*
+with any trivalent or pentavalent atoms, the only relevant factor is temperature.
+At room temperature (≈ 25 °C), intrinsic silicon is a very poor conductor.
 
+## n-type doping (pentavalent donors)
 
-[cols="3"]
-|===
-a| Examples of tetravalent elements: +
-    - Kohlenstoff ( C) +
-    - #Silicium (Si)# +
-    - #Germanium (Ge)# +
-    - Zinn (Sn) +
-    - Blei (Pb) +
-a| image:./covalent_bonding_si.svg[width="350px"]
-a| image:./covalent_bonding_Ge.svg[width="350px"]
-|===
-
-
-
-== negative doping (or pentavalent elements)
-Pentavalent elements (for example Bor)
+When silicon is doped with atoms that have **five valence electrons** (pentavalent donors),
+one extra electron remains weakly bound and can easily move into the conduction band.
+This creates **n-type** (negative) semiconductor material.
 
 [cols="2"]
 |===
-a| Examples of pentavalent elements: +
-    - Stickstoff (N) +
-    - #Phosphor (P)# +
-    - #Arsen (As)# +
-    - Antimon (Sb) +
-    - Bismut (Bi) +
+a| Examples of pentavalent donor elements (Group V): +
+    - Nitrogen (N) +
+    - Phosphorus (P) +
+    - Arsenic (As) +
+    - Antimony (Sb) +
+    - Bismuth (Bi) +
 a| image:./covalent_bonding_As.svg[width="350px"]
 |===
 
-== positive doping
+## p-type doping (trivalent acceptors)
 
-Trivalent elements (for example Arsen)
+When silicon is doped with atoms that have **three valence electrons** (trivalent acceptors),
+one electron is missing in the lattice. This “hole” behaves like a positive mobile charge carrier
+and creates **p-type** (positive) semiconductor material.
 
 [cols="2"]
 |===
-a| Examples of tetravalent elements: +
-    - #Bor (B)# +
-    - #Aluminium (Al)# +
+a| Examples of trivalent acceptor elements (Group III): +
+    - Boron (B) +
+    - Aluminium (Al) +
     - Gallium (Ga) +
     - Indium (In) +
     - Thallium (Tl) +
 a| image:./covalent_bonding_B.svg[width="350px"]
 |===
 
-When we put both of the elements mentioned above together, (1.)
-the negative doped semiconductor material with the p-doped material,
-we achieve a very interesting behaviour at the pn-junction.
+== Combining p-type and n-type material
 
-What Happens at the Junction?
-
-(1.) Diffusion Starts:
-Electrons from the N-side move to the P-side (because electrons want to fill the holes).
-Holes from the P-side move to the N-side.
-
-
-[cols="2"]
-|===
-a| image:./pn-junction.svg[width="350px"]
-a| image:./diode_behaviour.png[width="350px"]
-|===
-
-
-
-(2.) Depletion Region Forms:
-When electrons and holes meet, they cancel each other out.
-This creates a neutral zone in the middle with no free charge carriers — this is called the depletion region.
-An electric field builds up here that prevents more electrons and holes from moving across.
-
-(3.)Equilibrium is Reached:
-Eventually, a balance is reached. Electrons want to move across, but the electric field pushes them back.
-
-What Happens When You Apply Voltage?
-Forward Bias (positive to P-side, negative to N-side):
-Pushes electrons and holes toward the junction.
-Current flows across the junction.
-
-Reverse Bias (negative to P-side, positive to N-side):
-Pulls electrons and holes away from the junction.
-Depletion region gets wider.
-Very little current flows.
-
-Here we want to take a deep dive into the workings of semiconductors:
-link:/pages/01_boolean_algebra/#_implementation_on_electrical_level[the workings of semiconductors:]
-
+When we bring n-doped and p-doped semiconductor material together,
+a **pn-junction** forms.
+This junction shows very interesting and highly useful behaviour:
+a depletion zone is created, internal electric fields arise, and the device becomes direction-dependent.
+All modern diodes, transistors, and CMOS structures are based on this fundamental effect.
 
 == Applications of diodes
 
@@ -232,7 +189,8 @@ a| image:./transistor_pnp_schema.svg[width="400px"]
 
 There are a gazillion of applications for either BJTs as switch as well as amplifier - in the following
 we only want to visit the most vital applications (of both types).
-For the following example it works as an amplifier. But we also use it for logic circuit as shown http://localhost:1313/pages/01_boolean_algebra/[here].
+For the following example it works as an amplifier. But we also use it for logic circuit as shown
+https://wehrend.github.io/pages/01_boolean_algebra/[here].
 
 image:./the_simple_circuit.svg[width="500px"]
 
@@ -259,8 +217,8 @@ reduction in amplification (a reduced input signal leads to a correspondingly sm
 
 So why use negative feedback?
 
-This negative feedback has one disadvqantage but multiple great advantages over the normal circcuit without the control
-loop. We make a lesser great amplification gain, but adopt a far better amplifier circuit - greater bandwith, less
+This negative feedback has one disadvantage but multiple great advantages over the normal circuit without the control
+loop. We make a lesser great amplification gain, but adopt a far better amplifier circuit - greater bandwidth, less
 distortion factor...
 
 Values fo this feedback resistor should be 30 to 70kOhm...
@@ -270,7 +228,7 @@ Values fo this feedback resistor should be 30 to 70kOhm...
 === The flipflop
 
 Another vital application, we already visited some time ago, is the application as a flip-flop
-as shown http://localhost:1313/pages/11_clocks_and_registers/#_a_binary_counter[here].
+as shown https://wehrend.github.io/pages/11_clocks_and_registers/#_a_binary_counter[here].
 The flipflop is a central component in almost all digital circuit, which stores digital values (0 and 1)
 
 [cols="3"]
@@ -283,30 +241,130 @@ a| image:./flipflop_circuit.svg[width="500px"]
 a| image:./flipflop_discrete.svg[width="600px"]
 |===
 
-
 === The astable multivibrator
 
 image:./astable_multivibrator.svg[width="700px"]
 
-The so-called astable multivibrator in laymen terms is a blinker circuit.
-The formula to compute the desired frequency from the given parameters is as follows:
+The so-called astable multivibrator is, in layman’s terms, a blinker circuit.
+The formula to compute the oscillation frequency from the given parameters is:
 
 [image src="./multivibrator_frequency.svg" format="svg" alt="frequency"]
-\large \[ f = \frac{1}{T}= \frac{1}{R_{B1} * C_1 + R_{B2} * C_2 * ln(2)} \]
+\large \[
+f = \frac{1}{T} = \frac{1}{(R_{B1} \cdot C_1 + R_{B2} \cdot C_2)\,\ln(2)}
+\]
 
 image:./astable_multivibrator.png[width="700px"]
 
-link:./astable_multivibrator.asc[astable multivibrator - ltspice file]
+link:./astable_multivibrator.asc[astable multivibrator – ltspice file]
+
+The formula for the frequency ($f$) of an astable multivibrator, which is $f = \frac{1}{(R_{B1} \cdot C_1 + R_{B2} \cdot C_2)\,\ln(2)}$, is derived by analyzing the **charging and discharging cycles** of the capacitors ($C_1$ and $C_2$) through the base resistors ($R_{B1}$ and $R_{B2}$).
+
+Here is the step-by-step derivation for the **periodic time ($T$)**, from which the frequency ($f$) is easily found.
+
+---
+
+## 1. Astable Multivibrator Operation
+
+An astable multivibrator consists of two cross-coupled common-emitter transistor stages ($Q_1$ and $Q_2$).
+
+* The circuit alternates between two quasi-stable states:
+    * **State 1:** $Q_1$ is **ON** (saturated), and $Q_2$ is **OFF** (cut-off).
+    * **State 2:** $Q_1$ is **OFF**, and $Q_2$ is **ON**.
+* The transition from one state to the other is controlled by the charging of the coupling capacitors ($C_1$ and $C_2$) through the base resistors ($R_{B1}$ and $R_{B2}$).
+
+Let's analyze the first half-cycle, $T_1$, when $Q_1$ is OFF and $Q_2$ is ON.
+
+---
+
+## 2. Derivation of the Half-Period $T_1$
+
+Assume the transition just occurred, and **$Q_2$ is ON** (saturated, $V_{CE2} \approx 0 \text{ V}$) and **$Q_1$ is OFF** ($V_{CE1} \approx V_{CC}$).
+
+### Initial Condition of $C_1$
+
+1.  When $Q_1$ was just turned OFF, its collector voltage ($V_{C1}$) shot up to **$V_{CC}$**.
+2.  Since $C_2$ couples $V_{C1}$ to the base of $Q_2$ ($V_{B2}$), the sudden rise in $V_{C1}$ caused $V_{B2}$ to rise, turning $Q_2$ ON.
+3.  Simultaneously, when $Q_2$ was just turned ON, its collector voltage ($V_{C2}$) dropped to $\approx 0 \text{ V}$.
+4.  Since $C_1$ couples $V_{C2}$ to the base of $Q_1$ ($V_{B1}$), the sudden drop in $V_{C2}$ drives $V_{B1}$ to a negative voltage. Specifically, $V_{B1} \approx -V_{CC}$.
+
+### Charging of $C_1$
+
+1.  With $Q_1$ OFF, the capacitor $C_1$ starts to **charge up** from its initial voltage, $V_{B1}(0) \approx -V_{CC}$, towards the supply voltage **$V_{CC}$** through the resistor **$R_{B1}$** and the saturated $Q_2$ ($V_{CE2} \approx 0 \text{ V}$).
+2.  The general equation for a capacitor charging in an RC circuit is:
+    $$V_C(t) = V_F - (V_F - V_I)e^{-t/\tau}$$
+    Where:
+    * $V_C(t)$ is the capacitor voltage (which is $V_{B1}$ in this case).
+    * $V_F$ is the **final (target) voltage** = $V_{CC}$ (the voltage $C_1$ is charging towards).
+    * $V_I$ is the **initial voltage** = $-V_{CC}$.
+    * $\tau$ is the **time constant** = $R_{B1}C_1$.
+3.  Substituting these values:
+    $$V_{B1}(t) = V_{CC} - (V_{CC} - (-V_{CC}))e^{-t/(R_{B1}C_1)}$$
+    $$V_{B1}(t) = V_{CC} - 2V_{CC}e^{-t/(R_{B1}C_1)}$$
+
+### End of Half-Period $T_1$
+
+1.  The half-period $T_1$ ends when $Q_1$ **turns ON** again, which happens when its base-emitter junction becomes forward-biased, i.e., when $V_{B1}$ reaches the **cut-in voltage** ($V_{cut-in} \approx 0.7 \text{ V}$ for silicon, but often approximated as **$0 \text{ V}$** for simplicity in the derivation).
+2.  Set $V_{B1}(t) = 0 \text{ V}$ and $t = T_1$:
+    $$0 = V_{CC} - 2V_{CC}e^{-T_1/(R_{B1}C_1)}$$
+3.  Rearrange the equation:
+    $$2V_{CC}e^{-T_1/(R_{B1}C_1)} = V_{CC}$$
+    $$e^{-T_1/(R_{B1}C_1)} = \frac{V_{CC}}{2V_{CC}} = \frac{1}{2}$$
+4.  Take the natural logarithm ($\ln$) of both sides:
+    $$-\frac{T_1}{R_{B1}C_1} = \ln\left(\frac{1}{2}\right)$$
+    Using the logarithm rule $\ln(a/b) = -\ln(b/a)$:
+    $$-\frac{T_1}{R_{B1}C_1} = -\ln(2)$$
+5.  Solve for $T_1$:
+    $$T_1 = R_{B1}C_1 \cdot \ln(2)$$
+
+---
+
+## 3. Derivation of the Half-Period $T_2$
+
+By a symmetrical analysis of the second half-cycle ($T_2$), where $Q_1$ is ON and $Q_2$ is OFF, the role of $R_{B1}C_1$ is taken over by **$R_{B2}C_2$**.
+
+The time constant for the charging of $C_2$ through $R_{B2}$ is $\tau_2 = R_{B2}C_2$.
+
+Following the exact same steps, we find:
+$$T_2 = R_{B2}C_2 \cdot \ln(2)$$
+
+---
+
+## 4. Final Formula for Frequency ($f$)
+
+### Periodic Time ($T$)
+The total periodic time $T$ is the sum of the two half-periods:
+$$T = T_1 + T_2$$
+$$T = (R_{B1}C_1 \cdot \ln(2)) + (R_{B2}C_2 \cdot \ln(2))$$
+$$T = (R_{B1}C_1 + R_{B2}C_2) \cdot \ln(2)$$
+
+### Frequency ($f$)
+The frequency is the reciprocal of the periodic time:
+$$f = \frac{1}{T}$$
+$$\bbox[#D3D3D3]{\mathbf{f = \frac{1}{(R_{B1}C_1 + R_{B2}C_2) \cdot \ln(2)}}}$$
+
+---
+
+### Symmetrical Case
+
+In the common case where $R_{B1} = R_{B2} = R$ and $C_1 = C_2 = C$:
+$$T = (RC + RC) \cdot \ln(2) = 2RC \cdot \ln(2)$$
+Since $\ln(2) \approx 0.693$:
+$$T \approx 1.386 RC$$
+And the frequency is:
+$$f = \frac{1}{T} = \frac{1}{2RC \cdot \ln(2)}$$
+$$\bbox[#D3D3D3]{\mathbf{f \approx \frac{0.72}{RC}}}$$
+
+Would you like to see a comparison of astable, monostable, and bistable multivibrators?
 
 == BJT as Amplifier
 
 This chapter I will mostly be written 1:1 from the book "Wege in die Elektonik" from Joseph Glagla and Gert Lindner; 1980.
 
 
-==== Two-Port-Theory Basic cricuits and  h-parameters
+==== Two-Port-Theory Basic circuits and  h-parameters
 
 The two-port-theory and the h-parameters are theoretical foundation for two-port-schematics.
-It is utlized for example to describe amplifiers, all circuits discussed here have a common ground
+It is utilized for example to describe amplifiers, all circuits discussed here have a common ground
 in common. All three basic circuits are named after their in- and output:
 emitter circuit, base circuit and collector circuit.
 
@@ -413,12 +471,12 @@ The emitter circuit is mostly used in small signal solutions, (also for power am
 It is used as handyman. The other both circuits (base and collector circuit) are only used
 for special occasions...
 The emitter circuit gains both current and voltage, it is also the circuit with the biggest
-power amplification. The input inpedance consists of the BE-Diode and fluctuates between very
+power amplification. The input impedance consists of the BE-Diode and fluctuates between very
 small (big $I_B$ ) and big values (minimal $I_B$). The output voltage builds up on R_{L}.
-It is measured against the commmon ground (practically U_{CE}= U_{b} - U_{RL}).
+It is measured against the common ground (practically U_{CE}= U_{b} - U_{RL}).
 Thus, there is a phase lag of 180° from the input voltage to the output voltage.
-For "normal" amplifiers this id not very interesting. But this changess as soon as the output
-signal is feedbacked to the input again...
+For "normal" amplifiers this id not very interesting. But this changes as soon as the output
+signal is feedback to the input again...
 
 link:./emitter_circuit.asc[emitter circuit - ltspice file]
 
@@ -426,10 +484,10 @@ image:./emitter_circuit.png[width="750px"]
 
 
 === Transistor in base circuit
-The base circuit has an extremly low input impedance, which is also minimized by the parallel connected
+The base circuit has an extremely low input impedance, which is also minimized by the parallel connected
 necessary low emitter resistance. The output impedance however is very high. The current gain is always
 smaller 1 (<1), due to the emitter current (=I_{B}+I_{C}) which is always bigger then the current collector
-respectively the output current. The advantage of the base circuit is that she can manage the highest frequencie.
+respectively the output current. The advantage of the base circuit is that she can manage the highest frequency.
 Also, this circuit has the smallest influences to the input. Thus, the typically applications are receiver
 for very high frequencies.
 
@@ -588,9 +646,9 @@ Translated with DeepL.com (free version)
 
 == From the BJT to the FET
 
-Corresponding to the basic circuits for bipolar junction transisitors (BJT)
+Corresponding to the basic circuits for bipolar junction transistors (BJT)
 the same rules apply to the Field-Effect-Transistors,  introduced in link:/pages/01_boolean_algebra/#_implementation_on_electrical_level[this blog post].
-The emiitter circuit is the source circuit, the base circuit ist the gate circuit and the collector circuit the drain circuit.
+The emitter circuit is the source circuit, the base circuit ist the gate circuit and the collector circuit the drain circuit.
 
 
 The gate circuit is seldom used, because the biggest advantage of the FET, the high input impedance cannot be applied with thaat.
