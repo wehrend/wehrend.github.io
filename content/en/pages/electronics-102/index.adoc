@@ -12,6 +12,12 @@ outdir: ~/development/blog
 weight: 1200
 ---
 {{< katex />}}
+
+
+{{< hint info >}}
+After this chapter you will know all the basics around time-sensitive components like coils and capacitors and simple circuits utilizing those components...
+{{< /hint >}}
+
 = Electronics 102
 
 == Time-sensitive components

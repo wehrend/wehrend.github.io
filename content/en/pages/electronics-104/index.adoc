@@ -11,6 +11,12 @@ outdir: ~/development/blog
 draft: false
 weight: 1400
 ---
+
+{{< hint info >}}
+After this chapter you will know all the basics around linear components, integrated amplifiers and op-amps...
+{{< /hint >}}
+
+
 = Integrated NF amplifiers
 
 Today, much-needed electronic functions such as NF amplifiers are no longer predominantly constructed from “discrete” (from Latin discretum = separate)

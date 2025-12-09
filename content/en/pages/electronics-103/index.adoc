@@ -15,6 +15,11 @@ weight: 1300
 ---
 {{< katex />}}
 
+{{< hint info >}}
+After this chapter you will know all the basics around semiconductor components like diodes, transistors (BJT as well as MOSFETs) and their effects...
+{{< /hint >}}
+
+
 == Electronics 103 – nonlinear components
 
 After our first look into electronics, we now want to deepen our understanding of components such as diodes and – even more importantly –

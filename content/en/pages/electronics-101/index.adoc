@@ -12,6 +12,12 @@ outdir: ~/development/blog
 weight: 1100
 ---
 {{< katex />}}
+
+{{< hint info >}}
+After this chapter you will know all the basics around electricity and simple circuits utilizing ohmic load...
+{{< /hint >}}
+
+
 = Prequel Introduction to electronics
 
 '''
@@ -251,6 +257,11 @@ image:./resistance_measurement_ll.svg[width=550]
 '''
 
 == Basic circuits
+
+{{< hint warning >}}
+This is a simplified model used for intuition; real semiconductor physics behaves more complexly
+{{< /hint >}}
+
 
 Basic circuits in electrical engineering consist of a source with internal resistance and a load. Depending on how the source is viewed,
 a distinction is made between a basic circuit with a voltage source and a basic circuit with a current source.
