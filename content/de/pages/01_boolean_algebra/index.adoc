@@ -128,20 +128,24 @@ verweise ich Sie auf die entsprechende Literatur (Quellen am Ende aufgeführt).
 
 
 Die Gesetze der Booleschen Algebra sind in der folgenden Tabelle aufgeführt:
-[cols=„40,75a,75a“,options=„header“]
+[cols="40,75a,75a",options="header"]
 |====================================================================================================================
-|   Gesetz | ∧ (Konjunktion, UND-Operator) | ∨ (Disjunktion, ODER-Operator)
-| Kommutativgesetz | \[p \land q = q \land p\] |\[p \lor q = q \lor p\]
-| Assoziativgesetz |
-\[p \land (q \land r) = (p \land q) \land r = pqr\] |[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]
-| Absorptionsgesetz | \[p \land (p \lor q) = p\]| \[p \lor (p \land q) = p\]
-| Distributivgesetz | \[p \lor (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\] |
-\[p \lor (q \lor r) = (p \lor q) \lor (p \lor r) = (p \lor q)(p \lor r)\]
-| neutrale Elemente | \[p \land 1 = p\] | \[p \lor 0 = p\]
-| Komplementärelement | [p ∧ Ωp = 0] | [p ∨ Ωp = 1] |
-*Reference* |
-*Hans-Jochen Bartsch* |
-*Taschenbuch Mathematischer Formeln, 20. Auflage, S. 27- 28* |
+|   Gesetz               |  ∧  (Konjunktion, UND-Operator)                          |  ∨ (Disjunktion, ODER-Operator)
+
+| Kommutativgesetz       | \[p \land q = q \land p\]                                 | \[p \lor q = q \lor p\]
+
+| Assoziativgesetz       | \[p \land (q \land r) = (p \land q) \land r = pqr\]        | \[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]
+
+| Absorptionsgesetz      | \[p \land (p \lor q) = p\]                                | \[p \lor (p \land q) = p\]
+
+| Distributivgesetz      | \[p \land (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\]
+                         | \[p \lor (q \land r) = (p \lor q) \land (p \lor r) = (p \lor q)(p \lor r)\]
+
+| Neutrale Elemente      | \[p \land 1 = p\]                                         | \[p \lor 0 = p\]
+
+| Komplementgesetz       | \[p \land \neg p = 0\]                                    | \[p \lor \neg p = 1\]
+
+| *Referenz*             | *Hans-Jochen Bartsch*                                     | *Taschenbuch mathematischer Formeln, 20. Auflage, S. 27–28*
 |====================================================================================================================
 
 

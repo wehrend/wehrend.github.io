@@ -126,22 +126,25 @@ to get a feeling and understanding how to work with boolean formulas.
 If you are interested in a more profound view, providing induction and proof, 
 I refer you to accordingly literature (sources listed at the end).
 
-
 The laws of the boolean algebra are shown in the following table:
 [cols="40,75a,75a",options="header"]
 |====================================================================================================================
-|   Law   |  ∧  (conjunction, AND operator)               |  ∨ (disjunction, OR operator)
-| commutative law   | \[p \land q = q \land p\]   |\[p \lor q = q \lor p\]
-| associative law   | 
-\[p \land (q \land r) = (p \land q) \land r = pqr\]  |\[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]
-| absorptions law   | \[p \land (p \lor q) = p\]| \[p \lor (p \land q) = p\]
-| distributive law  | \[p \lor (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\] |
-\[p \lor (q \lor r) = (p \lor q) \lor (p \lor r) = (p \lor q)(p \lor r)\]
-| neutral elements  | \[p \land 1 = p\] | \[p \lor 0 = p\]                                                   
-| complem. element  |  \[p \land \neg p = 0\] | \[p \lor \neg p = 1\] | 
-*Reference* | 
-*Hans-Jochen Bartsch* | 
-*Taschenbuch Mathematischer Formeln, 20. Auflage, p. 27- 28*  |
+|   Law             |  ∧  (conjunction, AND operator)                          |  ∨ (disjunction, OR operator)
+
+| commutative law   | \[p \land q = q \land p\]                                | \[p \lor q = q \lor p\]
+
+| associative law   | \[p \land (q \land r) = (p \land q) \land r = pqr\]      | \[p \lor (q \lor r) = (p \lor q) \lor r = p \lor q \lor r\]
+
+| absorptions law   | \[p \land (p \lor q) = p\]                               | \[p \lor (p \land q) = p\]
+
+| distributive law  | \[p \land (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\]
+                    | \[p \lor (q \land r) = (p \lor q) \land (p \lor r) = (p \lor q)(p \lor r)\]
+
+| neutral elements  | \[p \land 1 = p\]                                        | \[p \lor 0 = p\]
+
+| complement element| \[p \land \neg p = 0\]                                   | \[p \lor \neg p = 1\]
+
+| *Reference*       | *Hans-Jochen Bartsch*                                    | *Taschenbuch Mathematischer Formeln, 20. Auflage, p. 27–28*
 |====================================================================================================================
 
 
