@@ -19,6 +19,39 @@ weight: 1300
 After this chapter you will know all the basics around semiconductor components like diodes, transistors (BJT as well as MOSFETs) and their effects...
 {{< /hint >}}
 
+{{< hint success >}}
+A *nonlinear component* is a device whose current–voltage relationship is **not proportional**.
+In other words, the current does not increase linearly with the applied voltage.
+
+Examples of nonlinear components include:
+* diodes (conduct current only in one direction),
+* transistors (whose behaviour depends on internal semiconductor junctions),
+* and CMOS structures.
+
+Because of this nonlinear behaviour, such components allow switching, amplification,
+rectification, and almost all forms of digital logic.
+{{< /hint >}}
+
+== From linear components to semiconductor physics
+
+Up to now, in Electronics 101 and 102, we have focused on components whose behaviour is
+well described by linear relationships: conductors, resistors, simple RC circuits and
+other devices whose current–voltage characteristics are predictable and proportional.
+
+This changes fundamentally when we enter the world of **semiconductors**.
+
+Semiconductor materials do not behave like metals. Their ability to conduct current can
+change drastically depending on temperature, impurities, internal electric fields, and
+the structure of the crystal lattice. This non-linear behaviour is not a small detail –
+it is the foundation of all modern electronics.
+
+Understanding semiconductors is therefore essential before we can meaningfully study:
+* **diodes**,
+* **transistors**, and
+* the **CMOS technology** that makes microprocessors and memory possible.
+
+With this motivation, we now begin Electronics 103 and take our first deeper look into
+the physics and behaviour of semiconductor materials.
 
 == Electronics 103 – nonlinear components
 
@@ -34,6 +67,19 @@ a| image:./atomic_model_C.svg[width="350px"]
 a| image:./atomic_model_Si.svg[width="350px"]
 a| image:./atomic_model_Ge.svg[width="350px"]
 |===
+
+These three elements — carbon (C), silicon (Si) and germanium (Ge) — all have **four valence electrons**.
+This allows them to form a stable **tetrahedral crystal structure**, where each atom creates four covalent
+bonds with its neighbours.
+
+Because of this structure, silicon and germanium can behave as **semiconductor materials**: at low
+temperatures they are poor conductors, but their conductivity increases with temperature or when the
+crystal is intentionally modified by adding small amounts of trivalent or pentavalent atoms (doping).
+
+Carbon, in its diamond form, is an idealized reference structure with the same tetrahedral bonding
+geometry. It helps illustrate why silicon and germanium, which share the same valence configuration,
+form the basis of all modern semiconductor devices.
+
 
 Let us start our tour of semiconductor devices with a short repetition of this topic from
 https://wehrend.github.io/pages/prequel-short-introduction-to-electronics[electronics 101].
@@ -164,6 +210,116 @@ https://www.electricaltechnology.org/2022/06/led-light-emitting-diode.html[see h
 
 == Bipolar transistors and their applications
 
+////
+
+=== The bipolar junction transistor (BJT)
+
+A bipolar junction transistor is a semiconductor device formed by combining two pn-junctions.
+Depending on the order of p- and n-type material, we obtain either an **NPN** or **PNP** transistor.
+
+A transistor has three terminals:
+* **Emitter (E)** – the source of charge carriers
+* **Base (B)** – a thin, lightly doped control region
+* **Collector (C)** – collects the carriers and allows current to flow
+
+The key idea is simple:
+A **small base current** controls a **much larger collector current**.
+
+This relationship is the reason a transistor can be used both as a **switch** and as an **amplifier**.
+
+---
+
+=== Modes of operation
+
+A BJT can operate in three main regions, depending on the voltages between its terminals.
+
+[cols="3"]
+|===
+a| **Cutoff**
+*Base–emitter junction not forward biased.*
+The transistor is OFF.
+IB = 0, IC ≈ 0.
+No conduction between collector and emitter.
+
+a| **Active region**
+*Base–emitter junction forward biased, collector–base junction reverse biased.*
+This is the **linear region** where the transistor behaves like an amplifier.
+IC ≈ β · IB.
+
+a| **Saturation**
+*Both junctions forward biased.*
+The transistor is fully ON.
+Collector–emitter voltage drops to a small value (≈ 0.1–0.3 V).
+|===
+
+These three modes explain nearly all practical transistor circuits.
+
+---
+
+=== Why does a BJT amplify?
+
+In an NPN transistor, electrons are injected from the emitter into the thin base region.
+The base is very lightly doped and extremely thin, so only a small fraction of electrons
+recombine with holes in the base.
+
+Most electrons are swept across the reverse-biased base–collector junction and become the
+**collector current IC**.
+
+Because only a small current is required to replace the electrons that recombine in the base,
+a small **base current IB** controls a much larger **collector current IC**.
+
+The ratio
+
+\[
+\beta = \frac{I_C}{I_B}
+\]
+
+is called the **current gain**.
+
+---
+
+=== BJT as a switch
+
+When used in digital circuits, we intentionally force the transistor into only two regions:
+
+* **Cutoff** → OFF state
+* **Saturation** → ON state
+
+This is how transistors are used in logic circuits, flip-flops, astable multivibrators,
+and practically all CMOS-like switching designs (even though CMOS uses MOSFETs, not BJTs,
+the conceptual idea is similar).
+
+---
+
+=== BJT as an amplifier
+
+When the transistor is held in the **active region**, its collector current is approximately:
+
+\[
+I_C = \beta \cdot I_B
+\]
+
+A small variation in base current creates a proportional variation in collector current.
+This turns the transistor into a **current-controlled amplifier**.
+
+Amplifier stages (common emitter, common collector, common base) all exploit the active region
+to create voltage or current gain.
+
+---
+
+=== Summary
+
+* A BJT consists of two pn-junctions and three terminals: E, B, C.
+* Small base currents control large collector currents.
+* The transistor has three operating regions: cutoff, active, saturation.
+* Used as a **switch** → operate between cutoff and saturation.
+* Used as an **amplifier** → operate in the active region.
+* BJTs form the conceptual foundation for understanding later CMOS transistor behaviour.
+
+////
+
+
+
 When we extend the pn-junction used in diodes as shown in the section above now we get from simple to the
 the so called BJT (bipolar junction transistor). There are two different versions of https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/bipolar-junction-transistors-bjt/[BJTs] (named after
 their dotations): The NPN transistor and the PNP transistor.
@@ -261,6 +417,8 @@ f = \frac{1}{T} = \frac{1}{(R_{B1} \cdot C_1 + R_{B2} \cdot C_2)\,\ln(2)}
 image:./astable_multivibrator.png[width="700px"]
 
 link:./astable_multivibrator.asc[astable multivibrator – ltspice file]
+
+////
 
 The formula for the frequency ($f$) of an astable multivibrator, which is $f = \frac{1}{(R_{B1} \cdot C_1 + R_{B2} \cdot C_2)\,\ln(2)}$, is derived by analyzing the **charging and discharging cycles** of the capacitors ($C_1$ and $C_2$) through the base resistors ($R_{B1}$ and $R_{B2}$).
 
@@ -360,6 +518,8 @@ $$f = \frac{1}{T} = \frac{1}{2RC \cdot \ln(2)}$$
 $$\bbox[#D3D3D3]{\mathbf{f \approx \frac{0.72}{RC}}}$$
 
 Would you like to see a comparison of astable, monostable, and bistable multivibrators?
+////
+
 
 == BJT as Amplifier
 
