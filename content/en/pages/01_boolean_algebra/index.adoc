@@ -137,8 +137,7 @@ The laws of the boolean algebra are shown in the following table:
 
 | absorptions law   | \[p \land (p \lor q) = p\]                               | \[p \lor (p \land q) = p\]
 
-| distributive law  | \[p \land (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\]
-                    | \[p \lor (q \land r) = (p \lor q) \land (p \lor r) = (p \lor q)(p \lor r)\]
+| distributive law  | \[p \land (q \lor r) = (p \land q) \lor (p \land r) = pq \lor pr\] |
 
 | neutral elements  | \[p \land 1 = p\]                                        | \[p \lor 0 = p\]
 
