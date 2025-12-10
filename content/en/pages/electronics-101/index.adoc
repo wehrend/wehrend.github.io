@@ -278,7 +278,8 @@ The three laws described below form the basis for circuit calculations.
 For every resistor, if the current and resistance value are known, the following applies
 
 [role=“image”,“./ohms_law.svg” ,imgfmt=“svg”]
- \large n\[ U [V] = {I [A]} \cdot {R [ \Omega ] \]
+\[ I[A] = \frac{U[V]}{R[\Omega]} \]
+
 
 However, only linear resistors exhibit proportionality between voltage and current.
 
@@ -364,7 +365,7 @@ image:./discrete_resistors_edit.jpg[width=550]
 image:./smd_example.jpg[width=300]
 
 
-////Explain structure and costruction of smd resistors////
+//Explain structure and costruction of smd resistors
 
 ////
 Explain this whole thing on a physical level
