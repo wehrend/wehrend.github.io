@@ -1,5 +1,5 @@
 ---
-title: "Prequel: Einführung in die Elektronik"
+title: Vorgeschichte - Einführung in die Elektronik
 slug: prequel-short-introduction-to-electronics
 date: 2021-01-23
 tags:
@@ -9,257 +9,385 @@ description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
+weight: 1100
 ---
-= Prequel Einführung in die Elektromik
+{{< katex />}}
 
-'''
-Als ich gerade dabei war, den Implementierungsteil der Booleschen Algebra zu schreiben, die grundlegenden logischen
-Gatter, lief der Schreibprozess schnell aus dem Ruder und ich ertappte mich dabei, dass ich mehr über weniger zusammenhängende Themen schrieb
-Themen zu schreiben, wie z.B. die Erläuterung grundlegender elektronischer Komponenten und deren Implementierung auf Silizium, als über den eigentlichen Inhalt,
-hier soll der Platz für diese Ausflüge sein. Dies soll kein vollständiges Nachschlagewerk sein, eher eine Ergänzung zu
+{{< hint info >}}
+Nach diesem Kapitel kennen Sie alle Grundlagen rund um Elektrizität und einfache Schaltungen mit ohmscher Last...
+{{< /hint >}}
+
+
+= Vorwort Einführung in die Elektronik
+
+‚‘'
+Als ich gerade dabei war, den Teil über die Umsetzung der Booleschen Algebra zu schreiben, also die grundlegenden Logikgatter,
+geriet der Schreibprozess schnell außer Kontrolle und ich merkte, dass ich mehr über weniger relevante Themen schrieb,
+wie die Erklärung grundlegender elektronischer Komponenten und deren Umsetzung auf Silizium, als über den eigentlichen Inhalt.
+Hier soll nun Platz für diese Exkurse sein. Dies soll keine vollständige Referenz sein, sondern eher eine Ergänzung zur
 bestehenden Literatur.
-'''
+'‚‘
 
 == Freie Elektronen und elektrischer Strom
 
-Was ist Elektrizität? Grob gesagt ist es der Fluss von Elektronen in einem Leiter. Laienhaft ausgedrückt kann man sagen,
-Elektronen auf der äußeren Schale - auch Valenzband genannt - eines Atoms hüpfen vom Valenzband
-eines Atoms zum Nachbaratom. Elektrizität ist also im Wesentlichen die Bewegung von Elektronen durch Materie.
-In der praktischen Anwendung ist diese Materie ein Stromkreis, aber auch zum Beispiel die Blitzentladung
-auftritt, in diesem Fall kann die ionisierte Luft als (Kurz-)Stromkreis betrachtet werden.
+Was ist Elektrizität? Grob gesagt ist es der Fluss von Elektronen in einem Leiter. Laienhaft ausgedrückt kann man sagen, dass
+Elektronen auf der Außenhülle – auch Valenzband genannt – eines Atoms vom Valenzband
+eines Atoms zum benachbarten springen. Im Wesentlichen besteht Elektrizität also aus der Bewegung von Elektronen durch Materie.
+In der praktischen Anwendung ist diese Materie ein elektrischer Stromkreis, aber auch beispielsweise bei einer Blitzentladung
+kann die ionisierte Luft als (Kurz-)Schluss betrachtet werden.
 
 ////
 darüber schreiben
 
-Die folgende Tabelle zeigt die Atommodelle von Kohlenstoff-, Silizium- und Kupferleitern. Der Autor wählte diese Elemente
-aufgrund ihrer interessanten Eigenschaften. Kohlenstoff und Silizium gehören zur Gruppe der Halbleiter, während Kupfer als
-als ausgezeichneter Leiter bekannt ist. Die Leitfähigkeit von Halbleitern ist sehr unterschiedlich und hängt vom Reinheitsgrad und der Temperatur ab.
+Die folgende Tabelle zeigt die Atommodelle von Kohlenstoff, Silizium und Kupfer als Leiter. Der Autor wählt diese Elemente
+aufgrund ihrer interessanten Eigenschaften aus. Kohlenstoff und Silizium gehören zur Gruppe der Halbleiter, während Kupfer als
+ausgezeichneter Leiter bekannt ist. Die Leitfähigkeit von Halbleitern ist in hohem Maße variabel und hängt von ihrem Reinheitsgrad und ihrer Temperatur ab.
 
 ////
-=== Wir gehen atomar vor: Leitende Elemente...
 
-Die erste Gruppe von Elementen (oder Verbindungen), die wir hier vorstellen werden, sind die Leiter.
-Einige wichtige Vertreter dieser Gruppe sind die Elemente Aluminium und Kupfer
-die beide für elektrische Übertragungsleitungen und Stromnetze unverzichtbar sind.
-Wie die folgende Tabelle zeigt, verfügen beide Elemente über freie Elektronen auf ihrer Valenz
-Valenzschale freie Elektronen, die, wie oben beschrieben, benötigt werden, um den Elektronenwechsel von einem Atom zum anderen zu ermöglichen
-von einem Atom zum anderen und damit die Bewegung von Elektronen zu ermöglichen, was das Element (in seiner reinen Form) zu einem Leiter macht.
+=== Auf atomarer Ebene: Leiter...
 
-Natürlich gibt es in der realen Welt mehrere Faktoren, die den hier vorgeschlagenen idealisierten Eigenschaften entgegenwirken
-hier vorgeschlagenen Eigenschaften entgegenwirken. So müssen wir unter anderem berücksichtigen, dass Metalle bei Kontakt mit Sauerstoff oxidieren
-mit Sauerstoff oxidieren, wodurch sich eine dünne, aber effektiv isolierende Schicht auf der Oberfläche des Metalls bildet,
-die einen guten Kontakt verhindert. Auf solche Effekte können wir später eingehen. Lassen Sie uns jetzt einfach mit dem Thema weitermachen...
+Die erste Gruppe von Elementen (oder Verbindungen), die wir hier vorstellen, sind die Leiter.
+Wichtige Vertreter dieser Gruppe sind die Elemente Aluminium und Kupfer,
+die beide für Stromübertragungsleitungen und Stromnetze unverzichtbar sind.
+Wie die folgende Tabelle zeigt, verfügen beide Elemente über freie Elektronen in ihrer Valenzschale,
+ die, wie oben beschrieben, erforderlich sind, damit Elektronen von einem Atom
+zum anderen springen können und somit eine Bewegung der Elektronen ermöglichen, wodurch das Element (in seiner reinen Form) zu einem Leiter wird.
+
+Natürlich gibt es in der Realität mehrere Faktoren, die den hier dargestellten idealen Eigenschaften entgegenwirken
+. So müssen wir unter anderem berücksichtigen, dass Metalle oxidieren, wenn sie mit Sauerstoff in Kontakt kommen,
+wodurch sich eine dünne, aber wirksame Isolierschicht auf der Oberfläche des Metalls bildet,
+die einen guten Kontakt verhindert. Wir werden solche Effekte später noch diskutieren. Lassen Sie uns zunächst mit dem Thema fortfahren...
 
 [width="100%" cols="a,a"]
 |=====
-2+>| conductor
+2+>| Leiter
 | image:./atomic_model_Al.svg[width="300px"]
 | image:./atomic_model_Cu.svg[width="300px"]
-| atomic model of aluminium (13) | atomic model of copper (28)
-| valence shell / free electron(s): 3 (3) | valence shell / free electron(s): 1 (1)
+| Atommodell von Aluminium (13) | Atommodell von Kupfer (28)
+| Valenzschale / freie Elektronen: 3 (3) | Valenzschale / freie Elektronen: 1 (1)
 |=====
 
 image:./simple_circuit.svg[width="400px"]
 
 
-[role="image", "../images/electronic_basics/elemental_charge.svg", imgfmt="svg"]
+[role=„image“, „./elemental_charge.svg“, imgfmt="svg"]
 \large \[Q = N \cdot (\pm e)\]
 
-[role="image", "../images/electronic_basics/current.svg", imgfmt="svg"]
+[role=„image“, „./current.svg“, imgfmt="svg"]
 \large \[I = \frac{\Delta Q }{\Delta t}\]
-
 
 === ...und nicht so leitfähig
 
-Die zweite Gruppe von Elementen, die wir hier vorstellen wollen, sind Elemente, deren
-Leitfähigkeit (stark) von ihrem Reinheitsgrad und von Umgebungs-
-Faktoren wie Temperatur abhängt. Die Vertreter dieser Gruppe werden als Halbleiter bezeichnet.
-Kohlenstoff und Silizium sind Beispiele, die im Periodensystem auftauchen.
-Der Autor hat diese beiden Elemente ausgewählt, da sie sehr interessante Eigenschaften haben
-in Bezug auf - aber nicht nur - die Leitfähigkeit. Dies ist auf die Anzahl der Valenzelektronen
-Elektronen auf der äußeren Schale.
+Die zweite Gruppe von Elementen, die wir hier vorstellen möchten, sind Elemente, deren
+Leitfähigkeit (stark) von ihrem Reinheitsgrad und Umweltfaktoren
+wie der Temperatur abhängt. Vertreter dieser Gruppe werden als Halbleiter bezeichnet.
+Kohlenstoff und Silizium sind Beispiele, die im Periodensystem zu finden sind.
+Der Autor hat diese beiden Elemente ausgewählt, da sie sehr interessante Eigenschaften
+in Bezug auf – aber nicht nur – die Leitfähigkeit aufweisen. Dies ist auf die Anzahl der Valenzelektronen
+in der Außenhülle zurückzuführen.
 
-[width="100%" cols="a,a"]
+
+[width="100%"" cols="a,a"]
 |=====
-2+>| semiconductor 
-| image:./atomic_model_C.svg[width="300px"]
-| image:./atomic_model_Si.svg[width="300px"]
-| atomic model of carbon (6) | atomic model of silicon (14)
-| valence shell / free electron(s): 4 (0) | valence shell / free electron(s): 4 (0)
+2+>| Halbleiter
+| image:./atomic_model_C.svg[width="300px“]
+| image:./atomic_model_Si.svg[width="300px“]
+| Atommodell von Kohlenstoff (6) | Atommodell von Silizium (14)
+| Valenzschale / freie Elektronen: 4 (0) | Valenzschale / freie Elektronen: 4 (0)
 |=====
 
-Warum also haben Kohlenstoff und Silizium trotz ihrer vier Elektronen auf der Valenzschale im Vergleich zu Kupfer so
-schlechte Leitfähigkeitseigenschaften auf der Valenzschale Elektronen?
 
-Die Antwort liegt in der einfachen Tatsache, dass sowohl Kohlenstoff als auch Silizium ein Gitter bilden,
-das alle Elektronen der Valenzschale verbraucht.
+Warum haben Kohlenstoff und Silizium trotz ihrer vier Elektronen
+in der Valenzschale so schlechte Leitfähigkeitseigenschaften im Vergleich zu Kupfer?
 
-[width="100%" cols="a,a"]
+Die Antwort liegt in der einfachen Tatsache, dass sowohl Kohlenstoff als auch Silizium ein Gitter bilden, das alle Elektronen der Valenzschale
+verbraucht.
+
+
+[width="100%“ cols="a,a"]
 |=====
-| covalent bonding of carbon | covalent bonding of silicon 
-| image:./covalent_bonding_c.svg[width="400px"]
-| image:./covalent_bonding_si.svg[width="400px"]
-2+>|semiconductor | conductor
+| kovalente Bindung von Kohlenstoff | kovalente Bindung von Silizium
+| image:./covalent_bonding_c.svg[width="400px“]
+| image:./covalent_bonding_si.svg[width="400px“]
+2+>|Halbleiter | Leiter
 |=====
 
 == Spannung und Potential
 
-Die folgende Tabelle zeigt die gebräuchlichen Symbole für Spannungsquellen. Auf der linken Seite
-ist eine ideale Spannungsquelle dargestellt, während auf der rechten Seite eine reale Spannungsquelle
-abgebildet ist. Wie Sie sehen können, ähnelt die reale Quelle einer Batteriezelle. Natürlich kann die
-Spannungsquelle von einer tatsächlichen Batteriezelle abweichen und wird auch meist nicht implizit dargestellt.
+Die folgende Tabelle zeigt die gängigen Symbole für Spannungsquellen. Auf der linken Seite
+ist eine ideale Spannungsquelle dargestellt, auf der rechten Seite eine reale Spannungsquelle.
+ Wie Sie sehen können, ähnelt die reale Quelle einer Batteriezelle. Natürlich kann sich die
+Spannungsquelle von einer tatsächlichen Batteriezelle unterscheiden und wird meist auch nicht implizit dargestellt.
 
-[width="100%" cols="a,a"]
+[width="100%“ cols="a,a"]
 |=====
-| ideal voltage source | real voltage source
-| image:./ideal_voltage_source.svg[width="150px"]
-| image:./real_voltage_source.svg[width="150px"]
-|=====
-
-Eine ideale Spannungsquelle liefert eine Spannung mit einem bestimmten Wert.
-
-Wie wir in den unten gezeigten Schaltplänen sehen können, ist eine Spannung einfach die Differenz zwischen zwei Potentialen.
-Im ersten Beispiel (links) wird der untere Knotenpunkt als Referenzpunkt gewählt, da er
-als Masse signalisiert wird. Die Spannung beträgt also 1,5 V für U_B0 bzw. 3 V für U_A0.
-Im Beispiel rechts hingegen wird der Übergang zwischen den Batteriezellen als Bezugspunkt und Masse gewählt.
-Die Potentialdifferenzen, die wir hier messen, sind: U_A0 = 1,5V und U_B0 =-1,5V.
-Übrigens werden solche Doppelstromversorgungen - allerdings mit einem Spannungsbereich von 12...15V - oft für
-Anwendungen mit Operationsverstärkern verwendet.
-
-[width="100%" cols="a,a"]
-|=====
-| Single power supply | Dual power supply
-| image:./potential_l.svg[width="250px"] | image:./potential_ll.svg[width="250px"]
+| ideale Spannungsquelle | reale Spannungsquelle
+| image:./ideal_voltage_source.svg[width="150px“]
+| image:./real_voltage_source.svg[width="150px“]
 |=====
 
+Eine ideale Spannungsquelle liefert eine Spannung eines bestimmten Niveaus.
 
-[role="image", "../images/electronic_basics/potentialdifference.svg", imgfmt="svg"]
+Wie wir in den unten gezeigten Schaltplänen sehen können, ist eine Spannung lediglich die Differenz zwischen zwei Potentialen.
+Im ersten Beispiel (links) wird die Verbindungsstelle unten als Referenzpunkt gewählt, da sie
+als Masse gekennzeichnet ist. Die Spannung beträgt also 1,5 V für U_B0 bzw. 3 V für U_A0.
+Im Beispiel rechts hingegen wird die Verbindungsstelle zwischen den Batteriezellen als Referenzpunkt und Masse gewählt.
+Die hier gemessenen Potentialunterschiede sind: U_A0 = 1,5 V und U_B0 = -1,5 V.
+Als Anmerkung sei gesagt, dass doppelte Stromversorgungen wie diese – allerdings mit einem Spannungsbereich von 12...15 V – häufig für
+Anwendungen mit Operationsverstärkern verwendet werden.
+
+[width="100%“ cols="a,a"]
+|=====
+| Einfaches Netzteil | Doppeltes Netzteil
+| image:./potential_l.svg[width="250px“] | image:./potential_ll.svg[width="250px“]
+|=====
+
+
+[role=„image“, „../images/electronic_basics/potentialdifference.svg“, imgfmt="svg"]
 \large \[U = \phi_{1} - \phi_{0}\]
 
-////
-Einfache Schaltung mit Spannungsquelle und Widerstand, Brücke zum nächsten Abschnitt
-////
-Das nächste Bild zeigt die einfachste mögliche Schaltung: Eine Spannungsquelle mit einem Widerstand in Reihe.
-Physikalisch gesehen ist jeder Widerstand nur ein Wandler von elektrischer Energie in thermische Energie, also Wärme.
 
-Widerstände werden in der Regel in Schaltungen verwendet, um die Spannung auf den gewünschten Wert abzusenken, bzw.
-den Strom, der zwischen bestimmten Pfaden eines Schaltkreises fließt, zu begrenzen. Wir werden im nächsten Abschnitt
-mehr darüber erfahren.
+////
+Einfacher Schaltkreis mit Spannungsquelle und Widerstand, Brücke zum nächsten Abschnitt
+////
+Das nächste Bild zeigt den einfachsten möglichen Stromkreis: Eine Spannungsquelle mit einem Widerstand in Reihe.
+Physikalisch gesehen ist jeder Widerstand lediglich ein  Wandler von elektrischer Energie in thermische Energie, also Wärme.
 
-image:./resistor_circuit.svg[width="250px"]
+Widerstände werden in Stromkreisen im Allgemeinen verwendet, um die Spannung auf das gewünschte Niveau zu senken bzw.
+den Stromfluss zwischen bestimmten Pfaden eines Stromkreises zu begrenzen. Mehr dazu erfahren wir im nächsten Abschnitt.
+
+image:./resistor_circuit.svg[width="250px“]
+
 
 == Ohmsches Gesetz und Leitungswiderstand
 
 *Übung: Widerstand messen*
-Zur Durchführung der folgenden Übung benötigen Sie ein Spannungs- und ein Amperemeter (oder einfach zwei Multimeter), eine variable Spannungsquelle und
-einige Probedrähte aus verschiedenen Materialien, aber mit gleicher Länge und gleichem Durchmesser.
-Wenn Sie nicht über die entsprechenden Geräte verfügen, können Sie diese Übung theoretisch auch in http://qucs.sourceforge.net[Qucs] oder
+Um die folgende Übung durchzuführen, benötigen Sie ein Voltmeter und ein Amperemeter (oder einfach zwei Multimeter), eine variable Spannungsquelle und
+einige Probenkabel aus unterschiedlichen Materialien, die jedoch alle die gleiche Länge und den gleichen Durchmesser haben.
+Wenn Sie nicht über die erforderliche Ausrüstung verfügen, können Sie diese Übung theoretisch auch in http://qucs.sourceforge.net[Qucs] oder
 https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html[LTspice] simulieren.
 
-Da wir aber im Voraus die Parameter der zu messenden Probedrähte festlegen müssen
-messen wollen, torpediert dieser Ansatz gewissermaßen den Zweck der Übung, nämlich zu lernen, wie man eine indirekte Messung des elektrischen
-Widerstandes.
+Da wir jedoch die Parameter der Messdrähte, die wir messen möchten, im Voraus definieren müssen,
+ würde dieser Ansatz den Zweck der Übung, nämlich das Erlernen der indirekten Messung des elektrischen
+Widerstands, zunichte machen.
 
-Schließen Sie die Geräte wie in der Abbildung unten dargestellt an, wobei der Probedraht den Widerstand Rx darstellt.
+Schließen Sie die Geräte gemäß der unten gezeigten Abbildung an, wobei der Probenleiter als Widerstand Rx dient.
 
-//.Resistance measurement principal
-image:./resistance_measurement_l.svg[width=550]
+//.Prinzip der Widerstandsmessung
+image:./resistance_measurement_l.svg[width="550px"]
 
 
 Messen Sie nun für jeden Draht die Spannung und den Strom und zeichnen Sie ein Diagramm mit der Spannung auf der x-Achse und dem Strom auf der y-Achse.
-Du wirst sehen, dass du für verschiedene Materialien ein lineares Diagramm erhältst, aber mit einer unterschiedlichen Steigung. Sie haben also eine Beziehung gefunden
-zwischen Spannung, Strom und Widerstand gefunden. Nachdem du die verschiedenen Drähte gemessen hast, kannst du auch Stift und Papier verwenden: Zeichne eine Linie mit
-Bleistift eine Linie ziehen oder eine kleine Fläche kritzeln. Verbinden Sie diese nun mit den Sonden der Messanordnung. Sie werden sehen, dass auch
-die Graphitspur wie ein Leiter wirkt - nicht optimal, aber ein Leiter.
+Sie werden feststellen, dass Sie für verschiedene Materialien ein lineares Diagramm erhalten, jedoch mit unterschiedlicher Steigung. Sie haben also eine Beziehung
+zwischen Spannung, Strom und Widerstand gefunden. Zusätzlich können Sie nach der Messung der verschiedenen Drähte auch Stift und Papier verwenden: Zeichnen Sie eine Linie mit
+einem Bleistift oder kritzeln Sie einen kleinen Bereich. Verbinden Sie diese nun mit den Sonden der Messvorrichtung. Sie werden sehen, dass auch
+die Graphitspur als Leiter fungiert – zwar kein optimaler, aber dennoch ein Leiter.
 
-Diese Beobachtung führt uns zu der wichtigsten Formel, die Ihnen in einem Elektrotechnikkurs 101 begegnen wird, dem Ohmschen Gesetz.
+Diese Beobachtung führt uns zu der wichtigsten Formel, die Sie in einem Einführungskurs in die Elektrotechnik kennenlernen werden: dem Ohmschen Gesetz.
 
-[role="image","../images/electronic_basics/ohms_law.svg" ,imgfmt="svg"]
+[role=„image“,„../images/electronic_basics/ohms_law.svg“ ,imgfmt=„svg“]
 \large \[ R [\Omega] = \frac{U [V]}{I [A]}\]
 
-// .Ohm's law
-// :figure-caption: Equation
+// .Ohmsches Gesetz
+// :figure-caption: Gleichung
 
-Wenn wir diese Gleichung in ihre einfacher zu interpretierende Form U = R-I umstellen, erkennen wir, dass der Spannungsabfall (U) am Widerstand
-dem Widerstandswert ( R) mal dem durchfließenden Strom (I) entspricht. Wir haben noch nicht über den Strom gesprochen und werden dies auf einen späteren Abschnitt verschieben.
-Wie in den Bremsen angegeben, ist die Einheit des Widerstands Ω.
-// Todo: Schreiben Sie mehr über / zum Ohmschen Gesetz.
-////
-Add rules for series and parallel wiring
-////
-In der folgenden Abbildung sind die Regeln für die Reihen- und Parallelschaltung von Widerständen dargestellt.
-
-image:./resistor_rules.svg[width="500px"]
-
-Bei der Reihenschaltung addieren sich die Werte einfach, wie wir es bei den Spannungsquellen gesehen haben,
-während für die Parallelschaltung dasselbe gilt, allerdings für den Leitwert G, der der Kehrwert
-des Widerstands R ist und in S(iemens) gemessen wird.
+Wenn wir diese Gleichung in ihre einfachere, interpretierbare Form U = R·I umstellen, erkennen wir, dass der Spannungsabfall (U) am Widerstand dem Widerstandswert ( R) mal dem durchfließenden Strom (I) entspricht.
+Über den Strom haben wir noch nicht gesprochen, das verschieben wir auf einen späteren Abschnitt.
+Wie in den Klammern angegeben, ist die Einheit des Widerstands Ω.
+// Todo: Mehr über das Ohmsche Gesetz schreiben.
 
 ////
-Add explanation for parallel connection
+Regeln für Reihen- und Parallelschaltungen hinzufügen
+////
+In der Abbildung unten sind die Regeln für die Reihen- und Parallelschaltung von Widerständen dargestellt.
+
+image:./resistor_rules.svg[width="500px“]
+
+Bei der Reihenschaltung addieren sich die Werte einfach, wie wir es bei den Spannungsquellen gesehen haben.
+Bei der Parallelschaltung gilt dasselbe, jedoch für die Leitfähigkeit G, die der Kehrwert
+des Widerstands R ist und in S (Siemens) gemessen wird.
+
+////
+Erklärung für Parallelschaltung hinzufügen
 ////
 
-So haben wir herausgefunden, dass sich die Materialien in ihrer elektrischen Leitfähigkeit - dem Kehrwert des elektrischen Widerstands - unterscheiden
-einige sind gut (Leiter), einige sind ziemlich schlecht und unbrauchbar (Nichtleiter), aber dennoch nützlich als Dielektrikum, wie wir im nächsten Abschnitt sehen werden
-im nächsten Abschnitt sehen werden, und einige dazwischen.
-Wir müssen natürlich auch beachten, dass die Leitfähigkeit nicht nur vom Material selbst, sondern auch von seiner Geometrie abhängt (außerdem ist sie
-(außerdem ist sie von der Temperatur abhängig, aber darauf gehe ich hier nicht ein), Sie wissen ja, dass wir uns mit Physik beschäftigen.
-in diesem Zusammenhang ist die folgende.
+
+Wir haben also festgestellt, dass sich die Materialien in ihrer elektrischen Leitfähigkeit unterscheiden – die der Kehrwert des elektrischen Widerstands ist.
+Einige sind gut (Leiter), andere ziemlich schlecht und unbrauchbar (Nichtleiter), aber dennoch als Dielektrikum nützlich, wie wir im
+nächsten Abschnitt sehen werden, und einige liegen dazwischen.
+Wir müssen natürlich auch beachten, dass die Leitfähigkeit nicht nur vom Material selbst abhängt, sondern auch von seiner Geometrie (außerdem hängt sie
+auch von der Temperatur ab, aber darauf werde ich hier nicht näher eingehen). Wie Sie wissen, beschäftigen wir uns mit Physik, daher ist eine weitere nützliche Formel/Gleichung
+in diesem Zusammenhang die folgende.
 
 [role=„image“,„../images/electronic_basics/wire_resistance.svg“ ,imgfmt=„svg“]
 \large \[ R = \frac{\rho L}{A}\]
 
 
-Für die gebräuchlichste Rechteckform - wie eine Leiterbahn auf einer Leiterplatte - ergibt sich die Fläche A aus Breite mal Höhe
+Bei der gängigsten Rechteckform – wie einem Streifenleiter auf einer Leiterplatte  – ergibt sich die Fläche A aus der Breite mal Höhe
 
 [role=„image“,„../images/electronic_basics/strip_resistance.svg“ ,imgfmt=„svg“]
 \large \[ R = \frac{\rho L}{A} = \frac{\rho L}{w \cdot h}\]
 
 
-Der Gesamtwiderstand eines Drahtes oder einer Leiterbahn auf einer Leiterplatte ist also abhängig vom spezifischen Widerstand ρ, der Länge des Leiters und der Fläche, die für die Leiterbahn verwendet wird.
-des Leiters und der für die Stromübertragung verwendeten Fläche ab. Logischerweise erhöht sowohl der spezifische Widerstand als auch die Länge des Leiters
-den Widerstand erhöhen, während die Fläche dem entgegenwirkt.
+Der Gesamtwiderstand eines Drahtes oder eines Streifenleiters auf einer Leiterplatte hängt also vom spezifischen spezifischen Widerstand ρ, der Länge
+des Leiters und der zur Stromübertragung genutzten Fläche ab. Logischerweise erhöhen sowohl der spezifische spezifische Widerstand als auch die Länge des Leiters
+den Widerstand, während die Fläche diesem entgegenwirkt.
 
 *Warum müssen wir das wissen?*
 
-An dieser Stelle werden Sie sich vielleicht fragen, warum es wichtig ist, dies zu wissen, wenn wir einfach einen Schaltplan unseres Heimwerkerprojekts erstellen und es mit diskreten Bauteilen
-auf einem Breakout-Board realisieren können - die Antwort ist ganz einfach die Skalierung - für dieses einfache Bastlerbeispiel mag das funktionieren, aber es fehlt die Skalierbarkeit, die Kosten und / oder die Zuverlässigkeit.
+An dieser Stelle fragen Sie sich vielleicht, warum es wichtig ist, dies zu wissen, wenn wir einfach einen Schaltplan unseres DIY-Projekts zeichnen und es mit diskreten Bauteilen
+auf einer Breakout-Platine realisieren können. Die Antwort ist einfach: Skalierbarkeit. Für dieses einfache Hobby-Beispiel mag es funktionieren, aber es mangelt an Skalierbarkeit, Kosten und/oder Zuverlässigkeit.
 
-Je weiter wir in der Skala nach unten gehen, desto wichtiger werden parasitäre Effekte - wir werden in den folgenden Abschnitten mehr darüber erfahren.
+Je weiter wir uns in der Skalierung nach unten bewegen, desto wichtiger werden parasitäre Effekte – darüber erfahren wir mehr in den folgenden Abschnitten.
 
-'''
+
 Widerstandsmessung
 
-Die folgende Abbildung zeigt das Prinzip der Widerstandsmessung mit einem Digitalmultimeter - abgesehen vom Bereichsschalter.
-Auf der linken Seite haben wir eine Konstantstromquelle, in der Mitte den zu messenden Widerstand - oder Draht - und auf der linken Seite
-ein Voltmeter, das die Spannung misst. Wie bei der Konstantstromquelle ist der Gesamtstrom im Stromkreis bekannt, der Widerstand
-kann daraus mit der gemessenen Spannung skaliert werden.
+Die folgende Abbildung zeigt das Prinzip der Widerstandsmessung in einem Digitalmultimeter – ohne Berücksichtigung des Bereichsschalters.
+Auf der linken Seite haben wir eine Konstantstromquelle, in der Mitte den Widerstand – oder den zu messenden Draht – und auf der linken Seite
+ein Voltmeter, das die Spannung misst. Da bei der Konstantstromquelle der Gesamtstrom im Stromkreis bekannt ist, kann der Widerstand
+aus der gemessenen Spannung skaliert werden.
 
-// Widerstandsmessung mit einem Digitalmultimeter
-image:./resistance_measurement_ll.svg[width=550]
+// .Widerstandsmessung in einem Digitalmultimeter
+image:./resistance_measurement_ll.svg[width="550px"]
 
-'''
+
+
+== Grundschaltungen
+
+{{< hint warning >}}
+Dies ist ein vereinfachtes Modell zur Veranschaulichung; die reale Halbleiterphysik verhält sich komplexer.
+{{< /hint >}}
+
+
+Grundschaltungen in der Elektrotechnik bestehen aus einer Quelle mit Innenwiderstand und einer Last. Je nachdem, wie die Quelle betrachtet wird,
+unterscheidet man zwischen einem Grundschaltkreis mit einer Spannungsquelle und einem Grundschaltkreis mit einer Stromquelle.
+Bei der Schaltungsanalyse ist es das Ziel, komplexe Schaltungen auf Grundschaltungen zu reduzieren. Grundschaltungen sind definiert als
+Reihen- und Parallelschaltungen von Bauteilen.
+
+=== Grundgesetze der Schaltungen
+
+Welche allgemein gültigen Gesetze gelten für jede Schaltung, unabhängig davon, ob die Widerstände darin linear oder nichtlinear sind?
+Die drei unten beschriebenen Gesetze bilden die Grundlage für Schaltungsberechnungen.
+
+==== Ohmsches Gesetz
+
+Für jeden Widerstand gilt, wenn Strom und Widerstandswert bekannt sind
+
+[role=“image”,“./ohms_law.svg” ,imgfmt=“svg”]
+\[ I[A] = \frac{U[V]}{R[\Omega]} \]
+
+
+Allerdings weisen nur lineare Widerstände eine Proportionalität zwischen Spannung und Strom auf.
+
+==== Kirchhoffsches erstes Gesetz
+
+Das erste Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Ströme, die zu einem Knotenpunkt gehören, ist gleich Null:
+
+[role=“image”,“./kirchhoff_law1.svg” ,imgfmt=“svg”]
+\large \[ \sum_{i=1}^{n} I_i = 0\]
+
+Ein Knotenpunkt ist jeder Verbindungspunkt von Leitungen in einem Stromkreis. Da an einem Knotenpunkt keine Ladungen erzeugt, verloren oder gespeichert werden,
+muss die Menge der Ladungen, die während der Zeit \Delta t in den Knotenpunkt fließen, gleich der Summe der Ladungen sein, die aus dem Knotenpunkt fließen.
+
+
+==== Kirchhoffsches zweites Gesetz
+
+Das zweite Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Spannungen in einem Netz ist gleich Null:
+
+
+[role=“image”,“./kirchhoff_law2.svg” ,imgfmt=“svg”]
+\large \[ \sum_{i=1}^{n} U_i = 0\]
+
+Ein Netz ist jeder geschlossene Stromkreis in einer Schaltung. Für jedes Netz gilt dasselbe wie für eine unverzweigte Schaltung:
+Die Summe aller Spannungen ist gleich Null, da die Ladung nach Abschluss eines Stromkreises wieder auf das gleiche Potenzial wie am Ausgangspunkt zurückgekehrt ist..
+
+
+==== Beispiel
+
+Betrachten wir eine typische Netzkonfiguration und wenden wir Kirchhoffs erstes und zweites Gesetz darauf an.
+
+image:./example.svg[Beispiel svg]
+
+==== Kirchhoffsches zweites Gesetz
+
+Das zweite Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Spannungen in einem Netz ist gleich Null:
+
+
+[role=“image”,“./kirchhoff_law2.svg” ,imgfmt=“svg”]
+\large \[ \sum_{i=1}^{n} U_i = 0\]
+
+Ein Netz ist jeder geschlossene Stromkreis in einer Schaltung. Für jedes Netz gilt dasselbe wie für eine unverzweigte Schaltung:
+Die Summe aller Spannungen ist gleich Null, da die Ladung nach Abschluss eines Stromkreises wieder auf das gleiche Potenzial wie am Ausgangspunkt zurückgekehrt ist..
+
+
+==== Beispiel
+
+Betrachten wir eine typische Netzkonfiguration und wenden wir Kirchhoffs erstes und zweites Gesetz darauf an.
+
+image:./example.svg[Beispiel svg]
+
+==== Lösung:
+
+Kirchhoffsches erstes Gesetz
+
+Das Netz in der obigen Abbildung enthält drei Knotenpunkte. Bei der Anwendung der obigen Gleichung (Kirchhoffsches erstes Gesetz) auf einen Knotenpunkt
+werden den einfließenden Strömen ein positives Vorzeichen und den ausfließenden Strömen ein negatives Vorzeichen zugewiesen.
+
+Für den Knotenpunkt P1 gilt:
+ (+ I_a) + (-I_1) + (-I_2) = 0
+ Darüber hinaus gilt die Gleichung in erweiterter Form auch für die externen Ströme I_a, I_b, I_c eines Netzes. Für die Knoten gilt:
+
+     P1: +I_a - I_1 - I_2 = 0  => I_a = I_1 + I_2
+
+     P2: +I_2 - I_c - I_3 = 0  => I_c = I_2 - I_3
+
+     P3: +I_b + I_3 + I_1 = 0  => I_b = -I_1 - I_3
+
+Gemäß der Knotenregel muss für die drei äußeren Ströme Folgendes gelten:
+
++ I_a  + I_b -I_c = 0
+
+Überprüfung:
+
+  + I_1 + I_2 - I_1 -I_3 -I_2 + I_3 = 0
+
+2. Kirchhoffsches Gesetz
+
+Im Allgemeinen ist es nicht möglich, Vorhersagen über die Richtung der Ströme zu treffen. Daher werden die Stromrichtungen angenommen.
+Die Spannungspfeile auf den Widerständen zeigen dann in die gewählte Stromrichtung. Die Quellspannungspfeile zeigen vom Pluspol
+zum Minuspol der Spannungsquelle. Die Umlaufrichtung wurde nach unserem Ermessen gegen den Uhrzeigersinn gewählt, und die
+in Umlaufrichtung zeigenden Spannungspfeile wurden als positiv, die anderen als negativ gezählt. Für das oben gezeigte Netzwerksystem erhalten wir:
+
+(+ U_R3) + (-U_R1) + (+ U_R2) + (-U_q) = 0
+
+(+ I_3 * R_3) + (-I_1 * R_1) + (+ I_2 * R_2) + (-U_q) = 0
+
 
 === Der Widerstand
 
-Das elektrische Bauteil selbst gibt es in allen Formen und Größen, je nach Anwendungsbereich.
-der Miniaturwiderstand für die Aufbautechnik, der in allen höher integrierten elektronischen Geräten verwendet wird,
-der durchschnittliche 1/4-Watt-Widerstand auf Kohlebasis mit 5 Prozent Toleranz (im Bild unten mittig dargestellt)
-und die präziseren Metallfilmwiderstände mit 1 % Toleranz (blau, rechts im Bild).
-Es gibt Widerstände mit mechanisch einstellbarem Widerstand, die Potentiometer genannt werden (wie die links im Bild gezeigten).
-Andere Typen sind Varistoren, bei denen der Widerstand von der angelegten Spannung abhängt, und einige andere Typen wie
-NTC / PTC in Abhängigkeit von der Temperatur.
+Die elektrische Komponente selbst gibt es in allen Formen und Größen, je nach Anwendungsbereich.
+Die Miniaturwiderstände für die Oberflächenmontagetechnik, die in allen höher integrierten elektronischen Geräten verwendet werden,
+der durchschnittliche 1/4-Watt-Widerstand auf Kohlebasis mit 5 Prozent Toleranz (in der Abbildung unten in der Mitte)
+und die präziseren Metallfilmwiderstände mit 1 Prozent Toleranz (blau, rechts in der Abbildung).
+Es gibt Widerstände mit mechanisch einstellbarem Widerstand, sogenannte Potentiometer (wie die links im Bild gezeigten).
+Andere Typen sind Varistoren, bei denen der Widerstand von der angelegten Spannung abhängt, sowie einige andere Typen wie
+NTC/PTC, die von der Temperatur abhängen.
 
 image:./discrete_resistors_edit.jpg[width=550]
 
 image:./smd_example.jpg[width=300]
 
-////Erklären Sie Aufbau und Struktur von SMD-Widerständen////
+
+//Erläutern Sie den Aufbau und die Konstruktion von SMD-Widerständen.
 
 ////
-Erkläre die ganze Sache auf einer physikalischen Ebene
-rho und Geometrie (dasselbe gilt für Kondensatoren und Spulen)
-Und warum? Weil wir meistens nicht nur mit verklumpten Bauteilen arbeiten
-sondern eher mit verteilten Bauteilen - besonders im HF-Bereich, aber
-ich nicht mit HF anfangen. Netzwerk-Dingens auch - Warum brauchen wir das?
-////
+Erläutern Sie das Ganze auf physikalischer Ebene.
+Rho und Geometrie (das Gleiche gilt für Kondensatoren und Spulen).
+Warum? Weil wir meistens nicht nur mit konzentrierten Komponenten arbeiten,
+sondern eher mit verteilten – insbesondere in HF, aber lassen Sie mich
+nicht mit HF anfangen. Auch Netzwerk-Dinge – warum brauchen wir das?
+///
+
+Übersetzt mit DeepL.com (kostenlose Version)
