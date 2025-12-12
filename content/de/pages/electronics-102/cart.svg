@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11 -11 22 22" role="img" aria-label="Kartesisches Koordinatensystem">
+  <!-- Hintergrund -->
+  <rect x="-11" y="-11" width="22" height="22" fill="#ffffff"/>
+
+  <!-- Raster-Definitionen -->
+  <defs>
+    <pattern id="grid1" width="1" height="1" patternUnits="userSpaceOnUse">
+      <path d="M 1 0 V 1 M 0 1 H 1" fill="none" stroke="#e6e6e6" stroke-width="0.02"/>
+    </pattern>
+    <pattern id="grid5" width="5" height="5" patternUnits="userSpaceOnUse">
+      <path d="M 5 0 V 5 M 0 5 H 5" fill="none" stroke="#d0d0d0" stroke-width="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- Mathematische Orientierung: y nach oben -->
+  <g transform="scale(1,-1)">
+    <!-- Rasterflächen -->
+    <rect x="-10" y="-10" width="20" height="20" fill="url(#grid1)"/>
+    <rect x="-10" y="-10" width="20" height="20" fill="url(#grid5)"/>
+
+    <!-- Achsen -->
+    <g stroke="#111111" stroke-width="0.08" stroke-linecap="round">
+      <path d="M -10 0 H 10"/>
+      <path d="M 0 -10 V 10"/>
+    </g>
+
+    <!-- Achsenpfeile -->
+    <g fill="#111111">
+      <path d="M 10 0 l -0.4 0.2 l 0 -0.4 Z"/>
+      <path d="M 0 10 l 0.2 -0.4 l -0.4 0 Z"/>
+    </g>
+
+    <!-- Ticks -->
+    <g stroke="#444444" stroke-width="0.06" stroke-linecap="round">
+      <path d="M -10 -0.2 V 0.2 M -9 -0.15 V 0.15 M -8 -0.15 V 0.15 M -7 -0.15 V 0.15 M -6 -0.15 V 0.15 M -5 -0.2 V 0.2 M -4 -0.15 V 0.15 M -3 -0.15 V 0.15 M -2 -0.15 V 0.15 M -1 -0.15 V 0.15 M 1 -0.15 V 0.15 M 2 -0.15 V 0.15 M 3 -0.15 V 0.15 M 4 -0.15 V 0.15 M 5 -0.2 V 0.2 M 6 -0.15 V 0.15 M 7 -0.15 V 0.15 M 8 -0.15 V 0.15 M 9 -0.15 V 0.15 M 10 -0.2 V 0.2"/>
+      <path d="M -0.2 -10 H 0.2 M -0.15 -9 H 0.15 M -0.15 -8 H 0.15 M -0.15 -7 H 0.15 M -0.15 -6 H 0.15 M -0.2 -5 H 0.2 M -0.15 -4 H 0.15 M -0.15 -3 H 0.15 M -0.15 -2 H 0.15 M -0.15 -1 H 0.15 M -0.15 1 H 0.15 M -0.15 2 H 0.15 M -0.15 3 H 0.15 M -0.15 4 H 0.15 M -0.2 5 H 0.2 M -0.15 6 H 0.15 M -0.15 7 H 0.15 M -0.15 8 H 0.15 M -0.15 9 H 0.15 M -0.2 10 H 0.2"/>
+    </g>
+
+    <!-- Beschriftungen (Text erneut spiegeln, damit er nicht invertiert ist) -->
+    <g transform="scale(1,-1)" fill="#222222" font-size="0.6" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+      <!-- x-Beschriftung -->
+      <g text-anchor="middle">
+        <text x="-10" y="-0.6">-10</text><text x="-9" y="-0.6">-9</text><text x="-8" y="-0.6">-8</text><text x="-7" y="-0.6">-7</text><text x="-6" y="-0.6">-6</text>
+        <text x="-5" y="-0.6">-5</text><text x="-4" y="-0.6">-4</text><text x="-3" y="-0.6">-3</text><text x="-2" y="-0.6">-2</text><text x="-1" y="-0.6">-1</text>
+        <text x="1" y="-0.6">1</text><text x="2" y="-0.6">2</text><text x="3" y="-0.6">3</text><text x="4" y="-0.6">4</text><text x="5" y="-0.6">5</text>
+        <text x="6" y="-0.6">6</text><text x="7" y="-0.6">7</text><text x="8" y="-0.6">8</text><text x="9" y="-0.6">9</text><text x="10" y="-0.6">10</text>
+      </g>
+      <!-- y-Beschriftung -->
+      <g>
+        <text x="0.6" y="-10" dominant-baseline="middle">-10</text><text x="0.6" y="-9" dominant-baseline="middle">-9</text><text x="0.6" y="-8" dominant-baseline="middle">-8</text><text x="0.6" y="-7" dominant-baseline="middle">-7</text><text x="0.6" y="-6" dominant-baseline="middle">-6</text>
+        <text x="0.6" y="-5" dominant-baseline="middle">-5</text><text x="0.6" y="-4" dominant-baseline="middle">-4</text><text x="0.6" y="-3" dominant-baseline="middle">-3</text><text x="0.6" y="-2" dominant-baseline="middle">-2</text><text x="0.6" y="-1" dominant-baseline="middle">-1</text>
+        <text x="0.6" y="1" dominant-baseline="middle">1</text><text x="0.6" y="2" dominant-baseline="middle">2</text><text x="0.6" y="3" dominant-baseline="middle">3</text><text x="0.6" y="4" dominant-baseline="middle">4</text><text x="0.6" y="5" dominant-baseline="middle">5</text>
+        <text x="0.6" y="6" dominant-baseline="middle">6</text><text x="0.6" y="7" dominant-baseline="middle">7</text><text x="0.6" y="8" dominant-baseline="middle">8</text><text x="0.6" y="9" dominant-baseline="middle">9</text><text x="0.6" y="10" dominant-baseline="middle">10</text>
+      </g>
+      <!-- Achsenlabels & Ursprung -->
+      <text x="10.3" y="0.9" font-size="0.9">x</text>
+      <text x="-0.9" y="10.6" font-size="0.9">y</text>
+      <circle cx="0" cy="0" r="0.12" fill="#d52a2a"/>
+      <text x="0.5" y="-0.5" font-size="0.6">(0,0)</text>
+    </g>
+  </g>
+</svg>
