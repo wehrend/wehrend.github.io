@@ -1,0 +1,18 @@
+---
+title: "Introduction to electronics - 105 - integrated circuits"
+slug: electronics-105
+date: 2025-09-25
+tags:
+category:
+link:
+description:
+type: text
+bookHidden: true
+outdir: ~/development/blog
+draft: false
+weight: 1500
+---
+
+This page is still under construction
+
+image:./under_construction.png[width="350px"]
