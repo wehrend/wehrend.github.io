@@ -134,6 +134,10 @@ publishDir = "public"
   url = "/de/pages/short-introduction-to-electronics-102"
   weight = 27
 
+[[languages.de.menu.before]]
+  name = "Elektronik 103"
+  url = "/de/pages/electronics-103"
+  weight = 28
 
 [params]
   date_format = "2006-01-02"
