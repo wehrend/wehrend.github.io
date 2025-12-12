@@ -139,6 +139,12 @@ publishDir = "public"
   url = "/de/pages/electronics-103"
   weight = 28
 
+[[languages.de.menu.before]]
+  name = "Elektronik 104"
+  url = "/de/pages/electronics-104"
+  weight = 29
+
+
 [params]
   date_format = "2006-01-02"
   # (Optional, default light) Sets color theme: light, dark or auto.
