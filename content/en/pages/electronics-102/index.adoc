@@ -222,7 +222,7 @@ frequency response
 
 cutoff frequency (with example values of R=1kOhm, C= 1µF)
 [role="image","../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
-\[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]
+\[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^(-6)}= 10^3= 1000 \cdot 1/s\]
 
 
 
