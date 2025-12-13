@@ -1,6 +1,6 @@
 ---
 title: "Vorgeschichte: Einführung in die Elektronik – 102"
-slug: kurze-einfuhr-in-die-elektronik-102
+slug: electronics-102
 date: 2023-06-21
 tags:
 category:

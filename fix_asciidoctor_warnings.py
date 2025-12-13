@@ -5,8 +5,8 @@ from glob import glob
 
 # 1. Define the file patterns to search (TARGETING ONLY 06_memory)
 FILE_PATTERNS = [
-    'content/*/pages/06_memory/index.adoc',
-    'pages/06_memory/index.adoc',
+    'content/*/pages/06_memory/index_en.adoc',
+    'pages/06_memory/index_en.adoc',
 ]
 
 # Regex to find any section heading: finds 1 or more '=' followed by a space and captures the title.
@@ -110,7 +110,7 @@ def main():
     unique_files = sorted(list(set(files_to_process)))
 
     if not unique_files:
-        print("\n❌ **No '06_memory/index.adoc' files found.**")
+        print("\n❌ **No '06_memory/index_en.adoc' files found.**")
         return
 
     print(f"\n✅ Found {len(unique_files)} files to process.")

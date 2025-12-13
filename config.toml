@@ -131,7 +131,7 @@ publishDir = "public"
 
 [[languages.de.menu.before]]
   name = "Elektronik 102"
-  url = "/de/pages/short-introduction-to-electronics-102"
+  url = "/de/pages/electronics-102"
   weight = 27
 
 [[languages.de.menu.before]]
