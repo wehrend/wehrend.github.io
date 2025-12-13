@@ -34,10 +34,10 @@ substance in-between, we created an electrostatic field.
 
 The build-up of the electrostatic field happens via a DC source, in the image below depicted by the generator G.
 The source voltage of the generator shifts th electrons located in the wire and the metal plates.
-This way on the right plate originates an overflowm of electrons (-Q) , while on the other plate a ahortage
+This way on the right plate originates an overflow of electrons (-Q) , while on the other plate a shortage
 of the same amount, +Q, originates.
 
-For a short amount of time, a charging current flows with the instantaneous value i, which in tradtional direction,
+For a short amount of time, a charging current flows with the instantaneous value i, which in traditional direction,
 promotes a quantity of electricity +Q. The charging current i becomes zero, if the quantity of electricity +Q and -Q
 generated voltage equals out.
 
@@ -80,8 +80,8 @@ the sum of the reciprocals of the individual capacitances.
 The elements next introduced, have a clue compared to the static of (ohmic) resistor.
 Now the time comes into focus, too, since capacitator and coils are both in a sense time-sensitive
 elements.
-So normally we would start with introducing the Capacitor with all its implication, and then go over to the coils wich
-are introduced then afterwards. Instead for this post, we show both of them in a comparision
+So normally we would start with introducing the Capacitor with all its implication, and then go over to the coils which
+are introduced then afterwards. Instead for this post, we show both of them in a comparison
 as they have complementary properties.
 
 
@@ -325,7 +325,7 @@ plt.show()
 
 === Simple Lowpass in LTspice
 
-We can verify our results by utilizing LTSpice and building our model in this software.0
+We can verify our results by utilizing LTSpice and building our model in this software.
 If you need to know how to use LTspice on Linux (Debian/Ubuntu) by using wine take a look
 link:https://github.com/joaocarvalhoopen/LTSpice_on_Linux_Ubuntu__How_to_install_and_use[here]
 
@@ -517,6 +517,6 @@ We want to give a short heads-up to active Filterd built with op-amp which are s
 https://wehrend.github.io/pages/electronics-104/[electronics-104].
 The op-amp wwe find in the image below is an op-amp switched as an voltage follower.
 This means that the filter can be encumbered with a circuit with a resistor at the output without changing the behaviour
-ot the precedented filter circuit...
+ot the precedent filter circuit...
 
 image:./notch_filter_active.svg[width="1000px"]

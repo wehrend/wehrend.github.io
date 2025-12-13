@@ -30,9 +30,9 @@ existing literature.
 
 == Free electrons and electric current
 
-What is electricity? Broadly speaken it is the flow of electrons in a conductor. In laymans term you can say,
-electrons on the outer shell - also called as valence band - of an atom are hopping from the valenece band
-of an atom to the adjacent one. So essentialy electricity constitutes the movement of electrons through matter.
+What is electricity? Broadly spoken it is the flow of electrons in a conductor. In layman's term you can say,
+electrons on the outer shell - also called as valence band - of an atom are hopping from the valence band
+of an atom to the adjacent one. So essential electricity constitutes the movement of electrons through matter.
 In practical application this matter is an electrical circuit, but also for example the lightning discharge
 occurs, in this case the ionised air can be considered as the (short) circuit.
 
@@ -48,8 +48,8 @@ as excellent conductor. The conductivity of semiconductors is variable to a wide
 === Going atomic: Conductors...
 
 The first group of elements (or compounds) we will introduce here are the conductors.
-Some important representants of this group are the elements aluminium and copper
-which both are indispensible for electric transmission lines and power grids.
+Some important representations of this group are the elements aluminium and copper
+which both are indispensable for electric transmission lines and power grids.
 As the table below depicts, both elements have free electrons available on it's valence
 shell, which as described above, are needed to allow the hopping of electrons from one atom
 to another and thus allow movement of electrons, making the element (in its pure form) a conductor.
@@ -83,7 +83,7 @@ image:./simple_circuit.svg[width="400px"]
 
 The second group of elements we want to introduce here are elements which
 conductivity is (highly) dependent on its purity degree and environment
-factors like temperature. Representants of this group are called semiconductors.
+factors like temperature. Representations of this group are called semiconductors.
 Carbon and silicon are examples showing up on the periodic table.
 The author picked those two elements as they have very exciting properties
 in regards to - but not limited to - conductivity. This is due to the number of valence
@@ -132,9 +132,9 @@ voltage source can differ from an actual battery cell, and also most often is no
 An ideal voltage source provides a voltage of a certain level.
 
 As we can see in below shown circuit schematics a voltage is just the difference between two potentials.
-In the first example (left) the junction at the bottom is choosen as reference point, as it
+In the first example (left) the junction at the bottom is chosen as reference point, as it
 is signaled as ground. So the voltage amounts to 1.5V for U_B0 respectively to 3V for U_A0.
-Whereas in the example on the right the junction between the battery cells is choosen as reference point and ground.
+Whereas in the example on the right the junction between the battery cells is chosen as reference point and ground.
 The potential differences we measure  here are: U_A0 = 1.5V and U_B0 =-1.5V.
 As a remark dual power supplies like that with - however with a voltage range of 12...15V - are often used for
 applications with op-amps.
@@ -157,7 +157,7 @@ The next image shows the simplest possible circuit: A voltage source with a resi
 Physically seen every resistor is just a  converter from electrical energy to thermically energy, thus heat.
 
 Resistors are generally used in circuits to drop the voltage to the desired level, respectively
-limit the current flowing between certail paths of a circuits. We will learn about it in the next section.
+limit the current flowing between certain paths of a circuits. We will learn about it in the next section.
 
 image:./resistor_circuit.svg[width="250px"]
 
@@ -165,7 +165,7 @@ image:./resistor_circuit.svg[width="250px"]
 == Ohm's law and lead resistance
 
 *Exercise: Measure Resistance*
-To execute the following exercise you need one voltagemeter and one amperemeter (or just two multimeters), a variable voltage source and
+To execute the following exercise you need one voltage meter and one amperemeter (or just two multimeter's), a variable voltage source and
 some sample wires of different materials but same in length and diameter.
 If you do not have the equipment, in theory you could also simulate this exercise in http://qucs.sourceforge.net[Qucs] or
 https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html[LTspice].
@@ -196,7 +196,7 @@ This observance leads us to the most important formula you will encounter in an 
 
 When we rearrange this equation to its simpler interpretable form, U = R·I, we recognize, that the voltage drop (U) on the Resistor corresponds
 to the resistance value ( R) times the current flowing thru (I). We did not speak about the current yet and we will postpone this to a later section.
-As indicated in the brakets the unit of Resistance is Ω.
+As indicated in the brackets the unit of Resistance is Ω.
 // Todo: write more about / to the ohms law.
 
 ////
@@ -207,7 +207,7 @@ In the image below the rules for series and parallel connection of resistors are
 image:./resistor_rules.svg[width="500px"]
 
 For the series connection the values simply adds up like we have seen it for the voltage sources,
-while for the parallel connection see same applies, however for the conductance G which is the reciproce
+while for the parallel connection see same applies, however for the conductance G which is the reciprocal
 of the resistance R and measured in S(iemens).
 
 ////
@@ -239,7 +239,7 @@ increases the resistance while the area counteracts it.
 *Why do we need to know this?*
 
 At this point you may ask why it is important to know this if we can just pull a schematic of our DIY project and realize it with discrete components
-on a breakout board- the answer is simple scale - it might work for this simple hobbyist example but lack scalibility,costs and / or reliability.
+on a breakout board- the answer is simple scale - it might work for this simple hobbyist example but lack scalability,costs and / or reliability.
 
 The further we get down on scale the more important parasitic effects become - we will learn about it in the subsequent sections.
 
