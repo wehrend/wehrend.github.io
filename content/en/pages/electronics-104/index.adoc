@@ -6,6 +6,7 @@ tags:
 category:
 link:
 description:
+bookHidden: true
 type: text
 outdir: ~/development/blog
 draft: false
