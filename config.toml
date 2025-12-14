@@ -50,6 +50,11 @@ publishDir = "public"
   url = "/pages/storytelling"
   weight = 25
 
+[[languages.en.menu.before]]
+  name = "ADCs and DACs"
+  url = "/pages/adc_dac"
+  weight = 30
+
 
 [[languages.en.menu.before]]
   name = "Download Archive"
