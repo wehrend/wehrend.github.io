@@ -9,7 +9,7 @@ description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
-draft: false
+draft: true
 weight: 1500
 ---
 
@@ -42,25 +42,40 @@ Instead of being defined at every point in time, a digital signal is only define
 In addition, the signal values are restricted to a finite set of possible values. Digital signals therefore consist
 of individual values rather than a continuous waveform.
 
-=== Quantisation
+=== Sampling and Quantisation
 
+==== Sampling
+Sampling describes the process of measuring a continuous-time signal at discrete points in time.
+Quantisation describes the process of mapping these sampled values to a finite set of discrete amplitude levels.
 
+==== Quantisation
 Quantisation describes the process of converting an analog signal into a digital signal.
 During this process, the continuous signal is represented by a sequence of discrete values.
-This makes it possible to process, store, and transmit signals using digital systems.
+This process makes it possible to process, store, and transmit signals using digital systems.
 
+image:./adc_abstraction.svg[width="1000px"]
+
+== The Analog-Digital-Converter (ADC)
+
+The other way around is described as Analog-Digital-Converter. The fastest one, is a flash converter,
+a single IC which contains (2^n) -1  comparators where n stands for the bit width.
+
+
+// image:./Flash_ADC.png[width="500px"]
+image:./flash_adc.svg[width="500px"]
+(image from wikipedia site, will be replaced in time with an own version)
 
 == The Digital-Analog-Converter (DAC)
+One extraordinary simple example of a DAC is a resistor network R-2R-Ladder... It just consists of a simple
+resistor network and a simple single op-amp.
+
 
 === The R-2R-DAC
 
-The most simple DAC ist the r-2r-ladder DAC. It is basically a resistor network, with a amplifier (op-amp) at the output.
+The most simple DAC ist the r-2r-ladder DAC. It is basically a resistor network,
+with a amplifier (op-amp) at the output.
 
 image:./r_2r_DAC.svg[width="1000px"]
-
-
-
-== The Analog-Digital-Converter (DAC)
 
 
 // This page is still under construction

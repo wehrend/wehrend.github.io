@@ -1,7 +1,7 @@
 ---
-title: "Introduction to electronics - 105 - integrated circuits"
-slug: electronics-105
-date: 2025-09-25
+title: "Introduction to Analog-Digital-converters and Digital-Analog-Converters"
+slug: adc_dac
+date: 2025-12-14
 tags:
 category:
 link:
@@ -13,6 +13,45 @@ draft: false
 weight: 1500
 ---
 
-This page is still under construction
+==  The theory about analog signals, digital signals and quantisation
 
-image:./under_construction.png[width="350px"]
+Analog signals are characterized by being continuous in time and continuous in value.
+The conversion process of analog signals
+is often referred to as quantization.
+
+Digital signals, on the other hand, are signals that have undergone a form of
+quantization process, which means that instead of being continuous signals, they are discrete signals.
+Digital signals are both time-discrete and value-discrete.
+
+Analog Signals
+
+Analog signals are continuous in time and continuous in value.
+This means that the signal exists at every moment in time and can
+take any value within a certain range. There are no jumps or gaps in the signal.
+Many physical quantities, such as sound, temperature, or light intensity,
+can naturally be described by analog signals.
+
+Because analog signals change continuously, they provide a direct representation
+of real-world processes.
+
+Digital Signals
+
+Digital signals, on the other hand, are not continuous. They are signals that have undergone a quantisation process.
+As a result, digital signals are discrete in time and discrete in value.
+Instead of being defined at every point in time, a digital signal is only defined at certain time instants.
+In addition, the signal values are restricted to a finite set of possible values. Digital signals therefore consist
+of individual values rather than a continuous waveform.
+
+=== Quantisation
+
+
+Quantisation describes the process of converting an analog signal into a digital signal.
+During this process, the continuous signal is represented by a sequence of discrete values.
+This makes it possible to process, store, and transmit signals using digital systems.
+
+
+
+
+// This page is still under construction
+//
+// image:./under_construction.png[width="350px"]
