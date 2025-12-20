@@ -197,6 +197,10 @@ z {\displaystyle z} by a complex number  w≠ 0
 ////
 
 
+{{< hint warning >}}
+Since the variable i is in electronic engineering already is reserved for current, we use instead j as i !
+{{< /hint >}}
+
 
 
 == Frequency-dependent networks (Filters)

@@ -193,6 +193,12 @@ z {\displaystyle z} durch eine komplexe Zahl  w≠ 0
 [role=„image“,„./conjugated-divison-rule.svg“, imgfmt="svg"]
 \[ \frac{z_{1}}{z_{2}} =\frac{r_{1}}{r_{2}} \cdot e^{{i(\phi_{1} - \phi_{2})}}, mit  r_{2} \neq 0\]
 
+
+
+{{< hint warning >}}
+    Da die Variable i in der Elektrotechnik bereits für Strom reserviert ist, verwenden wir stattdessen j als i !
+{{< /hint >}}
+
 ////
 - Aufbau Kondensator
 - Kondensator im Gleichstromkreis
