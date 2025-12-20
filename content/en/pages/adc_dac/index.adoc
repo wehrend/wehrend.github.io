@@ -9,11 +9,18 @@ description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
-draft: true
+draft: false
 weight: 1500
 ---
 
-==  The theory about analog signals, digital signals and quantisation
+== The two important pillars - Digital-Analog-Converter and Analog-Digital-Converter
+
+What we haven't checked yet in  our journey around (analog) electronics and digital electronics
+where the converter circuits from analog to digital and vice versa - for this we first want to
+explain the different terms around.
+
+
+==  The theory about analog signals, digital signals, sampling and quantisation
 
 Analog signals are characterized by being continuous in time and continuous in value.
 The conversion process of analog signals
@@ -23,7 +30,7 @@ Digital signals, on the other hand, are signals that have undergone a form of
 quantization process, which means that instead of being continuous signals, they are discrete signals.
 Digital signals are both time-discrete and value-discrete.
 
-Analog Signals
+=== Analog Signals
 
 Analog signals are continuous in time and continuous in value.
 This means that the signal exists at every moment in time and can
@@ -34,7 +41,9 @@ can naturally be described by analog signals.
 Because analog signals change continuously, they provide a direct representation
 of real-world processes.
 
-Digital Signals
+image:./adc_ conversion.svg[width="1000px"]
+
+=== Digital Signals
 
 Digital signals, on the other hand, are not continuous. They are signals that have undergone a quantisation process.
 As a result, digital signals are discrete in time and discrete in value.
@@ -61,9 +70,14 @@ The other way around is described as Analog-Digital-Converter. The fastest one, 
 a single IC which contains (2^n) -1  comparators where n stands for the bit width.
 
 
+
+[width="100%" cols="a,a"]
+|=====
+| image:./flash_adc_w_priority_encoder.svg[width="500px"]
+| image:./flash_adc.svg[width="500px"]
+|=====
+
 // image:./Flash_ADC.png[width="500px"]
-image:./flash_adc.svg[width="500px"]
-(image from wikipedia site, will be replaced in time with an own version)
 
 == The Digital-Analog-Converter (DAC)
 One extraordinary simple example of a DAC is a resistor network R-2R-Ladder... It just consists of a simple
