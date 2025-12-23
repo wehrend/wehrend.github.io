@@ -85,6 +85,11 @@ This will be the focus of the second part of the series.
 
 = Extra
 
+== Excursion to priority encoder and decoder
+In this chapter we will have a look at priority encoders and decoders, as well as the logic behind them...
+
+_link:/pages/06_priority_encoder_and-decoder/[Priority encoder and decoder]_
+
 == *Let Me Look That Up*
 
 _An Introduction to Memory and Look-Up Tables (LUTs)_

@@ -1,0 +1,147 @@
+---
+title: priority_encoder_and_decoder
+date: 2025-12-23
+tags:
+math:
+category: "digital_logic_1"
+link:
+description:
+type: text
+bookHidden: true
+menu:
+  docs:
+    parent: "digital_logic_1"
+    identifier: "01_boolean_algebra"
+    weight: 10
+---
+{{< katex />}}
+
+Hello Folks,
+
+today we want to have a peek look into cascaded combinatorics with the example of priority encoder and decoders....
+Second, we will introduce Karnaugh maps to do the optimization part.
+
+== Cascaded combinatorics and Priority encoder
+
+First of all, what is a priority encoder? And for what is  it used? This we can explain in a first simple list.
+
+- As interrupt controller to prioritise
+
+- As a code converter in a flash ADC.
+
+== The truth table and deduction
+
+[width="100%"]
+|================
+| No. | I_7 | I_6 | I_5 | I_4  | I_3  | I_2 | I_1 | I_0 |  Y_2 | Y_1 | Y_0
+| 0   |  0  | 0   |  0  |  0   |  0   | 0   | 0   |  0  |  *   | *   | *
+| 1   |  0  | 0   |  0  |  0   |  0   | 0   | 0   |  1  |  0   | 0   | 0
+| 2   |  0  | 0   |  0  |  0   |  0   | 0   | 1   |  x  |  0   | 0   | 1
+| 3   |  0  | 0   |  0  |  0   |  0   | 1   | x   |  x  |  0   | 1   | 0
+| 4   |  0  | 0   |  0  |  0   |  1   | x   | x   |  x  |  0   | 1   | 1
+| 5   |  0  | 0   |  0  |  1   |  x   | x   | x   |  x  |  1   | 0   | 0
+| 6   |  0  | 0   |  1  |  x   |  x   | x   | x   |  x  |  1   | 0   | 1
+| 7   |  0  | 1   |  x  |  x   |  x   | x   | x   |  x  |  1   | 1   | 0
+| 8   |  1  | x   |  x  |  x   |  x   | x   | x   |  x  |  1   | 1   | 1
+|================
+
+
+=== Karnaugh maps for Y_2, Y_1 and Y_0
+
+image:./karnaugh_maps.svg[test]
+
+[role="image","./y2.svg",imgfmt="svg", width="75%"]
+\[Y_2 = I_7 + I_6 + I_5 + I_4\]
+
+[role="image","./y1.svg",imgfmt="svg", width="75%"]
+\[Y_1 = I_7 + I_6 + ( I_3 + I_2 ) \cdot ( \overline{I_7 + I_6 + I_5 + I_4 })\]
+
+[role="image","./y0.svg",imgfmt="svg", width="75%"]
+\[Y_0 = I_7 + I_5 \cdot \overline{I_7 + I_6} + I_3 \cdot {\overline{(I_7 + I_6 + I_5 + I_4 )}} + I_1 \cdot ( \overline{I_7 + I_6 + I_5 + I_4 + I_3 + I_2})\]
+
+
+
+
+=== The 8 to 3 priority encoder 74HC148 function diagram as example
+
+image:./sn74hc148.png[74hc148]
+
+== Combinatorics and Priority decoder
+
+
+
+[width="100%"]
+|================
+| No. | A_2 | A_1 | A_0 | Y_7 | Y_6 | Y_5 | Y_4 | Y_3 | Y_2 | Y_1 | Y_0
+| 0   |  0  |  0  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0
+| 1   |  0  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |  1
+| 2   |  0  |  1  |  0  |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1
+| 3   |  0  |  1  |  1  |  1  |  1  |  1  |  1  |  0  |  1  |  1  |  1
+| 4   |  1  |  0  |  0  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1
+| 5   |  1  |  0  |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1  |  1
+| 6   |  1  |  1  |  0  |  1  |  0  |  1  |  1  |  1  |  1  |  1  |  1
+| 7   |  1  |  1  |  1  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |  1
+|================
+
+
+image:./karnaugh_map_decoder.svg[test]
+
+
+The 74HC138 has active-low outputs; exactly one output goes low for each address (when enabled).
+
+[width="100%" cols="a,a,a"]
+|=====
+|
+| image:./cd74hc138.png[size="1550px"]
+|
+|=====
+
+
+== Cascaded combinatorics and Priority encoder
+
+image:./cascaded_table.png[size="1550px"]
+
+{{< hint danger >}}
+We can see from the table that each block along the diagonal ones fulfills the same function.
+{{< /hint >}}
+
+[width="100%"]
+|================
+| No.   | S_in | X_j+3 | X_j+2 | X_j+1 | X_j+0 | S_out | Y_1 | Y_0
+| 0     |  0   |  0    |  0    |  0    |  0    |  0    |  *  |  *
+| 1     |  0   |  0    |  0    |  0    |  1    |  1    |  0  |  0
+| 2-3   |  0   |  0    |  0    |  1    |  *    |  1    |  0  |  1
+| 4-7   |  0   |  0    |  1    |  *    |  *    |  1    |  1  |  0
+| 8-F   |  0   |  1    |  *    |  *    |  *    |  1    |  1  |  1
+| 10-1  |  1   |  *    |  *    |  *    |  *    |  1    |  *  |  *
+|================
+
+
+[width="100%" cols="a,a"]
+|=====
+| image:./y0.svg[size="1550px"]
+| image:./y1.svg[size="1550px"]
+|=====
+
+
+
+
+[width="100%" cols="a,a"]
+|=====
+|
+[role="image","./Sout.svg",imgfmt="svg", width="75%"]
+\[S_{out} = S_{in} \lor X_{j+3} \lor X_{j+2} \lor  X_{j+1} \lor X_{j+0} \]
+
+[role="image","./y0.svg",imgfmt="svg", width="75%"]
+\[Y_{0} =  \overline{S_{in}}\overline{X_{j+2}} X_{j+1} \lor \overline{S_{in}}X_{j+3}\]
+
+[role="image","./y0.svg",imgfmt="svg", width="75%"]
+\[Y_{1} =  \overline{S_{in}}X_{j+2} \lor \overline{S_{in}}X_{j+3}\]
+
+
+| image:./single_block.png[size="1550px"]
+|=====
+
+
+
+image:./cascaded_circuit.png[size="1550px"]
