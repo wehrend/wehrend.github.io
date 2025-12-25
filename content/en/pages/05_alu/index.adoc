@@ -25,7 +25,7 @@ the 1-bit alu cell.
 
 image:./alu_symbol.svg[width="100%"]
 
-[width="50%",cols="5,4,2,2,4",options="header"]
+[width="100%",cols="5,4,2,2,4",options="header"]
 |===
 | Function | description | Ainvert | Binvert | Operation
 | and  | a & b | 0 | 0 | 00
