@@ -125,6 +125,12 @@ publishDir = "public"
   url = "/de/posts/synth/25_build_your_own_modules/"
   weight = 21
 
+
+[[languages.de.menu.before]]
+  name = "ADCs und DACs"
+  url = "/de/pages/adc_dac"
+  weight = 30
+
 [[languages.de.menu.after]]
   name = "Digitale Logik 1 (Übersicht)"
   url = "/de/pages/000_digital_logic_1/"

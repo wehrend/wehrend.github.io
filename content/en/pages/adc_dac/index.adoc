@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Analog-Digital-converters and Digital-Analog-Converters"
 slug: adc_dac
-date: 2025-12-14
+date: 2025-12-30
 tags:
 category:
 link:
@@ -78,6 +78,67 @@ a single IC which contains (2^n) -1  comparators where n stands for the bit widt
 |=====
 
 // image:./Flash_ADC.png[width="500px"]
+== The Sigma-Delta Converter (ΣΔ-Converter)
+
+In addition to fast converter architectures such as the flash ADC and simple DAC structures
+like the R-2R ladder, there exists another very important class of converters that is optimized
+not for speed, but for precision and resolution: the sigma-delta converter.
+
+Sigma-delta converters are widely used in modern electronic systems, especially in audio
+applications, sensor interfaces, and precision measurement equipment. Their main idea is
+to trade conversion speed for accuracy by using oversampling and digital signal processing.
+
+Instead of converting an analog signal directly into a multi-bit digital word, a sigma-delta
+converter operates with a very high sampling frequency and a feedback loop. The analog input
+signal is continuously compared with a feedback signal derived from the converter output.
+The difference between these two signals is integrated over time. This integration process
+emphasizes the low-frequency components of the signal while averaging out high-frequency noise.
+
+The name sigma-delta originates from the two operations used inside the converter loop.
+The sigma (Σ) represents the integration of the error signal over time, while the
+delta (Δ) represents the difference between the input signal and the feedback signal.
+Together, these operations form a closed-loop system that continuously corrects itself.
+
+At the heart of the sigma-delta converter is a very simple quantizer, often implemented as
+a 1-bit comparator. This quantizer decides whether the integrator output is positive
+or negative and generates a corresponding digital output bit. The digital output is then
+converted back into an analog signal using a simple DAC and fed back to the input of the
+converter. This feedback mechanism forces the average value of the digital output to follow
+the analog input signal.
+
+The direct output of a sigma-delta modulator is therefore not a conventional multi-bit
+binary number, but a fast stream of single bits, for example:
+
+111011101111010111...
+
+The information is encoded in the density of ones within this bitstream. A higher density
+of ones corresponds to a higher input voltage, while a lower density corresponds to a lower
+input voltage. This type of representation is known as pulse-density modulation (PDM).
+
+Sigma-delta converters operate with a sampling frequency that is much higher than the
+Nyquist frequency of the input signal. This technique is called oversampling.
+Oversampling reduces the quantization noise within the signal band and significantly
+relaxes the requirements for analog anti-aliasing filters.
+
+Another key concept of sigma-delta converters is noise shaping. While quantization
+noise cannot be eliminated, the feedback loop pushes most of this noise toward higher
+frequencies, outside the frequency range of interest. A digital low-pass filter removes
+this high-frequency noise, and a decimator reduces the data rate to produce a high-resolution
+multi-bit digital output value.
+
+Because of this principle, sigma-delta converters can achieve very high resolutions,
+often 16 to 24 bits, with relatively simple analog circuitry. However, this comes at the
+cost of conversion speed and latency introduced by digital filtering. For this reason,
+sigma-delta converters are not suitable for very high-frequency or fast transient signals,
+but they are ideal for precision applications.
+
+image:./sigma_delta_adc.svg[width="1000px"]
+
+(Not my own LT-Spice file but found https://github.com/teddokano/sigma-delta_modulation_sim[here])
+
+link:./sigma_delta_adc.asc[LTSpice file]
+
+image:./sigma_delta_adc_ltspice.png[width="1000px"]
 
 == The Digital-Analog-Converter (DAC)
 One extraordinary simple example of a DAC is a resistor network R-2R-Ladder... It just consists of a simple
