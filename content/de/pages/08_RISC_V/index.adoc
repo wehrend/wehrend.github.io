@@ -1,5 +1,5 @@
----
-title: 07_RISC-V (de)
+= ---
+title: 08_RISC-V (de)
 date: 2022-03-21
 tags: ['draft']
 category: "digital_logik_1"

@@ -1,5 +1,5 @@
 ---
-title: 06_Memory (de)
+title: 07_Memory (de)
 date: 2022-03-20
 category: "digital_logik_1"
 link: 

@@ -86,6 +86,11 @@ Dies wird das Hauptthema der zweiten Beitragsreihe sein.
 
 = Extra
 
+== Exkurs zu Prioritätscodierern und -decodierern
+In diesem Kapitel befassen wir uns mit Prioritätscodierern und -decodierern sowie der dahinterstehenden Logik...
+
+_link:/de/pages/06_priority_encoder_and-decoder/[Prioritätscodierer und -decodierer]_
+
 == *Lass mich das nachschlagen*
 
 _Erster Blick auf Speicher und Look-Up-Tables (LUTs)_
