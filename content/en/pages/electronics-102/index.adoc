@@ -1,6 +1,6 @@
 ---
 title: "Prequel: Introduction to electronics - 102"
-slug: short-introduction-to-electronics-102
+slug: electronics-102
 date: 2023-06-21
 tags:
 category:
@@ -18,7 +18,7 @@ weight: 1200
 After this chapter you will know all the basics around time-sensitive components like coils and capacitors and simple circuits utilizing those components...
 {{< /hint >}}
 
-= Electronics 102
+== Electronics 102
 
 == Time-sensitive components
 

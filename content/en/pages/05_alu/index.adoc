@@ -1,6 +1,7 @@
 ---
 title: 05_ALU
 date: 2022-03-11
+weight: 50
 category: "digital_logic_1"
 link: 
 description: 
@@ -9,7 +10,6 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic_1"
-    weight: 50
 ---
 {{< katex />}}
 == The ALU, the swiss knife of every cpu

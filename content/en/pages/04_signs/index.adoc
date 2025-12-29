@@ -1,6 +1,7 @@
 ---
 title: 04_Signs
 date: 2022-02-06
+weight: 40
 category: "digital_logic_1"
 link: 
 description: 
@@ -9,7 +10,6 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic_1"
-    weight: 40
 ---
 {{< katex />}}
 == Extending the binary system

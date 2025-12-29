@@ -32,18 +32,24 @@ publishDir = "public"
 
 [[languages.en.menu.before]]
   name = "Electronics 101"
-  url = "/pages/prequel-short-introduction-to-electronics"
+  url = "/pages/electronics-101"
   weight = 26
 
 [[languages.en.menu.before]]
   name = "Electronics 102"
-  url = "/pages/short-introduction-to-electronics-102"
+  url = "/pages/electronics-102"
   weight = 27
 
 [[languages.en.menu.before]]
   name = "Electronics 103"
   url = "/pages/electronics-103"
   weight = 28
+
+[[languages.en.menu.before]]
+  name = "Electronics 104"
+  url = "/pages/electronics-104"
+  weight = 28
+
 
 [[languages.en.menu.before]]
   name = "Storytelling and the order of things"

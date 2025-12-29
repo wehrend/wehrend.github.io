@@ -1,6 +1,6 @@
 ---
 title: "Prequel: Introduction to electronics"
-slug: prequel-short-introduction-to-electronics
+slug: electronics-101
 date: 2021-01-23
 tags:
 category:
@@ -8,8 +8,7 @@ link:
 description:
 type: text
 bookHidden: true
-outdir: ~/development/blog
-weight: 1100
+weigth: 1100
 ---
 {{< katex />}}
 

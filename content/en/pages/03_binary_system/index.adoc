@@ -1,6 +1,7 @@
 ---
 title: 03_binary_system
 date: 2021-12-02
+weight: 30
 tags: 
 category: "digital_logic_1"
 link:
@@ -10,7 +11,6 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic_1"
-    weight: 30
 ---
 {{< katex />}}
 ==  The Binary System

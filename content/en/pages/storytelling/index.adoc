@@ -8,7 +8,7 @@ link:
 description:
 type: text
 outdir: ~/development/blog
-weight: 1000
+weight: 2000
 ---
 
 == Storytelling and the order of things

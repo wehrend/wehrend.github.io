@@ -10,7 +10,7 @@ type: text
 bookHidden: true
 outdir: ~/development/blog
 draft: false
-weight: 1500
+weight: 1600
 ---
 
 == The two important pillars - Digital-Analog-Converter and Analog-Digital-Converter

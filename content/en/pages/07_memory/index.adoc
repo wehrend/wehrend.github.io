@@ -1,12 +1,12 @@
 ---
-title: 06_Memory
+title: 07_Memory
 date: 2022-03-20
+weight: 70
 category: "digital_logic_1"
 link: 
 description: 
 type: text
 bookHidden: true
-weight: 60
 menu:
   docs:
     parent: "digital_logic_1"

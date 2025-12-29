@@ -1,6 +1,7 @@
 ---
 title: 01_boolean_algebra
 date: 2020-12-23
+weight: 10
 tags:
 math:
 category: "digital_logic_1"
@@ -11,7 +12,6 @@ bookHidden: true
 menu:
   docs:
     parent: "digital_logic_1"
-    identifier: "01_boolean_algebra"
     weight: 10
 ---
 {{< katex />}}
