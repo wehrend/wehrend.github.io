@@ -8,7 +8,7 @@ link:
 description:
 type: text
 outdir: ~/development/blog
-draft: true
+draft: false
 ---
 
 == Interrupts - The doorbell analogy
