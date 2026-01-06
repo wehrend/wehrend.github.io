@@ -282,6 +282,19 @@ For every resistor, if the current and resistance value are known, the following
 
 However, only linear resistors exhibit proportionality between voltage and current.
 
+
+
+==== Electrical Power law
+
+The second- important law in electrial engineering is the electrical power law, the multiplication of voltage and current
+results in electrical power with the unit "Watt"
+
+
+[role=“image”,“./electriacal_power_law.svg” ,imgfmt=“svg”]
+\[ P[W] = U[V]\cdot I[A] \]
+
+We will discuss this law in later post...
+
 ==== Kirchhoff's first law
 
 Kirchhoff's 1st law states: The sum of all signed currents belonging to a node is equal to zero:

@@ -281,6 +281,17 @@ Für jeden Widerstand gilt, wenn Strom und Widerstandswert bekannt sind
 
 Allerdings weisen nur lineare Widerstände eine Proportionalität zwischen Spannung und Strom auf.
 
+==== Gesetz der elektrischen Leistung
+
+Das zweitwichtigste Gesetz in der Elektrotechnik ist das Gesetz der elektrischen Leistung, wonach die Multiplikation von Spannung und Strom
+die elektrische Leistung mit der Einheit „Watt” ergibt.
+
+
+[role=“image”,“./electriacal_power_law.svg” ,imgfmt=“svg”]
+\[ P[W] = U[V]\cdot I[A] \]
+
+Wir werden dieses Gesetz in einem späteren Beitrag näher erläutern...
+
 ==== Kirchhoffsches erstes Gesetz
 
 Das erste Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Ströme, die zu einem Knotenpunkt gehören, ist gleich Null:
