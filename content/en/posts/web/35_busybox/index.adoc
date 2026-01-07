@@ -1,0 +1,97 @@
+---
+title: "Busybox - How does it work and why ist it needed"
+date: 2026-01-07
+tags: ["embedded","web","linux", "busybox"]
+draft: false
+type: blog
+---
+
+== What is BusyBox and why is it needed?
+
+Hello folks,
+
+today I want to explain how the Swiss knife of Linux command line tools works and why it is needed, especially in embedded systems.
+
+On a normal Linux desktop system, tools like `ls`, `cp`, `mount` or `sh` are all separate binaries. Each of those binaries depends on libraries and contains its own startup code. This is usually not a problem on desktops or servers.
+
+But in embedded systems, storage and memory are limited. Every single binary takes space, and every copy of common code is wasted space. Memory is rare in embedded devices.
+
+This is where BusyBox comes in.
+
+== One single binary
+
+BusyBox combines many common Unix command line tools into one single executable. Instead of having many binaries in `/bin` and `/sbin`, there is only one: the BusyBox executable.
+
+If every tool were a separate binary, all that code would have to be stored again and again. BusyBox avoids that by sharing everything in one file.
+
+This saves a lot of space, which is exactly what embedded systems need.
+
+== Symlinks instead of real binaries
+
+In a BusyBox-based system, the usual command names still exist:
+
+* `/bin/ls`
+* `/bin/cp`
+* `/bin/sh`
+* `/sbin/mount`
+
+But these files are not real binaries. They are symbolic links pointing to the BusyBox executable.
+
+Example:
+
+[source,text]
+----
+/bin/ls   -> busybox
+/bin/cp   -> busybox
+/bin/sh   -> busybox
+----
+
+So when you type `ls`, you are actually starting BusyBox.
+
+== How BusyBox knows what to do
+
+When a program is started on Linux, it receives its command line arguments in `argv[]`. The first element, `argv[0]`, contains the name that was used to start the program.
+
+BusyBox looks at `argv[0]` to find out which command it should behave like.
+
+In simple terms, it does the following:
+
+* read `argv[0]`
+* remove the path, so `/bin/ls` becomes `ls`
+* search for `ls` in its internal list of commands
+* execute the matching implementation
+
+This is why the same binary can act as `ls`, `sh`, `mount`, or many other tools.
+
+== Calling BusyBox directly
+
+BusyBox can also be called without symlinks:
+
+[source,sh]
+----
+busybox ls -l
+busybox sh
+----
+
+In this case, the first argument tells BusyBox which command should be executed. Internally, the same dispatch logic is used.
+
+== Why this is still useful
+
+BusyBox is not meant to replace the full GNU toolchain. Many features are missing or simplified. But for embedded systems, this is often good enough.
+
+BusyBox is still widely used because:
+
+* it is small
+* it has very few dependencies
+* it works well in minimal systems
+* it is easy to understand and debug
+
+== Summary
+
+BusyBox is simple and effective:
+
+* one executable
+* many commands
+* very small footprint
+
+That is why BusyBox is still used today and why it is so important in embedded Linux systems.
