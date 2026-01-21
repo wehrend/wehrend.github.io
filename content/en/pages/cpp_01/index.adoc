@@ -1,0 +1,275 @@
+---
+title: "Introduction into C++ (Part 2)"
+slug: cpp_00
+date: 2026-01-21
+tags: ["C++", "SDL", "synth"]
+category:
+link:
+description:
+type: text
+bookHidden: false
+outdir: ~/development/blog
+draft: false
+---
+{{< katex />}}
+
+== Introduction into C++ (Part 2)
+
+In this next example / tutorial we will have a look at sound producing program (aka a synth), for which we utilize the SDL library
+(Simple direct media library). We will go about the program, line for line and explain the different items.
+
+Lets begin...
+
+First of all we have the includes for the SDL library, we will have a look at the header file later. Also we include cmath for math and iostream
+for in- and output (but in this example only output).
+
+Followed by that we have a coupla of constant expressions, described ad constexpr for SAMPLE_RATE, FREQUENCY and  2 times Pi.
+To ensure accurate those constexpression are stored as datatype double...
+Then we initialize the variable phase with the start value 0.0 .
+
+In SDL audio, the callback is the function SDL repeatedly calls on a special audio thread whenever it needs the next chunk of
+sound samples to send to the speakers. Your audioCallback’s whole job is: fill stream with len bytes of audio data in the format
+you requested ( here AUDIO_F32SYS, mono).
+
+Let’s walk through your callback line-by-line and what it’s doing conceptually.
+
+Function signature
+----
+void audioCallback(void* userdata, Uint8* stream, int len)
+----
+
+userdata: pointer you can pass in to the callback (not used here). Often used to pass a struct with state (phase, volume, etc.).
+
+stream: a raw byte buffer SDL gives you. You must write audio samples into it.
+
+len: how many bytes you must fill this time.
+
+SDL will call this again and again while audio is running.
+
+=== Interpreting the buffer as floats
+----
+float* buffer = (float*)stream;
+int samples = len / sizeof(float);
+----
+
+Because you requested want.format = AUDIO_F32SYS and channels = 1, SDL expects:
+
+each sample is a 32-bit float  one float per sample (mono)
+So we cast stream (bytes) into a float* and compute how many float samples fit into len.
+
+Example: if len == 2048, then samples = 2048 / 4 = 512 float samples.
+
+=== Computing how fast the sine wave advances
+
+----
+double phaseInc = TWO_PI * FREQUENCY / SAMPLE_RATE;
+----
+
+You’re generating a sine wave sample-by-sample:
+
+phase is the current angle (in radians) for the sine function.
+
+A sine wave completes a full cycle every 2π radians.
+
+If the tone frequency is FREQUENCY (e.g., 440 Hz), and the sample rate is SAMPLE_RATE (e.g., 48000 Hz),
+then each sample should advance the phase by:
+
+
+[role=“image”,“./phaseIncrement.svg” ,imgfmt=“svg”]
+\[ phaseIncrement = 2 \pi \cdot \frac{FREQUENCY}{SAMPLE_RATE} \]
+
+
+So for 440 Hz at 48000 Hz:
+
+you advance about 2π * 440 / 48000 radians per sample
+
+after ~48000 samples, you’ve produced one second of audio
+
+after 440 cycles in that second, you hear 440 Hz
+
+=== Filling the audio buffer
+----
+for (int i = 0; i < samples; ++i) {
+    buffer[i] = 0.05f *(float)std::sin(phase);
+    phase += phaseInc;
+
+    if (phase >= TWO_PI)
+        phase -= TWO_PI;
+}
+----
+
+For each sample slot:
+
+- Compute a sine value: sin(phase) ranges from -1 to +1.
+
+- Scale the amplitude: 0.05f * sin(...)
+
+- Audio float samples are typically in [-1, +1]
+
+- 0.05 is a quiet tone (5% of full scale), helps avoid being too loud.
+
+- Advance the phase: phase += phaseInc
+
+- Wrap phase back into [0, 2π) to avoid it growing forever
+
+This prevents floating-point values from getting huge over time (which would reduce precision).
+
+=== Important detail: phase must be persistent
+
+For the sine wave to be continuous across callbacks, phase must keep its value between callback calls. That means it must be:
+
+- global, or
+
+- static in the callback, or
+
+- stored in a struct passed via userdata.
+
+If phase were a local variable initialized to 0 inside the callback, you’d restart the sine wave at the beginning every time
+SDL asks for a new chunk (which would cause clicks or a “reset” sound).
+
+=== How this connects to main()
+
+In main() you initialize an SDL_AudioSpec and configure it as follows:
+
+----
+want.freq     = (int)SAMPLE_RATE;
+want.format   = AUDIO_F32SYS;
+want.channels = 1;
+want.samples  = 512;
+want.callback = audioCallback;
+----
+
+Then:
+
+----
+SDL_PauseAudioDevice(dev, 0);
+----
+
+Unpauses the device → SDL starts calling audioCallback repeatedly.
+
+You delay 3 seconds, then close.
+
+[source,c++]
+----
+{{<highlight cpp>}}
+#include <SDL2/SDL.h>
+#include <cmath>
+#include <iostream>
+#include <atomic>
+
+static constexpr double SAMPLE_RATE = 44100.0;
+static constexpr double FREQUENCY   = 440.0;
+static constexpr double TWO_PI      = 6.28318530717958647692;
+
+struct AudioState {
+    std::atomic<bool> playing{false}; // set by main thread, read by audio thread
+    double phase = 0.0;               // only touched by audio thread
+};
+
+void audioCallback(void* userdata, Uint8* stream, int len)
+{
+    auto* state = static_cast<AudioState*>(userdata);
+
+    float* buffer = reinterpret_cast<float*>(stream);
+    int samples = len / sizeof(float);
+
+    // If not playing, output silence
+    if (!state->playing.load(std::memory_order_relaxed)) {
+        for (int i = 0; i < samples; ++i) buffer[i] = 0.0f;
+        return;
+    }
+
+    const double phaseInc = TWO_PI * FREQUENCY / SAMPLE_RATE;
+
+    for (int i = 0; i < samples; ++i) {
+        buffer[i] = 0.05f * static_cast<float>(std::sin(state->phase));
+        state->phase += phaseInc;
+
+        if (state->phase >= TWO_PI)
+            state->phase -= TWO_PI;
+    }
+}
+
+int main()
+{
+    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) != 0) {
+        std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
+        return 1;
+    }
+
+    // Small window just to receive keyboard events
+    SDL_Window* win = SDL_CreateWindow(
+        "Hold SPACE to play",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+        400, 120,
+        SDL_WINDOW_SHOWN
+    );
+    if (!win) {
+        std::cerr << "SDL_CreateWindow failed: " << SDL_GetError() << "\n";
+        SDL_Quit();
+        return 1;
+    }
+
+    AudioState state;
+
+    SDL_AudioSpec want{};
+    want.freq     = static_cast<int>(SAMPLE_RATE);
+    want.format   = AUDIO_F32SYS;
+    want.channels = 1;          // mono
+    want.samples  = 512;
+    want.callback = audioCallback;
+    want.userdata = &state;
+
+    SDL_AudioSpec have{};
+    SDL_AudioDeviceID dev = SDL_OpenAudioDevice(nullptr, 0, &want, &have, 0);
+    if (!dev) {
+        std::cerr << "Audio open failed: " << SDL_GetError() << "\n";
+        SDL_DestroyWindow(win);
+        SDL_Quit();
+        return 1;
+    }
+
+    SDL_PauseAudioDevice(dev, 0); // start audio thread/callback
+
+    std::cout << "Hold SPACE to play 440 Hz. Press ESC or close window to quit.\n";
+
+    bool running = true;
+    while (running) {
+        SDL_Event e;
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                running = false;
+            } else if (e.type == SDL_KEYDOWN && !e.key.repeat) {
+                if (e.key.keysym.sym == SDLK_ESCAPE) running = false;
+                if (e.key.keysym.sym == SDLK_SPACE)  state.playing.store(true, std::memory_order_relaxed);
+            } else if (e.type == SDL_KEYUP) {
+                if (e.key.keysym.sym == SDLK_SPACE)  state.playing.store(false, std::memory_order_relaxed);
+            }
+        }
+
+        SDL_Delay(1); // tiny sleep to avoid busy-waiting
+    }
+
+    SDL_CloseAudioDevice(dev);
+    SDL_DestroyWindow(win);
+    SDL_Quit();
+    return 0;
+}
+
+
+{{</highlight>}}
+----
+
+
+We compile the file with a simple
+
+[source,bash]
+----
+g++ -std=c++17 main.cpp -lSDL2 -o hello_tone
+----
+
+and can execute the program:
+[source,bash]
+----
+./hello_tone
+----

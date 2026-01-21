@@ -9,11 +9,15 @@ description:
 type: text
 bookHidden: false
 outdir: ~/development/blog
-draft: true
+draft: false
 ---
 
+== A simple introduction
+
 Hello folks,
-this time I want to start with a series about programming with C++.
+this time I want to start with a series about programming with pass:[C++].
+While Python is a general purpose programming language, pass:[C++] is often chosen when you need tighter control over performance and latency.
+
 We start simple by creating a short program that spits out the limits for the different data types.
 Install Microsoft code so that have one simple IDE you can work with...
 
@@ -21,7 +25,7 @@ And create a file main.cpp with the following content
 
 [source,c++]
 ----
-{{<highlight c++>}}
+{{<highlight cpp>}}
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -31,7 +35,7 @@ int main() {
     cout << "int minimum = " << numeric_limits<int>::min() << "\n";
     cout << "int maximum = " <<  numeric_limits<int>::max() << "\n";
     cout << "long minimum = " << numeric_limits<long>::min() << "\n";
-    cout << "long minimum = " << numeric_limits<long>::max()  << "\n";
+    cout << "long maximum = " << numeric_limits<long>::max()  << "\n";
     cout << "long long minimum = " << numeric_limits<long long>::min() << "\n";
     cout << "long long maximum = " << numeric_limits<long long>::max() << "\n";
     cout << "unsigned maxima (minimum is 0):\n";
@@ -60,14 +64,14 @@ and can execute the program:
 ./main
 ----
 
-following is the result on the authors machine:
-
+Exact sizes depend on platform and compiler; e.g., long is 8 bytes on many Unix-like 64-bit systems, but often 4 bytes on Windows,
+but following is the result on the authors machine (Debian bookworm):
 ----
 Limits for integer types:
 int minimum = -2147483648
 int maximum = 2147483647
 long minimum = -9223372036854775808
-long minimum = 9223372036854775807
+long maximum = 9223372036854775807
 long long minimum = -9223372036854775808
 long long maximum = 9223372036854775807
 unsigned maxima (minimum is 0):
@@ -80,3 +84,75 @@ int        4
 long        8
 long long   8
 ----
+
+== Dissecting a "Hello World" Program
+
+In this section we will examine a simple *Hello World* program running on a Linux-based platform with a 64-bit processor.
+Although the program is small, it already contains several important concepts that appear in every C++ application.
+
+[source,cpp]
+----
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    cout << "Hello World" << "\n";
+    return 0;
+}
+----
+
+At first glance the program appears trivial, but even here multiple stages of compilation and execution are involved.
+We will therefore go through the code step by step in order to build a clear mental image of what happens.
+
+The first line contains a so-called preprocessor directive. Preprocessor directives are handled before the actual compilation
+process begins and are used to modify the source code. The `#include <iostream>` statement instructs the preprocessor to take
+the contents of the `iostream` header file and insert them into the program. This header provides functionality for input and
+output operations.
+
+The next line, `using namespace std;`, tells the compiler to use the standard namespace. Many components of the C++ standard
+library, including `cout`, reside inside this namespace. Without this instruction, each usage would need to be written explicitly
+as `std::cout`.
+
+After these declarations we reach the core of the program: the function `main()`. Every C++ program begins execution in this
+function. When the operating system starts the program, control is transferred directly to `main()`.
+
+Inside the function body we find the statement `cout << "Hello World" << "\n";`. The object `cout` represents the standard
+output stream and is used to write text to the console. The insertion operator `<<` forwards the string to the output stream,
+while `"\n"` produces a line break.
+
+Finally, the statement `return 0;` signals that the program has terminated successfully and returns control to the operating system.
+
+
+We compile the file with a simple
+
+[source,bash]
+----
+g++ hello.cpp -o hello
+----
+
+and can execute the program:
+[source,bash]
+----
+./hello
+----
+so we get an
+
+[source,bash]
+----
+Hello World!
+----
+
+As we can see by now, the Assembler differs on the different platt forms (e.g. Interrupt 80 on Linux plattforms and interrupt 21 on DOS / Windows plattforms.
+
+So we can see the big disadvantages of Assembler
+
+{{< plus >}}Extreme Efficiency and Speed{{< /plus >}}
+{{< plus >}}Direct Hardware Manipulation{{< /plus >}}
+{{< plus >}}Total control{{< /plus >}}
+{{< plus >}}Smaller Executable Size:{{< /plus >}}
+
+{{< minus >}}Lack of Portability{{< /minus >}}
+{{< minus >}}High Complexity and Learning Curve{{< /minus >}}
+{{< minus >}}Difficult to Debug and Maintain{{< /minus >}}
+{{< minus >}}Slow Development Time{{< /minus >}}
