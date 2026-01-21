@@ -1,0 +1,82 @@
+---
+title: "Introduction into C++"
+slug: cpp_00
+date: 2026-01-21
+tags: ["C++"]
+category:
+link:
+description:
+type: text
+bookHidden: false
+outdir: ~/development/blog
+draft: true
+---
+
+Hello folks,
+this time I want to start with a series about programming with C++.
+We start simple by creating a short program that spits out the limits for the different data types.
+Install Microsoft code so that have one simple IDE you can work with...
+
+And create a file main.cpp with the following content
+
+[source,c++]
+----
+{{<highlight c++>}}
+#include <iostream>
+#include <limits>
+using namespace std;
+
+int main() {
+    cout << "Limits for integer types:" << "\n";
+    cout << "int minimum = " << numeric_limits<int>::min() << "\n";
+    cout << "int maximum = " <<  numeric_limits<int>::max() << "\n";
+    cout << "long minimum = " << numeric_limits<long>::min() << "\n";
+    cout << "long minimum = " << numeric_limits<long>::max()  << "\n";
+    cout << "long long minimum = " << numeric_limits<long long>::min() << "\n";
+    cout << "long long maximum = " << numeric_limits<long long>::max() << "\n";
+    cout << "unsigned maxima (minimum is 0):\n";
+    cout << "unsigned int = " << numeric_limits<unsigned int>::max() << "\n";
+    cout << "unsigned long = " << numeric_limits<unsigned long>::max() << "\n";
+    cout << "unsigned long long = " << numeric_limits<unsigned long long>::max() << "\n";
+    cout << "\nNumber of bytes for:\n";
+    cout << "int        " << sizeof(int) << "\n";
+    cout << "long        " << sizeof(long) << "\n";
+    cout << "long long   " << sizeof(long long) << "\n";
+}
+{{</highlight>}}
+----
+Next you need to have the free gnu compiler gcc have installed.
+
+We compile the file with a simple
+
+[source,bash]
+----
+g++ main.cpp -o main
+----
+
+and can execute the program:
+[source,bash]
+----
+./main
+----
+
+following is the result on the authors machine:
+
+----
+Limits for integer types:
+int minimum = -2147483648
+int maximum = 2147483647
+long minimum = -9223372036854775808
+long minimum = 9223372036854775807
+long long minimum = -9223372036854775808
+long long maximum = 9223372036854775807
+unsigned maxima (minimum is 0):
+unsigned int = 4294967295
+unsigned long = 18446744073709551615
+unsigned long long = 18446744073709551615
+
+Number of bytes for:
+int        4
+long        8
+long long   8
+----

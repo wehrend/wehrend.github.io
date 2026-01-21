@@ -1,0 +1,15 @@
+{{- /*
+  docs/text/mapper
+  Input:
+    - attributes: dict (typically shortcode params)
+    - merge: dict (defaults to merge in)
+  Output:
+    - dict of merged attributes (merge wins only where keys don't exist? We'll do: defaults then overrides)
+*/ -}}
+
+{{- $attrs := .attributes | default (dict) -}}
+{{- $merge := .merge | default (dict) -}}
+
+{{- /* Start with defaults, then overlay attrs (so shortcode params override defaults) */ -}}
+{{- $out := merge $merge $attrs -}}
+{{- return $out -}}
