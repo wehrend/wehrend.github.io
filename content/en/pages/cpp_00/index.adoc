@@ -12,7 +12,7 @@ outdir: ~/development/blog
 draft: false
 ---
 
-== A simple introduction
+== A simple introduction into C++
 
 Hello folks,
 this time I want to start with a series about programming with pass:[C++].

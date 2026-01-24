@@ -1,6 +1,6 @@
 ---
 title: "Introduction into C++ (Part 2)"
-slug: cpp_00
+slug: cpp_01
 date: 2026-01-21
 tags: ["C++", "SDL", "synth"]
 category:
@@ -255,8 +255,6 @@ int main()
     SDL_Quit();
     return 0;
 }
-
-
 {{</highlight>}}
 ----
 
