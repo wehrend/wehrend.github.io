@@ -23,8 +23,8 @@ Lets begin...
 First of all we have the includes for the SDL library, we will have a look at the header file later. Also we include cmath for math and iostream
 for in- and output (but in this example only output).
 
-Followed by that we have a coupla of constant expressions, described ad constexpr for SAMPLE_RATE, FREQUENCY and  2 times Pi.
-To ensure accurate those constexpression are stored as datatype double...
+Followed by that we have a couple of constant expressions, described ad constexpr for SAMPLE_RATE, FREQUENCY and  2 times Pi.
+To ensure accurate those constant expressions (constexpr) are stored as datatype double...
 Then we initialize the variable phase with the start value 0.0 .
 
 In SDL audio, the callback is the function SDL repeatedly calls on a special audio thread whenever it needs the next chunk of
@@ -269,3 +269,228 @@ and can execute the program:
 ----
 ./hello_tone
 ----
+
+== Building a C++ Synth: OOP with SDL2
+
+If you want to understand Object-Oriented Programming (OOP), stop reading definitions and start building something that
+makes noise.We’re using C++ and SDL2 to create a synth.
+
+The goal: A square wave that triggers when you hit the spacebar.
+
+== The Concept: Separation of Concerns
+In audio, you don't want your math mixed up with your window logic. We split this into three parts:
+1. **The Oscillator:** Pure math. It doesn't know about keyboards or speakers.
+2. **The Engine:** The bridge. It talks to the hardware.
+3. **The Main Loop:** The controller. It watches for your input.
+
+== 1. The Oscillator (The Math)
+This is our "Worker" class. It handles the wave state. By keeping `phase` and `frequency` private, we ensure the audio
+thread is the only thing moving the needle.
+
+=== Oscillator.h
+[source,cpp]
+----
+class Oscillator {
+private:
+    double frequency, amplitude, phase, sampleRate;
+
+public:
+    Oscillator(double freq, double amp, double sr);
+    float getNextSample();
+    void setFrequency(double freq);
+};
+----
+
+=== Oscillator.cpp
+We’re using a Square Wave. It’s either "on" or "off" (1 or -1). This gives us that raw, 8-bit sound.
+
+
+
+[source,cpp]
+----
+#include "Oscillator.h"
+
+Oscillator::Oscillator(double freq, double amp, double sr)
+    : frequency(freq), amplitude(amp), sampleRate(sr), phase(0.0) {}
+
+float Oscillator::getNextSample() {
+    float sample = (sin(phase) > 0) ? 1.0f : -1.0f;
+    phase += (2.0 * M_PI * frequency) / sampleRate;
+    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
+    return sample * (float)amplitude;
+}
+----
+
+== 2. The Engine (The Hardware Bridge)
+SDL2 uses a "Callback". Think of it as the sound card knocking on your door every few milliseconds asking for more numbers.
+The `SynthEngine` is what answers that door.
+
+[source,cpp]
+----
+class SynthEngine {
+public:
+    Oscillator osc;
+    bool active = false; // The switch for our sound
+
+    SynthEngine() : osc(440.0, 0.2, 44100.0) {}
+
+    static void AudioCallback(void* userdata, Uint8* stream, int len) {
+        SynthEngine* engine = static_cast<SynthEngine*>(userdata);
+        float* buffer = reinterpret_cast<float*>(stream);
+        int length = len / sizeof(float);
+
+        for (int i = 0; i < length; i++) {
+            // State check: Is the spacebar down?
+            buffer[i] = engine->active ? engine->osc.getNextSample() : 0.0f;
+        }
+    }
+};
+----
+
+== 3. The Main Loop (The Focus)
+Here’s the catch: SDL won’t hear your keyboard properly without a window. We create a simple window to grab the "Focus."
+Without it, your OS might ignore the spacebar presses.
+
+
+[source,cpp]
+----
+int main(int argc, char* argv[]) {
+    SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
+
+    // We need this window just so the OS knows where to send the keyboard events
+    SDL_Window* window = SDL_CreateWindow("Synth Focus", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 300, 200, SDL_WINDOW_SHOWN);
+
+    SynthEngine engine;
+    // ... SDL Audio Setup ...
+
+    while (running) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) running = false;
+        }
+
+        // Direct Polling: Is the key down RIGHT NOW?
+        const Uint8* state = SDL_GetKeyboardState(NULL);
+        engine.active = state[SDL_SCANCODE_SPACE];
+
+        SDL_Delay(10);
+    }
+    // ... Cleanup ...
+}
+----
+
+== Why this is "Proper" OOP
+* **Identity:** If you want two oscillators, you just instantiate `Oscillator osc2`. No copy-pasting math.
+* **Encapsulation:** The `main` loop doesn't know *how* the square wave is calculated; it just flips the `active` switch.
+* **State Management:** The `phase` stays inside the object, remembering where it was between calls.
+
+== Next Steps
+This setup works, but you'll hear a "click" when you release the key. That’s because the wave is cut off mid-cycle.
+Next time, we’ll fix that with an **Envelope (ADSR)** to smooth out the start and end of the sound.
+
+
+=== Synth Oscilloscope
+
+[source,cpp]
+----
+#include <SDL2/SDL.h>
+#include <iostream>
+#include <vector>
+#include "Oscillator.h"
+
+// Ein globaler Puffer, damit der Renderer auf die Audiodaten zugreifen kann
+// Wir nutzen 400 Samples, passend zur Fensterbreite
+std::vector<float> visualBuffer(400, 0.0f);
+
+class SynthEngine {
+public:
+    Oscillator osc;
+    bool active;
+
+    SynthEngine() : osc(440.0, 0.3, 44100.0), active(false) {}
+
+    static void AudioCallback(void* userdata, Uint8* stream, int len) {
+        SynthEngine* engine = static_cast<SynthEngine*>(userdata);
+        float* buffer = reinterpret_cast<float*>(stream);
+        int length = len / sizeof(float);
+
+        for (int i = 0; i < length; i++) {
+            float sample = engine->active ? engine->osc.getNextSample() : 0.0f;
+            buffer[i] = sample;
+
+            // Wir füllen den Visualisierungs-Puffer nur mit den ersten 400 Samples
+            if (i < visualBuffer.size()) {
+                visualBuffer[i] = sample;
+            }
+        }
+    }
+};
+
+int main(int argc, char* argv[]) {
+    SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
+
+    // Fenster und Renderer erstellen
+    SDL_Window* window = SDL_CreateWindow("C++ Synth Visualizer",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 400, 300, SDL_WINDOW_SHOWN);
+
+    // Der Renderer ist unser "Pinsel" für das Fenster
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    SynthEngine engine;
+
+    SDL_AudioSpec ds;
+    ds.freq = 44100;
+    ds.format = AUDIO_F32SYS;
+    ds.channels = 1;
+    ds.samples = 2048;
+    ds.callback = SynthEngine::AudioCallback;
+    ds.userdata = &engine;
+
+    SDL_OpenAudio(&ds, NULL);
+    SDL_PauseAudio(0);
+
+    bool running = true;
+    SDL_Event e;
+
+    while (running) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) running = false;
+        }
+
+        const Uint8* state = SDL_GetKeyboardState(NULL);
+        engine.active = state[SDL_SCANCODE_SPACE];
+
+        // --- GRAFIK RENDERING ---
+
+        // 1. Hintergrund löschen (Schwarz/Dunkelblau)
+        SDL_SetRenderDrawColor(renderer, 10, 10, 25, 255);
+        SDL_RenderClear(renderer);
+
+        // 2. Nulllinie zeichnen (Grau)
+        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
+        SDL_RenderDrawLine(renderer, 0, 150, 400, 150);
+
+        // 3. Wellenform zeichnen (Neongrün)
+        SDL_SetRenderDrawColor(renderer, 0, 255, 100, 255);
+        for (int x = 0; x < (int)visualBuffer.size() - 1; x++) {
+            // Wir skalieren den Sample-Wert (-1.0 bis 1.0) auf die Fensterhöhe
+            // 150 ist die Mitte des Fensters, 100 ist die Amplitude
+            int y1 = 150 - (int)(visualBuffer[x] * 100);
+            int y2 = 150 - (int)(visualBuffer[x+1] * 100);
+            SDL_RenderDrawLine(renderer, x, y1, x + 1, y2);
+        }
+
+        // 4. Alles auf den Bildschirm bringen
+        SDL_RenderPresent(renderer);
+
+        SDL_Delay(16); // Entspricht etwa 60 FPS
+    }
+
+    SDL_CloseAudio();
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return 0;
+}
+----
+
+
