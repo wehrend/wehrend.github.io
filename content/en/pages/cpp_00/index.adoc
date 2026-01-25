@@ -25,7 +25,6 @@ And create a file main.cpp with the following content
 
 [source,c++]
 ----
-{{<highlight cpp>}}
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -46,8 +45,7 @@ int main() {
     cout << "int        " << sizeof(int) << "\n";
     cout << "long        " << sizeof(long) << "\n";
     cout << "long long   " << sizeof(long long) << "\n";
-}
-{{</highlight>}}
+}ś
 ----
 Next you need to have the free gnu compiler gcc have installed.
 

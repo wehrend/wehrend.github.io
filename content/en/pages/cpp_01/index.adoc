@@ -151,7 +151,6 @@ You delay 3 seconds, then close.
 
 [source,c++]
 ----
-{{<highlight cpp>}}
 #include <SDL2/SDL.h>
 #include <cmath>
 #include <iostream>
@@ -255,7 +254,6 @@ int main()
     SDL_Quit();
     return 0;
 }
-{{</highlight>}}
 ----
 
 

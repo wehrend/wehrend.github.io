@@ -186,7 +186,10 @@ publishDir = "public"
     [markup.asciidocExt.attributes]
       toc = "left"
       toclevels = "2"
-
+      source-highlighter = "rouge"
+      source-linenums-option = ""
+      rouge-css = "style"
+      rouge-style = "github"
 
 [security]
   enableInlineShortcodes = false
