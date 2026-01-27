@@ -149,6 +149,88 @@ Unpauses the device → SDL starts calling audioCallback repeatedly.
 
 You delay 3 seconds, then close.
 
+== C++ Memory Mastery: Constructors, Destructors, and the Heap
+
+In C++, you aren't just a coder; you are the architect of your own memory. Unlike higher-level languages,
+C++ gives you the power to manage every byte. This post breaks down how our Synthesizer handles the "Life Cycle" of objects.
+
+=== 1. The Two Worlds: Stack vs. Heap
+
+In our synthesizer, we deal with two types of memory allocation:
+
+* **The Stack:** When you see `SynthEngine engine;` in `main()`, that is Stack allocation. It is fast and managed automatically by the compiler.
+* **The Heap:** When we use the `new` keyword, like `osc = new SquareOsc(...)`, we are grabbing memory from the Heap.
+This memory stays allocated until we explicitly tell the CPU to let it go.
+
+
+
+=== The Constructor: Setting the Stage
+
+The **Constructor** is the first function called when an object is created. In our `SynthEngine`, the constructor’s job is to
+grab a slice of heap memory for our polymorphic oscillator.
+
+[source,cpp]
+----
+SynthEngine() : active(false) {
+    // Allocation: Grabbing memory from the heap
+    osc = new SquareOsc(440.0, 0.2, 44100.0);
+}
+----
+
+Because `osc` is a pointer to the base class `Oscillator`, the constructor allows us to decide *at runtime* which specific
+child class (Square, Sine, etc.) to instantiate.
+
+=== The Destructor: The Cleanup Crew
+
+Every `new` must have a matching `delete`. If we destroy the `SynthEngine` but forget to delete the `osc`, we create a **Memory Leak**.
+The **Destructor** (`~SynthEngine`) ensures that when the engine dies, the oscillator dies with it.
+
+[source,cpp]
+----
+~SynthEngine() {
+    delete osc; // Returning the heap memory to the system
+}
+----
+
+=== Real-Time Memory Swapping
+
+One of the most dangerous (and exciting) parts of C++ is swapping memory while the program is running. In our event loop,
+we switch waveforms like this:
+
+[source,cpp]
+----
+if (nextOsc != nullptr) {
+    Oscillator* oldOsc = engine.osc; // 1. Save the current address
+    engine.osc = nullptr;           // 2. Disconnect (Thread Safety!)
+    delete oldOsc;                  // 3. Free the old memory
+    engine.osc = nextOsc;           // 4. Point to the new object
+}
+----
+This sequence is critical. If we deleted `oldOsc` without setting the pointer to `nullptr` first, our **Audio Thread** might
+try to read memory that no longer exists, resulting in the dreaded `Segmentation Fault`.
+
+=== The Virtual Destructor & The Diamond Problem
+
+When dealing with inheritance (and especially multiple inheritance like the **Diamond Problem**), your base class destructor **must** be `virtual`.
+
+[source,cpp]
+----
+virtual ~Oscillator() {}
+----
+
+=== Why?
+If the destructor is not virtual, calling `delete` on an `Oscillator*` that points to a `SquareOsc` will only run the cleanup
+code for the base `Oscillator`. Any extra memory or resources managed by the child class would be leaked.
+
+== Summary
+
+* **Constructors** are for acquisition.
+* **Destructors** are for release.
+* **Heap memory** requires manual intervention.
+* **Virtual destructors** are the insurance policy for polymorphic code.
+
+Modern C++ offers "Smart Pointers" to automate this, but understanding the raw mechanics is what separates a user from a developer
+
 [source,c++]
 ----
 #include <SDL2/SDL.h>
