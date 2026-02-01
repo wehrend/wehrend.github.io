@@ -1,6 +1,6 @@
 ---
 title: Vorgeschichte - Einführung in die Elektronik
-slug: prequel-short-introduction-to-electronics
+slug: electronics-101
 date: 2021-01-23
 tags:
 category:
@@ -20,13 +20,13 @@ Nach diesem Kapitel kennen Sie alle Grundlagen rund um Elektrizität und einfach
 
 = Vorwort Einführung in die Elektronik
 
-‚‘'
+'‘'
 Als ich gerade dabei war, den Teil über die Umsetzung der Booleschen Algebra zu schreiben, also die grundlegenden Logikgatter,
 geriet der Schreibprozess schnell außer Kontrolle und ich merkte, dass ich mehr über weniger relevante Themen schrieb,
 wie die Erklärung grundlegender elektronischer Komponenten und deren Umsetzung auf Silizium, als über den eigentlichen Inhalt.
 Hier soll nun Platz für diese Exkurse sein. Dies soll keine vollständige Referenz sein, sondern eher eine Ergänzung zur
 bestehenden Literatur.
-'‚‘
+'‘'
 
 == Freie Elektronen und elektrischer Strom
 

@@ -1,198 +1,476 @@
 ---
-title: "Introduction into C++ (Part 3)"
+title: "Introduction into C++ (Part 2)"
 slug: cpp_02
-date: 2026-01-29
+date: 2026-01-21
 tags: ["C++", "SDL", "synth"]
 category:
 link:
 description:
 type: text
-bookHidden: false
+bookHidden: true
 outdir: ~/development/blog
 draft: false
 ---
 {{< katex />}}
 
-== Introduction into C++ (Part 3)
+== Introduction into C++ (Part 2)
 
-== C++ OOP Mastery: The Power of Composition (Has-A)
+In this next example / tutorial we will have a look at sound producing program (aka a synth), for which we utilize the SDL library
+(Simple direct media library). We will go about the program, line for line and explain the different items.
 
-In software architecture, there are two primary ways to connect objects: **Inheritance** (Is-A) and **Composition** (Has-A).
-While beginners often try to solve everything through inheritance ("An Oscillator *is an* Envelope"), professionals prefer composition:
-**"A Synthesizer *has an* Envelope."**
+Lets begin...
 
-== 1. Why Composition?
+First of all we have the includes for the SDL library, we will have a look at the header file later. Also we include cmath for math and iostream
+for in- and output (but in this example only output).
 
-Think of our synthesizer as a modular rack. Each module (Oscillator, Envelope) is an independent class. The `SynthEngine` acts
-as the chassis where these modules are plugged in.
+Followed by that we have a couple of constant expressions, described ad constexpr for SAMPLE_RATE, FREQUENCY and  2 times Pi.
+To ensure accurate those constant expressions (constexpr) are stored as datatype double...
+Then we initialize the variable phase with the start value 0.0 .
 
-* **Modularity:** We can update the Envelope logic without touching a single line of the Oscillator code.
-* **State Separation:** The Envelope manages its own complex states (Attack, Decay, Sustain, Release). The Engine doesn't
-care *how* the volume is calculated; it only cares about the result.
-* **Reusability:** We could easily add a second or third Envelope for different parameters later because the class is a self-contained unit.
+In SDL audio, the callback is the function SDL repeatedly calls on a special audio thread whenever it needs the next chunk of
+sound samples to send to the speakers. Your audioCallback’s whole job is: fill stream with len bytes of audio data in the format
+you requested ( here AUDIO_F32SYS, mono).
 
-== 2. The Signal Chain
+Let’s walk through your callback line-by-line and what it’s doing conceptually.
 
-Through composition, we build a "Signal Chain." Even in this basic version, data flows in a specific order:
+Function signature
+----
+void audioCallback(void* userdata, Uint8* stream, int len)
+----
 
-1.  **Oscillator** -> Generates the raw, continuous audio samples.
-2.  **Envelope** -> Acts as a "Gate," multiplying those samples by a volume level (0.0 to 1.0) based on how long a key has been held.
+userdata: pointer you can pass in to the callback (not used here). Often used to pass a struct with state (phase, volume, etc.).
+
+stream: a raw byte buffer SDL gives you. You must write audio samples into it.
+
+len: how many bytes you must fill this time.
+
+SDL will call this again and again while audio is running.
+
+=== Interpreting the buffer as floats
+----
+float* buffer = (float*)stream;
+int samples = len / sizeof(float);
+----
+
+Because you requested want.format = AUDIO_F32SYS and channels = 1, SDL expects:
+
+each sample is a 32-bit float  one float per sample (mono)
+So we cast stream (bytes) into a float* and compute how many float samples fit into len.
+
+Example: if len == 2048, then samples = 2048 / 4 = 512 float samples.
+
+=== Computing how fast the sine wave advances
+
+----
+double phaseInc = TWO_PI * FREQUENCY / SAMPLE_RATE;
+----
+
+You’re generating a sine wave sample-by-sample:
+
+phase is the current angle (in radians) for the sine function.
+
+A sine wave completes a full cycle every 2π radians.
+
+If the tone frequency is FREQUENCY (e.g., 440 Hz), and the sample rate is SAMPLE_RATE (e.g., 48000 Hz),
+then each sample should advance the phase by:
+
+
+[role=“image”,“./phaseIncrement.svg” ,imgfmt=“svg”]
+\[ phaseIncrement = 2 \pi \cdot \frac{FREQUENCY}{SAMPLE_RATE} \]
+
+
+So for 440 Hz at 48000 Hz:
+
+you advance about 2π * 440 / 48000 radians per sample
+
+after ~48000 samples, you’ve produced one second of audio
+
+after 440 cycles in that second, you hear 440 Hz
+
+=== Filling the audio buffer
+----
+for (int i = 0; i < samples; ++i) {
+    buffer[i] = 0.05f *(float)std::sin(phase);
+    phase += phaseInc;
+
+    if (phase >= TWO_PI)
+        phase -= TWO_PI;
+}
+----
+
+For each sample slot:
+
+- Compute a sine value: sin(phase) ranges from -1 to +1.
+
+- Scale the amplitude: 0.05f * sin(...)
+
+- Audio float samples are typically in [-1, +1]
+
+- 0.05 is a quiet tone (5% of full scale), helps avoid being too loud.
+
+- Advance the phase: phase += phaseInc
+
+- Wrap phase back into [0, 2π) to avoid it growing forever
+
+This prevents floating-point values from getting huge over time (which would reduce precision).
+
+=== Important detail: phase must be persistent
+
+For the sine wave to be continuous across callbacks, phase must keep its value between callback calls. That means it must be:
+
+- global, or
+
+- static in the callback, or
+
+- stored in a struct passed via userdata.
+
+If phase were a local variable initialized to 0 inside the callback, you’d restart the sine wave at the beginning every time
+SDL asks for a new chunk (which would cause clicks or a “reset” sound).
+
+=== How this connects to main()
+
+In main() you initialize an SDL_AudioSpec and configure it as follows:
+
+----
+want.freq     = (int)SAMPLE_RATE;
+want.format   = AUDIO_F32SYS;
+want.channels = 1;
+want.samples  = 512;
+want.callback = audioCallback;
+----
+
+Then:
+
+----
+SDL_PauseAudioDevice(dev, 0);
+----
+
+Unpauses the device → SDL starts calling audioCallback repeatedly.
+
+You delay 3 seconds, then close.
+
+== C++ Memory Mastery: Constructors, Destructors, and the Heap
+
+In C++, you aren't just a coder; you are the architect of your own memory. Unlike higher-level languages,
+C++ gives you the power to manage every byte. This post breaks down how our Synthesizer handles the "Life Cycle" of objects.
+
+=== 1. The Two Worlds: Stack vs. Heap
+
+In our synthesizer, we deal with two types of memory allocation:
+
+* **The Stack:** When you see `SynthEngine engine;` in `main()`, that is Stack allocation. It is fast and managed automatically by the compiler.
+* **The Heap:** When we use the `new` keyword, like `osc = new SquareOsc(...)`, we are grabbing memory from the Heap.
+This memory stays allocated until we explicitly tell the CPU to let it go.
 
 
 
-== 3. Full Reference Code (Basic Composition)
+=== The Constructor: Setting the Stage
 
-Below is the complete integrated code demonstrating the relationship between the Engine, the polymorphic Oscillator, and the ADSR Envelope.
+The **Constructor** is the first function called when an object is created. In our `SynthEngine`, the constructor’s job is to
+grab a slice of heap memory for our polymorphic oscillator.
 
 [source,cpp]
 ----
-#ifndef OSCILLATOR_H
-#define OSCILLATOR_H
+SynthEngine() : active(false) {
+    // Allocation: Grabbing memory from the heap
+    osc = new SquareOsc(440.0, 0.2, 44100.0);
+}
+----
 
+Because `osc` is a pointer to the base class `Oscillator`, the constructor allows us to decide *at runtime* which specific
+child class (Square, Sine, etc.) to instantiate.
+
+=== The Destructor: The Cleanup Crew
+
+Every `new` must have a matching `delete`. If we destroy the `SynthEngine` but forget to delete the `osc`, we create a **Memory Leak**.
+The **Destructor** (`~SynthEngine`) ensures that when the engine dies, the oscillator dies with it.
+
+[source,cpp]
+----
+~SynthEngine() {
+    delete osc; // Returning the heap memory to the system
+}
+----
+
+=== Real-Time Memory Swapping
+
+One of the most dangerous (and exciting) parts of C++ is swapping memory while the program is running. In our event loop,
+we switch waveforms like this:
+
+[source,cpp]
+----
+if (nextOsc != nullptr) {
+    Oscillator* oldOsc = engine.osc; // 1. Save the current address
+    engine.osc = nullptr;           // 2. Disconnect (Thread Safety!)
+    delete oldOsc;                  // 3. Free the old memory
+    engine.osc = nextOsc;           // 4. Point to the new object
+}
+----
+This sequence is critical. If we deleted `oldOsc` without setting the pointer to `nullptr` first, our **Audio Thread** might
+try to read memory that no longer exists, resulting in the dreaded `Segmentation Fault`.
+
+=== The Virtual Destructor & The Diamond Problem
+
+When dealing with inheritance (and especially multiple inheritance like the **Diamond Problem**), your base class destructor **must** be `virtual`.
+
+[source,cpp]
+----
+virtual ~Oscillator() {}
+----
+
+=== Why?
+If the destructor is not virtual, calling `delete` on an `Oscillator*` that points to a `SquareOsc` will only run the cleanup
+code for the base `Oscillator`. Any extra memory or resources managed by the child class would be leaked.
+
+== Summary
+
+* **Constructors** are for acquisition.
+* **Destructors** are for release.
+* **Heap memory** requires manual intervention.
+* **Virtual destructors** are the insurance policy for polymorphic code.
+
+Modern C++ offers "Smart Pointers" to automate this, but understanding the raw mechanics is what separates a user from a developer
+
+[source,c++]
+----
+#include <SDL2/SDL.h>
 #include <cmath>
+#include <iostream>
+#include <atomic>
 
+static constexpr double SAMPLE_RATE = 44100.0;
+static constexpr double FREQUENCY   = 440.0;
+static constexpr double TWO_PI      = 6.28318530717958647692;
+
+struct AudioState {
+    std::atomic<bool> playing{false}; // set by main thread, read by audio thread
+    double phase = 0.0;               // only touched by audio thread
+};
+
+void audioCallback(void* userdata, Uint8* stream, int len)
+{
+    auto* state = static_cast<AudioState*>(userdata);
+
+    float* buffer = reinterpret_cast<float*>(stream);
+    int samples = len / sizeof(float);
+
+    // If not playing, output silence
+    if (!state->playing.load(std::memory_order_relaxed)) {
+        for (int i = 0; i < samples; ++i) buffer[i] = 0.0f;
+        return;
+    }
+
+    const double phaseInc = TWO_PI * FREQUENCY / SAMPLE_RATE;
+
+    for (int i = 0; i < samples; ++i) {
+        buffer[i] = 0.05f * static_cast<float>(std::sin(state->phase));
+        state->phase += phaseInc;
+
+        if (state->phase >= TWO_PI)
+            state->phase -= TWO_PI;
+    }
+}
+
+int main()
+{
+    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) != 0) {
+        std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
+        return 1;
+    }
+
+    // Small window just to receive keyboard events
+    SDL_Window* win = SDL_CreateWindow(
+        "Hold SPACE to play",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+        400, 120,
+        SDL_WINDOW_SHOWN
+    );
+    if (!win) {
+        std::cerr << "SDL_CreateWindow failed: " << SDL_GetError() << "\n";
+        SDL_Quit();
+        return 1;
+    }
+
+    AudioState state;
+
+    SDL_AudioSpec want{};
+    want.freq     = static_cast<int>(SAMPLE_RATE);
+    want.format   = AUDIO_F32SYS;
+    want.channels = 1;          // mono
+    want.samples  = 512;
+    want.callback = audioCallback;
+    want.userdata = &state;
+
+    SDL_AudioSpec have{};
+    SDL_AudioDeviceID dev = SDL_OpenAudioDevice(nullptr, 0, &want, &have, 0);
+    if (!dev) {
+        std::cerr << "Audio open failed: " << SDL_GetError() << "\n";
+        SDL_DestroyWindow(win);
+        SDL_Quit();
+        return 1;
+    }
+
+    SDL_PauseAudioDevice(dev, 0); // start audio thread/callback
+
+    std::cout << "Hold SPACE to play 440 Hz. Press ESC or close window to quit.\n";
+
+    bool running = true;
+    while (running) {
+        SDL_Event e;
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                running = false;
+            } else if (e.type == SDL_KEYDOWN && !e.key.repeat) {
+                if (e.key.keysym.sym == SDLK_ESCAPE) running = false;
+                if (e.key.keysym.sym == SDLK_SPACE)  state.playing.store(true, std::memory_order_relaxed);
+            } else if (e.type == SDL_KEYUP) {
+                if (e.key.keysym.sym == SDLK_SPACE)  state.playing.store(false, std::memory_order_relaxed);
+            }
+        }
+
+        SDL_Delay(1); // tiny sleep to avoid busy-waiting
+    }
+
+    SDL_CloseAudioDevice(dev);
+    SDL_DestroyWindow(win);
+    SDL_Quit();
+    return 0;
+}
+----
+
+
+We compile the file with a simple
+
+[source,bash]
+----
+g++ -std=c++17 main.cpp_01 -lSDL2 -o hello_tone
+----
+
+and can execute the program:
+[source,bash]
+----
+./hello_tone
+----
+
+== Building a C++ Synth: OOP with SDL2
+
+If you want to understand Object-Oriented Programming (OOP), stop reading definitions and start building something that
+makes noise.We’re using C++ and SDL2 to create a synth.
+
+The goal: A square wave that triggers when you hit the spacebar.
+
+== The Concept: Separation of Concerns
+In audio, you don't want your math mixed up with your window logic. We split this into three parts:
+1. **The Oscillator:** Pure math. It doesn't know about keyboards or speakers.
+2. **The Engine:** The bridge. It talks to the hardware.
+3. **The Main Loop:** The controller. It watches for your input.
+
+== 1. The Oscillator (The Math)
+This is our "Worker" class. It handles the wave state. By keeping `phase` and `frequency` private, we ensure the audio
+thread is the only thing moving the needle.
+
+=== Oscillator.h
+[source,cpp]
+----
 class Oscillator {
-protected:
+private:
     double frequency, amplitude, phase, sampleRate;
 
 public:
-    // Nur Deklarationen (Semikolon statt geschweifter Klammern)
     Oscillator(double freq, double amp, double sr);
-    virtual ~Oscillator() {}
-
-    virtual float getNextSample() = 0;
+    float getNextSample();
     void setFrequency(double freq);
 };
-
-// Unterklassen können hier im Header bleiben, wenn sie kurz sind
-class SquareOsc : public Oscillator {
-public:
-    using Oscillator::Oscillator;
-    float getNextSample() override; // Definition kommt in die .cpp
-};
-
-class SawOsc : public Oscillator {
-public:
-    using Oscillator::Oscillator;
-    float getNextSample() override; // Definition kommt in die .cpp
-};
-
-class SineOsc : public Oscillator {
-public:
-    using Oscillator::Oscillator;
-    float getNextSample() override; // Definition kommt in die .cpp
-};
-
-class TriangleOsc : public Oscillator {
-public:
-    using Oscillator::Oscillator;
-    float getNextSample() override; // Definition kommt in die .cpp
-};
-
-#endif
 ----
+
+=== Oscillator.cpp
+We’re using a Square Wave. It’s either "on" or "off" (1 or -1). This gives us that raw, 8-bit sound.
+
+
 
 [source,cpp]
 ----
 #include "Oscillator.h"
 
 Oscillator::Oscillator(double freq, double amp, double sr)
-    : frequency(freq), amplitude(amp), phase(0.0), sampleRate(sr) {}
+    : frequency(freq), amplitude(amp), sampleRate(sr), phase(0.0) {}
 
-void Oscillator::setFrequency(double freq) {
-    frequency = freq;
-}
-
-float SquareOsc::getNextSample() {
+float Oscillator::getNextSample() {
     float sample = (sin(phase) > 0) ? 1.0f : -1.0f;
     phase += (2.0 * M_PI * frequency) / sampleRate;
     if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
     return sample * (float)amplitude;
 }
-
-float SawOsc::getNextSample() {
-    float sample = (float)(2.0 * (phase / (2.0 * M_PI)) - 1.0);
-    phase += (2.0 * M_PI * frequency) / sampleRate;
-    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
-    return sample * (float)amplitude;
-}
-
-float SineOsc::getNextSample() {
-    float sample = (float)sin(phase);
-    phase += (2.0 * M_PI * frequency) / sampleRate;
-    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
-    return sample * (float)amplitude;
-}
-
-float TriangleOsc::getNextSample() {
-    float sample = (float)((2.0 / M_PI) * asin(sin(phase)));
-    phase += (2.0 * M_PI * frequency) / sampleRate;
-    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
-    return sample * (float)amplitude;
-}
 ----
+
+== 2. The Engine (The Hardware Bridge)
+SDL2 uses a "Callback". Think of it as the sound card knocking on your door every few milliseconds asking for more numbers.
+The `SynthEngine` is what answers that door.
 
 [source,cpp]
 ----
-#ifndef ENVELOPE_H
-#define ENVELOPE_H
-
-enum EnvelopeState { OFF, ATTACK, DECAY, SUSTAIN, RELEASE };
-
-class Envelope {
-private:
-    double amplitude = 0.0;
-    double attackTime = 0.05;  // 50ms fade in
-    double decayTime = 0.1;   // 100ms settle
-    double sustainLevel = 0.7; // Hold at 70% volume
-    double releaseTime = 0.3;  // 300ms fade out
-    double sampleRate;
-    EnvelopeState state = OFF;
-
+class SynthEngine {
 public:
-    Envelope(double sr) : sampleRate(sr) {}
+    Oscillator osc;
+    bool active = false; // The switch for our sound
 
-    void triggerOn() { state = ATTACK; }
-    void triggerOff() { state = RELEASE; }
+    SynthEngine() : osc(440.0, 0.2, 44100.0) {}
 
-    float getNextAmplitude() {
-        switch (state) {
-            case ATTACK:
-                amplitude += 1.0 / (attackTime * sampleRate);
-                if (amplitude >= 1.0) {
-                    amplitude = 1.0;
-                    state = DECAY;
-                }
-                break;
-            case DECAY:
-                amplitude -= (1.0 - sustainLevel) / (decayTime * sampleRate);
-                if (amplitude <= sustainLevel) {
-                    amplitude = sustainLevel;
-                    state = SUSTAIN;
-                }
-                break;
-            case SUSTAIN:
-                amplitude = sustainLevel;
-                break;
-            case RELEASE:
-                amplitude -= sustainLevel / (releaseTime * sampleRate);
-                if (amplitude <= 0.0) {
-                    amplitude = 0.0;
-                    state = OFF;
-                }
-                break;
-            case OFF:
-                amplitude = 0.0;
-                break;
+    static void AudioCallback(void* userdata, Uint8* stream, int len) {
+        SynthEngine* engine = static_cast<SynthEngine*>(userdata);
+        float* buffer = reinterpret_cast<float*>(stream);
+        int length = len / sizeof(float);
+
+        for (int i = 0; i < length; i++) {
+            // State check: Is the spacebar down?
+            buffer[i] = engine->active ? engine->osc.getNextSample() : 0.0f;
         }
-        return (float)amplitude;
     }
-
-    EnvelopeState getState() const { return state; }
 };
-
-#endif
 ----
+
+== 3. The Main Loop (The Focus)
+Here’s the catch: SDL won’t hear your keyboard properly without a window. We create a simple window to grab the "Focus."
+Without it, your OS might ignore the spacebar presses.
+
+
+[source,cpp]
+----
+int main(int argc, char* argv[]) {
+    SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
+
+    // We need this window just so the OS knows where to send the keyboard events
+    SDL_Window* window = SDL_CreateWindow("Synth Focus", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 300, 200, SDL_WINDOW_SHOWN);
+
+    SynthEngine engine;
+    // ... SDL Audio Setup ...
+
+    while (running) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) running = false;
+        }
+
+        // Direct Polling: Is the key down RIGHT NOW?
+        const Uint8* state = SDL_GetKeyboardState(NULL);
+        engine.active = state[SDL_SCANCODE_SPACE];
+
+        SDL_Delay(10);
+    }
+    // ... Cleanup ...
+}
+----
+
+== Why this is "Proper" OOP
+* **Identity:** If you want two oscillators, you just instantiate `Oscillator osc2`. No copy-pasting math.
+* **Encapsulation:** The `main` loop doesn't know *how* the square wave is calculated; it just flips the `active` switch.
+* **State Management:** The `phase` stays inside the object, remembering where it was between calls.
+
+== Next Steps
+This setup works, but you'll hear a "click" when you release the key. That’s because the wave is cut off mid-cycle.
+Next time, we’ll fix that with an **Envelope (ADSR)** to smooth out the start and end of the sound.
+
+
+=== Synth Oscilloscope
 
 [source,cpp]
 ----
@@ -200,59 +478,43 @@ public:
 #include <iostream>
 #include <vector>
 #include "Oscillator.h"
-#include "Envelope.h"
 
-// Shared visualization buffer for the oscilloscope
-std::vector<float> visualBuffer(2048, 0.0f);
+// Ein globaler Puffer, damit der Renderer auf die Audiodaten zugreifen kann
+// Wir nutzen 400 Samples, passend zur Fensterbreite
+std::vector<float> visualBuffer(400, 0.0f);
 
 class SynthEngine {
 public:
-    // COMPOSITION: The Engine "has" these components
-    Oscillator* osc;      // Pointer used for polymorphism (Inheritance)
-    Envelope env;         // Direct instance (Composition)
+    Oscillator osc;
+    bool active;
 
-    SynthEngine() : env(44100.0) {
-        // Initialize with a default Square Wave
-        osc = new SquareOsc(440.0, 0.2, 44100.0);
-    }
+    SynthEngine() : osc(440.0, 0.3, 44100.0), active(false) {}
 
-    ~SynthEngine() {
-        delete osc;
-    }
-
-    // AUDIO CALLBACK: The Real-Time Heartbeat
     static void AudioCallback(void* userdata, Uint8* stream, int len) {
         SynthEngine* engine = static_cast<SynthEngine*>(userdata);
         float* buffer = reinterpret_cast<float*>(stream);
         int length = len / sizeof(float);
 
         for (int i = 0; i < length; i++) {
-            // Step 1: Generate Raw Sound (Oscillator)
-            float sample = 0.0f;
-            if (engine->osc != nullptr) {
-                sample = engine->osc->getNextSample();
-            }
+            float sample = engine->active ? engine->osc.getNextSample() : 0.0f;
+            buffer[i] = sample;
 
-            // Step 2: Shape Volume (Envelope / ADSR)
-            // The engine "asks" its composed member for the current amplitude
-            float currentVolume = engine->env.getNextAmplitude();
-            float finalSample = sample * currentVolume;
-
-            buffer[i] = finalSample;
-
-            // Step 3: Record for Visualization
-            if (i < (int)visualBuffer.size()) {
-                visualBuffer[i] = finalSample;
+            // Wir füllen den Visualisierungs-Puffer nur mit den ersten 400 Samples
+            if (i < visualBuffer.size()) {
+                visualBuffer[i] = sample;
             }
         }
     }
 };
 
 int main(int argc, char* argv[]) {
-    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) < 0) return 1;
+    SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
 
-    SDL_Window* window = SDL_CreateWindow("C++ Synth: Composition Basics",
-        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 400, SDL_WINDOW_SHOWN);
+    // Fenster und Renderer erstellen
+    SDL_Window* window = SDL_CreateWindow("C++ Synth Visualizer",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 400, 300, SDL_WINDOW_SHOWN);
+
+    // Der Renderer ist unser "Pinsel" für das Fenster
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     SynthEngine engine;
@@ -268,58 +530,41 @@ int main(int argc, char* argv[]) {
     SDL_OpenAudio(&ds, NULL);
     SDL_PauseAudio(0);
 
-    std::cout << "Controls:\n1-4: Change Waveform\nSPACE: Play Note (ADSR)\nESC: Exit" << std::endl;
-
     bool running = true;
     SDL_Event e;
 
     while (running) {
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) running = false;
-
-            if (e.type == SDL_KEYDOWN) {
-                // Polymorphic Swap (Inheritance)
-                Oscillator* nextOsc = nullptr;
-                switch (e.key.keysym.sym) {
-                    case SDLK_1: nextOsc = new SquareOsc(440.0, 0.2, 44100.0); break;
-                    case SDLK_2: nextOsc = new SawOsc(440.0, 0.2, 44100.0); break;
-                    case SDLK_3: nextOsc = new SineOsc(440.0, 0.2, 44100.0); break;
-                    case SDLK_4: nextOsc = new TriangleOsc(440.0, 0.2, 44100.0); break;
-                    case SDLK_ESCAPE: running = false; break;
-                }
-
-                if (nextOsc != nullptr) {
-                    Oscillator* oldOsc = engine.osc;
-                    engine.osc = nullptr; // Safety nullify for audio thread
-                    delete oldOsc;
-                    engine.osc = nextOsc;
-                }
-            }
         }
 
-        // Triggering the Envelope via Spacebar
         const Uint8* state = SDL_GetKeyboardState(NULL);
-        if (state[SDL_SCANCODE_SPACE]) {
-            // Trigger Attack if we aren't already playing or releasing
-            if (engine.env.getState() == OFF || engine.env.getState() == RELEASE)
-                engine.env.triggerOn();
-        } else {
-            // Trigger Release if the key is lifted
-            if (engine.env.getState() != OFF && engine.env.getState() != RELEASE)
-                engine.env.triggerOff();
-        }
+        engine.active = state[SDL_SCANCODE_SPACE];
 
-        // Oscilloscope Rendering
-        SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
+        // --- GRAFIK RENDERING ---
+
+        // 1. Hintergrund löschen (Schwarz/Dunkelblau)
+        SDL_SetRenderDrawColor(renderer, 10, 10, 25, 255);
         SDL_RenderClear(renderer);
-        SDL_SetRenderDrawColor(renderer, 0, 255, 150, 255);
-        for (int x = 0; x < 799; x++) {
-            int y1 = 200 - (int)(visualBuffer[x] * 150);
-            int y2 = 200 - (int)(visualBuffer[x+1] * 150);
+
+        // 2. Nulllinie zeichnen (Grau)
+        SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
+        SDL_RenderDrawLine(renderer, 0, 150, 400, 150);
+
+        // 3. Wellenform zeichnen (Neongrün)
+        SDL_SetRenderDrawColor(renderer, 0, 255, 100, 255);
+        for (int x = 0; x < (int)visualBuffer.size() - 1; x++) {
+            // Wir skalieren den Sample-Wert (-1.0 bis 1.0) auf die Fensterhöhe
+            // 150 ist die Mitte des Fensters, 100 ist die Amplitude
+            int y1 = 150 - (int)(visualBuffer[x] * 100);
+            int y2 = 150 - (int)(visualBuffer[x+1] * 100);
             SDL_RenderDrawLine(renderer, x, y1, x + 1, y2);
         }
+
+        // 4. Alles auf den Bildschirm bringen
         SDL_RenderPresent(renderer);
-        SDL_Delay(16);
+
+        SDL_Delay(16); // Entspricht etwa 60 FPS
     }
 
     SDL_CloseAudio();
@@ -330,25 +575,4 @@ int main(int argc, char* argv[]) {
 }
 ----
 
-We compile the file with a simple
 
-[source,bash]
-----
-g++ -o synth main.cpp Oscillator.cpp `pkg-config --cflags --libs sdl2`
-----
-
-and can execute the program:
-[source,bash]
-----
-./synth
-----
-Now, with the envelope implemented it really sounds like a true Synthesizer!!!
-
-
-== 4. Conclusion
-
-By using **Composition**, we’ve built a system that is easy to extend. The `SynthEngine` manages the high-level logic and
-the hardware interface, while the `Envelope` manages the mathematical intricacies of volume shaping.
-
-This clean separation of concerns is what makes professional C++ applications robust. In the next chapter, we will add a
-**Voltage Controlled Filter (VCF)** to this chain using this exact same compositional approach!

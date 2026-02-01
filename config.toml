@@ -31,24 +31,9 @@ publishDir = "public"
   weight = 21
 
 [[languages.en.menu.before]]
-  name = "Electronics 101"
-  url = "/pages/electronics-101"
+  name = "Electronics course"
+  url = "/pages/electronics-100"
   weight = 26
-
-[[languages.en.menu.before]]
-  name = "Electronics 102"
-  url = "/pages/electronics-102"
-  weight = 27
-
-[[languages.en.menu.before]]
-  name = "Electronics 103"
-  url = "/pages/electronics-103"
-  weight = 28
-
-[[languages.en.menu.before]]
-  name = "Electronics 104"
-  url = "/pages/electronics-104"
-  weight = 28
 
 
 [[languages.en.menu.before]]
@@ -86,6 +71,11 @@ publishDir = "public"
   name = "Sitemap (EN)"
   url = "/sitemap/"
   weight = 10
+
+[[languages.en.menu.before]]
+  name = "C++ Programming course"
+  url = "/pages/cpp_00/"
+  weight = 26
 
 # german
 
@@ -141,30 +131,11 @@ publishDir = "public"
   url = "/de/pages/000_digital_logic_2/"
   weight = 23
 
+
 [[languages.de.menu.before]]
-  name = "Elektronik 101"
-  url = "/de/pages/prequel-short-introduction-to-electronics"
+  name = "Elektronik 100"
+  url = "/de/pages/electronics-100"
   weight = 26
-
-[[languages.de.menu.before]]
-  name = "Elektronik 102"
-  url = "/de/pages/electronics-102"
-  weight = 27
-
-[[languages.de.menu.before]]
-  name = "Elektronik 103"
-  url = "/de/pages/electronics-103"
-  weight = 28
-
-[[languages.de.menu.before]]
-  name = "Elektronik 104"
-  url = "/de/pages/electronics-104"
-  weight = 29
-
-[[languages.de.menu.before]]
-  name = "Elektronik 105"
-  url = "/de/pages/electronics-105"
-  weight = 30
 
 [params]
   date_format = "2006-01-02"

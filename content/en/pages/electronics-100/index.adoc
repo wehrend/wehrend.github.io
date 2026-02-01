@@ -1,0 +1,36 @@
+---
+title: "Introduction to electronics Course"
+slug: electronics-100
+date: 2026-02-01
+tags:
+category:
+link:
+description:
+type: text
+bookHidden: true
+---
+{{< katex />}}
+
+= Electronics 101–104 — Overview
+
+This page provides a short overview of the electronics introduction series.
+
+== Electronics 101
+link:https://wehrend.github.io/pages/electronics-101/[electronics 101]
+
+Introduction to basic electrical concepts such as current, voltage, resistance, and simple circuits.
+
+== Electronics 102
+link:https://wehrend.github.io/pages/electronics-102/[electronics 102]
+
+Covers time-dependent components like capacitors and coils, also simple passive filters.
+
+== Electronics 103
+link:https://wehrend.github.io/pages/electronics-103/[electronics 103]
+
+Introduces nonlinear components including diodes, transistors, and their use as switches and amplifiers.
+
+== Electronics 104
+link:https://wehrend.github.io/pages/electronics-104/[electronics 104]
+
+Focuses on amplifier circuits, especially integrated amplifiers and operational amplifiers.
