@@ -14,19 +14,59 @@ draft: false
 
 = C++ Course — Overview
 
+
+{{< hint info >}}
+This is a programming course for C++ based on an audio / synth application.
+Prerequisite is a linux system (ideally debian) with an installed GCC (Gnu Compiler Collection) and its dependencies plus the popular build tool make.
+Also, you need a considerable amount of math knowledge to follow the details
+{{< /hint >}}
+
+The source we use is available on Github: https://github.com/wehrend/cpp-tutorials
+
+Prerequisite is a linux system (ideally debian) with an installed GCC (Gnu Compiler Collection) and its dependencies plus the popular build tool make.
+If you have a windows system you can probably use Google Gemini or another AI agent to port it...
+
 This page provides a short overview of the C++ programming course.
 
 == C++ 01
 link:https://wehrend.github.io/pages/cpp_01/[cpp_01]
 
 Introduction to programming fundamentals, development tools, and basic C++ syntax.
+Contains:
+
+* An info application that prints out limits from limits.h. (tutorial 00)
+* An hello world example - examined on assembler level (tutorial 01).
 
 == C++ 02
 link:https://wehrend.github.io/pages/cpp_02/[cpp_02]
 
 Covers core language features such as variables, control structures, functions, and fundamental data types.
+Contains:
+
+* A more or less easy introduction into the SDL Library (Simple Direct Media Layer) (tutorial 02)
+* Introduction to header files and oscillators  (tutorial 03)
 
 == C++ 03
 link:https://wehrend.github.io/pages/cpp_03/[cpp_03]
 
 Introduces object-oriented programming concepts including classes, object synthesis, inheritance, and composition.
+
+* Composition and Envelopes (tutorial 04)
+
+== C++ 04
+link:https://wehrend.github.io/pages/cpp_04/[cpp_04]
+
+Introduces object-oriented programming concepts including classes, object synthesis, inheritance, and composition.
+
+* A simple hardcoded synthesizer with a lowpass filter (no debug info) tutorial05 (a) without fonts
+* A simple hardcoded synthesizer with a lowpass filter (with debug info ) tutorial05 (b) with fonts and a visiual cutoff frequency display
+
+
+
+
+== C++ 05 (Upcoming)
+link:https://wehrend.github.io/pages/cpp_05/[cpp_05]
+
+* Polyphonie and multiple Voices (tutorial 06)
+* Master and Slave Oscillator with hard sync (tutorial 07)
+
