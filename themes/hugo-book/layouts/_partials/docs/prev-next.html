@@ -4,10 +4,9 @@
 {{ end }}
 
 {{ with .Site.GetPage $bookSection }}
-  {{ $pages := ((partialCached "docs/prev-next-cache" .Pages).ByParam "slug").Reverse }}
-  {{/* HIER ändern: */}}
-  {{ $prev := $pages.Prev $ }}
-  {{ $next := $pages.Next $ }}
+  {{ $pages := partialCached "docs/prev-next-cache" .Pages }}
+  {{ $prev := $pages.Next $ }}
+  {{ $next := $pages.Prev $ }}
 
   {{- if or $prev $next }}
   <div class="flex flex-wrap justify-between">

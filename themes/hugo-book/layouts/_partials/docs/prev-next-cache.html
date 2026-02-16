@@ -2,7 +2,7 @@
 {{ template "recurse" (dict "Scratch" $scratch "Sections" .) }}
 {{ define "recurse" }}
   {{ range .Sections }}
-    {{ if .Content }}
+    {{ if and .Content (not .Params.BookHidden) }}
       {{ $.Scratch.Add "BookPages" (slice .) }}
     {{ end }}
     {{ if .IsSection }}
