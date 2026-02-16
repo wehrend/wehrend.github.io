@@ -12,3 +12,38 @@
       ...
     }
 */
+.book-section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Kleinere Karten
+  gap: 1rem;
+}
+
+.book-section-card {
+  text-align: center;
+  padding: 1.5rem;
+  /* ... deine anderen Styles ... */
+
+  .card-icon {
+    width: 64px;  /* Feste Breite für den Maßstab */
+    height: 64px; /* Feste Höhe */
+    margin: 0 auto 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      max-width: 64px;
+      max-height: 64px;
+      fill: none;
+      stroke: var(--color-link);
+      stroke-width: 1.5; /* Einheitliche Linienstärke für alle Icons */
+    }
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+}

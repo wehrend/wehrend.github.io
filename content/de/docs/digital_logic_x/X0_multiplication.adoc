@@ -104,7 +104,7 @@ eine binäre Subtraktion durchzuführen.
 //Wir leiten diese Formel zu einem Horner-Schema ab, wie es aus dem Mathematikunterricht bekannt ist:
 //
 //[„latex“, „../images/multiplication_2.svg“, width=„70%“]
-//\[P = \underbrace{( \cdots \underbrace{( \underbrace{(X \ast Y_{n})}_{p_1} 2 + X \ast Y_{n-1})}_{p_2}2 + \cdots + X \ast Y_{2})2 + X \ast Y_{1}}_{p_n}\]
+//\[P = \underbrace{( \cdots \underbrace{( \underbrace{(X \ast Y_{n})}_default{p_1} 2 + X \ast Y_{n-1})}_default{p_2}2 + \cdots + X \ast Y_{2})2 + X \ast Y_{1}}_default{p_n}\]
 //
 //Daraus folgt ein rekursives Gleichungssystem
 //
