@@ -4,87 +4,64 @@
   <h1>Welcome</h1>
   <p>Topics: digital logic, CPU design, FPGA, C++, DSP.</p>
 
-  {{/* Determine the section that drives the left menu (Hugo Book: params.BookSection) */}}
+  {{/* Determine BookSection root */}}
   {{ $sectionName := .Site.Params.BookSection }}
   {{ if not $sectionName }}{{ $sectionName = "pages" }}{{ end }}
 
-  {{/* Get the section page for that name (language-aware) */}}
   {{ $root := .Site.GetPage (printf "/%s" $sectionName) }}
-
-  {{/* Fallbacks */}}
   {{ if not $root }}{{ $root = .Site.GetPage "/pages" }}{{ end }}
-  {{ if not $root }}{{ $root = .Site.GetPage "/docs" }}{{ end }}
 
   {{ if not $root }}
-    <p><strong>Could not find a root section for cards.</strong>
-      Tried <code>{{ $sectionName }}</code>, <code>pages</code>, <code>docs</code>.
-    </p>
+    <p><strong>Could not find section</strong> <code>{{ $sectionName }}</code>.</p>
   {{ else }}
+
+    {{/* Top-level only */}}
+    {{ $items := $root.Pages }}
+    {{ $items = where $items ".Params.home" "ne" false }}
+    {{ $items = ($items.ByWeight).ByTitle }}
 
     <div class="book-card-grid">
 
-      {{/* --- 1) Card for the root itself (e.g. /pages/) --- */}}
-      {{ if and (ne $root.Params.home false) (not (or $root.Params.bookHidden $root.Params.bookhidden)) }}
-        <a class="book-card" href="{{ $root.RelPermalink }}">
+      {{/* Show ONLY overview pages: pages that link to other /pages/... entries */}}
+      {{ range $items }}
 
-          <div class="book-card__icon" aria-hidden="true">
-            {{ with $root.Params.icon }}
-              <span class="book-card__emoji">{{ . }}</span>
+        {{/* Heuristic: count links to /pages/... in source content (AsciiDoc + Markdown) */}}
+        {{ $raw := .RawContent | default "" }}
+
+        {{/* Matches:
+              - AsciiDoc: link:https://.../pages/xyz[...] or link:/pages/xyz[...]
+              - Markdown: ](/pages/xyz)  or href="/pages/xyz"
+        */}}
+        {{ $matches := findRE `(?i)(link:([a-z]+:)?//[^ \[]*?/pages/[^ \[]+|link:/pages/[^ \[]+|\]\(/pages/[^)]+\)|href="/pages/[^"]+")` $raw }}
+        {{ $n := len $matches }}
+
+        {{ if ge $n 2 }}
+          <a class="book-card" href="{{ .RelPermalink }}">
+
+            <div class="book-card__icon" aria-hidden="true">
+              {{ with .Params.icon }}
+                <span class="book-card__emoji">{{ . }}</span>
+              {{ else }}
+                <span class="book-card__emoji">📘</span>
+              {{ end }}
+            </div>
+
+            <div class="book-card__title">{{ .LinkTitle }}</div>
+
+            {{ with .Params.summary }}
+              <div class="book-card__summary">{{ . }}</div>
             {{ else }}
-              <span class="book-card__emoji">🗂️</span>
+              {{ with .Summary }}
+                <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
+              {{ end }}
             {{ end }}
-          </div>
 
-          <div class="book-card__title">{{ $root.LinkTitle }}</div>
+            <div class="book-card__meta">
+              {{ $n }} links
+            </div>
 
-          {{ with $root.Params.summary }}
-            <div class="book-card__summary">{{ . }}</div>
-          {{ else }}
-            {{ with $root.Summary }}
-              <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
-            {{ end }}
-          {{ end }}
-
-          <div class="book-card__meta">
-            {{ len $root.Pages }} pages
-          </div>
-
-        </a>
-      {{ end }}
-
-      {{/* --- 2) Cards for top-level children of the root --- */}}
-      {{ $items := $root.Pages }}
-      {{ $items = where $items ".Params.bookHidden" "ne" true }}
-      {{ $items = where $items ".Params.bookhidden" "ne" true }}
-      {{ $items = where $items ".Params.home" "ne" false }}
-
-      {{ range ($items.ByWeight).ByTitle }}
-
-        <a class="book-card" href="{{ .RelPermalink }}">
-
-          <div class="book-card__icon" aria-hidden="true">
-            {{ with .Params.icon }}
-              <span class="book-card__emoji">{{ . }}</span>
-            {{ else }}
-              <span class="book-card__emoji">📦</span>
-            {{ end }}
-          </div>
-
-          <div class="book-card__title">{{ .LinkTitle }}</div>
-
-          {{ with .Params.summary }}
-            <div class="book-card__summary">{{ . }}</div>
-          {{ else }}
-            {{ with .Summary }}
-              <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
-            {{ end }}
-          {{ end }}
-
-          <div class="book-card__meta">
-            {{ if .IsSection }}{{ len .Pages }} pages{{ end }}
-          </div>
-
-        </a>
+          </a>
+        {{ end }}
 
       {{ end }}
 
