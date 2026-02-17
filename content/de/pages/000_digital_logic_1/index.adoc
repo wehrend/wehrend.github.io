@@ -5,6 +5,7 @@ tags: [ 'draft']
 category: "digital_logik_1"
 link:
 description:
+overview: true
 ---
 {{< katex />}}
 == Wie funktioniert eine CPU - Inhaltsverzeichnis

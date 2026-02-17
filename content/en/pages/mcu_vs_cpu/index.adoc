@@ -7,10 +7,11 @@ category:
 link:
 description:
 type: text
-bookHidden: false
+bookHidden: true
 outdir: ~/development/blog
 draft: true
 weight: 1700
+overview: true
 ---
 
 == The two totally distinct worlds - Microcontrollers vs. Microprocessors (MCU vs. CPU)

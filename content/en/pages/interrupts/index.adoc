@@ -9,6 +9,8 @@ description:
 type: text
 outdir: ~/development/blog
 draft: false
+bookHidden: true
+overview: true
 ---
 
 == Interrupts - The doorbell analogy

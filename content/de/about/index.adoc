@@ -2,6 +2,7 @@
 title: About
 slug: about
 date: 2020-12-12
+overview: true
 ---
 
 Ein einfaches, statisches Blog, in dem ich über Themen wie Elektronik & Computer und - vielleicht - Philosophie schreibe.

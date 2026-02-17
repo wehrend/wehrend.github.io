@@ -8,6 +8,8 @@ link:
 description:
 identifier: digital_logic_2
 weight: 20
+bookHidden: true
+overview: true
 ---
 {{< katex />}}
 == How does a CPU work 2 - Table of contents

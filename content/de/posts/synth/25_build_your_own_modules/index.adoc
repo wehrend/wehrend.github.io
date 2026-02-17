@@ -6,6 +6,7 @@ category:
 link:
 description: How to build your own synthesizer modules
 type: blog
+overview: true
 ---
 
 = Bau deine eigenen eurorack synthesizer Module

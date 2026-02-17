@@ -11,6 +11,7 @@ bookHidden: true
 outdir: ~/development/blog
 draft: false
 weight: 1600
+overview: true
 ---
 
 == Die beiden wichtigen Säulen – Digital-Analog-Wandler und Analog-Digital-Wandler

@@ -8,8 +8,10 @@ link:
 description:
 type: text
 bookHidden: true
+overview: true
 outdir: ~/development/blog
 draft: false
+
 ---
 
 = C++ Course — Overview

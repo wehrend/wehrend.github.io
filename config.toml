@@ -14,53 +14,53 @@ publishDir = "public"
   name = ""
   url = "/docs/"
   weight = 10
-
-[[languages.en.menu.before]]
-  name = "Web-Blog"
-  url = "/posts/web/"
-  weight = 10
-
-[[languages.en.menu.before]]
-  name = "Synth-Blog"
-  url = "/posts/"
-  weight = 20
-
-[[languages.en.menu.before]]
-  name = "Synthesizer-DIY"
-  url = "/posts/synth/25-build-your-own-modules/"
-  weight = 21
-
-[[languages.en.menu.before]]
-  name = "Electronics course"
-  url = "/pages/electronics-100"
-  weight = 26
-
-
-[[languages.en.menu.before]]
-  name = "Storytelling and the order of things"
-  url = "/pages/storytelling"
-  weight = 25
-
-[[languages.en.menu.before]]
-  name = "ADCs and DACs"
-  url = "/pages/adc_dac"
-  weight = 30
+#
+#[[languages.en.menu.before]]
+#  name = "Web-Blog"
+#  url = "/posts/web/"
+#  weight = 10
+#
+#[[languages.en.menu.before]]
+#  name = "Synth-Blog"
+#  url = "/posts/"
+#  weight = 20
+#
+#[[languages.en.menu.before]]
+#  name = "Synthesizer-DIY"
+#  url = "/posts/synth/25-build-your-own-modules/"
+#  weight = 21
+#
+#[[languages.en.menu.before]]
+#  name = "Electronics course"
+#  url = "/pages/electronics-100"
+#  weight = 26
+#
+#
+#[[languages.en.menu.before]]
+#  name = "Storytelling and the order of things"
+#  url = "/pages/storytelling"
+#  weight = 25
+#
+#[[languages.en.menu.before]]
+#  name = "ADCs and DACs"
+#  url = "/pages/adc_dac"
+#  weight = 30
 
 
 [[languages.en.menu.before]]
   name = "Download Archive"
   url = "/downloads"
   weight = 24
-
-[[languages.en.menu.before]]
-  name = "Digital Logic 1 (Overview)"
-  url = "/pages/000_digital_logic_1/"
-  weight = 23
-
-[[languages.en.menu.before]]
-  name = "Digital Logic 2 (Overview)"
-  url = "/pages/000_digital_logic_2/"
-  weight = 24
+#
+#[[languages.en.menu.before]]
+#  name = "Digital Logic 1 (Overview)"
+#  url = "/pages/000_digital_logic_1/"
+#  weight = 23
+#
+#[[languages.en.menu.before]]
+#  name = "Digital Logic 2 (Overview)"
+#  url = "/pages/000_digital_logic_2/"
+#  weight = 24
 
 [[languages.en.menu.before]]
   name = "About"
@@ -71,11 +71,11 @@ publishDir = "public"
   name = "Sitemap (EN)"
   url = "/sitemap/"
   weight = 10
-
-[[languages.en.menu.before]]
-  name = "C++ Programming course"
-  url = "/pages/cpp_00/"
-  weight = 26
+#
+#[[languages.en.menu.before]]
+#  name = "C++ Programming course"
+#  url = "/pages/cpp_00/"
+#  weight = 26
 
 # german
 
@@ -89,53 +89,53 @@ publishDir = "public"
   name = "Sitemap (DE)"
   url = "/de/sitemap/"
   weight = 10
-
-[[languages.de.menu.before]]
-  name = "Web-Blog"
-  url = "/posts/web/"
-  weight = 10
-
-[[languages.de.menu.before]]
-  name = "Synth-Blog"
-  url = "/posts/"
-  weight = 20
-
-[[languages.de.menu.before]]
-  name = ""
-  url = "/docs/"
-  weight = 10
+#
+#[[languages.de.menu.before]]
+#  name = "Web-Blog"
+#  url = "/posts/web/"
+#  weight = 10
+#
+#[[languages.de.menu.before]]
+#  name = "Synth-Blog"
+#  url = "/posts/"
+#  weight = 20
+#
+#[[languages.de.menu.before]]
+#  name = ""
+#  url = "/docs/"
+#  weight = 10
 
 [[languages.de.menu.before]]
   name = "Über"
   url = "/de/about/"
   weight = 10
 
-[[languages.de.menu.before]]
-  name = "Synthesizer-DIY"
-  url = "/de/posts/synth/25_build_your_own_modules/"
-  weight = 21
-
+#[[languages.de.menu.before]]
+#  name = "Synthesizer-DIY"
+#  url = "/de/posts/synth/25_build_your_own_modules/"
+#  weight = 21
+#
 
 [[languages.de.menu.before]]
   name = "ADCs und DACs"
   url = "/de/pages/adc_dac"
   weight = 30
-
-[[languages.de.menu.after]]
-  name = "Digitale Logik 1 (Übersicht)"
-  url = "/de/pages/000_digital_logic_1/"
-  weight = 22
-
-[[languages.de.menu.before]]
-  name = "Digitale Logik 2 (Übersicht)"
-  url = "/de/pages/000_digital_logic_2/"
-  weight = 23
-
-
-[[languages.de.menu.before]]
-  name = "Elektronik 100"
-  url = "/de/pages/electronics-100"
-  weight = 26
+#
+#[[languages.de.menu.after]]
+#  name = "Digitale Logik 1 (Übersicht)"
+#  url = "/de/pages/000_digital_logic_1/"
+#  weight = 22
+#
+#[[languages.de.menu.before]]
+#  name = "Digitale Logik 2 (Übersicht)"
+#  url = "/de/pages/000_digital_logic_2/"
+#  weight = 23
+#
+#
+#[[languages.de.menu.before]]
+#  name = "Elektronik 100"
+#  url = "/de/pages/electronics-100"
+#  weight = 26
 
 [params]
   date_format = "2006-01-02"
