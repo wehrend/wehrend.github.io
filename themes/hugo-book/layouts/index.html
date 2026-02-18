@@ -3,56 +3,87 @@
 
   <h1>Welcome</h1>
 
-  {{/* In Hugo Book ist das i.d.R. "pages" */}}
-  {{ $sectionName := .Site.Params.BookSection }}
-  {{ if not $sectionName }}{{ $sectionName = "pages" }}{{ end }}
+  {{/* --- get roots (language-aware) --- */}}
+  {{ $pagesRoot := .Site.GetPage (printf "/%s/pages" .Site.Language.Lang) }}
+  {{ if not $pagesRoot }}{{ $pagesRoot = .Site.GetPage "/pages" }}{{ end }}
 
-  {{/* Language-aware: erst /<lang>/<section>, dann /<section> */}}
-  {{ $root := .Site.GetPage (printf "/%s/%s" .Site.Language.Lang $sectionName) }}
-  {{ if not $root }}
-    {{ $root = .Site.GetPage (printf "/%s" $sectionName) }}
+  {{ $postsRoot := .Site.GetPage (printf "/%s/posts" .Site.Language.Lang) }}
+  {{ if not $postsRoot }}{{ $postsRoot = .Site.GetPage "/posts" }}{{ end }}
+
+  {{/* --- collect overview items (recursive) --- */}}
+  {{ $posts := slice }}
+  {{ if $postsRoot }}
+    {{ $posts = where $postsRoot.RegularPagesRecursive ".Params.overview" "eq" true }}
+  {{ end }}
+  {{ $posts = ($posts.ByWeight).ByTitle }}
+
+  {{ $pages := slice }}
+  {{ if $pagesRoot }}
+    {{ $pages = where $pagesRoot.RegularPagesRecursive ".Params.overview" "eq" true }}
+  {{ end }}
+  {{ $pages = ($pages.ByWeight).ByTitle }}
+
+  {{ if and (eq (len $posts) 0) (eq (len $pages) 0) }}
+    <p><strong>Debug:</strong> No pages found with <code>overview: true</code> under <code>posts</code> or <code>pages</code>.</p>
   {{ end }}
 
-  {{ if not $root }}
-    <p><strong>Debug:</strong> root section not found:
-      <code>/{{ .Site.Language.Lang }}/{{ $sectionName }}</code> or <code>/{{ $sectionName }}</code>
-    </p>
-  {{ else }}
+  <div class="book-card-grid">
 
-    {{ $items := where $root.Pages ".Params.overview" "eq" true }}
-    {{ $items = ($items.ByWeight).ByTitle }}
-
-    {{ if eq (len $items) 0 }}
-      <p><strong>Debug:</strong> Found section <code>{{ $root.RelPermalink }}</code>,
-      but no pages with <code>overview: true</code>.</p>
-    {{ end }}
-
-    <div class="book-card-grid">
-      {{ range $items }}
-        <a class="book-card" href="{{ .RelPermalink }}">
-          <div class="book-card__icon" aria-hidden="true">
-            {{ with .Params.icon }}
-              <span class="book-card__emoji">{{ . }}</span>
-            {{ else }}
-              <span class="book-card__emoji">📘</span>
-            {{ end }}
-          </div>
-
-          <div class="book-card__title">{{ .LinkTitle }}</div>
-
-          {{ with .Params.summary }}
-            <div class="book-card__summary">{{ . }}</div>
+    {{/* --- render posts first --- */}}
+    {{ range $posts }}
+      <a class="book-card" href="{{ .RelPermalink }}">
+        <div class="book-card__icon" aria-hidden="true">
+          {{ with .Params.icon }}
+            <span class="book-card__emoji">{{ . }}</span>
           {{ else }}
-            {{ with .Summary }}
-              <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
+            <span class="book-card__emoji">📝</span>
+          {{ end }}
+        </div>
+
+        <div class="book-card__title">{{ .LinkTitle }}</div>
+
+        {{ with .Params.summary }}
+          <div class="book-card__summary">{{ . }}</div>
+        {{ else }}
+          {{ with .Summary }}
+            <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
+          {{ else }}
+            {{ with .Params.description }}
+              <div class="book-card__summary">{{ . }}</div>
             {{ end }}
           {{ end }}
+        {{ end }}
+      </a>
+    {{ end }}
 
-        </a>
-      {{ end }}
-    </div>
+    {{/* --- then render pages (courses etc.) --- */}}
+    {{ range $pages }}
+      <a class="book-card" href="{{ .RelPermalink }}">
+        <div class="book-card__icon" aria-hidden="true">
+          {{ with .Params.icon }}
+            <span class="book-card__emoji">{{ . }}</span>
+          {{ else }}
+            <span class="book-card__emoji">📘</span>
+          {{ end }}
+        </div>
 
-  {{ end }}
+        <div class="book-card__title">{{ .LinkTitle }}</div>
+
+        {{ with .Params.summary }}
+          <div class="book-card__summary">{{ . }}</div>
+        {{ else }}
+          {{ with .Summary }}
+            <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
+          {{ else }}
+            {{ with .Params.description }}
+              <div class="book-card__summary">{{ . }}</div>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </a>
+    {{ end }}
+
+  </div>
 
 </article>
 {{ end }}
