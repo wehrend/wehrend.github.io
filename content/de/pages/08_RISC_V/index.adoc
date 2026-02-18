@@ -1,4 +1,4 @@
-= ---
+---
 title: 08_RISC-V (de)
 date: 2022-03-21
 tags: ['draft']
@@ -7,11 +7,8 @@ link:
 description:
 type: text
 bookHidden: true
-menu:
-  docs:
-    parent: "digital_logic"
-    weight: 35
 ---
+
 {{< katex />}}
 == Digitales Design trifft auf Computerarchitektur
 

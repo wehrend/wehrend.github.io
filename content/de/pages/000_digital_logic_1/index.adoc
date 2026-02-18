@@ -5,6 +5,7 @@ tags: [ 'draft']
 category: "digital_logik_1"
 link:
 description:
+bookHidden: true
 overview: true
 ---
 {{< katex />}}

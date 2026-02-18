@@ -8,6 +8,7 @@ link:
 description:
 type: text
 outdir: ~/development/blog
+bookHidden: true
 ---
 
 == Storytelling und die Reihenfolge der Dinge

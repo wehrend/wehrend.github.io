@@ -47,11 +47,7 @@ publishDir = "public"
 #  weight = 30
 
 
-[[languages.en.menu.before]]
-  name = "Download Archive"
-  url = "/downloads"
-  weight = 24
-#
+
 #[[languages.en.menu.before]]
 #  name = "Digital Logic 1 (Overview)"
 #  url = "/pages/000_digital_logic_1/"
@@ -65,12 +61,18 @@ publishDir = "public"
 [[languages.en.menu.before]]
   name = "About"
   url = "/about/"
-  weight = 10
+  weight = 11
 
 [[languages.en.menu.before]]
   name = "Sitemap (EN)"
   url = "/sitemap/"
   weight = 10
+
+[[languages.en.menu.before]]
+  name = "Download Archive"
+  url = "/downloads"
+  weight = 24
+#
 #
 #[[languages.en.menu.before]]
 #  name = "C++ Programming course"
@@ -89,6 +91,16 @@ publishDir = "public"
   name = "Sitemap (DE)"
   url = "/de/sitemap/"
   weight = 10
+
+[[languages.de.menu.before]]
+  name = "Über"
+  url = "/de/about/"
+  weight = 11
+
+[[languages.de.menu.before]]
+  name = "Download Archiv"
+  url = "/downloads"
+  weight = 24
 #
 #[[languages.de.menu.before]]
 #  name = "Web-Blog"
@@ -105,22 +117,17 @@ publishDir = "public"
 #  url = "/docs/"
 #  weight = 10
 
-[[languages.de.menu.before]]
-  name = "Über"
-  url = "/de/about/"
-  weight = 10
-
 #[[languages.de.menu.before]]
 #  name = "Synthesizer-DIY"
 #  url = "/de/posts/synth/25_build_your_own_modules/"
 #  weight = 21
 #
 
-[[languages.de.menu.before]]
-  name = "ADCs und DACs"
-  url = "/de/pages/adc_dac"
-  weight = 30
-#
+#[[languages.de.menu.before]]
+#  name = "ADCs und DACs"
+#  url = "/de/pages/adc_dac"
+#  weight = 30
+##
 #[[languages.de.menu.after]]
 #  name = "Digitale Logik 1 (Übersicht)"
 #  url = "/de/pages/000_digital_logic_1/"
