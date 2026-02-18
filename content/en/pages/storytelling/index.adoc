@@ -9,6 +9,9 @@ description:
 type: text
 outdir: ~/development/blog
 weight: 2000
+bookHidden: true
+overview: true
+
 ---
 
 == Storytelling and the order of things

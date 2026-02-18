@@ -3,29 +3,21 @@
 
   <h1>Welcome</h1>
 
-  {{/* --- get roots (language-aware) --- */}}
+  {{/* --- helpers: get roots (language-aware) --- */}}
   {{ $pagesRoot := .Site.GetPage (printf "/%s/pages" .Site.Language.Lang) }}
   {{ if not $pagesRoot }}{{ $pagesRoot = .Site.GetPage "/pages" }}{{ end }}
 
   {{ $postsRoot := .Site.GetPage (printf "/%s/posts" .Site.Language.Lang) }}
   {{ if not $postsRoot }}{{ $postsRoot = .Site.GetPage "/posts" }}{{ end }}
 
-  {{/* --- collect overview items (recursive) --- */}}
+  {{/* --- collect overview items --- */}}
   {{ $posts := slice }}
-  {{ if $postsRoot }}
-    {{ $posts = where $postsRoot.RegularPagesRecursive ".Params.overview" "eq" true }}
-  {{ end }}
+  {{ if $postsRoot }}{{ $posts = where $postsRoot.Pages ".Params.overview" "eq" true }}{{ end }}
   {{ $posts = ($posts.ByWeight).ByTitle }}
 
   {{ $pages := slice }}
-  {{ if $pagesRoot }}
-    {{ $pages = where $pagesRoot.RegularPagesRecursive ".Params.overview" "eq" true }}
-  {{ end }}
+  {{ if $pagesRoot }}{{ $pages = where $pagesRoot.Pages ".Params.overview" "eq" true }}{{ end }}
   {{ $pages = ($pages.ByWeight).ByTitle }}
-
-  {{ if and (eq (len $posts) 0) (eq (len $pages) 0) }}
-    <p><strong>Debug:</strong> No pages found with <code>overview: true</code> under <code>posts</code> or <code>pages</code>.</p>
-  {{ end }}
 
   <div class="book-card-grid">
 
@@ -47,16 +39,12 @@
         {{ else }}
           {{ with .Summary }}
             <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
-          {{ else }}
-            {{ with .Params.description }}
-              <div class="book-card__summary">{{ . }}</div>
-            {{ end }}
           {{ end }}
         {{ end }}
       </a>
     {{ end }}
 
-    {{/* --- then render pages (courses etc.) --- */}}
+    {{/* --- then render pages --- */}}
     {{ range $pages }}
       <a class="book-card" href="{{ .RelPermalink }}">
         <div class="book-card__icon" aria-hidden="true">
@@ -74,10 +62,6 @@
         {{ else }}
           {{ with .Summary }}
             <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
-          {{ else }}
-            {{ with .Params.description }}
-              <div class="book-card__summary">{{ . }}</div>
-            {{ end }}
           {{ end }}
         {{ end }}
       </a>

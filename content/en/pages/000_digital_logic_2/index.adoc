@@ -8,6 +8,7 @@ link:
 description:
 identifier: digital_logic_2
 weight: 20
+bookHidden: true
 overview: true
 ---
 {{< katex />}}
