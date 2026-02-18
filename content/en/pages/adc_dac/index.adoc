@@ -11,6 +11,7 @@ bookHidden: true
 outdir: ~/development/blog
 draft: false
 weight: 1600
+overview: true
 ---
 
 == The two important pillars - Digital-Analog-Converter and Analog-Digital-Converter

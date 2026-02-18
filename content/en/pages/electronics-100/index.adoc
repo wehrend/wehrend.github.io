@@ -8,6 +8,7 @@ link:
 description:
 type: text
 bookHidden: true
+overview: true
 ---
 {{< katex />}}
 

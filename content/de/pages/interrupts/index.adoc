@@ -9,6 +9,7 @@ description:
 type: text
 outdir: ~/development/blog
 draft: false
+overview: true
 ---
 
 == Interrupts – Die Analogie mit der Türklingel
