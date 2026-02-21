@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 64" width="80" height="64" aria-label="ADC Conversion Icon" role="img">
+
+  <!-- Analog Signal (Sinus) -->
+  <path d="M2 32 
+           C6 12, 14 12, 18 32
+           C22 52, 30 52, 34 32" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- ADC Block -->
+  <rect x="34" y="16" width="20" height="32" rx="4" fill="#1f2937" stroke="#0f172a" stroke-width="2"></rect>
+
+  <!-- ADC Label -->
+  <text x="44" y="35" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8" font-weight="700" fill="#ffffff">ADC</text>
+
+  <!-- Arrow -->
+  <path d="M54 32 H64" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"></path>
+  <path d="M64 32 L59 27 M64 32 L59 37" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Digital Output Bits -->
+  <rect x="66" y="18" width="10" height="8" rx="2" fill="#f59e0b"></rect>
+  <rect x="66" y="28" width="10" height="8" rx="2" fill="#f97316"></rect>
+  <rect x="66" y="38" width="10" height="8" rx="2" fill="#ef4444"></rect>
+
+  <!-- Binary Labels -->
+  <text x="71" y="24" text-anchor="middle" font-family="ui-monospace, monospace" font-size="6" fill="#111">1</text>
+
+  <text x="71" y="34" text-anchor="middle" font-family="ui-monospace, monospace" font-size="6" fill="#111">0</text>
+
+  <text x="71" y="44" text-anchor="middle" font-family="ui-monospace, monospace" font-size="6" fill="#111">1</text>
+
+</svg>

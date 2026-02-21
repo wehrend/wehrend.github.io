@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" aria-label="Platine Icon" role="img">
+
+  <!-- Platine -->
+  <rect x="8" y="10" width="48" height="44" rx="6" fill="#1f8f3a" stroke="#146b2a" stroke-width="2"></rect>
+
+  <!-- Leiterbahnen -->
+  <path d="M18 22H28V18H40V26H48" stroke="#c9f4d5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M18 40H26V46H38V38H48" stroke="#c9f4d5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M24 30H30V34H36" stroke="#c9f4d5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Lötpads / Vias -->
+  <circle cx="18" cy="22" r="3" fill="#f6d36a" stroke="#b8891c" stroke-width="1.5"></circle>
+  <circle cx="48" cy="26" r="3" fill="#f6d36a" stroke="#b8891c" stroke-width="1.5"></circle>
+  <circle cx="18" cy="40" r="3" fill="#f6d36a" stroke="#b8891c" stroke-width="1.5"></circle>
+  <circle cx="48" cy="38" r="3" fill="#f6d36a" stroke="#b8891c" stroke-width="1.5"></circle>
+  <circle cx="24" cy="46" r="3" fill="#f6d36a" stroke="#b8891c" stroke-width="1.5"></circle>
+
+  <!-- IC / Chip -->
+  <rect x="26" y="24" width="16" height="16" rx="3" fill="#2b2b2b" stroke="#111" stroke-width="2"></rect>
+
+  <!-- Chip-Pins -->
+  <path d="M24 26h-4M24 30h-4M24 34h-4M24 38h-4" stroke="#e6e6e6" stroke-width="2" stroke-linecap="round"></path>
+  <path d="M44 26h4M44 30h4M44 34h4M44 38h4" stroke="#e6e6e6" stroke-width="2" stroke-linecap="round"></path>
+</svg>

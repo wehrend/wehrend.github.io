@@ -12,6 +12,7 @@ outdir: ~/development/blog
 draft: false
 weight: 1600
 overview: true
+icon: "svg/_adc.svg"
 ---
 
 == The two important pillars - Digital-Analog-Converter and Analog-Digital-Converter

@@ -1,0 +1,5 @@
+Watching for changes in /home/sven/development/hugo/{assets,content,static,themes}
+Watching for config changes in /home/sven/development/hugo/config.toml, /home/sven/development/hugo/themes/hugo-book/hugo.toml
+Start building sites … 
+hugo v0.152.2-6abdacad3f3fe944ea42177844469139e81feda6+extended linux/amd64 BuildDate=2025-10-24T15:31:49Z VendorInfo=gohugoio
+

@@ -10,6 +10,7 @@ identifier: digital_logic_2
 weight: 20
 bookHidden: true
 overview: true
+icon: "svg/cpu.svg"
 ---
 {{< katex />}}
 == How does a CPU work 2 - Table of contents

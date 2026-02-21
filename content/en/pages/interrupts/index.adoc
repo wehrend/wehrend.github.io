@@ -11,6 +11,7 @@ outdir: ~/development/blog
 draft: false
 bookHidden: true
 overview: true
+icon: "svg/interrupts.svg"
 ---
 
 == Interrupts - The doorbell analogy

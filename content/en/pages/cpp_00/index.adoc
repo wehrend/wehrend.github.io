@@ -11,7 +11,7 @@ bookHidden: true
 overview: true
 outdir: ~/development/blog
 draft: false
-
+icon: "svg/cpp.svg"
 ---
 
 = C++ Course — Overview

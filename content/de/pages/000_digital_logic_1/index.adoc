@@ -7,6 +7,7 @@ link:
 description:
 bookHidden: true
 overview: true
+icon: "svg/cpu.svg"
 ---
 {{< katex />}}
 == Wie funktioniert eine CPU - Inhaltsverzeichnis

@@ -9,6 +9,7 @@ description:
 type: text
 bookHidden: true
 overview: true
+icon: "svg/platine.svg"
 ---
 {{< katex />}}
 

@@ -1,73 +1,59 @@
 {{ define "main" }}
 <article class="book-article">
 
-  <h1>Welcome</h1>
+    <h1>Welcome</h1>
 
-  {{/* --- helpers: get roots (language-aware) --- */}}
-  {{ $pagesRoot := .Site.GetPage (printf "/%s/pages" .Site.Language.Lang) }}
-  {{ if not $pagesRoot }}{{ $pagesRoot = .Site.GetPage "/pages" }}{{ end }}
+    {{/* --- helpers: get roots (language-aware) --- */}}
+    {{ $pagesRoot := .Site.GetPage (printf "/%s/pages" .Site.Language.Lang) }}
+    {{ if not $pagesRoot }}{{ $pagesRoot = .Site.GetPage "/pages" }}{{ end }}
 
-  {{ $postsRoot := .Site.GetPage (printf "/%s/posts" .Site.Language.Lang) }}
-  {{ if not $postsRoot }}{{ $postsRoot = .Site.GetPage "/posts" }}{{ end }}
+    {{ $postsRoot := .Site.GetPage (printf "/%s/posts" .Site.Language.Lang) }}
+    {{ if not $postsRoot }}{{ $postsRoot = .Site.GetPage "/posts" }}{{ end }}
 
-  {{/* --- collect overview items --- */}}
-  {{ $posts := slice }}
-  {{ if $postsRoot }}{{ $posts = where $postsRoot.Pages ".Params.overview" "eq" true }}{{ end }}
-  {{ $posts = ($posts.ByWeight).ByTitle }}
+    {{/* --- collect overview items --- */}}
+    {{ $posts := slice }}
+    {{ if $postsRoot }}{{ $posts = where $postsRoot.Pages ".Params.overview" "eq" true }}{{ end }}
+    {{ $posts = ($posts.ByWeight).ByTitle.Reverse }}
 
-  {{ $pages := slice }}
-  {{ if $pagesRoot }}{{ $pages = where $pagesRoot.Pages ".Params.overview" "eq" true }}{{ end }}
-  {{ $pages = ($pages.ByWeight).ByTitle }}
+    {{ $pages := slice }}
+    {{ if $pagesRoot }}{{ $pages = where $pagesRoot.Pages ".Params.overview" "eq" true }}{{ end }}
+    {{ $pages = ($pages.ByWeight).ByTitle.Reverse }}
 
-  <div class="book-card-grid">
+    <div class="book-card-grid">
+        {{/* Wir führen Posts und Pages zusammen, falls du eine Gesamtsortierung möchtest,
+        oder behalten die getrennten Blöcke bei. Hier die getrennte Variante mit Reverse: */}}
 
-    {{/* --- render posts first --- */}}
-    {{ range $posts }}
-      <a class="book-card" href="{{ .RelPermalink }}">
-        <div class="book-card__icon" aria-hidden="true">
-          {{ with .Params.icon }}
-            <span class="book-card__emoji">{{ . }}</span>
-          {{ else }}
-            <span class="book-card__emoji">📝</span>
-          {{ end }}
-        </div>
+        {{ range (union $posts $pages).ByWeight.ByTitle.Reverse }}
+        <a class="book-card" href="{{ .RelPermalink }}">
+            <div class="card-icon"
+                 style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                {{ if .Params.icon }}
+                {{ $iconPath := trim .Params.icon "/" }}
+                {{ $icon := resources.Get $iconPath }}
 
-        <div class="book-card__title">{{ .LinkTitle }}</div>
+                {{ if $icon }}
+                    <div class="svg-wrapper" style="width: 100%; height: 100%; fill: currentColor;">
+                        {{ $icon.Content | safeHTML }}
+                    </div>
+                {{ else }}
+                    {{/* Debug-Ausgabe: Warum wurde nichts gefunden? */}}
+                    <span style="font-size: 12px; color: red;">
+                        Nicht in /assets/ gefunden: {{ $iconPath }}
+                    </span>
+                {{ end }}
+            {{ end }}
+            </div>
+            <div class="book-card__title">{{ .LinkTitle }}</div>
 
-        {{ with .Params.summary }}
-          <div class="book-card__summary">{{ . }}</div>
-        {{ else }}
-          {{ with .Summary }}
+            {{ with .Params.summary }}
+            <div class="book-card__summary">{{ . }}</div>
+            {{ else }}
+            {{ with .Summary }}
             <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
-          {{ end }}
+            {{ end }}
+            {{ end }}
+        </a>
         {{ end }}
-      </a>
-    {{ end }}
-
-    {{/* --- then render pages --- */}}
-    {{ range $pages }}
-      <a class="book-card" href="{{ .RelPermalink }}">
-        <div class="book-card__icon" aria-hidden="true">
-          {{ with .Params.icon }}
-            <span class="book-card__emoji">{{ . }}</span>
-          {{ else }}
-            <span class="book-card__emoji">📘</span>
-          {{ end }}
-        </div>
-
-        <div class="book-card__title">{{ .LinkTitle }}</div>
-
-        {{ with .Params.summary }}
-          <div class="book-card__summary">{{ . }}</div>
-        {{ else }}
-          {{ with .Summary }}
-            <div class="book-card__summary">{{ . | plainify | truncate 120 }}</div>
-          {{ end }}
-        {{ end }}
-      </a>
-    {{ end }}
-
-  </div>
-
+    </div>
 </article>
 {{ end }}

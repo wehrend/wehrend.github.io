@@ -30,17 +30,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+  }
     svg {
-      width: 100%;
-      height: 100%;
+      width: 10%;
+      height: 10%;
       max-width: 64px;
       max-height: 64px;
       fill: none;
       stroke: var(--color-link);
       stroke-width: 1.5; /* Einheitliche Linienstärke für alle Icons */
     }
-  }
 
   h3 {
     font-size: 1rem;
