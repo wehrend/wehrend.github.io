@@ -1,1 +1,32 @@
-{{ define "dummy" }}{{ end }}
+{{ define "main" }}
+  <article class="markdown book-article">
+    {{- .Content -}}
+
+    <hr style="margin-top: 2rem;">
+    <nav class="book-navigation" style="display: flex; justify-content: space-between; padding: 1rem 0;">
+
+      {{/* Wir holen alle Seiten aus "pages" und sortieren sie explizit nach dem File-Pfad */}}
+      {{ $pages := (where .Site.RegularPages "Section" "pages") }}
+      {{ $sortedPages := sort $pages "File.Path" "asc" }}
+
+      <div class="prev">
+        {{/* Nur zeigen, wenn aktuelle Seite kein Overview ist */}}
+        {{ if not .Params.overview }}
+          {{ with $sortedPages.Next . }}
+            <a href="{{ .Permalink }}" style="text-decoration: none;">← {{ .Title }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      <div class="next" style="text-align: right;">
+        {{/* Da Next/Prev bei alphabetischer Sortierung oft "gedreht" sind: */}}
+        {{ with $sortedPages.Prev . }}
+          {{ if not .Params.overview }}
+            <a href="{{ .Permalink }}" style="text-decoration: none;">{{ .Title }} →</a>
+          {{ end }}
+        {{ end }}
+      </div>
+
+    </nav>
+  </article>
+{{ end }}
