@@ -75,6 +75,8 @@ In the next part, we will add **Master and Slave Oscillators for / with Hard Syn
 In the previous chapters, our oscillators lived in isolation. They knew nothing of each other. Today, we break that wall.
 We are implementing **Hard Sync**, a classic synthesis technique famous for creating aggressive, "screaming" lead sounds.
 
+image:hard_sync.png[hard-sync].
+
 == 1. What is Hard Sync?
 
 Hard Sync involves two oscillators: a **Master** and a **Slave**.
