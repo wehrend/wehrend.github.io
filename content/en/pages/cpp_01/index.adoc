@@ -23,8 +23,8 @@ Install Microsoft code so that have one simple IDE you can work with...
 
 And create a file main.cpp with the following content
 
-[source,c++]
-----
+
+{{< hcode "cpp" >}}
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -45,8 +45,8 @@ int main() {
     cout << "int        " << sizeof(int) << "\n";
     cout << "long        " << sizeof(long) << "\n";
     cout << "long long   " << sizeof(long long) << "\n";
-}ś
-----
+}
+{{< /hcode  >}}
 Next you need to have the free gnu compiler gcc have installed.
 
 We compile the file with a simple
@@ -88,8 +88,8 @@ long long   8
 In this section we will examine a simple *Hello World* program running on a Linux-based platform with a 64-bit processor.
 Although the program is small, it already contains several important concepts that appear in every C++ application.
 
-[source,cpp]
-----
+
+{{< hcode "cpp" >}}
 #include <iostream>
 using namespace std;
 
@@ -98,7 +98,7 @@ int main() {
     cout << "Hello World" << "\n";
     return 0;
 }
-----
+{{< /hcode >}}
 
 At first glance the program appears trivial, but even here multiple stages of compilation and execution are involved.
 We will therefore go through the code step by step in order to build a clear mental image of what happens.

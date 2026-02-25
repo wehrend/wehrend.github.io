@@ -53,8 +53,7 @@ Data flows through our composed objects in a specific order:
 
 == 4. Full Reference Code
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #ifndef ENVELOPE_H
 #define ENVELOPE_H
 
@@ -113,10 +112,10 @@ public:
 };
 
 #endif
-----
+{{< /hcode >}}
 
-[source,cpp]
-----
+
+{{< hcode "cpp" >}}
 #ifndef FILTER_H
 #define FILTER_H
 
@@ -142,10 +141,11 @@ public:
 };
 
 #endif
-----
+{{< /hcode  >}}
 
-[source,cpp]
-----
+
+
+{{< hcode "cpp" >}}
 #ifndef OSCILLATOR_H
 #define OSCILLATOR_H
 
@@ -190,10 +190,10 @@ public:
 };
 
 #endif
-----
+{{< /hcode >}}
 
-[source,cpp]
-----
+
+{{< hcode "cpp" >}}
 #include "Oscillator.h"
 
 Oscillator::Oscillator(double freq, double amp, double sr)
@@ -230,11 +230,11 @@ float TriangleOsc::getNextSample() {
     if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
     return sample * (float)amplitude;
 }
-----
+{{< /hcode >}}
 
 
-[source,cpp]
-----
+
+{{< hcode "cpp" >}}
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <vector>
@@ -375,7 +375,8 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 0;
 }
-----
+{{< /hcode >}}
+
 
 == 5. Visual Debugging: Seeing the State
 
@@ -388,8 +389,7 @@ If the number on screen changes but the sound does not, you know the bug is in y
 than your **Control logic** (keyboard input).
 
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
@@ -564,4 +564,4 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 0;
 }
-----
+{{< /hcode >}}

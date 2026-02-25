@@ -1,0 +1,15 @@
+{{- $lang := .Get 0 | default "" -}}
+{{- $code := .Inner | replaceRE "\\A\\n+" "" | replaceRE "\\n+\\z" "" -}}
+
+{{- $lines := 0 -}}
+{{- if gt (len $code) 0 -}}
+  {{- $lines = len (split $code "\n") -}}
+{{- end -}}
+
+{{- $opts := "" -}}
+{{- if gt $lines 9 -}}
+  {{- /* inline line numbers, table also works: lineNos=table */ -}}
+  {{- $opts = "lineNos=true" -}}
+{{- end -}}
+
+{{- highlight $code $lang $opts -}}

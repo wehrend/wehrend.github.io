@@ -71,7 +71,6 @@ here including the hugo-book theme...
 
 We start with the workflow file deploy.yml . My new setup looks like the following:
 
-----
 {{<highlight yaml>}}
 name: Build and Deploy Hugo Site
 
@@ -126,11 +125,10 @@ jobs:
           user_email: sven.wehrend@gmail.com
 
 {{</highlight>}}
-----
+
 
 and here for reasons of completeness the config.toml residing in the content directory...
 
-----
 {{<highlight toml>}}
 baseURL = "http://wehrend.uber.space/"
 languageCode = "en-us"
@@ -279,7 +277,7 @@ publishDir = "wehrend.github.io"
     adoc = "yaml"
 
 {{</highlight>}}
-----
+
 
 Thanks to the github-token documented https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#supported-tokens[here]
 we even do not need to setup a key or token by using the default github_token which do not need any configuration, in case the

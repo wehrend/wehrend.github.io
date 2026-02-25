@@ -44,8 +44,7 @@ Through composition, we build a "Signal Chain." Even in this basic version, data
 
 Below is the complete integrated code demonstrating the relationship between the Engine, the polymorphic Oscillator, and the ADSR Envelope.
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #ifndef OSCILLATOR_H
 #define OSCILLATOR_H
 
@@ -90,10 +89,9 @@ public:
 };
 
 #endif
-----
+{{< /hcode >}}
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #include "Oscillator.h"
 
 Oscillator::Oscillator(double freq, double amp, double sr)
@@ -130,10 +128,10 @@ float TriangleOsc::getNextSample() {
     if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
     return sample * (float)amplitude;
 }
-----
+{{< /hcode >}}
 
-[source,cpp]
-----
+
+{{< hcode "cpp" >}}
 #ifndef ENVELOPE_H
 #define ENVELOPE_H
 
@@ -192,10 +190,9 @@ public:
 };
 
 #endif
-----
+{{< /hcode  >}}
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <vector>
@@ -328,7 +325,7 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 0;
 }
-----
+{{< /hcode >}}
 
 We compile the file with a simple
 

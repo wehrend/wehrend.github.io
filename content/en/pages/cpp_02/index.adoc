@@ -231,8 +231,7 @@ code for the base `Oscillator`. Any extra memory or resources managed by the chi
 
 Modern C++ offers "Smart Pointers" to automate this, but understanding the raw mechanics is what separates a user from a developer
 
-[source,c++]
-----
+{{< hcode "cpp" >}}
 #include <SDL2/SDL.h>
 #include <cmath>
 #include <iostream>
@@ -336,7 +335,7 @@ int main()
     SDL_Quit();
     return 0;
 }
-----
+{{< /hcode >}}
 
 
 We compile the file with a simple
@@ -370,8 +369,7 @@ This is our "Worker" class. It handles the wave state. By keeping `phase` and `f
 thread is the only thing moving the needle.
 
 === Oscillator.h
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 class Oscillator {
 private:
     double frequency, amplitude, phase, sampleRate;
@@ -381,15 +379,15 @@ public:
     float getNextSample();
     void setFrequency(double freq);
 };
-----
+{{< /hcode >}}
+
 
 === Oscillator.cpp
 We’re using a Square Wave. It’s either "on" or "off" (1 or -1). This gives us that raw, 8-bit sound.
 
 
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #include "Oscillator.h"
 
 Oscillator::Oscillator(double freq, double amp, double sr)
@@ -401,7 +399,8 @@ float Oscillator::getNextSample() {
     if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
     return sample * (float)amplitude;
 }
-----
+{{< /hcode >}}
+
 
 == 2. The Engine (The Hardware Bridge)
 SDL2 uses a "Callback". Think of it as the sound card knocking on your door every few milliseconds asking for more numbers.
@@ -472,8 +471,7 @@ Next time, we’ll fix that with an **Envelope (ADSR)** to smooth out the start 
 
 === Synth Oscilloscope
 
-[source,cpp]
-----
+{{< hcode "cpp" >}}
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <vector>
@@ -573,6 +571,6 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     return 0;
 }
-----
+{{< /hcode >}}
 
 
