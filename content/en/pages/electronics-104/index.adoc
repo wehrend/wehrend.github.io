@@ -18,7 +18,7 @@ After this chapter you will know all the basics around linear components, integr
 {{< /hint >}}
 
 
-= Integrated NF amplifiers
+== Integrated NF amplifiers
 
 Today, much-needed electronic functions such as NF amplifiers are no longer predominantly constructed from “discrete” (from Latin discretum = separate)
 components, but are replaced by integrated circuits (Latin integrare = to unite); colloquially, they are called ICs
@@ -34,7 +34,7 @@ essentially of an operational amplifier as a preamplifier and a push-pull output
 is its input stage, which is designed as a differential amplifier. Therefore, we will first discuss the principle of the differential amplifier,
 followed by the basic characteristics of the operational amplifier, insofar as they are necessary for understanding the integrated low-frequency amplifier components.
 
-== The differential amplifier
+=== The differential amplifier
 
 The differential amplifier consists of two transistors in emitter configuration. The collector-emitter paths of the transistors are
 controllable resistors. The circuit thus provides a resistor bridge consisting of R1/T1 as the left voltage divider and R2/T2 as the right voltage divider.
@@ -225,8 +225,7 @@ negatively fed back. If the return path is via a high-pass filter, the low frequ
 The possibilities are extremely numerous and can only be hinted at here. It should also be mentioned that the gain can be continuously adjusted via a trimmer (instead of R2).
 
 
-
-4. Experiment (operation as a non-inverting amplifier):
+4 . Experiment (operation as a non-inverting amplifier):
 
 To control the inputs, we use a potentiometer to set up a voltage divider with approx. 10... 50 kOhm lin. (see figure). The voltage divider allows the inputs to be controlled with positive and negative variable voltages
 . The processes at the output can be observed even more easily if V_{u} is reduced further, e.g., by reducing the resistance R2 from 100 kOhm to 22 kOhm.

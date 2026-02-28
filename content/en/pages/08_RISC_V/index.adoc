@@ -13,9 +13,10 @@ menu:
     parent: "digital_logic_1"
 ---
 {{< katex />}}
+
 == Digital design meets computer architecture
 
-= RISC vs CISC and The RISC-V architecture 
+=== RISC vs CISC and The RISC-V architecture
 
 Existing processor types can be classified by their instruction type set:
 Reduced instruction set computer (RISC), Complex instruction set computer (CISC) and hybrid forms.
@@ -29,7 +30,7 @@ Also instructions have a constant length, memory operations are divided from ari
 which is known as Load/Store-architecture. RISC-V is an open standard for the instruction set archtitecture (ISA).
 Most of this post is referenced from the popular book Computer Organization and Design (RISC-V) Edition by Hennessey and Patterson.
     
-== RISC-V Assembler
+=== RISC-V Assembler
 
 Here we introduce the RISC-V assembler.
 The subset shown here is a bit bigger than the one we will implement further down the line.
@@ -62,7 +63,7 @@ An overview of the instruction formats of the different types is given below:
 image:./instruction_types.png[width="140%"]
 
 
-== A minimal Implementation
+=== A minimal Implementation
 The minimal working subset of a RISC-V implementation contains the following instructions:
 
 * Arithmetic-logical instructions 'add', 'sub', 'and' and 'or' [Register-type instructions]
@@ -95,7 +96,7 @@ image:./cpu_structure_with_control.svg[width="120%"]
 
 
 
-== The Fetch-Decode-Execute cycle for the different instruction types
+=== The Fetch-Decode-Execute cycle for the different instruction types
 
 We will start with the common Fetch-Decode-Execute cycle of a common RISC processor,
 and demonstrate the working principle of it for typical instructions.

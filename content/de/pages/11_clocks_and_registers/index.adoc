@@ -12,6 +12,7 @@ menu:
     weight: 10
 ---
 {{< katex />}}
+
 == Taktgeber, Flipflops und Register
 In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden
 .

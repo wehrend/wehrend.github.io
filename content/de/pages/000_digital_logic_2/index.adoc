@@ -58,9 +58,9 @@ _VHDL und Verilog_
 
 Wir stellen das Konzept einer Hardwarebeschreibungssprache (HDL) wie VHDL und Verilog vor.
 
-= Extra
+== Extra
 
-== *Register-Transfer-Level*
+=== *Register-Transfer-Level*
 
 _Register-Transfer-Level_
 

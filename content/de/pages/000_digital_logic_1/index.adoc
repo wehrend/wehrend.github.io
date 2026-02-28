@@ -87,14 +87,14 @@ verwenden nur statische Logik, uns fehlt noch ein Konzept, wie berechnete Werte 
 Wir müssen das Konzept von Registern und sequentieller Logik lernen.
 Dies wird das Hauptthema der zweiten Beitragsreihe sein.
 
-= Extra
+== Extra
 
-== Exkurs zu Prioritätscodierern und -decodierern
+=== Exkurs zu Prioritätscodierern und -decodierern
 In diesem Kapitel befassen wir uns mit Prioritätscodierern und -decodierern sowie der dahinterstehenden Logik...
 
 _link:/de/pages/06_priority_encoder_and-decoder/[Prioritätscodierer und -decodierer]_
 
-== *Lass mich das nachschlagen*
+=== *Lass mich das nachschlagen*
 
 _Erster Blick auf Speicher und Look-Up-Tables (LUTs)_
 

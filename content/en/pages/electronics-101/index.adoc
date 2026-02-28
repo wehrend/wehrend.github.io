@@ -17,7 +17,7 @@ After this chapter you will know all the basics around electricity and simple ci
 {{< /hint >}}
 
 
-= Prequel Introduction to electronics
+== Prequel Introduction to electronics
 
 '''
 While I was about to write the implementation part of the boolean algebra post, the basic logic
@@ -27,7 +27,7 @@ here shall be the place for those excursions. This is not meant to be a complete
 existing literature.
 '''
 
-== Free electrons and electric current
+=== Free electrons and electric current
 
 What is electricity? Broadly spoken it is the flow of electrons in a conductor. In layman's term you can say,
 electrons on the outer shell - also called as valence band - of an atom are hopping from the valence band
@@ -44,7 +44,7 @@ as excellent conductor. The conductivity of semiconductors is variable to a wide
 
 ////
 
-=== Going atomic: Conductors...
+==== Going atomic: Conductors...
 
 The first group of elements (or compounds) we will introduce here are the conductors.
 Some important representations of this group are the elements aluminium and copper
@@ -78,7 +78,7 @@ image:./simple_circuit.svg[width="400px"]
 
 
 
-=== ...and not so conductors
+==== ...and not so conductors
 
 The second group of elements we want to introduce here are elements which
 conductivity is (highly) dependent on its purity degree and environment
@@ -114,7 +114,7 @@ shell.
 2+>|semiconductor | conductor
 |=====
 
-== Voltage and potential
+=== Voltage and potential
 
 The table below shows the common symbols for voltage sources. On the left side
 an ideal voltage source is shown, while on the right side a real voltage source
@@ -161,7 +161,7 @@ limit the current flowing between certain paths of a circuits. We will learn abo
 image:./resistor_circuit.svg[width="250px"]
 
 
-== Ohm's law and lead resistance
+=== Ohm's law and lead resistance
 
 *Exercise: Measure Resistance*
 To execute the following exercise you need one voltage meter and one amperemeter (or just two multimeter's), a variable voltage source and
@@ -255,7 +255,7 @@ image:./resistance_measurement_ll.svg[width=550]
 
 '''
 
-== Basic circuits
+=== Basic circuits
 
 {{< hint warning >}}
 This is a simplified model used for intuition; real semiconductor physics behaves more complexly
@@ -267,12 +267,12 @@ a distinction is made between a basic circuit with a voltage source and a basic 
 In circuit analysis, the aim is to reduce complex circuits to basic circuits. Basic circuits are defined as
 series and parallel connections of components.
 
-=== Basic laws of circuits
+==== Basic laws of circuits
 
 What generally applicable laws apply to every circuit, regardless of whether the resistors in it are linear or nonlinear?
 The three laws described below form the basis for circuit calculations.
 
-==== Ohm's law
+===== Ohm's law
 
 For every resistor, if the current and resistance value are known, the following applies
 

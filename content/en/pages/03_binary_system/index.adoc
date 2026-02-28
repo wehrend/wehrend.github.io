@@ -13,6 +13,7 @@ menu:
     parent: "digital_logic_1"
 ---
 {{< katex />}}
+
 ==  The Binary System
 
 
@@ -61,7 +62,7 @@ The first example works while the second one producesa carry flag besides the (w
 
 image:./addition.svg[width="100%"]
 
-= Scheme for combinatorial circuit
+== Scheme for combinatorial circuit
 We develop the RC-adder circuit according to the following scheme, 
 applied to evaluate combinatorial circuits
 

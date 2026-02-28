@@ -86,7 +86,7 @@ are based on static logic—we're still missing a way to store computed values.
 To address this, we need to understand the concept of registers and sequential logic.
 This will be the focus of the second part of the series.
 
-= Extra
+== Extra
 
 == Excursion to priority encoder and decoder
 In this chapter we will have a look at priority encoders and decoders, as well as the logic behind them...

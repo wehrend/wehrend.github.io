@@ -12,14 +12,15 @@ menu:
     weight: 10
 ---
 {{< katex />}}
-== Sequentielle Logik
+
+=== Sequentielle Logik
 
 Ergänzend zur kombinatorischen Logik enthält die sequentielle Logik eine Art Speicher,
 der das Verhalten zustandsabhängig macht. Wir müssen ihr ein Taktsignal zuführen.
 
 image:./sequential_logic.svg[width=50%]
 
-=== Mealy- und Moore-Automaten (synchron)
+==== Mealy- und Moore-Automaten (synchron)
 In der digitalen Logik gibt es zwei verschiedene Arten von endlichen Automaten.
 Diese sind:
 
@@ -29,7 +30,7 @@ Der Moore-Automat, der nur vom Zustand abhängig ist
 image:./mealy_logic.svg[width=50%]
 image:./moore_logic.svg[width=50%]
 
-=== Synchrone und asynchrone sequentielle Logik
+==== Synchrone und asynchrone sequentielle Logik
 
 Es gibt zwei verschiedene Arten sequentieller Logik: die synchrone sequentielle Logik
 mit einem zentralen Taktgeber sowie die asnychrone Logik mit mehreren Taktgeber-Domänen.

@@ -18,9 +18,9 @@ weight: 1200
 Nach diesem Kapitel kennen Sie alle Grundlagen zu zeitkritischen Bauteilen wie Spulen und Kondensatoren sowie zu einfachen Schaltungen, die diese Bauteile verwenden...
 {{< /hint >}}
 
-= Elektronik 102
+== Elektronik 102
 
-== Zeitabhängige Bauteile
+=== Zeitabhängige Bauteile
 
 Nachdem wir im ersten Teil das wichtigste Bauteil, den Widerstand, behandelt und ausführlich beschrieben haben,
 wollen wir uns nun das nächste wichtige

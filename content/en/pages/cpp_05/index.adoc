@@ -13,19 +13,19 @@ draft: false
 ---
 {{< katex />}}
 
-= Beyond the Single Note: Implementing Polyphony
+== Beyond the Single Note: Implementing Polyphony
 
 In our previous tutorials, our synthesizer was limited to one note at a time. If you pressed a new key, the old sound simply disappeared.
 Today, we change that by implementing **Polyphony**—the ability to play chords and manage multiple "Voices" simultaneously.
 
-== 1. What is a "Voice"?
+=== 1. What is a "Voice"?
 
 In professional synthesizer design, we use the **Voice Architecture**. A "Voice" is a self-contained unit that holds everything
 needed to produce one sound: an **Oscillator** and an **Envelope**.
 
 Instead of the `SynthEngine` owning a single oscillator, it now owns a list of `Voice` objects.
 
-== 2. Managing Objects with `std::vector`
+=== 2. Managing Objects with `std::vector`
 
 How do we keep track of notes that are born (Key Down) and die (Release phase finished)? We use the C++ Standard Library's `std::vector`.
 
@@ -34,7 +34,7 @@ How do we keep track of notes that are born (Key Down) and die (Release phase fi
 
 
 
-== 3. Thread Safety: The Audio Lock
+=== 3. Thread Safety: The Audio Lock
 
 In audio programming, we have two "threads" running at once:
 1. **The Main Thread:** Watches your keyboard and adds voices to the vector.
@@ -45,7 +45,7 @@ To prevent this, we use `SDL_LockAudio()`. It acts as a "stoplight," ensuring on
 
 
 
-== 4. Digital Mixing: The Summing Bus
+=== 4. Digital Mixing: The Summing Bus
 
 To hear multiple voices, we simply **add** their samples together. However, we must be careful. If four voices all produce
 a signal of 0.5, the sum is 2.0. Since digital audio clips at $1.0$, this results in terrible distortion.
@@ -56,28 +56,28 @@ We solve this by providing **Headroom**:
 
 
 
-== 5. The Keyboard Map
+=== 5. The Keyboard Map
 
 To make the synth playable, we use `std::map<SDL_Keycode, int>`. This allows us to translate a computer key (like `SDLK_a`)
 into a musical frequency using the MIDI standard formula:
 
 \[f = 440 \cdot 2^{\frac{n - 69}{12}}\]
 
-== Conclusion
+=== Conclusion
 
 By moving to a polyphonic architecture, we’ve introduced core C++ concepts: **Dynamic Memory Management**, **Thread Synchronization**,
 and **Data Structures**. Our synth is now a true instrument.
 
 In the next part, we will add **Master and Slave Oscillators for / with Hard Sync** to give these voices some movement and character!
 
-= The Laser Sound: Implementing Hard Sync
+== The Laser Sound: Implementing Hard Sync
 
 In the previous chapters, our oscillators lived in isolation. They knew nothing of each other. Today, we break that wall.
 We are implementing **Hard Sync**, a classic synthesis technique famous for creating aggressive, "screaming" lead sounds.
 
 image:hard_sync.png[hard-sync].
 
-== 1. What is Hard Sync?
+=== 1. What is Hard Sync?
 
 Hard Sync involves two oscillators: a **Master** and a **Slave**.
 The Master determines the fundamental pitch. The Slave provides the actual sound. However, there is a catch:
@@ -86,7 +86,7 @@ Every time the Master finishes one cycle (reaches the end of its phase), it forc
 If the Slave is running at a higher frequency than the Master, it will be "cut off" mid-cycle. This creates sharp,
 jagged edges in the waveform, resulting in complex, metallic overtones that are perfect for cutting through a mix.
 
-== 2. Refactoring for Interaction
+=== 2. Refactoring for Interaction
 
 To make this work, we had to refactor our `Oscillator` class. Previously, `getNextSample()` handled both the phase update and the calculation.
 For Sync, we need to decouple them.
@@ -95,7 +95,7 @@ By adding `getPhase()` and `setPhase()`, the **Voice** class can now act as a me
 
 
 
-== 3. The Sync Logic in C++
+=== 3. The Sync Logic in C++
 
 Inside our `Voice::getNextSample()`, the magic happens in a few lines of code. We track the "Phase Wrap" of the master:
 
@@ -114,7 +114,7 @@ if (newPhase < oldPhase) {
 This interaction is a great example of **Object Composition**. The `Voice` manages the lifecycle of two oscillators and
 defines how they communicate.
 
-== 4. Why it Sounds "Angry"
+=== 4. Why it Sounds "Angry"
 
 Mathematically, these phase resets introduce **discontinuities** in the Slave's waveform. In the frequency domain, these
 sharp jumps translate to a massive boost in high-frequency harmonics.
@@ -122,7 +122,7 @@ sharp jumps translate to a massive boost in high-frequency harmonics.
 > **Pro Tip:** The classic "Sync Sweep" effect is achieved by modulating the Slave's frequency (usually with an LFO or Envelope)
 while the Master stays at a constant pitch.
 
-== 5. Conclusion
+=== 5. Conclusion
 
 Hard Sync moves us away from "Static" synthesis into "Dynamic" synthesis. We are no longer just playing waves; we are creating
 a system where objects react to one another in real-time.

@@ -6,6 +6,7 @@ draft: false
 type: blog
 ---
 {{< katex />}}
+
 == Analog Computers
 
 Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,

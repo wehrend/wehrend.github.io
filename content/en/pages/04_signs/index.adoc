@@ -12,6 +12,7 @@ menu:
     parent: "digital_logic_1"
 ---
 {{< katex />}}
+
 == Extending the binary system
 
 While in the previous blog post about addition,

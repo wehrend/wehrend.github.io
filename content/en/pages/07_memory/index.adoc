@@ -12,7 +12,9 @@ menu:
     parent: "digital_logic_1"
 ---
 {{< katex />}}
+
 == Memory Organization
+
 In this blog post the author will introduce the different
 types of semiconductor memory. This is a wide field, 
 so the goal here is to focus on the most important ones 

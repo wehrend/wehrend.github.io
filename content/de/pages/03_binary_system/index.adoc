@@ -13,6 +13,7 @@ menu:
     weight: 15
 ---
 {{< katex />}}
+
 == Das Binärsystem
 
 Alle Computer, mit denen wir täglich arbeiten, wissen nichts von dem Dezimalsystem, das wir verwenden, basierend auf den zehn Ziffern, die uns zur Verfügung stehen.
@@ -60,7 +61,7 @@ Das erste Beispiel funktioniert, während das zweite Beispiel neben dem (falsche
 
 image:./addition.svg[width=„100%“]
 
-= Schema für kombinatorische Schaltkreise
+== Schema für kombinatorische Schaltkreise
 Wir entwickeln den RC-Addierer-Schaltkreis nach folgendem Schema,
 das zur Bewertung kombinatorischer Schaltkreise angewendet wird.
 
