@@ -18,7 +18,7 @@ Nach diesem Kapitel kennen Sie alle Grundlagen rund um Elektrizität und einfach
 {{< /hint >}}
 
 
-= Vorwort Einführung in die Elektronik
+== Vorwort Einführung in die Elektronik
 
 '‘'
 Als ich gerade dabei war, den Teil über die Umsetzung der Booleschen Algebra zu schreiben, also die grundlegenden Logikgatter,

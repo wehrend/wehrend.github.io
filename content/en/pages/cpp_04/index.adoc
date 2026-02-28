@@ -13,12 +13,12 @@ draft: false
 ---
 {{< katex />}}
 
-= From Stateless to Stateful: Filters & Composition
+== From Stateless to Stateful: Filters & Composition
 
 In previous parts, we built an oscillator. It was "stateless"—you give it a phase, it gives you a value. It doesn't care
 what happened a microsecond ago. But to make music sound "warm" or "organic," we need objects that have a **memory**.
 
-== 1. DSP General: The Concept of State
+=== 1. DSP General: The Concept of State
 
 In Digital Signal Processing (DSP), a filter is **stateful**. To calculate the *current* output, a filter needs to know
 the *previous* output.
@@ -35,7 +35,7 @@ Mathematically, a simple One-Pole Low Pass Filter looks like this:
 Because the object "remembers" y[n-1], we call it stateful. In C++, this means our `Filter` class must store that value
 as a private member variable that persists between calls to `process()`.
 
-== 2. Architecture: Composition (Has-A)
+=== 2. Architecture: Composition (Has-A)
 
 To manage these stateful modules, we use **Composition**. While beginners often try to solve everything through inheritance,
 professionals prefer composition: **"A Synthesizer *has an* Envelope and a Filter."**
@@ -43,7 +43,7 @@ professionals prefer composition: **"A Synthesizer *has an* Envelope and a Filte
 * **Modularity:** We can swap the Filter implementation without touching the Oscillator.
 * **Encapsulation:** The `SynthEngine` doesn't need to know the math of the filter; it just hands the filter a sample and gets a shaped sample back.
 
-== 3. The Signal Chain
+=== 3. The Signal Chain
 
 Data flows through our composed objects in a specific order:
 
@@ -51,7 +51,7 @@ Data flows through our composed objects in a specific order:
 2.  **Filter (VCF)** -> Subtracts frequencies (the stateful part).
 3.  **Envelope (ADSR)** -> Shapes the final volume.
 
-== 4. Full Reference Code
+=== 4. Full Reference Code
 
 {{< hcode "cpp" >}}
 #ifndef ENVELOPE_H
@@ -378,7 +378,7 @@ int main(int argc, char* argv[]) {
 {{< /hcode >}}
 
 
-== 5. Visual Debugging: Seeing the State
+=== 5. Visual Debugging: Seeing the State
 
 Finally, how do we know our stateful system is working? Since we can't "see" sound, we use **Visual Debugging**.
 

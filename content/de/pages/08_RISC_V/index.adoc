@@ -10,9 +10,10 @@ bookHidden: true
 ---
 
 {{< katex />}}
+
 == Digitales Design trifft auf Computerarchitektur
 
-= RISC vs. CISC und die RISC-V-Architektur
+== RISC vs. CISC und die RISC-V-Architektur
 
 Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden:
 Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen.

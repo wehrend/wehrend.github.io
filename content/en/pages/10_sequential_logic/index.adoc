@@ -12,6 +12,7 @@ menu:
     parent: "digital_logic_2"
 ---
 {{< katex />}}
+
 == Sequential Logic
 
 Complementary to Combinatorial logic, sequential logic contains some type of memory,

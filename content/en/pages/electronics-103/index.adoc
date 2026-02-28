@@ -525,7 +525,7 @@ Would you like to see a comparison of astable, monostable, and bistable multivib
 This chapter I will mostly be written 1:1 from the book "Wege in die Elektonik" from Joseph Glagla and Gert Lindner; 1980.
 
 
-==== Two-Port-Theory Basic circuits and  h-parameters
+=== Two-Port-Theory Basic circuits and  h-parameters
 
 The two-port-theory and the h-parameters are theoretical foundation for two-port-schematics.
 It is utilized for example to describe amplifiers, all circuits discussed here have a common ground

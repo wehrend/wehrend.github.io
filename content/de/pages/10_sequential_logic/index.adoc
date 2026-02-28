@@ -11,7 +11,9 @@ menu:
     parent: "digital_logic_2"
     weight: 10
 ---
+
 {{< katex />}}
+
 == Sequentielle Logik
 
 Ergänzend zur kombinatorischen Logik enthält die sequentielle Logik eine Art Speicher,

@@ -419,7 +419,7 @@ image:./astable_multivibrator.png[width="700px"]
 
 link:./astable_multivibrator.asc[astabiler Multivibrator – ltspice-Datei]
 
-== BJT als Verstärker
+=== BJT als Verstärker
 
 Dieses Kapitel werde ich größtenteils 1:1 aus dem Buch „Wege in die Elektronik” von Joseph Glagla und Gert Lindner aus dem Jahr 1980 übernehmen.
 

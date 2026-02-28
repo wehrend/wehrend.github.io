@@ -13,26 +13,29 @@ icon: "svg/platine.svg"
 ---
 {{< katex />}}
 
-= Electronics 101–104 — Übersicht
+== Electronics 101–104 — Übersicht
 
 Diese Seite bietet einen kurzen Überblick über die Einführungsreihe in die Elektronik.
 
-== Electronics 101
+=== Electronics 101
 link:https://wehrend.github.io/de/pages/electronics-101/[electronics 101]
 
 Einführung in grundlegende elektrische Konzepte wie Strom, Spannung, Widerstand und einfache Schaltungen.
 
-== Electronics 102
+=== Electronics 102
+
 link:https://wehrend.github.io/de/pages/electronics-102/[electronics 102]
 
 Behandelt zeitabhängige Bauelemente wie Kondensatoren und Spulen sowie einfache passive Filter.
 
-== Electronics 103
+=== Electronics 103
+
 link:https://wehrend.github.io/de/pages/electronics-103/[electronics 103]
 
 Einführung in nichtlineare Bauelemente wie Dioden und Transistoren sowie deren Einsatz als Schalter und Verstärker.
 
-== Electronics 104
+=== Electronics 104
+
 link:https://wehrend.github.io/de/pages/electronics-104/[electronics 104]
 
 Fokussiert sich auf Verstärkerschaltungen, insbesondere integrierte Verstärker und Operationsverstärker.

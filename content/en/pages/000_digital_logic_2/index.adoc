@@ -13,6 +13,7 @@ overview: true
 icon: "svg/cpu.svg"
 ---
 {{< katex />}}
+
 == How does a CPU work 2 - Table of contents
 
 
@@ -66,7 +67,7 @@ _VHDL and Verilog_
 We introduce the concept of a Hardware Description Language (HDL) like VHDL and Verilog.
 
 
-= Extra
+== Extra
 
 ==  *Register-Transfer-Level*
 

@@ -18,7 +18,7 @@ Nach diesem Kapitel kennen Sie alle Grundlagen zu linearen Bauteilen, integriert
 {{< /hint >}}
 
 
-= Integrierte NF-Verstärker
+== Integrierte NF-Verstärker
 
 Heute werden dringend benötigte elektronische Funktionen wie NF-Verstärker nicht mehr überwiegend aus „diskreten” (von lateinisch discretum = getrennt)
 Komponenten aufgebaut, sondern durch integrierte Schaltungen (lateinisch integrare = vereinen) ersetzt; umgangssprachlich werden sie als ICs
@@ -156,7 +156,7 @@ Die obige Abbildung zeigt eine Testschaltung, mit der das grundlegende Verhalten
 Die Schaltung wird später als Verstärkerschaltung verwendet.
 
 1. Experiment (Offset-Spannung und Open-Loop-Verstärkung):
-
++
 Der Operationsverstärker wird ohne zusätzliche Bauteile (d. h. ohne Trimmer zur Offset-Einstellung) an zwei Batterien oder eine symmetrische Stromversorgung
 von +/- neun bis +/- zwölf Volt angeschlossen. Die Ausgangsspannung wird mit einem Voltmeter überwacht. Ist kein Voltmeter verfügbar, reichen im Notfall zwei antiparallel geschaltete LEDs (D1/D2) aus.
 Die ansonsten erforderlichen Vorwiderstände können entfallen, da der 741 den Ausgangsstrom auf ca. 18 mA begrenzt und so eine Überlastung entweder der LED oder der Schaltung verhindert.
@@ -167,13 +167,13 @@ Der 741 hat eine Open-Loop-Verstärkung von ca. 200.000. Ist U_{EOS} nur 1 mV gr
 natürlich nicht zulässt. Diese Berechnung soll nur verdeutlichen, wie stark der Operationsverstärker übersteuert wird.
 
 2. Versuch (Offset-Einstellung):
-
++
 Verbinden Sie nun den Trimmer mit den Offset-Einstellanschlüssen 5 und 1. Stellen Sie den Trimmer so ein, dass sich der Ausgang von einem Extremwert zum anderen verschiebt.
 Die Ausgangsspannung U_{a} = 0 kann nur mit großer Präzision eingestellt werden. Der Grund dafür ist wiederum die hohe Open-Loop-Verstärkung des Operationsverstärkers.
 Bei diesem Operationsverstärker (741) ist die Offset-Einstellung (aufgrund der internen Konstruktion) über separate Anschlüsse möglich. Ist diese Option nicht verfügbar,
 erfolgt die Offset-Einstellung durch Verschieben eines Eingangs (siehe unten). Die beiden Dioden stabilisieren einen Teil der Spannung um den Nullpunkt;
 die Offset-Spannung kann mit dem Trimmer eingestellt werden.
-
++
 image:./offset-adjustment.svg[width="450px"]
 
 3. Versuch (negative Rückkopplung und invertierende Verstärker)
@@ -187,7 +187,7 @@ Für den nichtinvertierenden Verstärker gilt
 image:./op-amp-non-inverting.svg[width="450px"]
 
 
-[role=„image”, „./noninverting-amplifier.svg”, imgfmt="svg"]
+[role="image", "./noninverting-amplifier.svg", imgfmt="svg"]
 \[V_{u} = \frac{R_{1} + R_{2}}{R_{1}} = 1 + \frac{R_{2}}{R_{1}}\]
 
 
@@ -223,8 +223,7 @@ negativ rückgekoppelt werden. Erfolgt der Rückweg über einen Hochpassfilter, 
 Die Möglichkeiten sind äußerst zahlreich und können hier nur angedeutet werden. Es sei auch erwähnt, dass die Verstärkung über einen Trimmer (anstelle von R2) stufenlos eingestellt werden kann.
 
 
-
-4. Experiment (Betrieb als nichtinvertierender Verstärker):
+4 . Experiment (Betrieb als nichtinvertierender Verstärker):
 
 Zur Steuerung der Eingänge verwenden wir ein Potentiometer, um einen Spannungsteiler mit ca. 10... 50 kOhm lin. einzurichten (siehe Abbildung). Der Spannungsteiler ermöglicht die Steuerung der Eingänge mit positiven und negativen variablen Spannungen.
  Die Vorgänge am Ausgang lassen sich noch besser beobachten, wenn V_{u} weiter reduziert wird, z. B. durch Verringern des Widerstands R2 von 100 kOhm auf 22 kOhm.
@@ -234,10 +233,10 @@ Wird der Schieber auf positive Werte gedreht, erhält der Eingang eine positiv a
 nach Durchlaufen von 0 Volt auf negative Werte an. Auch U_{a} nimmt ab, durchläuft 0 Volt und steigt auf negative Werte an. Im nichtinvertierenden Verstärkerbetrieb folgt U_{a}
 – erhöht um V_{u} – phasengleich der Eingangsspannung.
 
-[role=„image“, „./inverting-amplifier2.svg“, imgfmt=„svg“]
+[role="image", "./inverting-amplifier2.svg", imgfmt="svg"]
 \large \[U_{a} = U_{e} \cdot ( 1 + \frac{R_{2}}{R_{1}})\] .
 
-5. Experiment (Betrieb als invertierender Verstärker):
+5 . Experiment (Betrieb als invertierender Verstärker):
 
 Nun steuern wir den invertierenden Eingang (-) mit dem Spannungsteiler aus dem Experiment. V_{u} wird wieder auf ~10 gesetzt. Der nicht-invertierende Eingang erhält einen Strompfad zu 0.
 Wenn U_{e} am invertierenden Eingang positiv wird, wird U_{a} negativ; umgekehrt nimmt U_{a} positive Werte an, wenn U_{e} negativ ist.

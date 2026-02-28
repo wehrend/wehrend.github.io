@@ -12,6 +12,7 @@ menu:
     weight: 20
 ---
 {{< katex />}}
+
 == Erweiterung des Binärsystems
 
 Während wir im vorherigen Blogbeitrag über Addition
