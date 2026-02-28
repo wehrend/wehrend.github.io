@@ -2,6 +2,9 @@
 <article class="book-article">
 
     <h1>Welcome</h1>
+    <b>So, you want to learn about electronics, digital logic and how a cpu is able to do what she is doing?</b>
+
+    <b>We'll get you started here</b>
 
     {{/* --- helpers: get roots (language-aware) --- */}}
     {{ $pagesRoot := .Site.GetPage (printf "/%s/pages" .Site.Language.Lang) }}
@@ -26,7 +29,7 @@
 
     <div class="book-card-grid">
         {{/* Sort by Title, then Weight, then Reverse the whole list */}}
-        {{ range (sort (sort $combined "Title" "asc") "Weight" "asc" | collections.Reverse) }}
+        {{ range (sort (sort $combined "Title" "asc") "Weight" "asc") }}
         <a class="book-card" href="{{ .RelPermalink }}">
             <div class="card-icon"
                  style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
