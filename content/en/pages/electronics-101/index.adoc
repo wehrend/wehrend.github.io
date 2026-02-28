@@ -326,7 +326,7 @@ image:./example.svg[Example svg]
 
 ==== Solution:
 
-Kirchhoff's first law
+1. Kirchhoff's first law
 
 The mesh in the above figure contains three nodes. When applying the above equation (Kirchhoff's first law) to a node,
 the incoming currents are assigned a positive sign and the outgoing currents a negative sign.
@@ -385,4 +385,4 @@ rho and geometry thing (same for Capacitors and coils)
 Why? Because mostly we not only handle lumped components
 but rather distributed ones - especially in HF but dont get
 me started about HF. Network thingies also - Why do we need this?
-///
+////

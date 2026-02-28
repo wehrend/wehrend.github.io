@@ -344,7 +344,7 @@ image:./example.svg[Beispiel svg]
 
 ==== Lösung:
 
-Kirchhoffsches erstes Gesetz
+1. Kirchhoffsches erstes Gesetz
 
 Das Netz in der obigen Abbildung enthält drei Knotenpunkte. Bei der Anwendung der obigen Gleichung (Kirchhoffsches erstes Gesetz) auf einen Knotenpunkt
 werden den einfließenden Strömen ein positives Vorzeichen und den ausfließenden Strömen ein negatives Vorzeichen zugewiesen.
@@ -367,7 +367,7 @@ Gemäß der Knotenregel muss für die drei äußeren Ströme Folgendes gelten:
 
   + I_1 + I_2 - I_1 -I_3 -I_2 + I_3 = 0
 
-2. Kirchhoffsches Gesetz
+2. Zweites kirchhoffsches Gesetz
 
 Im Allgemeinen ist es nicht möglich, Vorhersagen über die Richtung der Ströme zu treffen. Daher werden die Stromrichtungen angenommen.
 Die Spannungspfeile auf den Widerständen zeigen dann in die gewählte Stromrichtung. Die Quellspannungspfeile zeigen vom Pluspol
@@ -402,6 +402,6 @@ Rho und Geometrie (das Gleiche gilt für Kondensatoren und Spulen).
 Warum? Weil wir meistens nicht nur mit konzentrierten Komponenten arbeiten,
 sondern eher mit verteilten – insbesondere in HF, aber lassen Sie mich
 nicht mit HF anfangen. Auch Netzwerk-Dinge – warum brauchen wir das?
-///
+////
 
 Übersetzt mit DeepL.com (kostenlose Version)
