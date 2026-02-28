@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <g transform="translate(10, 16)">
+    <g stroke="#A0AEC0" stroke-width="2" stroke-linecap="round">
+      <line x1="20" y1="2" x2="20" y2="14" /><circle cx="20" cy="2" r="2" fill="#A0AEC0" />
+      <line x1="32" y1="2" x2="32" y2="14" /><circle cx="32" cy="2" r="2" fill="#A0AEC0" />
+      <line x1="44" y1="2" x2="44" y2="14" /><circle cx="44" cy="2" r="2" fill="#A0AEC0" />
+      <line x1="20" y1="62" x2="20" y2="50" /><circle cx="20" cy="62" r="2" fill="#A0AEC0" />
+      <line x1="32" y1="62" x2="32" y2="50" /><circle cx="32" cy="62" r="2" fill="#A0AEC0" />
+      <line x1="44" y1="62" x2="44" y2="50" /><circle cx="44" cy="62" r="2" fill="#A0AEC0" />
+      <line x1="2" y1="20" x2="14" y2="20" /><circle cx="2" cy="20" r="2" fill="#A0AEC0" />
+      <line x1="2" y1="32" x2="14" y2="32" /><circle cx="2" cy="32" r="2" fill="#A0AEC0" />
+      <line x1="2" y1="44" x2="14" y2="44" /><circle cx="2" cy="44" r="2" fill="#A0AEC0" />
+      <line x1="62" y1="20" x2="50" y2="20" /><circle cx="62" cy="20" r="2" fill="#A0AEC0" />
+      <line x1="62" y1="32" x2="50" y2="32" /><circle cx="62" cy="32" r="2" fill="#A0AEC0" />
+      <line x1="62" y1="44" x2="50" y2="44" /><circle cx="62" cy="44" r="2" fill="#A0AEC0" />
+    </g>
+    <rect x="14" y="14" width="36" height="36" rx="4" fill="#2D3748" stroke="#4A5568" stroke-width="2"/>
+    <text x="32" y="32" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-weight="bold" font-size="12" fill="#88df00" style="text-shadow: 0 0 3px #88df00;">MCU</text>
+  </g>
+
+  <text x="80" y="48" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-weight="900" font-size="16" fill="#718096" font-style="italic">VS</text>
+
+  <g transform="translate(86, 16)">
+    <g stroke="#A0AEC0" stroke-width="2" stroke-linecap="round">
+      <line x1="20" y1="2" x2="20" y2="14" /><circle cx="20" cy="2" r="2" fill="#A0AEC0" />
+      <line x1="32" y1="2" x2="32" y2="14" /><circle cx="32" cy="2" r="2" fill="#A0AEC0" />
+      <line x1="44" y1="2" x2="44" y2="14" /><circle cx="44" cy="2" r="2" fill="#A0AEC0" />
+      <line x1="20" y1="62" x2="20" y2="50" /><circle cx="20" cy="62" r="2" fill="#A0AEC0" />
+      <line x1="32" y1="62" x2="32" y2="50" /><circle cx="32" cy="32" r="2" fill="#A0AEC0" />
+      <line x1="44" y1="62" x2="44" y2="50" /><circle cx="44" cy="62" r="2" fill="#A0AEC0" />
+      <line x1="2" y1="20" x2="14" y2="20" /><circle cx="2" cy="20" r="2" fill="#A0AEC0" />
+      <line x1="2" y1="32" x2="14" y2="32" /><circle cx="2" cy="32" r="2" fill="#A0AEC0" />
+      <line x1="2" y1="44" x2="14" y2="44" /><circle cx="2" cy="44" r="2" fill="#A0AEC0" />
+      <line x1="62" y1="20" x2="50" y2="20" /><circle cx="62" cy="20" r="2" fill="#A0AEC0" />
+      <line x1="62" y1="32" x2="50" y2="32" /><circle cx="62" cy="32" r="2" fill="#A0AEC0" />
+      <line x1="62" y1="44" x2="50" y2="44" /><circle cx="62" cy="44" r="2" fill="#A0AEC0" />
+    </g>
+    <rect x="14" y="14" width="36" height="36" rx="4" fill="#2D3748" stroke="#4A5568" stroke-width="2"/>
+    <text x="32" y="32" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-weight="bold" font-size="12" fill="#63B3ED" style="text-shadow: 0 0 3px #63B3ED;">CPU</text>
+  </g>
+</svg>

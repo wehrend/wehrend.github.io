@@ -12,6 +12,7 @@ outdir: ~/development/blog
 draft: true
 weight: 1700
 overview: true
+icon: "svg/cpu_vs_mcu.svg"
 ---
 
 == The two totally distinct worlds - Microcontrollers vs. Microprocessors (MCU vs. CPU)
