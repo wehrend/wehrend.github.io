@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 200"
+     width="200" height="200"
+     aria-label="ringbuffer-64">
+
+  <defs>
+    <!-- Single slot (one of 64) -->
+    <path id="slot"
+          d="M100 30
+             A70 70 0 0 1 106.85 30.34
+             L105.30 48.27
+             A52 52 0 0 0 100 48
+             Z"
+          fill="white"
+          stroke="currentColor"
+          stroke-width="1.5"/>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="90"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"/>
+
+  <!-- 64 rotated slots -->
+  <g transform="translate(100 100)">
+    <!-- rotate step = 360 / 64 = 5.625 -->
+    <!-- manually replicated via use elements -->
+    <!-- Generated rotation -->
+    <!-- 64 segments -->
+    <!-- NOTE: keep origin centered -->
+    <!-- Using nested group for correct rotation -->
+    <g transform="translate(-100 -100)">
+      <!-- generate slots -->
+      <!-- 64 uses -->
+      <!-- (expanded manually) -->
+      <!-- You can auto-generate this if needed -->
+
+      <!-- Slots -->
+      <!-- rotation pivot must be 100,100 -->
+      <!-- Repeat 64 times -->
+
+      <!-- BEGIN AUTO-ROTATION -->
+      <!-- I'll include compact generation style -->
+
+      <!-- We rotate each slot around center -->
+      <!-- 0 to 63 -->
+      <!-- You can trim if needed -->
+
+      <!-- Generated uses -->
+      <!-- 64 slots -->
+      <!-- Rotation increment: 5.625 -->
+
+      <!-- For brevity: full list included -->
+
+      <!-- SLOT INSTANCES -->
+      <!-- generated -->
+
+      <!-- We use transform per instance -->
+      <!-- 64 entries -->
+
+
+      <!-- The 64 elements -->
+      <!-- -->
+      <!-- start -->
+
+      <!-- Script-style manual expansion -->
+      <!-- (keeping full explicit list for valid standalone SVG) -->
+
+      <!-- 64 uses -->
+      <!-- I'll include them compactly -->
+
+      <!-- START -->
+      <use href="#slot" transform="rotate(0 100 100)"/>
+      <use href="#slot" transform="rotate(5.625 100 100)"/>
+      <use href="#slot" transform="rotate(11.25 100 100)"/>
+      <use href="#slot" transform="rotate(16.875 100 100)"/>
+      <use href="#slot" transform="rotate(22.5 100 100)"/>
+      <use href="#slot" transform="rotate(28.125 100 100)"/>
+      <use href="#slot" transform="rotate(33.75 100 100)"/>
+      <use href="#slot" transform="rotate(39.375 100 100)"/>
+      <use href="#slot" transform="rotate(45 100 100)"/>
+      <use href="#slot" transform="rotate(50.625 100 100)"/>
+      <use href="#slot" transform="rotate(56.25 100 100)"/>
+      <use href="#slot" transform="rotate(61.875 100 100)"/>
+      <use href="#slot" transform="rotate(67.5 100 100)"/>
+      <use href="#slot" transform="rotate(73.125 100 100)"/>
+      <use href="#slot" transform="rotate(78.75 100 100)"/>
+      <use href="#slot" transform="rotate(84.375 100 100)"/>
+      <use href="#slot" transform="rotate(90 100 100)"/>
+      <use href="#slot" transform="rotate(95.625 100 100)"/>
+      <use href="#slot" transform="rotate(101.25 100 100)"/>
+      <use href="#slot" transform="rotate(106.875 100 100)"/>
+      <use href="#slot" transform="rotate(112.5 100 100)"/>
+      <use href="#slot" transform="rotate(118.125 100 100)"/>
+      <use href="#slot" transform="rotate(123.75 100 100)"/>
+      <use href="#slot" transform="rotate(129.375 100 100)"/>
+      <use href="#slot" transform="rotate(135 100 100)"/>
+      <use href="#slot" transform="rotate(140.625 100 100)"/>
+      <use href="#slot" transform="rotate(146.25 100 100)"/>
+      <use href="#slot" transform="rotate(151.875 100 100)"/>
+      <use href="#slot" transform="rotate(157.5 100 100)"/>
+      <use href="#slot" transform="rotate(163.125 100 100)"/>
+      <use href="#slot" transform="rotate(168.75 100 100)"/>
+      <use href="#slot" transform="rotate(174.375 100 100)"/>
+      <use href="#slot" transform="rotate(180 100 100)"/>
+      <use href="#slot" transform="rotate(185.625 100 100)"/>
+      <use href="#slot" transform="rotate(191.25 100 100)"/>
+      <use href="#slot" transform="rotate(196.875 100 100)"/>
+      <use href="#slot" transform="rotate(202.5 100 100)"/>
+      <use href="#slot" transform="rotate(208.125 100 100)"/>
+      <use href="#slot" transform="rotate(213.75 100 100)"/>
+      <use href="#slot" transform="rotate(219.375 100 100)"/>
+      <use href="#slot" transform="rotate(225 100 100)"/>
+      <use href="#slot" transform="rotate(230.625 100 100)"/>
+      <use href="#slot" transform="rotate(236.25 100 100)"/>
+      <use href="#slot" transform="rotate(241.875 100 100)"/>
+      <use href="#slot" transform="rotate(247.5 100 100)"/>
+      <use href="#slot" transform="rotate(253.125 100 100)"/>
+      <use href="#slot" transform="rotate(258.75 100 100)"/>
+      <use href="#slot" transform="rotate(264.375 100 100)"/>
+      <use href="#slot" transform="rotate(270 100 100)"/>
+      <use href="#slot" transform="rotate(275.625 100 100)"/>
+      <use href="#slot" transform="rotate(281.25 100 100)"/>
+      <use href="#slot" transform="rotate(286.875 100 100)"/>
+      <use href="#slot" transform="rotate(292.5 100 100)"/>
+      <use href="#slot" transform="rotate(298.125 100 100)"/>
+      <use href="#slot" transform="rotate(303.75 100 100)"/>
+      <use href="#slot" transform="rotate(309.375 100 100)"/>
+      <use href="#slot" transform="rotate(315 100 100)"/>
+      <use href="#slot" transform="rotate(320.625 100 100)"/>
+      <use href="#slot" transform="rotate(326.25 100 100)"/>
+      <use href="#slot" transform="rotate(331.875 100 100)"/>
+      <use href="#slot" transform="rotate(337.5 100 100)"/>
+      <use href="#slot" transform="rotate(343.125 100 100)"/>
+      <use href="#slot" transform="rotate(348.75 100 100)"/>
+      <use href="#slot" transform="rotate(354.375 100 100)"/>
+      <!-- END -->
+    </g>
+  </g>
+</svg>

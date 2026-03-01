@@ -64,11 +64,16 @@ Introduces object-oriented programming concepts including classes, object synthe
 * A simple hardcoded synthesizer with a lowpass filter (with debug info ) tutorial05 (b) with fonts and a visiual cutoff frequency display
 
 
-
-
-== C++ 05 (Upcoming)
+== C++ 05
 link:https://wehrend.github.io/pages/cpp_05/[cpp_05]
 
 * Polyphonie and multiple Voices (tutorial 06)
 * Master and Slave Oscillator with hard sync (tutorial 07)
+
+
+== C++ 06
+link:https://wehrend.github.io/pages/cpp_06/[cpp_06]
+
+* algorithms, data structure, computability (no tutorial)
+* Audio ring buffer (tutorial 08)
 
