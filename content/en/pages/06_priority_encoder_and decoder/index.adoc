@@ -100,9 +100,9 @@ The 74HC138 has active-low outputs; exactly one output goes low for each address
 
 image:./cascaded_table.png[size="1550px"]
 
-{{< hint danger >}}
+{{< asciihint danger >}}
 We can see from the table that each block along the diagonal ones fulfills the same function.
-{{< /hint >}}
+{{< /asciihint >}}
 
 [width="100%"]
 |================

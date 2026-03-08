@@ -9,7 +9,7 @@ description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
-draft: false
+draft: true
 weight: 1500
 ---
 

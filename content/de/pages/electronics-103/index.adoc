@@ -15,11 +15,11 @@ weight: 1300
 ---
 {{< katex />}}
 
-{{< hint info >}}
+{{< asciihint info >}}
 Nach diesem Kapitel kennen Sie alle Grundlagen zu Halbleiterbauelementen wie Dioden, Transistoren (BJT sowie MOSFETs) und deren Wirkungen...
-{{< /hint >}}
+{{< /asciihint >}}
 
-{{< hint success >}}
+{{< asciihint success >}}
 Ein *nichtlinearer Bauelement* ist ein Gerät, dessen Strom-Spannungs-Verhältnis **nicht proportional** ist.
 Mit anderen Worten: Der Strom steigt nicht linear mit der angelegten Spannung an.
 
@@ -30,7 +30,7 @@ Beispiele für nichtlineare Bauelemente sind:
 
 Aufgrund dieses nichtlinearen Verhaltens ermöglichen solche Bauelemente das Schalten, Verstärken,
 Gleichrichten und fast alle Formen der digitalen Logik.
-{{< /hint >}}
+{{< /asciihint >}}
 
 == Von linearen Bauteilen zur Halbleiterphysik
 

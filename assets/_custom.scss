@@ -64,3 +64,29 @@
   opacity: 0.6;
 }
 
+/* Der Container für den Hint */
+.book-hint {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 0.25rem; /* Runden der Ecken */
+    border-left: 0.5rem solid; /* Der dicke Balken links */
+    background-color: rgba(0, 0, 0, 0.05); /* Ein leichter Hintergrund */
+}
+
+/* Spezifische Farben für den "info" Typ */
+.book-hint.info {
+    border-left-color: #6bf; /* Blau für Info */
+    background-color: rgba(107, 187, 255, 0.1);
+}
+
+/* Falls du mal "warning" nutzt */
+.book-hint.warning {
+    border-left-color: #fd6; /* Gelb/Orange für Warning */
+    background-color: rgba(255, 221, 102, 0.1);
+}
+
+/* Falls du mal "danger" nutzt */
+.book-hint.danger {
+    border-left-color: #f66; /* Rot für Danger */
+    background-color: rgba(255, 102, 102, 0.1);
+}

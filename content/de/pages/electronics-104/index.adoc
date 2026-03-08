@@ -13,9 +13,9 @@ draft: false
 weight: 1400
 ---
 
-{{< hint info >}}
+{{< asciihint info >}}
 Nach diesem Kapitel kennen Sie alle Grundlagen zu linearen Bauteilen, integrierten Verstärkern und Operationsverstärkern...
-{{< /hint >}}
+{{< /asciihint >}}
 
 
 == Integrierte NF-Verstärker

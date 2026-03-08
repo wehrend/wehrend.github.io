@@ -101,9 +101,9 @@ Der 74HC138 hat aktiv-niedrige Ausgänge; genau ein Ausgang wird für jede Adres
 
 image:./cascaded_table.png[size=„1550px“]
 
-{{< hint danger >}}
+{{< asciihint danger >}}
 Aus der Tabelle geht hervor, dass jeder Block entlang der Diagonalen die gleiche Funktion erfüllt.
-{{< /hint >}}
+{{< /asciihint >}}
 
 [width=„100%“]
 |================

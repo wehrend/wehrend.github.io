@@ -121,7 +121,7 @@ vorhanden sein können. Nachdem der Interrupt mit der höchsten Priorität
 beendet ist, wird die Ausführung in umgekehrter Reihenfolge fortgesetzt, wobei die unterbrochenen Handler zurückverfolgt
 werden, bis das ursprüngliche Programm fortgesetzt wird.
 
-{{< hint warning >}}
+{{< asciihint warning >}}
 
 Verschachtelte Interrupts verbessern die Reaktionsfähigkeit des Systems, erhöhen aber auch die Komplexität.
 Interrupt-Handler müssen sorgfältig geschrieben werden, damit sie wiedereintrittsfähig sind oder anderweitig vor einer
@@ -129,7 +129,7 @@ Beschädigung gemeinsam genutzter Daten geschützt sind. Aus diesem Grund halten
 kurz und vermeiden komplexe Logik, wobei längere Arbeiten auf Nicht-Interrupt-Kontexte verschoben werden. Einige Systeme
 beschränken oder deaktivieren die Verschachtelung auch vollständig, um das Design zu vereinfachen und ein
 vorhersehbares Timing zu gewährleisten.
-{{< /hint >}}
+{{< /asciihint >}}
 
 Insgesamt bieten verschachtelte Interrupts ein Gleichgewicht zwischen Reaktionsfähigkeit und Komplexität.
 Indem sie zulassen, dass kritische Ereignisse weniger wichtige Arbeiten – sogar andere Interrupt-Handler – unterbrechen,

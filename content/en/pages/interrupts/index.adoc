@@ -117,13 +117,13 @@ interrupt finishes, execution resumes in reverse order, unwinding back through t
 original program continues.
 
 
-{{< hint warning >}}
+{{< asciihint warning >}}
 Nested interrupts improve system responsiveness but also increase complexity.
 Interrupt handlers must be carefully written to be reentrant or otherwise protected against shared data corruption.
 For this reason, many systems keep interrupt service routines short and avoid complex logic, deferring longer work
 to non-interrupt contexts. Some systems also limit or completely disable nesting to simplify design and guarantee
 predictable timing.
-{{< /hint >}}
+{{< /asciihint >}}
 
 Overall, nested interrupts provide a balance between responsiveness and complexity.
 By allowing critical events to interrupt less important work—even other interrupt handlers—systems can meet strict timing

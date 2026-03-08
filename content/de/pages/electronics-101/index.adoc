@@ -13,9 +13,9 @@ weight: 1100
 ---
 {{< katex />}}
 
-{{< hint info >}}
+{{< asciihint info >}}
 Nach diesem Kapitel kennen Sie alle Grundlagen rund um Elektrizität und einfache Schaltungen mit ohmscher Last...
-{{< /hint >}}
+{{< /asciihint >}}
 
 
 == Vorwort Einführung in die Elektronik
@@ -257,11 +257,11 @@ image:./resistance_measurement_ll.svg[width="550px"]
 
 == Grundschaltungen
 
-{{< hint warning >}}
+{{< asciihint warning >}}
 
 Dies ist ein vereinfachtes Modell zur Veranschaulichung; die reale Halbleiterphysik verhält sich komplexer.
 
-{{< /hint >}}
+{{< /asciihint >}}
 
 
 Grundschaltungen in der Elektrotechnik bestehen aus einer Quelle mit Innenwiderstand und einer Last. Je nachdem, wie die Quelle betrachtet wird,
