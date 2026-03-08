@@ -5,7 +5,7 @@ date: 2026-02-01
 tags: ["C++"]
 category:
 link:
-description:
+description: "A practical introduction to C++ through the development of a small audio synthesizer."
 type: text
 bookHidden: true
 overview: true
@@ -19,26 +19,50 @@ icon: "svg/cpp.svg"
 {{< asciihint info >}}
 This course introduces **C++ programming through the development of a small audio / synthesizer application**.
 
+The goal is to learn the language **step-by-step while building a working audio system**.
+
 Prerequisites:
 
 * A **Linux system** (Debian or Ubuntu recommended)
-* **GCC (GNU Compiler Collection)** and its dependencies
+* **GCC (GNU Compiler Collection)**
 * The **make** build tool
-* Basic familiarity with the command line
-* Some mathematical background (helpful for the audio and signal-processing parts)
+* Basic familiarity with the **command line**
+* Some **mathematical background** (helpful for the audio and signal-processing sections)
 
-Windows users can follow the course using <strong>Windows Subsystem for Linux **(WSL)**.
+Windows users can follow the course using **Windows Subsystem for Linux (WSL)**.
 {{< /asciihint >}}
+
+The examples in this course were tested with the following development environment.
+
+Compiler:
+
+g++ (Debian 12.2.0-14+deb12u1) 12.2.0
+
+Required libraries:
+
+libsdl2-2.0-0 2.26.5+dfsg-1
+libsdl2-dev   2.26.5+dfsg-1
+
+Install the required dependencies on Debian / Ubuntu using:
+
+sudo apt install build-essential libsdl2-dev
+
+This installs:
+
+* g++
+* make
+* required system libraries
+* SDL2 development headers
 
 The source code used in this course is available on GitHub:
 
 https://github.com/wehrend/cpp-tutorials
 
-This page provides a short overview of the topics covered in the course.
+The course gradually builds a **small software synthesizer**, introducing new C++ concepts in each chapter.
 
 ---
 
-## C++ 01
+== C++ 01
 
 link:https://wehrend.github.io/pages/cpp_01/[cpp_01]
 
@@ -51,7 +75,7 @@ Contains:
 
 ---
 
-## C++ 02
+== C++ 02
 
 link:https://wehrend.github.io/pages/cpp_02/[cpp_02]
 
@@ -64,7 +88,7 @@ Contains:
 
 ---
 
-## C++ 03
+== C++ 03
 
 link:https://wehrend.github.io/pages/cpp_03/[cpp_03]
 
@@ -80,7 +104,7 @@ Contains:
 
 ---
 
-## C++ 04
+== C++ 04
 
 link:https://wehrend.github.io/pages/cpp_04/[cpp_04]
 
@@ -93,11 +117,11 @@ Contains:
 
 ---
 
-## C++ 05
+== C++ 05
 
 link:https://wehrend.github.io/pages/cpp_05/[cpp_05]
 
-Expands the synthesizer to support more advanced audio features.
+Expands the synthesizer with more advanced audio functionality.
 
 Contains:
 
@@ -106,7 +130,7 @@ Contains:
 
 ---
 
-## C++ 06
+== C++ 06
 
 link:https://wehrend.github.io/pages/cpp_06/[cpp_06]
 
@@ -119,8 +143,29 @@ Contains:
 
 ---
 
-## Build Tools: From `make` to `cmake`
+== Build Tools: From make to cmake
 
 link:https://wehrend.github.io/pages/cpp_cmake/[cpp_cmake]
 
 A short section explaining modern build tools and how to migrate projects from **Makefiles to CMake**.
+
+---
+
+== What You Will Build
+
+By the end of the course you will have implemented a **basic software synthesizer**, including:
+
+* Oscillators
+* Envelope generators
+* Filters
+* Polyphonic voice handling
+* Audio buffering
+* SDL-based audio output
+
+Along the way you will learn:
+
+* core **C++ language fundamentals**
+* **object-oriented design**
+* **audio programming basics**
+* **build systems**
+* practical **Linux development workflows**
