@@ -75,10 +75,14 @@ target_link_libraries(synth PRIVATE
 
 ```
 
-{{< hint info >}}
-**Tip:** You can combine the configuration and build steps into a single line to save time:
+{{< asciihint info >}}
+
+**Tip:**
+You can combine the configuration and build steps into a single line to save time:
+
 `cmake -B build && cmake --build .`
-{{< /hint >}}
+
+{{< /asciihint >}}
 
 ```
 sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake ..

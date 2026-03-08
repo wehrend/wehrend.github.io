@@ -159,6 +159,8 @@ publishDir = "public"
 
 
 [markup]
+  [markup.asciice]
+    backend = "html5"
   [markup.asciidocExt]
     workingFolderCurrent = true
     [markup.asciidocExt.attributes]

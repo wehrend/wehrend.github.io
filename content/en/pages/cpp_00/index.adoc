@@ -16,21 +16,19 @@ icon: "svg/cpp.svg"
 
 = C++ Course — Overview
 
-{{< hint info >}}
-This course introduces <strong>C++ programming through the development of a small audio / synthesizer application</strong>.
+{{< asciihint info >}}
+This course introduces **C++ programming through the development of a small audio / synthesizer application**.
 
 Prerequisites:
 
-<ul>
-<li>A <strong>Linux system</strong> (Debian or Ubuntu recommended)</li>
-<li><strong>GCC (GNU Compiler Collection)</strong> and its dependencies</li>
-<li>The <strong>make</strong> build tool</li>
-<li>Basic familiarity with the command line</li>
-<li>Some mathematical background (helpful for the audio and signal-processing parts)</li>
-</ul>
+* A **Linux system** (Debian or Ubuntu recommended)
+* **GCC (GNU Compiler Collection)** and its dependencies
+* The **make** build tool
+* Basic familiarity with the command line
+* Some mathematical background (helpful for the audio and signal-processing parts)
 
-Windows users can follow the course using <strong>Windows Subsystem for Linux (WSL)</strong>.
-{{< /hint >}}
+Windows users can follow the course using <strong>Windows Subsystem for Linux **(WSL)**.
+{{< /asciihint >}}
 
 The source code used in this course is available on GitHub:
 

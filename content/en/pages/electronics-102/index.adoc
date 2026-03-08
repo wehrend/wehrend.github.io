@@ -14,9 +14,9 @@ weight: 1200
 {{< katex />}}
 
 
-{{< hint info >}}
+{{< asciihint info >}}
 After this chapter you will know all the basics around time-sensitive components like coils and capacitors and simple circuits utilizing those components...
-{{< /hint >}}
+{{< /asciihint >}}
 
 == Electronics 102
 
@@ -197,9 +197,9 @@ z {\displaystyle z} by a complex number  w≠ 0
 ////
 
 
-{{< hint warning >}}
+{{< asciihint warning >}}
 Since the variable i is in electronic engineering already is reserved for current, we use instead j as i !
-{{< /hint >}}
+{{< /asciihint >}}
 
 
 

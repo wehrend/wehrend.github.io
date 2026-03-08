@@ -13,9 +13,9 @@ draft: false
 weight: 1400
 ---
 
-{{< hint info >}}
+{{< asciihint info >}}
 After this chapter you will know all the basics around linear components, integrated amplifiers and op-amps...
-{{< /hint >}}
+{{< /asciihint >}}
 
 
 == Integrated NF amplifiers

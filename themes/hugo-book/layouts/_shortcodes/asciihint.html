@@ -1,0 +1,3 @@
+<div class="book-hint {{ .Get 0 | default "info" }}">
+  {{ .Inner | .Page.RenderString (dict "display" "block" "markup" "asciidoc") | safeHTML }}
+</div>

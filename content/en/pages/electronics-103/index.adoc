@@ -14,11 +14,11 @@ weight: 1300
 ---
 {{< katex />}}
 
-{{< hint info >}}
+{{< asciihint info >}}
 After this chapter you will know all the basics around semiconductor components like diodes, transistors (BJT as well as MOSFETs) and their effects...
-{{< /hint >}}
+{{< /asciihint >}}
 
-{{< hint success >}}
+{{< asciihint success >}}
 A *nonlinear component* is a device whose current–voltage relationship is **not proportional**.
 In other words, the current does not increase linearly with the applied voltage.
 
@@ -29,7 +29,7 @@ Examples of nonlinear components include:
 
 Because of this nonlinear behaviour, such components allow switching, amplification,
 rectification, and almost all forms of digital logic.
-{{< /hint >}}
+{{< /asciihint >}}
 
 == From linear components to semiconductor physics
 
