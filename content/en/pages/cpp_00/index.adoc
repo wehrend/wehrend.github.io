@@ -151,6 +151,14 @@ A short section explaining modern build tools and how to migrate projects from *
 
 ---
 
+== From raw C++ to GUI: Introducing the Qt Framework
+
+link:https://wehrend.github.io/pages/cpp_qt_1/[cpp qt gui]
+
+Create applications with **GUI and native widgets**.
+
+---
+
 == What You Will Build
 
 By the end of the course you will have implemented a **basic software synthesizer**, including:
