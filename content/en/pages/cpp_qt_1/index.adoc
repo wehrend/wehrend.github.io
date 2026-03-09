@@ -1,0 +1,66 @@
+---
+title: "Introduction into C++ (QT GUI - Part I )"
+slug: cpp_qt_1
+date: 2026-03-05
+tags: ["C++", "synth", "qt", "qmake"]
+category: "Programming"
+description: "Introduction GUI frameworks for C++ projects"
+type: text
+bookHidden: true
+draft: false
+---
+{{< katex />}}
+
+== A gui is a *fantastic* idea.... But what should it be - SDL, wxWidgets or QT ?
+
+Choosing a GUI framework for a C++ audio project is a "fork in the road" moment. Each of these options pulls the project in a
+completely different architectural direction.
+
+Since your course currently uses SDL, it’s the natural frontrunner, but here is how they stack up for a synth-building context:
+
+1. SDL (Simple DirectMedia Layer)  - The "Low-Level" Choice
+Since you already introduced SDL in Tutorial 02, staying here is the path of least resistance.
+
+Pros:
+It doesn't "take over" your main() function as aggressively as the others. It’s perfect for
+custom-drawn knobs and sliders using simple shapes or bitmaps.
+
+The "Audio" Fit: It’s great for creating visualizers (oscilloscopes or spectrum analyzers) because you have direct access
+to the pixel buffer or hardware-accelerated rendering.
+
+Cons: It has no built-in "widgets" (buttons, text inputs). You have to build your own UI system from scratch or use a library
+
+2. Qt - he "Professional/Industrial" Choice
+
+Qt is the heavyweight champion. If you want your synth to look like a modern DAW (Digital Audio Workstation) or a commercial plugin,
+this is it.
+
+Pros:
+Incredible documentation and a "What You See Is What You Get" (WYSIWYG) editor. It handles high-DPI scaling and complex layouts beautifully.
+
+The "Audio" Fit: It’s overkill for a simple tutorial but excellent for teaching Signals and Slots, a C++ mechanism that
+perfectly mimics how patch cables work in a modular synth.
+
+Cons:
+Huge binary size and a steep learning curve. It also requires the moc (Meta-Object Compiler), which adds a layer of "magic"
+that might hide the raw C++ logic you are trying to teach.
+
+3. wxWidgets - The "Native" Choice
+
+wxWidgets uses the host operating system's native controls (it looks like a Windows app on Windows, and a GTK app on Linux).
+
+Pros: No "magic" pre-processors like Qt. It’s "pure" C++ in a very traditional sense.
+
+Cons: It feels a bit dated. Styling custom, "cool-looking" synth knobs is significantly harder in wxWidgets than in SDL or
+Qt because it wants to look like a standard spreadsheet or file explorer.
+
+
+[width="100%" cols="a,a,a,a"]
+|=====
+| Feature        |	SDL                     |Qt                  |wxWidgets
+| Learning Curve |	Easy (if you know SDL)  |Steep               | Moderate
+| Look & Feel	 | Custom/Game-like	        | Modern/Slick       | Native/Standard
+| Best For...	 | Visualizers & Prototyping|Commercial Software | Traditional Desktop Apps
+| C++ Style	     | Procedural/Simple OOP	| Heavy OOP & Macros |Traditional OOP
+|=====
+
