@@ -18,7 +18,7 @@ completely different architectural direction.
 
 Since your course currently uses SDL, it’s the natural frontrunner, but here is how they stack up for a synth-building context:
 
-1. SDL (Simple DirectMedia Layer)  - The "Low-Level" Choice
+. SDL (Simple DirectMedia Layer)  - The "Low-Level" Choice
 Since you already introduced SDL in Tutorial 02, staying here is the path of least resistance.
 
 Pros:
@@ -30,7 +30,7 @@ to the pixel buffer or hardware-accelerated rendering.
 
 Cons: It has no built-in "widgets" (buttons, text inputs). You have to build your own UI system from scratch or use a library
 
-2. Qt - he "Professional/Industrial" Choice
+. Qt - he "Professional/Industrial" Choice
 
 Qt is the heavyweight champion. If you want your synth to look like a modern DAW (Digital Audio Workstation) or a commercial plugin,
 this is it.
@@ -45,7 +45,7 @@ Cons:
 Huge binary size and a steep learning curve. It also requires the moc (Meta-Object Compiler), which adds a layer of "magic"
 that might hide the raw C++ logic you are trying to teach.
 
-3. wxWidgets - The "Native" Choice
+. wxWidgets - The "Native" Choice
 
 wxWidgets uses the host operating system's native controls (it looks like a Windows app on Windows, and a GTK app on Linux).
 

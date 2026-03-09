@@ -326,7 +326,7 @@ image:./example.svg[Example svg]
 
 ==== Solution:
 
-1. Kirchhoff's first law
+ . Kirchhoff's first law
 
 The mesh in the above figure contains three nodes. When applying the above equation (Kirchhoff's first law) to a node,
 the incoming currents are assigned a positive sign and the outgoing currents a negative sign.
@@ -349,7 +349,7 @@ Check:
 
   + I_1 + I_2 - I_1 -I_3 -I_2 + I_3 = 0
 
-2. Kirchhoff's law
+ . Kirchhoff's law
 
 In general, it is not possible to make any predictions about the direction of the currents. Therefore, the current directions are assumed.
 The voltage arrows on the resistors then point in the selected current direction. The source voltage arrows point from the positive
