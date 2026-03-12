@@ -1,104 +1,97 @@
 (function() {
   'use strict';
 
-  console.log('🔧 pro-tooltips.js: Starting robust initialization');
+  if (window.__proTooltipsInitialized) return;
+  window.__proTooltipsInitialized = true;
+
+  console.log('🚀 [Tooltip-Debug] Script Start (Element Mode)');
 
   const CONFIG = {
     triggerClass: 'code-tip-trigger',
     processedAttr: 'data-tooltip-processed',
-    commentPrefix: 'code-tooltips:',
+    dataClass: 'code-tooltip-data', // The new target class
     tippyTheme: 'light-border'
   };
 
-  function createTooltip(el, content) {
-    if (typeof tippy === 'undefined') return;
-    tippy(el, {
-      content: content,
-      theme: CONFIG.tippyTheme,
-      placement: 'right',
-      interactive: true,
-      appendTo: () => document.body,
-    });
-  }
+  function findCodeBlock(dataNode) {
+    let current = dataNode;
+    // Walk backwards through siblings to find the code block
+    while (current) {
+      const code = current.querySelector('pre code, .highlight pre, td.code pre, .listingblock pre') ||
+                   (current.tagName === 'PRE' ? current : null);
+      if (code) return code;
 
-  /**
-   * REVISED: Finds the code block that immediately PRECEDES the comment
-   */
-  function findCodeBlock(commentNode) {
-    // 1. Check siblings before the comment (most likely in Asciidoc/Hugo)
-    let sibling = commentNode.parentElement;
-    while (sibling) {
-        // Look for common Hugo/Book code containers
-        const code = sibling.querySelector('pre code, .highlight pre, td.code pre, .listingblock pre');
-        if (code) return code;
-
-        // Move to the previous element in the DOM
-        sibling = sibling.previousElementSibling;
+      // If the current element doesn't have it, check the previous sibling
+      let sibling = current.previousElementSibling;
+      if (sibling) {
+        const sibCode = sibling.querySelector('pre code, .highlight pre, td.code pre, .listingblock pre') ||
+                        (sibling.tagName === 'PRE' ? sibling : null);
+        if (sibCode) return sibCode;
+      }
+      current = current.parentElement;
+      if (current && current.tagName === 'BODY') break;
     }
     return null;
   }
 
-  function processTooltips() {
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_COMMENT);
-    let node;
+  function process() {
+    const dataNodes = document.querySelectorAll(`.${CONFIG.dataClass}`);
 
-    while (node = walker.nextNode()) {
-      const text = node.nodeValue.trim();
-      if (!text.startsWith(CONFIG.commentPrefix)) continue;
+    if (dataNodes.length === 0) {
+      // Don't log this every time to avoid spamming the console
+      return;
+    }
+
+    dataNodes.forEach((node, i) => {
+      if (node.hasAttribute(CONFIG.processedAttr)) return;
 
       try {
-        const jsonStr = text.replace(CONFIG.commentPrefix, '').trim();
-        const rawMap = JSON.parse(jsonStr);
-
-        // Expand ranges like "1-5" into individual keys "1","2","3","4","5"
-        const tooltipMap = {};
-        Object.keys(rawMap).forEach(key => {
-            if (key.includes('-')) {
-                const [start, end] = key.split('-').map(Number);
-                for (let i = start; i <= end; i++) {
-                    tooltipMap[i.toString()] = rawMap[key];
-                }
-            } else {
-                tooltipMap[key] = rawMap[key];
-            }
-        });
-
+        const rawMap = JSON.parse(node.textContent.trim());
         const codeArea = findCodeBlock(node);
 
-        if (codeArea && !codeArea.hasAttribute(CONFIG.processedAttr)) {
-          console.log('✅ Found matching code block for tooltips');
-
-          const lines = codeArea.innerHTML.split(/\r?\n/);
-          const transformedHtml = lines.map((lineContent, index) => {
-            const lineNum = (index + 1).toString();
-            if (tooltipMap[lineNum]) {
-              return `<span class="${CONFIG.triggerClass}" data-tip="${tooltipMap[lineNum]}">${lineContent || ' '}</span>`;
-            }
-            return lineContent;
-          }).join('\n');
-
-          codeArea.innerHTML = transformedHtml;
-          codeArea.setAttribute(CONFIG.processedAttr, 'true');
-
-          codeArea.querySelectorAll(`.${CONFIG.triggerClass}`).forEach(span => {
-            createTooltip(span, span.getAttribute('data-tip'));
-          });
+        if (!codeArea) {
+          console.error(`❌ [Debug] Found data block #${i+1} but no code block nearby!`);
+          return;
         }
+
+        console.log(`✅ [Debug] Processing data block #${i+1}`);
+
+        // Expand ranges
+        const tooltipMap = {};
+        Object.keys(rawMap).forEach(key => {
+          if (key.includes('-')) {
+            const [start, end] = key.split('-').map(Number);
+            for (let j = start; j <= end; j++) { tooltipMap[j.toString()] = rawMap[key]; }
+          } else { tooltipMap[key] = rawMap[key]; }
+        });
+
+        const lines = codeArea.innerHTML.split(/\r?\n/);
+        codeArea.innerHTML = lines.map((content, idx) => {
+          const lineNum = (idx + 1).toString();
+          return tooltipMap[lineNum]
+            ? `<span class="${CONFIG.triggerClass}" data-tip="${tooltipMap[lineNum]}">${content || ' '}</span>`
+            : content;
+        }).join('\n');
+
+        codeArea.setAttribute(CONFIG.processedAttr, 'true');
+        node.setAttribute(CONFIG.processedAttr, 'true'); // Mark data as used
+
+        codeArea.querySelectorAll('.' + CONFIG.triggerClass).forEach(span => {
+          tippy(span, {
+            content: span.getAttribute('data-tip'),
+            theme: CONFIG.tippyTheme,
+            placement: 'right',
+            interactive: true,
+            appendTo: () => document.body
+          });
+        });
+
       } catch (e) {
-        console.error('❌ Error processing tooltips:', e);
+        console.error('❌ [Debug] JSON Error:', e, node.textContent);
       }
-    }
+    });
   }
 
-  // Run logic
-  if (document.readyState === 'complete') {
-    processTooltips();
-  } else {
-    window.addEventListener('load', processTooltips);
-  }
-
-  // MutationObserver to catch dynamic loads
-  const observer = new MutationObserver(() => processTooltips());
-  observer.observe(document.body, { childList: true, subtree: true });
-
+  window.addEventListener('load', process);
+  new MutationObserver(process).observe(document.body, { childList: true, subtree: true });
 })();
