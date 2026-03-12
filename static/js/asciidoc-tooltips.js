@@ -1,10 +1,7 @@
-/**
- * pro-tooltips.js
- * Version: 2.0 (Range Support + Span-Wrap)
- * Optimized for Hugo Book / Goldmark
- */
 (function() {
   'use strict';
+
+  console.log('🔧 pro-tooltips.js: Starting robust initialization');
 
   const CONFIG = {
     triggerClass: 'code-tip-trigger',
@@ -13,78 +10,69 @@
     tippyTheme: 'light-border'
   };
 
-  /**
-   * Helper to initialize Tippy.js
-   */
   function createTooltip(el, content) {
     if (typeof tippy === 'undefined') return;
     tippy(el, {
       content: content,
       theme: CONFIG.tippyTheme,
       placement: 'right',
-      arrow: true,
-      animation: 'shift-away',
       interactive: true,
       appendTo: () => document.body,
     });
   }
 
   /**
-   * Locates the actual <code> or <pre> block near the HTML comment
+   * REVISED: Finds the code block that immediately PRECEDES the comment
    */
   function findCodeBlock(commentNode) {
-    let current = commentNode.parentElement;
-    for (let i = 0; i < 10; i++) {
-      if (!current) break;
-      // Targets Hugo's common code structures (Highlight, Listing blocks, or Tables)
-      const code = current.querySelector('pre code, .highlight pre, td.code pre, pre');
-      if (code && !code.hasAttribute(CONFIG.processedAttr)) return code;
-      current = current.parentElement;
+    // 1. Check siblings before the comment (most likely in Asciidoc/Hugo)
+    let sibling = commentNode.parentElement;
+    while (sibling) {
+        // Look for common Hugo/Book code containers
+        const code = sibling.querySelector('pre code, .highlight pre, td.code pre, .listingblock pre');
+        if (code) return code;
+
+        // Move to the previous element in the DOM
+        sibling = sibling.previousElementSibling;
     }
     return null;
   }
 
-  /**
-   * Main logic: Parses comments and wraps lines in <span> tags
-   */
   function processTooltips() {
-    const walker = document.createTreeWalker(
-      document.body,
-      NodeFilter.SHOW_COMMENT,
-      null,
-      false
-    );
-
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_COMMENT);
     let node;
+
     while (node = walker.nextNode()) {
       const text = node.nodeValue.trim();
       if (!text.startsWith(CONFIG.commentPrefix)) continue;
 
       try {
         const jsonStr = text.replace(CONFIG.commentPrefix, '').trim();
-        const tooltipMap = JSON.parse(jsonStr);
+        const rawMap = JSON.parse(jsonStr);
+
+        // Expand ranges like "1-5" into individual keys "1","2","3","4","5"
+        const tooltipMap = {};
+        Object.keys(rawMap).forEach(key => {
+            if (key.includes('-')) {
+                const [start, end] = key.split('-').map(Number);
+                for (let i = start; i <= end; i++) {
+                    tooltipMap[i.toString()] = rawMap[key];
+                }
+            } else {
+                tooltipMap[key] = rawMap[key];
+            }
+        });
+
         const codeArea = findCodeBlock(node);
 
-        if (codeArea) {
-          // Splitting by line breaks while preserving existing HTML tags
+        if (codeArea && !codeArea.hasAttribute(CONFIG.processedAttr)) {
+          console.log('✅ Found matching code block for tooltips');
+
           const lines = codeArea.innerHTML.split(/\r?\n/);
-
           const transformedHtml = lines.map((lineContent, index) => {
-            const lineNum = index + 1;
-            let explanation = null;
-
-            // Range Logic: Check if lineNum falls within a "1-5" style key
-            for (const [key, value] of Object.entries(tooltipMap)) {
-              if (key.includes('-')) {
-                const [start, end] = key.split('-').map(Number);
-                if (lineNum >= start && lineNum <= end) explanation = value;
-              } else if (parseInt(key) === lineNum) {
-                explanation = value;
-              }
-            }
-
-            if (explanation) {
-              return `<span class="${CONFIG.triggerClass}" data-tip="${explanation}">${lineContent || ' '}</span>`;
+            const lineNum = (index + 1).toString();
+            if (tooltipMap[lineNum]) {
+              return `<span class="${CONFIG.triggerClass}" data-tip="${tooltipMap[lineNum]}">${lineContent || ' '}</span>`;
             }
             return lineContent;
           }).join('\n');
@@ -92,32 +80,24 @@
           codeArea.innerHTML = transformedHtml;
           codeArea.setAttribute(CONFIG.processedAttr, 'true');
 
-          // Initialize Tippy on the new spans
           codeArea.querySelectorAll(`.${CONFIG.triggerClass}`).forEach(span => {
             createTooltip(span, span.getAttribute('data-tip'));
           });
         }
       } catch (e) {
-        // Silently skip if JSON is malformed or comment is unrelated
+        console.error('❌ Error processing tooltips:', e);
       }
     }
   }
 
-  // --- Execution ---
-
-  // Run on initial load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', processTooltips);
-  } else {
+  // Run logic
+  if (document.readyState === 'complete') {
     processTooltips();
+  } else {
+    window.addEventListener('load', processTooltips);
   }
 
-  // Run on window load to catch late-rendering blocks
-  window.addEventListener('load', () => {
-    setTimeout(processTooltips, 100);
-  });
-
-  // Observe DOM changes (useful for single-page-app style navigation in Hugo Book)
+  // MutationObserver to catch dynamic loads
   const observer = new MutationObserver(() => processTooltips());
   observer.observe(document.body, { childList: true, subtree: true });
 
