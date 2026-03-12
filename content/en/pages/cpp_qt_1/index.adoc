@@ -184,6 +184,12 @@ int main(int argc, char *argv[])
 }
 ```
 
+++++
+<!-- code-tooltips: {"1-5":"includes","7":"main() definition","9":"create QApplication","11":"create QTranslator",
+"20-21": "create and show main window"} -->
+++++
+
+
 mainwindow.h
 ```cpp
 #ifndef MAINWINDOW_H
