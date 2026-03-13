@@ -157,6 +157,7 @@ publishDir = "public"
 
   BookSection = "pages"
 
+  BookFavicon = 'svg/cpu.svg'
 
 [markup]
   [markup.asciice]
