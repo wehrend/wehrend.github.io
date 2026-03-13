@@ -7,149 +7,207 @@
   const CONFIG = {
     triggerClass: 'code-tip-trigger',
     processedAttr: 'data-tooltip-processed',
+    tooltipBoundAttr: 'data-tooltip-bound',
     dataClass: 'code-tooltip-data',
     tippyTheme: 'light-border'
   };
 
-  /* -------------------------
-     Detect device type
-  --------------------------*/
-
-  const isTouchDevice =
-    window.detectIt &&
-    (detectIt.primaryInput === 'touch' || detectIt.hasTouch);
-
-  const tooltipTrigger = isTouchDevice ? 'click' : 'mouseenter focus';
-
-  console.log(
-    'Tooltip mode:',
-    isTouchDevice ? 'Touch (tap)' : 'Desktop (hover)'
-  );
-
-  /* -------------------------
-     Helper
-  --------------------------*/
+  const hasDetectIt = typeof window.detectIt !== 'undefined';
+  const isTouchDevice = hasDetectIt &&
+    (window.detectIt.primaryInput === 'touch' || window.detectIt.hasTouch);
 
   function expandTooltipMap(rawMap) {
     const tooltipMap = {};
 
-    Object.keys(rawMap).forEach(key => {
+    Object.keys(rawMap).forEach((key) => {
       if (key.includes('-')) {
-        const [s, e] = key.split('-').map(Number);
-        for (let i = s; i <= e; i++) tooltipMap[i] = rawMap[key];
+        const [start, end] = key.split('-').map(Number);
+        if (!Number.isNaN(start) && !Number.isNaN(end)) {
+          for (let i = start; i <= end; i++) {
+            tooltipMap[i] = rawMap[key];
+          }
+        }
       } else {
-        tooltipMap[key] = rawMap[key];
+        const n = Number(key);
+        if (!Number.isNaN(n)) {
+          tooltipMap[n] = rawMap[key];
+        }
       }
     });
 
     return tooltipMap;
   }
 
-  function findCodeElement(node) {
-    let el = node.parentElement;
+  function isCodeBlockElement(el) {
+    if (!el || el.nodeType !== 1) return false;
 
-    for (let i = 0; i < 6 && el; i++) {
-      const code = el.querySelector('pre code, code');
-      if (code) return code;
-      el = el.previousElementSibling || el.parentElement;
+    if (el.matches('pre')) {
+      return !!el.querySelector('code');
+    }
+
+    if (el.matches('code')) {
+      return true;
+    }
+
+    if (el.matches('.highlight, .chroma, .code-block, figure.highlight')) {
+      return !!el.querySelector('pre code, code');
+    }
+
+    return false;
+  }
+
+  function extractCodeElement(blockEl) {
+    if (!blockEl) return null;
+
+    if (blockEl.matches('code')) return blockEl;
+    if (blockEl.matches('pre')) return blockEl.querySelector('code');
+    return blockEl.querySelector('pre code, code');
+  }
+
+  function findAssociatedCodeElement(dataNode) {
+    let current = dataNode;
+
+    while (current) {
+      let sibling = current.previousElementSibling;
+
+      while (sibling) {
+        if (isCodeBlockElement(sibling)) {
+          return extractCodeElement(sibling);
+        }
+
+        const nestedCode = sibling.querySelector?.('pre code, code');
+        if (nestedCode) {
+          return nestedCode;
+        }
+
+        sibling = sibling.previousElementSibling;
+      }
+
+      current = current.parentElement;
     }
 
     return null;
   }
 
   function getLineElements(codeElement) {
+    if (!codeElement) return [];
 
-    /* Hugo / highlight.js usually wraps lines in spans */
+    const directChildren = Array.from(codeElement.children).filter((el) => {
+      return el.textContent !== '';
+    });
 
-    const lines = Array.from(codeElement.children);
+    if (directChildren.length > 1) {
+      return directChildren;
+    }
 
-    if (lines.length > 1) return lines;
+    const pre = codeElement.closest('pre');
+    if (pre) {
+      const preDirectChildren = Array.from(pre.children).filter((el) => {
+        if (el === codeElement) return false;
+        return el.textContent !== '';
+      });
 
-    /* fallback search */
+      if (preDirectChildren.length > 1) {
+        return preDirectChildren;
+      }
+    }
 
-    const spans = codeElement.querySelectorAll('span');
+    const lineCandidates = Array.from(
+      codeElement.querySelectorAll('span, div')
+    ).filter((el) => {
+      if (el.children.length > 0) return false;
+      return el.textContent.trim() !== '';
+    });
 
-    if (spans.length > 1) return Array.from(spans);
+    if (lineCandidates.length > 1) {
+      return lineCandidates;
+    }
 
     return [];
   }
 
-  function bindTooltips(codeElement, tooltipMap) {
+  function buildTippyOptions(content) {
+    if (isTouchDevice) {
+      return {
+        content,
+        theme: CONFIG.tippyTheme,
+        placement: 'right',
+        interactive: true,
+        trigger: 'click',
+        hideOnClick: true,
+        appendTo: () => document.body
+      };
+    }
 
+    return {
+      content,
+      theme: CONFIG.tippyTheme,
+      placement: 'right',
+      interactive: true,
+      trigger: 'mouseenter focus',
+      appendTo: () => document.body
+    };
+  }
+
+  function bindTooltipsToCode(codeElement, tooltipMap) {
     const lines = getLineElements(codeElement);
 
     if (!lines.length) {
-      console.warn('⚠️ No line wrappers detected.');
-      return;
+      console.warn('Tooltip script: no line wrapper elements found.', codeElement);
+      return false;
     }
 
     lines.forEach((lineEl, idx) => {
-
       const lineNum = idx + 1;
+      const tip = tooltipMap[lineNum];
 
-      if (!tooltipMap[lineNum]) return;
+      if (!tip) return;
 
       lineEl.classList.add(CONFIG.triggerClass);
-      lineEl.dataset.tip = tooltipMap[lineNum];
+      lineEl.setAttribute('data-tip', tip);
 
-      if (typeof tippy !== 'undefined') {
+      if (lineEl.hasAttribute(CONFIG.tooltipBoundAttr)) return;
+      lineEl.setAttribute(CONFIG.tooltipBoundAttr, 'true');
 
-        tippy(lineEl, {
-          content: tooltipMap[lineNum],
-          theme: CONFIG.tippyTheme,
-          placement: 'right',
-          interactive: true,
-          trigger: tooltipTrigger,
-          appendTo: () => document.body,
-          hideOnClick: isTouchDevice
-        });
-
+      if (typeof window.tippy !== 'undefined') {
+        window.tippy(lineEl, buildTippyOptions(tip));
       }
-
     });
 
+    return true;
   }
 
   function process() {
-
     const dataNodes = document.querySelectorAll(
       `.${CONFIG.dataClass}:not([${CONFIG.processedAttr}])`
     );
 
-    dataNodes.forEach(node => {
-
+    dataNodes.forEach((node) => {
       try {
+        const rawMap = JSON.parse(node.textContent.trim());
+        const tooltipMap = expandTooltipMap(rawMap);
+        const codeElement = findAssociatedCodeElement(node);
 
-        const raw = JSON.parse(node.textContent.trim());
-        const tooltipMap = expandTooltipMap(raw);
+        if (!codeElement) {
+          console.warn('Tooltip script: no associated code block found for tooltip data node.', node);
+          return;
+        }
 
-        const codeElement = findCodeElement(node);
+        const success = bindTooltipsToCode(codeElement, tooltipMap);
 
-        if (!codeElement) return;
-
-        bindTooltips(codeElement, tooltipMap);
-
-        node.setAttribute(CONFIG.processedAttr, 'true');
-
-      } catch (e) {
-
-        console.error('Tooltip parsing error', e);
-
+        if (success) {
+          node.setAttribute(CONFIG.processedAttr, 'true');
+        }
+      } catch (err) {
+        console.error('Tooltip script: failed to parse tooltip JSON.', err, node);
       }
-
     });
-
   }
-
-  /* -------------------------
-     Mutation observer (debounced)
-  --------------------------*/
 
   let scheduled = false;
 
   function scheduleProcess() {
     if (scheduled) return;
-
     scheduled = true;
 
     requestAnimationFrame(() => {
@@ -159,7 +217,6 @@
   }
 
   process();
-
   document.addEventListener('DOMContentLoaded', scheduleProcess);
   window.addEventListener('load', scheduleProcess);
 
@@ -167,5 +224,4 @@
     childList: true,
     subtree: true
   });
-
 })();
