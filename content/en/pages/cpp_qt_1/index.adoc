@@ -1,72 +1,61 @@
 ---
-title: "Introduction into C++ (QT GUI - Part I )"
+title: "Introduction to C++ (Qt GUI - Part I)"
 slug: cpp_qt_1
 date: 2026-03-10
 tags: ["C++", "synth", "qt", "qmake"]
 category: "Programming"
-description: "Introduction GUI frameworks for C++ projects"
+description: "Introduction to GUI frameworks for C++ projects"
 type: text
 bookHidden: true
 draft: false
 ---
 {{< katex />}}
 
-=== A gui is a *fantastic* idea.... But what should it be - SDL, wxWidgets or QT ?
+=== A GUI is a *fantastic* idea... But what should it be - SDL, wxWidgets, or Qt?
 
-Choosing a GUI framework for a C++ audio project is a "fork in the road" moment. Each of these options pulls the project in a
-completely different architectural direction.
+Choosing a GUI framework for a C++ audio project is a "fork in the road" moment. Each of these options pulls the project in a completely different architectural direction.
 
 Since your course currently uses SDL, it’s the natural frontrunner, but here is how they stack up for a synth-building context:
 
-1 . SDL (Simple DirectMedia Layer)  - The "Low-Level" Choice
+1. **SDL (Simple DirectMedia Layer) - The "Low-Level" Choice**
 Since you already introduced SDL in Tutorial 02, staying here is the path of least resistance.
 
-Pros:
-It doesn't "take over" your main() function as aggressively as the others. It’s perfect for
-custom-drawn knobs and sliders using simple shapes or bitmaps.
+*Pros:* It doesn't "take over" your `main()` function as aggressively as the others. It’s perfect for custom-drawn knobs and sliders using simple shapes or bitmaps.
 
-The "Audio" Fit: It’s great for creating visualizers (oscilloscopes or spectrum analyzers) because you have direct access
-to the pixel buffer or hardware-accelerated rendering.
+*The "Audio" Fit:* It’s great for creating visualizers (oscilloscopes or spectrum analyzers) because you have direct access to the pixel buffer or hardware-accelerated rendering.
 
-Cons: It has no built-in "widgets" (buttons, text inputs). You have to build your own UI system from scratch or use a library
+*Cons:* It has no built-in "widgets" (buttons, text inputs). You have to build your own UI system from scratch or use a library like Dear ImGui.
 
-2 . Qt - The "Professional/Industrial" Choice
+2. **Qt - The "Professional/Industrial" Choice**
 
-Qt is the heavyweight champion. If you want your synth to look like a modern DAW (Digital Audio Workstation) or a commercial plugin,
-this is it.
+Qt is the heavyweight champion. If you want your synth to look like a modern DAW (Digital Audio Workstation) or a commercial plugin, this is it.
 
-Pros:
-Incredible documentation and a "What You See Is What You Get" (WYSIWYG) editor. It handles high-DPI scaling and complex layouts beautifully.
+*Pros:* Incredible documentation and a "What You See Is What You Get" (WYSIWYG) editor. It handles high-DPI scaling and complex layouts beautifully.
 
-The "Audio" Fit: It’s overkill for a simple tutorial but excellent for teaching Signals and Slots, a C++ mechanism that
-perfectly mimics how patch cables work in a modular synth.
+*The "Audio" Fit:* It’s overkill for a simple tutorial but excellent for teaching **Signals and Slots**, a C++ mechanism that perfectly mimics how patch cables work in a modular synth.
 
-Cons:
-Huge binary size and a steep learning curve. It also requires the moc (Meta-Object Compiler), which adds a layer of "magic"
-that might hide the raw C++ logic you are trying to teach.
+*Cons:* Huge binary size and a steep learning curve. It also requires the **moc** (Meta-Object Compiler), which adds a layer of "magic" that might hide the raw C++ logic you are trying to teach.
 
-3 . wxWidgets - The "Native" Choice
+3. **wxWidgets - The "Native" Choice**
 
 wxWidgets uses the host operating system's native controls (it looks like a Windows app on Windows, and a GTK app on Linux).
 
-Pros: No "magic" pre-processors like Qt. It’s "pure" C++ in a very traditional sense.
+*Pros:* No "magic" pre-processors like Qt. It’s "pure" C++ in a very traditional sense.
 
-Cons: It feels a bit dated. Styling custom, "cool-looking" synth knobs is significantly harder in wxWidgets than in SDL or
-Qt because it wants to look like a standard spreadsheet or file explorer.
-
+*Cons:* It feels a bit dated. Styling custom, "cool-looking" synth knobs is significantly harder in wxWidgets than in SDL or Qt because it strives to look like a standard spreadsheet or file explorer.
 
 [width="100%" cols="a,a,a,a"]
 |=====
-| Feature        |	SDL                     |Qt                  |wxWidgets
-| Learning Curve |	Easy (if you know SDL)  |Steep               | Moderate
-| Look & Feel	 | Custom/Game-like	        | Modern/Slick       | Native/Standard
-| Best For...	 | Visualizers & Prototyping|Commercial Software | Traditional Desktop Apps
-| C++ Style	     | Procedural/Simple OOP	| Heavy OOP & Macros |Traditional OOP
+| Feature        |  SDL                     | Qt                  | wxWidgets
+| Learning Curve |  Easy (if you know SDL)  | Steep               | Moderate
+| Look & Feel    | Custom/Game-like         | Modern/Slick        | Native/Standard
+| Best For...    | Visualizers & Prototyping| Commercial Software | Traditional Desktop Apps
+| C++ Style      | Procedural/Simple OOP    | Heavy OOP & Macros  | Traditional OOP
 |=====
 
-== So, we choose QT - lets install the dependencies an the QT own IDE QTcreator
+== So, we choose Qt - let's install the dependencies and the Qt Creator IDE
 
-We start by simply installing QT5 plus dependencies (roughly 500 MB)...
+We start by simply installing Qt 5 plus dependencies (roughly 500 MB)...
 
 ```
 sudo apt install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtcreator
@@ -83,7 +72,7 @@ The QTCreator allows us - for example to create our own UI ....
 We start with the simple *.pro(ject) file which is to be generated when creating a new project...
 
 synth.pro
-{{< hcode "qmake" >}}
+{{< hcode "bash" >}}
 QT       += core gui
 QT       += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -462,7 +451,7 @@ Human perception of pitch and loudness is logarithmic, so the slider must be map
 The standard approach:
 
 [role=“image”,“./logarithmic_scale_formula.svg” ,imgfmt=“svg”]
-\large \[f = f_{min} * (f_{min} / f_{max} )^{(slider/maxSlider)}\]
+\large \[f = f_{min} * (f_{max} / f_{min} )^{(slider/maxSlider)}\]
 
 This is the valid approach for both, volume and frequency.
 
