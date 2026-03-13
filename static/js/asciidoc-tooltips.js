@@ -1,97 +1,171 @@
-(function() {
+(function () {
   'use strict';
 
   if (window.__proTooltipsInitialized) return;
   window.__proTooltipsInitialized = true;
 
-  console.log('🚀 [Tooltip-Debug] Script Start (Element Mode)');
-
   const CONFIG = {
     triggerClass: 'code-tip-trigger',
     processedAttr: 'data-tooltip-processed',
-    dataClass: 'code-tooltip-data', // The new target class
+    dataClass: 'code-tooltip-data',
     tippyTheme: 'light-border'
   };
 
-  function findCodeBlock(dataNode) {
-    let current = dataNode;
-    // Walk backwards through siblings to find the code block
-    while (current) {
-      const code = current.querySelector('pre code, .highlight pre, td.code pre, .listingblock pre') ||
-                   (current.tagName === 'PRE' ? current : null);
-      if (code) return code;
+  /* -------------------------
+     Detect device type
+  --------------------------*/
 
-      // If the current element doesn't have it, check the previous sibling
-      let sibling = current.previousElementSibling;
-      if (sibling) {
-        const sibCode = sibling.querySelector('pre code, .highlight pre, td.code pre, .listingblock pre') ||
-                        (sibling.tagName === 'PRE' ? sibling : null);
-        if (sibCode) return sibCode;
+  const isTouchDevice =
+    window.detectIt &&
+    (detectIt.primaryInput === 'touch' || detectIt.hasTouch);
+
+  const tooltipTrigger = isTouchDevice ? 'click' : 'mouseenter focus';
+
+  console.log(
+    'Tooltip mode:',
+    isTouchDevice ? 'Touch (tap)' : 'Desktop (hover)'
+  );
+
+  /* -------------------------
+     Helper
+  --------------------------*/
+
+  function expandTooltipMap(rawMap) {
+    const tooltipMap = {};
+
+    Object.keys(rawMap).forEach(key => {
+      if (key.includes('-')) {
+        const [s, e] = key.split('-').map(Number);
+        for (let i = s; i <= e; i++) tooltipMap[i] = rawMap[key];
+      } else {
+        tooltipMap[key] = rawMap[key];
       }
-      current = current.parentElement;
-      if (current && current.tagName === 'BODY') break;
+    });
+
+    return tooltipMap;
+  }
+
+  function findCodeElement(node) {
+    let el = node.parentElement;
+
+    for (let i = 0; i < 6 && el; i++) {
+      const code = el.querySelector('pre code, code');
+      if (code) return code;
+      el = el.previousElementSibling || el.parentElement;
     }
+
     return null;
   }
 
-  function process() {
-    const dataNodes = document.querySelectorAll(`.${CONFIG.dataClass}`);
+  function getLineElements(codeElement) {
 
-    if (dataNodes.length === 0) {
-      // Don't log this every time to avoid spamming the console
+    /* Hugo / highlight.js usually wraps lines in spans */
+
+    const lines = Array.from(codeElement.children);
+
+    if (lines.length > 1) return lines;
+
+    /* fallback search */
+
+    const spans = codeElement.querySelectorAll('span');
+
+    if (spans.length > 1) return Array.from(spans);
+
+    return [];
+  }
+
+  function bindTooltips(codeElement, tooltipMap) {
+
+    const lines = getLineElements(codeElement);
+
+    if (!lines.length) {
+      console.warn('⚠️ No line wrappers detected.');
       return;
     }
 
-    dataNodes.forEach((node, i) => {
-      if (node.hasAttribute(CONFIG.processedAttr)) return;
+    lines.forEach((lineEl, idx) => {
+
+      const lineNum = idx + 1;
+
+      if (!tooltipMap[lineNum]) return;
+
+      lineEl.classList.add(CONFIG.triggerClass);
+      lineEl.dataset.tip = tooltipMap[lineNum];
+
+      if (typeof tippy !== 'undefined') {
+
+        tippy(lineEl, {
+          content: tooltipMap[lineNum],
+          theme: CONFIG.tippyTheme,
+          placement: 'right',
+          interactive: true,
+          trigger: tooltipTrigger,
+          appendTo: () => document.body,
+          hideOnClick: isTouchDevice
+        });
+
+      }
+
+    });
+
+  }
+
+  function process() {
+
+    const dataNodes = document.querySelectorAll(
+      `.${CONFIG.dataClass}:not([${CONFIG.processedAttr}])`
+    );
+
+    dataNodes.forEach(node => {
 
       try {
-        const rawMap = JSON.parse(node.textContent.trim());
-        const codeArea = findCodeBlock(node);
 
-        if (!codeArea) {
-          console.error(`❌ [Debug] Found data block #${i+1} but no code block nearby!`);
-          return;
-        }
+        const raw = JSON.parse(node.textContent.trim());
+        const tooltipMap = expandTooltipMap(raw);
 
-        console.log(`✅ [Debug] Processing data block #${i+1}`);
+        const codeElement = findCodeElement(node);
 
-        // Expand ranges
-        const tooltipMap = {};
-        Object.keys(rawMap).forEach(key => {
-          if (key.includes('-')) {
-            const [start, end] = key.split('-').map(Number);
-            for (let j = start; j <= end; j++) { tooltipMap[j.toString()] = rawMap[key]; }
-          } else { tooltipMap[key] = rawMap[key]; }
-        });
+        if (!codeElement) return;
 
-        const lines = codeArea.innerHTML.split(/\r?\n/);
-        codeArea.innerHTML = lines.map((content, idx) => {
-          const lineNum = (idx + 1).toString();
-          return tooltipMap[lineNum]
-            ? `<span class="${CONFIG.triggerClass}" data-tip="${tooltipMap[lineNum]}">${content || ' '}</span>`
-            : content;
-        }).join('\n');
+        bindTooltips(codeElement, tooltipMap);
 
-        codeArea.setAttribute(CONFIG.processedAttr, 'true');
-        node.setAttribute(CONFIG.processedAttr, 'true'); // Mark data as used
-
-        codeArea.querySelectorAll('.' + CONFIG.triggerClass).forEach(span => {
-          tippy(span, {
-            content: span.getAttribute('data-tip'),
-            theme: CONFIG.tippyTheme,
-            placement: 'right',
-            interactive: true,
-            appendTo: () => document.body
-          });
-        });
+        node.setAttribute(CONFIG.processedAttr, 'true');
 
       } catch (e) {
-        console.error('❌ [Debug] JSON Error:', e, node.textContent);
+
+        console.error('Tooltip parsing error', e);
+
       }
+
+    });
+
+  }
+
+  /* -------------------------
+     Mutation observer (debounced)
+  --------------------------*/
+
+  let scheduled = false;
+
+  function scheduleProcess() {
+    if (scheduled) return;
+
+    scheduled = true;
+
+    requestAnimationFrame(() => {
+      scheduled = false;
+      process();
     });
   }
 
-  window.addEventListener('load', process);
-  new MutationObserver(process).observe(document.body, { childList: true, subtree: true });
+  process();
+
+  document.addEventListener('DOMContentLoaded', scheduleProcess);
+  window.addEventListener('load', scheduleProcess);
+
+  new MutationObserver(scheduleProcess).observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
 })();

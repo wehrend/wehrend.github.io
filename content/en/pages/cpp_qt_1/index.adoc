@@ -158,7 +158,7 @@ The moc enables the Q_PROPERTY system, allowing you to treat class members like 
 ==
 
 main.cpp
-```cpp
+{{< hcode "cpp" >}}
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -182,7 +182,8 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
-```
+{{< / hcode >}}
+
 
 ++++
 <div class="code-tooltip-data" style="display:none;">

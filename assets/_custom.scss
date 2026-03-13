@@ -90,3 +90,22 @@
     border-left-color: #f66; /* Rot für Danger */
     background-color: rgba(255, 102, 102, 0.1);
 }
+/* Verhindert, dass die Tooltip-Spans das Layout verschieben */
+.code-tip-trigger {
+    display: inline-block; /* Behält den Textfluss bei */
+    width: 100%;           /* Füllt die Zeile aus */
+    background-color: rgba(255, 255, 0, 0.05);
+    cursor: help;
+}
+
+/* Falls Hugo Tabellen nutzt (wie in deinem Bild vermutet) */
+td.code pre {
+    white-space: pre !important; /* Verhindert ungewollte Umbrüche */
+}
+
+/* Das sorgt dafür, dass die Zeilennummern links bleiben */
+.highlight table, .highlight tr, .highlight td {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
