@@ -1,0 +1,340 @@
+---
+title: "C++-Einführungskurs (Teil 6)"
+slug: cpp_06
+date: 2026-03-14
+tags: ["C++", "synth"]
+category:
+link:
+description: "Einführung in die Themen Datenstrukturen, Algorithmen und Berechenbarkeit"
+type: text
+bookHidden: true
+outdir: ~/development/blog
+draft: false
+---
+{{< katex />}}
+
+== Einführung in die Themen Datenstrukturen, Algorithmen und Komplexität / Berechenbarkeit in C++
+
+Achtung – dieses Tutorial ist sehr theorielastig – wir werden ein wenig über die Grundlagen von Datenstrukturen, Algorithmen
+und Komplexität sprechen – all das vor allem im Zusammenhang mit C++ – also fangen wir mit den Datenstrukturen in C++ an
+
+
+=== Listen, Wörterbücher und Warteschlangen
+
+Wir beginnen mit einigen grundlegenden Datenstrukturen, die wir bereits verwendet haben, ohne tief in die Themen einzusteigen; diese beiden sind
+std::vector (im Grunde Listen) und std::map (im Grunde Wörterbücher).
+
+==== Listen und Vektoren
+
+Beginnen wir mit dem std::vector – wir verwenden diese Datentypen bereits für die verschiedenen Stimmen.
+Die Komplexität beträgt fast O(1) oder im schlimmsten Fall O(n).
+Für einen std::vector ist der Zugriff auf ein beliebiges Element seine „Superkraft“. Da ein Vektor seine Elemente in einem zusammenhängenden Speicherblock speichert,
+muss er die Liste nicht wie eine Kette durchlaufen.
+Daher beträgt die Komplexität für den Zugriff auf ein beliebiges Element in der Liste O(1) – also konstant.
+
+==== Wörterbücher und Maps
+
+Fahren wir mit dem Wörterbuch (oder besser gesagt der Map) in C++ fort. Wir verwenden std::map, um den verschiedenen Schlüsseln eine bestimmte Häufigkeit zuzuweisen.
+Im Gegensatz zu std::vector, das auf einem zusammenhängenden Array basiert, wird eine std::map typischerweise als Rot-Schwarz-Baum (eine Art
+selbstausgleichender binärer Suchbaum) implementiert. Dieser strukturelle Unterschied verändert die Art und Weise, wie Daten verarbeitet werden, grundlegend.
+
+Bei std::map haben das Hinzufügen, Entfernen und sogar das Suchen eines Elements alle dieselbe Komplexität: logarithmische Zeit O(\log n).
+
+Warum O(\log n)?
+
+In einem ausgeglichenen Baum schließt man bei jedem „Schritt“ (dem Vergleich des Schlüssels mit dem aktuellen Knoten) effektiv
+die Hälfte der verbleibenden Möglichkeiten aus. Bei 8 Elementen sind höchstens 3 Schritte erforderlich ($2^3 = 8$). Bei 1.024 Elementen
+sind höchstens 10 Schritte erforderlich ($2^{10} = 1024$). Bei 1.000.000 Elementen sind es nur etwa 20 Schritte.
+
+==== Warteschlangen, Deques und Stacks
+
+Während Vektoren sich hervorragend für den wahlfreien Zugriff eignen, benötigen wir manchmal eine Struktur, die die Reihenfolge der Verarbeitung streng regelt.
+In C++ wird dies typischerweise durch std::queue gehandhabt. Eine Warteschlange folgt dem FIFO-Prinzip (First-In, First-Out).
+Stellen Sie sich eine reale Warteschlange im Supermarkt vor: Die erste Person, die sich anstellt, ist auch die erste, die wieder geht.
+In Ihrem Synth-Projekt ist eine Warteschlange (genauer gesagt ein threadsicherer Ringpuffer) unerlässlich, um MIDI-Nachrichten oder Audio-Samples
+zwischen dem UI-Thread und dem Audio-Callback-Thread mit hoher Priorität zu übertragen.
+Komplexität: Bei std::queue sind sowohl das Hinzufügen eines Elements (push) als auch das Entfernen des vordersten Elements (pop) $O(1)$.
+Deques sind doppelseitige Warteschlangen, bei denen Sie jedes Element *von beiden Seiten* der Warteschlange hinzufügen oder entfernen können.
+
+
+
+[width=„100%“ cols="a,a,a,a "]
+|=====
+| Datenstruktur | Zugriff | Suche | Einfügen (Durchschnitt)
+| std::vector | O(1) | O(n) | O(1) (amortisiert am Ende)
+| std::map | O(log(n)) | O(log(n)) | O(log(n))
+| std::list| O(n) | O(n) | O (1)
+| std::deque | O(1) | O(n) | O(1) (an den Enden)
+|=====
+
+
+==== Einen benutzerdefinierten Datentyp erstellen
+
+Nachdem wir nun an der Oberfläche des Themas gekratzt haben, wollen wir nun tiefer einsteigen und unsere eigene Datenstruktur erstellen: den (Audio-)Ringpuffer.
+Wir nutzen die Standard Template Library und erstellen unsere eigene Implementierung eines Ringpuffers...
+
+{{< hcode "cpp" >}}
+#ifndef AUDIO_RING_BUFFER_H
+#define AUDIO_RING_BUFFER_H
+
+#include <atomic>
+#include <cstddef>
+
+/**
+ * @brief A Single-Producer Single-Consumer (SPSC) Ring Buffer.
+ * Designed for passing audio samples from the Audio Thread to the UI.
+ */
+template <typename T, size_t Size>
+class AudioRingBuffer {
+private:
+    T buffer[Size] = {0};
+    // Atomic index to prevent race conditions between threads
+    std::atomic<size_t> writeIndex{0};
+
+public:
+    AudioRingBuffer() = default;
+
+    /**
+     * @brief Writes a single sample to the buffer.
+     * Called by the "Producer" (Audio Thread).
+     */
+    void write(T sample) {
+        size_t currentWrite = writeIndex.load(std::memory_order_relaxed);
+        buffer[currentWrite] = sample;
+
+        // Ensure the sample is written before the index is updated
+        writeIndex.store((currentWrite + 1) % Size, std::memory_order_release);
+    }
+
+    /**
+     * @brief Reads a sample at a specific relative index.
+     * Called by the "Consumer" (UI/Renderer).
+     */
+    T read(size_t index) const {
+        return buffer[index % Size];
+    }
+
+    /**
+     * @brief Returns the current write position.
+     * Use acquire semantics to ensure we see the most recent writes.
+     */
+    size_t getWritePointer() const {
+        return writeIndex.load(std::memory_order_acquire);
+    }
+
+    size_t getSize() const { return Size; }
+};
+
+#endif
+{{< / hcode >}}
+
+
+{{< hcode "cpp" >}}
+#include <SDL2/SDL.h>
+#include <iostream>
+#include <vector>
+#include <map>
+#include <cmath>
+#include <algorithm>
+
+#include "Oscillator.h"
+#include "Envelope.h"
+#include "Filter.h"
+#include "Voice.h"
+#include "AudioRingBuffer.h"
+
+// Global pre-allocated Ring Buffer for the Oscilloscope (2048 samples)
+AudioRingBuffer<float, 2048> scopeBuffer;
+
+class SynthEngine {
+public:
+    // std::vector is great for iterating through active voices in the audio thread.
+    // However, adding/removing voices requires a Mutex (SDL_LockAudio) to be safe.
+    std::vector<Voice*> voices;
+    LowPassFilter filter;
+    SquareOsc lfo;
+
+    float masterVolume = 0.15f;
+    float syncMultiplier = 2.5f;
+
+    SynthEngine() : lfo(0.5f, 1.0f, 44100.0f) {
+        filter.setCutoff(0.8f);
+    }
+
+    ~SynthEngine() {
+        for (auto v : voices) delete v;
+    }
+
+    // This is the High-Priority Audio Thread
+    static void AudioCallback(void* userdata, Uint8* stream, int len) {
+        SynthEngine* engine = static_cast<SynthEngine*>(userdata);
+        float* buffer = reinterpret_cast<float*>(stream);
+        int length = len / sizeof(float);
+
+        for (int i = 0; i < length; i++) {
+            float mixedSample = 0.0f;
+
+            // Process all active voices stored in the std::vector
+            for (auto it = engine->voices.begin(); it != engine->voices.end(); ) {
+                Voice* v = *it;
+
+                // Real-time update of the Hard Sync frequency
+                v->setSlaveFrequency(v->masterOsc->getFrequency() * engine->syncMultiplier);
+
+                mixedSample += v->getNextSample();
+
+                // If Envelope is finished, remove the voice from the vector
+                if (v->env.getState() == OFF) {
+                    delete v;
+                    it = engine->voices.erase(it);
+                } else {
+                    ++it;
+                }
+            }
+
+            // Global FX Chain
+            float filtered = engine->filter.process(mixedSample);
+            float finalSample = filtered * engine->masterVolume;
+
+            buffer[i] = finalSample;
+
+            // PUSH to the custom lock-free structure for the UI to see
+            scopeBuffer.write(finalSample);
+        }
+    }
+};
+
+int main(int argc, char* argv[]) {
+    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) < 0) return 1;
+
+    SDL_Window* window = SDL_CreateWindow("C++ Hard Sync Synth",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 400, SDL_WINDOW_SHOWN);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    // std::map: Perfect for translating keys to MIDI notes at the UI level
+    std::map<SDL_Keycode, int> keyMap = {
+        {SDLK_a, 60}, {SDLK_s, 62}, {SDLK_d, 64}, {SDLK_f, 65},
+        {SDLK_g, 67}, {SDLK_h, 69}, {SDLK_j, 71}, {SDLK_k, 72}
+    };
+
+    SynthEngine engine;
+
+    SDL_AudioSpec ds;
+    ds.freq = 44100;
+    ds.format = AUDIO_F32SYS;
+    ds.channels = 1;
+    ds.samples = 1024;
+    ds.callback = SynthEngine::AudioCallback;
+    ds.userdata = &engine;
+
+    if (SDL_OpenAudio(&ds, NULL) < 0) return 1;
+    SDL_PauseAudio(0);
+
+    bool running = true;
+    SDL_Event e;
+
+    std::cout << "--- HARD SYNC SYNTH READY ---" << std::endl;
+    std::cout << "A-K: Play Notes | UP/DOWN: Adjust Hard Sync | ESC: Quit" << std::endl;
+
+    while (running) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) running = false;
+
+            if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
+                if (e.key.keysym.sym == SDLK_ESCAPE) running = false;
+
+                if (keyMap.count(e.key.keysym.sym)) {
+                    int note = keyMap[e.key.keysym.sym];
+                    float freq = 440.0f * pow(2.0f, (note - 69) / 12.0f);
+
+                    SDL_LockAudio(); // Protect std::vector from concurrent access
+                    Voice* newVoice = new Voice(freq, 1.0f, 44100.0f, note);
+                    newVoice->setSlaveFrequency(freq * engine.syncMultiplier);
+                    engine.voices.push_back(newVoice);
+                    SDL_UnlockAudio();
+                }
+
+                if (e.key.keysym.sym == SDLK_UP) {
+                    engine.syncMultiplier += 0.2f;
+                    std::cout << "Sync Multiplier: " << engine.syncMultiplier << std::endl;
+                }
+                if (e.key.keysym.sym == SDLK_DOWN) {
+                    engine.syncMultiplier = std::max(1.0f, engine.syncMultiplier - 0.2f);
+                    std::cout << "Sync Multiplier: " << engine.syncMultiplier << std::endl;
+                }
+            }
+
+            if (e.type == SDL_KEYUP) {
+                if (keyMap.count(e.key.keysym.sym)) {
+                    int note = keyMap[e.key.keysym.sym];
+                    SDL_LockAudio();
+                    for (auto v : engine.voices) {
+                        if (v->note == note) v->env.triggerOff();
+                    }
+                    SDL_UnlockAudio();
+                }
+            }
+        }
+
+        // --- UI RENDERING (Uses the AudioRingBuffer) ---
+        SDL_SetRenderDrawColor(renderer, 20, 20, 25, 255);
+        SDL_RenderClear(renderer);
+
+        SDL_SetRenderDrawColor(renderer, 0, 255, 204, 255); // Neon Cyan
+
+        // Get the current write pointer from the audio thread
+        size_t writePos = scopeBuffer.getWritePointer();
+
+        // We draw 800 samples from the buffer
+        for (int x = 0; x < 799; x++) {
+            // Read samples relative to the current write position (last 800 samples)
+            // This prevents the "jumping" effect of a static buffer
+            float s1 = scopeBuffer.read(writePos + x - 800);
+            float s2 = scopeBuffer.read(writePos + x + 1 - 800);
+
+            int y1 = 200 - (int)(s1 * 150);
+            int y2 = 200 - (int)(s2 * 150);
+            SDL_RenderDrawLine(renderer, x, y1, x + 1, y2);
+        }
+
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16); // Target ~60 FPS
+    }
+
+    SDL_CloseAudio();
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+
+    return 0;
+}
+{{< / hcode >}}
+
+
+Dieser benutzerdefinierte Ringpuffer ist eine perfekte Brücke zwischen reiner Theorie und praktischer Synthesizer-Entwicklung. Bei der Audio-Programmierung
+können wir std::vector oder std::map oft nicht direkt innerhalb des Audio-Callbacks verwenden, da diese möglicherweise Speicher zuweisen, was
+einen Systemaufruf auslöst und das Risiko eines Audio-Fehlers (einer „Prioritätsinversion“) birgt.
+
+Deine Implementierung nutzt Atomics, die das Geheimnis für lock-freie Parallelität sind. Lassen Sie uns das „Wie“ und
+„Warum“ dieser Struktur aufschlüsseln, um den Abschnitt „Datenstrukturen“ abzuschließen, bevor wir zu den Algorithmen übergehen.
+
+===== Die Anatomie des Audio-Ringpuffers
+Ein Ringpuffer (oder zirkulärer Puffer) behandelt ein Array fester Größe so, als wäre es Ende an Ende verbunden. Wenn der writeIndex
+das Ende des Arrays erreicht, springt er mithilfe des Modulo-Operators (%) zurück an den Anfang.
+
+Warum std::atomic?
+
+In einem multithreaded Synth laufen der Audio-Thread (Producer) und der GUI-Thread (Consumer) gleichzeitig.
+Würden wir ein reguläres size_t verwenden, könnte ein Thread einen teilweise aktualisierten Wert sehen, was zu einem Absturz oder „mangelhaften“ Audiodaten führen würde.
+std::atomic stellt sicher, dass die Indexaktualisierung „atomar“ (alles oder nichts) ist und über verschiedene CPU-Kerne hinweg sichtbar ist.
+
+Speicherbarrieren (Acquire/Release)
+
+Im Code werden Sie std::memory_order_release und std::memory_order_acquire bemerken. Diese dienen nicht nur der Show; es handelt sich um Speicherbarrieren:
+
+- Release: Weist die CPU an: „Stelle sicher, dass alle meine Datenschreibvorgänge (die Audio-Samples) abgeschlossen sind, bevor du den Index aktualisierst.“
+
+- Acquire: Weist die CPU an: „Bevor ich den Index lese, stelle sicher, dass ich über die neuesten damit verbundenen Daten verfüge.“
+
+
+Übersetzt mit DeepL.com (kostenlose Version)

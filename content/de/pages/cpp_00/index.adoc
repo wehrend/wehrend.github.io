@@ -1,0 +1,182 @@
+---
+title: "C++-Einführungskurs"
+slug: cpp_00
+date: 2026-03-14
+tags: ["C++"]
+category:
+link:
+description: "Eine praktische Einführung in C++ anhand der Entwicklung eines kleinen Audiosynthesizers."
+type: text
+bookHidden: true
+overview: true
+outdir: ~/development/blog
+draft: false
+icon: "svg/cpp.svg"
+---
+
+= C++-Kurs – Überblick
+
+{{< asciihint info >}}
+Dieser Kurs bietet eine Einführung in die **C++-Programmierung anhand der Entwicklung einer kleinen Audio-/Synthesizer-Anwendung**.
+
+Ziel ist es, die Sprache **Schritt für Schritt beim Aufbau eines funktionierenden Audiosystems** zu erlernen.
+
+Voraussetzungen:
+
+* Ein **Linux-System** (Debian oder Ubuntu empfohlen)
+* **GCC (GNU Compiler Collection)**
+* Das Build-Tool **make**
+* Grundlegende Kenntnisse der **Befehlszeile**
+* Etwas **mathematisches Hintergrundwissen** (hilfreich für die Abschnitte zu Audio und Signalverarbeitung)
+
+Windows-Benutzer können den Kurs mithilfe des **Windows Subsystem for Linux (WSL)** absolvieren.
+{{< /asciihint >}}
+
+Die Beispiele in diesem Kurs wurden mit der folgenden Entwicklungsumgebung getestet.
+
+Compiler:
+
+g++ (Debian 12.2.0-14+deb12u1) 12.2.0
+
+Erforderliche Bibliotheken:
+
+libsdl2-2.0-0 2.26.5+dfsg-1
+libsdl2-dev   2.26.5+dfsg-1
+
+Installieren Sie die erforderlichen Abhängigkeiten unter Debian / Ubuntu mit:
+
+sudo apt install build-essential libsdl2-dev
+
+Dadurch werden installiert:
+
+* g++
+* make
+* erforderliche Systembibliotheken
+* SDL2-Entwicklungs-Header
+
+Der in diesem Kurs verwendete Quellcode ist auf GitHub verfügbar:
+
+https://github.com/wehrend/cpp-tutorials
+
+Der Kurs baut schrittweise einen **kleinen Software-Synthesizer** auf und führt in jedem Kapitel neue C++-Konzepte ein.
+
+---
+
+== C++ 01
+
+link:https://wehrend.github.io/de/pages/cpp_01/[cpp_01]
+
+Einführung in **die Grundlagen der Programmierung, Entwicklungswerkzeuge und die grundlegende C++-Syntax**.
+
+Enthält:
+
+* Ein kleines Informationsprogramm, das Plattformgrenzen mithilfe von `limits.h` ausgibt (Tutorial 00)
+* Ein klassisches **Hello World**-Programm, das bis auf die **Assembler-Ebene** untersucht wird (Tutorial 01)
+
+---
+
+== C++ 02
+
+link:https://wehrend.github.io/de/pages/cpp_02/[cpp_02]
+
+Behandelt **Kernfunktionen der Sprache** wie Variablen, Kontrollstrukturen, Funktionen und grundlegende Datentypen.
+
+Enthält:
+
+* Eine Einführung in die **SDL (Simple DirectMedia Layer)**-Bibliothek (Tutorial 02)
+* Eine Einführung in **Header-Dateien und grundlegendes Oszillator-Design** (Tutorial 03)
+
+---
+
+== C++ 03
+
+link:https://wehrend.github.io/de/pages/cpp_03/[cpp_03]
+
+Stellt **objektorientierte Programmierkonzepte** vor, darunter:
+
+* Klassen
+* Komposition
+* Vererbung
+
+Enthält:
+
+* **Komposition und Hüllkurvengeneratoren** für Synthesizer (Tutorial 04)
+
+---
+
+== C++ 04
+
+link:https://wehrend.github.io/de/pages/cpp_04/[cpp_04]
+
+Wendet objektorientierte Konzepte auf eine einfache Synthesizer-Implementierung an.
+
+Enthält:
+
+* Einen **fest programmierten Synthesizer mit einem Tiefpassfilter** (Tutorial 05a, minimale Benutzeroberfläche)
+* Eine erweiterte Version mit **Debug-Ausgabe, Schriftarten und einer visuellen Anzeige der Cutoff-Frequenz** (Tutorial 05b)
+
+---
+
+== C++ 05
+
+link:https://wehrend.github.io/de/pages/cpp_05/[cpp_05]
+
+Erweitert den Synthesizer um fortgeschrittenere Audiofunktionen.
+
+Enthält:
+
+* **Polyphonie und mehrere Stimmen** (Tutorial 06)
+* **Master-/Slave-Oszillatorsynchronisation (Hard-Sync)** (Tutorial 07)
+
+---
+
+== C++ 06
+
+link:https://wehrend.github.io/de/pages/cpp_06/ [cpp_06]
+
+Konzentriert sich auf Leistung und Systemkonzepte.
+
+Enthält:
+
+* Algorithmen, Datenstrukturen und Konzepte der Berechenbarkeit
+* **Implementierung eines Audio-Ringpuffers** (Tutorial 08)
+
+---
+
+== Build-Tools: Von make zu cmake
+
+link:https://wehrend.github.io/de/pages/cpp_cmake/[cpp_cmake]
+
+Ein kurzer Abschnitt, der moderne Build-Tools erklärt und zeigt, wie man Projekte von **Makefiles zu CMake** migriert.
+
+---
+
+== Von reinem C++ zur GUI: Einführung in das Qt-Framework
+
+link:https://wehrend.github.io/de/pages/cpp_qt_1/[cpp qt gui]
+
+Erstellen Sie Anwendungen mit **GUI und nativen Widgets**.
+
+---
+
+== Was Sie erstellen werden
+
+Am Ende des Kurses werden Sie einen **einfachen Software-Synthesizer** implementiert haben, einschließlich:
+
+* Oszillatoren
+* Hüllkurvengeneratoren
+* Filter
+* Polyphone Stimmverarbeitung
+* Audio-Pufferung
+* SDL-basierte Audioausgabe
+
+Dabei lernen Sie:
+
+* die **Grundlagen der Programmiersprache C++**
+* **objektorientiertes Design**
+* **Grundlagen der Audioprogrammierung**
+* **Build-Systeme**
+* praktische **Entwicklungsabläufe unter Linux**
+
+
+Übersetzt mit DeepL.com (kostenlose Version)

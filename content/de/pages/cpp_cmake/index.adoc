@@ -1,0 +1,112 @@
+---
+title: "C++-Einführungskurs (CMake Zwischenspiel)"
+slug: cpp_cmake
+date: 2026-03-05
+tags: ["C++", "synth", "cmake"]
+category: "Programming"
+description: "Einführung in effiziente Build-Tools für C++-Projekte"
+type: text
+bookHidden: true
+draft: false
+---
+{{< katex />}}
+
+== Einführung in effiziente Build-Tools für C++-Projekte
+
+Wir erreichen nun einen **wichtigen Meilenstein**, indem wir von einem `Make`-basierten Build-Prozess zu einem `CMake`-basierten Workflow wechseln.
+
+Die traditionelle „Rule of Three“ (die in vielen klassischen Open-Source-Projekten zu finden ist) — `./configure && make && sudo make install`
+— wird nach und nach durch den CMake-Ansatz ersetzt. Dieser moderne Workflow beinhaltet typischerweise das Anlegen eines separaten
+Build-Verzeichnisses, um den Quellbaum sauber zu halten (sogenannte „Out-of-Source Builds“):
+
+{{< hcode "bash" >}}
+mkdir build && cd build
+cmake ..
+cmake --build .
+{{< / hcode  >}}
+
+Um vom Makefile-basierten Ansatz in unserem cpp-Tutorial zu wechseln, schauen Sie sich bitte den Git-Branch `main-with-cmake` an, in dem alle
+Makefiles in einen CMake-basierten Ansatz umgewandelt wurden.
+
+Beginnen wir einfach mit dem ersten Tutorial, `tutorial00`, das unsere Limits-Datei als Ausgabe ausgibt:
+
+{{< hcode "bash" >}}
+cmake_minimum_required(VERSION 3.10)
+
+# 1. Define the project name
+project(MyProject)
+
+# 2. Define the executable name and source files
+# This replaces: g++ main.cpp -o main
+add_executable(main ../main.cpp)
+{{<  / hcode >}}
+
+
+Für dieses minimale Beispiel wäre das Makefile einfacher und kürzer als das CMake-Projekt. Das ändert sich jedoch schnell,
+sobald wir externe Bibliotheken verwenden (also einbinden und linken), wie in unserem Fall SDL:
+
+{{< hcode "bash" >}}
+cmake_minimum_required(VERSION 3.10)
+project(SynthProject)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 1. Find the SDL2 and SDL2_ttf packages
+# This replaces manual -I and -L paths
+find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
+# 2. Define the executable and source files
+add_executable(synth
+    main.cpp
+)
+
+# 3. Link the libraries
+# On Linux, we don't need mingw32 or winmm!
+target_link_libraries(synth PRIVATE
+    SDL2::SDL2
+    # SDL2::SDL2main is usually not needed on Linux,
+    # but SDL2::SDL2 handles the heavy lifting.
+)
+{{< / hcode >}}
+
+{{< asciihint info >}}
+
+**Tipp:**
+Sie können die Konfigurations- und Build-Schritte in einer einzigen Zeile kombinieren, um Zeit zu sparen:
+
+`cmake -B build && cmake --build .`
+
+{{< /asciihint >}}
+
+
+{{< hcode "bash" >}}
+sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake ..
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
+-- Checking for module 'sdl2'
+--   Found sdl2, version 2.26.5
+-- Checking for module 'SDL2_ttf'
+--   Found SDL2_ttf, version 2.20.1
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sven/development/cpp-tutorials/tutorial08/build
+sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake --build .
+[ 33%] Building CXX object CMakeFiles/synth.dir/main.cpp.o
+[ 66%] Building CXX object CMakeFiles/synth.dir/Voice.cpp.o
+[100%] Linking CXX executable synth
+[100%] Built target synth
+{{< / hcode >}}

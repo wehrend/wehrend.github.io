@@ -1,0 +1,161 @@
+---
+title: "C++-Einführungskurs"
+slug: cpp_01
+date: 2026-03-14
+tags: ["C++"]
+category:
+link:
+description:
+type: text
+bookHidden: true
+outdir: ~/development/blog
+draft: false
+---
+
+
+== Eine einfache Einführung in C++
+
+Hallo zusammen,
+diesmal möchte ich eine Reihe über das Programmieren mit C++ starten.
+Während Python eine universelle Programmiersprache ist, wird C++ oft gewählt, wenn man eine genauere Kontrolle über Leistung und Latenz benötigt.
+
+Wir fangen ganz einfach an, indem wir ein kurzes Programm erstellen, das die Grenzen der verschiedenen Datentypen ausgibt.
+Installiert Microsoft Code, damit ihr eine einfache IDE habt, mit der ihr arbeiten könnt...
+
+Und erstellt eine Datei main.cpp mit folgendem Inhalt
+
+
+{{< hcode "cpp" >}}
+#include <iostream>
+#include <limits>
+using namespace std;
+
+int main() {
+    cout << "Grenzwerte für Integer-typen: << "\n";
+    cout << "int minimum = " << numeric_limits<int>::min() << "\n";
+    cout << "int maximum = " <<  numeric_limits<int>::max() << "\n";
+    cout << "long minimum = " << numeric_limits<long>::min() << "\n";
+    cout << "long maximum = " << numeric_limits<long>::max()  << "\n";
+    cout << "long long minimum = " << numeric_limits<long long>::min() << "\n";
+    cout << "long long maximum = " << numeric_limits<long long>::max() << "\n";
+    cout << "unsigned maxima (minimum is 0):\n";
+    cout << "unsigned int = " << numeric_limits<unsigned int>::max() << "\n";
+    cout << "unsigned long = " << numeric_limits<unsigned long>::max() << "\n";
+    cout << "unsigned long long = " << numeric_limits<unsigned long long>::max() << "\n";
+    cout << "\nAnzahl von Bytes für:\n";
+    cout << "int        " << sizeof(int) << "\n";
+    cout << "long        " << sizeof(long) << "\n";
+    cout << "long long   " << sizeof(long long) << "\n";
+}
+{{< /hcode  >}}
+Als Nächstes muss der freie GNU-Compiler gcc installiert sein.
+
+Wir kompilieren die Datei mit einem einfachen
+
+[source,bash]
+----
+g++ main.cpp_01 -o main
+----
+
+und können dann das Programm ausführen:
+[source,bash]
+----
+./main
+----
+
+Die genauen Größen hängen von der Plattform und dem Compiler ab; z. B. ist „long“ auf vielen Unix-ähnlichen 64-Bit-Systemen 8 Byte groß, unter Windows jedoch oft nur 4 Byte.
+Das folgende Ergebnis stammt jedoch vom Rechner des Autors (Debian Bookworm):
+----
+Grenzwerte für Integer-typen: :
+int minimum = -2147483648
+int maximum = 2147483647
+long minimum = -9223372036854775808
+long maximum = 9223372036854775807
+long long minimum = -9223372036854775808
+long long maximum = 9223372036854775807
+unsigned maxima (minimum is 0):
+unsigned int = 4294967295
+unsigned long = 18446744073709551615
+unsigned long long = 18446744073709551615
+
+Anzahl von Bytes für:
+int        4
+long        8
+long long   8
+----
+
+== Ein „Hello World“-Programm unter der Lupe
+
+In diesem Abschnitt betrachten wir ein einfaches *Hello World*-Programm, das auf einer Linux-basierten Plattform mit einem 64-Bit-Prozessor läuft.
+Obwohl das Programm klein ist, enthält es bereits mehrere wichtige Konzepte, die in jeder C++-Anwendung vorkommen.
+
+
+{{< hcode "cpp" >}}
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    cout << "Hello World" << "\n";
+    return 0;
+}
+{{< /hcode >}}
+
+Auf den ersten Blick erscheint das Programm trivial, doch auch hier sind mehrere Phasen der Kompilierung und Ausführung beteiligt.
+Wir werden daher den Code Schritt für Schritt durchgehen, um uns ein klares Bild davon zu machen, was genau geschieht.
+
+Die erste Zeile enthält eine sogenannte Präprozessor-Direktive. Präprozessor-Direktiven werden vor Beginn des eigentlichen Kompilierungsprozesses
+bearbeitet und dienen dazu, den Quellcode zu modifizieren. Die Anweisung `#include <iostream>` weist den Präprozessor an,
+den Inhalt der Header-Datei `iostream` zu übernehmen und in das Programm einzufügen. Dieser Header stellt Funktionen für Ein- und
+Ausgabeoperationen bereit.
+
+Die nächste Zeile, `using namespace std;`, weist den Compiler an, den Standard-Namespace zu verwenden. Viele Komponenten der C++-Standardbibliothek,
+darunter `cout`, befinden sich in diesem Namespace. Ohne diese Anweisung müsste jede Verwendung explizit
+als `std::cout` geschrieben werden.
+
+Nach diesen Deklarationen gelangen wir zum Kern des Programms: der Funktion `main()`. Jedes C++-Programm beginnt seine Ausführung in dieser
+Funktion. Wenn das Betriebssystem das Programm startet, wird die Kontrolle direkt an `main()` übergeben.
+
+Im Funktionskörper finden wir die Anweisung `cout << „Hello World“ << „\n“;`. Das Objekt `cout` repräsentiert den Standard-
+Ausgabestrom und wird verwendet, um Text in die Konsole zu schreiben. Der Einfügeoperator `<<` leitet die Zeichenkette an den Ausgabestrom weiter,
+während `„\n“` einen Zeilenumbruch erzeugt.
+
+Schließlich signalisiert die Anweisung `return 0;`, dass das Programm erfolgreich beendet wurde, und gibt die Kontrolle an das Betriebssystem zurück.
+
+
+Wir kompilieren die Datei mit einem einfachen
+
+[source,bash]
+----
+g++ hello.cpp_01 -o hello
+----
+
+und können das Programm ausführen:
+[source,bash]
+----
+./hello
+----
+und erhalten somit eine
+
+[source,bash]
+----
+Hello World!
+----
+
+Wie wir inzwischen sehen können, unterscheidet sich der Assembler auf den verschiedenen Plattformen (z. B. Interrupt 80 auf Linux-Plattformen und Interrupt 21 auf DOS-/Windows-Plattformen).
+
+Die Vorzüge von Assembler
+
+{{< plus >}}Extreme Effizienz und Geschwindigkeit{{< /plus >}}
+{{< plus >}}Direkte Hardware-Manipulation{{< /plus >}}
+{{< plus >}}Vollständige Kontrolle{{< /plus >}}
+{{< plus >}}Geringere Größe der ausführbaren Datei:{{< /plus >}}
+
+So lassen sich die großen Vorteilen auch die Nachteile von Assembler erkennen
+
+{{< minus >}}Mangelnde Portabilität{{< /minus >}}
+{{< minus >}}Hohe Komplexität und steiler Lernkurve{{< /minus >}}
+{{< minus >}}Schwierige Fehlersuche und Wartung{{< /minus >}}
+{{< minus >}}Lange Entwicklungszeit{{< /minus >}}
+
+Übersetzt mit DeepL.com (kostenlose Version)

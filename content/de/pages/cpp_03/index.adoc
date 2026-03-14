@@ -1,0 +1,352 @@
+---
+title: "C++-Einführungskurs (Teil 3)"
+slug: cpp_03
+date: 2026-03-14
+tags: ["C++", "SDL", "synth"]
+category:
+link:
+description:
+type: text
+bookHidden: true
+outdir: ~/development/blog
+draft: false
+---
+{{< katex />}}
+
+== Einführung in C++ (Teil 3)
+
+== C++ OOP-Meisterschaft: Die Kraft der Komposition (Has-A)
+
+In der Softwarearchitektur gibt es zwei grundlegende Möglichkeiten, Objekte miteinander zu verbinden: **Vererbung** (Is-A) und **Komposition** (Has-A).
+Während Anfänger oft versuchen, alles durch Vererbung zu lösen („Ein Oszillator *ist ein* Hüllkurvenmodul“), bevorzugen Profis die Komposition:
+**„Ein Synthesizer *hat ein* Hüllkurvenmodul.“**
+
+== 1. Warum Komposition?
+
+Stellen Sie sich unseren Synthesizer als modulares Rack vor. Jedes Modul (Oszillator, Hüllkurvenmodul) ist eine eigenständige Klasse. Die `SynthEngine` fungiert
+als Chassis, in das diese Module eingesteckt werden.
+
+* **Modularität:** Wir können die Envelope-Logik aktualisieren, ohne auch nur eine einzige Zeile des Oszillator-Codes anzurühren.
+* **Zustandstrennung:** Die Envelope verwaltet ihre eigenen komplexen Zustände (Attack, Decay, Sustain, Release). Der Engine ist es
+egal, *wie* die Lautstärke berechnet wird; sie interessiert sich nur für das Ergebnis.
+* **Wiederverwendbarkeit:** Wir könnten später problemlos eine zweite oder dritte Hüllkurve für andere Parameter hinzufügen, da die Klasse eine in sich geschlossene Einheit ist.
+
+== 2. Die Signalkette
+
+Durch Zusammensetzung bauen wir eine „Signalkette“ auf. Selbst in dieser Basisversion fließen die Daten in einer bestimmten Reihenfolge:
+
+1.  **Oszillator** -> Erzeugt die rohen, kontinuierlichen Audio-Samples.
+2.  **Hüllkurve** -> Wirkt als „Gate“ und multipliziert diese Samples mit einem Lautstärkepegel (0,0 bis 1,0), je nachdem, wie lange eine Taste gedrückt wurde.
+
+
+== 3. Vollständiger Referenzcode (Grundlegende Komposition)
+
+Nachfolgend finden Sie den vollständigen integrierten Code, der die Beziehung zwischen der Engine, dem polymorphen Oszillator und der ADSR-Hüllkurve veranschaulicht.
+
+{{< hcode "cpp" >}}
+#ifndef OSCILLATOR_H
+#define OSCILLATOR_H
+
+#include <cmath>
+
+class Oscillator {
+protected:
+    double frequency, amplitude, phase, sampleRate;
+
+public:
+    // Nur Deklarationen (Semikolon statt geschweifter Klammern)
+    Oscillator(double freq, double amp, double sr);
+    virtual ~Oscillator() {}
+
+    virtual float getNextSample() = 0;
+    void setFrequency(double freq);
+};
+
+// Unterklassen können hier im Header bleiben, wenn sie kurz sind
+class SquareOsc : public Oscillator {
+public:
+    using Oscillator::Oscillator;
+    float getNextSample() override; // Definition kommt in die .cpp
+};
+
+class SawOsc : public Oscillator {
+public:
+    using Oscillator::Oscillator;
+    float getNextSample() override; // Definition kommt in die .cpp
+};
+
+class SineOsc : public Oscillator {
+public:
+    using Oscillator::Oscillator;
+    float getNextSample() override; // Definition kommt in die .cpp
+};
+
+class TriangleOsc : public Oscillator {
+public:
+    using Oscillator::Oscillator;
+    float getNextSample() override; // Definition kommt in die .cpp
+};
+
+#endif
+{{< /hcode >}}
+
+{{< hcode "cpp" >}}
+#include "Oscillator.h"
+
+Oscillator::Oscillator(double freq, double amp, double sr)
+    : frequency(freq), amplitude(amp), phase(0.0), sampleRate(sr) {}
+
+void Oscillator::setFrequency(double freq) {
+    frequency = freq;
+}
+
+float SquareOsc::getNextSample() {
+    float sample = (sin(phase) > 0) ? 1.0f : -1.0f;
+    phase += (2.0 * M_PI * frequency) / sampleRate;
+    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
+    return sample * (float)amplitude;
+}
+
+float SawOsc::getNextSample() {
+    float sample = (float)(2.0 * (phase / (2.0 * M_PI)) - 1.0);
+    phase += (2.0 * M_PI * Frequenz) / Abtastrate;
+    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
+    return sample * (float)amplitude;
+}
+
+float SineOsc::getNextSample() {
+    float sample = (float)sin(phase);
+    phase += (2.0 * M_PI * frequency) / sampleRate;
+    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
+    return sample * (float)amplitude;
+}
+
+float TriangleOsc::getNextSample() {
+    float sample = (float)((2.0 / M_PI) * asin(sin(phase)));
+    phase += (2.0 * M_PI * frequency) / sampleRate;
+    if (phase > 2.0 * M_PI) phase -= 2.0 * M_PI;
+    return sample * (float)amplitude;
+}
+{{< /hcode >}}
+
+{{< hcode "cpp" >}}
+#ifndef ENVELOPE_H
+#define ENVELOPE_H
+
+enum EnvelopeState { OFF, ATTACK, DECAY, SUSTAIN, RELEASE };
+
+class Envelope {
+private:
+    double amplitude = 0.0;
+    double attackTime = 0.05;  // 50ms fade in
+    double decayTime = 0.1;   // 100ms settle
+    double sustainLevel = 0.7; // Hold at 70% volume
+    double releaseTime = 0.3;  // 300ms fade out
+    double sampleRate;
+    EnvelopeState state = OFF;
+
+public:
+    Envelope(double sr) : sampleRate(sr) {}
+
+    void triggerOn() { state = ATTACK; }
+    void triggerOff() { state = RELEASE; }
+
+    float getNextAmplitude() {
+        switch (state) {
+            case ATTACK:
+                amplitude += 1.0 / (attackTime * sampleRate);
+                if (amplitude >= 1.0) {
+                    amplitude = 1.0;
+                    state = DECAY;
+                }
+                break;
+            case DECAY:
+                amplitude -= (1.0 - sustainLevel) / (decayTime * sampleRate);
+                if (amplitude <= sustainLevel) {
+                    amplitude = sustainLevel;
+                    state = SUSTAIN;
+                }
+                break;
+            case SUSTAIN:
+                amplitude = sustainLevel;
+                break;
+            case RELEASE:
+                amplitude -= sustainLevel / (releaseTime * sampleRate);
+                if (amplitude <= 0.0) {
+                    amplitude = 0.0;
+                    state = OFF;
+                }
+                break;
+            case OFF:
+                amplitude = 0.0;
+                break;
+        }
+        return (float)amplitude;
+    }
+
+    EnvelopeState getState() const { return state; }
+};
+
+#endif
+{{< /hcode  >}}
+
+{{< hcode "cpp" >}}
+#include <SDL2/SDL.h>
+#include <iostream>
+#include <vector>
+#include "Oscillator.h"
+#include "Envelope.h"
+
+// Shared visualization buffer for the oscilloscope
+std::vector<float> visualBuffer(2048, 0.0f);
+
+class SynthEngine {
+public:
+    // COMPOSITION: The Engine "has" these components
+    Oscillator* osc;      // Pointer used for polymorphism (Inheritance)
+    Envelope env;         // Direct instance (Composition)
+
+    SynthEngine() : env(44100.0) {
+        // Initialize with a default Square Wave
+        osc = new SquareOsc(440.0, 0.2, 44100.0);
+    }
+
+    ~SynthEngine() {
+        delete osc;
+    }
+
+    // AUDIO CALLBACK: The Real-Time Heartbeat
+    static void AudioCallback(void* userdata, Uint8* stream, int len) {
+        SynthEngine* engine = static_cast<SynthEngine*>(userdata);
+        float* buffer = reinterpret_cast<float*>(stream);
+        int length = len / sizeof(float);
+
+        for (int i = 0; i < length; i++) {
+            // Step 1: Generate Raw Sound (Oscillator)
+            float sample = 0.0f;
+            if (engine->osc != nullptr) {
+                sample = engine->osc->getNextSample();
+            }
+
+            // Step 2: Shape Volume (Envelope / ADSR)
+            // The engine "asks" its composed member for the current amplitude
+            float currentVolume = engine->env.getNextAmplitude();
+            float finalSample = sample * currentVolume;
+
+            buffer[i] = finalSample;
+
+            // Step 3: Record for Visualization
+            if (i < (int)visualBuffer.size()) {
+                visualBuffer[i] = finalSample;
+            }
+        }
+    }
+};
+
+int main(int argc, char* argv[]) {
+    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) < 0) return 1;
+
+    SDL_Window* window = SDL_CreateWindow("C++ Synth: Composition Basics",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 400, SDL_WINDOW_SHOWN);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    SynthEngine engine;
+
+    SDL_AudioSpec ds;
+    ds.freq = 44100;
+    ds.format = AUDIO_F32SYS;
+    ds.channels = 1;
+    ds.samples = 2048;
+    ds.callback = SynthEngine::AudioCallback;
+    ds.userdata = &engine;
+
+    SDL_OpenAudio(&ds, NULL);
+    SDL_PauseAudio(0);
+
+    std::cout << "Controls:\n1-4: Change Waveform\nSPACE: Play Note (ADSR)\nESC: Exit" << std::endl;
+
+    bool running = true;
+    SDL_Event e;
+
+    while (running) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) running = false;
+
+            if (e.type == SDL_KEYDOWN) {
+                // Polymorphic Swap (Inheritance)
+                Oscillator* nextOsc = nullptr;
+                switch (e.key.keysym.sym) {
+                    case SDLK_1: nextOsc = new SquareOsc(440.0, 0.2, 44100.0); break;
+                    case SDLK_2: nextOsc = new SawOsc(440.0, 0.2, 44100.0); break;
+                    case SDLK_3: nextOsc = new SineOsc(440.0, 0.2, 44100.0); break;
+                    case SDLK_4: nextOsc = new TriangleOsc(440.0, 0.2, 44100.0); break;
+                    case SDLK_ESCAPE: running = false; break;
+                }
+
+                if (nextOsc != nullptr) {
+                    Oscillator* oldOsc = engine.osc;
+                    engine.osc = nullptr; // Safety nullify for audio thread
+                    delete oldOsc;
+                    engine.osc = nextOsc;
+                }
+            }
+        }
+
+        // Triggering the Envelope via Spacebar
+        const Uint8* state = SDL_GetKeyboardState(NULL);
+        if (state[SDL_SCANCODE_SPACE]) {
+            // Trigger Attack if we aren't already playing or releasing
+            if (engine.env.getState() == OFF || engine.env.getState() == RELEASE)
+                engine.env.triggerOn();
+        } else {
+            // Trigger Release if the key is lifted
+            if (engine.env.getState() != OFF && engine.env.getState() != RELEASE)
+                engine.env.triggerOff();
+        }
+
+        // Oscilloscope Rendering
+        SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
+        SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 0, 255, 150, 255);
+        for (int x = 0; x < 799; x++) {
+            int y1 = 200 - (int)(visualBuffer[x] * 150);
+            int y2 = 200 - (int)(visualBuffer[x+1] * 150);
+            SDL_RenderDrawLine(renderer, x, y1, x + 1, y2);
+        }
+        SDL_RenderPresent(renderer);
+        SDL_Delay(16);
+    }
+
+    SDL_CloseAudio();
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return 0;
+}
+{{< /hcode >}}
+
+Wir kompilieren die Datei mit einem einfachen
+
+[source,bash]
+----
+g++ -o synth main.cpp_01 Oscillator.cpp_01 `pkg-config --cflags --libs sdl2`
+----
+
+und können das Programm ausführen:
+[source,bash]
+----
+./synth
+----
+Jetzt, da die Hüllkurve implementiert ist, klingt es wirklich wie ein echter Synthesizer!!!
+
+
+== 4. Fazit
+
+Durch den Einsatz von **Komposition** haben wir ein System aufgebaut, das leicht zu erweitern ist. Die `SynthEngine` verwaltet die übergeordnete Logik und
+die Hardware-Schnittstelle, während die `Envelope` die mathematischen Feinheiten der Lautstärkeregelung übernimmt.
+
+Diese klare Trennung der Aufgabenbereiche ist es, was professionelle C++-Anwendungen robust macht. Im nächsten Kapitel werden wir dieser Kette einen
+**spannungsgesteuerten Filter (VCF)** hinzufügen, wobei wir genau denselben kompositorischen Ansatz verwenden!
+
+
+Übersetzt mit DeepL.com (kostenlose Version)
