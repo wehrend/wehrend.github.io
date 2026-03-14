@@ -19,11 +19,11 @@ The traditional "rule of three" (found in many classic open-source projects) —
 — is gradually being replaced by the CMake approach. This modern workflow typically involves creating a separate build
 directory to keep the source tree clean (so-called "out-of-source builds"):
 
-```bash
+{{< hcode "bash" >}}
 mkdir build && cd build
 cmake ..
 cmake --build .
-```
+{{< / hcode  >}}
 
 To get from the makefile based approach in our cpp-tutorial please check out the git branch main-with-cmake where all
 makefiles a converted to a cmake based approach.
@@ -31,7 +31,7 @@ makefiles a converted to a cmake based approach.
 Let's start simple with the first tutorial,  tutorial00 which list our limits file as print output:
 
 
-```cmake
+{{< hcode "bash" >}}
 cmake_minimum_required(VERSION 3.10)
 
 # 1. Define the project name
@@ -40,14 +40,13 @@ project(MyProject)
 # 2. Define the executable name and source files
 # This replaces: g++ main.cpp -o main
 add_executable(main ../main.cpp)
-
-```
+{{<  / hcode >}}
 
 
 For this minimal example the make file would be simpler and shorter than the cmake project, but this changes  rapidly when we are using (meaning including
 and linking) external libraries, like SDL in our cases:
 
-```cmake
+{{< hcode "bash" >}}
 cmake_minimum_required(VERSION 3.10)
 project(SynthProject)
 
@@ -72,8 +71,7 @@ target_link_libraries(synth PRIVATE
     # SDL2::SDL2main is usually not needed on Linux,
     # but SDL2::SDL2 handles the heavy lifting.
 )
-
-```
+{{< / hcode >}}
 
 {{< asciihint info >}}
 
@@ -84,7 +82,7 @@ You can combine the configuration and build steps into a single line to save tim
 
 {{< /asciihint >}}
 
-```
+{{< hcode "bash" >}}
 sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake ..
 -- The C compiler identification is GNU 12.2.0
 -- The CXX compiler identification is GNU 12.2.0
@@ -111,4 +109,4 @@ sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake --build .
 [ 66%] Building CXX object CMakeFiles/synth.dir/Voice.cpp.o
 [100%] Linking CXX executable synth
 [100%] Built target synth
-```
+{{< / hcode >}}
