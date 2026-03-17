@@ -95,3 +95,11 @@ BusyBox is simple and effective:
 * very small footprint
 
 That is why BusyBox is still used today and why it is so important in embedded Linux systems.
+
+---
+title: "Could not share my screen on Zoom, Google Meet or Discord - and how to solve it"
+date: 2026-03-16
+tags: ["linux", "pipewire", "wireplumber"]
+draft: false
+type: blog
+---
