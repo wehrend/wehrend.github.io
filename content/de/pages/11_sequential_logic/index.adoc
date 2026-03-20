@@ -1,14 +1,14 @@
 ---
-title: 10_sequential_logic (de)
+title: 11_sequential_logic (de)
 date: 2023-05-01
-category: "digital_logik_2"
+category: "digital_logic"
 link:
 description:
 type: text
 bookHidden: true
 menu:
   docs:
-    parent: "digital_logic_2"
+    parent: "digital_logic"
     weight: 10
 ---
 

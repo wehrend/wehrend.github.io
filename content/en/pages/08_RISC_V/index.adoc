@@ -3,14 +3,14 @@ title: 08_RISC-V
 date: 2022-03-21
 weight: 80
 tags: ['draft']
-category: "digital_logic_1"
+category: "digital_logic"
 link:
 description:
 type: text
 bookHidden: true
 menu:
   docs:
-    parent: "digital_logic_1"
+    parent: "digital_logic"
 ---
 {{< katex />}}
 

@@ -1,15 +1,15 @@
 ---
-title: 11_Clocks_flipflops_and_registers
+title: 12_Clocks_flipflops_and_registers
 date: 2022-03-12
 weight: 120
-category: "digital_logic_2"
+category: "digital_logic"
 link:
 description:
 type: text
 bookHidden: true
 menu:
   docs:
-    parent: "digital_logic_2"
+    parent: "digital_logic"
 ---
 {{< katex />}}
 

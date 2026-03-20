@@ -1,15 +1,15 @@
 ---
-title: 10_sequential_logic
+title: 11_sequential_logic
 date: 2023-05-01
 weight: 110
-category: "digital_logic_2"
+category: "digital_logic"
 link:
 description:
 type: text
 bookHidden: true
 menu:
   docs:
-    parent: "digital_logic_2"
+    parent: "digital_logic"
 ---
 {{< katex />}}
 

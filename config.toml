@@ -55,7 +55,7 @@ publishDir = "public"
 #
 #[[languages.en.menu.before]]
 #  name = "Digital Logic 2 (Overview)"
-#  url = "/pages/000_digital_logic_2/"
+#  url = "/pages/10_digital_logic_2/"
 #  weight = 24
 
 [[languages.en.menu.before]]
@@ -135,7 +135,7 @@ publishDir = "public"
 #
 #[[languages.de.menu.before]]
 #  name = "Digitale Logik 2 (Übersicht)"
-#  url = "/de/pages/000_digital_logic_2/"
+#  url = "/de/pages/10_digital_logic_2/"
 #  weight = 23
 #
 #
