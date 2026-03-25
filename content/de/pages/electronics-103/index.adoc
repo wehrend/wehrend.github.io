@@ -3,7 +3,7 @@ title: „Einführung in die Elektronik – 103 – Nichtlineare Bauelemente”
 slug: electronics-103
 date: 2025-10-07
 tags:
-category:
+category: "electronics"
 link:
 description:
 type: text
@@ -12,6 +12,7 @@ outdir: ~/development/blog
 draft: false
 :stem: latexmath
 weight: 1300
+icon: "svg/diode.svg"
 ---
 {{< katex />}}
 

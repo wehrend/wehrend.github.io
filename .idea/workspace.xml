@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a1682a-648f-4caa-9333-9963bbe0d71e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/assets/book.scss_b807c86e8030af4cdc30edccea379f5f.content" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/assets/book.scss_b807c86e8030af4cdc30edccea379f5f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/de/pages/electronics-101/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/de/pages/electronics-101/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/de/pages/electronics-102/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/de/pages/electronics-102/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/de/pages/electronics-103/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/de/pages/electronics-103/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/de/pages/electronics-104/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/de/pages/electronics-104/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/en/pages/electronics-100/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/en/pages/electronics-100/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/en/pages/electronics-101/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/en/pages/electronics-101/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/en/pages/electronics-102/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/en/pages/electronics-102/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/en/pages/electronics-103/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/en/pages/electronics-103/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/en/pages/electronics-104/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/en/pages/electronics-104/index.adoc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +31,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/hugo-book" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectColorInfo">{
@@ -44,8 +50,9 @@
     "Makefile Target.deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "c4247021",
     "last_opened_file_path": "/home/sven/development/hugo/content/de/posts/web",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "configurable.group.project"
@@ -74,11 +81,6 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Makefile Target.deployment" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

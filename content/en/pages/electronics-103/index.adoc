@@ -3,7 +3,7 @@ title: "Introduction to electronics - 103 - nonlinear components"
 slug: electronics-103
 date: 2025-10-07
 tags:
-category:
+category: "electronics"
 link:
 description:
 type: text
@@ -11,6 +11,7 @@ bookHidden: true
 outdir: ~/development/blog
 draft: false
 weight: 1300
+icon: "svg/diode.svg"
 ---
 {{< katex />}}
 

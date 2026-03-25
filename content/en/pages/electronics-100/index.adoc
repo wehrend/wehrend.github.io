@@ -3,7 +3,7 @@ title: "Introduction to electronics Course"
 slug: electronics-100
 date: 2026-02-01
 tags:
-category:
+category: "electronics"
 link:
 description:
 type: text

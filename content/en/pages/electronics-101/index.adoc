@@ -3,12 +3,13 @@ title: "Prequel: Introduction to electronics"
 slug: electronics-101
 date: 2021-01-23
 tags:
-category:
+category: "electronics"
 link:
 description:
 type: text
 bookHidden: true
 weigth: 1100
+icon: "svg/resistor.svg"
 ---
 {{< katex />}}
 

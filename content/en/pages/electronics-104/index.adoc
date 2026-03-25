@@ -3,7 +3,7 @@ title: "Introduction to electronics - 104 - amplifier circuits"
 slug: electronics-104
 date: 2025-10-07
 tags:
-category:
+category: "electronics"
 link:
 description:
 bookHidden: true
@@ -11,6 +11,7 @@ type: text
 outdir: ~/development/blog
 draft: false
 weight: 1400
+icon: "svg/op-amp.svg"
 ---
 
 {{< asciihint info >}}

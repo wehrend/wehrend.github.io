@@ -3,13 +3,14 @@ title: Vorgeschichte - Einführung in die Elektronik
 slug: electronics-101
 date: 2021-01-23
 tags:
-category:
+category: "electronics"
 link:
 description:
 type: text
 bookHidden: true
 outdir: ~/development/blog
 weight: 1100
+icon: "svg/resistor.svg"
 ---
 {{< katex />}}
 
