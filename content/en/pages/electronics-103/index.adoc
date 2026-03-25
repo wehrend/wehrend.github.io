@@ -11,6 +11,7 @@ bookHidden: true
 outdir: ~/development/blog
 draft: false
 weight: 1300
+icon: "svg/diode.svg"
 ---
 {{< katex />}}
 

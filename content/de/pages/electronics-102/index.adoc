@@ -10,6 +10,7 @@ type: text
 bookHidden: true
 outdir: ~/development/blog
 weight: 1200
+icon: "svg/capacitor.svg"
 ---
 {{< katex />}}
 

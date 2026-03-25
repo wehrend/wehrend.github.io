@@ -12,6 +12,7 @@ outdir: ~/development/blog
 draft: false
 :stem: latexmath
 weight: 1300
+icon: "svg/diode.svg"
 ---
 {{< katex />}}
 

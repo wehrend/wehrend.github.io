@@ -11,6 +11,7 @@ type: text
 outdir: ~/development/blog
 draft: false
 weight: 1400
+icon: "svg/op-amp.svg"
 ---
 
 {{< asciihint info >}}

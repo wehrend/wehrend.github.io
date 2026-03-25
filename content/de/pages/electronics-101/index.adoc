@@ -10,6 +10,7 @@ type: text
 bookHidden: true
 outdir: ~/development/blog
 weight: 1100
+icon: "svg/resistor.svg"
 ---
 {{< katex />}}
 

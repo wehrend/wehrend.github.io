@@ -9,6 +9,7 @@ description:
 type: text
 bookHidden: true
 weigth: 1100
+icon: "svg/resistor.svg"
 ---
 {{< katex />}}
 
