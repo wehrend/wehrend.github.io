@@ -74,7 +74,8 @@ Der QtCreator erlaubt es uns – zum Beispiel unsere eigene Benutzeroberfläche 
 Wir beginnen mit der einfachen *.pro(jekt)-Datei, die beim Anlegen eines neuen Projekts generiert wird ...
 
 synth.pro
-{{< hcode "bash" >}}
+[source, "qmake"]
+----
 QT       += core gui
 QT       += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -104,8 +105,8 @@ CONFIG += embed_translations
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+----
 
-{{< / hcode >}}
 == Der Meta-Object Compiler (moc)
 
 {{< asciihint warning >}}
@@ -150,7 +151,8 @@ Der moc ermöglicht das Q_PROPERTY-System, mit dem sich Klassenmitglieder wie Pr
 ==
 
 main.cpp
-{{< hcode "cpp" >}}
+[source, "cpp"]
+----
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -174,7 +176,7 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
-{{< / hcode >}}
+----
 
 
 ++++
@@ -193,7 +195,8 @@ int main(int argc, char *argv[])
 
 
 mainwindow.h
-{{< hcode "cpp" >}}
+[source, "cpp"]
+----
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -260,7 +263,7 @@ private:
     float m_phase = 0.0;
 };
 #endif // MAINWINDOW_H
-{{< / hcode >}}
+----
 
 ++++
 
@@ -287,7 +290,8 @@ private:
 ++++
 
 mainwindow.cpp
-{{< hcode "cpp" >}}
+[source, "cpp"]
+----
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPainter>
@@ -353,7 +357,7 @@ MainWindow::~MainWindow() {
     m_audioOutput->stop(); // Audio-Stream sauber beenden
     delete ui;
 }
-{{< / hcode >}}
+----
 
 ++++
 <div class="code-tooltip-data" style="display:none;">
@@ -380,7 +384,8 @@ MainWindow::~MainWindow() {
 </div>
 ++++
 
-{{< hcode "xml" >}}
+[source, "xml"]
+----
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
@@ -442,7 +447,7 @@ MainWindow::~MainWindow() {
  <resources/>
  <connections/>
 </ui>
-{{< /hcode >}}
+----
 
 
 == From linear to logarithmic
@@ -463,8 +468,8 @@ This is the valid approach for both, volume and frequency.
 So next we show the both adapted files mainwindow.h and mainwindow.cpp
 
 mainwindow.h
-{{< hcode "cpp" >}}
-
+[source, "cpp"]
+----
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -525,13 +530,13 @@ private:
 };
 
 #endif // MAINWINDOW_H
-
-{{< / hcode >}}
+----
 
 
 mainwindow.cpp
 
-{{< hcode "cpp" >}}
+[source, "cpp"]
+----
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -706,4 +711,4 @@ void MainWindow::paintEvent(QPaintEvent *event)
         painter.drawPolyline(waveformPoints.constData(), waveformPoints.size());
     }
 }
-{{< / hcode >}}
+----
