@@ -12,6 +12,73 @@
       ...
     }
 */
+
+/*
+  You can add custom styles here.
+  It could be plugins:
+    @import "plugins/numbered";
+    @import "plugins/scrollbars";
+  Or custom styles:
+    body { background: white; }
+  Or even theme mixins:
+    @mixin theme-light {
+      --body-background: white;
+      --body-font-color: black;
+      ...
+    }
+*/
+
+/* grid container */
+.book-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* each card */
+.book-card {
+  display: block;
+  padding: 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.15);
+  text-decoration: none;
+  background: var(--body-background);
+  transition: 0.15s ease;
+}
+
+/* hover */
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+}
+
+/* icon row */
+.book-card__icon {
+  font-size: 26px;
+  margin-bottom: 0.6rem;
+}
+
+/* title */
+.book-card__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+/* summary */
+.book-card__summary {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-bottom: 0.4rem;
+}
+
+/* meta */
+.book-card__meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
 .book-section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Kleinere Karten
