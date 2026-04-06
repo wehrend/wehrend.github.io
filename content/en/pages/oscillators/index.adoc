@@ -1,0 +1,17 @@
+---
+title: Oscillators - the hidden heart and engine behind all synths
+date: 2026-04-06
+tags: ["LTspice", "SPICE", "synth"]
+category:
+link:
+description: How to simulate oscillators
+type: blog
+draft: true
+---
+
+== The oscillator(s) - what it is and how it is working behind the scenes...
+
+
+== A simple (LF)O
+
+

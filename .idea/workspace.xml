@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8a1682a-648f-4caa-9333-9963bbe0d71e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/content/en/pages/electronics-103.5-the-transistor/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/content/en/pages/electronics-103.5-the-transistor/index.adoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/en/pages/oscillators/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
