@@ -20,7 +20,7 @@ Quite simple and not to complicated to begin with...
 image:./simpleLFO.png[Simple LFO schematic].
 
 If you do not shy away from mathematical deep-dive explanations - (I sometimes do),
-you can view the details https://www.electronics-tutorials.ws/opamp/opamp_6.html[here (intgrator)]
+you can view the details https://www.electronics-tutorials.ws/opamp/opamp_6.html[here (integrator)]
 and here (schmitt-trigger)
 
 A more electronics dive in can be made
