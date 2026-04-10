@@ -109,3 +109,44 @@ td.code pre {
     padding: 0;
     margin: 0;
 }
+
+/* Ensure the container doesn't clip the tooltips */
+.hcode-multi-container pre {
+    overflow: visible !important;
+}
+
+.has-tooltip {
+    position: relative;
+    cursor: help;
+    transition: background 0.2s;
+}
+
+.has-tooltip:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
+}
+
+.has-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 20px;       /* Floating slightly inside the block */
+    bottom: 110%;     /* Positioned above the line */
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    pointer-events: none; /* Prevents flickering */
+}
+
+/* Tooltip Arrow */
+.has-tooltip:hover::before {
+    content: "";
+    position: absolute;
+    left: 30px;
+    bottom: 100%;
+    border: 6px solid transparent;
+    border-top-color: #333;
+}

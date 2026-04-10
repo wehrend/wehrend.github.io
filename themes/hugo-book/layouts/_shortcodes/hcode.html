@@ -1,15 +1,36 @@
-{{- $lang := .Get 0 | default "" -}}
-{{- $code := .Inner | replaceRE "\\A\\n+" "" | replaceRE "\\n+\\z" "" -}}
-
-{{- $lines := 0 -}}
-{{- if gt (len $code) 0 -}}
-  {{- $lines = len (split $code "\n") -}}
+{{- /* 1. Parameter einzeln extrahieren */ -}}
+{{- $lang := "text" -}}
+{{- if .IsNamedParams -}}
+    {{- $lang = .Get "lang" | default "text" -}}
+{{- else -}}
+    {{- $lang = .Get 0 | default "text" -}}
 {{- end -}}
 
+{{- $hl_lines := .Get "hl_lines" | default "" -}}
+
+{{- /* 2. Kommentare sammeln (Sichere Variante) */ -}}
+{{- $allComments := "" -}}
+{{- range $k, $v := .Params -}}
+    {{- if and (ne $k "lang") (ne $k "hl_lines") (ne $k "comments") -}}
+        {{- $allComments = print $allComments $v ";" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* 3. Inhalt säubern (Regex ist hier am sichersten gegen unsichtbare Zeichen) */ -}}
+{{- $code := .Inner | replaceRE `\A\n+|\n+\z` "" -}}
+
+{{- /* 4. Highlight Optionen vorbereiten */ -}}
 {{- $opts := "" -}}
-{{- if gt $lines 9 -}}
-  {{- /* inline line numbers, table also works: lineNos=table */ -}}
-  {{- $opts = "lineNos=true" -}}
+{{- if $hl_lines -}}
+    {{- $opts = printf "lineNos=true,hl_lines=%s" $hl_lines -}}
+{{- else -}}
+    {{- $opts = "lineNos=true" -}}
 {{- end -}}
 
-{{- highlight $code $lang $opts -}}
+<div class="hcode-multi-container" data-comments="{{ $allComments }}">
+    {{- if gt (len $code) 0 -}}
+        {{- highlight $code $lang $opts -}}
+    {{- else -}}
+        <pre><code>DEBUG: Der Code-Block ist leer!</code></pre>
+    {{- end -}}
+</div>
