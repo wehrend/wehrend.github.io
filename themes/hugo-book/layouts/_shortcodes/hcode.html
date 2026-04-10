@@ -1,15 +1,18 @@
-{{- $lang := .Get 0 | default "" -}}
-{{- $code := .Inner | replaceRE "\\A\\n+" "" | replaceRE "\\n+\\z" "" -}}
+{{- $lang := .Get "lang" | default (.Get 0) | default "text" -}}
+{{- $hl_lines := .Get "hl_lines" | default (.Get 1) | default "" -}}
+{{- $comments := .Get "comments" | default (.Get 2) | default "" -}}
 
-{{- $lines := 0 -}}
-{{- if gt (len $code) 0 -}}
-  {{- $lines = len (split $code "\n") -}}
+{{- /* Zusätzliche Parameter c1, c2... sammeln */ -}}
+{{- $extraComments := "" -}}
+{{- range $k, $v := .Params -}}
+    {{- if and (ne $k "lang") (ne $k "hl_lines") (ne $k "comments") (ne $k 0) (ne $k 1) (ne $k 2) -}}
+        {{- $extraComments = printf "%s%s;" $extraComments $v -}}
+    {{- end -}}
 {{- end -}}
 
-{{- $opts := "" -}}
-{{- if gt $lines 9 -}}
-  {{- /* inline line numbers, table also works: lineNos=table */ -}}
-  {{- $opts = "lineNos=true" -}}
-{{- end -}}
+{{- $code := .Inner | chomp -}}
+{{- $opts := printf "lineNos=true,hl_lines=%s" $hl_lines -}}
 
-{{- highlight $code $lang $opts -}}
+<div class="hcode-multi-container" data-comments="{{ $comments }}{{ $extraComments }}">
+    {{- highlight $code $lang $opts -}}
+</div>
