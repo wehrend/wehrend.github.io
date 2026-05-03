@@ -150,3 +150,30 @@ td.code pre {
     border: 6px solid transparent;
     border-top-color: #333;
 }
+
+.hcode-wrapper {
+    margin-bottom: 1rem;
+}
+
+.hcode-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 10;
+    padding: 4px 8px;
+    font-size: 12px;
+    background-color: rgba(200, 200, 200, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.hcode-copy-btn:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.hcode-copy-btn.copied {
+    background-color: #28a745;
+    color: white;
+}

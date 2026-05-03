@@ -27,10 +27,15 @@
     {{- $opts = "lineNos=true" -}}
 {{- end -}}
 
-<div class="hcode-multi-container" data-comments="{{ $allComments }}">
-    {{- if gt (len $code) 0 -}}
-        {{- highlight $code $lang $opts -}}
-    {{- else -}}
-        <pre><code>DEBUG: Der Code-Block ist leer!</code></pre>
-    {{- end -}}
+<div class="hcode-wrapper" style="position: relative;">
+    <button class="hcode-copy-btn" onclick="copyCodeToClipboard(this)" title="Copy to clipboard">
+        Copy
+    </button>
+    <div class="hcode-multi-container" data-comments="{{ $allComments }}">
+        {{- if gt (len $code) 0 -}}
+            {{- highlight $code $lang $opts -}}
+        {{- else -}}
+            <pre><code>DEBUG: Der Code-Block ist leer!</code></pre>
+        {{- end -}}
+    </div>
 </div>
