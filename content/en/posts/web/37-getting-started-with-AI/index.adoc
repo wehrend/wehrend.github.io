@@ -1,0 +1,69 @@
+---
+title: "Getting started with AI... (self-hosting an experiment)"
+date: 2026-07-05
+tags: ["ollama", "qwen", "AI"]
+draft: false
+type: blog
+---
+
+Hello folks,
+
+today I want to give you a tutorial on how to start with AI on your own local machine. This is a very rewarding task,
+expecially if you can use your self-hosted AI on a daily base on your own machine. Todo that only three points have to be done.
+I'll show you for Debian Trixie...
+
+1. Run the ollama script and install a model (the backend / core logic)
+2. Install docker (needed for WebUI)
+3. Install WebUI itself (this is needed as a frontend and to administrate the chats)
+
+== Install Ollama
+
+This is the simplest task of all three. All you need to do is:
+
+
+[source,bash]
+----
+curl -fsSL https://ollama.com/install.sh | sh
+----
+
+This is the installer script - run it as normal user but with sudo rights after that step you run
+
+
+[source,bash]
+----
+ollama serve
+----
+
+to run the application, but we still need a model - I decided for qwen2.5 - download and run it via
+
+
+[source,bash]
+----
+ollama pull qwen2.5
+ollama run qwen2.5
+----
+
+Now you have a shell open where you already can chat with the model (and exit via /exit )
+
+
+Next we get to step 2 and 3...
+
+== Install Docker
+
+I wont explain this here but refer you to the appropriate resources found
+https://linuxiac.com/how-to-install-docker-on-debian-13-trixie/[here].
+
+
+== Install WebUI
+
+To run WebUI and let it connect with ollama execute the following docker command:
+
+[source,bash]
+----
+docker run -d -p 3000:8080 \
+  --add-host=host.docker.internal:host-gateway \
+  -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \
+  -v open-webui:/app/backend/data \
+  --name open-webui \
+  ghcr.io/open-webui/open-webui:main
+----
