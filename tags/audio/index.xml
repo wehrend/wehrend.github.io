@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Audio on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/audio/</link><description>Recent content in Audio on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/audio/index.xml" rel="self" type="application/rss+xml"/><item><title>Eurorack Synthesizer - Noise Floor</title><link>http://wehrend.github.io/posts/synth/16-noise-floor/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/16-noise-floor/</guid><description>&lt;div class="paragraph">
+&lt;p>In meinem mobilen Setup, dem NiftyVCase, habe ich meine DIY-Module gesammelt (mit Ausnahme des Doepfer
+A-124, den ich wegen seines großartigen Klangs einbauen musste). Es verfügt über eine Kick-Drum von Erica Synths, einen even VCO, eine Sampling-Modulator, A*B+C und Rampage von Befaco. Sowie den Divebomb III für etwas Delay.
+Zu guter Letzt ein Zlon-Skew-LFO und ein BCM086-Diodenleiter-Hochpassfilter.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./noise_floor.jpg" alt="noise floor"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Link:./noise_floor.m4a[noise floor Audio]&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Jam Session</title><link>http://wehrend.github.io/posts/synth/15-jam-session/</link><pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/15-jam-session/</guid><description>&lt;div class="paragraph">
+&lt;p>Dieses Mal haben wir einen verschachtelten Patch, der ein neues Mitglied enthält, den Zufallssequenzer
+von rat-king, der, wie der Name schon sagt, schöne zufällige Sequenzen liefert. Außerdem
+haben wir ein neues Mixer-Modul, selbstgebaut.
+Wir verwenden auch beide VCOs und beide LFO-Module…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./jam_session.jpg" alt="Jam-Session"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./jam_session.m4a">Jam-Session Audio&lt;/a>&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Another small patch</title><link>http://wehrend.github.io/posts/synth/14-another-small-patch/</link><pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/14-another-small-patch/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another small patch idea for the Doepfer A-100 system,
+this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+modul A-106-5.
+We also utilize two LFO modules…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch.jpg" alt="LFO SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch.m4a">LFO SEM Patch Audio&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch2-3.jpg" alt="LFO SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch2.m4a">LFO SEM Patch Audio 2&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch3.m4a">LFO SEM Patch Audio 3&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To this day I did not find the right audio recorder,and I am recording with my smartphone,
+so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Another simple patch</title><link>http://wehrend.github.io/posts/synth/13-another-simple-patch/</link><pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/13-another-simple-patch/</guid><description>&lt;div class="paragraph">
+&lt;p>Hier ist also eine weitere einfache Patch-Idee für das Doepfer A-100-System, diesmal mit dem SEM-Filter von Oberheim, verkörpert im Doepfer Modul A-106-5.
+Wir verwenden auch zwei A-110-Oszillatormodule (ein Standard- und ein Basis-Modul) und den LFO.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch.jpg" alt="SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Link:./sem_patch.m4a[SEM Patch Audio]&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Bis heute habe ich nicht den richtigen Audiorecorder gefunden und nehme mit meinem Smartphone auf,
+sodass die Tonqualität eher schlecht ist. Ich bin immer noch auf der Suche nach der idealen Aufnahmehardware.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - More patch ideas</title><link>http://wehrend.github.io/posts/synth/11-more-patch-ideas/</link><pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/11-more-patch-ideas/</guid><description>&lt;div class="paragraph">
+&lt;p>Hier ist also eine weitere Patch-Idee für das Doepfer A-100-System.
+Die Ergebnisse der Doepfer-Oszillatoren sind prägnante „knarzig-kernige“ Klänge.
+Wir verwenden zwei A-110-Oszillatormodule (ein Standard- und ein Basic-Modul), einen Ringmodulator (A-114)
+und ein Wespentaille-Filter (A-124) sowie einige Hilfsmodule wie einen Sequenzer und einen LFO.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./pithily_sounds.jpg" alt="pithily"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./pithily_sounds.m4a">pithily…​ Audio&lt;/a>&lt;/p>
+&lt;/div></description></item><item><title>Pocket Operator Modular 400 in eurorack</title><link>http://wehrend.github.io/posts/synth/09-eurorack-modular/</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/09-eurorack-modular/</guid><description>&lt;div class="paragraph">
+&lt;p>Also kaufte ich mir einen günstigen Eurorack-Koffer von Doepfer und ein Set Frontplatten plus Netzteil
+für den Pocket Operator Modular 400 von Oddvolt, um die besagte Maschine in ein Eurorack-Modulsystem einzubauen.
+ Ich habe mir auch einen kleinen, aber anständigen Sequenzer gekauft, da der von Teenage Engineering nicht
+nicht sehr handlich ist. Ich habe noch zwei weitere Module auf meiner Liste, das &lt;a href="https://doepfer.de/a119.htm">Doepfer A-119&lt;/a>,
+ein Eingangsmodul, sowie das &lt;a href="https://doepfer.de/a124.htm">Doepfer A-124&lt;/a>, ein Wasp-Filter [natürlich die Special-Edition in
+schwarz-gelb, da dies auch noch farblich passt], um das Setup zu vervollständigen.&lt;/p>
+&lt;/div></description></item><item><title>The Pocket Operator Modular 400 patch ideas (II)</title><link>http://wehrend.github.io/posts/synth/06-pocket-operator-modular-400/</link><pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/06-pocket-operator-modular-400/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./plong_plong_plong.jpg" alt="Plong…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./plong_plong_plong.mp4">Plong…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Mit dem Zufallsmodul können wir ein Signal vom Eingang abtasten und halten. Sein Gegenstück ist das Rauschmodul.
+Wir speisen den Sägeausgang in den Eingang des Zufallsmoduls ein.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./beep_bleep.jpg" alt="Beep" width="bleep…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./beep_bleep.mp4">Beep,bleep…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&amp;#39;&amp;#39;&amp;#39;.&lt;/p>
+&lt;/div>
+&lt;div class="literalblock">
+&lt;div class="content">
+&lt;pre>Sinus-Ausgang -&amp;gt; Lautsprecher rechts.
+Hüllkurvenausgang -&amp;gt; Sinus-Taste.
+LFO-Rechteck -&amp;gt; Hüllkurven-Trigger.
+LFO-Rechteck -&amp;gt; Sinus fm&lt;/pre>
+&lt;/div>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./sweeping_sinus.jpg" alt="Sweeping Sinus…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./sweeping_sinus.mp4">Sweeping Sinus…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wir können das Setup erweitern, indem wir den Sequenzer verwenden und den Filter nutzen. Denn das Schöne
+an modularen Synthesizern ist, dass der Filter nicht nur in Signalpfaden, sondern
+auch in Steuerpfaden verwendet werden kann ;-) ..&lt;/p>
+&lt;/div></description></item><item><title>The Pocket Operator Modular 400 patch ideas</title><link>http://wehrend.github.io/posts/synth/05-pocket-operator-modular-400/</link><pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/05-pocket-operator-modular-400/</guid><description>&lt;div class="paragraph">
+&lt;p>Ein analoger modularer Synthesizer war schon immer mein Traum, letzte Woche habe ich mir diesen Traum erfüllt
+und den Pocket Operator Modular 400 von der schwedischen Firma Teenage Engineering bestellt.
+Wie bei den Möbeln der anderen beliebten schwedischen Firma muss man ihn erst selbst zusammenbauen,
+bevor man damit einen Ton erzeugen kann. Das hat etwa 3 bis 4 Stunden gedauert. Aber es hat sich gelohnt.&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="paragraph">
+&lt;p>Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgänge aller
+3 Oszillatoren zusammen und steuern den Sinusoszillator mit dem Dreieckausgang des
+LFO und die Impulsbreite des Rechteckoszillators mit dem LFO-Rechteck.&lt;/p>
+&lt;/div></description></item></channel></rss>

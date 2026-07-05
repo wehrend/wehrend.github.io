@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Qt on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/qt/</link><description>Recent content in Qt on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sat, 14 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/qt/index.xml" rel="self" type="application/rss+xml"/><item><title>C++-Einführungskurs (Qt GUI)</title><link>http://wehrend.github.io/de/pages/cpp_qt_1/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_qt_1/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_eine_gui_ist_eine_fantastische_idee_aber_welche_soll_es_sein_sdl_wxwidgets_oder_qt">Eine GUI ist eine &lt;strong>fantastische&lt;/strong> Idee …​ Aber welche soll es sein – SDL, wxWidgets oder Qt?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Die Wahl eines GUI-Frameworks für ein C++-Audio-Projekt ist ein „Fork in the Road“-Moment. Jede dieser Optionen lenkt das Projekt in eine völlig andere architektonische Richtung.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Da dein Kurs derzeit SDL verwendet, ist es der natürliche Favorit. So sieht der Vergleich im Kontext eines Synthesizer-Projekts aus:&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>&lt;strong>SDL (Simple DirectMedia Layer) – Die „Low-Level“-Wahl&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item></channel></rss>

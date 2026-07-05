@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Computing on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/computing/</link><description>Recent content in Computing on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sun, 24 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/computing/index.xml" rel="self" type="application/rss+xml"/><item><title>Analoge Rechner Grundlagen (de)</title><link>http://wehrend.github.io/de/posts/web/17_analog_computers_101/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/17_analog_computers_101/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_analogrechner">Analogrechner&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte ich über Analogrechner sprechen. In der heutigen Zeit führen analoge Computer ein Schattendasein,
+verglichen mit ihren digitalen Gegenstücken. Aber sie sind wunderbare kleine Maschinen. Und diese Maschinen meine ich
+wortlich, denn es gibt analoge mechanische Computer, die Modelle aus der Welt sind und verwendet werden zur
+&lt;a href="https://en.wikipedia.org/wiki/Tide-predicting_machine">Berechnung und Vorhersage von Gezeiten&lt;/a> in bestimmten Gebieten der Welt.
+Auch das Gehirn ist ein riesiger analoger Computer mit einem vergleichsweise sehr kleinen
+Energiebudget. &lt;a href="https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer">Es braucht nur 12 Watt.&lt;/a>
+12 Watt, das ist nicht einmal ein Viertel des Stromverbrauchs eines Laptops von 65 Watt.
+Und man kann mit dem Gehirn sehr viel anstellen, aber zurück zum Thema.
+Ich möchte hauptsächlich über analoge elektronische Computer sprechen, die während des Zweiten Weltkriegs zur Berechnung von
+&lt;a href="https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf">ballistischen Kurven&lt;/a> verwendet wurden.
+Analogrechner können also summieren, multiplizieren, dividieren, integrieren und differenzieren wie ihre digitalen Gegenstücke.&lt;/p>
+&lt;/div></description></item></channel></rss>

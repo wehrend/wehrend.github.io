@@ -1,0 +1,975 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Introduction to GUI frameworks for C++ projects"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/pages/cpp_qt_1/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="Introduction to C++ (Qt GUI - Part I)"><meta property="og:description" content="Introduction to GUI frameworks for C++ projects"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="pages"><meta property="article:published_time" content="2026-03-10T00:00:00+00:00"><meta property="article:modified_time" content="2026-03-10T00:00:00+00:00"><meta property="article:tag" content="C++"><meta property="article:tag" content="Synth"><meta property="article:tag" content="Qt"><meta property="article:tag" content="Qmake"><meta itemprop=name content="Introduction to C++ (Qt GUI - Part I)"><meta itemprop=description content="Introduction to GUI frameworks for C++ projects"><meta itemprop=datePublished content="2026-03-10T00:00:00+00:00"><meta itemprop=dateModified content="2026-03-10T00:00:00+00:00"><meta itemprop=wordCount content="2455"><meta itemprop=keywords content="C++,Synth,Qt,Qmake"><title>Introduction to C++ (Qt GUI - Part I) | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/pages/cpp_qt_1/><link rel=alternate hreflang=de href=http://wehrend.github.io/de/pages/cpp_qt_1/ title="C++-Einführungskurs  (Qt GUI)"><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.f9891fd7c4c5ce35d2b281dc709d846877f537fb3fee460ca7ebffb0f307966c.js integrity="sha256-+Ykf18TFzjXSsoHccJ2EaHf1N/s/7kYMp+v/sPMHlmw=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-text"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+English
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/de/pages/cpp_qt_1/ class="flex flex-auto">Deutsch</a></li></ul></li></ul><ul><li><a href=/docs/></a></li><li><a href=/sitemap/>Sitemap (EN)</a></li><li><a href=/about/>About</a></li><li><a href=/downloads>Download Archive</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Introduction to C++ (Qt GUI - Part I)</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#_a_gui_is_a_fantastic_idea_but_what_should_it_be_sdl_wxwidgets_or_qt>A GUI is a <strong>fantastic</strong> idea…​ But what should it be - SDL, wxWidgets, or Qt?</a></li><li><a href=#_so_we_choose_qt_lets_install_the_dependencies_and_the_qt_creator_ide>So, we choose Qt - let’s install the dependencies and the Qt Creator IDE</a></li><li><a href=#_the_qtcreator>The QTCreator</a></li><li><a href=#_the_meta_object_compiler_moc>The meta-object compiler (moc)</a><ul><li><a href=#_how_it_works>How It Works</a></li></ul></li><li><a href=#_from_linear_to_logarithmic>From linear to logarithmic</a></li></ul></nav></aside></header><article class="markdown book-article"><header class=book-header-icon style=margin-bottom:2rem><h1>Introduction to C++ (Qt GUI - Part I)</h1></header><div class=page-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect2><h3 id=_a_gui_is_a_fantastic_idea_but_what_should_it_be_sdl_wxwidgets_or_qt>A GUI is a <strong>fantastic</strong> idea…​ But what should it be - SDL, wxWidgets, or Qt?</h3><div class=paragraph><p>Choosing a GUI framework for a C++ audio project is a "fork in the road" moment. Each of these options pulls the project in a completely different architectural direction.</p></div><div class=paragraph><p>Since your course currently uses SDL, it’s the natural frontrunner, but here is how they stack up for a synth-building context:</p></div><div class="olist arabic"><ol class=arabic><li><p><strong>SDL (Simple DirectMedia Layer) - The "Low-Level" Choice</strong>
+Since you already introduced SDL in Tutorial 02, staying here is the path of least resistance.</p></li></ol></div><div class=paragraph><p><strong>Pros:</strong> It doesn’t "take over" your <code>main()</code> function as aggressively as the others. It’s perfect for custom-drawn knobs and sliders using simple shapes or bitmaps.</p></div><div class=paragraph><p><strong>The "Audio" Fit:</strong> It’s great for creating visualizers (oscilloscopes or spectrum analyzers) because you have direct access to the pixel buffer or hardware-accelerated rendering.</p></div><div class=paragraph><p><strong>Cons:</strong> It has no built-in "widgets" (buttons, text inputs). You have to build your own UI system from scratch or use a library like Dear ImGui.</p></div><div class="olist arabic"><ol class=arabic><li><p><strong>Qt - The "Professional/Industrial" Choice</strong></p></li></ol></div><div class=paragraph><p>Qt is the heavyweight champion. If you want your synth to look like a modern DAW (Digital Audio Workstation) or a commercial plugin, this is it.</p></div><div class=paragraph><p><strong>Pros:</strong> Incredible documentation and a "What You See Is What You Get" (WYSIWYG) editor. It handles high-DPI scaling and complex layouts beautifully.</p></div><div class=paragraph><p><strong>The "Audio" Fit:</strong> It’s overkill for a simple tutorial but excellent for teaching <strong>Signals and Slots</strong>, a C++ mechanism that perfectly mimics how patch cables work in a modular synth.</p></div><div class=paragraph><p><strong>Cons:</strong> Huge binary size and a steep learning curve. It also requires the <strong>moc</strong> (Meta-Object Compiler), which adds a layer of "magic" that might hide the raw C++ logic you are trying to teach.</p></div><div class="olist arabic"><ol class=arabic><li><p><strong>wxWidgets - The "Native" Choice</strong></p></li></ol></div><div class=paragraph><p>wxWidgets uses the host operating system’s native controls (it looks like a Windows app on Windows, and a GTK app on Linux).</p></div><div class=paragraph><p><strong>Pros:</strong> No "magic" pre-processors like Qt. It’s "pure" C++ in a very traditional sense.</p></div><div class=paragraph><p><strong>Cons:</strong> It feels a bit dated. Styling custom, "cool-looking" synth knobs is significantly harder in wxWidgets than in SDL or Qt because it strives to look like a standard spreadsheet or file explorer.</p></div><table class="tableblock frame-all grid-all stretch"><col style=width:25%><col style=width:25%><col style=width:25%><col style=width:25%><tbody><tr><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Feature</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>SDL</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Qt</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>wxWidgets</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Learning Curve</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Easy (if you know SDL)</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Steep</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Moderate</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Look & Feel</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Custom/Game-like</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Modern/Slick</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Native/Standard</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Best For…​</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Visualizers & Prototyping</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Commercial Software</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Traditional Desktop Apps</p></div></div></td></tr><tr><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>C++ Style</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Procedural/Simple OOP</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Heavy OOP & Macros</p></div></div></td><td class="tableblock halign-left valign-top"><div class=content><div class=paragraph><p>Traditional OOP</p></div></div></td></tr></tbody></table></div><div class=sect1><h2 id=_so_we_choose_qt_lets_install_the_dependencies_and_the_qt_creator_ide>So, we choose Qt - let’s install the dependencies and the Qt Creator IDE</h2><div class=sectionbody><div class=paragraph><p>We start by simply installing Qt 5 plus dependencies (roughly 500 MB)…​</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>sudo apt install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtcreator
+</pre></td></tr></tbody></table></code></pre></div></div></div></div><div class=sect1><h2 id=_the_qtcreator>The QTCreator</h2><div class=sectionbody><div class=paragraph><p><span class=image><img src=./qt_creator_overview.png alt="QtCreator Overview"></span></p></div><div class=paragraph><p><span class=image><img src=./qt_creator_designer.png alt="QtCreator Designer"></span></p></div><div class=paragraph><p>The QTCreator allows us - for example to create our own UI …​.</p></div><div class=paragraph><p>We start with the simple *.pro(ject) file which is to be generated when creating a new project…​</p></div><div class=paragraph><p>synth.pro<div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=bash;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>QT       <span style=color:#f92672>+=</span> core gui
+</span></span><span style=display:flex><span>QT       <span style=color:#f92672>+=</span> multimedia
+</span></span><span style=display:flex><span>greaterThan<span style=color:#f92672>(</span>QT_MAJOR_VERSION, 4<span style=color:#f92672>)</span>: QT <span style=color:#f92672>+=</span> widgets
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>CONFIG <span style=color:#f92672>+=</span> c++17
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># You can make your code fail to compile if it uses deprecated APIs.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># In order to do so, uncomment the following line.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SOURCES <span style=color:#f92672>+=</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    main.cpp <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    mainwindow.cpp
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>HEADERS <span style=color:#f92672>+=</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    mainwindow.h
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>FORMS <span style=color:#f92672>+=</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    mainwindow.ui
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>TRANSLATIONS <span style=color:#f92672>+=</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    synth_en_150.ts
+</span></span><span style=display:flex><span>CONFIG <span style=color:#f92672>+=</span> lrelease
+</span></span><span style=display:flex><span>CONFIG <span style=color:#f92672>+=</span> embed_translations
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Default rules for deployment.</span>
+</span></span><span style=display:flex><span>qnx: target.path <span style=color:#f92672>=</span> /tmp/$$<span style=color:#f92672>{</span>TARGET<span style=color:#f92672>}</span>/bin
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>: unix:!android: target.path <span style=color:#f92672>=</span> /opt/$$<span style=color:#f92672>{</span>TARGET<span style=color:#f92672>}</span>/bin
+</span></span><span style=display:flex><span>!isEmpty<span style=color:#f92672>(</span>target.path<span style=color:#f92672>)</span>: INSTALLS <span style=color:#f92672>+=</span> target</span></span></code></pre></td></tr></table></div></div></div></div></p></div></div></div><div class=sect1><h2 id=_the_meta_object_compiler_moc>The meta-object compiler (moc)</h2><div class=sectionbody><div class=paragraph><div class="book-hint warning"><div class=paragraph><p>The Meta-Object Compiler, or moc, is the tooling that makes Qt more than just a standard C library.
+While C is powerful, it historically lacks introspection—the ability for a program to examine its own structure
+(like classes, methods, or properties) at runtime.</p></div><div class=paragraph><p>The moc handles this by generating additional C code that bridges the gap between standard C and Qt’s advanced features.</p></div></div></div><div class=sect2><h3 id=_how_it_works>How It Works</h3><div class=paragraph><p>The moc isn’t a replacement for your compiler (like GCC or Clang); it’s a pre-processor. Here is the typical workflow:</p></div><div class=paragraph><p>Scanning:
+The moc reads your C++ header files.</p></div><div class=paragraph><p>Detection:
+It looks for the Q_OBJECT macro. If it finds it, it knows this class needs "meta-powers."</p></div><div class=paragraph><p>Generation:
+It creates a new C++ file (usually named moc_filename.cpp) containing the meta-object code.</p></div><div class=paragraph><p>Compilation:
+Your standard compiler compiles both your original code and the generated moc code, linking them together into the final binary.</p></div><div class=paragraph><p>Key Features Enabled by moc
+Without the Meta-Object Compiler, the following core Qt features wouldn’t exist:</p></div><div class="olist arabic"><ol class=arabic><li><p>Signals and Slots
+This is Qt’s signature way of letting objects communicate. Because standard C++ doesn’t have a built-in "signal" keyword, the moc generates the "glue code" required to look up functions by name and execute them when a signal is emitted.</p></li><li><p>Introspection (Run-Time Type Information)
+You can ask a QObject about its class name, what signals it has, or what methods are available at runtime using metaObject(). This is much more descriptive than the standard C++ typeid.</p></li><li><p>Properties
+The moc enables the Q_PROPERTY system, allowing you to treat class members like properties in languages like Python or C#. You can get/set values by string names, which is vital for Qt Quick (QML).</p></li></ol></div><div class=paragraph><p>==</p></div><div class=paragraph><p>main.cpp<div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments="1-3:includes;;7:main() definition;;9:create QApplication;;11-19:detect system language and load translation;;20-21:create and show main window;"><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style=background-color:#3c3d38><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;mainwindow.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QApplication&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex;background-color:#3c3d38><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QLocale&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QTranslator&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[])
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    QApplication a(argc, argv);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    QTranslator translator;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> QStringList uiLanguages <span style=color:#f92672>=</span> QLocale<span style=color:#f92672>::</span>system().uiLanguages();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>const</span> QString <span style=color:#f92672>&amp;</span>locale : uiLanguages) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> QString baseName <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;synth_&#34;</span> <span style=color:#f92672>+</span> QLocale(locale).name();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (translator.load(<span style=color:#e6db74>&#34;:/i18n/&#34;</span> <span style=color:#f92672>+</span> baseName)) {
+</span></span><span style=display:flex><span>            a.installTranslator(<span style=color:#f92672>&amp;</span>translator);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    MainWindow w;
+</span></span><span style=display:flex><span>    w.show();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> a.exec();
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></p></div><div class=paragraph><p>mainwindow.h<div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments="1-2:header guard start;4-9:Qt includes used by the application;37:enable Qt meta-object system;39-41:constructor and frequency setter;43-52:readData() generates the sine wave audio samples;54-56:writeData() unused for this generator;58-61:internal audio state variables;62:header guard end;11-13:forward declaration of the UI class;15:MainWindow class declaration;17:enable Qt meta-object system (signals/slots);19-21:constructor and destructor;23-26:private members including UI and audio objects;28-29:Qt paint event override for drawing the waveform;31-34:waveform data, frequency value, and waveform generator function;36:AudioGenerator class declaration (custom audio device);"><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style=background-color:#3c3d38><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#ifndef MAINWINDOW_H
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define MAINWINDOW_H
+</span></span></span><span style=display:flex;background-color:#3c3d38><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QMainWindow&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QVector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QPointF&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QtMath&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QAudioOutput&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QIODevice&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>QT_BEGIN_NAMESPACE
+</span></span><span style=display:flex><span><span style=color:#66d9ef>namespace</span> Ui { <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainWindow</span>; }
+</span></span><span style=display:flex><span>QT_END_NAMESPACE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainWindow</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>public</span> QMainWindow
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    Q_OBJECT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    MainWindow(QWidget <span style=color:#f92672>*</span>parent <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>);
+</span></span><span style=display:flex><span>    <span style=color:#f92672>~</span>MainWindow();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    Ui<span style=color:#f92672>::</span>MainWindow <span style=color:#f92672>*</span>ui;
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// In der mainwindow.h unter private:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AudioGenerator</span> <span style=color:#f92672>*</span>m_generator;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>QAudioOutput</span> <span style=color:#f92672>*</span>m_audioOutput;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>protected</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> paintEvent(QPaintEvent <span style=color:#f92672>*</span>event) <span style=color:#66d9ef>override</span>; <span style=color:#75715e>// This draws the waveform
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    QVector<span style=color:#f92672>&lt;</span>QPointF<span style=color:#f92672>&gt;</span> waveformPoints;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> currentFreq <span style=color:#f92672>=</span> <span style=color:#ae81ff>440.0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>generateWaveform</span>(); <span style=color:#75715e>// Logic to calculate the sine wave
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AudioGenerator</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>public</span> QIODevice {
+</span></span><span style=display:flex><span>    Q_OBJECT
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Konstruktor mit Parent, damit Qt den Speicher verwalten kann
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    AudioGenerator(QObject <span style=color:#f92672>*</span>parent <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>) <span style=color:#f92672>:</span> QIODevice(parent) {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setFrequency</span>(<span style=color:#66d9ef>float</span> f) { m_frequency <span style=color:#f92672>=</span> f; }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    qint64 <span style=color:#a6e22e>readData</span>(<span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>data, qint64 maxlen) <span style=color:#66d9ef>override</span> {
+</span></span><span style=display:flex><span>        qint16 <span style=color:#f92672>*</span>samples <span style=color:#f92672>=</span> <span style=color:#66d9ef>reinterpret_cast</span><span style=color:#f92672>&lt;</span>qint16<span style=color:#f92672>*&gt;</span>(data);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> sampleCount <span style=color:#f92672>=</span> maxlen <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(qint16);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> sampleCount; <span style=color:#f92672>++</span>i) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>float</span> val <span style=color:#f92672>=</span> <span style=color:#ae81ff>8000.0</span> <span style=color:#f92672>*</span> qSin(m_phase);
+</span></span><span style=display:flex><span>            samples[i] <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>qint16<span style=color:#f92672>&gt;</span>(val);
+</span></span><span style=display:flex><span>            m_phase <span style=color:#f92672>+=</span> <span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI <span style=color:#f92672>*</span> m_frequency <span style=color:#f92672>/</span> <span style=color:#ae81ff>44100.0</span>;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (m_phase <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI) m_phase <span style=color:#f92672>-=</span> <span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> maxlen;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    qint64 <span style=color:#a6e22e>writeData</span>(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>data, qint64 len) <span style=color:#66d9ef>override</span> {
+</span></span><span style=display:flex><span>        Q_UNUSED(data); Q_UNUSED(len); <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> m_frequency <span style=color:#f92672>=</span> <span style=color:#ae81ff>440.0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> m_phase <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#75715e>#endif </span><span style=color:#75715e>// MAINWINDOW_H
+</span></span></span></code></pre></td></tr></table></div></div></div></div></p></div><div class=paragraph><p>mainwindow.cpp<div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments="1-3:includes;5:MainWindow constructor definition;49:paintEvent() override definition;52-53:create QPainter and enable antialiasing;55-56:draw oscilloscope background;58-60:draw waveform polyline;63:MainWindow destructor;64-65:stop audio output and clean up UI;7-8:initialize base class and UI pointer;10:initialize UI widgets;12-18:define audio format (44.1 kHz mono PCM);20-25:create audio generator and audio output;27-33:connect slider to update frequency, waveform, and repaint;35-36:initial waveform generation;39:generateWaveform() function definition;40-46:calculate sine wave points for visualization;"><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style=background-color:#3c3d38><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;mainwindow.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;ui_mainwindow.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex;background-color:#3c3d38><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QPainter&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>MainWindow<span style=color:#f92672>::</span>MainWindow(QWidget <span style=color:#f92672>*</span>parent)
+</span></span><span style=display:flex><span>    <span style=color:#f92672>:</span> QMainWindow(parent)
+</span></span><span style=display:flex><span>    , ui(<span style=color:#66d9ef>new</span> Ui<span style=color:#f92672>::</span>MainWindow)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    ui<span style=color:#f92672>-&gt;</span>setupUi(<span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 1. Audio-Format definieren (Standard CD-Qualität)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    QAudioFormat format;
+</span></span><span style=display:flex><span>    format.setSampleRate(<span style=color:#ae81ff>44100</span>);
+</span></span><span style=display:flex><span>    format.setChannelCount(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    format.setSampleSize(<span style=color:#ae81ff>16</span>);
+</span></span><span style=display:flex><span>    format.setCodec(<span style=color:#e6db74>&#34;audio/pcm&#34;</span>);
+</span></span><span style=display:flex><span>    format.setByteOrder(QAudioFormat<span style=color:#f92672>::</span>LittleEndian);
+</span></span><span style=display:flex><span>    format.setSampleType(QAudioFormat<span style=color:#f92672>::</span>SignedInt);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 2. Audio-Generator (Logik im Header) und Output initialisieren
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    m_generator <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> AudioGenerator(<span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    m_generator<span style=color:#f92672>-&gt;</span>open(QIODevice<span style=color:#f92672>::</span>ReadOnly);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    m_audioOutput <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> QAudioOutput(format, <span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    m_audioOutput<span style=color:#f92672>-&gt;</span>start(m_generator);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 3. Slider-Verbindung: Ändert Tonhöhe und Grafik gleichzeitig
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    connect(ui<span style=color:#f92672>-&gt;</span>freqSlider, <span style=color:#f92672>&amp;</span>QSlider<span style=color:#f92672>::</span>valueChanged, <span style=color:#66d9ef>this</span>, [<span style=color:#66d9ef>this</span>](<span style=color:#66d9ef>int</span> value) {
+</span></span><span style=display:flex><span>        currentFreq <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(value);
+</span></span><span style=display:flex><span>        m_generator<span style=color:#f92672>-&gt;</span>setFrequency(currentFreq); <span style=color:#75715e>// Ändert die Audio-Frequenz
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        generateWaveform();                     <span style=color:#75715e>// Berechnet neue Punkte für das Oszilloskop
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        update();                               <span style=color:#75715e>// Erzwingt das Neuzeichnen (paintEvent)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Initiale Berechnung der Wellenform
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    generateWaveform();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> MainWindow<span style=color:#f92672>::</span>generateWaveform() {
+</span></span><span style=display:flex><span>    waveformPoints.clear();
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Wir nutzen die Breite des Fensters als Basis für die X-Achse
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; x <span style=color:#f92672>&lt;</span> width(); <span style=color:#f92672>++</span>x) {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Die Konstante 3.14... ersetzt M_PI, falls Makros nicht gefunden werden
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>float</span> y <span style=color:#f92672>=</span> <span style=color:#ae81ff>80</span> <span style=color:#f92672>*</span> qSin(<span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3.14159265</span> <span style=color:#f92672>*</span> currentFreq <span style=color:#f92672>*</span> (<span style=color:#66d9ef>float</span>)x <span style=color:#f92672>/</span> <span style=color:#ae81ff>10000.0</span>);
+</span></span><span style=display:flex><span>        waveformPoints.append(QPointF(x, <span style=color:#ae81ff>200</span> <span style=color:#f92672>+</span> y));
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> MainWindow<span style=color:#f92672>::</span>paintEvent(QPaintEvent <span style=color:#f92672>*</span>event) {
+</span></span><span style=display:flex><span>    (<span style=color:#66d9ef>void</span>)event; <span style=color:#75715e>// Verhindert Warnung über ungenutzten Parameter
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    QPainter <span style=color:#a6e22e>painter</span>(<span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    painter.setRenderHint(QPainter<span style=color:#f92672>::</span>Antialiasing);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Zeichne den schwarzen &#34;Bildschirm&#34; des Oszilloskops
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    painter.fillRect(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>100</span>, width(), <span style=color:#ae81ff>200</span>, Qt<span style=color:#f92672>::</span>black);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Zeichne die grüne &#34;Phosphor&#34;-Linie
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    painter.setPen(QPen(Qt<span style=color:#f92672>::</span>green, <span style=color:#ae81ff>2</span>));
+</span></span><span style=display:flex><span>    painter.drawPolyline(waveformPoints.data(), waveformPoints.size());
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>MainWindow<span style=color:#f92672>::~</span>MainWindow() {
+</span></span><span style=display:flex><span>    m_audioOutput<span style=color:#f92672>-&gt;</span>stop(); <span style=color:#75715e>// Audio-Stream sauber beenden
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>delete</span> ui;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=xml;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;ui</span> <span style=color:#a6e22e>version=</span><span style=color:#e6db74>&#34;4.0&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>&lt;class&gt;</span>MainWindow<span style=color:#f92672>&lt;/class&gt;</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>&lt;widget</span> <span style=color:#a6e22e>class=</span><span style=color:#e6db74>&#34;QMainWindow&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;MainWindow&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;geometry&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;rect&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;x&gt;</span>0<span style=color:#f92672>&lt;/x&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;y&gt;</span>0<span style=color:#f92672>&lt;/y&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;width&gt;</span>800<span style=color:#f92672>&lt;/width&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;height&gt;</span>600<span style=color:#f92672>&lt;/height&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;/rect&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;windowTitle&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;string&gt;</span>MainWindow<span style=color:#f92672>&lt;/string&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;widget</span> <span style=color:#a6e22e>class=</span><span style=color:#e6db74>&#34;QWidget&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;centralwidget&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;widget</span> <span style=color:#a6e22e>class=</span><span style=color:#e6db74>&#34;QSlider&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;freqSlider&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;geometry&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;rect&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;x&gt;</span>230<span style=color:#f92672>&lt;/x&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;y&gt;</span>460<span style=color:#f92672>&lt;/y&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;width&gt;</span>160<span style=color:#f92672>&lt;/width&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;height&gt;</span>16<span style=color:#f92672>&lt;/height&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;/rect&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;maximum&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;number&gt;</span>2000<span style=color:#f92672>&lt;/number&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;orientation&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;enum&gt;</span>Qt::Horizontal<span style=color:#f92672>&lt;/enum&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;/widget&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;widget</span> <span style=color:#a6e22e>class=</span><span style=color:#e6db74>&#34;QLabel&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;label&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;geometry&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;rect&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;x&gt;</span>230<span style=color:#f92672>&lt;/x&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;y&gt;</span>440<span style=color:#f92672>&lt;/y&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;width&gt;</span>54<span style=color:#f92672>&lt;/width&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&lt;height&gt;</span>17<span style=color:#f92672>&lt;/height&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;/rect&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;text&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;string&gt;</span>Frequenz<span style=color:#f92672>&lt;/string&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;/widget&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;/widget&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;widget</span> <span style=color:#a6e22e>class=</span><span style=color:#e6db74>&#34;QMenuBar&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;menubar&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;property</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;geometry&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;rect&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;x&gt;</span>0<span style=color:#f92672>&lt;/x&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;y&gt;</span>0<span style=color:#f92672>&lt;/y&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;width&gt;</span>800<span style=color:#f92672>&lt;/width&gt;</span>
+</span></span><span style=display:flex><span>     <span style=color:#f92672>&lt;height&gt;</span>22<span style=color:#f92672>&lt;/height&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;/rect&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>&lt;/property&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;/widget&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&lt;widget</span> <span style=color:#a6e22e>class=</span><span style=color:#e6db74>&#34;QStatusBar&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;statusbar&#34;</span><span style=color:#f92672>/&gt;</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>&lt;/widget&gt;</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>&lt;resources/&gt;</span>
+</span></span><span style=display:flex><span> <span style=color:#f92672>&lt;connections/&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/ui&gt;</span></span></span></code></pre></td></tr></table></div></div></div></div></div></div></div></div><div class=sect1><h2 id=_from_linear_to_logarithmic>From linear to logarithmic</h2><div class=sectionbody><div class=paragraph><div class="book-hint info"><div class=paragraph><p>Human perception of pitch and loudness is logarithmic, so the slider must be mapped using an exponential function.</p></div><div class=paragraph><p>The standard approach:</p></div><div class="paragraph “image”"><p>\large \[f = f_{min} * (f_{max} / f_{min} )^{(slider/maxSlider)}\]</p></div><div class=paragraph><p>This is the valid approach for both, volume and frequency.</p></div></div></div><div class=paragraph><p>So next we show the both adapted files mainwindow.h and mainwindow.cpp</p></div><div class=paragraph><p>mainwindow.h<div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#ifndef MAINWINDOW_H
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define MAINWINDOW_H
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QMainWindow&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QVector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QPointF&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QIODevice&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>QT_BEGIN_NAMESPACE
+</span></span><span style=display:flex><span><span style=color:#66d9ef>namespace</span> Ui { <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainWindow</span>; }
+</span></span><span style=display:flex><span>QT_END_NAMESPACE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>QAudioOutput</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>QPaintEvent</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AudioGenerator</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>public</span> QIODevice
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    Q_OBJECT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>explicit</span> AudioGenerator(QObject <span style=color:#f92672>*</span>parent <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setFrequency</span>(<span style=color:#66d9ef>float</span> frequency);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setAmplitude</span>(<span style=color:#66d9ef>float</span> amplitude);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    qint64 <span style=color:#a6e22e>readData</span>(<span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>data, qint64 maxlen) <span style=color:#66d9ef>override</span>;
+</span></span><span style=display:flex><span>    qint64 <span style=color:#a6e22e>writeData</span>(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>data, qint64 len) <span style=color:#66d9ef>override</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> m_frequency <span style=color:#f92672>=</span> <span style=color:#ae81ff>440.0f</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> m_phase <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> m_amplitude <span style=color:#f92672>=</span> <span style=color:#ae81ff>8000.0f</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MainWindow</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>public</span> QMainWindow
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    Q_OBJECT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>explicit</span> MainWindow(QWidget <span style=color:#f92672>*</span>parent <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>);
+</span></span><span style=display:flex><span>    <span style=color:#f92672>~</span>MainWindow() <span style=color:#66d9ef>override</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>protected</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> paintEvent(QPaintEvent <span style=color:#f92672>*</span>event) <span style=color:#66d9ef>override</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>float</span> sliderToLogFrequency(<span style=color:#66d9ef>int</span> value, <span style=color:#66d9ef>int</span> minValue, <span style=color:#66d9ef>int</span> maxValue,
+</span></span><span style=display:flex><span>                                      <span style=color:#66d9ef>float</span> minFreq, <span style=color:#66d9ef>float</span> maxFreq);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>sliderToLogAmplitude</span>(<span style=color:#66d9ef>int</span> value, <span style=color:#66d9ef>int</span> minValue, <span style=color:#66d9ef>int</span> maxValue,
+</span></span><span style=display:flex><span>                                      <span style=color:#66d9ef>float</span> minAmp, <span style=color:#66d9ef>float</span> maxAmp);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>generateWaveform</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    Ui<span style=color:#f92672>::</span>MainWindow <span style=color:#f92672>*</span>ui <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>;
+</span></span><span style=display:flex><span>    AudioGenerator <span style=color:#f92672>*</span>m_generator <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>;
+</span></span><span style=display:flex><span>    QAudioOutput <span style=color:#f92672>*</span>m_audioOutput <span style=color:#f92672>=</span> <span style=color:#66d9ef>nullptr</span>;
+</span></span><span style=display:flex><span>    QVector<span style=color:#f92672>&lt;</span>QPointF<span style=color:#f92672>&gt;</span> waveformPoints;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> currentFreq <span style=color:#f92672>=</span> <span style=color:#ae81ff>440.0f</span>;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#endif </span><span style=color:#75715e>// MAINWINDOW_H
+</span></span></span></code></pre></td></tr></table></div></div></div></div></p></div><div class=paragraph><p>mainwindow.cpp</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">103
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">104
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">105
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">106
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">107
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">108
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">109
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">110
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">111
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">112
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">113
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">114
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">115
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">116
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">117
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">118
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">119
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">120
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">121
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">123
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">124
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">125
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">126
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">127
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">128
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">129
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">130
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">131
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">132
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">133
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">134
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">135
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">136
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">137
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">138
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">139
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">140
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">141
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">142
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">143
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">144
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">145
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">146
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">147
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">148
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">149
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">150
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">151
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">152
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">153
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">154
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">155
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">156
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">157
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">158
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">159
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">160
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">161
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">162
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">163
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">164
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">165
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">166
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">167
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">168
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">169
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">170
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">171
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">172
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">173
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">174
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;mainwindow.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;ui_mainwindow.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QAudioFormat&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QAudioOutput&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QPainter&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QPaintEvent&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QSlider&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;QtMath&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>namespace</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>float</span> kMinFreq <span style=color:#f92672>=</span> <span style=color:#ae81ff>20.0f</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>float</span> kMaxFreq <span style=color:#f92672>=</span> <span style=color:#ae81ff>20000.0f</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>float</span> kMinAmp <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>float</span> kMaxAmp <span style=color:#f92672>=</span> <span style=color:#ae81ff>16000.0f</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>int</span> kFreqSliderDefault <span style=color:#f92672>=</span> <span style=color:#ae81ff>895</span>; <span style=color:#75715e>// ~440 Hz on a 0..2000 logarithmic slider
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>AudioGenerator<span style=color:#f92672>::</span>AudioGenerator(QObject <span style=color:#f92672>*</span>parent)
+</span></span><span style=display:flex><span>    <span style=color:#f92672>:</span> QIODevice(parent)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> AudioGenerator<span style=color:#f92672>::</span>setFrequency(<span style=color:#66d9ef>float</span> frequency)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    m_frequency <span style=color:#f92672>=</span> frequency;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> AudioGenerator<span style=color:#f92672>::</span>setAmplitude(<span style=color:#66d9ef>float</span> amplitude)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    m_amplitude <span style=color:#f92672>=</span> amplitude;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>qint64 AudioGenerator<span style=color:#f92672>::</span>readData(<span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>data, qint64 maxlen)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    qint16 <span style=color:#f92672>*</span>samples <span style=color:#f92672>=</span> <span style=color:#66d9ef>reinterpret_cast</span><span style=color:#f92672>&lt;</span>qint16 <span style=color:#f92672>*&gt;</span>(data);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> sampleCount <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span>(maxlen <span style=color:#f92672>/</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>qint64<span style=color:#f92672>&gt;</span>(<span style=color:#66d9ef>sizeof</span>(qint16)));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> sampleCount; <span style=color:#f92672>++</span>i) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> value <span style=color:#f92672>=</span> m_amplitude <span style=color:#f92672>*</span> qSin(m_phase);
+</span></span><span style=display:flex><span>        samples[i] <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>qint16<span style=color:#f92672>&gt;</span>(value);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        m_phase <span style=color:#f92672>+=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(<span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI) <span style=color:#f92672>*</span> m_frequency <span style=color:#f92672>/</span> <span style=color:#ae81ff>44100.0f</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (m_phase <span style=color:#f92672>&gt;=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(<span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI)) {
+</span></span><span style=display:flex><span>            m_phase <span style=color:#f92672>-=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(<span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>qint64<span style=color:#f92672>&gt;</span>(sampleCount) <span style=color:#f92672>*</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>qint64<span style=color:#f92672>&gt;</span>(<span style=color:#66d9ef>sizeof</span>(qint16));
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>qint64 AudioGenerator<span style=color:#f92672>::</span>writeData(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>data, qint64 len)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    Q_UNUSED(data)
+</span></span><span style=display:flex><span>    Q_UNUSED(len)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>MainWindow<span style=color:#f92672>::</span>MainWindow(QWidget <span style=color:#f92672>*</span>parent)
+</span></span><span style=display:flex><span>    <span style=color:#f92672>:</span> QMainWindow(parent)
+</span></span><span style=display:flex><span>    , ui(<span style=color:#66d9ef>new</span> Ui<span style=color:#f92672>::</span>MainWindow)
+</span></span><span style=display:flex><span>    , m_generator(<span style=color:#66d9ef>new</span> AudioGenerator(<span style=color:#66d9ef>this</span>))
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    ui<span style=color:#f92672>-&gt;</span>setupUi(<span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    QAudioFormat format;
+</span></span><span style=display:flex><span>    format.setSampleRate(<span style=color:#ae81ff>44100</span>);
+</span></span><span style=display:flex><span>    format.setChannelCount(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    format.setSampleSize(<span style=color:#ae81ff>16</span>);
+</span></span><span style=display:flex><span>    format.setCodec(<span style=color:#e6db74>&#34;audio/pcm&#34;</span>);
+</span></span><span style=display:flex><span>    format.setByteOrder(QAudioFormat<span style=color:#f92672>::</span>LittleEndian);
+</span></span><span style=display:flex><span>    format.setSampleType(QAudioFormat<span style=color:#f92672>::</span>SignedInt);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    m_generator<span style=color:#f92672>-&gt;</span>open(QIODevice<span style=color:#f92672>::</span>ReadOnly);
+</span></span><span style=display:flex><span>    m_generator<span style=color:#f92672>-&gt;</span>setAmplitude(<span style=color:#ae81ff>8000.0f</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    m_audioOutput <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> QAudioOutput(format, <span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    m_audioOutput<span style=color:#f92672>-&gt;</span>start(m_generator);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>setRange(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2000</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    connect(ui<span style=color:#f92672>-&gt;</span>freqSlider, <span style=color:#f92672>&amp;</span>QSlider<span style=color:#f92672>::</span>valueChanged, <span style=color:#66d9ef>this</span>, [<span style=color:#66d9ef>this</span>](<span style=color:#66d9ef>int</span> value) {
+</span></span><span style=display:flex><span>        currentFreq <span style=color:#f92672>=</span> sliderToLogFrequency(value,
+</span></span><span style=display:flex><span>                                           ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>minimum(),
+</span></span><span style=display:flex><span>                                           ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>maximum(),
+</span></span><span style=display:flex><span>                                           kMinFreq,
+</span></span><span style=display:flex><span>                                           kMaxFreq);
+</span></span><span style=display:flex><span>        m_generator<span style=color:#f92672>-&gt;</span>setFrequency(currentFreq);
+</span></span><span style=display:flex><span>        generateWaveform();
+</span></span><span style=display:flex><span>        update();
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (QSlider <span style=color:#f92672>*</span>volumeSlider <span style=color:#f92672>=</span> findChild<span style=color:#f92672>&lt;</span>QSlider <span style=color:#f92672>*&gt;</span>(QStringLiteral(<span style=color:#e6db74>&#34;volumeSlider&#34;</span>))) {
+</span></span><span style=display:flex><span>        connect(volumeSlider, <span style=color:#f92672>&amp;</span>QSlider<span style=color:#f92672>::</span>valueChanged, <span style=color:#66d9ef>this</span>, [<span style=color:#66d9ef>this</span>, volumeSlider](<span style=color:#66d9ef>int</span> value) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> amplitude <span style=color:#f92672>=</span> sliderToLogAmplitude(value,
+</span></span><span style=display:flex><span>                                                         volumeSlider<span style=color:#f92672>-&gt;</span>minimum(),
+</span></span><span style=display:flex><span>                                                         volumeSlider<span style=color:#f92672>-&gt;</span>maximum(),
+</span></span><span style=display:flex><span>                                                         kMinAmp,
+</span></span><span style=display:flex><span>                                                         kMaxAmp);
+</span></span><span style=display:flex><span>            m_generator<span style=color:#f92672>-&gt;</span>setAmplitude(amplitude);
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>setValue(kFreqSliderDefault);
+</span></span><span style=display:flex><span>    currentFreq <span style=color:#f92672>=</span> sliderToLogFrequency(ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>value(),
+</span></span><span style=display:flex><span>                                       ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>minimum(),
+</span></span><span style=display:flex><span>                                       ui<span style=color:#f92672>-&gt;</span>freqSlider<span style=color:#f92672>-&gt;</span>maximum(),
+</span></span><span style=display:flex><span>                                       kMinFreq,
+</span></span><span style=display:flex><span>                                       kMaxFreq);
+</span></span><span style=display:flex><span>    m_generator<span style=color:#f92672>-&gt;</span>setFrequency(currentFreq);
+</span></span><span style=display:flex><span>    generateWaveform();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>MainWindow<span style=color:#f92672>::~</span>MainWindow()
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (m_audioOutput <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nullptr</span>) {
+</span></span><span style=display:flex><span>        m_audioOutput<span style=color:#f92672>-&gt;</span>stop();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>delete</span> ui;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> MainWindow<span style=color:#f92672>::</span>sliderToLogFrequency(<span style=color:#66d9ef>int</span> value, <span style=color:#66d9ef>int</span> minValue, <span style=color:#66d9ef>int</span> maxValue,
+</span></span><span style=display:flex><span>                                       <span style=color:#66d9ef>float</span> minFreq, <span style=color:#66d9ef>float</span> maxFreq)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (maxValue <span style=color:#f92672>&lt;=</span> minValue <span style=color:#f92672>||</span> minFreq <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0.0f</span> <span style=color:#f92672>||</span> maxFreq <span style=color:#f92672>&lt;=</span> minFreq) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> minFreq;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> normalized <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(value <span style=color:#f92672>-</span> minValue)
+</span></span><span style=display:flex><span>                           <span style=color:#f92672>/</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(maxValue <span style=color:#f92672>-</span> minValue);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> minFreq <span style=color:#f92672>*</span> <span style=color:#a6e22e>qPow</span>(maxFreq <span style=color:#f92672>/</span> minFreq, normalized);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> MainWindow<span style=color:#f92672>::</span>sliderToLogAmplitude(<span style=color:#66d9ef>int</span> value, <span style=color:#66d9ef>int</span> minValue, <span style=color:#66d9ef>int</span> maxValue,
+</span></span><span style=display:flex><span>                                       <span style=color:#66d9ef>float</span> minAmp, <span style=color:#66d9ef>float</span> maxAmp)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (maxValue <span style=color:#f92672>&lt;=</span> minValue <span style=color:#f92672>||</span> maxAmp <span style=color:#f92672>&lt;</span> minAmp) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> minAmp;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> normalized <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(value <span style=color:#f92672>-</span> minValue)
+</span></span><span style=display:flex><span>                           <span style=color:#f92672>/</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(maxValue <span style=color:#f92672>-</span> minValue);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (normalized <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0.0f</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> minAmp;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> minAmp <span style=color:#f92672>+</span> (maxAmp <span style=color:#f92672>-</span> minAmp) <span style=color:#f92672>*</span> qPow(normalized, <span style=color:#ae81ff>2.0f</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> MainWindow<span style=color:#f92672>::</span>generateWaveform()
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    waveformPoints.clear();
+</span></span><span style=display:flex><span>    waveformPoints.reserve(width());
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; x <span style=color:#f92672>&lt;</span> width(); <span style=color:#f92672>++</span>x) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> y <span style=color:#f92672>=</span> <span style=color:#ae81ff>80.0f</span> <span style=color:#f92672>*</span> qSin((<span style=color:#ae81ff>2.0f</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(M_PI) <span style=color:#f92672>*</span> currentFreq <span style=color:#f92672>*</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(x)) <span style=color:#f92672>/</span> <span style=color:#ae81ff>10000.0f</span>);
+</span></span><span style=display:flex><span>        waveformPoints.append(QPointF(x, <span style=color:#ae81ff>200.0</span> <span style=color:#f92672>+</span> y));
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> MainWindow<span style=color:#f92672>::</span>paintEvent(QPaintEvent <span style=color:#f92672>*</span>event)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    Q_UNUSED(event)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    QPainter painter(<span style=color:#66d9ef>this</span>);
+</span></span><span style=display:flex><span>    painter.setRenderHint(QPainter<span style=color:#f92672>::</span>Antialiasing);
+</span></span><span style=display:flex><span>    painter.fillRect(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>100</span>, width(), <span style=color:#ae81ff>200</span>, Qt<span style=color:#f92672>::</span>black);
+</span></span><span style=display:flex><span>    painter.setPen(QPen(Qt<span style=color:#f92672>::</span>green, <span style=color:#ae81ff>2</span>));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>waveformPoints.isEmpty()) {
+</span></span><span style=display:flex><span>        painter.drawPolyline(waveformPoints.constData(), waveformPoints.size());
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></div></div></div></div><hr style=margin-top:3rem><nav class=book-navigation style="display:flex;justify-content:space-between;padding:1rem 0"><div class=prev><a href=http://wehrend.github.io/pages/cpp_cmake/ style=text-decoration:none>← Introduction into C++ (CMake interlude)</a></div><div class=next style=text-align:right></div></nav></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#_a_gui_is_a_fantastic_idea_but_what_should_it_be_sdl_wxwidgets_or_qt>A GUI is a <strong>fantastic</strong> idea…​ But what should it be - SDL, wxWidgets, or Qt?</a></li><li><a href=#_so_we_choose_qt_lets_install_the_dependencies_and_the_qt_creator_ide>So, we choose Qt - let’s install the dependencies and the Qt Creator IDE</a></li><li><a href=#_the_qtcreator>The QTCreator</a></li><li><a href=#_the_meta_object_compiler_moc>The meta-object compiler (moc)</a><ul><li><a href=#_how_it_works>How It Works</a></li></ul></li><li><a href=#_from_linear_to_logarithmic>From linear to logarithmic</a></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

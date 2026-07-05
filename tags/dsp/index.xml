@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DSP on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/dsp/</link><description>Recent content in DSP on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/dsp/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction into C++ (Part 4)</title><link>http://wehrend.github.io/pages/cpp_04/</link><pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_04/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_from_stateless_to_stateful_filters_composition">From Stateless to Stateful: Filters &amp;amp; Composition&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In previous parts, we built an oscillator. It was &amp;#34;stateless&amp;#34;—you give it a phase, it gives you a value. It doesn’t care
+what happened a microsecond ago. But to make music sound &amp;#34;warm&amp;#34; or &amp;#34;organic,&amp;#34; we need objects that have a &lt;strong>memory&lt;/strong>.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_dsp_general_the_concept_of_state">1. DSP General: The Concept of State&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>In Digital Signal Processing (DSP), a filter is &lt;strong>stateful&lt;/strong>. To calculate the &lt;strong>current&lt;/strong> output, a filter needs to know
+the &lt;strong>previous&lt;/strong> output.&lt;/p>
+&lt;/div></description></item></channel></rss>

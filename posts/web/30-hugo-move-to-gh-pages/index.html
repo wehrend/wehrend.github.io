@@ -1,0 +1,252 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=" Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money. Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​
+Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead
+"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="Move Hugo Web-presence to GH-Pages"><meta property="og:description" content="Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money. Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​
+Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-03-16T00:00:00+00:00"><meta property="article:modified_time" content="2025-03-16T00:00:00+00:00"><meta property="article:tag" content="Hugo"><meta property="article:tag" content="Web"><meta property="article:tag" content="Gh-Pages"><meta property="article:tag" content="Gh-Actions"><meta itemprop=name content="Move Hugo Web-presence to GH-Pages"><meta itemprop=description content="Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money. Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​
+Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead"><meta itemprop=datePublished content="2025-03-16T00:00:00+00:00"><meta itemprop=dateModified content="2025-03-16T00:00:00+00:00"><meta itemprop=wordCount content="885"><meta itemprop=keywords content="Hugo,Web,Gh-Pages,Gh-Actions"><title>Move Hugo Web-presence to GH-Pages | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.f9891fd7c4c5ce35d2b281dc709d846877f537fb3fee460ca7ebffb0f307966c.js integrity="sha256-+Ykf18TFzjXSsoHccJ2EaHf1N/s/7kYMp+v/sPMHlmw=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-blog"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+English
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/de/ class="flex flex-auto">Deutsch</a></li></ul></li></ul><ul><li><a href=/docs/></a></li><li><a href=/sitemap/>Sitemap (EN)</a></li><li><a href=/about/>About</a></li><li><a href=/downloads>Download Archive</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Move Hugo Web-presence to GH-Pages</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden></aside></header><article class="markdown book-article"><header class=book-header-icon style=margin-bottom:2rem><h1>Move Hugo Web-presence to GH-Pages</h1></header><div class=page-content><div class=paragraph><p>Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money.
+Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​</p></div><div class=paragraph><p><strong>Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead</strong></p></div><div class=paragraph><p>We start of with a tree view here to show how the pieces are screwed together:</p></div><div class=listingblock><div class=content><pre>sven@debian:~/development/hugo$ tree -L 2
+.
+├── config.toml
+├── content
+│   ├── de
+│   └── en
+├── public
+│   ├── 404.html
+│   ├── about
+│   ├── About _ Interdependent_files
+│   ├── agenda.png
+│   ├── book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css
+│   ├── categories
+│   ├── de
+│   ├── de.search-data.min.cc10ee5d6f454883af3d2c31576a2ad90ef1ecae0a79fd2f36e9af9fb3ff3c84.json
+│   ├── de.search.min.2adf38a9a0cb592541f5b8f227b9091ac117d1667e43dca86a4d336f453b4606.js
+│   ├── docs
+│   ├── drafts
+│   ├── en
+│   ├── en.search-data.min.b083db226cd7541947b6dd0fdf7a563f455a790763f341883dc37963899504c8.json
+│   ├── en.search.min.004100e27f248b7e46aef29f1b0ae4e8d53aed5c868e797c8696fa00f834cd5f.js
+│   ├── favicon.png
+│   ├── favicon.svg
+│   ├── flexsearch.min.js
+│   ├── fonts
+│   ├── index.html
+│   ├── index.xml
+│   ├── katex
+│   ├── Makefile
+│   ├── manifest.json
+│   ├── mermaid.min.js
+│   ├── pages
+│   ├── posts
+│   ├── sitemap.xml
+│   ├── svg
+│   └── tags
+├── resources
+│   └── _gen
+└── themes
+    └── hugo-book</pre></div></div><div class=paragraph><p>As can be seen the public directory here is shown after the population, foremost we have config.toml (could also be just a .yaml,
+but somehow i started with toml, whatever it doesnt matter), then we see the content directory housing the different languages (here german,
+english) . then there is a resources directory containing generated assets. And last but not lrast, there is the themes dirctory,
+here including the hugo-book theme…​</p></div><div class=listingblock><div class=content><pre></pre></div></div><div class=paragraph><p>We start with the workflow file deploy.yml . My new setup looks like the following:</p></div><div class=paragraph><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build and Deploy Hugo Site</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>main</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>workflow_dispatch</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-and-deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>HUGO_VERSION</span>: <span style=color:#ae81ff>0.146.6</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>TZ</span>: <span style=color:#ae81ff>Europe/Berlin</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout repository (with submodules)</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v4</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#ae81ff>recursive</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Install Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          sudo dpkg -i hugo.deb</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Install Asciidoctor</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          sudo apt update
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          sudo apt install -y ruby
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          sudo gem install asciidoctor</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Hugo site</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          hugo --gc --minify --cleanDestinationDir --config content/config.toml
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          echo &#34;--- Built site files ---&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          find public -type f | sort</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy to gh_pages branch</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v4</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>github_token</span>: <span style=color:#ae81ff>${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>gh_pages</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>public</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>force_orphan</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>user_name</span>: <span style=color:#ae81ff>wehrend</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>user_email</span>: <span style=color:#ae81ff>sven.wehrend@gmail.com</span></span></span></code></pre></div></div><div class=paragraph><p>and here for reasons of completeness the config.toml residing in the content directory…​</p></div><div class=paragraph><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span><span style=color:#a6e22e>baseURL</span> = <span style=color:#e6db74>&#34;http://wehrend.uber.space/&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#34;en-us&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;Bits &amp; pieces - Sven Wehrend&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>publishDir</span> = <span style=color:#e6db74>&#34;wehrend.github.io&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>module</span>]
+</span></span><span style=display:flex><span>  [[<span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>imports</span>]]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>path</span> = <span style=color:#e6db74>&#34;github.com/alex-shpak/hugo-book&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>languageName</span> = <span style=color:#e6db74>&#34;English&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>contentDir</span> = <span style=color:#e6db74>&#34;content/en&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>languageName</span> = <span style=color:#e6db74>&#34;Deutsch&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>contentDir</span> = <span style=color:#e6db74>&#34;content/de&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Web-Blog&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/posts/web/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Synth-Blog&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/tags/synth/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/docs/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Electronics 101&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/pages/prequel-short-introduction-to-electronics&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>26</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Electronics 102&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/pages/short-introduction-to-electronics-102&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>27</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>after</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Digital Logic 1 (Overview)&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/pages/overview/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Digital Logic 2 (Overview)&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/pages/overview2/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>25</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Synthesizer-DIY&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/posts/synth/25_build_your_own_modules/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>26</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Web-Blog&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/posts/web/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Synth-Blog&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/tags/synth/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/docs/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Elektronik 101&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/de/pages/prequel-short-introduction-to-electronics&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>26</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Elektronik 102&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/de/pages/short-introduction-to-electronics-102&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>27</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>after</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Digitale Logik 1 (Übersicht)&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/de/pages/overview/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Digitale Logik 2 (Übersicht)&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/de/pages/overview2/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>25</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>before</span>]]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Synthesizer-DIY&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/de/posts/synth/25_build_your_own_modules/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>weight</span> = <span style=color:#ae81ff>26</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>params</span>]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>date_format</span> = <span style=color:#e6db74>&#34;2006-01-02&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># (Optional, default light) Sets color theme: light, dark or auto.</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Theme &#39;auto&#39; switches between dark and light modes based on browser/os preferences</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>BookTheme</span> = <span style=color:#e6db74>&#39;light&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># (Optional, default true) Controls table of contents visibility on right side of pages.</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Start and end levels can be controlled with markup.tableOfContents setting.</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># You can also specify this parameter per page in front matter.</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>BookToC</span> = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>security</span>]
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>enableInlineShortcodes</span> = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>security</span>.<span style=color:#a6e22e>exec</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>allow</span> = [<span style=color:#e6db74>&#39;^dart-sass-embedded$&#39;</span>, <span style=color:#e6db74>&#39;^go$&#39;</span>, <span style=color:#e6db74>&#39;^npx$&#39;</span>, <span style=color:#e6db74>&#39;^postcss$&#39;</span>, <span style=color:#e6db74>&#39;^asciidoctor$&#39;</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>osEnv</span> = [<span style=color:#e6db74>&#39;(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$&#39;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>asciidocext</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>extensions</span> = [<span style=color:#e6db74>&#34;asciidoctor&#34;</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>workingFolderCurrent</span> = <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>trace</span> = <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>verbose</span> = <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>markup</span>]
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>]
+</span></span><span style=display:flex><span>    [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>.<span style=color:#a6e22e>renderer</span>]
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>unsafe</span> = <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>markup</span>]
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>]
+</span></span><span style=display:flex><span>    [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>de</span>.<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>.<span style=color:#a6e22e>renderer</span>]
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>unsafe</span> = <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  [<span style=color:#a6e22e>frontmatter</span>.<span style=color:#a6e22e>handlers</span>]
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>adoc</span> = <span style=color:#e6db74>&#34;yaml&#34;</span></span></span></code></pre></div></div><div class=paragraph><p>Thanks to the github-token documented <a href="https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#supported-tokens">here</a>
+we even do not need to setup a key or token by using the default github_token which do not need any configuration, in case the
+github pages stem from the same repository. So I decided to ease my setup and throw away the parent directory respectively added
+the parent directory to the repository</p></div><div class=paragraph><p>With this setup you should be able to let hugo create the publishDir &lt;user>.github.io AKA public folder which gets populated in
+the branch gh-pages.</p></div><div class=paragraph><p>If we commit and push our changes the build-and-deploy pipeline immediately begins to work and churn out the website for you
+in the background…​</p></div><div class=paragraph><p>Congratulations, you just learned a way to contribute to the community and build a cornerstone on the shoulders of giants.</p></div></div><hr style=margin-top:3rem><nav class=book-navigation style="display:flex;justify-content:space-between;padding:1rem 0"><div class=prev></div><div class=next style=text-align:right></div></nav></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

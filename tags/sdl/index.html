@@ -1,0 +1,76 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/tags/sdl/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="SDL"><meta property="og:locale" content="en"><meta property="og:type" content="website"><meta itemprop=name content="SDL"><meta itemprop=datePublished content="2026-02-05T00:00:00+00:00"><meta itemprop=dateModified content="2026-02-05T00:00:00+00:00"><title>SDL | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/tags/sdl/><link rel=alternate hreflang=de href=http://wehrend.github.io/de/tags/sdl/ title=SDL><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.f9891fd7c4c5ce35d2b281dc709d846877f537fb3fee460ca7ebffb0f307966c.js integrity="sha256-+Ykf18TFzjXSsoHccJ2EaHf1N/s/7kYMp+v/sPMHlmw=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=http://wehrend.github.io/tags/sdl/index.xml title="Bits & pieces - Sven Wehrend"></head><body dir=ltr class="book-kind-term book-type-tags"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+English
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/de/tags/sdl/ class="flex flex-auto">Deutsch</a></li></ul></li></ul><ul><li><a href=/docs/></a></li><li><a href=/sitemap/>Sitemap (EN)</a></li><li><a href=/about/>About</a></li><li><a href=/downloads>Download Archive</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>SDL</h3><label for=toc-control></label></div></header><article class="markdown book-post"><h2><a href=/pages/cpp_04/>Introduction into C++ (Part 4)</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>February 5, 2026</span></div><div class=text-small><a href=/tags/c++/>C++</a>,
+<a href=/tags/sdl/>SDL</a>,
+<a href=/tags/synth/>Synth</a>,
+<a href=/tags/dsp/>DSP</a></div><div class=book-post-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_from_stateless_to_stateful_filters_composition>From Stateless to Stateful: Filters & Composition</h2><div class=sectionbody><div class=paragraph><p>In previous parts, we built an oscillator. It was "stateless"—you give it a phase, it gives you a value. It doesn’t care
+what happened a microsecond ago. But to make music sound "warm" or "organic," we need objects that have a <strong>memory</strong>.</p></div><div class=sect2><h3 id=_1_dsp_general_the_concept_of_state>1. DSP General: The Concept of State</h3><div class=paragraph><p>In Digital Signal Processing (DSP), a filter is <strong>stateful</strong>. To calculate the <strong>current</strong> output, a filter needs to know
+the <strong>previous</strong> output.</p></div></div></article><article class="markdown book-post"><h2><a href=/pages/cpp_03/>Introduction into C++ (Part 3)</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>January 29, 2026</span></div><div class=text-small><a href=/tags/c++/>C++</a>,
+<a href=/tags/sdl/>SDL</a>,
+<a href=/tags/synth/>Synth</a></div><div class=book-post-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_introduction_into_c_part_3>Introduction into C++ (Part 3)</h2><div class=sectionbody></div></div><div class=sect1><h2 id=_c_oop_mastery_the_power_of_composition_has_a>C++ OOP Mastery: The Power of Composition (Has-A)</h2><div class=sectionbody><div class=paragraph><p>In software architecture, there are two primary ways to connect objects: <strong>Inheritance</strong> (Is-A) and <strong>Composition</strong> (Has-A).
+While beginners often try to solve everything through inheritance ("An Oscillator <strong>is an</strong> Envelope"), professionals prefer composition:
+<strong>"A Synthesizer <strong>has an</strong> Envelope."</strong></p></div></div></div><div class=sect1><h2 id=_1_why_composition>1. Why Composition?</h2><div class=sectionbody><div class=paragraph><p>Think of our synthesizer as a modular rack. Each module (Oscillator, Envelope) is an independent class. The <code>SynthEngine</code> acts
+as the chassis where these modules are plugged in.</p></div></div></article><article class="markdown book-post"><h2><a href=/pages/cpp_02/>Introduction into C++ (Part 2)</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>January 21, 2026</span></div><div class=text-small><a href=/tags/c++/>C++</a>,
+<a href=/tags/sdl/>SDL</a>,
+<a href=/tags/synth/>Synth</a></div><div class=book-post-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_introduction_into_c_part_2>Introduction into C++ (Part 2)</h2><div class=sectionbody><div class=paragraph><p>In this next example / tutorial we will have a look at sound producing program (aka a synth), for which we utilize the SDL library
+(Simple direct media library). We will go about the program, line for line and explain the different items.</p></div><div class=paragraph><p>Lets begin…​</p></div><div class=paragraph><p>First of all we have the includes for the SDL library, we will have a look at the header file later. Also we include cmath for math and iostream
+for in- and output (but in this example only output).</p></div></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav><ul><li class=book-section-flat><a>Categories</a><ul></ul></li><li class=book-section-flat><a>Tags</a><ul><li class="flex align-center"><a href=/tags/ai/>AI</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ollama/>Ollama</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/qwen/>Qwen</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ltspice/>LTspice</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/spice/>SPICE</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/synth/>Synth</a>
+<span>18</span></li><li class="flex align-center"><a href=/tags/linux/>Linux</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/pipewire/>Pipewire</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/wireplumber/>Wireplumber</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/c++/>C++</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/qmake/>Qmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/qt/>Qt</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/cmake/>Cmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/dsp/>DSP</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/sdl/>SDL</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/busybox/>Busybox</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/embedded/>Embedded</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/web/>Web</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/nlc/>NLC</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/sloth/>Sloth</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/gh-actions/>Gh-Actions</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/gh-pages/>Gh-Pages</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/hugo/>Hugo</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/frontend/>Frontend</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/odoo/>Odoo</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/debian/>Debian</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/postgres/>Postgres</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/python/>Python</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/beginners/>Beginners</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/ecad/>Ecad</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/eda/>Eda</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/fpga/>Fpga</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/icecube2/>IceCube2</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/kicad/>Kicad</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/lattice/>Lattice</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/nandland-go/>Nandland Go</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/diy/>DIY</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/duckburg/>Duckburg</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ltb/>LTB</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/quartus/>Quartus</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/verilog/>Verilog</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/modelsim/>Modelsim</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/chemistry/>Chemistry</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/electronics/>Electronics</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/analog/>Analog</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/audio/>Audio</a>
+<span>8</span></li><li class="flex align-center"><a href=/tags/computing/>Computing</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/knowhow/>Knowhow</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/blog/>Blog</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/consciousness/>Consciousness</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/electronic/>Electronic</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/draft/>Draft</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/nikola/>Nikola</a>
+<span>1</span></li></ul></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

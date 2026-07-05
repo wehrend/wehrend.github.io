@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Draft on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/draft/</link><description>Recent content in Draft on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 14 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/draft/index.xml" rel="self" type="application/rss+xml"/><item><title>How does a CPU work? Overview</title><link>http://wehrend.github.io/pages/000_digital_logic_1/</link><pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/000_digital_logic_1/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+== How does a CPU work – Table of Contents&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_introduction_and_overview">&lt;strong>Introduction and Overview&lt;/strong>&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&lt;em>Introduction and Overview&lt;/em>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Each topic in this course is divided into two parts:
+one focusing on the mathematical side of digital logic—
+ideally independent of implementation details—
+and another more concrete part dealing with those very details.
+In the concrete part, we will mostly discuss implementations
+on the electrical level, although other solutions are possible,
+such as those based on &lt;a href="https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f">fluid dynamics&lt;/a>
+or &lt;a href="https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226">optical gates&lt;/a>.&lt;/p>
+&lt;/div></description></item><item><title>How does a CPU work 2? Overview</title><link>http://wehrend.github.io/pages/10_digital_logic_2/</link><pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/10_digital_logic_2/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_how_does_a_cpu_work_2_table_of_contents">How does a CPU work 2 - Table of contents&lt;/h2>
+&lt;div class="sectionbody">
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_from_combinatorial_to_sequential_logic_introduction">&lt;strong>From Combinatorial to Sequential Logic - Introduction&lt;/strong>&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&lt;em>&lt;a href="http://wehrend.github.io/pages/10_sequential_logic">Introduction to Sequential Logic&lt;/a>&lt;/em>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We get from purely conmbinatorial logic circuits wihout any form of memeory to sequential logic circuits with some
+type of memory (mostly flipflops)&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_clocksflipflops_and_registers">&lt;strong>Clocks,Flipflops and registers&lt;/strong>&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&lt;em>&lt;a href="http://wehrend.github.io/pages/11_clocks_and_registers/">Clocks,flipflops and registers&lt;/a>&lt;/em>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We make a leap into the area of sequential logic and introduce some concepts vital for the sequential logics,
+like clock, flipflops and registers&lt;/p>
+&lt;/div></description></item><item><title>08_RISC-V</title><link>http://wehrend.github.io/pages/08_risc_v/</link><pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/08_risc_v/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_digital_design_meets_computer_architecture">Digital design meets computer architecture&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="sect2">
+&lt;h3 id="_risc_vs_cisc_and_the_risc_v_architecture">RISC vs CISC and The RISC-V architecture&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Existing processor types can be classified by their instruction type set:
+Reduced instruction set computer (RISC), Complex instruction set computer (CISC) and hybrid forms.
+While mini processors like ARM for embedded systems mostly utilise reduced instruction
+sets,todays workstation and Server Architectures (x86, x86_64) are hybrids of RISC and CISC.
+The idea of a reduced instruction set is to avoid big complex instructions and multiple different
+addressing modes (as those typically used in x86 architectures).
+Advantages of a RISC architecture are shorter pipelines which allows faster clocking.
+RISC architectures follow a simple scheme: &amp;#39;Fetch → Decode → Fetch Operands → Execute → Write Back&amp;#39;
+Also instructions have a constant length, memory operations are divided from arithmetic operations,
+which is known as Load/Store-architecture. RISC-V is an open standard for the instruction set archtitecture (ISA).
+Most of this post is referenced from the popular book Computer Organization and Design (RISC-V) Edition by Hennessey and Patterson.&lt;/p>
+&lt;/div></description></item></channel></rss>

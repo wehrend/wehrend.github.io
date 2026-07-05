@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Debian on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/debian/</link><description>Recent content in Debian on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/debian/index.xml" rel="self" type="application/rss+xml"/><item><title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title><link>http://wehrend.github.io/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid><description>&lt;div class="paragraph">
+&lt;p>Hallo zusammen,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>endlich ist diese Woche das &lt;a href="https://nandland.com/the-go-board/">nandland go board&lt;/a> angekommen, das ich vor einem Monat
+beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum
+geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_serielle_verbindung_über_usb">Serielle Verbindung über USB&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Zunächst einmal muss man, um
+sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer
+zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:&lt;/p>
+&lt;/div></description></item></channel></rss>

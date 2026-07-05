@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cmake on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/cmake/</link><description>Recent content in Cmake on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 05 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/cmake/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction into C++ (CMake interlude)</title><link>http://wehrend.github.io/pages/cpp_cmake/</link><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_cmake/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_introduction_to_efficient_build_tools_for_c_projects">Introduction to efficient build tools for C++ projects&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>We now reach a &lt;strong>rite of passage&lt;/strong> by moving from a &lt;code>Make&lt;/code>-based build process to a &lt;code>CMake&lt;/code>-based workflow.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>The traditional &amp;#34;rule of three&amp;#34; (found in many classic open-source projects) — &lt;code>./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install&lt;/code>
+— is gradually being replaced by the CMake approach. This modern workflow typically involves creating a separate build
+directory to keep the source tree clean (so-called &amp;#34;out-of-source builds&amp;#34;):&lt;/p>
+&lt;/div></description></item></channel></rss>

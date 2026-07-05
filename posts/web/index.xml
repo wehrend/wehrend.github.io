@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web-Blog on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/posts/web/</link><description>Recent content in Web-Blog on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 05 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/posts/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting started with AI... (self-hosting an experiment)</title><link>http://wehrend.github.io/posts/web/37-getting-started-with-ai/</link><pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/37-getting-started-with-ai/</guid><description>&lt;div class="paragraph">
+&lt;p>Hello folks,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>today I want to give you a tutorial on how to start with AI on your own local machine. This is a very rewarding task,
+expecially if you can use your self-hosted AI on a daily base on your own machine. Todo that only three points have to be done.
+I’ll show you for Debian Trixie…​&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>Run the ollama script and install a model (the backend / core logic)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Install docker (needed for WebUI)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Install WebUI itself (this is needed as a frontend and to administrate the chats)&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Could not share my screen on Zoom, Google Meet or Discord - and how to solve it</title><link>http://wehrend.github.io/posts/web/36_pipewire_wireplumber/</link><pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/36_pipewire_wireplumber/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_could_not_share_my_screen_on_zoom_google_meet_or_discord_and_how_to_solve_it">Could not share my screen on Zoom, Google Meet or Discord - and how to solve it&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>If you are running &lt;strong>Debian 12 (Bookworm)&lt;/strong> or a similar modern Linux distribution, you might have encountered a frustrating issue: you try to share your screen in a browser or a communication app, and nothing happens—or you get a cryptic error like &lt;code>Failed to connect PipeWire context&lt;/code>.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>The root cause is usually a disconnect between your desktop session and the &lt;strong>PipeWire&lt;/strong> multimedia framework.&lt;/p>
+&lt;/div></description></item><item><title>Busybox - How does it work and why ist it needed</title><link>http://wehrend.github.io/posts/web/35_busybox/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/35_busybox/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_what_is_busybox_and_why_is_it_needed">What is BusyBox and why is it needed?&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hello folks,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>today I want to explain how the Swiss knife of Linux command line tools works and why it is needed, especially in embedded systems.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>On a normal Linux desktop system, tools like &lt;code>ls&lt;/code>, &lt;code>cp&lt;/code>, &lt;code>mount&lt;/code> or &lt;code>sh&lt;/code> are all separate binaries. Each of those binaries depends on libraries and contains its own startup code. This is usually not a problem on desktops or servers.&lt;/p>
+&lt;/div></description></item><item><title>Move Hugo Web-presence to GH-Pages</title><link>http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/</link><pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/</guid><description>&lt;div class="paragraph">
+&lt;p>Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money.
+Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead&lt;/strong>&lt;/p>
+&lt;/div></description></item><item><title>Modify the Odoo Frontend</title><link>http://wehrend.github.io/posts/web/29-odoo-with-frontend/</link><pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/29-odoo-with-frontend/</guid><description>&lt;div class="paragraph">
+&lt;p>Today, I want to show you how you can modify your Odoo frontend, I wont go to deep into owl and
+instead just show the basic steps for implementing modifications and changes via HTML5, CSS und javascript.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Lets dive in and wet the toes.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We begin by writing a short cut-through css file to change and modify the view
+(in my example case here removing carets on the provisioning reports) but feel free to change any other element (or attribute)
+you want&lt;/p>
+&lt;/div></description></item><item><title>Setup your python based backend system on Debian Bullseye</title><link>http://wehrend.github.io/posts/web/28-setup-your-python-based-project/</link><pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/28-setup-your-python-based-project/</guid><description>&lt;div class="paragraph">
+&lt;p>Here I wanted to document how to setup a python based backend (here: Odoo, but it could also be for example Django) on a pristine Debian / Ubuntu on&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>After a new installation of Debian / Ubuntu you need to install a couple of packages to start of with a usable system, we
+add the following packages via apt-get:&lt;/p>
+&lt;/div>
+&lt;div class="literalblock">
+&lt;div class="content">
+&lt;pre>sudo apt-get install chromium, git, qdirstat, make, build-essential, python3&lt;/pre>
+&lt;/div>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>(Qdirstat is not needed always needed but sometimes helpful to have for a shell equivalent you can also use / install ncdu instead.)&lt;/p>
+&lt;/div></description></item><item><title>Compiling Kicad on Debian Bookworm</title><link>http://wehrend.github.io/posts/web/27-compiling-kicad-on-debian/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/27-compiling-kicad-on-debian/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;strong>This is an updated blog post from the 08-05-2025, to ensure that you can enjoy to compile the latest version of Kicad and its dependencies.&lt;/strong>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>With my new hobby, there came the desire to learn to build and design my own PCB. With that in mind, I began to use the
+open source ecad solution Kicad. Now I became interested in participating in this project, but, to compile the code you
+have endure a few challenges - you know, collecting the dependencies,installing them, choose the right branch whiche compiles down
+and so on. Here I want to show you my experience with that.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title><link>http://wehrend.github.io/posts/web/26-get-the-nandlab-go-board-ready/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/26-get-the-nandlab-go-board-ready/</guid><description>&lt;div class="paragraph">
+&lt;p>Hi there,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>finally this week the &lt;a href="https://nandland.com/the-go-board/">nandland go board&lt;/a> I ordered from the developer Russell Merrick a month ago arrived.
+It took a detour due to some shipping problems, but this is not about that, so.
+I had to face quite a few obstacles to get this running on my Debian Bullseye.&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_serial_connection_via_usb">Serial Connection via USB&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>First of all, to connect
+to the board via FTDI usb as suggested on Debian Bullseye you have to first add your user to the group
+&amp;#39;dialout&amp;#39;, this is done like below:&lt;/p>
+&lt;/div></description></item><item><title>A favorite hobby of mine: Lustiges Taschenbuch Nr. 162</title><link>http://wehrend.github.io/posts/web/25-ltb162/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/25-ltb162/</guid><description>&lt;div class="paragraph">
+&lt;p>It is about time, to share another favorite of mine with you, and this is duckburg and the duck universe.
+I take the LTB (Lustiges Taschenbuch) Nr. 162 as an example from the golden era of the comic series &amp;#34;Lustiges
+Taschenbuch&amp;#34;&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./title.jpg" alt="Title"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./content.jpg" alt="ToC"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_der_goldene_totempfahl_the_golden_totem_pole">Der goldene Totempfahl (The golden totem pole)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In the story &amp;#34;Der goldene Totempfahl&amp;#34; english the golden totem pole, uncle scrooge is making a movie about his life,
+the story plays in the county of Dawson, where they are getting lost after a storm, they meet the indianer &amp;#34;großer Elch&amp;#34;
+english &amp;#34;big moose&amp;#34; and are searching for the gold nuggets big moose saved for uncle scrooge back in time.
+The movie ends with big moose ending as a movie star.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: DE10-nano board: Hello World</title><link>http://wehrend.github.io/posts/web/24-fpga-beginners-3/</link><pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/24-fpga-beginners-3/</guid><description>&lt;div class="paragraph">
+&lt;p>Today I want to show you, how to connect to the DE10-nano board, the successor of the DE0-nano board. It is a bit bigger, costs nearly 300 bucks,
+but also supports Linux out-of-the-box. There is an &lt;a href="https://web.archive.org/web/20200815133137/http://angstrom-distribution.org/">Angstrom Linux&lt;/a> installed on the SD-card.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To connect to the board via the UART interface, power-up the board with the wall-wart,enter the sd-card to start the linux booting, and finally connect the micro-b usb cable (like shown below) with the PC.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starting with Quartus and Verilog</title><link>http://wehrend.github.io/posts/web/23-fpga-beginners-2/</link><pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/23-fpga-beginners-2/</guid><description>&lt;div class="paragraph">
+&lt;p>So, you decided you want to learn fpga programming and have done the prerequisite from the &lt;a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">introduction 0&lt;/a> as
+well as done the &lt;a href="https://wehrend.uber.space/posts/web/23_fpga_beginners_1/">simple logic circuit&lt;/a> via quartus’s bdf files.
+Today we want to show you how to figure out Quartus by doing another hardware equivalent of the hello-World program used in the software world - we do program
+a binary counter showing of by the LED array we have available on our DE0-nano board.
+For this we will make use of both the Block Diagram Files (bdf) from Quartus and the popular HDL (Hardware Description Language) Verilog.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starting with Quartus</title><link>http://wehrend.github.io/posts/web/22-fpga-beginners-1/</link><pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/22-fpga-beginners-1/</guid><description>&lt;div class="paragraph">
+&lt;p>So, you decided you want to learn fpga programming and have done the prerequisite from the &lt;a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">last blog post&lt;/a>.
+Today we want to show you how to figure out Quartus by doing a hardware equivalent of the hello-World program used in the software world - we call it AndGate
+because it is simply that - an and gate feed by to push-buttons as input and a status-LED as output. This way we will make use of the Block Diagram Files (bdf) from Quartus.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starting with HDLS</title><link>http://wehrend.github.io/posts/web/21-fpga-beginners-0/</link><pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/21-fpga-beginners-0/</guid><description>&lt;div class="paragraph">
+&lt;p>Today I want to start a blog post series about hardware programming. We start with an introduction
+to hardware programming with the FPGA-board &lt;a href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593">DE0 Nano&lt;/a>
+from former Altera now Intel. You see a picture of the small board below. It seems you can still order this board, but I have not tested.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./de0nano.jpg" alt="DE-0 nano"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We will show how to setup the environment, in the first step we will (show how to) download and install quartus on a Debian distribution, and configure
+the programmer. In the second step we will install the simulation software Modelsim.&lt;/p>
+&lt;/div></description></item><item><title>Reducing Rare Earth Dependence: The Quest for Alternative Magnetic Materials</title><link>http://wehrend.github.io/posts/web/20-reducing-rare-earth-elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/20-reducing-rare-earth-elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_introduction">Introduction&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Rare earth elements have long been the backbone of high-tech magnets, with metals like neodymium and dysprosium playing
+pivotal roles in various industries. However, the scarcity and rising demand for these valuable resources have prompted
+researchers to seek alternative solutions. In an effort to reduce our reliance on rare earth magnets, scientists are
+exploring innovative materials and alloy combinations.
+Among the promising contenders is cerium, an abundant and accessible rare earth element, showing potential to replace
+or augment neodymium magnets. In this article, we’ll delve into the groundbreaking research by Thomas Lograsso and his
+team at the Ames Laboratory of the US Department of Energy.&lt;/p>
+&lt;/div></description></item><item><title>Unlocking the Secrets of Rare Earth Elements: The Remarkable Case of Neodymium</title><link>http://wehrend.github.io/posts/web/19-rare-earth-elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/19-rare-earth-elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_introduction">Introduction&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Rare earth elements, often shrouded in mystery, play a crucial role in our modern world. From smartphones
+to electric vehicles, renewable energy technologies, and even defense systems, these elements are the unsung
+heroes that make our daily lives more sustainable, efficient, and connected. In this article, we’ll delve
+into the fascinating world of rare earth elements, with a focus on the versatile element, neodymium.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_the_rare_earth_elements_an_overview">The Rare Earth Elements: An Overview&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Rare earth elements (REEs) are a group of seventeen chemical elements that occupy the lanthanide series of the periodic
+table, along with scandium and yttrium. Despite the name, they are not necessarily rare, but they are typically found in
+low concentrations, making their extraction and purification challenging and costly.&lt;/p>
+&lt;/div></description></item><item><title>Op-Amps introduction</title><link>http://wehrend.github.io/posts/web/18-op-amps-introduction/</link><pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/18-op-amps-introduction/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_op_amp">OP-Amp&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Today I want to speak about op-amps. These wonderful, but mysterious components, we have heavely often appearing
+in circuit schematica of analog or analog / digital hybrid circuits. We want to demistify these components.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./op-amp.svg" alt="op-amp" width="400px"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>There are two basic thumb rules when handling ideal op-amp circuit. (Real-world op-amp circuits are a bit more complicated, but we will discuss this later).&lt;/p>
+&lt;/div>
+&lt;div class="paragraph image">
+&lt;div class="title">1. The first thumb rule is that Vout is essentially the difference of the voltage values at the both inputs, multiplied with an arbitrary but high amplification factor A.&lt;/div></description></item><item><title>Analog Computers 101</title><link>http://wehrend.github.io/posts/web/17-analog-computers-101/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/17-analog-computers-101/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_analog_computers">Analog Computers&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,
+compared to their digital counterparts. But they are wonderous little machines. And that machines I mean
+wordly because there exists analog mechanical computers that are models from the world and used to
+&lt;a href="https://en.wikipedia.org/wiki/Tide-predicting_machine">compute and predict tides&lt;/a> in certain areas of the world .
+Also the brain is an enourmous analog computer with a comparatively very small
+enery budget. &lt;a href="https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer">It only takes 12 Watt.&lt;/a>
+12 Watt; that is not even a quarter of the power supply budget of a laptop, which uses 65 Watt.
+And you can do very heavy lifting with the brain, but back to topic.
+I want to talk mainly about analog electronic computers, during the world war two those were used to compute
+&lt;a href="https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf">ballistic curves&lt;/a>.
+So analog computers can sum up, multiply, divide, integrate and differentiate like their digital
+counterparts.&lt;/p>
+&lt;/div></description></item><item><title>Caches and Caching</title><link>http://wehrend.github.io/posts/web/12-caches-and-caching/</link><pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/12-caches-and-caching/</guid><description>&lt;div class="paragraph">
+&lt;p>When you fire up your browser to visit a website, you most probably did not noticed a very
+important mechanism underlying the browser and working in the background. Caching.
+Caches are used everywhere to optimize and improve access times and such in consequence
+the overall performance (of a site). Caching in the browser for example means, that
+ideally only the portions of the website that changed are loaded from the www. All else
+was already loaded before and did not change, thus needs no reload. Portions that are no longer
+up-to-date become invalidated (also known as cache-invalidation) and are loaded anew from the source.
+There are two types of very different caches in the computer&lt;/p>
+&lt;/div></description></item><item><title>Topics to write about - Wishlist</title><link>http://wehrend.github.io/posts/web/10-wishlist/</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/10-wishlist/</guid><description>&lt;div class="paragraph">
+&lt;p>This is a small, incomplete list of topics I’d like to write about in the mid- to far future.&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>Caches&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Interrupts&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Out-of-Order execution&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>RAW, WAR and WAW conflicts&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Filters (analog and digital)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Analog computers&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>neuronal networks&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>the microbiom&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>the transistor and VLSI&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div></description></item><item><title>Religion vs. spirituality - why I prefer the latter</title><link>http://wehrend.github.io/posts/web/08-religion-spirituality/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/08-religion-spirituality/</guid><description>&lt;div class="paragraph">
+&lt;p>What I have learned about religions and spirituality over the last years and decades boils down to one
+simple statement: Religion is about right and wrong and old, outdated dogmas, while spirituality
+simply says &amp;#34;It is how it is&amp;#34;. For spirituality, there is no right or wrong, only the single moment in the present
+in which we dwell. I find this viewpoint quite amazing. From what I found, it leads to a more awakened state.&lt;/p>
+&lt;/div></description></item><item><title>Why are serial interfaces everywhere - instead of parallel ones</title><link>http://wehrend.github.io/posts/web/07-serial-interfaces/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/07-serial-interfaces/</guid><description>&lt;div class="paragraph">
+&lt;p>USB, SPI, I²C, Sata - all these interfaces is common that they are serial interfaces. Serial interfaces are todays common.
+But why is that the case, especially for high-speed communication? it sounds simply counterintuitive: Parallel wires
+can theoretically send more bits per time than on singular wire can.
+The answer to that question is complex and multilayered. There are multiple different reasons why
+serial interfaces are preferred over parallel interfaces. Lets start with the obvious ones:
+The PCB routing of busses of 8, 16, 32 or even 64 bit width gets increasingly complex to route on printed circuits
+boards (PCBs).The second problem, related to this, is that signal slope need to get transmitted at the same time
+for all parallel lines (wires), which results in a more complex routing since edges in the strip conductor needs to be compensated.
+Simply put the additional logic implemented in chips to convert the serial signal to parallel ones again (deserializer) and vice versa
+(serializer) is much cheaper than the costs of complex routings.&lt;/p>
+&lt;/div></description></item><item><title>Odoo hacks: Remove Lock-Button from Odoo v12</title><link>http://wehrend.github.io/posts/web/04-odoo-hacks/</link><pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/04-odoo-hacks/</guid><description>&lt;div class="paragraph">
+&lt;p>Today I want to introduce a solution for a usability-problem I had in Odoo recently.
+In Odoo 12 there is a lock button next to the edit / save button, and you have to click
+both to (1) unlock the page and (2) make it editable. This should be done in one
+step, effectively removing the locking mechanism used in the Delivery Orders (class StockPicking)
+and Manufacturing Orders (class MrpProduction). The solution requires an xml and a javascript-file
+as well as a dedicated web-controller. The soliution is presented below.&lt;/p>
+&lt;/div></description></item><item><title>Separating blog and content</title><link>http://wehrend.github.io/posts/web/03-separate-form-and-content/</link><pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/03-separate-form-and-content/</guid><description>&lt;div class="paragraph">
+&lt;p>As the blog grow bigger and after the move to hugo, I noticed a gap in the workflow,since
+a blog and its content itself are different entities, I wanted to handle them as such,
+that led me to a cleanup of the original source code for blog, where I moved the content folder
+into a different repo, called hugo_content, the former repo I called hugo_blog.
+---&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>In my case, this means you have to clone the repo hugo_blog first
+go inside the new directory (cd hugo ), checkout its branch &amp;#39;hugo&amp;#39; and then do a clone of
+the repo hugo_content.&lt;/p>
+&lt;/div></description></item><item><title>Moving to Hugo</title><link>http://wehrend.github.io/posts/web/02-moving-to-hugo/</link><pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate><guid>http://wehrend.github.io/posts/web/02-moving-to-hugo/</guid><description>&lt;div class="paragraph">
+&lt;p>Since one week my blog is build on the static-site-generator &lt;a href="https://gohugo.io/">Hugo&lt;/a>.
+I wanted to move to Hugo far earlier, due to the wide variety of themes.
+However this required the move from Asciidoc to &lt;a href="https://asciidoctor.org/">Asciidoctor&lt;/a>,
+and I experienced a few problems with the integration of Asciidoctor into my existing workflow.
+As the approach of rendering the latex-equations in the asciidoc-documents
+no longer worked, I decided to move on to client-based rendering of formulas,
+like done in &lt;a href="https://gohugo.io/Katex">KaTex&lt;/a> and &lt;a href="https://www.mathjax.org/">Mathjax&lt;/a>.&lt;/p>
+&lt;/div></description></item><item><title>Writing about math with Asciidoc</title><link>http://wehrend.github.io/posts/web/01-writing-about-math/</link><pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/01-writing-about-math/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+While drafting a blog post, part of a series of posts intended to be published in the future,
+I discovered a lack of my tooling in Nikola. When adding mathematical formulas,
+I realized that there is no default-way of rendering images from those math formulas,
+and inserting them as image-tags into the html. Instead math formulas are handled via JS, which I try
+to reduce to an absolute minimum on my site.
+So I started to implement a rather quick-and-dirty plugin to do exactly this transformation, using
+latex and dvipng or dvisvgm.
+Then I come across &lt;a href="https://erikwinter.nl/articles/2020/why-i-built-my-own-shitty-static-site-generator/">this blog post&lt;/a>
+where reading about &lt;a href="https://asciidoc.org/">asciidoc&lt;/a> written in python and its successor &lt;a href="https://asciidoctor.org/">asciidoctor&lt;/a> written
+in ruby supporting different display formats. Ideal for the content I had in mind. So I installed the Nikola plugin asciidoc
+(which is mostly a wrapper to the asciidoc binary called as a subprocess), via&lt;/p>
+&lt;/div></description></item><item><title>Setting up a static blog with Nikola</title><link>http://wehrend.github.io/posts/web/00-setting-up-nikola/</link><pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/00-setting-up-nikola/</guid><description>&lt;div class="paragraph">
+&lt;p>I picked up Nikola some months ago as I was searching for a simple static-site-generator to setup a blog with minimal effort.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To make things a bit more interesting and at the same time easier we will use Nikola in a Docker container.
+So I require an almost basic understanding for Docker here.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>First create a directory on our host system, where you want the files stored, e.g. &amp;#39;blog&amp;#39; in your home directory.&lt;/p>
+&lt;/div></description></item></channel></rss>

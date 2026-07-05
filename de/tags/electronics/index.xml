@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Electronics on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/electronics/</link><description>Recent content in Electronics on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Fri, 03 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/electronics/index.xml" rel="self" type="application/rss+xml"/><item><title>Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)</title><link>http://wehrend.github.io/de/posts/web/19_rare_earth_elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/19_rare_earth_elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_einführung">Einführung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden, die oft von Geheimnissen umwoben sind, spielen in unserer modernen Welt eine entscheidende Rolle. Von Smartphones
+über Elektrofahrzeuge und Technologien für erneuerbare Energien bis hin zu Verteidigungssystemen sind diese Elemente die unbesungenen
+Helden, die unser tägliches Leben nachhaltiger, effizienter und vernetzter machen. In diesem Artikel tauchen wir
+in die faszinierende Welt der Seltenen Erden ein, wobei der Schwerpunkt auf dem vielseitigen Element Neodym liegt.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_seltene_erden_ein_überblick">Seltene Erden: Ein Überblick&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden (SE) sind eine Gruppe von siebzehn chemischen Elementen, die zusammen mit Scandium und Yttrium die Lanthanidenreihe des Periodensystems bilden.
+ Trotz ihres Namens sind sie nicht unbedingt selten, aber sie kommen typischerweise in
+geringen Konzentrationen vor, was ihre Gewinnung und Reinigung schwierig und kostspielig macht.&lt;/p>
+&lt;/div></description></item><item><title>Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)</title><link>http://wehrend.github.io/de/posts/web/20_reducing_rare_earth_elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/20_reducing_rare_earth_elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_einleitung">Einleitung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden sind seit langem das Rückgrat von High-Tech-Magneten, wobei Metalle wie Neodym und Dysprosium
+in verschiedenen Branchen eine entscheidende Rolle spielen. Die Knappheit und die steigende Nachfrage nach diesen wertvollen Ressourcen haben jedoch
+Forscher dazu veranlasst, nach alternativen Lösungen zu suchen. Um unsere Abhängigkeit von Seltenerdmagneten zu verringern, erforschen Wissenschaftler
+innovative Materialien und Legierungskombinationen.
+Zu den vielversprechenden Kandidaten gehört Cer, ein reichlich vorhandenes und leicht zugängliches Seltenerdelement, das das Potenzial hat,
+Neodym-Magnete zu ersetzen oder zu ergänzen. In diesem Artikel befassen wir uns mit der bahnbrechenden Forschung von Thomas Lograsso und seinem
+Team am Ames Laboratory des US-Energieministeriums.&lt;/p>
+&lt;/div></description></item><item><title>Operationsverstärker Einführung (de)</title><link>http://wehrend.github.io/de/posts/web/18_op-amps_introduction/</link><pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/18_op-amps_introduction/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_op_amp">OP-Amp&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
+in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.&lt;/p>
+&lt;/div>
+&lt;div class="imageblock">
+&lt;div class="content">
+&lt;img src="./op-amp.svg" alt="op-amp" width="33%"/>
+&lt;/div>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.
+\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item></channel></rss>
