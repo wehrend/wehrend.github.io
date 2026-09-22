@@ -1,0 +1,37 @@
+<svg width="100.00" height="100.00"
+     viewBox="0.0 0.0 100.0 100.0"
+     viewPort="0 0 100px 100px"
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" markerWidth="4" markerHeight="3" refX="1.5" refY="0" orient="0" markerUnits="strokeWidth">
+            <polygon points="0 0, 1.5 4, 3 0" fill="black" />
+        </marker>
+    </defs>
+    <circle cx="2" cy="33" r="1.0"  style="stroke:black;fill:none"/>
+    <circle cx="71" cy="33" r="1.0"  style="stroke:black;fill:none"/>
+    <line x1="3" y1="33" x2="10" y2="33" style="stroke:black;"/>
+    <text x="15" y="26" font-size="6">R</text>
+    <rect x="10" y="30" width="15" height="6" style="stroke:black;fill:none"/>
+    <line x1="25" y1="33" x2="70" y2="33" style="stroke:black;"/>
+
+    <circle cx="45" cy="33" r="0.9"  style="stroke:black;"/>
+
+    <line x1="45" y1="33" x2="45" y2="55" style="stroke:black;"/>
+    <line x1="45" y1="60" x2="45" y2="80" style="stroke:black;"/>
+
+    <line x1="55" y1="55" x2="35" y2="55" style="stroke:black;"/>
+    <line x1="55" y1="60" x2="35" y2="60" style="stroke:black;"/>
+    <text x="60" y="58" font-size="6">C</text>
+
+    <circle cx="45" cy="80" r="0.9"  style="stroke:black;"/>
+    <line x1="3" y1="80" x2="70" y2="80" style="stroke:black;"/>
+    <circle cx="2" cy="80" r="1.0"  style="stroke:black;fill:none"/>
+    <circle cx="71" cy="80" r="1.0"  style="stroke:black;fill:none"/>
+
+    <line x1="2" y1="38" x2="2" y2="73" style="stroke:black;" marker-end="url(#arrow)"/>
+    <text x="5" y="58" font-size="6">U_in</text>
+    <line x1="71" y1="38" x2="71" y2="73" style="stroke:black;" marker-end="url(#arrow)"/>
+    <text x="75" y="58" font-size="6">U_out</text>
+</svg>

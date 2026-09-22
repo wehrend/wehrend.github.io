@@ -1,0 +1,1418 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Agenda on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/</link><description>Recent content in Agenda on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sat, 14 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/index.xml" rel="self" type="application/rss+xml"/><item><title>06_priority_encoder_and_decoder</title><link>http://wehrend.github.io/de/pages/06_priority_encoder_and-decoder/</link><pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/06_priority_encoder_and-decoder/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Hallo Leute,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>heute wollen wir einen Blick auf kaskadierte Kombinatorik am Beispiel von Prioritätscodierern und -decodierern werfen…​.
+Anschließend werden wir Karnaugh-Diagramme zur Optimierung vorstellen.&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_kaskadierte_kombinatorik_und_prioritätscodierer">Kaskadierte Kombinatorik und Prioritätscodierer&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Zunächst einmal: Was ist ein Prioritätscodierer? Und wozu wird er verwendet? Das können wir anhand einer ersten einfachen Liste erklären.&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>Als Interrupt-Controller zur Priorisierung&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Als Codekonverter in einem Flash-ADC.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_die_wahrheitstabelle_und_die_ableitung">Die Wahrheitstabelle und die Ableitung&lt;/h2>
+&lt;div class="sectionbody">
+&lt;table class="tableblock frame-all grid-all stretch">
+&lt;colgroup>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3333%;"/>
+&lt;col style="width: 8.3337%;"/>
+&lt;/colgroup>
+&lt;tbody>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">Nr.&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_7&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_6&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_5&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_4&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_3&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_2&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">I_0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">Y_2&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">Y_1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">Y_0&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">*&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">*&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">*&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">2&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">3&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">4&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">5&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">6&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">7&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">x&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">1&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">0&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">8&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="sect2">
+&lt;h3 id="_karnaugh_diagramme_für_y_2_y_1_und_y_0">Karnaugh-Diagramme für Y_2, Y_1 und Y_0&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./karnaugh_maps.svg" alt="test"/>&lt;/span>&lt;/p>
+&lt;/div></description></item><item><title>Vorgeschichte - Einführung in die Elektronik</title><link>http://wehrend.github.io/de/pages/electronics-101/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/electronics-101/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>Nach diesem Kapitel kennen Sie alle Grundlagen rund um Elektrizität und einfache Schaltungen mit ohmscher Last…​&lt;/p>
+&lt;/div>
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_vorwort_einführung_in_die_elektronik">Vorwort Einführung in die Elektronik&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&amp;#39;‘&amp;#39;
+Als ich gerade dabei war, den Teil über die Umsetzung der Booleschen Algebra zu schreiben, also die grundlegenden Logikgatter,
+geriet der Schreibprozess schnell außer Kontrolle und ich merkte, dass ich mehr über weniger relevante Themen schrieb,
+wie die Erklärung grundlegender elektronischer Komponenten und deren Umsetzung auf Silizium, als über den eigentlichen Inhalt.
+Hier soll nun Platz für diese Exkurse sein. Dies soll keine vollständige Referenz sein, sondern eher eine Ergänzung zur
+bestehenden Literatur.
+&amp;#39;‘&amp;#39;&lt;/p>
+&lt;/div></description></item><item><title>Vorgeschichte: Einführung in die Elektronik – 102</title><link>http://wehrend.github.io/de/pages/electronics-102/</link><pubDate>Wed, 21 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/electronics-102/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>Nach diesem Kapitel kennen Sie alle Grundlagen zu zeitkritischen Bauteilen wie Spulen und Kondensatoren sowie zu einfachen Schaltungen, die diese Bauteile verwenden…​&lt;/p>
+&lt;/div>
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_elektronik_102">Elektronik 102&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="sect2">
+&lt;h3 id="_zeitabhängige_bauteile">Zeitabhängige Bauteile&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Nachdem wir im ersten Teil das wichtigste Bauteil, den Widerstand, behandelt und ausführlich beschrieben haben,
+wollen wir uns nun das nächste wichtige
+Bauteil ansehen, den Kondensator. Kondensatoren sind ebenfalls passive Bauteile, das heißt,
+sie verstärken kein Signal.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_elektrostatisches_feld">Elektrostatisches Feld&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Wenn wir zwei Metallplatten nebeneinander legen und dazwischen eine dünne Schicht aus einem nichtleitenden
+Material anbringen, entsteht ein elektrostatisches Feld.&lt;/p>
+&lt;/div></description></item><item><title>„Einführung in die Elektronik – 103 – Nichtlineare Bauelemente”</title><link>http://wehrend.github.io/de/pages/electronics-103/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/electronics-103/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>Nach diesem Kapitel kennen Sie alle Grundlagen zu Halbleiterbauelementen wie Dioden, Transistoren (BJT sowie MOSFETs) und deren Wirkungen…​&lt;/p>
+&lt;/div>
+
+&lt;/div>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;div class="book-hint success">
+ &lt;div class="paragraph">
+&lt;p>Ein &lt;strong>nichtlinearer Bauelement&lt;/strong> ist ein Gerät, dessen Strom-Spannungs-Verhältnis &lt;strong>nicht proportional&lt;/strong> ist.
+Mit anderen Worten: Der Strom steigt nicht linear mit der angelegten Spannung an.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Beispiele für nichtlineare Bauelemente sind:
+* Dioden (leiten Strom nur in eine Richtung),
+* Transistoren (deren Verhalten von internen Halbleiterübergängen abhängt)
+* und CMOS-Strukturen.&lt;/p>
+&lt;/div></description></item><item><title>Einführung in die Elektronik – 104 – Verstärkerschaltungen</title><link>http://wehrend.github.io/de/pages/electronics-104/</link><pubDate>Tue, 07 Oct 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/electronics-104/</guid><description>&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>Nach diesem Kapitel kennen Sie alle Grundlagen zu linearen Bauteilen, integrierten Verstärkern und Operationsverstärkern…​&lt;/p>
+&lt;/div>
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_integrierte_nf_verstärker">Integrierte NF-Verstärker&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute werden dringend benötigte elektronische Funktionen wie NF-Verstärker nicht mehr überwiegend aus „diskreten” (von lateinisch discretum = getrennt)
+Komponenten aufgebaut, sondern durch integrierte Schaltungen (lateinisch integrare = vereinen) ersetzt; umgangssprachlich werden sie als ICs
+(von englisch integrated circuit) bezeichnet. Besonders verbreitet sind monolithische integrierte Schaltungen (von griechisch monos = eins,
+griechisch lithos = Stein, Kristall). Hier wird ein einzelner Siliziumwafer mit einer Größe von einem oder wenigen mm² verwendet, um eine Vielzahl von
+Transistoren, Dioden, Widerständen und Kondensatoren mit kleiner Kapazität unter Verwendung der Planartechnik auf einem einzigen Siliziumwafer unterzubringen, die zusammen eine Gesamtfunktion erfüllen, z. B.
+die eines kompletten Niederfrequenzverstärkers, Empfängers, Zeitgebers, Computers, Uhren usw. Nur größere Bauteile wie Kondensatoren mit großer Kapazität,
+Spulen und natürlich die Ausführungsorgane wie Lautsprecher, Digitalanzeigen usw. werden diskret hinzugefügt. Integrierte Schaltungen
+arbeiten äußerst zuverlässig, da sie es ermöglichen, elektronische Komplexität auf sehr kleinem Raum zu erreichen, was mit diskreten
+Bauteilen nur schwer zu finanzieren wäre. In einem IC kostet eine Transistorfunktion einen Zehntel Cent.
+Auch in der Unterhaltungselektronik ersetzen ICs zunehmend diskrete Schaltungen. Integrierte NF-Verstärker bestehen in der Regel
+im Wesentlichen aus einem Operationsverstärker als Vorverstärker und einer Gegentakt-Endstufe. Eine Besonderheit des Operationsverstärkers
+ist seine Eingangsstufe, die als Differenzverstärker ausgeführt ist. Daher werden wir zunächst das Prinzip des Differenzverstärkers erläutern,
+gefolgt von den grundlegenden Eigenschaften des Operationsverstärkers, soweit sie für das Verständnis der integrierten Niederfrequenzverstärkerkomponenten erforderlich sind.&lt;/p>
+&lt;/div></description></item><item><title>Introduction to Analog-Digital-converters and Digital-Analog-Converters</title><link>http://wehrend.github.io/de/pages/adc_dac/</link><pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/adc_dac/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_die_beiden_wichtigen_säulen_digital_analog_wandler_und_analog_digital_wandler">Die beiden wichtigen Säulen – Digital-Analog-Wandler und Analog-Digital-Wandler&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Was wir auf unserer Reise durch die (analoge) Elektronik und die digitale Elektronik noch nicht behandelt haben,
+sind die Wandlerschaltungen von analog zu digital und umgekehrt – dafür möchten wir zunächst
+die verschiedenen Begriffe erläutern.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_die_theorie_zu_analogen_signalen_digitalen_signalen_abtastung_und_quantisierung">Die Theorie zu analogen Signalen, digitalen Signalen, Abtastung und Quantisierung&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Analoge Signale zeichnen sich dadurch aus, dass sie zeitlich und wertmäßig kontinuierlich sind.
+Der Umwandlungsprozess von analogen Signalen
+wird oft als Quantisierung bezeichnet.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs</title><link>http://wehrend.github.io/de/pages/cpp_00/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_00/</guid><description>&lt;div id="preamble">
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>Dieser Kurs bietet eine Einführung in die &lt;strong>C++-Programmierung anhand der Entwicklung einer kleinen Audio-/Synthesizer-Anwendung&lt;/strong>.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Ziel ist es, die Sprache &lt;strong>Schritt für Schritt beim Aufbau eines funktionierenden Audiosystems&lt;/strong> zu erlernen.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Voraussetzungen:&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>Ein &lt;strong>Linux-System&lt;/strong> (Debian oder Ubuntu empfohlen)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>GCC (GNU Compiler Collection)&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Das Build-Tool &lt;strong>make&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Grundlegende Kenntnisse der &lt;strong>Befehlszeile&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Etwas &lt;strong>mathematisches Hintergrundwissen&lt;/strong> (hilfreich für die Abschnitte zu Audio und Signalverarbeitung)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Windows-Benutzer können den Kurs mithilfe des &lt;strong>Windows Subsystem for Linux (WSL)&lt;/strong> absolvieren.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs</title><link>http://wehrend.github.io/de/pages/cpp_01/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_01/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_eine_einfache_einführung_in_c">Eine einfache Einführung in C++&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hallo zusammen,
+diesmal möchte ich eine Reihe über das Programmieren mit C starten.
+Während Python eine universelle Programmiersprache ist, wird C oft gewählt, wenn man eine genauere Kontrolle über Leistung und Latenz benötigt.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wir fangen ganz einfach an, indem wir ein kurzes Programm erstellen, das die Grenzen der verschiedenen Datentypen ausgibt.
+Installiert Microsoft Code, damit ihr eine einfache IDE habt, mit der ihr arbeiten könnt…​&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Qt GUI)</title><link>http://wehrend.github.io/de/pages/cpp_qt_1/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_qt_1/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_eine_gui_ist_eine_fantastische_idee_aber_welche_soll_es_sein_sdl_wxwidgets_oder_qt">Eine GUI ist eine &lt;strong>fantastische&lt;/strong> Idee …​ Aber welche soll es sein – SDL, wxWidgets oder Qt?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Die Wahl eines GUI-Frameworks für ein C++-Audio-Projekt ist ein „Fork in the Road“-Moment. Jede dieser Optionen lenkt das Projekt in eine völlig andere architektonische Richtung.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Da dein Kurs derzeit SDL verwendet, ist es der natürliche Favorit. So sieht der Vergleich im Kontext eines Synthesizer-Projekts aus:&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>&lt;strong>SDL (Simple DirectMedia Layer) – Die „Low-Level“-Wahl&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 2)</title><link>http://wehrend.github.io/de/pages/cpp_02/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_02/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_c_teil_2">Einführung in C++ (Teil 2)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In diesem nächsten Beispiel bzw. Tutorial sehen wir uns ein Programm zur Klangerzeugung (auch bekannt als Synthesizer) an, für das wir die SDL-Bibliothek
+(Simple Direct Media Library) verwenden. Wir gehen das Programm Zeile für Zeile durch und erklären die verschiedenen Elemente.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Fangen wir an…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Zunächst haben wir die Includes für die SDL-Bibliothek; die Header-Datei werden wir uns später ansehen. Außerdem inkludieren wir cmath für mathematische Funktionen und iostream
+für Ein- und Ausgabe (in diesem Beispiel jedoch nur für die Ausgabe).&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 3)</title><link>http://wehrend.github.io/de/pages/cpp_03/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_03/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_c_teil_3">Einführung in C++ (Teil 3)&lt;/h2>
+&lt;div class="sectionbody">
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_c_oop_meisterschaft_die_kraft_der_komposition_has_a">C++ OOP-Meisterschaft: Die Kraft der Komposition (Has-A)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In der Softwarearchitektur gibt es zwei grundlegende Möglichkeiten, Objekte miteinander zu verbinden: &lt;strong>Vererbung&lt;/strong> (Is-A) und &lt;strong>Komposition&lt;/strong> (Has-A).
+Während Anfänger oft versuchen, alles durch Vererbung zu lösen („Ein Oszillator &lt;strong>ist ein&lt;/strong> Hüllkurvenmodul“), bevorzugen Profis die Komposition:
+&lt;strong>„Ein Synthesizer &lt;strong>hat ein&lt;/strong> Hüllkurvenmodul.“&lt;/strong>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_1_warum_komposition">1. Warum Komposition?&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Stellen Sie sich unseren Synthesizer als modulares Rack vor. Jedes Modul (Oszillator, Hüllkurvenmodul) ist eine eigenständige Klasse. Die &lt;code>SynthEngine&lt;/code> fungiert
+als Chassis, in das diese Module eingesteckt werden.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 4)</title><link>http://wehrend.github.io/de/pages/cpp_04/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_04/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_von_zustandslos_zu_zustandsbehaftet_filter_komposition">Von zustandslos zu zustandsbehaftet: Filter &amp;amp; Komposition&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In den vorangegangenen Teilen haben wir einen Oszillator gebaut. Er war „zustandslos“ – man gibt ihm eine Phase vor, und er liefert einen Wert. Es ist ihm egal,
+was vor einer Mikrosekunde passiert ist. Damit Musik jedoch „warm“ oder „organisch“ klingt, brauchen wir Objekte, die über ein &lt;strong>Gedächtnis&lt;/strong> verfügen.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_dsp_allgemein_das_konzept_des_zustands">1. DSP allgemein: Das Konzept des Zustands&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>In der digitalen Signalverarbeitung (DSP) ist ein Filter &lt;strong>zustandsbehaftet&lt;/strong>. Um den &lt;strong>aktuellen&lt;/strong> Ausgangswert zu berechnen, muss ein Filter
+den &lt;strong>vorherigen&lt;/strong> Ausgangswert kennen.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 5)</title><link>http://wehrend.github.io/de/pages/cpp_05/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_05/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_mehr_als_nur_eine_note_polyphonie_implementieren">Mehr als nur eine Note: Polyphonie implementieren&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In unseren bisherigen Tutorials war unser Synthesizer darauf beschränkt, jeweils nur eine Note zu spielen. Wenn man eine neue Taste drückte, verschwand der alte Klang einfach.
+Heute ändern wir das, indem wir &lt;strong>Polyphonie&lt;/strong> implementieren – die Fähigkeit, Akkorde zu spielen und mehrere „Stimmen“ gleichzeitig zu verwalten.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_was_ist_eine_stimme">1. Was ist eine „Stimme“?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Im professionellen Synthesizer-Design verwenden wir die &lt;strong>Voice-Architektur&lt;/strong>. Eine „Voice“ ist eine in sich geschlossene Einheit, die alles enthält,
+was zur Erzeugung eines Klangs benötigt wird: einen &lt;strong>Oszillator&lt;/strong> und eine &lt;strong>Hüllkurve&lt;/strong>.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 6)</title><link>http://wehrend.github.io/de/pages/cpp_06/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_06/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_die_themen_datenstrukturen_algorithmen_und_komplexität_berechenbarkeit_in_c">Einführung in die Themen Datenstrukturen, Algorithmen und Komplexität / Berechenbarkeit in C++&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Achtung – dieses Tutorial ist sehr theorielastig – wir werden ein wenig über die Grundlagen von Datenstrukturen, Algorithmen
+und Komplexität sprechen – all das vor allem im Zusammenhang mit C – also fangen wir mit den Datenstrukturen in C an&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_listen_wörterbücher_und_warteschlangen">Listen, Wörterbücher und Warteschlangen&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Wir beginnen mit einigen grundlegenden Datenstrukturen, die wir bereits verwendet haben, ohne tief in die Themen einzusteigen; diese beiden sind
+std::vector (im Grunde Listen) und std::map (im Grunde Wörterbücher).&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (CMake Zwischenspiel)</title><link>http://wehrend.github.io/de/pages/cpp_cmake/</link><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_cmake/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_effiziente_build_tools_für_c_projekte">Einführung in effiziente Build-Tools für C++-Projekte&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Wir erreichen nun einen &lt;strong>wichtigen Meilenstein&lt;/strong>, indem wir von einem &lt;code>Make&lt;/code>-basierten Build-Prozess zu einem &lt;code>CMake&lt;/code>-basierten Workflow wechseln.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Die traditionelle „Rule of Three“ (die in vielen klassischen Open-Source-Projekten zu finden ist) — &lt;code>./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install&lt;/code>
+— wird nach und nach durch den CMake-Ansatz ersetzt. Dieser moderne Workflow beinhaltet typischerweise das Anlegen eines separaten
+Build-Verzeichnisses, um den Quellbaum sauber zu halten (sogenannte „Out-of-Source Builds“):&lt;/p>
+&lt;/div></description></item><item><title>Einführungskurs Elektronik</title><link>http://wehrend.github.io/de/pages/electronics-100/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/electronics-100/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_electronics_101104_übersicht">Electronics 101–104 — Übersicht&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Diese Seite bietet einen kurzen Überblick über die Einführungsreihe in die Elektronik.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_electronics_101">Electronics 101&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="https://wehrend.github.io/de/pages/electronics-101/">electronics 101&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Einführung in grundlegende elektrische Konzepte wie Strom, Spannung, Widerstand und einfache Schaltungen.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_electronics_102">Electronics 102&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="https://wehrend.github.io/de/pages/electronics-102/">electronics 102&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Behandelt zeitabhängige Bauelemente wie Kondensatoren und Spulen sowie einfache passive Filter.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_electronics_103">Electronics 103&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="https://wehrend.github.io/de/pages/electronics-103/">electronics 103&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Einführung in nichtlineare Bauelemente wie Dioden und Transistoren sowie deren Einsatz als Schalter und Verstärker.&lt;/p>
+&lt;/div></description></item><item><title>A short guide to Interrupts</title><link>http://wehrend.github.io/de/pages/interrupts/</link><pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/interrupts/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_interrupts_die_analogie_mit_der_türklingel">Interrupts – Die Analogie mit der Türklingel&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Stellen Sie sich eine Person vor, die ruhig zu Hause sitzt und sich ganz auf das Lesen eines Buches konzentriert. Diese Person steht für die CPU,
+und das Lesen steht für die normale Ausführung eines Programms. In einer Welt ohne Türklingeln wäre die einzige
+Möglichkeit, um zu erfahren, ob jemand an der Tür steht, das wiederholte Unterbrechen des Lesens, um zur Tür zu gehen und nachzusehen.
+Meistens wäre diese Mühe umsonst, weil niemand da ist.&lt;/p>
+&lt;/div></description></item><item><title>Storytelling and the order of things</title><link>http://wehrend.github.io/de/pages/storytelling/</link><pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/storytelling/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_storytelling_und_die_reihenfolge_der_dinge">Storytelling und die Reihenfolge der Dinge&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hallo Leser,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>heute möchte ich mit Ihnen über die (richtige) Reihenfolge der Dinge und ihre Bedeutung sprechen.
+Als ich meine ersten Blog-Artikel über Elektronik verfasste, stieß ich mehrfach auf dasselbe Hindernis, nämlich die Reihenfolge der Dinge.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wenn ich versuche, Menschen etwas über eines meiner Lieblingsthemen beizubringen, denke ich fast genauso lange über
+den pädagogischen Zweck für den Leser nach.
+Das ist mir vor Jahren passiert, als ich diesen Blog gestartet habe, und seitdem passiert es mir regelmäßig.
+Für die bestehenden Blog-Beiträge habe ich daher die folgende Reihenfolge festgelegt (beginnend mit linearen Komponenten): (1) Widerstände,
+dann (2) Kondensatoren und ihre Gegenstücke, die Spulen, und als letzte Gruppe (3) alle nichtlinearen Komponenten.
+Zu guter Letzt wollen wir integrierte Schaltkreise (IC) besprechen, die aus allen zuvor genannten Komponenten bestehen – mit Ausnahme der
+Spulen, die sich nur schwer aus Silizium herstellen lassen.
+Für die nichtlinearen Komponenten werde ich ebenfalls versuchen, eine lehrreiche Reihenfolge zu finden, also beginnen wir hier mit der Diode,
+dann kommen LEDs und dann (MOSFET-)Transistoren…​&lt;/p>
+&lt;/div></description></item><item><title>Move Hugo Web-presence to GH-Pages</title><link>http://wehrend.github.io/de/posts/web/30_hugo_move_to_gh_pages/</link><pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/30_hugo_move_to_gh_pages/</guid><description>&lt;div class="paragraph">
+&lt;p>Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.
+Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong>&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title><link>http://wehrend.github.io/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid><description>&lt;div class="paragraph">
+&lt;p>Hallo zusammen,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>endlich ist diese Woche das &lt;a href="https://nandland.com/the-go-board/">nandland go board&lt;/a> angekommen, das ich vor einem Monat
+beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum
+geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_serielle_verbindung_über_usb">Serielle Verbindung über USB&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Zunächst einmal muss man, um
+sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer
+zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:&lt;/p>
+&lt;/div></description></item><item><title>Build your own synthesizer modules</title><link>http://wehrend.github.io/de/posts/synth/25_build_your_own_modules/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/25_build_your_own_modules/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_einleitung">Einleitung&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hallo,
+heute möchte ich Ihnen das Grundwissen über den Selbstbau Ihrer eigenen Synthesizermodule vermitteln – diese benötigen
+nicht den Eurorack-Standard, obwohl sie in meinem Fall dazugehören.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wenn Sie mit &lt;a href="https://sdiy.info/wiki/Eurorack">eurorack format&lt;/a> oder einem anderen modularen Synthesizer-Standard beginnen,
+insbesondere aber mit dem Eurorack-Standard, werden Sie höchstwahrscheinlich von
+die schiere Anzahl der Hersteller und verfügbaren Produkte überwältigt sein. Einen einfachen Überblick erhalten Sie hier
+auf &lt;a href="https://www.modulargrid.net/e/modules/browser">ModularGrid&lt;/a>.
+Sie brauchen ein paar Wochen oder sogar Monate, um sich durch einige Testberichte auf &lt;a href="https://www.amazona.de/">Amzona.de&lt;/a>
+zu lesen oder Synthesizer-Läden wie &lt;a href="https://schneidersladen.de/">SchneidersLaden&lt;/a> besuchen, um sich einen groben Überblick
+über die Vielfalt des Marktes zu verschaffen.&lt;/p>
+&lt;/div></description></item><item><title>Ein Lieblingshobby von mir: Lustiges Taschenbuch Nr. 162</title><link>http://wehrend.github.io/de/posts/web/ltb162/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/ltb162/</guid><description>&lt;div class="paragraph">
+&lt;p>Es ist an der Zeit, einen weiteren meiner Favoriten mit Ihnen zu teilen, und das ist Entenhausen und das Entenuniversum.
+Ich nehme das LTB (Lustiges Taschenbuch) Nr. 162 als Beispiel aus der goldenen Ära der Comic-Serie „Lustiges
+Taschenbuch“&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./title.jpg" alt="Titel"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./content.jpg" alt="Inhaltsverzeichnis"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_der_goldene_totempfahl_the_golden_totem_pole">Der goldene Totempfahl (The golden totem pole)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In der Geschichte „Der goldene Totempfahl“ (englisch: „The golden totem pole“) dreht Onkel Dagobert einen Film über sein Leben.
+Die Geschichte spielt in der Grafschaft Dawson, wo sie sich nach einem Sturm verirren. Sie treffen den Indianer „großer Elch“
+„Big Moose“ und suchen nach den Goldnuggets, die Big Moose für Onkel Dagobert in der Vergangenheit aufbewahrt hat.
+Der Film endet damit, dass Big Moose als Filmstar endet.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: DE10-nano board: Hallo Welt</title><link>http://wehrend.github.io/de/posts/web/24_fpga_beginners_de10_board/</link><pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/24_fpga_beginners_de10_board/</guid><description>&lt;div class="paragraph">
+&lt;p>Heute möchte ich Ihnen zeigen, wie Sie eine Verbindung zum DE10-nano-Board herstellen, dem Nachfolger des DE0-nano-Boards.
+Es ist etwas größer, kostet fast 300 Dollar, unterstützt aber auch sofort einsatzbereites Linux. Auf der SD-Karte ist
+&lt;a href="https://web.archive.org/web/20200815133137/http://angstrom-distribution.org/">Angstrom Linux&lt;/a> installiert.
+Um das Board über die UART-Schnittstelle anzuschließen, schalten Sie das Board mit dem Steckernetzteil ein, legen Sie
+die SD-Karte ein, um das Linux-Booten zu starten, und schließen Sie schließlich das Micro-USB-Kabel (wie unten gezeigt)
+an den PC an.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starte mit Quartus und Verilog</title><link>http://wehrend.github.io/de/posts/web/23_fpga_beginners_start_with_verilog/</link><pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/23_fpga_beginners_start_with_verilog/</guid><description>&lt;div class="paragraph">
+&lt;p>Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und haben die Voraussetzungen aus
+&lt;a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">introduction 0&lt;/a> sowie
+&lt;a href="https://wehrend.uber.space/posts/web/23_fpga_beginners_1/">simple logic circuit&lt;/a> über die BDF-Dateien von Quartus
+erfüllt. Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen, indem wir ein weiteres Hardware-Äquivalent des in
+der Softwarewelt verwendeten Hallo-Welt-Programms erstellen – wir programmieren einen Binärzähler, der durch die
+LED-Reihe angezeigt wird, die auf unserer DE0-nano-Platine verfügbar ist. Dazu verwenden wir sowohl die Blockdiagrammdateien
+(bdf) von Quartus als auch die beliebte HDL (Hardware Description Language) Verilog.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starte mit Quartus</title><link>http://wehrend.github.io/de/posts/web/22_fpga_beginners_1/</link><pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/22_fpga_beginners_1/</guid><description>&lt;div class="paragraph">
+&lt;p>Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und die Voraussetzungen aus dem
+&lt;a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">letzten Blogbeitrag&lt;/a> erfüllt.
+Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen lernen, indem Sie ein Hardware-Äquivalent des in der Software-
+welt verwendeten Hello-World-Programms erstellen – wir nennen es AndGate , weil es einfach das ist – ein UND-Gatter,
+das über zwei Taster als Eingang und eine Status-LED als Ausgang gespeist wird. Auf diese Weise verwenden wir die
+Blockdiagrammdateien (bdf) von Quartus.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Beginne mit HDLs</title><link>http://wehrend.github.io/de/posts/web/21_fpga_beginners_0/</link><pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/21_fpga_beginners_0/</guid><description>&lt;div class="paragraph">
+&lt;p>Heute möchte ich eine Blogpost-Serie über Hardware-Programmierung starten. Wir beginnen mit einer Einführung
+in die Hardware-Programmierung mit dem FPGA-Board
+&lt;a href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593">DE0 Nano&lt;/a>
+von der ehemaligen Firma Altera, jetzt Intel. Unten sehen Sie ein Bild des kleinen Boards. Es scheint, dass man dieses
+Board noch bestellen kann, aber ich habe es nicht getestet.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./de0nano.jpg" alt="DE-0 nano"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wir zeigen, wie die Umgebung eingerichtet wird. Im ersten Schritt zeigen wir, wie man Quartus auf einer Debian-Distribution
+herunterlädt und installiert und den Programmierer konfiguriert. Im zweiten Schritt installieren wir die Simulationssoftware Modelsim.&lt;/p>
+&lt;/div></description></item><item><title>Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)</title><link>http://wehrend.github.io/de/posts/web/19_rare_earth_elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/19_rare_earth_elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_einführung">Einführung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden, die oft von Geheimnissen umwoben sind, spielen in unserer modernen Welt eine entscheidende Rolle. Von Smartphones
+über Elektrofahrzeuge und Technologien für erneuerbare Energien bis hin zu Verteidigungssystemen sind diese Elemente die unbesungenen
+Helden, die unser tägliches Leben nachhaltiger, effizienter und vernetzter machen. In diesem Artikel tauchen wir
+in die faszinierende Welt der Seltenen Erden ein, wobei der Schwerpunkt auf dem vielseitigen Element Neodym liegt.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_seltene_erden_ein_überblick">Seltene Erden: Ein Überblick&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden (SE) sind eine Gruppe von siebzehn chemischen Elementen, die zusammen mit Scandium und Yttrium die Lanthanidenreihe des Periodensystems bilden.
+ Trotz ihres Namens sind sie nicht unbedingt selten, aber sie kommen typischerweise in
+geringen Konzentrationen vor, was ihre Gewinnung und Reinigung schwierig und kostspielig macht.&lt;/p>
+&lt;/div></description></item><item><title>Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)</title><link>http://wehrend.github.io/de/posts/web/20_reducing_rare_earth_elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/20_reducing_rare_earth_elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_einleitung">Einleitung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden sind seit langem das Rückgrat von High-Tech-Magneten, wobei Metalle wie Neodym und Dysprosium
+in verschiedenen Branchen eine entscheidende Rolle spielen. Die Knappheit und die steigende Nachfrage nach diesen wertvollen Ressourcen haben jedoch
+Forscher dazu veranlasst, nach alternativen Lösungen zu suchen. Um unsere Abhängigkeit von Seltenerdmagneten zu verringern, erforschen Wissenschaftler
+innovative Materialien und Legierungskombinationen.
+Zu den vielversprechenden Kandidaten gehört Cer, ein reichlich vorhandenes und leicht zugängliches Seltenerdelement, das das Potenzial hat,
+Neodym-Magnete zu ersetzen oder zu ergänzen. In diesem Artikel befassen wir uns mit der bahnbrechenden Forschung von Thomas Lograsso und seinem
+Team am Ames Laboratory des US-Energieministeriums.&lt;/p>
+&lt;/div></description></item><item><title>Operationsverstärker Einführung (de)</title><link>http://wehrend.github.io/de/posts/web/18_op-amps_introduction/</link><pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/18_op-amps_introduction/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_op_amp">OP-Amp&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
+in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.&lt;/p>
+&lt;/div>
+&lt;div class="imageblock">
+&lt;div class="content">
+&lt;img src="./op-amp.svg" alt="op-amp" width="33%"/>
+&lt;/div>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.
+\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Analoge Rechner Grundlagen (de)</title><link>http://wehrend.github.io/de/posts/web/17_analog_computers_101/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/17_analog_computers_101/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_analogrechner">Analogrechner&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte ich über Analogrechner sprechen. In der heutigen Zeit führen analoge Computer ein Schattendasein,
+verglichen mit ihren digitalen Gegenstücken. Aber sie sind wunderbare kleine Maschinen. Und diese Maschinen meine ich
+wortlich, denn es gibt analoge mechanische Computer, die Modelle aus der Welt sind und verwendet werden zur
+&lt;a href="https://en.wikipedia.org/wiki/Tide-predicting_machine">Berechnung und Vorhersage von Gezeiten&lt;/a> in bestimmten Gebieten der Welt.
+Auch das Gehirn ist ein riesiger analoger Computer mit einem vergleichsweise sehr kleinen
+Energiebudget. &lt;a href="https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer">Es braucht nur 12 Watt.&lt;/a>
+12 Watt, das ist nicht einmal ein Viertel des Stromverbrauchs eines Laptops von 65 Watt.
+Und man kann mit dem Gehirn sehr viel anstellen, aber zurück zum Thema.
+Ich möchte hauptsächlich über analoge elektronische Computer sprechen, die während des Zweiten Weltkriegs zur Berechnung von
+&lt;a href="https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf">ballistischen Kurven&lt;/a> verwendet wurden.
+Analogrechner können also summieren, multiplizieren, dividieren, integrieren und differenzieren wie ihre digitalen Gegenstücke.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Noise Floor</title><link>http://wehrend.github.io/de/posts/synth/16_noise_floor/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/16_noise_floor/</guid><description>&lt;div class="paragraph">
+&lt;p>On my mobile setup, the NiftyVCase I have collected my diy modules (with excepition to the Doepfer
+A-124, I had to include for its great sound). It features a kick-drum from erica synths, an even
+VCO, Sampling Modulator, A*B+C and Rampage from Befaco. As well as the Divebomb III for some delay.
+Last but not least a Zlon skew lfo and a BCM086 Diode Ladder High pass filter.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./noise_floor.jpg" alt="noise floor"/>&lt;/span>&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Jam Session</title><link>http://wehrend.github.io/de/posts/synth/15_jam_session/</link><pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/15_jam_session/</guid><description>&lt;div class="paragraph">
+&lt;p>This time, we have a convoluted patch, featuring a new member, the random sequencer
+from rat-king, which,as the name suggests, delivers nice randomly sequences. Also
+we have a new mixer module, self-build.
+We also utilize both VCOs and both LFO modules…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./jam_session.jpg" alt="jam session"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./jam_session.m4a">jam session Audio&lt;/a>&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Another small patch</title><link>http://wehrend.github.io/de/posts/synth/14_another_small_patch/</link><pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/14_another_small_patch/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another small patch idea for the Doepfer A-100 system,
+this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+modul A-106-5.
+We also utilize two LFO modules…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch.jpg" alt="LFO SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch.mp4">LFO SEM Patch video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch2-3.jpg" alt="LFO SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch2.mp4">LFO SEM Patch video 2&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch3.mp4">LFO SEM Patch video 3&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To this day I did not find the right audio recorder,and I am recording with my smartphone,
+so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Another simple patch</title><link>http://wehrend.github.io/de/posts/synth/13_another_simple_patch/</link><pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/13_another_simple_patch/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another simple patch idea for the Doepfer A-100 system,
+this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+modul A-106-5.
+We also utilize two A-110 oscillator modules (one standard, one basic), and the LFO.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch.jpg" alt="SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch.mp4">SEM Patch video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To this day I did not find the right audio recorder,and I am recording with my smartphone,
+so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - More patch ideas</title><link>http://wehrend.github.io/de/posts/synth/11_more_patch_ideas/</link><pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/11_more_patch_ideas/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another patch idea for the Doepfer A-100 system.
+The results of the Doepfer oscillators are pithlily &amp;#34;knarzig-kernige&amp;#34; sounds.
+We utilize two A-110 oscillator modules (one standard, one basic), a ring-modulator (A-114)
+and a wasp-filter (A-124), together with some utility modules like a sequencer and an LFO.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./pithily_sounds.jpg" alt="pithily"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./pithily_sounds.m4a">pithily…​ Audio&lt;/a>&lt;/p>
+&lt;/div></description></item><item><title>Zwischenspeicher und Zwischenspeichern (Caching)</title><link>http://wehrend.github.io/de/posts/web/12_caches_and_caching/</link><pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/12_caches_and_caching/</guid><description>&lt;div class="paragraph">
+&lt;p>Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr
+wichtigen Mechanismus nicht bemerkt, der dem Browser zugrunde liegt und im Hintergrund arbeitet. Caching.
+Caches werden überall eingesetzt, um Zugriffszeiten und damit die
+Gesamtleistung (einer Website) zu optimieren und zu verbessern. Caching im Browser bedeutet beispielsweise, dass
+im Idealfall nur die Teile der Website, die geändert wurden, aus dem Internet geladen werden. Alles andere
+wurde bereits zuvor geladen und hat sich nicht geändert, sodass kein erneutes Laden erforderlich ist. Nicht mehr aktuelle Teile
+werden ungültig (auch als Cache-Ungültigmachung bezeichnet) und erneut von der Quelle geladen.
+Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.&lt;/p>
+&lt;/div></description></item><item><title>Pocket Operator Modular 400 in eurorack</title><link>http://wehrend.github.io/de/posts/synth/09_eurorack_modular/</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/09_eurorack_modular/</guid><description>&lt;div class="paragraph">
+&lt;p>So I bought a low cost eurorack case from doepfer and a set of frontpanels plus power adapter
+for the pocket operator modular 400 from Oddvolt to put the said machine into a eurorack modular
+system. I also bought a small, but decent sequencer, since the one from teenage engineering is not
+very handy to use. I have two further modules on my list, the &lt;a href="https://doepfer.de/a119.htm">Doepfer A-119&lt;/a>,
+an input module, as well as the &lt;a href="https://doepfer.de/a124.htm">Doepfer A-124&lt;/a>, a wasp filter, to complete the setup.&lt;/p>
+&lt;/div></description></item><item><title>Topics to write about - Wunschliste</title><link>http://wehrend.github.io/de/posts/web/10_wishlist/</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/10_wishlist/</guid><description>&lt;div class="paragraph">
+&lt;p>Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>Caches&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Interrupts&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Out-of-Order execution&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>RAW-, WAR- und WAW-Konflikte&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Filter (analog und digital)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Analogrechner&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>neuronale Netze&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>das Mikrobiom&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Transistoren und VLSI&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div></description></item><item><title>Religion vs. Spiritualität – warum ich Letztere bevorzuge</title><link>http://wehrend.github.io/de/posts/web/08_religion_spirituality/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/08_religion_spirituality/</guid><description>&lt;div class="paragraph">
+&lt;p>Was ich in den letzten Jahren und Jahrzehnten über Religionen und Spiritualität gelernt habe, lässt sich auf eine
+einfache Aussage reduzieren:
+Bei Religion geht es um richtig und falsch und alte, überholte Dogmen, während Spiritualität
+einfach sagt: „Es ist, wie es ist“. Für Spiritualität gibt es kein richtig oder falsch, sondern nur den einen Moment in
+der Gegenwart, in dem wir verweilen. Ich finde diese Sichtweise ziemlich erstaunlich. Meiner Erfahrung nach führt sie zu
+einem wacheren Zustand.&lt;/p>
+&lt;/div></description></item><item><title>Warum gibt es überall serielle Schnittstellen – statt paralleler?</title><link>http://wehrend.github.io/de/posts/web/07_serial_interfaces/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/07_serial_interfaces/</guid><description>&lt;div class="paragraph">
+&lt;p>USB, SPI, I²C, Sata – all diese Schnittstellen haben gemeinsam, dass es sich um serielle Schnittstellen handelt.
+Serielle Schnittstellen sind heutzutage weit verbreitet. Aber warum ist das so, insbesondere bei der Hochgeschwindigkeits-
+kommunikation? Es klingt einfach unlogisch: Parallele Drähte
+können theoretisch mehr Bits pro Zeit senden als ein einzelner Draht.
+Die Antwort auf diese Frage ist komplex und vielschichtig. Es gibt mehrere verschiedene Gründe, warum
+serielle Schnittstellen gegenüber parallelen Schnittstellen bevorzugt werden. Beginnen wir mit den offensichtlichen Gründen:
+Die Verdrahtung von Bussen mit einer Breite von 8, 16, 32 oder sogar 64 Bit auf Leiterplatten wird immer komplexer
+. Das zweite damit zusammenhängende Problem besteht darin, dass die Signalflanke gleichzeitig
+für alle parallelen Leitungen (Drähte) übertragen werden muss, was zu einer komplexeren Verlegung führt, da die Kanten
+in der Streifenleitung ausgeglichen werden müssen.
+Einfach ausgedrückt ist die zusätzliche Logik, die in Chips implementiert ist, um das serielle Signal wieder in ein
+paralleles umzuwandeln (Deserializer) und umgekehrt (Serializer), viel billiger als die Kosten für komplexe Verlegungen.&lt;/p>
+&lt;/div></description></item><item><title>How does a CPU work 2? Overview</title><link>http://wehrend.github.io/de/pages/10_digital_logic_2/</link><pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/10_digital_logic_2/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+== Wie funktioniert eine CPU 2 - Inhaltsverzeichnis&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_von_kombinatorischer_zu_sequentieller_logik_einführung">&lt;strong>Von kombinatorischer zu sequentieller Logik - Einführung&lt;/strong>&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&lt;em>&lt;a href="http://wehrend.github.io/de/pages/10_sequential_logic">Einführung in sequentielle Logik&lt;/a>&lt;/em>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen Logikschaltungen mit irgendeiner
+Art von Speicher (meistens Flipflops)&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_uhren_flipflops_und_register">&lt;strong>Uhren, Flipflops und Register&lt;/strong>&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&lt;em>&lt;a href="http://wehrend.github.io/de/pages/11_clocks_and_registers/">Uhren, Flipflops und Register&lt;/a>&lt;/em>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,
+wie Uhr, Flipflops und Register&lt;/p>
+&lt;/div></description></item><item><title>The Pocket Operator Modular 400 patch ideas (II)</title><link>http://wehrend.github.io/de/posts/synth/06_pocket_operator_modular_400/</link><pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/06_pocket_operator_modular_400/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./plong_plong_plong.jpg" alt="Plong…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./plong_plong_plong.mp4">Plong…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>With the random module we can sample &amp;amp; hold a signal from the input. Its companionship is the noise module.
+We feed the saw output to the input of the rand module.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./bleep_bleep.jpg" alt="Beep" width="bleep…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./bleep_bleep.mp4">Beep,bleep…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>sine output → speaker right&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>envelope output → sine key&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>LFO square → envelope trig&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>LFO square → sine fm&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./sweeping_sinus.jpg" alt="Sweeping sinus…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./sweeping_sinus.mp4">sweeping sinus…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We can expand the setup by using the sequencer and utilize the filter. Because the nice
+thing about modular synthesizers is, that the filter can be used not only in signal paths but
+also in control paths ;-) .&lt;/p>
+&lt;/div></description></item><item><title>11_sequential_logic (de)</title><link>http://wehrend.github.io/de/pages/11_sequential_logic/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/11_sequential_logic/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_sequentielle_logik">Sequentielle Logik&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Ergänzend zur kombinatorischen Logik enthält die sequentielle Logik eine Art Speicher,
+der das Verhalten zustandsabhängig macht. Wir müssen ihr ein Taktsignal zuführen.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./sequential_logic.svg" alt="sequential logic" width="50%"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_mealy_und_moore_automaten_synchron">Mealy- und Moore-Automaten (synchron)&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>In der digitalen Logik gibt es zwei verschiedene Arten von endlichen Automaten.
+Diese sind:&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Der Mealy-Automat, der von der Eingabe und dem Zustand abhängig ist.
+Der Moore-Automat, der nur vom Zustand abhängig ist&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./mealy_logic.svg" alt="mealy logic" width="50%"/>&lt;/span>
+&lt;span class="image">&lt;img src="./moore_logic.svg" alt="moore logic" width="50%"/>&lt;/span>&lt;/p>
+&lt;/div></description></item><item><title>The Pocket Operator Modular 400 patch ideas</title><link>http://wehrend.github.io/de/posts/synth/05_pocket_operator_modular_400/</link><pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/05_pocket_operator_modular_400/</guid><description>&lt;div class="paragraph">
+&lt;p>Ein analoger modularer Synthesizer war schon immer mein Traum, letzte Woche habe ich mir diesen Traum erfüllt
+und den Pocket Operator Modular 400 von der schwedischen Firma Teenage Engineering bestellt.
+Wie bei den Möbeln der anderen beliebten schwedischen Firma muss man ihn erst selbst zusammenbauen,
+bevor man damit einen Ton erzeugen kann. Das hat etwa 3 bis 4 Stunden gedauert. Aber es hat sich gelohnt.&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="paragraph">
+&lt;p>Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgänge aller
+3 Oszillatoren zusammen und steuern den Sinusoszillator mit dem Dreieckausgang des LFO und die Impulsbreite des Rechteckoszillators mit dem LFO-Rechteck.&lt;/p>
+&lt;/div></description></item><item><title>Odoo hacks: Entferne Sperr-Button aus Odoo v12</title><link>http://wehrend.github.io/de/posts/web/04_odoo_hacks/</link><pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/04_odoo_hacks/</guid><description>&lt;div class="paragraph">
+&lt;p>Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.
+In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf
+beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen,
+ wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking)
+und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei
+sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.&lt;/p>
+&lt;/div></description></item><item><title>X2_cordic (de)</title><link>http://wehrend.github.io/de/docs/digital_logic_x/x2_cordic/</link><pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/docs/digital_logic_x/x2_cordic/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_der_cordic_algorithmus_und_die_direkte_digitale_synthese_dds">Der CORDIC-Algorithmus und die direkte digitale Synthese (DDS)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Der CORDIC-Algorithmus (Abkürzung für „Coordinate Rotation Digital Computer“) wurde 1956 von Jack.E. Volder entwickelt, um
+die analogen Drehmelder, die für die Navigation von Raketen verwendet wurden, durch digitale Berechnungen auf einem Digitalcomputer zu ersetzen.
+Der Algorithmus erwies sich als sehr erfolgreich und ist heute in jedem Taschenrechner zu finden, wo er
+Berechnung der trigonometrischen Funktionen Sinus, Kosinus und Tangens. Der Algorithmus ist jedoch nicht darauf beschränkt,
+ sondern kann nach den erforderlichen Änderungen auch logarithmische und exponentielle Funktionen berechnen.&lt;/p>
+&lt;/div></description></item><item><title>Separiere Blog und Inhalt (de)</title><link>http://wehrend.github.io/de/posts/web/03_separate_form_and_content/</link><pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/03_separate_form_and_content/</guid><description>&lt;div class="paragraph">
+&lt;p>Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da
+ein Blog und sein Inhalt selbst unterschiedliche Einheiten sind. Ich wollte sie als solche behandeln,
+was mich zu einer Bereinigung des ursprünglichen Quellcodes für den Blog führte, bei der ich den Inhaltsordner
+in ein anderes Repo namens hugo_content verschob, das frühere Repo nannte ich hugo_blog.
+---&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>In meinem Fall bedeutet dies, dass Sie zuerst das Repo hugo_blog klonen müssen,
+ in das neue Verzeichnis wechseln (cd hugo), seinen Zweig „hugo“ auschecken und dann einen Klon des
+Repos hugo_content erstellen.&lt;/p>
+&lt;/div></description></item><item><title>X0_multiplication (de)</title><link>http://wehrend.github.io/de/docs/digital_logic_x/x0_multiplication/</link><pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/docs/digital_logic_x/x0_multiplication/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_multiplikation_und_division">Multiplikation und Division&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Multiplikationsoperationen können auf sehr unterschiedliche Weise implementiert werden
+: Langsam, als serielle Operation, gesteuert durch ein
+Mikroprogramm oder schnell in dedizierter Hardware.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Die Division ist eine komplexere Operation und wird daher
+in einem anderen Beitrag behandelt.
+Auch für die Multiplikation legen wir den Umfang auf vorzeichenlose Ganzzahlen fest.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_links_und_rechtsverschiebung">Links- und Rechtsverschiebung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Für Multiplikatoren, die Zweierpotenzen sind, ist die Operation sehr
+einfach und kann durch eine Linksverschiebung implementiert werden.&lt;/p>
+&lt;/div></description></item><item><title>00_combinatorial_logic (de)</title><link>http://wehrend.github.io/de/pages/00_combinatorial_logic/</link><pubDate>Sat, 16 Apr 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/00_combinatorial_logic/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+(translation 2024-12-29)&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Dieser Kurs über digitale Logik ist in zwei große Abschnitte unterteilt:&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>Kombinatorische Schaltkreise (ohne Speicherelemente)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Sequentielle Schaltkreise (mit Speicherelementen)&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./digital_logic.svg" alt="digital logic" width="500px"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Während kombinatorische Schaltkreise aus booleschen Gattern bestehen, die ohne Rückkopplungsfunktion miteinander
+verbunden sind, besitzen sequentielle Gatter eine Speicherfunktion, die es ihnen ermöglicht, in einen anderen Zustand
+überzugehen.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Ein kombinatorischer Schaltkreis kann einen Vektor von Eingängen mit einer Breite von &lt;em>n&lt;/em> und einen Vektor von Ausgängen
+mit einer Breite von &lt;em>m&lt;/em> haben.&lt;/p>
+&lt;/div></description></item><item><title>Umziehen zu Hugo (de)</title><link>http://wehrend.github.io/de/posts/web/02_moving-to-hugo/</link><pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/02_moving-to-hugo/</guid><description>&lt;div class="paragraph">
+&lt;p>Seit einer Woche basiert mein Blog auf dem Static-Site-Generator &lt;a href="https://gohugo.io/">Hugo&lt;/a>.
+Ich wollte schon viel früher zu Hugo wechseln, da es eine große Auswahl an Themes gibt.
+Dies erforderte jedoch den Wechsel von Asciidoc zu &lt;a href="https://asciidoctor.org/">Asciidoctor&lt;/a>,
+und ich hatte einige Probleme mit der Integration von Asciidoctor in meinen bestehenden Arbeitsablauf.
+Da der Ansatz, die Latex-Gleichungen in den Asciidoc-Dokumenten darzustellen,
+nicht mehr funktionierte, entschied ich mich, auf die clientbasierte Darstellung von Formeln umzusteigen,
+wie sie in &lt;a href="https://gohugo.io/Katex">KaTex&lt;/a> und &lt;a href="https://www.mathjax.org/">Mathjax&lt;/a> verwendet wird.&lt;/p>
+&lt;/div></description></item><item><title>08_RISC-V (de)</title><link>http://wehrend.github.io/de/pages/08_risc_v/</link><pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/08_risc_v/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_digitales_design_trifft_auf_computerarchitektur">Digitales Design trifft auf Computerarchitektur&lt;/h2>
+&lt;div class="sectionbody">
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_risc_vs_cisc_und_die_risc_v_architektur">RISC vs. CISC und die RISC-V-Architektur&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Bestehende Prozessortypen können nach ihrem Befehlssatz klassifiziert werden:
+Computer mit reduziertem Befehlssatz (RISC), Computer mit komplexem Befehlssatz (CISC) und Mischformen.
+Während Miniprozessoren wie ARM für eingebettete Systeme meist reduzierte Befehlssätze verwenden
+, sind heutige Workstation- und Server-Architekturen (x86, x86_64) Mischformen aus RISC und CISC.
+Die Idee eines reduzierten Befehlssatzes besteht darin, große komplexe Anweisungen und mehrere unterschiedliche
+Adressierungsmodi (wie sie typischerweise in x86-Architekturen verwendet werden) zu vermeiden.
+Zu den Vorteilen einer RISC-Architektur gehören kürzere Pipelines, die eine schnellere Taktung ermöglichen.
+RISC-Architekturen folgen einem einfachen Schema: „Abrufen → Dekodieren → Operanden abrufen → Ausführen → Zurückschreiben“
+Außerdem haben Anweisungen eine konstante Länge, Speicheroperationen sind von arithmetischen Operationen getrennt,
+was als Load/Store-Architektur bekannt ist. RISC-V ist ein offener Standard für die Befehlssatzarchitektur (ISA).
+Der größte Teil dieses Beitrags bezieht sich auf das beliebte Buch „Computer Organization and Design (RISC-V) Edition“ von Hennessey und Patterson.&lt;/p>
+&lt;/div></description></item><item><title>07_Memory (de)</title><link>http://wehrend.github.io/de/pages/07_memory/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/07_memory/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_speicherorganisation">Speicherorganisation&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In diesem Blogbeitrag stellt der Autor die verschiedenen
+Arten von Halbleiterspeichern vor. Dies ist ein weites Feld,
+daher besteht das Ziel hier darin, sich auf die wichtigsten zu konzentrieren und die Unterschiede zwischen den verschiedenen Arten herauszuarbeiten.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_die_speicherhierarchie">Die Speicherhierarchie&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Da es bei der Datenverarbeitung immer um Leistung geht, werfen wir zunächst einen Blick auf die Speicherhierarchie. Wie Sie in der untenstehenden Pyramide sehen können, ist der Speicher
+in Schichten angeordnet. Die langsamsten Elemente – auch die mit der höchsten
+Latenz – befinden sich am unteren Ende dieser Pyramide, während die schnellsten
+an der Spitze dargestellt werden.
+Stellen Sie sich vor, Ihr Schreibtisch ist die eigentliche CPU, mit einem aufgeschlagenen Buch vor Ihren
+Augen. Dies ist das Register. Nun lesen Sie in diesem Buch einen Verweis auf ein anderes Buch
+in Ihrem Bücherregal. Ihr Bücherregal ist hier der Cache. Der Cache selbst ist wiederum in Schichten unterteilt.
+Nehmen wir an, L1-Cache ist das Bücherregal in Ihrem Zimmer, L2-Cache das Bücherregal in einem anderen Zimmer
+und L3-Cache Bücher, die in einer Kiste im selben Zimmer aufbewahrt werden. Wenn Sie nun eine Referenz
+in Ihrem aktuellen Buch (dem auf Ihrem Schreibtisch) haben, die auf ein Buch verweist, das Sie nicht besitzen, müssen Sie
+in die öffentliche Bibliothek gehen. Die öffentliche Bibliothek ist Ihr RAM. Die Zugriffszeiten sind sehr hoch.
+Und nehmen wir an, das Buch, das Sie benötigen, ist auch dort nicht verfügbar und muss aus einer Bibliothek
+in einer anderen Stadt bestellt werden. Dann kommen Sie auf die unterste Ebene, die Festplattenspeichereinheit.&lt;/p>
+&lt;/div></description></item><item><title>12_Clocks_flipflops_and_registers (de)</title><link>http://wehrend.github.io/de/pages/12_clocks_and_registers/</link><pubDate>Sat, 12 Mar 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/12_clocks_and_registers/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_taktgeber_flipflops_und_register">Taktgeber, Flipflops und Register&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In diesem Blogbeitrag stellt der Autor mehrere Elemente vor, die zu einem späteren Zeitpunkt benötigt werden
+.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_register_transfer_level_benötigt_eine_taktquelle">Register-Transfer-Level benötigt eine Taktquelle&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Bisher haben wir nur die kombinatorische Logik kennengelernt, die
+ohne Taktquelle auskommt – jedes Signal wird nur um die Zeit verzögert, die es
+für die Übertragung durch den Schaltkreis benötigt. Dies wird als asynchron bezeichnet.
+Für anspruchsvollere Aufgaben, wie sequentielle Schaltkreise, sind jedoch Register erforderlich,
+ die die Eingangs- und Ausgangssignale speichern,
+um korrekte Ergebnisse zu erzielen. Dies wird als synchron bezeichnet.
+Die meisten, wenn nicht sogar alle heutzutage verwendeten Designs sind synchron, da diese weniger komplex sind.&lt;/p>
+&lt;/div></description></item><item><title>05_ALU (de)</title><link>http://wehrend.github.io/de/pages/05_alu/</link><pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/05_alu/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_die_alu_das_schweizer_taschenmesser_jeder_cpu">Die ALU, das Schweizer Taschenmesser jeder CPU&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte der Autor einen wichtigen Teil jeder CPU vorstellen:
+Die Arithmetisch-Logische-Einheit (ALU), von der wir bereits einige Funktionen kennen,
+ die in den vorherigen Blog-Beiträgen vorgestellt wurden. In diesem Beitrag wollen wir die
+Lücken systematisch schließen.
+Zeit für eine kurze Zusammenfassung: Die Logikfunktionen &amp;#39;und&amp;#39;, &amp;#39;oder&amp;#39;, &amp;#39;nicht&amp;#39; und &amp;#39;xor&amp;#39;
+wurden vorgestellt, ebenso wie die arithmetischen Funktionen „add“ und „sub“ für ganze Zahlen.
+ Nun wollen wir die meisten dieser Funktionen in einer Einheit zusammenfassen,
+der 1-Bit-ALU-Zelle.&lt;/p>
+&lt;/div></description></item><item><title>04_Signs (de)</title><link>http://wehrend.github.io/de/pages/04_signs/</link><pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/04_signs/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_erweiterung_des_binärsystems">Erweiterung des Binärsystems&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Während wir im vorherigen Blogbeitrag über Addition
+die Binärzahlen nur eine Interpretation hatten,
+erweitern wir das System hier um negative (ganze)
+Zahlen.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./binary_system.svg" alt="binary system" width="300"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Der einfachste Ansatz, den wir uns vorstellen können, ist die Verwendung des höchstwertigen Bits (MSB)
+als Vorzeichenbit, wobei „0“ als Vorzeichen „+“ und „1“ als Vorzeichen „-“ interpretiert wird.
+Wie wir jedoch in der folgenden Berechnung sehen, funktioniert dies nicht wie erwartet:&lt;/p>
+&lt;/div></description></item><item><title>03_binary_system (de)</title><link>http://wehrend.github.io/de/pages/03_binary_system/</link><pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/03_binary_system/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_das_binärsystem">Das Binärsystem&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Alle Computer, mit denen wir täglich arbeiten, wissen nichts von dem Dezimalsystem, das wir verwenden, basierend auf den zehn Ziffern, die uns zur Verfügung stehen.
+Alles, was sie wissen, sind die Zustände „an“ und „aus“. Wir bauen einen imaginären Schaltkreis mit einer Stromquelle, einer Kontrollleuchte – hier eine LED (Light Emitting Diode) – und einem Schalter,
+die Verbindung geschlossen wird, lässt das Licht blinken. Ein ausgeschaltetes Licht zählt als Null und ein eingeschaltetes Licht zählt als Eins. So einfach ist das. Wir schalten das Licht ein
+und erhalten eine Eins.&lt;/p>
+&lt;/div></description></item><item><title>02_XOR (de)</title><link>http://wehrend.github.io/de/pages/02_xor/</link><pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/02_xor/</guid><description>&lt;div class="paragraph">
+&lt;p>(translation 2024-12-29)
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+== XOR&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Da es viele wichtige Anwendungen für die Exklusiv-Oder-Operation (XOR) gibt,
+ ist ihr ein eigener Blog-Beitrag gewidmet. Zwei der wichtigsten sind:&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>XOR-Operationen werden häufig in einem Linear Feedback Shift Register (LFSR) verwendet.
+LFSR sind ein entscheidender Schritt in Scrambler/Descrambler,
+die in Sendern/Empfängern verwendet werden&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Teil eines Verschlüsselungsalgorithmus&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Nicht zuletzt ein wichtiger Bestandteil eines Halbaddierers.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
+ wird als A ⊕ B = Q bezeichnet. Ihre Wahrheitstabelle ist unten dargestellt&lt;/p>
+&lt;/div></description></item><item><title>01_boolean_algebra (de)</title><link>http://wehrend.github.io/de/pages/01_boolean_algebra/</link><pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/01_boolean_algebra/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+(translation 2024-12-29)&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_boolesche_algebra_und_logische_grundgatter">Boolesche Algebra und logische Grundgatter&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Wir beginnen (die Reise) mit drei sehr
+grundlegenden logischen Funktionen (oder Operationen), die trotz ihrer Einfachheit
+bereits gültige Anweisungen einer regulären CPU sind:&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>NICHT, UND und ODER&lt;/strong>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Logische Funktionen – auch Operationen genannt, der Autor wird hier beide Begriffe synonym verwenden –
+können auf verschiedene Weise beschrieben werden. Am häufigsten werden sie implizit
+als Boolesche Gleichung beschrieben, sie können aber auch explizit in einer Wahrheitstabelle erklärt werden.&lt;/p>
+&lt;/div></description></item><item><title>How does a CPU work? Overview</title><link>http://wehrend.github.io/de/pages/000_digital_logic_1/</link><pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/000_digital_logic_1/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+== Wie funktioniert eine CPU - Inhaltsverzeichnis&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_und_überblick">&lt;strong>Einführung und Überblick&lt;/strong>&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>&lt;em>Einführung und Überblick&lt;/em>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Jedes Thema dieses Kurses ist in zwei Teile gegliedert:&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Ein Teil über die mathematische Seite der digitalen Logik,
+idealerweise fast unabhängig von Implementierungsdetails
+und ein konkreterer Teil, der genau diese Details behandelt.
+Im konkreten Teil werden wir hauptsächlich die Implementierung
+auf einer elektrischen Ebene diskutieren, obwohl auch andere Lösungen
+möglich sind, die auf &lt;a href="https://erik-engheim.medium.com/microprocessors-running-on-air-a47a702dd41f">Fluiddynamik&lt;/a> oder
+&lt;a href="https://www.photonics.com/Articles/All-Optical_Logic_Gates_Show_Promise_for_Optical/a63226">optische Gatter&lt;/a> basieren.
+Die meisten Computer und Logikgatter basieren immer noch auf Elektronik und Halbleitertechnologie, und das wird sich
+auch mit &lt;a href="https://www.azom.com/article.aspx?ArticleID=17173">Quantencomputing&lt;/a> nicht ändern, das hauptsächlich an die
+Wahrscheinlichkeitstheorie gebunden ist bzw. diese ergänzt. Mit dem Quantencomputing
+werden sich jedoch die Grundlagen, die der Autor hier beschreibt, vollständig ändern.&lt;/p>
+&lt;/div></description></item><item><title>About</title><link>http://wehrend.github.io/de/about/</link><pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/about/</guid><description>&lt;div class="paragraph">
+&lt;p>Ein einfaches, statisches Blog, in dem ich über Themen wie Elektronik &amp;amp; Computer und - vielleicht - Philosophie schreibe.&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="paragraph">
+&lt;p>Lieber Leser meines bescheidenen Blogs, ich bin Sven Wehrend, eine 1987 geborene Scanner-Persönlichkeit, die sich für ein breites Spektrum an verschiedenen Themen interessiert, das von Technik über Psychologie bis hin zu Spiritualität reicht.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Ich habe Technische Informatik an der HTW Berlin (Bachelor) und der TU Berlin (Master) studiert.&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="paragraph">
+&lt;p>Impressum und Addresse:
+Sven Wehrend
+Eythstrasse 20
+12105 Berlin&lt;/p>
+&lt;/div></description></item><item><title>Über Mathematik schreiben mit Asciidoc (de)</title><link>http://wehrend.github.io/de/posts/web/01_writing-about-math-with-asciidoc/</link><pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/01_writing-about-math-with-asciidoc/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Beim Verfassen eines Blog-Beitrags, der Teil einer Reihe von Beiträgen ist, die in Zukunft veröffentlicht werden sollen,
+stellte ich fest, dass mir in Nikola einige Tools fehlten. Beim Hinzufügen mathematischer Formeln
+wurde mir klar, dass es keine Standardmethode gibt, um Bilder aus diesen mathematischen Formeln zu rendern
+und sie als Bild-Tags in den HTML-Code einzufügen. Stattdessen werden mathematische Formeln über JS verarbeitet, das ich
+auf meiner Website auf ein absolutes Minimum zu reduzieren versuche.
+Also begann ich, ein eher „quick-and-dirty“-Plugin zu implementieren, um genau diese Umwandlung durchzuführen, und zwar mit
+latex und dvipng oder dvisvgm.
+Dann stieß ich auf &lt;a href="https://erikwinter.nl/articles/2020/why-i-built-my-own-shitty-static-site-generator/">diesen Blogbeitrag&lt;/a>
+, wo ich über &lt;a href="https://asciidoc.org/">asciidoc&lt;/a>, geschrieben in Python, und seinen Nachfolger &lt;a href="https://asciidoctor.org/">asciidoctor&lt;/a>, geschrieben
+in Ruby, las, die verschiedene Anzeigeformate unterstützen. Ideal für den Inhalt, den ich im Sinn hatte. Also installierte ich das Nikola-Plugin asciidoc
+(das hauptsächlich ein Wrapper für die asciidoc-Binärdatei ist, die als Unterprozess aufgerufen wird) über&lt;/p>
+&lt;/div></description></item><item><title>Ein statisches Blog aufsetzen mit Nikola (de)</title><link>http://wehrend.github.io/de/posts/web/00_setting_up_nikola/</link><pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/00_setting_up_nikola/</guid><description>&lt;div class="paragraph">
+&lt;p>Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Um die Sache etwas interessanter und gleichzeitig einfacher zu machen, werden wir Nikola in einem Docker-Container verwenden.
+Daher benötige ich hier ein fast grundlegendes Verständnis für Docker.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Erstellen Sie zunächst ein Verzeichnis auf unserem Host-System, in dem die Dateien gespeichert werden sollen, z. B. „blog“ in Ihrem Home-Verzeichnis.&lt;/p>
+&lt;/div></description></item><item><title/><link>http://wehrend.github.io/de/drafts/alu2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/drafts/alu2/</guid><description>&lt;div class="olist loweralpha">
+&lt;ol class="loweralpha" type="a">
+&lt;li>
+&lt;p>title: How does a CPU work? The swiss knife (Part II)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>slug: how-does-a-cpu-work-alu-2&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>date: 2022-02-09&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>category:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>link:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>description:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>type: text&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_alu_arithmetic_logic_unit">ALU (Arithmetic Logic Unit)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="sect2">
+&lt;h3 id="_instruction_table">Instruction table&lt;/h3>
+&lt;table class="tableblock frame-all grid-all stretch">
+&lt;colgroup>
+&lt;col style="width: 25%;"/>
+&lt;col style="width: 25%;"/>
+&lt;col style="width: 25%;"/>
+&lt;col style="width: 25%;"/>
+&lt;/colgroup>
+&lt;thead>
+&lt;tr>
+&lt;th class="tableblock halign-left valign-top">logic operations&lt;/th>
+&lt;th class="tableblock halign-left valign-top">description&lt;/th>
+&lt;th class="tableblock halign-left valign-top">implementation&lt;/th>
+&lt;th class="tableblock halign-left valign-top">data type / size&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">and&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">basic boolean Op&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">bit&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">or&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">basic boolean Op&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">bit&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">not&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">basic boolean Op&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">bit&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">xor&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">complex boolean Op&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">bit&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">shl&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">shift left&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">shr&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">shift right&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;table class="tableblock frame-all grid-all stretch">
+&lt;colgroup>
+&lt;col style="width: 33.3333%;"/>
+&lt;col style="width: 33.3333%;"/>
+&lt;col style="width: 33.3334%;"/>
+&lt;/colgroup>
+&lt;thead>
+&lt;tr>
+&lt;th class="tableblock halign-left valign-top">control instructions&lt;/th>
+&lt;th class="tableblock halign-left valign-top">description&lt;/th>
+&lt;th class="tableblock halign-left valign-top">data type / size&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">ld&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">load&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">st&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">store&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">jx&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">jump (x= gt,eq, lt )&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;table class="tableblock frame-all grid-all stretch">
+&lt;colgroup>
+&lt;col style="width: 25%;"/>
+&lt;col style="width: 25%;"/>
+&lt;col style="width: 25%;"/>
+&lt;col style="width: 25%;"/>
+&lt;/colgroup>
+&lt;thead>
+&lt;tr>
+&lt;th class="tableblock halign-left valign-top">arithmetic operations&lt;/th>
+&lt;th class="tableblock halign-left valign-top">description&lt;/th>
+&lt;th class="tableblock halign-left valign-top">implementation&lt;/th>
+&lt;th class="tableblock halign-left valign-top">data type / size&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">ashl&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">arithmetic shift left&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">ashr&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">arithmetic shift right&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">inc&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">increment&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">dec&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">decrement&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">various&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">add&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">addition&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u) integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">sub&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">subtraction&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">-&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u) integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">mul&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">multiplication&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">software-routine or HW&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u)integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">div&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">division&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">software-routine or HW&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u)integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">sin&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">sine&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">software-routine (Cordic)&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u) integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">cos&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">cosine&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">software-routine (Cordic)&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u) integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">tan&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">tangens&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">software-routine (Cordic)&lt;/p>&lt;/td>
+&lt;td class="tableblock halign-left valign-top">&lt;p class="tableblock">(u) integer&lt;/p>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div></description></item><item><title/><link>http://wehrend.github.io/de/posts/web/27_compiling_kicad_on_debian_bullseye/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/27_compiling_kicad_on_debian_bullseye/</guid><description/></item></channel></rss>

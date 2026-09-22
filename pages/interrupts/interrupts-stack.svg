@@ -1,0 +1,87 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <defs>
+    <style>
+      .title { font: 700 20px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #111; }
+      .label { font: 600 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #111; }
+      .text  { font: 400 13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #111; }
+      .muted { font: 400 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #444; }
+      .box   { fill: #fff; stroke: #111; stroke-width: 2; rx: 10; }
+      .bg    { fill: #fafafa; stroke: #ddd; stroke-width: 1.5; rx: 14; }
+      .arrow { stroke: #111; stroke-width: 2.5; fill: none; marker-end: url(#arrowHead); }
+      .thin  { stroke: #111; stroke-width: 1.5; }
+    </style>
+
+    <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#111"></path>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="48" class="title">Nested interrupts: stack “bookmarks” (conceptual)</text>
+  <text x="40" y="74" class="muted">Stack grows downward; each preemption pushes another saved context.</text>
+
+  <!-- Main panel -->
+  <rect x="40" y="98" width="560" height="420" class="bg"></rect>
+
+  <!-- Stack container -->
+  <rect x="110" y="140" width="420" height="320" class="thin" fill="none"></rect>
+  <text x="125" y="132" class="muted">Stack frames (top = older, bottom = newer)</text>
+
+  <!-- Frames (from top to bottom) -->
+  <!-- Older frames -->
+  <rect x="130" y="160" width="380" height="52" class="box"></rect>
+  <text x="150" y="190" class="label">… older stack frames …</text>
+
+  <!-- Main program saved state -->
+  <rect x="130" y="220" width="380" height="62" class="box"></rect>
+  <text x="150" y="246" class="label">State of main program</text>
+  <text x="150" y="266" class="text">(PC, flags, registers, etc.)</text>
+
+  <!-- IRQ1 saved state -->
+  <rect x="130" y="292" width="380" height="62" class="box"></rect>
+  <text x="150" y="318" class="label">State of IRQ1 handler</text>
+  <text x="150" y="338" class="text">(return info + saved regs)</text>
+
+  <!-- IRQ2 saved state -->
+  <rect x="130" y="364" width="380" height="62" class="box"></rect>
+  <text x="150" y="390" class="label">State of IRQ2 handler</text>
+  <text x="150" y="410" class="text">(return info + saved regs)</text>
+
+  <!-- Current handler usage -->
+  <rect x="130" y="436" width="380" height="62" class="box"></rect>
+  <text x="150" y="462" class="label">IRQ3 / NMI handler stack usage</text>
+  <text x="150" y="482" class="text">locals, temps, function calls</text>
+
+  <!-- Address labels -->
+  <text x="78" y="160" class="muted" transform="rotate(-90 78 160)">High addresses</text>
+  <text x="78" y="500" class="muted" transform="rotate(-90 78 500)">Low addresses</text>
+
+  <!-- Growth arrow -->
+  <path d="M545 170 L545 490" class="arrow"></path>
+  <text x="565" y="335" class="muted" transform="rotate(90 565 335)">stack grows downward</text>
+
+  <!-- Right-side callouts -->
+  <text x="630" y="140" class="label">What nesting means</text>
+
+  <circle cx="640" cy="170" r="5" fill="#111"></circle>
+  <text x="655" y="174" class="text">IRQ1 fires → CPU pushes main state</text>
+
+  <circle cx="640" cy="205" r="5" fill="#111"></circle>
+  <text x="655" y="209" class="text">IRQ2 preempts IRQ1 → pushes IRQ1 state</text>
+
+  <circle cx="640" cy="240" r="5" fill="#111"></circle>
+  <text x="655" y="244" class="text">NMI/IRQ3 preempts IRQ2 → pushes IRQ2 state</text>
+
+  <circle cx="640" cy="275" r="5" fill="#111"></circle>
+  <text x="655" y="279" class="text">Return unwinds in reverse order (LIFO)</text>
+
+  <text x="630" y="325" class="label">Practical takeaway</text>
+  <text x="630" y="350" class="text">More nesting ⇒ more stack usage.</text>
+  <text x="630" y="372" class="text">Keep ISRs short and avoid deep call chains.</text>
+
+  <!-- Small brackets pointing to frames -->
+  <path d="M520 251 C585 251, 585 171, 615 171" class="thin" fill="none"></path>
+  <path d="M520 323 C585 323, 585 206, 615 206" class="thin" fill="none"></path>
+  <path d="M520 395 C585 395, 585 241, 615 241" class="thin" fill="none"></path>
+</svg>

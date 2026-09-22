@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1240" viewBox="0 0 980 1240">
+  <defs>
+    <style>
+      .grid { stroke:#111; stroke-width:2; fill:none; }
+      .thin { stroke:#111; stroke-width:1; }
+      .hdr  { font-family: Arial, Helvetica, sans-serif; font-size:18px; font-weight:700; fill:#111; }
+      .lbl  { font-family: Arial, Helvetica, sans-serif; font-size:14px; fill:#111; }
+      .cell { font-family: Arial, Helvetica, sans-serif; font-size:22px; fill:#111;
+              text-anchor:middle; dominant-baseline:middle; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size:13px; fill:#333; }
+    </style>
+  </defs>
+
+  <!-- Header -->
+  <text class="hdr" x="30" y="32">Karnaugh-Maps (3 Variablen) für Decoder-Ausgänge D₀…D₇ (aus deiner Tabelle)</text>
+  <text class="note" x="30" y="54">
+    3-Variablen-K-Map: Zeilen A₂ = 0/1; Spalten A₁A₀ im Gray-Code 00,01,11,10. "x" → X (Don’t Care).
+  </text>
+
+  <!-- ======= Block template constants (implicit) =======
+       Each map:
+       origin (x0,y0), grid at (x0+110, y0+70), cellW=80, cellH=60
+       gridW=320, gridH=120
+       col centers: gx+40,120,200,280 ; row centers: gy+30,90
+  -->
+
+  <!-- ===================== D0 ===================== -->
+  <rect x="150" y="240" width="300" height="60" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <rect x="300" y="180" width="150" height="120" rx="15" ry="15" style="fill:lightblue;stroke:none;stroke-width:1px;"/>
+  <rect x="220" y="180" width="150" height="120" rx="15" ry="15" style="fill:salmon;stroke:none;stroke-width:1px;"/>
+  <text class="hdr" x="30" y="110">D₀</text>
+  <text class="lbl" x="70" y="160">A₂</text>
+  <text class="lbl" x="220" y="160">A₁A₀</text>
+
+  <text class="lbl" x="260" y="160">00</text>
+  <text class="lbl" x="340" y="160">01</text>
+  <text class="lbl" x="420" y="160">11</text>
+  <text class="lbl" x="500" y="160">10</text>
+
+  <text class="lbl" x="120" y="220">0</text>
+  <text class="lbl" x="120" y="280">1</text>
+
+  <rect class="grid" x="140" y="180" width="320" height="120"/>
+  <line class="thin" x1="220" y1="180" x2="220" y2="300"/>
+  <line class="thin" x1="300" y1="180" x2="300" y2="300"/>
+  <line class="thin" x1="380" y1="180" x2="380" y2="300"/>
+  <line class="thin" x1="140" y1="240" x2="460" y2="240"/>
+
+  <!-- D0 values: row A2=0 [m0,m1,m3,m2]=[0,1,X,X]; row A2=1 [m4,m5,m7,m6]=[X,X,X,X] -->
+  <text class="cell" x="180" y="210">0</text>
+  <text class="cell" x="260" y="210">1</text>
+  <text class="cell" x="340" y="210">X</text>
+  <text class="cell" x="420" y="210">X</text>
+
+  <text class="cell" x="180" y="270">X</text>
+  <text class="cell" x="260" y="270">X</text>
+  <text class="cell" x="340" y="270">X</text>
+  <text class="cell" x="420" y="270">X</text>
+
+
+  <!-- ===================== D1 ===================== -->
+  <rect x="640" y="240" width="300" height="60" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <rect x="800" y="180" width="150" height="120" rx="15" ry="15" style="fill:lightblue;stroke:none;stroke-width:1px;"/>
+  <text class="hdr" x="520" y="110">D₁</text>
+  <text class="lbl" x="710" y="160">A₁A₀</text>
+
+  <text class="lbl" x="750" y="160">00</text>
+  <text class="lbl" x="830" y="160">01</text>
+  <text class="lbl" x="910" y="160">11</text>
+  <text class="lbl" x="990" y="160">10</text>
+
+  <text class="lbl" x="610" y="220">0</text>
+  <text class="lbl" x="610" y="280">1</text>
+
+  <rect class="grid" x="630" y="180" width="320" height="120"/>
+  <line class="thin" x1="710" y1="180" x2="710" y2="300"/>
+  <line class="thin" x1="790" y1="180" x2="790" y2="300"/>
+  <line class="thin" x1="870" y1="180" x2="870" y2="300"/>
+  <line class="thin" x1="630" y1="240" x2="950" y2="240"/>
+
+  <!-- D1 values: row A2=0 [m0,m1,m3,m2]=[0,0,X,1]; row A2=1 [X,X,X,X] -->
+  <text class="cell" x="670" y="210">0</text>
+  <text class="cell" x="750" y="210">0</text>
+  <text class="cell" x="830" y="210">X</text>
+  <text class="cell" x="910" y="210">1</text>
+
+  <text class="cell" x="670" y="270">X</text>
+  <text class="cell" x="750" y="270">X</text>
+  <text class="cell" x="830" y="270">X</text>
+  <text class="cell" x="910" y="270">X</text>
+
+
+  <!-- ===================== D2 ===================== -->
+  <rect x="150" y="540" width="300" height="60" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <rect x="300" y="480" width="75" height="120" rx="15" ry="15" style="fill:salmon;stroke:none;stroke-width:1px;"/>
+  <text class="hdr" x="30" y="410">D₂</text>
+  <text class="lbl" x="220" y="460">A₁A₀</text>
+
+  <text class="lbl" x="260" y="460">00</text>
+  <text class="lbl" x="340" y="460">01</text>
+  <text class="lbl" x="420" y="460">11</text>
+  <text class="lbl" x="500" y="460">10</text>
+
+  <text class="lbl" x="120" y="520">0</text>
+  <text class="lbl" x="120" y="580">1</text>
+
+  <rect class="grid" x="140" y="480" width="320" height="120"/>
+  <line class="thin" x1="220" y1="480" x2="220" y2="600"/>
+  <line class="thin" x1="300" y1="480" x2="300" y2="600"/>
+  <line class="thin" x1="380" y1="480" x2="380" y2="600"/>
+  <line class="thin" x1="140" y1="540" x2="460" y2="540"/>
+
+  <!-- D2 values: row A2=0 [0,0,1,0]; row A2=1 [X,X,X,X] -->
+  <text class="cell" x="180" y="510">0</text>
+  <text class="cell" x="260" y="510">0</text>
+  <text class="cell" x="340" y="510">1</text>
+  <text class="cell" x="420" y="510">0</text>
+
+  <text class="cell" x="180" y="570">X</text>
+  <text class="cell" x="260" y="570">X</text>
+  <text class="cell" x="340" y="570">X</text>
+  <text class="cell" x="420" y="570">X</text>
+
+
+  <!-- ===================== D3 ===================== -->
+  <rect x="640" y="540" width="300" height="60" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <text class="hdr" x="520" y="410">D₃</text>
+  <text class="lbl" x="710" y="460">A₁A₀</text>
+
+  <text class="lbl" x="750" y="460">00</text>
+  <text class="lbl" x="830" y="460">01</text>
+  <text class="lbl" x="910" y="460">11</text>
+  <text class="lbl" x="990" y="460">10</text>
+
+  <text class="lbl" x="610" y="520">0</text>
+  <text class="lbl" x="610" y="580">1</text>
+
+  <rect class="grid" x="630" y="480" width="320" height="120"/>
+  <line class="thin" x1="710" y1="480" x2="710" y2="600"/>
+  <line class="thin" x1="790" y1="480" x2="790" y2="600"/>
+  <line class="thin" x1="870" y1="480" x2="870" y2="600"/>
+  <line class="thin" x1="630" y1="540" x2="950" y2="540"/>
+
+  <!-- D3 values: row A2=0 [0,0,0,0]; row A2=1 [1,X,X,X] -->
+  <text class="cell" x="670" y="510">0</text>
+  <text class="cell" x="750" y="510">0</text>
+  <text class="cell" x="830" y="510">0</text>
+  <text class="cell" x="910" y="510">0</text>
+
+  <text class="cell" x="670" y="570">1</text>
+  <text class="cell" x="750" y="570">X</text>
+  <text class="cell" x="830" y="570">X</text>
+  <text class="cell" x="910" y="570">X</text>
+
+
+  <!-- ===================== D4 ===================== -->
+  <rect x="230" y="835" width="140" height="60" rx="15" ry="15" style="fill:none;stroke:red;stroke-width:1px;"/>
+  <text class="hdr" x="30" y="710">D₄</text>
+  <text class="lbl" x="220" y="760">A₁A₀</text>
+
+  <text class="lbl" x="260" y="760">00</text>
+  <text class="lbl" x="340" y="760">01</text>
+  <text class="lbl" x="420" y="760">11</text>
+  <text class="lbl" x="500" y="760">10</text>
+
+  <text class="lbl" x="120" y="820">0</text>
+  <text class="lbl" x="120" y="880">1</text>
+
+  <rect class="grid" x="140" y="780" width="320" height="120"/>
+  <line class="thin" x1="220" y1="780" x2="220" y2="900"/>
+  <line class="thin" x1="300" y1="780" x2="300" y2="900"/>
+  <line class="thin" x1="380" y1="780" x2="380" y2="900"/>
+  <line class="thin" x1="140" y1="840" x2="460" y2="840"/>
+
+  <!-- D4 values: row A2=0 [0,0,0,0]; row A2=1 [0,1,X,X] -->
+  <text class="cell" x="180" y="810">0</text>
+  <text class="cell" x="260" y="810">0</text>
+  <text class="cell" x="340" y="810">0</text>
+  <text class="cell" x="420" y="810">0</text>
+
+  <text class="cell" x="180" y="870">0</text>
+  <text class="cell" x="260" y="870">1</text>
+  <text class="cell" x="340" y="870">X</text>
+  <text class="cell" x="420" y="870">X</text>
+
+
+  <!-- ===================== D5 ===================== -->
+  <rect x="790" y="835" width="140" height="60" rx="15" ry="15" style="fill:none;stroke:red;stroke-width:1px;"/>
+  <text class="hdr" x="520" y="710">D₅</text>
+  <text class="lbl" x="710" y="760">A₁A₀</text>
+
+  <text class="lbl" x="750" y="760">00</text>
+  <text class="lbl" x="830" y="760">01</text>
+  <text class="lbl" x="910" y="760">11</text>
+  <text class="lbl" x="990" y="760">10</text>
+
+  <text class="lbl" x="610" y="820">0</text>
+  <text class="lbl" x="610" y="880">1</text>
+
+  <rect class="grid" x="630" y="780" width="320" height="120"/>
+  <line class="thin" x1="710" y1="780" x2="710" y2="900"/>
+  <line class="thin" x1="790" y1="780" x2="790" y2="900"/>
+  <line class="thin" x1="870" y1="780" x2="870" y2="900"/>
+  <line class="thin" x1="630" y1="840" x2="950" y2="840"/>
+
+  <!-- D5 values: row A2=0 [0,0,0,0]; row A2=1 [0,0,X,1] -->
+  <text class="cell" x="670" y="810">0</text>
+  <text class="cell" x="750" y="810">0</text>
+  <text class="cell" x="830" y="810">0</text>
+  <text class="cell" x="910" y="810">0</text>
+
+  <text class="cell" x="670" y="870">0</text>
+  <text class="cell" x="750" y="870">0</text>
+  <text class="cell" x="830" y="870">X</text>
+  <text class="cell" x="910" y="870">1</text>
+
+
+  <!-- ===================== D6 ===================== -->
+  <rect x="300" y="1140" width="70" height="60" rx="15" ry="15" style="fill:none;stroke:red;stroke-width:1px;"/>
+  <text class="hdr" x="30" y="1010">D₆</text>
+  <text class="lbl" x="220" y="1060">A₁A₀</text>
+
+  <text class="lbl" x="260" y="1060">00</text>
+  <text class="lbl" x="340" y="1060">01</text>
+  <text class="lbl" x="420" y="1060">11</text>
+  <text class="lbl" x="500" y="1060">10</text>
+
+  <text class="lbl" x="120" y="1120">0</text>
+  <text class="lbl" x="120" y="1180">1</text>
+
+  <rect class="grid" x="140" y="1080" width="320" height="120"/>
+  <line class="thin" x1="220" y1="1080" x2="220" y2="1200"/>
+  <line class="thin" x1="300" y1="1080" x2="300" y2="1200"/>
+  <line class="thin" x1="380" y1="1080" x2="380" y2="1200"/>
+  <line class="thin" x1="140" y1="1140" x2="460" y2="1140"/>
+
+  <!-- D6 values: row A2=0 [0,0,0,0]; row A2=1 [0,0,1,0] (m7=1 at col 11) -->
+  <text class="cell" x="180" y="1110">0</text>
+  <text class="cell" x="260" y="1110">0</text>
+  <text class="cell" x="340" y="1110">0</text>
+  <text class="cell" x="420" y="1110">0</text>
+
+  <text class="cell" x="180" y="1170">0</text>
+  <text class="cell" x="260" y="1170">0</text>
+  <text class="cell" x="340" y="1170">1</text>
+  <text class="cell" x="420" y="1170">0</text>
+
+
+  <!-- ===================== D7 ===================== -->
+  <text class="hdr" x="520" y="1010">D₇</text>
+  <text class="lbl" x="710" y="1060">A₁A₀</text>
+
+  <text class="lbl" x="750" y="1060">00</text>
+  <text class="lbl" x="830" y="1060">01</text>
+  <text class="lbl" x="910" y="1060">11</text>
+  <text class="lbl" x="990" y="1060">10</text>
+
+  <text class="lbl" x="610" y="1120">0</text>
+  <text class="lbl" x="610" y="1180">1</text>
+
+  <rect class="grid" x="630" y="1080" width="320" height="120"/>
+  <line class="thin" x1="710" y1="1080" x2="710" y2="1200"/>
+  <line class="thin" x1="790" y1="1080" x2="790" y2="1200"/>
+  <line class="thin" x1="870" y1="1080" x2="870" y2="1200"/>
+  <line class="thin" x1="630" y1="1140" x2="950" y2="1140"/>
+
+  <!-- D7 values: from your table D7 is always 0 -->
+  <text class="cell" x="670" y="1110">0</text>
+  <text class="cell" x="750" y="1110">0</text>
+  <text class="cell" x="830" y="1110">0</text>
+  <text class="cell" x="910" y="1110">0</text>
+
+  <text class="cell" x="670" y="1170">0</text>
+  <text class="cell" x="750" y="1170">0</text>
+  <text class="cell" x="830" y="1170">0</text>
+  <text class="cell" x="910" y="1170">0</text>
+
+</svg>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web-Blog on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/posts/web/</link><description>Recent content in Web-Blog on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/posts/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Move Hugo Web-presence to GH-Pages</title><link>http://wehrend.github.io/de/posts/web/30_hugo_move_to_gh_pages/</link><pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/30_hugo_move_to_gh_pages/</guid><description>&lt;div class="paragraph">
+&lt;p>Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.
+Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong>&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title><link>http://wehrend.github.io/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/26_get_the_nandlab_go_board_ready_on_debian/</guid><description>&lt;div class="paragraph">
+&lt;p>Hallo zusammen,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>endlich ist diese Woche das &lt;a href="https://nandland.com/the-go-board/">nandland go board&lt;/a> angekommen, das ich vor einem Monat
+beim Entwickler Russell Merrick bestellt hatte. Es hat aufgrund einiger Versandprobleme einen Umweg genommen, aber darum
+geht es hier nicht. Ich musste mich mit einigen Hindernissen herumschlagen, um es auf meinem Debian Bullseye zum Laufen zu bringen.&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_serielle_verbindung_über_usb">Serielle Verbindung über USB&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Zunächst einmal muss man, um
+sich über FTDI USB mit der Platine zu verbinden, wie es bei Debian Bullseye vorgeschlagen wird, zuerst seinen Benutzer
+zur Gruppe „dialout“ hinzufügen. Dies geschieht wie folgt:&lt;/p>
+&lt;/div></description></item><item><title>Ein Lieblingshobby von mir: Lustiges Taschenbuch Nr. 162</title><link>http://wehrend.github.io/de/posts/web/ltb162/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/ltb162/</guid><description>&lt;div class="paragraph">
+&lt;p>Es ist an der Zeit, einen weiteren meiner Favoriten mit Ihnen zu teilen, und das ist Entenhausen und das Entenuniversum.
+Ich nehme das LTB (Lustiges Taschenbuch) Nr. 162 als Beispiel aus der goldenen Ära der Comic-Serie „Lustiges
+Taschenbuch“&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./title.jpg" alt="Titel"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./content.jpg" alt="Inhaltsverzeichnis"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_der_goldene_totempfahl_the_golden_totem_pole">Der goldene Totempfahl (The golden totem pole)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In der Geschichte „Der goldene Totempfahl“ (englisch: „The golden totem pole“) dreht Onkel Dagobert einen Film über sein Leben.
+Die Geschichte spielt in der Grafschaft Dawson, wo sie sich nach einem Sturm verirren. Sie treffen den Indianer „großer Elch“
+„Big Moose“ und suchen nach den Goldnuggets, die Big Moose für Onkel Dagobert in der Vergangenheit aufbewahrt hat.
+Der Film endet damit, dass Big Moose als Filmstar endet.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: DE10-nano board: Hallo Welt</title><link>http://wehrend.github.io/de/posts/web/24_fpga_beginners_de10_board/</link><pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/24_fpga_beginners_de10_board/</guid><description>&lt;div class="paragraph">
+&lt;p>Heute möchte ich Ihnen zeigen, wie Sie eine Verbindung zum DE10-nano-Board herstellen, dem Nachfolger des DE0-nano-Boards.
+Es ist etwas größer, kostet fast 300 Dollar, unterstützt aber auch sofort einsatzbereites Linux. Auf der SD-Karte ist
+&lt;a href="https://web.archive.org/web/20200815133137/http://angstrom-distribution.org/">Angstrom Linux&lt;/a> installiert.
+Um das Board über die UART-Schnittstelle anzuschließen, schalten Sie das Board mit dem Steckernetzteil ein, legen Sie
+die SD-Karte ein, um das Linux-Booten zu starten, und schließen Sie schließlich das Micro-USB-Kabel (wie unten gezeigt)
+an den PC an.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starte mit Quartus und Verilog</title><link>http://wehrend.github.io/de/posts/web/23_fpga_beginners_start_with_verilog/</link><pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/23_fpga_beginners_start_with_verilog/</guid><description>&lt;div class="paragraph">
+&lt;p>Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und haben die Voraussetzungen aus
+&lt;a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">introduction 0&lt;/a> sowie
+&lt;a href="https://wehrend.uber.space/posts/web/23_fpga_beginners_1/">simple logic circuit&lt;/a> über die BDF-Dateien von Quartus
+erfüllt. Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen, indem wir ein weiteres Hardware-Äquivalent des in
+der Softwarewelt verwendeten Hallo-Welt-Programms erstellen – wir programmieren einen Binärzähler, der durch die
+LED-Reihe angezeigt wird, die auf unserer DE0-nano-Platine verfügbar ist. Dazu verwenden wir sowohl die Blockdiagrammdateien
+(bdf) von Quartus als auch die beliebte HDL (Hardware Description Language) Verilog.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Starte mit Quartus</title><link>http://wehrend.github.io/de/posts/web/22_fpga_beginners_1/</link><pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/22_fpga_beginners_1/</guid><description>&lt;div class="paragraph">
+&lt;p>Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und die Voraussetzungen aus dem
+&lt;a href="https://wehrend.uber.space/posts/web/21_fpga_beginners/">letzten Blogbeitrag&lt;/a> erfüllt.
+Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen lernen, indem Sie ein Hardware-Äquivalent des in der Software-
+welt verwendeten Hello-World-Programms erstellen – wir nennen es AndGate , weil es einfach das ist – ein UND-Gatter,
+das über zwei Taster als Eingang und eine Status-LED als Ausgang gespeist wird. Auf diese Weise verwenden wir die
+Blockdiagrammdateien (bdf) von Quartus.&lt;/p>
+&lt;/div></description></item><item><title>FPGA 101: Beginne mit HDLs</title><link>http://wehrend.github.io/de/posts/web/21_fpga_beginners_0/</link><pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/21_fpga_beginners_0/</guid><description>&lt;div class="paragraph">
+&lt;p>Heute möchte ich eine Blogpost-Serie über Hardware-Programmierung starten. Wir beginnen mit einer Einführung
+in die Hardware-Programmierung mit dem FPGA-Board
+&lt;a href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&amp;amp;No=593">DE0 Nano&lt;/a>
+von der ehemaligen Firma Altera, jetzt Intel. Unten sehen Sie ein Bild des kleinen Boards. Es scheint, dass man dieses
+Board noch bestellen kann, aber ich habe es nicht getestet.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./de0nano.jpg" alt="DE-0 nano"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wir zeigen, wie die Umgebung eingerichtet wird. Im ersten Schritt zeigen wir, wie man Quartus auf einer Debian-Distribution
+herunterlädt und installiert und den Programmierer konfiguriert. Im zweiten Schritt installieren wir die Simulationssoftware Modelsim.&lt;/p>
+&lt;/div></description></item><item><title>Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)</title><link>http://wehrend.github.io/de/posts/web/19_rare_earth_elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/19_rare_earth_elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_einführung">Einführung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden, die oft von Geheimnissen umwoben sind, spielen in unserer modernen Welt eine entscheidende Rolle. Von Smartphones
+über Elektrofahrzeuge und Technologien für erneuerbare Energien bis hin zu Verteidigungssystemen sind diese Elemente die unbesungenen
+Helden, die unser tägliches Leben nachhaltiger, effizienter und vernetzter machen. In diesem Artikel tauchen wir
+in die faszinierende Welt der Seltenen Erden ein, wobei der Schwerpunkt auf dem vielseitigen Element Neodym liegt.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_seltene_erden_ein_überblick">Seltene Erden: Ein Überblick&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden (SE) sind eine Gruppe von siebzehn chemischen Elementen, die zusammen mit Scandium und Yttrium die Lanthanidenreihe des Periodensystems bilden.
+ Trotz ihres Namens sind sie nicht unbedingt selten, aber sie kommen typischerweise in
+geringen Konzentrationen vor, was ihre Gewinnung und Reinigung schwierig und kostspielig macht.&lt;/p>
+&lt;/div></description></item><item><title>Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)</title><link>http://wehrend.github.io/de/posts/web/20_reducing_rare_earth_elements/</link><pubDate>Fri, 03 Nov 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/20_reducing_rare_earth_elements/</guid><description>&lt;div class="sect2">
+&lt;h3 id="_einleitung">Einleitung&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Seltene Erden sind seit langem das Rückgrat von High-Tech-Magneten, wobei Metalle wie Neodym und Dysprosium
+in verschiedenen Branchen eine entscheidende Rolle spielen. Die Knappheit und die steigende Nachfrage nach diesen wertvollen Ressourcen haben jedoch
+Forscher dazu veranlasst, nach alternativen Lösungen zu suchen. Um unsere Abhängigkeit von Seltenerdmagneten zu verringern, erforschen Wissenschaftler
+innovative Materialien und Legierungskombinationen.
+Zu den vielversprechenden Kandidaten gehört Cer, ein reichlich vorhandenes und leicht zugängliches Seltenerdelement, das das Potenzial hat,
+Neodym-Magnete zu ersetzen oder zu ergänzen. In diesem Artikel befassen wir uns mit der bahnbrechenden Forschung von Thomas Lograsso und seinem
+Team am Ames Laboratory des US-Energieministeriums.&lt;/p>
+&lt;/div></description></item><item><title>Operationsverstärker Einführung (de)</title><link>http://wehrend.github.io/de/posts/web/18_op-amps_introduction/</link><pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/18_op-amps_introduction/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_op_amp">OP-Amp&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte ich über Operationsverstärker sprechen. Diese wunderbaren, aber geheimnisvollen Komponenten tauchen sehr häufig
+in Schaltplänen von analogen oder analog/digitalen Hybridschaltungen auf. Wir wollen diese Komponenten entmystifizieren.&lt;/p>
+&lt;/div>
+&lt;div class="imageblock">
+&lt;div class="content">
+&lt;img src="./op-amp.svg" alt="op-amp" width="33%"/>
+&lt;/div>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Es gibt zwei grundlegende Faustregeln für den Umgang mit idealen Operationsverstärkerschaltungen. (Reale Operationsverstärkerschaltungen sind etwas komplizierter, aber darauf kommen wir später zu sprechen).&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>Die erste Faustregel besagt, dass Vout im Wesentlichen die Differenz der Spannungswerte an den beiden Eingängen ist, multipliziert mit einem beliebigen, aber hohen Verstärkungsfaktor A.
+\[ V_{out} = A (V_{in+} - V_{in-}) = \] kurz gesagt, dies führt zu&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Analoge Rechner Grundlagen (de)</title><link>http://wehrend.github.io/de/posts/web/17_analog_computers_101/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/17_analog_computers_101/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_analogrechner">Analogrechner&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Heute möchte ich über Analogrechner sprechen. In der heutigen Zeit führen analoge Computer ein Schattendasein,
+verglichen mit ihren digitalen Gegenstücken. Aber sie sind wunderbare kleine Maschinen. Und diese Maschinen meine ich
+wortlich, denn es gibt analoge mechanische Computer, die Modelle aus der Welt sind und verwendet werden zur
+&lt;a href="https://en.wikipedia.org/wiki/Tide-predicting_machine">Berechnung und Vorhersage von Gezeiten&lt;/a> in bestimmten Gebieten der Welt.
+Auch das Gehirn ist ein riesiger analoger Computer mit einem vergleichsweise sehr kleinen
+Energiebudget. &lt;a href="https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer">Es braucht nur 12 Watt.&lt;/a>
+12 Watt, das ist nicht einmal ein Viertel des Stromverbrauchs eines Laptops von 65 Watt.
+Und man kann mit dem Gehirn sehr viel anstellen, aber zurück zum Thema.
+Ich möchte hauptsächlich über analoge elektronische Computer sprechen, die während des Zweiten Weltkriegs zur Berechnung von
+&lt;a href="https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf">ballistischen Kurven&lt;/a> verwendet wurden.
+Analogrechner können also summieren, multiplizieren, dividieren, integrieren und differenzieren wie ihre digitalen Gegenstücke.&lt;/p>
+&lt;/div></description></item><item><title>Zwischenspeicher und Zwischenspeichern (Caching)</title><link>http://wehrend.github.io/de/posts/web/12_caches_and_caching/</link><pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/12_caches_and_caching/</guid><description>&lt;div class="paragraph">
+&lt;p>Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr
+wichtigen Mechanismus nicht bemerkt, der dem Browser zugrunde liegt und im Hintergrund arbeitet. Caching.
+Caches werden überall eingesetzt, um Zugriffszeiten und damit die
+Gesamtleistung (einer Website) zu optimieren und zu verbessern. Caching im Browser bedeutet beispielsweise, dass
+im Idealfall nur die Teile der Website, die geändert wurden, aus dem Internet geladen werden. Alles andere
+wurde bereits zuvor geladen und hat sich nicht geändert, sodass kein erneutes Laden erforderlich ist. Nicht mehr aktuelle Teile
+werden ungültig (auch als Cache-Ungültigmachung bezeichnet) und erneut von der Quelle geladen.
+Es gibt zwei Arten von sehr unterschiedlichen Caches im Computer.&lt;/p>
+&lt;/div></description></item><item><title>Topics to write about - Wunschliste</title><link>http://wehrend.github.io/de/posts/web/10_wishlist/</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/10_wishlist/</guid><description>&lt;div class="paragraph">
+&lt;p>Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>Caches&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Interrupts&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Out-of-Order execution&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>RAW-, WAR- und WAW-Konflikte&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Filter (analog und digital)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Analogrechner&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>neuronale Netze&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>das Mikrobiom&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Transistoren und VLSI&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div></description></item><item><title>Religion vs. Spiritualität – warum ich Letztere bevorzuge</title><link>http://wehrend.github.io/de/posts/web/08_religion_spirituality/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/08_religion_spirituality/</guid><description>&lt;div class="paragraph">
+&lt;p>Was ich in den letzten Jahren und Jahrzehnten über Religionen und Spiritualität gelernt habe, lässt sich auf eine
+einfache Aussage reduzieren:
+Bei Religion geht es um richtig und falsch und alte, überholte Dogmen, während Spiritualität
+einfach sagt: „Es ist, wie es ist“. Für Spiritualität gibt es kein richtig oder falsch, sondern nur den einen Moment in
+der Gegenwart, in dem wir verweilen. Ich finde diese Sichtweise ziemlich erstaunlich. Meiner Erfahrung nach führt sie zu
+einem wacheren Zustand.&lt;/p>
+&lt;/div></description></item><item><title>Warum gibt es überall serielle Schnittstellen – statt paralleler?</title><link>http://wehrend.github.io/de/posts/web/07_serial_interfaces/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/07_serial_interfaces/</guid><description>&lt;div class="paragraph">
+&lt;p>USB, SPI, I²C, Sata – all diese Schnittstellen haben gemeinsam, dass es sich um serielle Schnittstellen handelt.
+Serielle Schnittstellen sind heutzutage weit verbreitet. Aber warum ist das so, insbesondere bei der Hochgeschwindigkeits-
+kommunikation? Es klingt einfach unlogisch: Parallele Drähte
+können theoretisch mehr Bits pro Zeit senden als ein einzelner Draht.
+Die Antwort auf diese Frage ist komplex und vielschichtig. Es gibt mehrere verschiedene Gründe, warum
+serielle Schnittstellen gegenüber parallelen Schnittstellen bevorzugt werden. Beginnen wir mit den offensichtlichen Gründen:
+Die Verdrahtung von Bussen mit einer Breite von 8, 16, 32 oder sogar 64 Bit auf Leiterplatten wird immer komplexer
+. Das zweite damit zusammenhängende Problem besteht darin, dass die Signalflanke gleichzeitig
+für alle parallelen Leitungen (Drähte) übertragen werden muss, was zu einer komplexeren Verlegung führt, da die Kanten
+in der Streifenleitung ausgeglichen werden müssen.
+Einfach ausgedrückt ist die zusätzliche Logik, die in Chips implementiert ist, um das serielle Signal wieder in ein
+paralleles umzuwandeln (Deserializer) und umgekehrt (Serializer), viel billiger als die Kosten für komplexe Verlegungen.&lt;/p>
+&lt;/div></description></item><item><title>Odoo hacks: Entferne Sperr-Button aus Odoo v12</title><link>http://wehrend.github.io/de/posts/web/04_odoo_hacks/</link><pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/04_odoo_hacks/</guid><description>&lt;div class="paragraph">
+&lt;p>Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.
+In Odoo 12 gibt es neben der Schaltfläche „Bearbeiten/Speichern“ eine Schaltfläche zum Sperren, und Sie müssen auf
+beide klicken, um (1) die Seite zu entsperren und (2) sie bearbeitbar zu machen. Dies sollte in einem Schritt erfolgen,
+ wodurch der Sperrmechanismus, der in den Lieferaufträgen (Klasse StockPicking)
+und Fertigungsaufträge (Klasse MrpProduction) verwendet wird. Die Lösung erfordert eine XML- und eine JavaScript-Datei
+sowie einen dedizierten Web-Controller. Die Lösung wird unten vorgestellt.&lt;/p>
+&lt;/div></description></item><item><title>Separiere Blog und Inhalt (de)</title><link>http://wehrend.github.io/de/posts/web/03_separate_form_and_content/</link><pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/03_separate_form_and_content/</guid><description>&lt;div class="paragraph">
+&lt;p>Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da
+ein Blog und sein Inhalt selbst unterschiedliche Einheiten sind. Ich wollte sie als solche behandeln,
+was mich zu einer Bereinigung des ursprünglichen Quellcodes für den Blog führte, bei der ich den Inhaltsordner
+in ein anderes Repo namens hugo_content verschob, das frühere Repo nannte ich hugo_blog.
+---&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>In meinem Fall bedeutet dies, dass Sie zuerst das Repo hugo_blog klonen müssen,
+ in das neue Verzeichnis wechseln (cd hugo), seinen Zweig „hugo“ auschecken und dann einen Klon des
+Repos hugo_content erstellen.&lt;/p>
+&lt;/div></description></item><item><title>Umziehen zu Hugo (de)</title><link>http://wehrend.github.io/de/posts/web/02_moving-to-hugo/</link><pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/02_moving-to-hugo/</guid><description>&lt;div class="paragraph">
+&lt;p>Seit einer Woche basiert mein Blog auf dem Static-Site-Generator &lt;a href="https://gohugo.io/">Hugo&lt;/a>.
+Ich wollte schon viel früher zu Hugo wechseln, da es eine große Auswahl an Themes gibt.
+Dies erforderte jedoch den Wechsel von Asciidoc zu &lt;a href="https://asciidoctor.org/">Asciidoctor&lt;/a>,
+und ich hatte einige Probleme mit der Integration von Asciidoctor in meinen bestehenden Arbeitsablauf.
+Da der Ansatz, die Latex-Gleichungen in den Asciidoc-Dokumenten darzustellen,
+nicht mehr funktionierte, entschied ich mich, auf die clientbasierte Darstellung von Formeln umzusteigen,
+wie sie in &lt;a href="https://gohugo.io/Katex">KaTex&lt;/a> und &lt;a href="https://www.mathjax.org/">Mathjax&lt;/a> verwendet wird.&lt;/p>
+&lt;/div></description></item><item><title>Über Mathematik schreiben mit Asciidoc (de)</title><link>http://wehrend.github.io/de/posts/web/01_writing-about-math-with-asciidoc/</link><pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/01_writing-about-math-with-asciidoc/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Beim Verfassen eines Blog-Beitrags, der Teil einer Reihe von Beiträgen ist, die in Zukunft veröffentlicht werden sollen,
+stellte ich fest, dass mir in Nikola einige Tools fehlten. Beim Hinzufügen mathematischer Formeln
+wurde mir klar, dass es keine Standardmethode gibt, um Bilder aus diesen mathematischen Formeln zu rendern
+und sie als Bild-Tags in den HTML-Code einzufügen. Stattdessen werden mathematische Formeln über JS verarbeitet, das ich
+auf meiner Website auf ein absolutes Minimum zu reduzieren versuche.
+Also begann ich, ein eher „quick-and-dirty“-Plugin zu implementieren, um genau diese Umwandlung durchzuführen, und zwar mit
+latex und dvipng oder dvisvgm.
+Dann stieß ich auf &lt;a href="https://erikwinter.nl/articles/2020/why-i-built-my-own-shitty-static-site-generator/">diesen Blogbeitrag&lt;/a>
+, wo ich über &lt;a href="https://asciidoc.org/">asciidoc&lt;/a>, geschrieben in Python, und seinen Nachfolger &lt;a href="https://asciidoctor.org/">asciidoctor&lt;/a>, geschrieben
+in Ruby, las, die verschiedene Anzeigeformate unterstützen. Ideal für den Inhalt, den ich im Sinn hatte. Also installierte ich das Nikola-Plugin asciidoc
+(das hauptsächlich ein Wrapper für die asciidoc-Binärdatei ist, die als Unterprozess aufgerufen wird) über&lt;/p>
+&lt;/div></description></item><item><title>Ein statisches Blog aufsetzen mit Nikola (de)</title><link>http://wehrend.github.io/de/posts/web/00_setting_up_nikola/</link><pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/00_setting_up_nikola/</guid><description>&lt;div class="paragraph">
+&lt;p>Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Um die Sache etwas interessanter und gleichzeitig einfacher zu machen, werden wir Nikola in einem Docker-Container verwenden.
+Daher benötige ich hier ein fast grundlegendes Verständnis für Docker.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Erstellen Sie zunächst ein Verzeichnis auf unserem Host-System, in dem die Dateien gespeichert werden sollen, z. B. „blog“ in Ihrem Home-Verzeichnis.&lt;/p>
+&lt;/div></description></item><item><title/><link>http://wehrend.github.io/de/posts/web/27_compiling_kicad_on_debian_bullseye/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/27_compiling_kicad_on_debian_bullseye/</guid><description/></item></channel></rss>

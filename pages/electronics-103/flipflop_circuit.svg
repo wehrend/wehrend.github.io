@@ -1,0 +1,26 @@
+<svg width="60.00" height="50.00" 
+     viewBox="0.0 0.0 60.0 50.0" 
+     viewPort="0 0 60px 50px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="nand">
+        <line x1="0" y1="8" x2="5" y2="8" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="0" y1="16" x2="5" y2="16" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <rect x="5" y="5" width="10" height="12" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <text x="8" y="13" font-size="6">&amp;</text>
+        <circle cx="16" cy="11" r="1" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="17" y1="11" x2="26" y2="11" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    </symbol>
+    <use href="#nand" x="20" y="10"/>
+    <use href="#nand" x="20" y="30"/>
+    <polyline points="42,21 42,28 20,34 20,38" style="stroke:black;stroke-width:0.5px;stroke-linecap:round;fill:none;"/>
+    <polyline points="42,41 42,34 20,28 20,26" style="stroke:black;stroke-width:0.5px;stroke-linecap:round;fill:none;"/>
+    <circle cx="42" cy="21" r="0.5" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <circle cx="42" cy="41" r="0.5" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <text x="14" y="20" text-decoration="overline" font-size="6">S</text>
+    <text x="14" y="48" text-decoration="overline" font-size="6">R</text>
+    <text x="48" y="23" font-size="6">Q</text>
+    <text x="48" y="43" text-decoration="overline" font-size="6">Q</text>
+</svg>

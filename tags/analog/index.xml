@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Analog on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/analog/</link><description>Recent content in Analog on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 14 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/analog/index.xml" rel="self" type="application/rss+xml"/><item><title>Op-Amps introduction</title><link>http://wehrend.github.io/posts/web/18-op-amps-introduction/</link><pubDate>Sat, 14 Oct 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/18-op-amps-introduction/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_op_amp">OP-Amp&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Today I want to speak about op-amps. These wonderful, but mysterious components, we have heavely often appearing
+in circuit schematica of analog or analog / digital hybrid circuits. We want to demistify these components.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./op-amp.svg" alt="op-amp" width="400px"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>There are two basic thumb rules when handling ideal op-amp circuit. (Real-world op-amp circuits are a bit more complicated, but we will discuss this later).&lt;/p>
+&lt;/div>
+&lt;div class="paragraph image">
+&lt;div class="title">1. The first thumb rule is that Vout is essentially the difference of the voltage values at the both inputs, multiplied with an arbitrary but high amplification factor A.&lt;/div></description></item><item><title>Analog Computers 101</title><link>http://wehrend.github.io/posts/web/17-analog-computers-101/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/17-analog-computers-101/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_analog_computers">Analog Computers&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Today I want to speak about analog computers. In todays times analog computers are leading a shadowy existence,
+compared to their digital counterparts. But they are wonderous little machines. And that machines I mean
+wordly because there exists analog mechanical computers that are models from the world and used to
+&lt;a href="https://en.wikipedia.org/wiki/Tide-predicting_machine">compute and predict tides&lt;/a> in certain areas of the world .
+Also the brain is an enourmous analog computer with a comparatively very small
+enery budget. &lt;a href="https://press.princeton.edu/ideas/is-the-human-brain-a-biological-computer">It only takes 12 Watt.&lt;/a>
+12 Watt; that is not even a quarter of the power supply budget of a laptop, which uses 65 Watt.
+And you can do very heavy lifting with the brain, but back to topic.
+I want to talk mainly about analog electronic computers, during the world war two those were used to compute
+&lt;a href="https://web.eecs.utk.edu/~bmaclenn/Classes/494-UC/handouts/LNUC-V.pdf">ballistic curves&lt;/a>.
+So analog computers can sum up, multiply, divide, integrate and differentiate like their digital
+counterparts.&lt;/p>
+&lt;/div></description></item></channel></rss>

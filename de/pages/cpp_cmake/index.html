@@ -1,0 +1,133 @@
+<!doctype html><html lang=de dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Einführung in effiziente Build-Tools für C++-Projekte"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/de/pages/cpp_cmake/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="C++-Einführungskurs (CMake Zwischenspiel)"><meta property="og:description" content="Einführung in effiziente Build-Tools für C++-Projekte"><meta property="og:locale" content="de"><meta property="og:type" content="article"><meta property="article:section" content="pages"><meta property="article:published_time" content="2026-03-05T00:00:00+00:00"><meta property="article:modified_time" content="2026-03-05T00:00:00+00:00"><meta property="article:tag" content="C++"><meta property="article:tag" content="Synth"><meta property="article:tag" content="Cmake"><meta itemprop=name content="C++-Einführungskurs (CMake Zwischenspiel)"><meta itemprop=description content="Einführung in effiziente Build-Tools für C++-Projekte"><meta itemprop=datePublished content="2026-03-05T00:00:00+00:00"><meta itemprop=dateModified content="2026-03-05T00:00:00+00:00"><meta itemprop=wordCount content="500"><meta itemprop=keywords content="C++,Synth,Cmake"><title>C++-Einführungskurs (CMake Zwischenspiel) | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/de/pages/cpp_cmake/><link rel=alternate hreflang=en href=http://wehrend.github.io/pages/cpp_cmake/ title="Introduction into C++ (CMake interlude)"><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/de.search.min.e5099b3e26a7446e957c44103bff5bad0e1c6a5f3074159796104fe7130a8c27.js integrity="sha256-5QmbPianRG6VfEQQO/9brQ4cal8wdBWXlhBP5xMKjCc=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-text"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/de/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Suche aria-label=Suche maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+Deutsch
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/pages/cpp_cmake/ class="flex flex-auto">English</a></li></ul></li></ul><ul><li><a href=/de/sitemap/>Sitemap (DE)</a></li><li><a href=/de/about/>Über</a></li><li><a href=/downloads>Download Archiv</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>C++-Einführungskurs (CMake Zwischenspiel)</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#_einführung_in_effiziente_build_tools_für_c_projekte>Einführung in effiziente Build-Tools für C++-Projekte</a></li></ul></nav></aside></header><article class="markdown book-article"><header class=book-header-icon style=margin-bottom:2rem><h1>C++-Einführungskurs (CMake Zwischenspiel)</h1></header><div class=page-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_einführung_in_effiziente_build_tools_für_c_projekte>Einführung in effiziente Build-Tools für C++-Projekte</h2><div class=sectionbody><div class=paragraph><p>Wir erreichen nun einen <strong>wichtigen Meilenstein</strong>, indem wir von einem <code>Make</code>-basierten Build-Prozess zu einem <code>CMake</code>-basierten Workflow wechseln.</p></div><div class=paragraph><p>Die traditionelle „Rule of Three“ (die in vielen klassischen Open-Source-Projekten zu finden ist) — <code>./configure && make && sudo make install</code>
+— wird nach und nach durch den CMake-Ansatz ersetzt. Dieser moderne Workflow beinhaltet typischerweise das Anlegen eines separaten
+Build-Verzeichnisses, um den Quellbaum sauber zu halten (sogenannte „Out-of-Source Builds“):</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=bash;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir build <span style=color:#f92672>&amp;&amp;</span> cd build
+</span></span><span style=display:flex><span>cmake ..
+</span></span><span style=display:flex><span>cmake --build .</span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><p>Um vom Makefile-basierten Ansatz in unserem cpp-Tutorial zu wechseln, schauen Sie sich bitte den Git-Branch <code>main-with-cmake</code> an, in dem alle
+Makefiles in einen CMake-basierten Ansatz umgewandelt wurden.</p></div><div class=paragraph><p>Beginnen wir einfach mit dem ersten Tutorial, <code>tutorial00</code>, das unsere Limits-Datei als Ausgabe ausgibt:</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=bash;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cmake_minimum_required<span style=color:#f92672>(</span>VERSION 3.10<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 1. Define the project name</span>
+</span></span><span style=display:flex><span>project<span style=color:#f92672>(</span>MyProject<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. Define the executable name and source files</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This replaces: g++ main.cpp -o main</span>
+</span></span><span style=display:flex><span>add_executable<span style=color:#f92672>(</span>main ../main.cpp<span style=color:#f92672>)</span></span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><p>Für dieses minimale Beispiel wäre das Makefile einfacher und kürzer als das CMake-Projekt. Das ändert sich jedoch schnell,
+sobald wir externe Bibliotheken verwenden (also einbinden und linken), wie in unserem Fall SDL:</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=bash;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cmake_minimum_required<span style=color:#f92672>(</span>VERSION 3.10<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>project<span style=color:#f92672>(</span>SynthProject<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Set C++ standard</span>
+</span></span><span style=display:flex><span>set<span style=color:#f92672>(</span>CMAKE_CXX_STANDARD 17<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>set<span style=color:#f92672>(</span>CMAKE_CXX_STANDARD_REQUIRED ON<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 1. Find the SDL2 and SDL2_ttf packages</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This replaces manual -I and -L paths</span>
+</span></span><span style=display:flex><span>find_package<span style=color:#f92672>(</span>SDL2 REQUIRED<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>find_package<span style=color:#f92672>(</span>SDL2_ttf REQUIRED<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. Define the executable and source files</span>
+</span></span><span style=display:flex><span>add_executable<span style=color:#f92672>(</span>synth
+</span></span><span style=display:flex><span>    main.cpp
+</span></span><span style=display:flex><span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 3. Link the libraries</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># On Linux, we don&#39;t need mingw32 or winmm!</span>
+</span></span><span style=display:flex><span>target_link_libraries<span style=color:#f92672>(</span>synth PRIVATE
+</span></span><span style=display:flex><span>    SDL2::SDL2
+</span></span><span style=display:flex><span>    <span style=color:#75715e># SDL2::SDL2main is usually not needed on Linux,</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># but SDL2::SDL2 handles the heavy lifting.</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>)</span></span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><div class="book-hint info"><div class=paragraph><p><strong>Tipp:</strong>
+Sie können die Konfigurations- und Build-Schritte in einer einzigen Zeile kombinieren, um Zeit zu sparen:</p></div><div class=paragraph><p><code>cmake -B build && cmake --build .</code></p></div></div></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=bash;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake ..
+</span></span><span style=display:flex><span>-- The C compiler identification is GNU 12.2.0
+</span></span><span style=display:flex><span>-- The CXX compiler identification is GNU 12.2.0
+</span></span><span style=display:flex><span>-- Detecting C compiler ABI info
+</span></span><span style=display:flex><span>-- Detecting C compiler ABI info - <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>-- Check <span style=color:#66d9ef>for</span> working C compiler: /usr/bin/cc - skipped
+</span></span><span style=display:flex><span>-- Detecting C compile features
+</span></span><span style=display:flex><span>-- Detecting C compile features - <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>-- Detecting CXX compiler ABI info
+</span></span><span style=display:flex><span>-- Detecting CXX compiler ABI info - <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>-- Check <span style=color:#66d9ef>for</span> working CXX compiler: /usr/bin/c++ - skipped
+</span></span><span style=display:flex><span>-- Detecting CXX compile features
+</span></span><span style=display:flex><span>-- Detecting CXX compile features - <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>-- Found PkgConfig: /usr/bin/pkg-config <span style=color:#f92672>(</span>found version <span style=color:#e6db74>&#34;1.8.1&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>-- Checking <span style=color:#66d9ef>for</span> module <span style=color:#e6db74>&#39;sdl2&#39;</span>
+</span></span><span style=display:flex><span>--   Found sdl2, version 2.26.5
+</span></span><span style=display:flex><span>-- Checking <span style=color:#66d9ef>for</span> module <span style=color:#e6db74>&#39;SDL2_ttf&#39;</span>
+</span></span><span style=display:flex><span>--   Found SDL2_ttf, version 2.20.1
+</span></span><span style=display:flex><span>-- Configuring <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>-- Generating <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>-- Build files have been written to: /home/sven/development/cpp-tutorials/tutorial08/build
+</span></span><span style=display:flex><span>sven@kali-yuga:~/development/cpp-tutorials/tutorial08/build$ cmake --build .
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span> 33%<span style=color:#f92672>]</span> Building CXX object CMakeFiles/synth.dir/main.cpp.o
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span> 66%<span style=color:#f92672>]</span> Building CXX object CMakeFiles/synth.dir/Voice.cpp.o
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>100%<span style=color:#f92672>]</span> Linking CXX executable synth
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>100%<span style=color:#f92672>]</span> Built target synth</span></span></code></pre></td></tr></table></div></div></div></div></div></div></div></div><hr style=margin-top:3rem><nav class=book-navigation style="display:flex;justify-content:space-between;padding:1rem 0"><div class=prev><a href=http://wehrend.github.io/de/pages/cpp_06/ style=text-decoration:none>← C++-Einführungskurs (Teil 6)</a></div><div class=next style=text-align:right><a href=http://wehrend.github.io/de/pages/cpp_qt_1/ style=text-decoration:none>C++-Einführungskurs (Qt GUI) →</a></div></nav></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#_einführung_in_effiziente_build_tools_für_c_projekte>Einführung in effiziente Build-Tools für C++-Projekte</a></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

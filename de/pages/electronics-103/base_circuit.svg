@@ -1,0 +1,127 @@
+<svg width="120" height="100" viewBox="0 0 100 100"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Marker für Pfeil -->
+    <defs>
+        <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3"
+                orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L6,3 z" fill="black"/>
+        </marker>
+    </defs>
+
+    <!-- Transistor NPN -->
+    <symbol id="npn">
+        <g transform="translate(0 15.5)">
+            <g id="npn_classic">
+                <polyline points="73,20 80,15 80,05" style="stroke:black;stroke-width:1;fill:none;"/>
+                <!-- Basis -->
+                <line x1="58" y1="25" x2="73" y2="25"
+                      style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+                <line x1="73" y1="18" x2="73" y2="31" style="stroke:black;stroke-width:1;fill:none;"/>
+                <!-- Emitter -->
+                <polyline points="73,28 80,35 80,42" style="stroke:black;stroke-width:1;fill:none;"/>
+                <!-- Pfeil -->
+                <line x1="77" y1="34" x2="80" y2="37" style="stroke:black;stroke-width:1;marker-end:url(#arrowhead)"/>
+                <!-- Kreis -->
+                <circle cx="76" cy="25" r="11" style="stroke:black;stroke-width:1;fill:none;"/>
+            </g>
+        </g>
+    </symbol>
+
+    <!-- Kondensator -->
+    <symbol id="capacitor" viewBox="0 0 200 60">
+        <line x1="20" y1="30" x2="80" y2="30" stroke="black" stroke-width="4" stroke-linecap="round"/>
+        <line x1="90" y1="30" x2="160" y2="30" stroke="black" stroke-width="4" stroke-linecap="round"/>
+        <line x1="80" y1="10" x2="80" y2="49" stroke="black" stroke-width="4"/>
+        <line x1="87" y1="10" x2="87" y2="49" stroke="black" stroke-width="4"/>
+    </symbol>
+
+    <!-- Widerstand vertikal -->
+    <symbol id="resistor_v" viewBox="0 0 60 200">
+        <line x1="30" y1="15" x2="30" y2="60" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <line x1="30" y1="120" x2="30" y2="140" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <rect x="20" y="60" width="20" height="60" fill="none" stroke="currentColor" stroke-width="4"/>
+    </symbol>
+
+    <!-- Platzierung Symbole -->
+    <use href="#npn" transform="translate(-30,-29) rotate(-90 76 40.5)"/>
+    <!-- Hier: vertikaler Widerstand an Basis (46,50) bis Masse (71) -->
+    <use href="#resistor_v" transform="translate(0,15) scale(0.5,0.5)"/>
+
+    <use href="#resistor_v" transform="translate(45,15) scale(0.5,0.5)"/>
+
+    <use href="#resistor_v" transform="translate(21,25) scale(0.5,0.5)"/>
+
+    <use href="#resistor_v" transform="translate(12,25) scale(0.5,0.5)"/>
+    <use href="#capacitor" transform="translate(82,24.5) rotate(90) scale(0.5,0.5)"/>
+    <circle cx="46" cy="29" r="1.2" fill="black"/>
+    <line x1="36.5" y1="29" x2="58" y2="29" stroke="currentColor" stroke-width="0.7"/>
+
+
+    <!--     first resistor -->
+    <line x1="25" y1="8" x2="25" y2="20" stroke="currentColor" stroke-width="0.8"/>
+    <line x1="25" y1="45" x2="25" y2="60" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="25" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="25" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+
+    <!--        second resistor-->
+    <line x1="70" y1="8" x2="70" y2="20" stroke="currentColor" stroke-width="0.8"/>
+    <line x1="70" y1="45" x2="70" y2="75" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="70" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="70" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+
+    <line x1="37" y1="60" x2="37" y2="70" style="stroke:black;stroke-width:1;fill: black;"/>
+
+    <line x1="37" y1="70" x2="70" y2="70" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="70" cy="70" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="70" cy="75" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+
+
+    <use href="#capacitor" transform="translate(-2,-17.5) scale(0.5,0.5)"/>
+    <use href="#capacitor" transform="translate(60,-17) scale(0.5,0.5)"/>
+
+    <!-- Masse-Leitung -->
+    <line x1="5" y1="59" x2="62" y2="59" stroke="currentColor" stroke-width="0.7"/>
+    <line x1="72" y1="59" x2="92" y2="59" stroke="currentColor" stroke-width="0.7"/>
+    <use href="#capacitor" transform="translate(42,34) scale(0.5,0.5)"/>
+    <circle cx="5" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="46" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="91" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="57" cy="59" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+
+    <!-- obere Versorgung -->
+    <line x1="60" y1="7.5" x2="80" y2="7.5" stroke="currentColor" stroke-width="0.7"/>
+    <circle cx="5" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+    <circle cx="91" cy="8" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+
+    <circle cx="57" cy="65" r="1" style="stroke:black;stroke-width:1;fill: black;"/>
+
+    <!-- Beschriftung -->
+      <text x="55" y="69.5" fill="blue" font-size="6">0</text>
+      <text x="64" y="79" fill="blue" font-size="6">+ U </text>
+
+    <text x="15" y="40" font-size="4">
+        <tspan>R</tspan>
+        <tspan dx="-1" dy="2" font-size="3" font-family="arial">E</tspan>
+    </text>
+    <text x="75" y="40" font-size="4">
+        <tspan>R</tspan>
+        <tspan dx="-1" dy="2" font-size="3" font-family="arial">C</tspan>
+    </text>
+    <text x="80" y="40" font-size="4">
+        <tspan>=</tspan>
+    </text>
+        <text x="85" y="40" font-size="4">
+        <tspan>R</tspan>
+        <tspan dx="1" dy="2" font-size="3" font-family="arial">L</tspan>
+
+    </text>
+
+
+    <text x="60" y="40" font-size="4">
+        <tspan>C</tspan>
+        <tspan dx="-1" dy="2" font-size="3" font-family="arial">1</tspan>
+    </text>
+    <text x="25" y="77" font-size="6">Common base</text>
+
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nandland Go on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/nandland-go/</link><description>Recent content in Nandland Go on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/nandland-go/index.xml" rel="self" type="application/rss+xml"/><item><title>FPGA 101: Get the Nandland Go board ready on Debian Bullseye</title><link>http://wehrend.github.io/posts/web/26-get-the-nandlab-go-board-ready/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/26-get-the-nandlab-go-board-ready/</guid><description>&lt;div class="paragraph">
+&lt;p>Hi there,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>finally this week the &lt;a href="https://nandland.com/the-go-board/">nandland go board&lt;/a> I ordered from the developer Russell Merrick a month ago arrived.
+It took a detour due to some shipping problems, but this is not about that, so.
+I had to face quite a few obstacles to get this running on my Debian Bullseye.&lt;/p>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_serial_connection_via_usb">Serial Connection via USB&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>First of all, to connect
+to the board via FTDI usb as suggested on Debian Bullseye you have to first add your user to the group
+&amp;#39;dialout&amp;#39;, this is done like below:&lt;/p>
+&lt;/div></description></item></channel></rss>

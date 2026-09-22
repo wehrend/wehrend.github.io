@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FreeRTOS on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/freertos/</link><description>Recent content in FreeRTOS on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 21 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/freertos/index.xml" rel="self" type="application/rss+xml"/><item><title>A Vocoder on the RP2040: From Sine Wave to (Almost) a Talking Robot</title><link>http://wehrend.github.io/posts/web/38-from-sine-to-vocoder/</link><pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/38-from-sine-to-vocoder/</guid><description>&lt;div id="preamble">
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>This article documents an ongoing debugging series. The vocoder
+sounds considerably better than it did at the start, but &amp;#34;sounds
+like a proper vocoder&amp;#34; hadn’t been achieved yet at the time of
+writing. I’ll update the conclusion once that changes.&lt;/p>
+&lt;/div>
+
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_the_plan">1. The Plan&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>I’m building a small hardware vocoder on a generic Raspberry Pi Pico
+(RP2040) — as a hardware port of my browser-based software vocoder
+(Tone.js/Web Audio). Ingredients:&lt;/p>
+&lt;/div></description></item></channel></rss>

@@ -1,0 +1,225 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=' This article documents an ongoing debugging series. The vocoder sounds considerably better than it did at the start, but "sounds like a proper vocoder" hadn’t been achieved yet at the time of writing. I’ll update the conclusion once that changes.
+1. The Plan I’m building a small hardware vocoder on a generic Raspberry Pi Pico (RP2040) — as a hardware port of my browser-based software vocoder (Tone.js/Web Audio). Ingredients:
+'><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/posts/web/38-from-sine-to-vocoder/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="A Vocoder on the RP2040: From Sine Wave to (Almost) a Talking Robot"><meta property="og:description" content='This article documents an ongoing debugging series. The vocoder sounds considerably better than it did at the start, but "sounds like a proper vocoder" hadn’t been achieved yet at the time of writing. I’ll update the conclusion once that changes.
+1. The Plan I’m building a small hardware vocoder on a generic Raspberry Pi Pico (RP2040) — as a hardware port of my browser-based software vocoder (Tone.js/Web Audio). Ingredients:'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-09-21T00:00:00+00:00"><meta property="article:modified_time" content="2026-09-21T00:00:00+00:00"><meta property="article:tag" content="Vocoder"><meta property="article:tag" content="RP2040"><meta property="article:tag" content="FreeRTOS"><meta property="article:tag" content="Audio"><meta itemprop=name content="A Vocoder on the RP2040: From Sine Wave to (Almost) a Talking Robot"><meta itemprop=description content='This article documents an ongoing debugging series. The vocoder sounds considerably better than it did at the start, but "sounds like a proper vocoder" hadn’t been achieved yet at the time of writing. I’ll update the conclusion once that changes.
+1. The Plan I’m building a small hardware vocoder on a generic Raspberry Pi Pico (RP2040) — as a hardware port of my browser-based software vocoder (Tone.js/Web Audio). Ingredients:'><meta itemprop=datePublished content="2026-09-21T00:00:00+00:00"><meta itemprop=dateModified content="2026-09-21T00:00:00+00:00"><meta itemprop=wordCount content="2447"><meta itemprop=keywords content="Vocoder,RP2040,FreeRTOS,Audio"><title>A Vocoder on the RP2040: From Sine Wave to (Almost) a Talking Robot | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/posts/web/38-from-sine-to-vocoder/><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.cce9c65292f54339921af4c846297c01bac7e56f65b805d1252ba9b11d317873.js integrity="sha256-zOnGUpL1QzmSGvTIRil8AbrH5W9luAXRJSupsR0xeHM=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-blog"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+English
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/de/ class="flex flex-auto">Deutsch</a></li></ul></li></ul><ul><li><a href=/docs/></a></li><li><a href=/sitemap/>Sitemap (EN)</a></li><li><a href=/about/>About</a></li><li><a href=/downloads>Download Archive</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>A Vocoder on the RP2040: From Sine Wave to (Almost) a Talking Robot</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#_the_plan>1. The Plan</a></li><li><a href=#_chapter_1_the_sine_wave_that_wouldnt_cooperate>2. Chapter 1: The Sine Wave That Wouldn’t Cooperate</a></li><li><a href=#_chapter_2_from_1_band_to_12_and_the_cpu_explodes>3. Chapter 2: From 1 Band to 12 — and the CPU Explodes</a><ul><li><a href=#_the_dead_end_o3_made_absolutely_no_difference>3.1. The Dead End: <code>-O3</code> Made Absolutely No Difference</a></li><li><a href=#_the_fix_q16_16_fixed_point>3.2. The Fix: Q16.16 Fixed-Point</a></li><li><a href=#_three_free_optimizations>3.3. Three Free Optimizations</a></li></ul></li><li><a href=#_chapter_3_freertos_teaches_me_something_about_scheduling>4. Chapter 3: FreeRTOS Teaches Me Something About Scheduling</a><ul><li><a href=#_one_adc_two_consumers>4.1. One ADC, Two Consumers</a></li><li><a href=#_the_potentiometer_that_was_presumed_dead>4.2. The Potentiometer That Was Presumed Dead</a></li></ul></li><li><a href=#_chapter_4_sounds_like_a_modulated_hum>5. Chapter 4: "Sounds Like a Modulated Hum"</a><ul><li><a href=#_a_sawtooth_doesnt_reach_the_formants>5.1. A Sawtooth Doesn’t Reach the Formants</a></li><li><a href=#_a_real_compressor_instead_of_hard_clipping>5.2. A Real Compressor Instead of Hard Clipping</a></li><li><a href=#_voicedunvoiced_detection_two_attempts>5.3. Voiced/Unvoiced Detection: Two Attempts</a></li></ul></li><li><a href=#_chapter_5_the_second_core>6. Chapter 5: The Second Core</a></li><li><a href=#_chapter_6_where_does_the_energy_go>7. Chapter 6: Where Does the Energy Go?</a><ul><li><a href=#_the_voltage_divider_that_shifted_the_operating_point>7.1. The Voltage Divider That Shifted the Operating Point</a></li><li><a href=#_gain_costs_bandwidth>7.2. Gain Costs Bandwidth</a></li></ul></li><li><a href=#_where_things_stand>8. Where Things Stand</a></li><li><a href=#_lessons_that_apply_beyond_this_project>9. Lessons That Apply Beyond This Project</a></li></ul></nav></aside></header><article class="markdown book-article"><header class=book-header-icon style=margin-bottom:2rem><h1>A Vocoder on the RP2040: From Sine Wave to (Almost) a Talking Robot</h1></header><div class=page-content><div id=preamble><div class=sectionbody><div class=paragraph><div class="book-hint info"><div class=paragraph><p>This article documents an ongoing debugging series. The vocoder
+sounds considerably better than it did at the start, but "sounds
+like a proper vocoder" hadn’t been achieved yet at the time of
+writing. I’ll update the conclusion once that changes.</p></div></div></div></div></div><div class=sect1><h2 id=_the_plan>1. The Plan</h2><div class=sectionbody><div class=paragraph><p>I’m building a small hardware vocoder on a generic Raspberry Pi Pico
+(RP2040) — as a hardware port of my browser-based software vocoder
+(Tone.js/Web Audio). Ingredients:</p></div><div class=ulist><ul><li><p>An electret microphone with a MAX4466 preamp as the modulator input</p></li><li><p>A PCM5102A I2S DAC for audio output</p></li><li><p>A potentiometer for carrier pitch</p></li><li><p>FreeRTOS, because I also wanted to use this project as practice
+with an RTOS on a microcontroller</p></li></ul></div><div class=paragraph><p>The basic idea of a filter-bank vocoder is simple: split a modulator
+signal (the voice) into several frequency bands, measure only the
+loudness (envelope) per band, and use that to modulate the same
+frequency bands of an artificial carrier tone. The result sounds like
+a robot voice — <strong>if</strong> everything works together correctly. How much
+"working together correctly" actually entails wasn’t clear to me at
+the start.</p></div><div class=paragraph><p><span class=image><img src=./wiring-diagram.svg alt="Wiring diagram" width=700px></span></p></div><div class=paragraph><p><span class=image><img src=./vocoder.jpg alt="Vocoder Breadboard" width=700px></span></p></div></div></div><div class=sect1><h2 id=_chapter_1_the_sine_wave_that_wouldnt_cooperate>2. Chapter 1: The Sine Wave That Wouldn’t Cooperate</h2><div class=sectionbody><div class=paragraph><p>The very first test setup (still on a PicoADK board, before I
+switched to generic hardware) was supposed to output nothing more
+than a 440Hz tone over I2S — no ADC, no FreeRTOS, just the raw audio
+signal path.</p></div><div class=paragraph><p>Two pitfalls right at the start:</p></div><div class=ulist><ul><li><p>The onboard DAC (PCM5100A) has an <code>XSMT</code> pin (mute/unmute) that
+defaults to muted. Without explicitly setting it HIGH, the output
+stays silent — easy to mistake for a general I2S configuration
+error, since both failure modes look identical (silence).</p></li><li><p><code>pico-extras</code> (needed for <code>pico_audio_i2s</code>) has to be included via
+its own import file <strong>before</strong> <code>project()</code> in CMake, not via
+<code>add_subdirectory()</code> afterwards. Otherwise the configuration runs
+through without errors, but the library simply never materializes
+as a build target — resulting in a confusing <code>fatal error</code> for a
+file that demonstrably exists.</p></li></ul></div><div class=paragraph><p>After that: a clean tone. On to the actual project.</p></div></div></div><div class=sect1><h2 id=_chapter_2_from_1_band_to_12_and_the_cpu_explodes>3. Chapter 2: From 1 Band to 12 — and the CPU Explodes</h2><div class=sectionbody><div class=paragraph><p>After a few intermediate steps (carrier oscillator, envelope follower
+for a single band), came the jump to a full 12-band filter bank with
+FreeRTOS. The first build ran — but the built-in timing measurement
+showed something sobering:</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>avg=51156us  budget=5804us   (at 44.1kHz, 256 samples/buffer)
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p><strong>8.6x too slow.</strong> The filter bank alone took almost 200µs per
+sample, while only 23µs were available.</p></div><div class=sect2><h3 id=_the_dead_end_o3_made_absolutely_no_difference>3.1. The Dead End: <code>-O3</code> Made Absolutely No Difference</h3><div class=paragraph><p>Before I understood why it was so slow, there was an annoying
+detour: I first suspected a broken build (<code>-O0</code> instead of <code>-O3</code>).
+But after repeated verification (embedding the build timestamp
+directly in the diagnostic output, <code>strings *.elf | grep</code> for the
+compiled diagnostic string), it was confirmed: <strong>the measurements
+were identical, down to the microsecond, with confirmed <code>-O0</code> and
+confirmed <code>-O3</code>.</strong></p></div><div class=paragraph><p>That only made sense once it clicked: the RP2040 has no FPU. Every
+single <code>float</code> operation becomes a call into a precompiled software
+library routine (<code>__aeabi_fmul</code> & co.) — and those routines don’t get
+any faster through compiler optimization, because they’re finished,
+precompiled functions, not inline instructions that <code>-O3</code> could
+improve.</p></div><div class=paragraph><div class="book-hint info"><div class="admonitionblock tip"><table><tbody><tr><td class=icon><div class=title>Tip</div></td><td class=content>If <code>-O0</code> and <code>-O3</code> produce exactly the same runtime on an
+embedded target without an FPU, that’s itself a signal of
+softfloat-dominated code — not (just) evidence of a broken build.</td></tr></tbody></table></div></div></div></div><div class=sect2><h3 id=_the_fix_q16_16_fixed_point>3.2. The Fix: Q16.16 Fixed-Point</h3><div class=paragraph><p>The solution was switching to Q16.16 fixed-point arithmetic (32-bit
+signed integer, 16 integer/16 fractional bits) for everything running
+in the sample hot path. Only the filter coefficient calculation
+(<code>sinf</code>/<code>cosf</code>, once per band at startup) stayed in float — there,
+readability matters more than speed.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+4
+5
+6
+</pre></td><td class=code><pre><span style=color:#000;font-weight:700>using</span> <span style=background-color:#f8f8f8>q16</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#458;font-weight:700>int32_t</span><span style=background-color:#f8f8f8>;</span>
+<span style=color:#000;font-weight:700>constexpr</span> <span style=color:#458;font-weight:700>int</span> <span style=background-color:#f8f8f8>kQ16Frac</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#099>16</span><span style=background-color:#f8f8f8>;</span>
+
+<span style=color:#000;font-weight:700>inline</span> <span style=background-color:#f8f8f8>q16</span> <span style=color:#900;font-weight:700>q16_mul</span><span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>q16</span> <span style=background-color:#f8f8f8>a</span><span style=background-color:#f8f8f8>,</span> <span style=background-color:#f8f8f8>q16</span> <span style=background-color:#f8f8f8>b</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+    <span style=color:#000;font-weight:700>return</span> <span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>q16</span><span style=background-color:#f8f8f8>)(((</span><span style=color:#458;font-weight:700>int64_t</span><span style=background-color:#f8f8f8>)</span><span style=background-color:#f8f8f8>a</span> <span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>(</span><span style=color:#458;font-weight:700>int64_t</span><span style=background-color:#f8f8f8>)</span><span style=background-color:#f8f8f8>b</span><span style=background-color:#f8f8f8>)</span> <span style=color:#000;font-weight:700>&gt;&gt;</span> <span style=background-color:#f8f8f8>kQ16Frac</span><span style=background-color:#f8f8f8>);</span>
+<span style=background-color:#f8f8f8>}</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Result: 3.56x faster — noticeable, but not enough yet. The M0+ core
+has a single-cycle 32×32→32-bit multiply, but <strong>no</strong> native 64-bit
+multiply, which our <code>q16_mul()</code> needs — the compiler synthesizes that
+across several instructions.</p></div></div><div class=sect2><h3 id=_three_free_optimizations>3.3. Three Free Optimizations</h3><div class=paragraph><p>Instead of tweaking the architecture further, three purely algebraic
+transformations helped, with zero loss of precision:</p></div><div class="olist arabic"><ol class=arabic><li><p>For our bandpass design (RBJ cookbook formula, constant 0dB peak
+gain), the coefficient <code>b1</code> is <strong>structurally always exactly 0</strong> —
+the multiplication <code>b1*x</code> was pure wasted compute.</p></li><li><p>Likewise, <code>b2 == -b0</code>, exactly — <code>b2*x</code> can be obtained from the
+<code>b0*x</code> already computed for <code>y</code>, just by flipping the sign,
+instead of computing a second multiplication.</p></li><li><p>The envelope smoothing <code>coeff*envelope + (1-coeff)<strong>rectified</strong></code><strong> is
+algebraically identical to <code>envelope + (1-coeff)</code></strong><code>(rectified-envelope)</code>
+— one multiplication instead of two.</p></li></ol></div><div class=paragraph><p>Combined with lowering the sample rate to 22.05kHz (our highest band
+frequency sits well below that, no loss of information), this got me
+under budget — from 8.6x too slow to a comfortable margin.</p></div></div></div></div><div class=sect1><h2 id=_chapter_3_freertos_teaches_me_something_about_scheduling>4. Chapter 3: FreeRTOS Teaches Me Something About Scheduling</h2><div class=sectionbody><div class=sect2><h3 id=_one_adc_two_consumers>4.1. One ADC, Two Consumers</h3><div class=paragraph><p>The potentiometer and the microphone hang off the same RP2040 ADC
+(just one hardware mux with a single "currently selected channel"
+state). Two FreeRTOS tasks switching independently would rip the
+channel out from under each other mid sample-loop — with no error
+message, only visible as corrupted audio. Solution: only one task
+ever touches the ADC; the raw value travels to a second task, which
+handles the smoothing, via a queue.</p></div></div><div class=sect2><h3 id=_the_potentiometer_that_was_presumed_dead>4.2. The Potentiometer That Was Presumed Dead</h3><div class=paragraph><p>Once everything else was working, the potentiometer simply didn’t
+respond to being turned at all — <code>carrierHz</code> stubbornly stayed at its
+startup value. Diagnostic values showed: the raw pot reading came
+through cleanly, but it never reached the task responsible for
+smoothing it.</p></div><div class=paragraph><p>The cause was a textbook example of preemptive scheduling: the audio
+task had <strong>not a single genuine FreeRTOS blocking point</strong> anywhere in
+its loop — <code>take_audio_buffer()</code> from <code>pico_audio_i2s</code> is written for
+bare metal, not FreeRTOS-aware blocking, presumably pure busy-spinning.
+Under preemptive scheduling, the scheduler only switches to a
+lower-priority task when the currently running task <strong>genuinely</strong>
+blocks — not just when it "has nothing to do right now." Without a
+real blocking point in the audio task, the pot task never got any CPU
+time at all, and its own <code>vTaskDelay()</code> never elapsed.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+4
+5
+6
+</pre></td><td class=code><pre><span style=color:#998;font-style:italic>// Forces the audio task into a real, brief blocking point where the</span>
+<span style=color:#998;font-style:italic>// scheduler CAN switch to the pot task.</span>
+<span style=color:#000;font-weight:700>if</span> <span style=background-color:#f8f8f8>(</span><span style=color:#000;font-weight:700>++</span><span style=background-color:#f8f8f8>yieldCounter</span> <span style=color:#000;font-weight:700>&gt;=</span> <span style=color:#099>2</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+    <span style=background-color:#f8f8f8>yieldCounter</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#099>0</span><span style=background-color:#f8f8f8>;</span>
+    <span style=background-color:#f8f8f8>vTaskDelay</span><span style=background-color:#f8f8f8>(</span><span style=color:#099>1</span><span style=background-color:#f8f8f8>);</span>
+<span style=background-color:#f8f8f8>}</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>One line of code, but one of the most instructive hours of the
+entire project.</p></div></div></div></div><div class=sect1><h2 id=_chapter_4_sounds_like_a_modulated_hum>5. Chapter 4: "Sounds Like a Modulated Hum"</h2><div class=sectionbody><div class=paragraph><p>With working timing and a working pot, came the most sobering part:
+the vocoder produced a tone that got louder/quieter with speech — but
+no recognizable speech. What followed was a long series of individual
+tests, tried and discarded one after another:</p></div><div class=ulist><ul><li><p>Narrowed the band range from 100–8000Hz to 200–4000Hz (telephone-
+band principle) → barely any difference</p></li><li><p>Lowered Q from 4 to 2 (assumption: narrower = more sluggish) →
+wrong assumption</p></li><li><p>Coupled attack/release per band to frequency → improvement, but not
+the breakthrough</p></li></ul></div><div class=paragraph><p>The actual progress only came once I stopped testing my own guesses
+and instead <strong>used my working software vocoder as a reference.</strong> Two
+concrete assumptions were directly disproven: Q=2 was wrong (the
+reference uses Q=5, higher than even my original value), and the band
+narrowing went in the wrong direction (the reference uses
+90–6000Hz, closer to the original range).</p></div><div class=sect2><h3 id=_a_sawtooth_doesnt_reach_the_formants>5.1. A Sawtooth Doesn’t Reach the Formants</h3><div class=paragraph><p>A sawtooth carrier has a 1/n harmonic rolloff. At a fundamental
+frequency of, say, 200Hz, the harmonic at 2kHz is already the 10th
+overtone — with strongly reduced energy. But that’s exactly where
+(800Hz–3kHz) the formants F2/F3 live, which distinguish vowels from
+one another. The analysis correctly detected different energy per
+band, but the carrier had nothing left to shape there. Result:
+loudness modulates, timbre stays the same — a "modulated hum."</p></div><div class=paragraph><p>Fix: a narrow pulse train (20% duty cycle) instead of a sawtooth —
+historically the standard carrier for vocoders, for exactly this
+reason. A narrow pulse has a much more even, broadband harmonic
+spectrum.</p></div></div><div class=sect2><h3 id=_a_real_compressor_instead_of_hard_clipping>5.2. A Real Compressor Instead of Hard Clipping</h3><div class=paragraph><p>My reference implementation uses a proper compressor (threshold,
+ratio, attack/release) instead of a hard clip on the summed output. A
+hard clip cuts off signal peaks abruptly (harsh/metallic), a
+compressor squeezes them down gently and preserves more fine detail.
+In fixed-point, this could be built using the envelope-following
+infrastructure I already had — just one division per sample for the
+dynamically changing compression gain, everything else precomputed.</p></div></div><div class=sect2><h3 id=_voicedunvoiced_detection_two_attempts>5.3. Voiced/Unvoiced Detection: Two Attempts</h3><div class=paragraph><p>A static noise ratio mixed into the carrier (a fixed percentage of
+noise blended with the pulse train) can’t serve vowels and consonants
+well at the same time — vowels need a clean tonal carrier, consonants
+need noise energy. My first attempt (zero-crossing rate) never had
+properly calibrated thresholds. The reference implementation showed a
+proven alternative: split the signal around 1.5kHz into a low and
+high component, track a smoothed level for each, and use the
+difference as the decision.</p></div><div class=paragraph><p>The first calibrated threshold had a reasoning error: I had assumed
+the high-frequency component had to <strong>exceed</strong> the low-frequency one in
+absolute terms. Real measurements showed otherwise: sibilants only
+reach ~20–26% of the low-band level, never 100% — sibilants are
+inherently quieter than vowels, acoustically. The threshold needed to
+be defined as a <strong>ratio</strong>, not a comparison between two absolute
+quantities.</p></div></div></div></div><div class=sect1><h2 id=_chapter_5_the_second_core>6. Chapter 5: The Second Core</h2><div class=sectionbody><div class=paragraph><p>An externally shared reference vocoder on a Teensy 3.6 pointed me
+toward what should have been the obvious idea all along: <strong>the RP2040
+has two cores, and I was only using one.</strong></p></div><div class=paragraph><p>The key design decision here: Core1 runs entirely <strong>outside</strong> of
+FreeRTOS, as a raw <code>pico_multicore</code> loop — no second RTOS instance
+introducing a whole new class of concurrency risk, after everything
+I’d already learned from ADC sharing and priority starvation. Just two
+handshake signals per buffer (not per sample):</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+4
+</pre></td><td class=code><pre><span style=color:#998;font-style:italic>// Core0: preparation (ADC read, carrier build) -&gt; fill shared arrays</span>
+<span style=background-color:#f8f8f8>multicore_fifo_push_blocking</span><span style=background-color:#f8f8f8>(</span><span style=color:#099>1</span><span style=background-color:#f8f8f8>);</span>   <span style=color:#998;font-style:italic>// start Core1</span>
+<span style=color:#998;font-style:italic>// Core0 computes its own half SIMULTANEOUSLY</span>
+<span style=background-color:#f8f8f8>multicore_fifo_pop_blocking</span><span style=background-color:#f8f8f8>();</span>     <span style=color:#998;font-style:italic>// wait for Core1&#39;s done signal</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Result: band-processing time dropped to a bit more than half — while
+running 12 bands instead of 10 at the same time. Plenty of headroom
+for future experiments.</p></div><div class=paragraph><p>When the sound still wasn’t convincing despite everything, the
+two-core synchronization itself became a suspect — a compiler could
+in theory reorder writes to ordinary (non-<code>volatile</code>) global arrays
+around the FIFO handshake. A diagnostic switch (<code>kUseSecondCore</code>)
+that pulls Core1 entirely out of the signal path for testing showed:
+identical result with and without the second core. Suspicion cleared
+— but at least conclusively ruled out rather than merely assumed.</p></div></div></div><div class=sect1><h2 id=_chapter_6_where_does_the_energy_go>7. Chapter 6: Where Does the Energy Go?</h2><div class=sectionbody><div class=paragraph><p>The most revealing diagnostic step so far: instead of only exposing
+<strong>aggregate</strong> values (sum, overall envelope), I printed the envelope of
+<strong>each of the 12 bands individually</strong>.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>bands[0..11] = 40 41 22 16 12 8 5 3 0 1 0 1
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>A smooth, monotonically decaying curve from band 0 (90Hz) down to
+about band 7 (~1.5kHz), then essentially nothing — regardless of
+whether "iii" or "uuu" was spoken. That doesn’t look like a software
+bug (which would tend to look jumpy/irregular), but like a genuine
+low-pass characteristic somewhere in the <strong>analog</strong> signal path.</p></div><div class=sect2><h3 id=_the_voltage_divider_that_shifted_the_operating_point>7.1. The Voltage Divider That Shifted the Operating Point</h3><div class=paragraph><p>After the mic trimmer was already at its (presumed) limit and the
+signal was still clipping, I added an external voltage divider for
+extra attenuation. That introduced a new problem: the divider doesn’t
+just attenuate the AC amplitude, it also shifts the <strong>DC operating
+point</strong> along with it — but my code still assumed the original ADC
+midpoint.</p></div><div class=paragraph><p>Instead of recalculating the new operating point by hand (which I did
+at first, and which would have been wrong again the next time a
+component changed), the code now continuously tracks the DC component
+itself, via a very slow low-pass filter:</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+4
+5
+</pre></td><td class=code><pre><span style=color:#998;font-style:italic>// ~300ms time constant - well below the lowest band frequency</span>
+<span style=color:#998;font-style:italic>// (90Hz), continuously tracks the DC bias regardless of the</span>
+<span style=color:#998;font-style:italic>// exact analog wiring.</span>
+<span style=background-color:#f8f8f8>g_micDcState</span> <span style=color:#000;font-weight:700>+=</span> <span style=background-color:#f8f8f8>q16_mul</span><span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>g_micDcUpdateRate</span><span style=background-color:#f8f8f8>,</span> <span style=background-color:#f8f8f8>rawQ16</span> <span style=color:#000;font-weight:700>-</span> <span style=background-color:#f8f8f8>g_micDcState</span><span style=background-color:#f8f8f8>);</span>
+<span style=color:#000;font-weight:700>return</span> <span style=background-color:#f8f8f8>rawQ16</span> <span style=color:#000;font-weight:700>-</span> <span style=background-color:#f8f8f8>g_micDcState</span><span style=background-color:#f8f8f8>;</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>That was the third fix in a row for the same underlying issue — time
+to solve the problem structurally instead of patching it point by
+point.</p></div></div><div class=sect2><h3 id=_gain_costs_bandwidth>7.2. Gain Costs Bandwidth</h3><div class=paragraph><p>The MAX4466 datasheet supplies a concrete number for the remaining
+low-pass character: a gain-bandwidth product of 600kHz, with the
+trimmer’s gain range spanning 25×–125×. At 125x gain, only about
+<strong>4.8kHz</strong> of usable bandwidth remains — a fundamental op-amp
+trade-off, not a misconfiguration. A comparison test without the
+voltage divider confirmed it: the band pattern widened noticeably
+(activity reaching band 7–8 instead of band 3), but not completely —
+both effects (divider loading and the gain-bandwidth trade-off)
+appear to be stacking on top of each other.</p></div></div></div></div><div class=sect1><h2 id=_where_things_stand>8. Where Things Stand</h2><div class=sectionbody><div class=paragraph><p>What’s now working reliably and has been individually verified:</p></div><div class=ulist><ul><li><p>CPU budget: from 8.6x too slow to a ~39% margin</p></li><li><p>FreeRTOS priority-starvation bug fixed</p></li><li><p>Compressor instead of hard clipping</p></li><li><p>Two-core split of the filter bank (timing AND correctness verified)</p></li><li><p>Voiced/unvoiced detection cleanly separates vowels from sibilants</p></li><li><p>Noise gate with hysteresis (no more chattering)</p></li><li><p>Mic operating point self-calibrating</p></li></ul></div><div class=paragraph><p>Still open: the signal path audibly loses energy in the upper
+frequency bands — likely a combination of the gain-bandwidth
+trade-off at the mic preamp and the extra load from the voltage
+divider. The next step is to lower the gain at the analog front end
+itself (instead of keeping it as high as possible on the trimmer and
+only compensating for the resulting overdrive afterward with a
+voltage divider) — and then see whether the upper bands finally come
+to life.</p></div></div></div><div class=sect1><h2 id=_lessons_that_apply_beyond_this_project>9. Lessons That Apply Beyond This Project</h2><div class=sectionbody><div class=ulist><ul><li><p><strong>On chips without an FPU, identical <code>-O0</code>/<code>-O3</code> runtimes are a
+finding in themselves</strong>, not just a hint of a broken build.</p></li><li><p><strong>Preemptive scheduling only switches on genuine blocking, not on
+idleness.</strong> A task that never blocks starves every lower-priority
+task — regardless of tick rate.</p></li><li><p><strong>A working reference system is worth more than ten of your own
+theories.</strong> The single biggest jump in progress on this project
+didn’t come from clever debugging, but from giving up on guessing
+and instead copying a known-working implementation step by step.</p></li><li><p><strong>A voltage divider shifts not just the amplitude, but the
+operating point too.</strong> And: higher gain on an op-amp fundamentally
+costs bandwidth — that’s physics, not a bug.</p></li><li><p><strong>Measure before you guess — even when it’s tedious.</strong> Nearly every
+major breakthrough in this project came from a new diagnostic
+number, not a new idea.</p></li></ul></div><div class=paragraph><p>To be continued, once the vocoder actually sounds like a vocoder.</p></div></div></div></div><hr style=margin-top:3rem><nav class=book-navigation style="display:flex;justify-content:space-between;padding:1rem 0"><div class=prev></div><div class=next style=text-align:right></div></nav></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#_the_plan>1. The Plan</a></li><li><a href=#_chapter_1_the_sine_wave_that_wouldnt_cooperate>2. Chapter 1: The Sine Wave That Wouldn’t Cooperate</a></li><li><a href=#_chapter_2_from_1_band_to_12_and_the_cpu_explodes>3. Chapter 2: From 1 Band to 12 — and the CPU Explodes</a><ul><li><a href=#_the_dead_end_o3_made_absolutely_no_difference>3.1. The Dead End: <code>-O3</code> Made Absolutely No Difference</a></li><li><a href=#_the_fix_q16_16_fixed_point>3.2. The Fix: Q16.16 Fixed-Point</a></li><li><a href=#_three_free_optimizations>3.3. Three Free Optimizations</a></li></ul></li><li><a href=#_chapter_3_freertos_teaches_me_something_about_scheduling>4. Chapter 3: FreeRTOS Teaches Me Something About Scheduling</a><ul><li><a href=#_one_adc_two_consumers>4.1. One ADC, Two Consumers</a></li><li><a href=#_the_potentiometer_that_was_presumed_dead>4.2. The Potentiometer That Was Presumed Dead</a></li></ul></li><li><a href=#_chapter_4_sounds_like_a_modulated_hum>5. Chapter 4: "Sounds Like a Modulated Hum"</a><ul><li><a href=#_a_sawtooth_doesnt_reach_the_formants>5.1. A Sawtooth Doesn’t Reach the Formants</a></li><li><a href=#_a_real_compressor_instead_of_hard_clipping>5.2. A Real Compressor Instead of Hard Clipping</a></li><li><a href=#_voicedunvoiced_detection_two_attempts>5.3. Voiced/Unvoiced Detection: Two Attempts</a></li></ul></li><li><a href=#_chapter_5_the_second_core>6. Chapter 5: The Second Core</a></li><li><a href=#_chapter_6_where_does_the_energy_go>7. Chapter 6: Where Does the Energy Go?</a><ul><li><a href=#_the_voltage_divider_that_shifted_the_operating_point>7.1. The Voltage Divider That Shifted the Operating Point</a></li><li><a href=#_gain_costs_bandwidth>7.2. Gain Costs Bandwidth</a></li></ul></li><li><a href=#_where_things_stand>8. Where Things Stand</a></li><li><a href=#_lessons_that_apply_beyond_this_project>9. Lessons That Apply Beyond This Project</a></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

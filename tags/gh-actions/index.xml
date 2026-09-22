@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gh-Actions on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/gh-actions/</link><description>Recent content in Gh-Actions on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/gh-actions/index.xml" rel="self" type="application/rss+xml"/><item><title>Move Hugo Web-presence to GH-Pages</title><link>http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/</link><pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/</guid><description>&lt;div class="paragraph">
+&lt;p>Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money.
+Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead&lt;/strong>&lt;/p>
+&lt;/div></description></item></channel></rss>

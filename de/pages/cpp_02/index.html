@@ -1,0 +1,605 @@
+<!doctype html><html lang=de dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content=" Einführung in C++ (Teil 2) In diesem nächsten Beispiel bzw. Tutorial sehen wir uns ein Programm zur Klangerzeugung (auch bekannt als Synthesizer) an, für das wir die SDL-Bibliothek (Simple Direct Media Library) verwenden. Wir gehen das Programm Zeile für Zeile durch und erklären die verschiedenen Elemente.
+Fangen wir an…​
+Zunächst haben wir die Includes für die SDL-Bibliothek; die Header-Datei werden wir uns später ansehen. Außerdem inkludieren wir cmath für mathematische Funktionen und iostream für Ein- und Ausgabe (in diesem Beispiel jedoch nur für die Ausgabe).
+"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/de/pages/cpp_02/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="C++-Einführungskurs (Teil 2)"><meta property="og:description" content="Einführung in C++ (Teil 2) In diesem nächsten Beispiel bzw. Tutorial sehen wir uns ein Programm zur Klangerzeugung (auch bekannt als Synthesizer) an, für das wir die SDL-Bibliothek (Simple Direct Media Library) verwenden. Wir gehen das Programm Zeile für Zeile durch und erklären die verschiedenen Elemente.
+Fangen wir an…​
+Zunächst haben wir die Includes für die SDL-Bibliothek; die Header-Datei werden wir uns später ansehen. Außerdem inkludieren wir cmath für mathematische Funktionen und iostream für Ein- und Ausgabe (in diesem Beispiel jedoch nur für die Ausgabe)."><meta property="og:locale" content="de"><meta property="og:type" content="article"><meta property="article:section" content="pages"><meta property="article:published_time" content="2026-03-14T00:00:00+00:00"><meta property="article:modified_time" content="2026-03-14T00:00:00+00:00"><meta property="article:tag" content="C++"><meta property="article:tag" content="SDL"><meta property="article:tag" content="Synth"><meta itemprop=name content="C++-Einführungskurs (Teil 2)"><meta itemprop=description content="Einführung in C++ (Teil 2) In diesem nächsten Beispiel bzw. Tutorial sehen wir uns ein Programm zur Klangerzeugung (auch bekannt als Synthesizer) an, für das wir die SDL-Bibliothek (Simple Direct Media Library) verwenden. Wir gehen das Programm Zeile für Zeile durch und erklären die verschiedenen Elemente.
+Fangen wir an…​
+Zunächst haben wir die Includes für die SDL-Bibliothek; die Header-Datei werden wir uns später ansehen. Außerdem inkludieren wir cmath für mathematische Funktionen und iostream für Ein- und Ausgabe (in diesem Beispiel jedoch nur für die Ausgabe)."><meta itemprop=datePublished content="2026-03-14T00:00:00+00:00"><meta itemprop=dateModified content="2026-03-14T00:00:00+00:00"><meta itemprop=wordCount content="2691"><meta itemprop=keywords content="C++,SDL,Synth"><title>C++-Einführungskurs (Teil 2) | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/de/pages/cpp_02/><link rel=alternate hreflang=en href=http://wehrend.github.io/pages/cpp_02/ title="Introduction into C++ (Part 2)"><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/de.search.min.e5099b3e26a7446e957c44103bff5bad0e1c6a5f3074159796104fe7130a8c27.js integrity="sha256-5QmbPianRG6VfEQQO/9brQ4cal8wdBWXlhBP5xMKjCc=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-text"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/de/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Suche aria-label=Suche maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+Deutsch
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/pages/cpp_02/ class="flex flex-auto">English</a></li></ul></li></ul><ul><li><a href=/de/sitemap/>Sitemap (DE)</a></li><li><a href=/de/about/>Über</a></li><li><a href=/downloads>Download Archiv</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>C++-Einführungskurs (Teil 2)</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#_einführung_in_c_teil_2>Einführung in C++ (Teil 2)</a><ul><li><a href=#_interpretation_des_puffers_als_floats>Interpretation des Puffers als Floats</a></li><li><a href=#_berechnung_der_geschwindigkeit_mit_der_sich_die_sinuswelle_fortbewegt>Berechnung der Geschwindigkeit, mit der sich die Sinuswelle fortbewegt</a></li><li><a href=#_füllen_des_audio_puffers>Füllen des Audio-Puffers</a></li><li><a href=#_wichtiges_detail_phase_muss_persistent_sein>Wichtiges Detail: phase muss persistent sein</a></li><li><a href=#_wie_dies_mit_main_zusammenhängt>Wie dies mit main() zusammenhängt</a></li></ul></li><li><a href=#_c_speicherbeherrschung_konstruktoren_destruktoren_und_der_heap>C++-Speicherbeherrschung: Konstruktoren, Destruktoren und der Heap</a><ul><li><a href=#_1_die_zwei_welten_stack_vs_heap>1. Die zwei Welten: Stack vs. Heap</a></li><li><a href=#_der_konstruktor_die_weichen_stellen>Der Konstruktor: Die Weichen stellen</a></li><li><a href=#_der_destruktor_die_aufräumcrew>Der Destruktor: Die Aufräumcrew</a></li><li><a href=#_echtzeit_speicherauslagerung>Echtzeit-Speicherauslagerung</a></li><li><a href=#_der_virtuelle_destruktor_das_diamant_problem>Der virtuelle Destruktor & das Diamant-Problem</a></li><li><a href=#_warum>Warum?</a></li></ul></li><li><a href=#_zusammenfassung>Zusammenfassung</a></li><li><a href=#_einen_c_synthesizer_erstellen_oop_mit_sdl2>Einen C++-Synthesizer erstellen: OOP mit SDL2</a></li><li><a href=#_das_konzept_trennung_der_anliegen>Das Konzept: Trennung der Anliegen</a></li><li><a href=#_1_der_oszillator_die_mathematik>1. Der Oszillator (Die Mathematik)</a><ul><li><a href=#_oscillator_h>Oscillator.h</a></li><li><a href=#_oscillator_cpp>Oscillator.cpp</a></li></ul></li><li><a href=#_2_die_engine_die_hardware_brücke>2. Die Engine (Die Hardware-Brücke)</a></li><li><a href=#_3_die_hauptschleife_der_fokus>3. Die Hauptschleife (Der Fokus)</a></li><li><a href=#_warum_dies_richtiges_oop_ist>Warum dies „richtiges“ OOP ist</a></li><li><a href=#_nächste_schritte>Nächste Schritte</a><ul><li><a href=#_synth_oscilloscope>Synth Oscilloscope</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><header class=book-header-icon style=margin-bottom:2rem><h1>C++-Einführungskurs (Teil 2)</h1></header><div class=page-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_einführung_in_c_teil_2>Einführung in C++ (Teil 2)</h2><div class=sectionbody><div class=paragraph><p>In diesem nächsten Beispiel bzw. Tutorial sehen wir uns ein Programm zur Klangerzeugung (auch bekannt als Synthesizer) an, für das wir die SDL-Bibliothek
+(Simple Direct Media Library) verwenden. Wir gehen das Programm Zeile für Zeile durch und erklären die verschiedenen Elemente.</p></div><div class=paragraph><p>Fangen wir an…​</p></div><div class=paragraph><p>Zunächst haben wir die Includes für die SDL-Bibliothek; die Header-Datei werden wir uns später ansehen. Außerdem inkludieren wir cmath für mathematische Funktionen und iostream
+für Ein- und Ausgabe (in diesem Beispiel jedoch nur für die Ausgabe).</p></div><div class=paragraph><p>Darauf folgen einige Konstantenausdrücke, die als constexpr für SAMPLE_RATE, FREQUENCY und 2 mal Pi definiert sind.
+Um die Genauigkeit zu gewährleisten, werden diese Konstantenausdrücke (constexpr) als Datentyp double gespeichert…​
+Dann initialisieren wir die Variable phase mit dem Startwert 0.0.</p></div><div class=paragraph><p>In SDL Audio ist der Callback die Funktion, die SDL wiederholt in einem speziellen Audio-Thread aufruft, wann immer es den nächsten Block von
+Sound-Samples benötigt, um ihn an die Lautsprecher zu senden. Die gesamte Aufgabe deines audioCallback besteht darin: den Stream mit len Bytes an Audiodaten in dem von dir angeforderten Format
+zu füllen (hier AUDIO_F32SYS, mono).</p></div><div class=paragraph><p>Lass uns deinen Callback Zeile für Zeile durchgehen und betrachten, was er konzeptionell tut.</p></div><div class=paragraph><p>Funktionssignatur</p></div><div class=listingblock><div class=content><pre>void audioCallback(void* userdata, Uint8* stream, int len)</pre></div></div><div class=paragraph><p>userdata: Zeiger, den Sie an den Callback übergeben können (wird hier nicht verwendet). Wird oft verwendet, um eine Struktur mit Statusinformationen (Phase, Lautstärke usw.) zu übergeben.</p></div><div class=paragraph><p>stream: Ein roher Byte-Puffer, den SDL Ihnen zur Verfügung stellt. Sie müssen Audio-Samples darin schreiben.</p></div><div class=paragraph><p>len: Wie viele Bytes du dieses Mal füllen musst.</p></div><div class=paragraph><p>SDL ruft dies immer wieder auf, solange Audio läuft.</p></div><div class=sect2><h3 id=_interpretation_des_puffers_als_floats>Interpretation des Puffers als Floats</h3><div class=listingblock><div class=content><pre>float* buffer = (float*)stream;
+int samples = len / sizeof(float);</pre></div></div><div class=paragraph><p>Da du want.format = AUDIO_F32SYS und channels = 1 angegeben hast, erwartet SDL:</p></div><div class=paragraph><p>Jedes Sample ist ein 32-Bit-Float – ein Float pro Sample (Mono)
+Also wandeln wir stream (Bytes) in einen float* um und berechnen, wie viele Float-Samples in len passen.</p></div><div class=paragraph><p>Beispiel: Wenn len == 2048, dann samples = 2048 / 4 = 512 Float-Samples.</p></div></div><div class=sect2><h3 id=_berechnung_der_geschwindigkeit_mit_der_sich_die_sinuswelle_fortbewegt>Berechnung der Geschwindigkeit, mit der sich die Sinuswelle fortbewegt</h3><div class=listingblock><div class=content><pre>double phaseInc = TWO_PI * FREQUENCY / SAMPLE_RATE;</pre></div></div><div class=paragraph><p>Sie erzeugen eine Sinuswelle Sample für Sample:</p></div><div class=paragraph><p>phase ist der aktuelle Winkel (in Radianten) für die Sinusfunktion.</p></div><div class=paragraph><p>Eine Sinuswelle vollendet alle 2π Radianten einen vollständigen Zyklus.</p></div><div class=paragraph><p>Wenn die Tonfrequenz FREQUENCY (z. B. 440 Hz) und die Abtastrate SAMPLE_RATE (z. B. 48000 Hz) beträgt,
+sollte jedes Sample die Phase um folgenden Wert vorrücken:</p></div><div class="paragraph “image”"><p>\[ phaseIncrement = 2 \pi \cdot \frac{FREQUENCY}{SAMPLE_RATE} \]</p></div><div class=paragraph><p>Also bei 440 Hz und 48000 Hz:</p></div><div class=paragraph><p>verschiebst du die Phase um etwa 2π * 440 / 48000 Radiant pro Abtastwert</p></div><div class=paragraph><p>nach ~48000 Abtastwerten hast du eine Sekunde Audio erzeugt</p></div><div class=paragraph><p>nach 440 Zyklen in dieser Sekunde hörst du 440 Hz</p></div></div><div class=sect2><h3 id=_füllen_des_audio_puffers>Füllen des Audio-Puffers</h3><div class=listingblock><div class=content><pre>for (int i = 0; i &lt; samples; ++i) {
+    buffer[i] = 0.05f *(float)std::sin(phase);
+    phase += phaseInc;
+
+    if (phase &gt;= TWO_PI)
+        phase -= TWO_PI;
+}</pre></div></div><div class=paragraph><p>Für jeden Sample-Slot:</p></div><div class=ulist><ul><li><p>Berechne einen Sinuswert: sin(phase) reicht von -1 bis +1.</p></li><li><p>Skalieren der Amplitude: 0.05f * sin(…​)</p></li><li><p>Audio-Float-Samples liegen typischerweise im Bereich [-1, +1]</p></li><li><p>0.05 ist ein leiser Ton (5 % des Skalenendwerts), hilft dabei, zu hohe Lautstärke zu vermeiden.</p></li><li><p>Phase vorwärts verschieben: phase += phaseInc</p></li><li><p>Phase zurück in den Bereich [0, 2π) bringen, um zu verhindern, dass sie unendlich groß wird</p></li></ul></div><div class=paragraph><p>Dies verhindert, dass Fließkommawerte mit der Zeit zu groß werden (was die Genauigkeit verringern würde).</p></div></div><div class=sect2><h3 id=_wichtiges_detail_phase_muss_persistent_sein>Wichtiges Detail: phase muss persistent sein</h3><div class=paragraph><p>Damit die Sinuswelle über Callbacks hinweg kontinuierlich ist, muss phase ihren Wert zwischen den Callback-Aufrufen beibehalten. Das bedeutet, sie muss:</p></div><div class=ulist><ul><li><p>global sein, oder</p></li><li><p>statisch im Callback sein, oder</p></li><li><p>in einer über userdata übergebenen Struktur gespeichert sein.</p></li></ul></div><div class=paragraph><p>Wäre phase eine lokale Variable, die innerhalb des Callbacks auf 0 initialisiert wird, würdest du die Sinuswelle jedes Mal am Anfang neu starten,
+wenn SDL einen neuen Chunk anfordert (was Klicks oder einen „Reset“-Ton verursachen würde).</p></div></div><div class=sect2><h3 id=_wie_dies_mit_main_zusammenhängt>Wie dies mit main() zusammenhängt</h3><div class=paragraph><p>In main() initialisieren Sie ein SDL_AudioSpec und konfigurieren es wie folgt:</p></div><div class=listingblock><div class=content><pre>want.freq     = (int)SAMPLE_RATE;
+want.format   = AUDIO_F32SYS;
+want.channels = 1;
+want.samples  = 512;
+want.callback = audioCallback;</pre></div></div><div class=paragraph><p>Dann:</p></div><div class=listingblock><div class=content><pre>SDL_PauseAudioDevice(dev, 0);</pre></div></div><div class=paragraph><p>Das Gerät wird aus der Pause geholt → SDL ruft audioCallback wiederholt auf.</p></div><div class=paragraph><p>Du wartest 3 Sekunden und schließt dann.</p></div></div></div></div><div class=sect1><h2 id=_c_speicherbeherrschung_konstruktoren_destruktoren_und_der_heap>C++-Speicherbeherrschung: Konstruktoren, Destruktoren und der Heap</h2><div class=sectionbody><div class=paragraph><p>In C bist du nicht nur ein Programmierer; du bist der Architekt deines eigenen Speichers. Im Gegensatz zu höheren Programmiersprachen
+gibt dir C die Möglichkeit, jedes einzelne Byte zu verwalten. Dieser Beitrag erklärt, wie unser Synthesizer den „Lebenszyklus“ von Objekten handhabt.</p></div><div class=sect2><h3 id=_1_die_zwei_welten_stack_vs_heap>1. Die zwei Welten: Stack vs. Heap</h3><div class=paragraph><p>In unserem Synthesizer haben wir es mit zwei Arten der Speicherzuweisung zu tun:</p></div><div class=ulist><ul><li><p><strong>Der Stack:</strong> Wenn du <code>SynthEngine engine;</code> in <code>main()</code> siehst, handelt es sich um eine Stack-Zuweisung. Sie ist schnell und wird automatisch vom Compiler verwaltet.</p></li><li><p><strong>Der Heap:</strong> Wenn wir das Schlüsselwort <code>new</code> verwenden, wie in <code>osc = new SquareOsc(…​)</code>, belegen wir Speicherplatz aus dem Heap.
+Dieser Speicher bleibt zugewiesen, bis wir die CPU ausdrücklich anweisen, ihn freizugeben.</p></li></ul></div></div><div class=sect2><h3 id=_der_konstruktor_die_weichen_stellen>Der Konstruktor: Die Weichen stellen</h3><div class=paragraph><p>Der <strong>Konstruktor</strong> ist die erste Funktion, die beim Erstellen eines Objekts aufgerufen wird. In unserer <code>SynthEngine</code> hat der Konstruktor die Aufgabe,
+einen Speicherbereich aus dem Heap für unseren polymorphen Oszillator zu reservieren.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+4
+</pre></td><td class=code><pre><span style=background-color:#f8f8f8>SynthEngine</span><span style=background-color:#f8f8f8>()</span> <span style=color:#000;font-weight:700>:</span> <span style=background-color:#f8f8f8>active</span><span style=background-color:#f8f8f8>(</span><span style=color:#0086b3>false</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+    <span style=color:#998;font-style:italic>// Zuweisung: Speicher aus dem Heap reservieren</span>
+    <span style=background-color:#f8f8f8>osc</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#000;font-weight:700>new</span> <span style=background-color:#f8f8f8>SquareOsc</span><span style=background-color:#f8f8f8>(</span><span style=color:#099>440.0</span><span style=background-color:#f8f8f8>,</span> <span style=color:#099>0.2</span><span style=background-color:#f8f8f8>,</span> <span style=color:#099>44100.0</span><span style=background-color:#f8f8f8>);</span>
+<span style=background-color:#f8f8f8>}</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Da <code>osc</code> ein Zeiger auf die Basisklasse <code>Oscillator</code> ist, ermöglicht uns der Konstruktor, <strong>zur Laufzeit</strong> zu entscheiden, welche spezifische
+Unterklasse (Square, Sine usw.) instanziiert werden soll.</p></div></div><div class=sect2><h3 id=_der_destruktor_die_aufräumcrew>Der Destruktor: Die Aufräumcrew</h3><div class=paragraph><p>Jedes <code>new</code> muss ein entsprechendes <code>delete</code> haben. Wenn wir die <code>SynthEngine</code> zerstören, aber vergessen, das <code>osc</code> zu löschen, verursachen wir ein <strong>Speicherleck</strong>.
+Der <strong>Destruktor</strong> (<code>~SynthEngine</code>) stellt sicher, dass der Oszillator mit der Engine verschwindet, wenn diese beendet wird.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+</pre></td><td class=code><pre><span style=color:#000;font-weight:700>~</span><span style=background-color:#f8f8f8>SynthEngine</span><span style=background-color:#f8f8f8>()</span> <span style=background-color:#f8f8f8>{</span>
+    <span style=color:#000;font-weight:700>delete</span> <span style=background-color:#f8f8f8>osc</span><span style=background-color:#f8f8f8>;</span> <span style=color:#998;font-style:italic>// Gibt den Heap-Speicher an das System zurück</span>
+<span style=background-color:#f8f8f8>}</span>
+</pre></td></tr></tbody></table></code></pre></div></div></div><div class=sect2><h3 id=_echtzeit_speicherauslagerung>Echtzeit-Speicherauslagerung</h3><div class=paragraph><p>Einer der gefährlichsten (und spannendsten) Aspekte von C++ ist das Auslagern von Speicher während der Programmausführung. In unserer Ereignisschleife
+wechseln wir die Wellenformen wie folgt:</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+3
+4
+5
+6
+</pre></td><td class=code><pre><span style=color:#000;font-weight:700>if</span> <span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>nextOsc</span> <span style=color:#000;font-weight:700>!=</span> <span style=color:#0086b3>nullptr</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+    <span style=background-color:#f8f8f8>Oscillator</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>oldOsc</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>engine</span><span style=background-color:#f8f8f8>.</span><span style=background-color:#f8f8f8>osc</span><span style=background-color:#f8f8f8>;</span> <span style=color:#998;font-style:italic>// 1. Aktuelle Adresse speichern</span>
+    <span style=background-color:#f8f8f8>engine</span><span style=background-color:#f8f8f8>.</span><span style=background-color:#f8f8f8>osc</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>nullptr</span><span style=background-color:#f8f8f8>;</span>           <span style=color:#998;font-style:italic>// 2. Trennen (Thread-Sicherheit!)</span>
+    <span style=color:#000;font-weight:700>delete</span> <span style=background-color:#f8f8f8>oldOsc</span><span style=background-color:#f8f8f8>;</span>                  <span style=color:#998;font-style:italic>// 3. Den alten Speicher freigeben</span>
+    <span style=background-color:#f8f8f8>engine</span><span style=background-color:#f8f8f8>.</span><span style=background-color:#f8f8f8>osc</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>nextOsc</span><span style=background-color:#f8f8f8>;</span>           <span style=color:#998;font-style:italic>// 4. Auf das neue Objekt verweisen</span>
+<span style=background-color:#f8f8f8>}</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Diese Abfolge ist entscheidend. Wenn wir <code>oldOsc</code> löschen würden, ohne den Zeiger zuvor auf <code>nullptr</code> zu setzen, könnte unser <strong>Audio-Thread</strong>
+versuchen, Speicher zu lesen, der nicht mehr existiert, was zu dem gefürchteten <code>Segmentation Fault</code> führen würde.</p></div></div><div class=sect2><h3 id=_der_virtuelle_destruktor_das_diamant_problem>Der virtuelle Destruktor & das Diamant-Problem</h3><div class=paragraph><p>Beim Umgang mit Vererbung (und insbesondere mit Mehrfachvererbung wie beim <strong>Diamant-Problem</strong>) <strong>muss</strong> der Destruktor Ihrer Basisklasse <code>virtual</code> sein.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre><span style=color:#000;font-weight:700>virtual</span> <span style=color:#000;font-weight:700>~</span><span style=background-color:#f8f8f8>Oscillator</span><span style=background-color:#f8f8f8>()</span> <span style=background-color:#f8f8f8>{}</span>
+</pre></td></tr></tbody></table></code></pre></div></div></div><div class=sect2><h3 id=_warum>Warum?</h3><div class=paragraph><p>Wenn der Destruktor nicht virtuell ist, führt der Aufruf von <code>delete</code> für einen <code>Oscillator*</code>, der auf einen <code>SquareOsc</code> verweist, nur den Aufräumcode
+für die Basisklasse <code>Oscillator</code> aus. Jeder zusätzliche Speicher oder Ressourcen, die von der abgeleiteten Klasse verwaltet werden, würden verloren gehen.</p></div></div></div></div><div class=sect1><h2 id=_zusammenfassung>Zusammenfassung</h2><div class=sectionbody><div class=ulist><ul><li><p><strong>Konstruktoren</strong> dienen der Erlangung.</p></li><li><p><strong>Destruktoren</strong> dienen der Freigabe.</p></li><li><p><strong>Heap-Speicher</strong> erfordert manuelles Eingreifen.</p></li><li><p><strong>Virtuelle Destruktoren</strong> sind die Absicherung für polymorphen Code.</p></li></ul></div><div class=paragraph><p>Modernes C++ bietet „Smart Pointers“, um dies zu automatisieren, aber das Verständnis der grundlegenden Mechanismen ist es, was einen Nutzer von einem Entwickler unterscheidet</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">103
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;SDL2/SDL.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cmath&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;atomic&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> <span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>double</span> SAMPLE_RATE <span style=color:#f92672>=</span> <span style=color:#ae81ff>44100.0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> <span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>double</span> FREQUENCY   <span style=color:#f92672>=</span> <span style=color:#ae81ff>440.0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>static</span> <span style=color:#66d9ef>constexpr</span> <span style=color:#66d9ef>double</span> TWO_PI      <span style=color:#f92672>=</span> <span style=color:#ae81ff>6.28318530717958647692</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>AudioState</span> {
+</span></span><span style=display:flex><span>    std<span style=color:#f92672>::</span>atomic<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>bool</span><span style=color:#f92672>&gt;</span> playing{false}; <span style=color:#75715e>// set by main thread, read by audio thread
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>double</span> phase <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>;               <span style=color:#75715e>// only touched by audio thread
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>audioCallback</span>(<span style=color:#66d9ef>void</span><span style=color:#f92672>*</span> userdata, Uint8<span style=color:#f92672>*</span> stream, <span style=color:#66d9ef>int</span> len)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>auto</span><span style=color:#f92672>*</span> state <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>AudioState<span style=color:#f92672>*&gt;</span>(userdata);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span><span style=color:#f92672>*</span> buffer <span style=color:#f92672>=</span> <span style=color:#66d9ef>reinterpret_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>*&gt;</span>(stream);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> samples <span style=color:#f92672>=</span> len <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(<span style=color:#66d9ef>float</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// If not playing, output silence
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>state<span style=color:#f92672>-&gt;</span>playing.load(std<span style=color:#f92672>::</span>memory_order_relaxed)) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> samples; <span style=color:#f92672>++</span>i) buffer[i] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>double</span> phaseInc <span style=color:#f92672>=</span> TWO_PI <span style=color:#f92672>*</span> FREQUENCY <span style=color:#f92672>/</span> SAMPLE_RATE;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> samples; <span style=color:#f92672>++</span>i) {
+</span></span><span style=display:flex><span>        buffer[i] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.05f</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span>(std<span style=color:#f92672>::</span>sin(state<span style=color:#f92672>-&gt;</span>phase));
+</span></span><span style=display:flex><span>        state<span style=color:#f92672>-&gt;</span>phase <span style=color:#f92672>+=</span> phaseInc;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (state<span style=color:#f92672>-&gt;</span>phase <span style=color:#f92672>&gt;=</span> TWO_PI)
+</span></span><span style=display:flex><span>            state<span style=color:#f92672>-&gt;</span>phase <span style=color:#f92672>-=</span> TWO_PI;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (SDL_Init(SDL_INIT_AUDIO <span style=color:#f92672>|</span> SDL_INIT_VIDEO) <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>        std<span style=color:#f92672>::</span>cerr <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;SDL_Init failed: &#34;</span> <span style=color:#f92672>&lt;&lt;</span> SDL_GetError() <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Small window just to receive keyboard events
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    SDL_Window<span style=color:#f92672>*</span> win <span style=color:#f92672>=</span> SDL_CreateWindow(
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;Hold SPACE to play&#34;</span>,
+</span></span><span style=display:flex><span>        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+</span></span><span style=display:flex><span>        <span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>120</span>,
+</span></span><span style=display:flex><span>        SDL_WINDOW_SHOWN
+</span></span><span style=display:flex><span>    );
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>win) {
+</span></span><span style=display:flex><span>        std<span style=color:#f92672>::</span>cerr <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;SDL_CreateWindow failed: &#34;</span> <span style=color:#f92672>&lt;&lt;</span> SDL_GetError() <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>        SDL_Quit();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    AudioState state;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_AudioSpec want{};
+</span></span><span style=display:flex><span>    want.freq     <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span>(SAMPLE_RATE);
+</span></span><span style=display:flex><span>    want.format   <span style=color:#f92672>=</span> AUDIO_F32SYS;
+</span></span><span style=display:flex><span>    want.channels <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;          <span style=color:#75715e>// mono
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    want.samples  <span style=color:#f92672>=</span> <span style=color:#ae81ff>512</span>;
+</span></span><span style=display:flex><span>    want.callback <span style=color:#f92672>=</span> audioCallback;
+</span></span><span style=display:flex><span>    want.userdata <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>state;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_AudioSpec have{};
+</span></span><span style=display:flex><span>    SDL_AudioDeviceID dev <span style=color:#f92672>=</span> SDL_OpenAudioDevice(<span style=color:#66d9ef>nullptr</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>&amp;</span>want, <span style=color:#f92672>&amp;</span>have, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>dev) {
+</span></span><span style=display:flex><span>        std<span style=color:#f92672>::</span>cerr <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Audio open failed: &#34;</span> <span style=color:#f92672>&lt;&lt;</span> SDL_GetError() <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>        SDL_DestroyWindow(win);
+</span></span><span style=display:flex><span>        SDL_Quit();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_PauseAudioDevice(dev, <span style=color:#ae81ff>0</span>); <span style=color:#75715e>// start audio thread/callback
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>    std<span style=color:#f92672>::</span>cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Hold SPACE to play 440 Hz. Press ESC or close window to quit.</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>bool</span> running <span style=color:#f92672>=</span> true;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> (running) {
+</span></span><span style=display:flex><span>        SDL_Event e;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> (SDL_PollEvent(<span style=color:#f92672>&amp;</span>e)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_QUIT) {
+</span></span><span style=display:flex><span>                running <span style=color:#f92672>=</span> false;
+</span></span><span style=display:flex><span>            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_KEYDOWN <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>e.key.repeat) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (e.key.keysym.sym <span style=color:#f92672>==</span> SDLK_ESCAPE) running <span style=color:#f92672>=</span> false;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (e.key.keysym.sym <span style=color:#f92672>==</span> SDLK_SPACE)  state.playing.store(true, std<span style=color:#f92672>::</span>memory_order_relaxed);
+</span></span><span style=display:flex><span>            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_KEYUP) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (e.key.keysym.sym <span style=color:#f92672>==</span> SDLK_SPACE)  state.playing.store(false, std<span style=color:#f92672>::</span>memory_order_relaxed);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        SDL_Delay(<span style=color:#ae81ff>1</span>); <span style=color:#75715e>// tiny sleep to avoid busy-waiting
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_CloseAudioDevice(dev);
+</span></span><span style=display:flex><span>    SDL_DestroyWindow(win);
+</span></span><span style=display:flex><span>    SDL_Quit();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><p>Wir kompilieren die Datei mit einem einfachen</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=bash><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>g++ <span style=color:navy>-std</span><span style=color:#000;font-weight:700>=</span>c++17 main.cpp_01 <span style=color:navy>-lSDL2</span> <span style=color:navy>-o</span> hello_tone
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>und können das Programm ausführen:</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=bash><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>./hello_tone
+</pre></td></tr></tbody></table></code></pre></div></div></div></div><div class=sect1><h2 id=_einen_c_synthesizer_erstellen_oop_mit_sdl2>Einen C++-Synthesizer erstellen: OOP mit SDL2</h2><div class=sectionbody><div class=paragraph><p>Wenn du objektorientierte Programmierung (OOP) verstehen willst, hör auf, Definitionen zu lesen, und fang an, etwas zu bauen, das
+Geräusche macht. Wir verwenden C++ und SDL2, um einen Synthesizer zu erstellen.</p></div><div class=paragraph><p>Das Ziel: Eine Rechteckwelle, die ausgelöst wird, wenn du die Leertaste drückst.</p></div></div></div><div class=sect1><h2 id=_das_konzept_trennung_der_anliegen>Das Konzept: Trennung der Anliegen</h2><div class=sectionbody><div class=paragraph><p>Im Audiobereich solltest du deine Mathematik nicht mit deiner Fensterlogik vermischen. Wir teilen dies in drei Teile auf:
+1. <strong>Der Oszillator:</strong> Reine Mathematik. Er weiß nichts über Tastaturen oder Lautsprecher.
+2. <strong>Die Engine:</strong> Die Brücke. Sie kommuniziert mit der Hardware.
+3. <strong>Die Hauptschleife:</strong> Der Controller. Er überwacht deine Eingaben.</p></div></div></div><div class=sect1><h2 id=_1_der_oszillator_die_mathematik>1. Der Oszillator (Die Mathematik)</h2><div class=sectionbody><div class=paragraph><p>Dies ist unsere „Worker“-Klasse. Sie verwaltet den Wellenzustand. Indem wir <code>phase</code> und <code>frequency</code> als privat deklarieren, stellen wir sicher, dass der Audio-
+Thread das Einzige ist, was die Nadel bewegt.</p></div><div class=sect2><h3 id=_oscillator_h>Oscillator.h</h3><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Oscillator</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>double</span> frequency, amplitude, phase, sampleRate;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    Oscillator(<span style=color:#66d9ef>double</span> freq, <span style=color:#66d9ef>double</span> amp, <span style=color:#66d9ef>double</span> sr);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>getNextSample</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setFrequency</span>(<span style=color:#66d9ef>double</span> freq);
+</span></span><span style=display:flex><span>};</span></span></code></pre></td></tr></table></div></div></div></div></div></div><div class=sect2><h3 id=_oscillator_cpp>Oscillator.cpp</h3><div class=paragraph><p>Wir verwenden eine Rechteckwelle. Sie ist entweder „ein“ oder „aus“ (1 oder -1). Dadurch erhalten wir diesen rohen 8-Bit-Sound.</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;Oscillator.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>Oscillator<span style=color:#f92672>::</span>Oscillator(<span style=color:#66d9ef>double</span> freq, <span style=color:#66d9ef>double</span> amp, <span style=color:#66d9ef>double</span> sr)
+</span></span><span style=display:flex><span>    <span style=color:#f92672>:</span> frequency(freq), amplitude(amp), sampleRate(sr), phase(<span style=color:#ae81ff>0.0</span>) {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> Oscillator<span style=color:#f92672>::</span>getNextSample() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> sample <span style=color:#f92672>=</span> (sin(phase) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>) <span style=color:#f92672>?</span> <span style=color:#ae81ff>1.0f</span> <span style=color:#f92672>:</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1.0f</span>;
+</span></span><span style=display:flex><span>    phase <span style=color:#f92672>+=</span> (<span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI <span style=color:#f92672>*</span> frequency) <span style=color:#f92672>/</span> sampleRate;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (phase <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI) phase <span style=color:#f92672>-=</span> <span style=color:#ae81ff>2.0</span> <span style=color:#f92672>*</span> M_PI;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> sample <span style=color:#f92672>*</span> (<span style=color:#66d9ef>float</span>)amplitude;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></div></div></div></div><div class=sect1><h2 id=_2_die_engine_die_hardware_brücke>2. Die Engine (Die Hardware-Brücke)</h2><div class=sectionbody><div class=paragraph><p>SDL2 verwendet einen "Callback". Stell dir das so vor, als würde die Soundkarte alle paar Millisekunden an deine Tür klopfen und nach weiteren Zahlen fragen.
+Die <code>SynthEngine</code> ist das, was diese Tür öffnet.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class=code><pre><span style=color:#000;font-weight:700>class</span> <span style=color:#458;font-weight:700>SynthEngine</span> <span style=background-color:#f8f8f8>{</span>
+<span style=color:#900;font-weight:700>public:</span>
+    <span style=background-color:#f8f8f8>Oscillator</span> <span style=background-color:#f8f8f8>osc</span><span style=background-color:#f8f8f8>;</span>
+    <span style=color:#458;font-weight:700>bool</span> <span style=background-color:#f8f8f8>active</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>false</span><span style=background-color:#f8f8f8>;</span> <span style=color:#998;font-style:italic>// Der Schalter für unseren Sound</span>
+
+    <span style=background-color:#f8f8f8>SynthEngine</span><span style=background-color:#f8f8f8>()</span> <span style=color:#000;font-weight:700>:</span> <span style=background-color:#f8f8f8>osc</span><span style=background-color:#f8f8f8>(</span><span style=color:#099>440.0</span><span style=background-color:#f8f8f8>,</span> <span style=color:#099>0.2</span><span style=background-color:#f8f8f8>,</span> <span style=color:#099>44100.0</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{}</span>
+
+    <span style=color:#000;font-weight:700>static</span> <span style=color:#458;font-weight:700>void</span> <span style=background-color:#f8f8f8>AudioCallback</span><span style=background-color:#f8f8f8>(</span><span style=color:#458;font-weight:700>void</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>userdata</span><span style=background-color:#f8f8f8>,</span> <span style=background-color:#f8f8f8>Uint8</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>stream</span><span style=background-color:#f8f8f8>,</span> <span style=color:#458;font-weight:700>int</span> <span style=background-color:#f8f8f8>len</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+        <span style=background-color:#f8f8f8>SynthEngine</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>engine</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#000;font-weight:700>static_cast</span><span style=color:#000;font-weight:700>&lt;</span><span style=background-color:#f8f8f8>SynthEngine</span><span style=color:#000;font-weight:700>*&gt;</span><span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>userdata</span><span style=background-color:#f8f8f8>);</span>
+        <span style=color:#458;font-weight:700>float</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>buffer</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#000;font-weight:700>reinterpret_cast</span><span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>float</span><span style=color:#000;font-weight:700>*&gt;</span><span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>stream</span><span style=background-color:#f8f8f8>);</span>
+        <span style=color:#458;font-weight:700>int</span> <span style=background-color:#f8f8f8>length</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>len</span> <span style=color:#000;font-weight:700>/</span> <span style=color:#000;font-weight:700>sizeof</span><span style=background-color:#f8f8f8>(</span><span style=color:#458;font-weight:700>float</span><span style=background-color:#f8f8f8>);</span>
+
+        <span style=color:#000;font-weight:700>for</span> <span style=background-color:#f8f8f8>(</span><span style=color:#458;font-weight:700>int</span> <span style=background-color:#f8f8f8>i</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#099>0</span><span style=background-color:#f8f8f8>;</span> <span style=background-color:#f8f8f8>i</span> <span style=color:#000;font-weight:700>&lt;</span> <span style=background-color:#f8f8f8>length</span><span style=background-color:#f8f8f8>;</span> <span style=background-color:#f8f8f8>i</span><span style=color:#000;font-weight:700>++</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+            <span style=color:#998;font-style:italic>// Zustandsprüfung: Ist die Leertaste gedrückt?</span>
+            <span style=background-color:#f8f8f8>buffer</span><span style=background-color:#f8f8f8>[</span><span style=background-color:#f8f8f8>i</span><span style=background-color:#f8f8f8>]</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>engine</span><span style=color:#000;font-weight:700>-&gt;</span><span style=background-color:#f8f8f8>active</span> <span style=color:#000;font-weight:700>?</span> <span style=background-color:#f8f8f8>engine</span><span style=color:#000;font-weight:700>-&gt;</span><span style=background-color:#f8f8f8>osc</span><span style=background-color:#f8f8f8>.</span><span style=background-color:#f8f8f8>getNextSample</span><span style=background-color:#f8f8f8>()</span> <span style=color:#000;font-weight:700>:</span> <span style=color:#099>0.0</span><span style=background-color:#f8f8f8>f</span><span style=background-color:#f8f8f8>;</span>
+        <span style=background-color:#f8f8f8>}</span>
+    <span style=background-color:#f8f8f8>}</span>
+<span style=background-color:#f8f8f8>};</span>
+</pre></td></tr></tbody></table></code></pre></div></div></div></div><div class=sect1><h2 id=_3_die_hauptschleife_der_fokus>3. Die Hauptschleife (Der Fokus)</h2><div class=sectionbody><div class=paragraph><p>Hier ist der Haken: SDL erkennt Ihre Tastatureingaben ohne ein Fenster nicht richtig. Wir erstellen ein einfaches Fenster, um den „Fokus“ zu erhalten.
+Ohne dieses Fenster könnte dein Betriebssystem die Betätigungen der Leertaste ignorieren.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=background-color:#f8f8f8><code data-lang=cpp><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class=code><pre><span style=color:#458;font-weight:700>int</span> <span style=color:#900;font-weight:700>main</span><span style=background-color:#f8f8f8>(</span><span style=color:#458;font-weight:700>int</span> <span style=background-color:#f8f8f8>argc</span><span style=background-color:#f8f8f8>,</span> <span style=color:#458;font-weight:700>char</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>argv</span><span style=background-color:#f8f8f8>[])</span> <span style=background-color:#f8f8f8>{</span>
+    <span style=background-color:#f8f8f8>SDL_Init</span><span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>SDL_INIT_AUDIO</span> <span style=color:#000;font-weight:700>|</span> <span style=background-color:#f8f8f8>SDL_INIT_VIDEO</span><span style=background-color:#f8f8f8>);</span>
+
+    <span style=color:#998;font-style:italic>// Wir brauchen dieses Fenster, damit das Betriebssystem weiß, wohin es die Tastaturereignisse senden soll</span>
+    <span style=background-color:#f8f8f8>SDL_Window</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>window</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>SDL_CreateWindow</span><span style=background-color:#f8f8f8>(</span><span style=color:#a61717;background-color:#e3d2d2>„</span><span style=background-color:#f8f8f8>Synth</span> <span style=background-color:#f8f8f8>Focus</span><span style=color:#a61717;background-color:#e3d2d2>“</span><span style=background-color:#f8f8f8>,</span> <span style=background-color:#f8f8f8>SDL_WINDOWPOS_CENTERED</span><span style=background-color:#f8f8f8>,</span> <span style=background-color:#f8f8f8>SDL_WINDOWPOS_CENTERED</span><span style=background-color:#f8f8f8>,</span> <span style=color:#099>300</span><span style=background-color:#f8f8f8>,</span> <span style=color:#099>200</span><span style=background-color:#f8f8f8>,</span> <span style=background-color:#f8f8f8>SDL_WINDOW_SHOWN</span><span style=background-color:#f8f8f8>);</span>
+
+    <span style=background-color:#f8f8f8>SynthEngine</span> <span style=background-color:#f8f8f8>engine</span><span style=background-color:#f8f8f8>;</span>
+    <span style=color:#998;font-style:italic>// ... SDL-Audio-Einrichtung ...</span>
+
+    <span style=color:#000;font-weight:700>while</span> <span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>running</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>{</span>
+        <span style=color:#000;font-weight:700>while</span> <span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>SDL_PollEvent</span><span style=background-color:#f8f8f8>(</span><span style=color:#000;font-weight:700>&amp;</span><span style=background-color:#f8f8f8>e</span><span style=background-color:#f8f8f8>))</span> <span style=background-color:#f8f8f8>{</span>
+            <span style=color:#000;font-weight:700>if</span> <span style=background-color:#f8f8f8>(</span><span style=background-color:#f8f8f8>e</span><span style=background-color:#f8f8f8>.</span><span style=background-color:#f8f8f8>type</span> <span style=color:#000;font-weight:700>==</span> <span style=background-color:#f8f8f8>SDL_QUIT</span><span style=background-color:#f8f8f8>)</span> <span style=background-color:#f8f8f8>running</span> <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>false</span><span style=background-color:#f8f8f8>;</span>
+        <span style=background-color:#f8f8f8>}</span>
+
+        <span style=color:#998;font-style:italic>// Direktes Abfragen: Ist die Taste GERADE JETZT gedrückt?</span>
+        <span style=color:#000;font-weight:700>const</span> <span style=background-color:#f8f8f8>Uint8</span><span style=color:#000;font-weight:700>*</span> <span style=background-color:#f8f8f8>state</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>SDL_GetKeyboardState</span><span style=background-color:#f8f8f8>(</span><span style=color:#0086b3>NULL</span><span style=background-color:#f8f8f8>);</span>
+        <span style=background-color:#f8f8f8>engine</span><span style=background-color:#f8f8f8>.</span><span style=background-color:#f8f8f8>active</span> <span style=color:#000;font-weight:700>=</span> <span style=background-color:#f8f8f8>state</span><span style=background-color:#f8f8f8>[</span><span style=background-color:#f8f8f8>SDL_SCANCODE_SPACE</span><span style=background-color:#f8f8f8>];</span>
+
+        <span style=background-color:#f8f8f8>SDL_Delay</span><span style=background-color:#f8f8f8>(</span><span style=color:#099>10</span><span style=background-color:#f8f8f8>);</span>
+    <span style=background-color:#f8f8f8>}</span>
+    <span style=color:#998;font-style:italic>// ... Aufräumen ...</span>
+<span style=background-color:#f8f8f8>}</span>
+</pre></td></tr></tbody></table></code></pre></div></div></div></div><div class=sect1><h2 id=_warum_dies_richtiges_oop_ist>Warum dies „richtiges“ OOP ist</h2><div class=sectionbody><div class=ulist><ul><li><p><strong>Identität:</strong> Wenn du zwei Oszillatoren willst, instanzierst du einfach <code>Oscillator osc2</code>. Kein Kopieren und Einfügen von Formeln.</p></li><li><p><strong>Kapselung:</strong> Die <code>main</code>-Schleife weiß nicht, <strong>wie</strong> die Rechteckwelle berechnet wird; sie schaltet lediglich den <code>active</code>-Schalter um.</p></li><li><p><strong>Zustandsverwaltung:</strong> Die <code>phase</code> bleibt im Objekt und merkt sich, wo sie zwischen den Aufrufen stand.</p></li></ul></div></div></div><div class=sect1><h2 id=_nächste_schritte>Nächste Schritte</h2><div class=sectionbody><div class=paragraph><p>Diese Konfiguration funktioniert, aber du hörst ein „Klicken“, wenn du die Taste loslässt. Das liegt daran, dass die Welle mitten im Zyklus abgeschnitten wird.
+Nächstes Mal beheben wir das mit einer <strong>Hüllkurve (ADSR)</strong>, um den Anfang und das Ende des Klangs zu glätten.</p></div><div class=sect2><h3 id=_synth_oscilloscope>Synth Oscilloscope</h3><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">99
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;SDL2/SDL.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;Oscillator.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Ein globaler Puffer, damit der Renderer auf die Audiodaten zugreifen kann
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// Wir nutzen 400 Samples, passend zur Fensterbreite
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>std<span style=color:#f92672>::</span>vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>&gt;</span> visualBuffer(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>0.0f</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SynthEngine</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    Oscillator osc;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>bool</span> active;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SynthEngine() <span style=color:#f92672>:</span> osc(<span style=color:#ae81ff>440.0</span>, <span style=color:#ae81ff>0.3</span>, <span style=color:#ae81ff>44100.0</span>), active(false) {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>AudioCallback</span>(<span style=color:#66d9ef>void</span><span style=color:#f92672>*</span> userdata, Uint8<span style=color:#f92672>*</span> stream, <span style=color:#66d9ef>int</span> len) {
+</span></span><span style=display:flex><span>        SynthEngine<span style=color:#f92672>*</span> engine <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>SynthEngine<span style=color:#f92672>*&gt;</span>(userdata);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>float</span><span style=color:#f92672>*</span> buffer <span style=color:#f92672>=</span> <span style=color:#66d9ef>reinterpret_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>*&gt;</span>(stream);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> length <span style=color:#f92672>=</span> len <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(<span style=color:#66d9ef>float</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> length; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>float</span> sample <span style=color:#f92672>=</span> engine<span style=color:#f92672>-&gt;</span>active <span style=color:#f92672>?</span> engine<span style=color:#f92672>-&gt;</span>osc.getNextSample() <span style=color:#f92672>:</span> <span style=color:#ae81ff>0.0f</span>;
+</span></span><span style=display:flex><span>            buffer[i] <span style=color:#f92672>=</span> sample;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Wir füllen den Visualisierungs-Puffer nur mit den ersten 400 Samples
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>if</span> (i <span style=color:#f92672>&lt;</span> visualBuffer.size()) {
+</span></span><span style=display:flex><span>                visualBuffer[i] <span style=color:#f92672>=</span> sample;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> argv[]) {
+</span></span><span style=display:flex><span>    SDL_Init(SDL_INIT_AUDIO <span style=color:#f92672>|</span> SDL_INIT_VIDEO);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Fenster und Renderer erstellen
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    SDL_Window<span style=color:#f92672>*</span> window <span style=color:#f92672>=</span> SDL_CreateWindow(<span style=color:#e6db74>&#34;C++ Synth Visualizer&#34;</span>,
+</span></span><span style=display:flex><span>        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, <span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>300</span>, SDL_WINDOW_SHOWN);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Der Renderer ist unser &#34;Pinsel&#34; für das Fenster
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    SDL_Renderer<span style=color:#f92672>*</span> renderer <span style=color:#f92672>=</span> SDL_CreateRenderer(window, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, SDL_RENDERER_ACCELERATED);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SynthEngine engine;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_AudioSpec ds;
+</span></span><span style=display:flex><span>    ds.freq <span style=color:#f92672>=</span> <span style=color:#ae81ff>44100</span>;
+</span></span><span style=display:flex><span>    ds.format <span style=color:#f92672>=</span> AUDIO_F32SYS;
+</span></span><span style=display:flex><span>    ds.channels <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    ds.samples <span style=color:#f92672>=</span> <span style=color:#ae81ff>2048</span>;
+</span></span><span style=display:flex><span>    ds.callback <span style=color:#f92672>=</span> SynthEngine<span style=color:#f92672>::</span>AudioCallback;
+</span></span><span style=display:flex><span>    ds.userdata <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>engine;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_OpenAudio(<span style=color:#f92672>&amp;</span>ds, NULL);
+</span></span><span style=display:flex><span>    SDL_PauseAudio(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>bool</span> running <span style=color:#f92672>=</span> true;
+</span></span><span style=display:flex><span>    SDL_Event e;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> (running) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> (SDL_PollEvent(<span style=color:#f92672>&amp;</span>e)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_QUIT) running <span style=color:#f92672>=</span> false;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>const</span> Uint8<span style=color:#f92672>*</span> state <span style=color:#f92672>=</span> SDL_GetKeyboardState(NULL);
+</span></span><span style=display:flex><span>        engine.active <span style=color:#f92672>=</span> state[SDL_SCANCODE_SPACE];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// --- GRAFIK RENDERING ---
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 1. Hintergrund löschen (Schwarz/Dunkelblau)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        SDL_SetRenderDrawColor(renderer, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>25</span>, <span style=color:#ae81ff>255</span>);
+</span></span><span style=display:flex><span>        SDL_RenderClear(renderer);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 2. Nulllinie zeichnen (Grau)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        SDL_SetRenderDrawColor(renderer, <span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>50</span>, <span style=color:#ae81ff>255</span>);
+</span></span><span style=display:flex><span>        SDL_RenderDrawLine(renderer, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>150</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 3. Wellenform zeichnen (Neongrün)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        SDL_SetRenderDrawColor(renderer, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>255</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; x <span style=color:#f92672>&lt;</span> (<span style=color:#66d9ef>int</span>)visualBuffer.size() <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>; x<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Wir skalieren den Sample-Wert (-1.0 bis 1.0) auf die Fensterhöhe
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#75715e>// 150 ist die Mitte des Fensters, 100 ist die Amplitude
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>int</span> y1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>150</span> <span style=color:#f92672>-</span> (<span style=color:#66d9ef>int</span>)(visualBuffer[x] <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>int</span> y2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>150</span> <span style=color:#f92672>-</span> (<span style=color:#66d9ef>int</span>)(visualBuffer[x<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>            SDL_RenderDrawLine(renderer, x, y1, x <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, y2);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 4. Alles auf den Bildschirm bringen
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        SDL_RenderPresent(renderer);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        SDL_Delay(<span style=color:#ae81ff>16</span>); <span style=color:#75715e>// Entspricht etwa 60 FPS
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_CloseAudio();
+</span></span><span style=display:flex><span>    SDL_DestroyRenderer(renderer);
+</span></span><span style=display:flex><span>    SDL_DestroyWindow(window);
+</span></span><span style=display:flex><span>    SDL_Quit();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><p>Übersetzt mit DeepL.com (kostenlose Version)</p></div></div></div></div></div><hr style=margin-top:3rem><nav class=book-navigation style="display:flex;justify-content:space-between;padding:1rem 0"><div class=prev><a href=http://wehrend.github.io/de/pages/cpp_01/ style=text-decoration:none>← C++-Einführungskurs</a></div><div class=next style=text-align:right><a href=http://wehrend.github.io/de/pages/cpp_03/ style=text-decoration:none>C++-Einführungskurs (Teil 3) →</a></div></nav></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#_einführung_in_c_teil_2>Einführung in C++ (Teil 2)</a><ul><li><a href=#_interpretation_des_puffers_als_floats>Interpretation des Puffers als Floats</a></li><li><a href=#_berechnung_der_geschwindigkeit_mit_der_sich_die_sinuswelle_fortbewegt>Berechnung der Geschwindigkeit, mit der sich die Sinuswelle fortbewegt</a></li><li><a href=#_füllen_des_audio_puffers>Füllen des Audio-Puffers</a></li><li><a href=#_wichtiges_detail_phase_muss_persistent_sein>Wichtiges Detail: phase muss persistent sein</a></li><li><a href=#_wie_dies_mit_main_zusammenhängt>Wie dies mit main() zusammenhängt</a></li></ul></li><li><a href=#_c_speicherbeherrschung_konstruktoren_destruktoren_und_der_heap>C++-Speicherbeherrschung: Konstruktoren, Destruktoren und der Heap</a><ul><li><a href=#_1_die_zwei_welten_stack_vs_heap>1. Die zwei Welten: Stack vs. Heap</a></li><li><a href=#_der_konstruktor_die_weichen_stellen>Der Konstruktor: Die Weichen stellen</a></li><li><a href=#_der_destruktor_die_aufräumcrew>Der Destruktor: Die Aufräumcrew</a></li><li><a href=#_echtzeit_speicherauslagerung>Echtzeit-Speicherauslagerung</a></li><li><a href=#_der_virtuelle_destruktor_das_diamant_problem>Der virtuelle Destruktor & das Diamant-Problem</a></li><li><a href=#_warum>Warum?</a></li></ul></li><li><a href=#_zusammenfassung>Zusammenfassung</a></li><li><a href=#_einen_c_synthesizer_erstellen_oop_mit_sdl2>Einen C++-Synthesizer erstellen: OOP mit SDL2</a></li><li><a href=#_das_konzept_trennung_der_anliegen>Das Konzept: Trennung der Anliegen</a></li><li><a href=#_1_der_oszillator_die_mathematik>1. Der Oszillator (Die Mathematik)</a><ul><li><a href=#_oscillator_h>Oscillator.h</a></li><li><a href=#_oscillator_cpp>Oscillator.cpp</a></li></ul></li><li><a href=#_2_die_engine_die_hardware_brücke>2. Die Engine (Die Hardware-Brücke)</a></li><li><a href=#_3_die_hauptschleife_der_fokus>3. Die Hauptschleife (Der Fokus)</a></li><li><a href=#_warum_dies_richtiges_oop_ist>Warum dies „richtiges“ OOP ist</a></li><li><a href=#_nächste_schritte>Nächste Schritte</a><ul><li><a href=#_synth_oscilloscope>Synth Oscilloscope</a></li></ul></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

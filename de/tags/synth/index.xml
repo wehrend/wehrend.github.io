@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Synth on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/synth/</link><description>Recent content in Synth on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sat, 14 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/synth/index.xml" rel="self" type="application/rss+xml"/><item><title>C++-Einführungskurs (Qt GUI)</title><link>http://wehrend.github.io/de/pages/cpp_qt_1/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_qt_1/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_eine_gui_ist_eine_fantastische_idee_aber_welche_soll_es_sein_sdl_wxwidgets_oder_qt">Eine GUI ist eine &lt;strong>fantastische&lt;/strong> Idee …​ Aber welche soll es sein – SDL, wxWidgets oder Qt?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Die Wahl eines GUI-Frameworks für ein C++-Audio-Projekt ist ein „Fork in the Road“-Moment. Jede dieser Optionen lenkt das Projekt in eine völlig andere architektonische Richtung.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Da dein Kurs derzeit SDL verwendet, ist es der natürliche Favorit. So sieht der Vergleich im Kontext eines Synthesizer-Projekts aus:&lt;/p>
+&lt;/div>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>&lt;strong>SDL (Simple DirectMedia Layer) – Die „Low-Level“-Wahl&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 2)</title><link>http://wehrend.github.io/de/pages/cpp_02/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_02/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_c_teil_2">Einführung in C++ (Teil 2)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In diesem nächsten Beispiel bzw. Tutorial sehen wir uns ein Programm zur Klangerzeugung (auch bekannt als Synthesizer) an, für das wir die SDL-Bibliothek
+(Simple Direct Media Library) verwenden. Wir gehen das Programm Zeile für Zeile durch und erklären die verschiedenen Elemente.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Fangen wir an…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Zunächst haben wir die Includes für die SDL-Bibliothek; die Header-Datei werden wir uns später ansehen. Außerdem inkludieren wir cmath für mathematische Funktionen und iostream
+für Ein- und Ausgabe (in diesem Beispiel jedoch nur für die Ausgabe).&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 3)</title><link>http://wehrend.github.io/de/pages/cpp_03/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_03/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_c_teil_3">Einführung in C++ (Teil 3)&lt;/h2>
+&lt;div class="sectionbody">
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_c_oop_meisterschaft_die_kraft_der_komposition_has_a">C++ OOP-Meisterschaft: Die Kraft der Komposition (Has-A)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In der Softwarearchitektur gibt es zwei grundlegende Möglichkeiten, Objekte miteinander zu verbinden: &lt;strong>Vererbung&lt;/strong> (Is-A) und &lt;strong>Komposition&lt;/strong> (Has-A).
+Während Anfänger oft versuchen, alles durch Vererbung zu lösen („Ein Oszillator &lt;strong>ist ein&lt;/strong> Hüllkurvenmodul“), bevorzugen Profis die Komposition:
+&lt;strong>„Ein Synthesizer &lt;strong>hat ein&lt;/strong> Hüllkurvenmodul.“&lt;/strong>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_1_warum_komposition">1. Warum Komposition?&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Stellen Sie sich unseren Synthesizer als modulares Rack vor. Jedes Modul (Oszillator, Hüllkurvenmodul) ist eine eigenständige Klasse. Die &lt;code>SynthEngine&lt;/code> fungiert
+als Chassis, in das diese Module eingesteckt werden.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 4)</title><link>http://wehrend.github.io/de/pages/cpp_04/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_04/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_von_zustandslos_zu_zustandsbehaftet_filter_komposition">Von zustandslos zu zustandsbehaftet: Filter &amp;amp; Komposition&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In den vorangegangenen Teilen haben wir einen Oszillator gebaut. Er war „zustandslos“ – man gibt ihm eine Phase vor, und er liefert einen Wert. Es ist ihm egal,
+was vor einer Mikrosekunde passiert ist. Damit Musik jedoch „warm“ oder „organisch“ klingt, brauchen wir Objekte, die über ein &lt;strong>Gedächtnis&lt;/strong> verfügen.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_dsp_allgemein_das_konzept_des_zustands">1. DSP allgemein: Das Konzept des Zustands&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>In der digitalen Signalverarbeitung (DSP) ist ein Filter &lt;strong>zustandsbehaftet&lt;/strong>. Um den &lt;strong>aktuellen&lt;/strong> Ausgangswert zu berechnen, muss ein Filter
+den &lt;strong>vorherigen&lt;/strong> Ausgangswert kennen.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 5)</title><link>http://wehrend.github.io/de/pages/cpp_05/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_05/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_mehr_als_nur_eine_note_polyphonie_implementieren">Mehr als nur eine Note: Polyphonie implementieren&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In unseren bisherigen Tutorials war unser Synthesizer darauf beschränkt, jeweils nur eine Note zu spielen. Wenn man eine neue Taste drückte, verschwand der alte Klang einfach.
+Heute ändern wir das, indem wir &lt;strong>Polyphonie&lt;/strong> implementieren – die Fähigkeit, Akkorde zu spielen und mehrere „Stimmen“ gleichzeitig zu verwalten.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_was_ist_eine_stimme">1. Was ist eine „Stimme“?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Im professionellen Synthesizer-Design verwenden wir die &lt;strong>Voice-Architektur&lt;/strong>. Eine „Voice“ ist eine in sich geschlossene Einheit, die alles enthält,
+was zur Erzeugung eines Klangs benötigt wird: einen &lt;strong>Oszillator&lt;/strong> und eine &lt;strong>Hüllkurve&lt;/strong>.&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (Teil 6)</title><link>http://wehrend.github.io/de/pages/cpp_06/</link><pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_06/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_die_themen_datenstrukturen_algorithmen_und_komplexität_berechenbarkeit_in_c">Einführung in die Themen Datenstrukturen, Algorithmen und Komplexität / Berechenbarkeit in C++&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Achtung – dieses Tutorial ist sehr theorielastig – wir werden ein wenig über die Grundlagen von Datenstrukturen, Algorithmen
+und Komplexität sprechen – all das vor allem im Zusammenhang mit C – also fangen wir mit den Datenstrukturen in C an&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_listen_wörterbücher_und_warteschlangen">Listen, Wörterbücher und Warteschlangen&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Wir beginnen mit einigen grundlegenden Datenstrukturen, die wir bereits verwendet haben, ohne tief in die Themen einzusteigen; diese beiden sind
+std::vector (im Grunde Listen) und std::map (im Grunde Wörterbücher).&lt;/p>
+&lt;/div></description></item><item><title>C++-Einführungskurs (CMake Zwischenspiel)</title><link>http://wehrend.github.io/de/pages/cpp_cmake/</link><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_cmake/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_effiziente_build_tools_für_c_projekte">Einführung in effiziente Build-Tools für C++-Projekte&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Wir erreichen nun einen &lt;strong>wichtigen Meilenstein&lt;/strong>, indem wir von einem &lt;code>Make&lt;/code>-basierten Build-Prozess zu einem &lt;code>CMake&lt;/code>-basierten Workflow wechseln.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Die traditionelle „Rule of Three“ (die in vielen klassischen Open-Source-Projekten zu finden ist) — &lt;code>./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install&lt;/code>
+— wird nach und nach durch den CMake-Ansatz ersetzt. Dieser moderne Workflow beinhaltet typischerweise das Anlegen eines separaten
+Build-Verzeichnisses, um den Quellbaum sauber zu halten (sogenannte „Out-of-Source Builds“):&lt;/p>
+&lt;/div></description></item><item><title>Build your own synthesizer modules</title><link>http://wehrend.github.io/de/posts/synth/25_build_your_own_modules/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/25_build_your_own_modules/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_einleitung">Einleitung&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hallo,
+heute möchte ich Ihnen das Grundwissen über den Selbstbau Ihrer eigenen Synthesizermodule vermitteln – diese benötigen
+nicht den Eurorack-Standard, obwohl sie in meinem Fall dazugehören.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Wenn Sie mit &lt;a href="https://sdiy.info/wiki/Eurorack">eurorack format&lt;/a> oder einem anderen modularen Synthesizer-Standard beginnen,
+insbesondere aber mit dem Eurorack-Standard, werden Sie höchstwahrscheinlich von
+die schiere Anzahl der Hersteller und verfügbaren Produkte überwältigt sein. Einen einfachen Überblick erhalten Sie hier
+auf &lt;a href="https://www.modulargrid.net/e/modules/browser">ModularGrid&lt;/a>.
+Sie brauchen ein paar Wochen oder sogar Monate, um sich durch einige Testberichte auf &lt;a href="https://www.amazona.de/">Amzona.de&lt;/a>
+zu lesen oder Synthesizer-Läden wie &lt;a href="https://schneidersladen.de/">SchneidersLaden&lt;/a> besuchen, um sich einen groben Überblick
+über die Vielfalt des Marktes zu verschaffen.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Noise Floor</title><link>http://wehrend.github.io/de/posts/synth/16_noise_floor/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/16_noise_floor/</guid><description>&lt;div class="paragraph">
+&lt;p>On my mobile setup, the NiftyVCase I have collected my diy modules (with excepition to the Doepfer
+A-124, I had to include for its great sound). It features a kick-drum from erica synths, an even
+VCO, Sampling Modulator, A*B+C and Rampage from Befaco. As well as the Divebomb III for some delay.
+Last but not least a Zlon skew lfo and a BCM086 Diode Ladder High pass filter.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./noise_floor.jpg" alt="noise floor"/>&lt;/span>&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Jam Session</title><link>http://wehrend.github.io/de/posts/synth/15_jam_session/</link><pubDate>Sat, 22 Jul 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/15_jam_session/</guid><description>&lt;div class="paragraph">
+&lt;p>This time, we have a convoluted patch, featuring a new member, the random sequencer
+from rat-king, which,as the name suggests, delivers nice randomly sequences. Also
+we have a new mixer module, self-build.
+We also utilize both VCOs and both LFO modules…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./jam_session.jpg" alt="jam session"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./jam_session.m4a">jam session Audio&lt;/a>&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Another small patch</title><link>http://wehrend.github.io/de/posts/synth/14_another_small_patch/</link><pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/14_another_small_patch/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another small patch idea for the Doepfer A-100 system,
+this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+modul A-106-5.
+We also utilize two LFO modules…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch.jpg" alt="LFO SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch.mp4">LFO SEM Patch video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch2-3.jpg" alt="LFO SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch2.mp4">LFO SEM Patch video 2&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch3.mp4">LFO SEM Patch video 3&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To this day I did not find the right audio recorder,and I am recording with my smartphone,
+so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - Another simple patch</title><link>http://wehrend.github.io/de/posts/synth/13_another_simple_patch/</link><pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/13_another_simple_patch/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another simple patch idea for the Doepfer A-100 system,
+this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+modul A-106-5.
+We also utilize two A-110 oscillator modules (one standard, one basic), and the LFO.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./lfo_sem_patch.jpg" alt="SEM Patch"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./lfo_sem_patch.mp4">SEM Patch video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>To this day I did not find the right audio recorder,and I am recording with my smartphone,
+so the sound quality is rather bad. I am still searching for the ideal recording hardware.&lt;/p>
+&lt;/div></description></item><item><title>Eurorack Synthesizer - More patch ideas</title><link>http://wehrend.github.io/de/posts/synth/11_more_patch_ideas/</link><pubDate>Sat, 10 Jun 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/11_more_patch_ideas/</guid><description>&lt;div class="paragraph">
+&lt;p>So here is another patch idea for the Doepfer A-100 system.
+The results of the Doepfer oscillators are pithlily &amp;#34;knarzig-kernige&amp;#34; sounds.
+We utilize two A-110 oscillator modules (one standard, one basic), a ring-modulator (A-114)
+and a wasp-filter (A-124), together with some utility modules like a sequencer and an LFO.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./pithily_sounds.jpg" alt="pithily"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./pithily_sounds.m4a">pithily…​ Audio&lt;/a>&lt;/p>
+&lt;/div></description></item><item><title>Pocket Operator Modular 400 in eurorack</title><link>http://wehrend.github.io/de/posts/synth/09_eurorack_modular/</link><pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/09_eurorack_modular/</guid><description>&lt;div class="paragraph">
+&lt;p>So I bought a low cost eurorack case from doepfer and a set of frontpanels plus power adapter
+for the pocket operator modular 400 from Oddvolt to put the said machine into a eurorack modular
+system. I also bought a small, but decent sequencer, since the one from teenage engineering is not
+very handy to use. I have two further modules on my list, the &lt;a href="https://doepfer.de/a119.htm">Doepfer A-119&lt;/a>,
+an input module, as well as the &lt;a href="https://doepfer.de/a124.htm">Doepfer A-124&lt;/a>, a wasp filter, to complete the setup.&lt;/p>
+&lt;/div></description></item><item><title>The Pocket Operator Modular 400 patch ideas (II)</title><link>http://wehrend.github.io/de/posts/synth/06_pocket_operator_modular_400/</link><pubDate>Sun, 14 May 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/06_pocket_operator_modular_400/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./plong_plong_plong.jpg" alt="Plong…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./plong_plong_plong.mp4">Plong…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>With the random module we can sample &amp;amp; hold a signal from the input. Its companionship is the noise module.
+We feed the saw output to the input of the rand module.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./bleep_bleep.jpg" alt="Beep" width="bleep…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./bleep_bleep.mp4">Beep,bleep…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="olist arabic">
+&lt;ol class="arabic">
+&lt;li>
+&lt;p>sine output → speaker right&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>envelope output → sine key&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>LFO square → envelope trig&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>LFO square → sine fm&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./sweeping_sinus.jpg" alt="Sweeping sinus…​"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;a href="./sweeping_sinus.mp4">sweeping sinus…​ Video&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We can expand the setup by using the sequencer and utilize the filter. Because the nice
+thing about modular synthesizers is, that the filter can be used not only in signal paths but
+also in control paths ;-) .&lt;/p>
+&lt;/div></description></item><item><title>The Pocket Operator Modular 400 patch ideas</title><link>http://wehrend.github.io/de/posts/synth/05_pocket_operator_modular_400/</link><pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/synth/05_pocket_operator_modular_400/</guid><description>&lt;div class="paragraph">
+&lt;p>Ein analoger modularer Synthesizer war schon immer mein Traum, letzte Woche habe ich mir diesen Traum erfüllt
+und den Pocket Operator Modular 400 von der schwedischen Firma Teenage Engineering bestellt.
+Wie bei den Möbeln der anderen beliebten schwedischen Firma muss man ihn erst selbst zusammenbauen,
+bevor man damit einen Ton erzeugen kann. Das hat etwa 3 bis 4 Stunden gedauert. Aber es hat sich gelohnt.&lt;/p>
+&lt;/div>
+&lt;hr/>
+&lt;div class="paragraph">
+&lt;p>Hier sind einige Patch-Ideen. Im ersten Beispiel mischen wir einfach die Ausgänge aller
+3 Oszillatoren zusammen und steuern den Sinusoszillator mit dem Dreieckausgang des LFO und die Impulsbreite des Rechteckoszillators mit dem LFO-Rechteck.&lt;/p>
+&lt;/div></description></item></channel></rss>

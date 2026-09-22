@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NLC on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/nlc/</link><description>Recent content in NLC on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 02 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/nlc/index.xml" rel="self" type="application/rss+xml"/><item><title>Simulation of NLC sloth with LTSpice</title><link>http://wehrend.github.io/posts/synth/33-simulate-nlc-sloth/</link><pubDate>Fri, 02 May 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/synth/33-simulate-nlc-sloth/</guid><description>&lt;div class="paragraph">
+&lt;p>Hello folks,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>today I want to continue the series about simulation of synth modules with LTspice.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We want to analyze the &lt;a href="https://www.nonlinearcircuits.com/modules/p/4hp-sloth-chaos">sloth module from NLC&lt;/a>.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Lets start with the schematic:&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./sloth_circuit.png" alt="Sloth schematic"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Right below is a copy of the schematic, created in ltspice, however missing the potentiometer(s).&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;span class="image">&lt;img src="./sloth_simulation.png" alt="Sloth Simulation"/>&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Whats important here to note here is that for the fourth op-amp we needed to add some voltage offset
+of 1 µV to get it working.
+Additionally to that we need to simulation the power-on cycle of the power supply, by adding the Voltage
+with PieceWiseLinear function given ze values (t0,v0, t1, t2 ) with the Values 1ms 0V 100ms 12V ..&lt;/p>
+&lt;/div></description></item></channel></rss>

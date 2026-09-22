@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="454" height="415" viewBox="0 0 454 415">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Outer block frame -->
+  <rect x="80" y="10" width="330" height="395" fill="none" stroke="#7cc7f0" stroke-width="6"/>
+
+  <!-- Title -->
+  <text x="260" y="70" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" fill="#7cc7f0">Block</text>
+
+  <!-- Input labels -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#111">
+    <text x="18" y="85">x<tspan baseline-shift="sub" font-size="22">j</tspan></text>
+    <text x="8" y="175">x<tspan baseline-shift="sub" font-size="22">j+2</tspan></text>
+    <text x="8" y="235">x<tspan baseline-shift="sub" font-size="22">j+1</tspan></text>
+    <text x="12" y="285">S<tspan baseline-shift="sub" font-size="22">in</tspan></text>
+    <text x="8" y="345">x<tspan baseline-shift="sub" font-size="22">j+3</tspan></text>
+  </g>
+
+  <!-- Output labels -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#111">
+    <text x="420" y="95">S<tspan baseline-shift="sub" font-size="22">out</tspan></text>
+    <text x="420" y="225">y<tspan baseline-shift="sub" font-size="22">0</tspan></text>
+    <text x="420" y="345">y<tspan baseline-shift="sub" font-size="22">1</tspan></text>
+  </g>
+
+  <!-- Input wires (left to frame) -->
+  <g stroke="#111" stroke-width="3" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <line x1="55" y1="75" x2="92" y2="75"/>
+    <line x1="55" y1="165" x2="92" y2="165"/>
+    <line x1="55" y1="225" x2="92" y2="225"/>
+    <line x1="55" y1="275" x2="92" y2="275"/>
+    <line x1="55" y1="335" x2="92" y2="335"/>
+  </g>
+
+  <!-- Main vertical bus inside -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <line x1="115" y1="75" x2="115" y2="335"/>
+    <line x1="130" y1="75" x2="130" y2="230"/>
+    <line x1="145" y1="75" x2="145" y2="165"/>
+    <line x1="160" y1="75" x2="160" y2="140"/>
+  </g>
+
+  <!-- Tap connections from inputs to bus -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <line x1="92" y1="75" x2="160" y2="75"/>
+    <line x1="92" y1="165" x2="145" y2="165"/>
+    <line x1="92" y1="225" x2="130" y2="225"/>
+    <line x1="92" y1="275" x2="130" y2="275"/>
+    <line x1="92" y1="335" x2="115" y2="335"/>
+  </g>
+
+  <!-- Junction dots (approx) -->
+  <g fill="#111">
+    <circle cx="115" cy="335" r="7"/>
+    <circle cx="130" cy="275" r="7"/>
+    <circle cx="130" cy="225" r="7"/>
+    <circle cx="145" cy="165" r="7"/>
+    <circle cx="115" cy="275" r="7"/>
+  </g>
+
+  <!-- Comparator top-left (>=1) for Sout -->
+  <rect x="165" y="55" width="55" height="55" fill="white" stroke="#111" stroke-width="3"/>
+  <text x="192.5" y="92" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#111">≥1</text>
+
+  <!-- Wire from comparator to Sout arrow -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <line x1="220" y1="82" x2="410" y2="82"/>
+    <polyline points="410,82 400,76 400,88" />
+  </g>
+
+  <!-- Latch blocks "1" -->
+  <g>
+    <rect x="165" y="130" width="55" height="65" fill="white" stroke="#111" stroke-width="3"/>
+    <text x="192.5" y="172" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#111">1</text>
+
+    <rect x="165" y="230" width="55" height="65" fill="white" stroke="#111" stroke-width="3"/>
+    <text x="192.5" y="272" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#111">1</text>
+  </g>
+
+  <!-- Connections from bus to latch blocks -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <line x1="145" y1="165" x2="165" y2="165"/>
+    <line x1="130" y1="275" x2="165" y2="275"/>
+  </g>
+  <g fill="#111">
+    <circle cx="220" cy="165" r="7"/>
+    <circle cx="220" cy="275" r="7"/>
+  </g>
+
+  <!-- AND blocks -->
+  <g>
+    <rect x="255" y="150" width="55" height="55" fill="#e22a1b" stroke="#111" stroke-width="3"/>
+    <text x="282.5" y="189" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" fill="#111">&amp;</text>
+
+    <rect x="255" y="235" width="55" height="55" fill="#78c8f2" stroke="#111" stroke-width="3"/>
+    <text x="282.5" y="274" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" fill="#111">&amp;</text>
+
+    <rect x="255" y="320" width="55" height="55" fill="#f2c300" stroke="#111" stroke-width="3"/>
+    <text x="282.5" y="359" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" fill="#111">&amp;</text>
+  </g>
+
+  <!-- Wires into AND blocks -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <!-- from upper latch to red AND -->
+    <line x1="220" y1="165" x2="255" y2="165"/>
+    <!-- extra input to red AND from bus -->
+    <polyline points="130,225 235,225 235,190 255,190"/>
+    <!-- into blue AND -->
+    <line x1="220" y1="275" x2="255" y2="275"/>
+    <polyline points="115,335 235,335 235,260 255,260"/>
+    <!-- into yellow AND (from bus + blue junction) -->
+    <polyline points="115,335 255,335"/>
+    <polyline points="235,295 235,348 255,348"/>
+  </g>
+
+  <!-- Junction dots near AND inputs -->
+  <g fill="#111">
+    <circle cx="235" cy="225" r="6"/>
+    <circle cx="235" cy="335" r="6"/>
+    <circle cx="235" cy="295" r="6"/>
+  </g>
+
+  <!-- Right comparators for y0 / y1 -->
+  <g>
+    <rect x="330" y="160" width="55" height="55" fill="white" stroke="#111" stroke-width="3"/>
+    <text x="357.5" y="197" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#111">≥1</text>
+
+    <rect x="330" y="305" width="55" height="55" fill="white" stroke="#111" stroke-width="3"/>
+    <text x="357.5" y="342" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#111">≥1</text>
+  </g>
+
+  <!-- Wires from ANDs to comparators -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <line x1="310" y1="177.5" x2="330" y2="177.5"/>
+    <line x1="310" y1="347.5" x2="330" y2="347.5"/>
+
+    <!-- blue AND also feeds y0 (via a junction) -->
+    <polyline points="310,262.5 320,262.5 320,205 330,205"/>
+    <circle cx="320" cy="262.5" r="6" fill="#111"/>
+  </g>
+
+  <!-- Output arrows -->
+  <g stroke="#111" stroke-width="3" fill="none">
+    <line x1="385" y1="187.5" x2="410" y2="187.5"/>
+    <polyline points="410,187.5 400,181.5 400,193.5"/>
+    <line x1="385" y1="332.5" x2="410" y2="332.5"/>
+    <polyline points="410,332.5 400,326.5 400,338.5"/>
+  </g>
+</svg>

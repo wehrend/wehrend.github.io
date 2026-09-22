@@ -1,0 +1,30 @@
+<svg width="75.00" height="75.00" 
+     viewBox="0.0 0.0 75.0 75.0" 
+     viewPort="0 0 75px 75px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="fulladder_cell">
+        <rect x="10" y="10" width="26" height="26" style="fill:none;stroke:black;"/>
+        <text x="15" y="25" font-size="12">FA</text>
+        <!-- inputs -->
+        <line x1="3" y1="16" x2="10" y2="16" style="fill:none;stroke:black;"/>
+        <line x1="3" y1="30" x2="10" y2="30" style="fill:none;stroke:black;"/>
+        <text x="0" y="17" font-size="4">a</text>
+        <text x="0" y="31" font-size="4">b</text>
+        <!--  sum -->    
+        <line x1="22.5" y1="10" x2="22.5" y2="3" style="fill:none;stroke:black;"/>
+        <text x="22.5" y="2" font-size="4">c
+            <tspan baseline-shift = "sub">in</tspan>
+        </text>
+        <!-- carry -->
+        <line x1="22.5" y1="36" x2="22.5" y2="45" style="fill:none;stroke:black;"/>
+        <text x="22.5" y="48" font-size="4">c
+            <tspan baseline-shift = "sub">out</tspan>
+        </text>
+        <line x1="36" y1="23" x2="43" y2="23" style="fill:none;stroke:black;"/>
+        <text x="45" y="24" font-size="4">s</text>
+    </symbol>
+    <use x="20" y="10" href="#fulladder_cell"/>
+</svg>
