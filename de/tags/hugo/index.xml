@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/hugo/</link><description>Recent content in Hugo on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Move Hugo Web-presence to GH-Pages</title><link>http://wehrend.github.io/de/posts/web/30_hugo_move_to_gh_pages/</link><pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/30_hugo_move_to_gh_pages/</guid><description>&lt;div class="paragraph">
+&lt;p>Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.
+Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen…​ dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden&lt;/strong>&lt;/p>
+&lt;/div></description></item><item><title>Separiere Blog und Inhalt (de)</title><link>http://wehrend.github.io/de/posts/web/03_separate_form_and_content/</link><pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/03_separate_form_and_content/</guid><description>&lt;div class="paragraph">
+&lt;p>Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da
+ein Blog und sein Inhalt selbst unterschiedliche Einheiten sind. Ich wollte sie als solche behandeln,
+was mich zu einer Bereinigung des ursprünglichen Quellcodes für den Blog führte, bei der ich den Inhaltsordner
+in ein anderes Repo namens hugo_content verschob, das frühere Repo nannte ich hugo_blog.
+---&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>In meinem Fall bedeutet dies, dass Sie zuerst das Repo hugo_blog klonen müssen,
+ in das neue Verzeichnis wechseln (cd hugo), seinen Zweig „hugo“ auschecken und dann einen Klon des
+Repos hugo_content erstellen.&lt;/p>
+&lt;/div></description></item><item><title>Umziehen zu Hugo (de)</title><link>http://wehrend.github.io/de/posts/web/02_moving-to-hugo/</link><pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate><guid>http://wehrend.github.io/de/posts/web/02_moving-to-hugo/</guid><description>&lt;div class="paragraph">
+&lt;p>Seit einer Woche basiert mein Blog auf dem Static-Site-Generator &lt;a href="https://gohugo.io/">Hugo&lt;/a>.
+Ich wollte schon viel früher zu Hugo wechseln, da es eine große Auswahl an Themes gibt.
+Dies erforderte jedoch den Wechsel von Asciidoc zu &lt;a href="https://asciidoctor.org/">Asciidoctor&lt;/a>,
+und ich hatte einige Probleme mit der Integration von Asciidoctor in meinen bestehenden Arbeitsablauf.
+Da der Ansatz, die Latex-Gleichungen in den Asciidoc-Dokumenten darzustellen,
+nicht mehr funktionierte, entschied ich mich, auf die clientbasierte Darstellung von Formeln umzusteigen,
+wie sie in &lt;a href="https://gohugo.io/Katex">KaTex&lt;/a> und &lt;a href="https://www.mathjax.org/">Mathjax&lt;/a> verwendet wird.&lt;/p>
+&lt;/div></description></item></channel></rss>

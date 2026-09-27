@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="800" height="300" viewBox="0 0 800 300">
+
+  <title>Netzmasche mit R1, R2, R3 und Quelle Uq</title>
+  <desc>Schaltung mit Spannungs- und Strompfeilen.</desc>
+
+  <defs>
+    <!-- Pfeilspitze -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="black"/>
+    </marker>
+
+    <!-- Linienstil -->
+    <style>
+      .wire { stroke:black; stroke-width:2; fill:none; }
+      .resistor { stroke:black; stroke-width:2; fill:white; }
+      .text { font-family: Arial, sans-serif; font-size:14px; }
+      .label { font-family: Arial, sans-serif; font-size:12px; }
+    </style>
+  </defs>
+
+  <!-- Obere Leitung -->
+  <line class="wire" x1="40" y1="80" x2="300" y2="80"/>
+  <line class="wire" x1="420" y1="80" x2="760" y2="80"/>
+
+  <!-- Strompfeile Ia und Ib -->
+  <line class="wire" x1="60" y1="80" x2="120" y2="80" marker-end="url(#arrow)"/>
+  <text class="label" x="70" y="70">I<tspan baseline-shift="sub">a</tspan></text>
+
+  <line class="wire" x1="740" y1="80" x2="680" y2="80" marker-end="url(#arrow)"/>
+  <text class="label" x="700" y="70">I<tspan baseline-shift="sub">b</tspan></text>
+
+  <!-- Knoten P1 und P3 -->
+  <circle cx="180" cy="80" r="4" fill="black"/>
+  <text class="text" x="170" y="60">P1</text>
+
+  <circle cx="600" cy="80" r="4" fill="black"/>
+  <text class="text" x="590" y="60">P3</text>
+
+  <!-- Widerstand R1 -->
+  <rect class="resistor" x="300" y="65" width="120" height="30"/>
+  <text class="text" x="350" y="60">R1</text>
+  <text class="label" x="350" y="115">U<tspan baseline-shift="sub">R1</tspan></text>
+
+  <!-- Pfeil U_R1 -->
+  <line class="wire" x1="290" y1="110" x2="370" y2="110" marker-end="url(#arrow)"/>
+  <text class="label" x="290" y="114">U_R1</text>
+
+  <!-- Strom I1 (oben von P1 nach rechts) -->
+  <line class="wire" x1="200" y1="80" x2="280" y2="80" marker-end="url(#arrow)"/>
+  <text class="label" x="230" y="70">I1</text>
+
+  <!-- Linker Zweig: R2 -->
+  <line class="wire" x1="180" y1="80" x2="180" y2="120"/>
+  <rect class="resistor" x="165" y="120" width="30" height="80"/>
+  <line class="wire" x1="180" y1="200" x2="180" y2="240"/>
+
+  <text class="text" x="195" y="165">R2</text>
+
+  <!-- Pfeil U_R2 (nach unten) -->
+  <line class="wire" x1="205" y1="120" x2="205" y2="200" marker-end="url(#arrow)"/>
+  <text class="label" x="210" y="165">U_R2</text>
+
+  <!-- Untere Leitung links -->
+  <line class="wire" x1="180" y1="240" x2="340" y2="240"/>
+
+  <!-- Strom I2 -->
+  <line class="wire" x1="200" y1="240" x2="260" y2="240" marker-end="url(#arrow)"/>
+  <text class="label" x="220" y="230">I2</text>
+
+  <!-- Spannungsquelle Uq (Batterie) -->
+  <!-- kleine Platte -->
+  <line class="wire" x1="340" y1="230" x2="340" y2="250"/>
+  <!-- große Platte -->
+  <line class="wire" x1="360" y1="220" x2="360" y2="260"/>
+  <!-- Anschlussleitungen -->
+  <line class="wire" x1="340" y1="240" x2="320" y2="240"/>
+  <line class="wire" x1="360" y1="240" x2="440" y2="240"/>
+
+  <text class="label" x="345" y="210">U<tspan baseline-shift="sub">q</tspan></text>
+
+  <!-- Pfeil Uq (von langer zu kurzer Platte, nach links) -->
+  <line class="wire" x1="360" y1="210" x2="340" y2="210" marker-end="url(#arrow)"/>
+  <text class="label" x="345" y="200">Uq</text>
+
+  <!-- Rechte untere Leitung bis P2 -->
+  <line class="wire" x1="440" y1="240" x2="600" y2="240"/>
+
+  <!-- Knoten P2 -->
+  <circle cx="600" cy="240" r="4" fill="black"/>
+  <text class="text" x="610" y="255">P2</text>
+
+  <!-- Strom Ic (nach unten) -->
+  <line class="wire" x1="600" y1="240" x2="600" y2="280" marker-end="url(#arrow)"/>
+  <text class="label" x="610" y="270">I<tspan baseline-shift="sub">c</tspan></text>
+
+  <!-- Rechter Zweig: R3 -->
+  <line class="wire" x1="600" y1="80" x2="600" y2="120"/>
+  <rect class="resistor" x="585" y="120" width="30" height="80"/>
+  <line class="wire" x1="600" y1="200" x2="600" y2="240"/>
+
+  <text class="text" x="610" y="165">R3</text>
+  <text class="label" x="620" y="150">U<tspan baseline-shift="sub">R3</tspan></text>
+
+  <!-- Pfeil U_R3 (nach oben) -->
+  <line class="wire" x1="570" y1="200" x2="570" y2="140" marker-end="url(#arrow)"/>
+  <text class="label" x="530" y="195">U_R3</text>
+
+  <!-- Strom I3: Pfeil exakt auf dem unteren rechten Draht -->
+  <line class="wire" x1="600" y1="240" x2="600" y2="210" marker-end="url(#arrow)"/>
+  <text class="label" x="610" y="215">I3</text>
+
+</svg>

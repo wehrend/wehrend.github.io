@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/hugo/</link><description>Recent content in Hugo on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Move Hugo Web-presence to GH-Pages</title><link>http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/</link><pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/30-hugo-move-to-gh-pages/</guid><description>&lt;div class="paragraph">
+&lt;p>Hi there, a few months ago I decided, I would want to go to a form of webspace where I dont have to spend money.
+Although it’s only a few bucks, I thought it would be time to move on…​ this is basically a tutorial to move over to github pages…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>&lt;strong>Edit from 20-04-2025: Previously I had a Makefile-based approach, but this was not the ideal way, so now I changed it to utilize github actions instead&lt;/strong>&lt;/p>
+&lt;/div></description></item><item><title>Separating blog and content</title><link>http://wehrend.github.io/posts/web/03-separate-form-and-content/</link><pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/03-separate-form-and-content/</guid><description>&lt;div class="paragraph">
+&lt;p>As the blog grow bigger and after the move to hugo, I noticed a gap in the workflow,since
+a blog and its content itself are different entities, I wanted to handle them as such,
+that led me to a cleanup of the original source code for blog, where I moved the content folder
+into a different repo, called hugo_content, the former repo I called hugo_blog.
+---&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>In my case, this means you have to clone the repo hugo_blog first
+go inside the new directory (cd hugo ), checkout its branch &amp;#39;hugo&amp;#39; and then do a clone of
+the repo hugo_content.&lt;/p>
+&lt;/div></description></item><item><title>Moving to Hugo</title><link>http://wehrend.github.io/posts/web/02-moving-to-hugo/</link><pubDate>Fri, 15 Apr 2022 12:17:41 +0000</pubDate><guid>http://wehrend.github.io/posts/web/02-moving-to-hugo/</guid><description>&lt;div class="paragraph">
+&lt;p>Since one week my blog is build on the static-site-generator &lt;a href="https://gohugo.io/">Hugo&lt;/a>.
+I wanted to move to Hugo far earlier, due to the wide variety of themes.
+However this required the move from Asciidoc to &lt;a href="https://asciidoctor.org/">Asciidoctor&lt;/a>,
+and I experienced a few problems with the integration of Asciidoctor into my existing workflow.
+As the approach of rendering the latex-equations in the asciidoc-documents
+no longer worked, I decided to move on to client-based rendering of formulas,
+like done in &lt;a href="https://gohugo.io/Katex">KaTex&lt;/a> and &lt;a href="https://www.mathjax.org/">Mathjax&lt;/a>.&lt;/p>
+&lt;/div></description></item></channel></rss>

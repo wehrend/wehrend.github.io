@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cmake on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/de/tags/cmake/</link><description>Recent content in Cmake on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Thu, 05 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/de/tags/cmake/index.xml" rel="self" type="application/rss+xml"/><item><title>C++-Einführungskurs (CMake Zwischenspiel)</title><link>http://wehrend.github.io/de/pages/cpp_cmake/</link><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/de/pages/cpp_cmake/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_einführung_in_effiziente_build_tools_für_c_projekte">Einführung in effiziente Build-Tools für C++-Projekte&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Wir erreichen nun einen &lt;strong>wichtigen Meilenstein&lt;/strong>, indem wir von einem &lt;code>Make&lt;/code>-basierten Build-Prozess zu einem &lt;code>CMake&lt;/code>-basierten Workflow wechseln.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Die traditionelle „Rule of Three“ (die in vielen klassischen Open-Source-Projekten zu finden ist) — &lt;code>./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install&lt;/code>
+— wird nach und nach durch den CMake-Ansatz ersetzt. Dieser moderne Workflow beinhaltet typischerweise das Anlegen eines separaten
+Build-Verzeichnisses, um den Quellbaum sauber zu halten (sogenannte „Out-of-Source Builds“):&lt;/p>
+&lt;/div></description></item></channel></rss>

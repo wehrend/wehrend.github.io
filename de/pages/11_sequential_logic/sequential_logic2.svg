@@ -1,0 +1,30 @@
+<svg width="150px" 
+     height="100px" 
+     viewBox="0.0 0.0 150.00 100.00" 
+     viewPort = "0 0 150 100" 
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,3 L4.5,2 z" fill="lightskyblue" />
+        </marker>
+    </defs>
+    <rect x="40" y="10" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
+    <text x="50" y="20" font-size="4">Sequentielle</text>
+    <text x="50" y="25" font-size="4">Logik</text>
+    
+    <polyline points="40,30 30,45" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="70,30 80,45" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    
+    <rect x="15" y="50" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:red;stroke-width:0.5px;"/>
+    <text x="20" y="55" font-size="4">synchrone</text>
+    <text x="25" y="60" font-size="4">sequentielle</text>
+    <text x="20" y="65" font-size="4">Logik</text>
+    
+    <rect x="65" y="50" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:red;stroke-width:0.5px;"/>
+    <text x="72" y="55" font-size="4">asynchrone</text>
+    <text x="75" y="60" font-size="4">Sequentiale</text>
+    <text x="72" y="65" font-size="4">Logik</text>
+    
+   
+</svg>
+

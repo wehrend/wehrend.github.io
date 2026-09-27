@@ -1,0 +1,101 @@
+<svg width="200px" 
+     height="125px" 
+     viewBox="0.0 0.0 200.00 125.00" 
+     viewPort = "0 0 200 125" 
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+            <g id="alu" transform="scale(0.9)">
+                <polyline points="10,5 10,10 10,15 12.5,17.5 10,20 10,25 10,30 20,25 20,10 10,5 10,10" style="fill:white;stroke:black;stroke-width:0.5px;"/>
+                <text x="12" y="20" font-size="3">Add</text>
+            </g>
+            <g id="alu2" transform="scale(1.2)">
+                <polyline points="10,5 10,10 10,15 12.5,17.5 10,20 10,25 10,30 20,25 20,10 10,5 10,10" style="fill:white;stroke:black;stroke-width:0.5px;"/>
+                <text x="13" y="18.5" font-size="3">ALU</text>
+            </g>
+            <g id="mux">
+                <rect x="10" y="10" rx="5" ry="5" width="6" height="15" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+                <text x="12" y="15" font-size="3">M</text>
+                <text x="12" y="17.5" font-size="3">U</text>
+                <text x="12" y="20" font-size="3">X</text>
+            </g>
+             <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,3 L4.5,2 z" fill="black" />
+            </marker>
+    </defs>
+    <!--     instruction path  -->
+    <rect x="9" y="52" width="7" height="20" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="10" y="60" font-size="4">PC</text>
+    <polyline points="16,62 23,62" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="20,62 20,43 22,43" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="20" cy="62" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="20,48 50,48 50,30 67,30" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="30,36 45,36 45,21 41,21" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="33,20 6,20 6,62 7,62" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points=" 78,36 85,36 85,15 41,15" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points=" 18,30 22,30" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="15" y="31" font-size="4">4</text>
+    <circle cx="20" cy="48" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <rect x="25" y="50" width="35" height="35" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="26" y="65" font-size="3">Address</text>
+    <text x="40" y="65" font-size="3">Instruction</text>
+    <text x="28" y="75" font-size="3">Instruction</text>
+    <text x="28" y="78" font-size="3">memory</text>
+    <use x="15" y="20" href="#alu"/>
+    <use x="60" y="18" href="#alu"/>
+    <use x="23" y="0" href="#mux"/>
+    <polyline points="62,72 62,43 66.7,43" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="62" cy="62" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <!--     data path -->
+    <rect x="70" y="50" width="35" height="35" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="72" y="55" font-size="3">Data</text>
+    <text x="90" y="65" font-size="3">Registers</text>
+    <text x="72" y="63" font-size="3">Register # </text>
+    <text x="72" y="70" font-size="3">Register # </text>
+    <text x="72" y="77" font-size="3">Register # </text>
+    <polyline points="105,58 125,58" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="105,75 114,75" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="122,75 125,75" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="107,75 107,84 148,84" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <use x="100" y="26" href="#mux"/>
+    <use x="115" y="46" href="#alu2"/>
+    <use x="106" y="58" href="#mux"/>
+    <circle cx="107" cy="75" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="144,67 144,46 118,46" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="144" cy="67" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <rect x="150" y="54" width="35" height="35" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="152" y="68" font-size="3">Address</text>
+    <text x="152" y="84" font-size="3">Data</text>
+    <text x="170" y="75" font-size="3">Data</text>
+    <text x="170" y="78" font-size="3">memory</text>
+    <polyline points="110,46 66,46 66,54 68,54" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="185,70 189,70 189,40 118,40" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="62,60 62,90 110,90 110,80 114,80" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="60,62 68,62" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="62,69 67,69" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <polyline points="62,76 67,76" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="62" cy="69" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <circle cx="62" cy="76" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="139,67 148,67" style="fill:white;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <!-- control path -->
+    <polyline points="120,6 36.5,6 36.5,10" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <rect x="120" y="2" width="8" height="8" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <text x="122" y="8" font-size="4" style="fill:blue">&amp;</text>
+    <polyline points="139,70 146,70 146,8 128,8" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <text x="140" y="74" font-size="4" style="fill:blue">Zero</text>
+    <ellipse cx="80" cy="106" rx="10" ry="13" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <text x="74" y="108" font-size="4" style="fill:blue">Control</text>
+    <polyline points="62,90 62,105 68,105" style="fill:none;stroke:blue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="62" cy="90" r="0.5" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="88,98 98,98 98,85" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="89,100 175,100 175,89" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="89.5,102 119,102 119,83" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <text x="92" y="82" font-size="3" style="fill:blue">RegWrite</text>
+    <text x="170" y="86" font-size="3" style="fill:blue">MemRead</text>
+    <polyline points="90,104 192,104 192,50 175,50 175,54" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <text x="170" y="58" font-size="3" style="fill:blue">MemWrite</text>
+    <polyline points="90,106 194,106 194,48 135,48 135,56.5" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <text x="124" y="51" font-size="3" style="fill:blue">ALU op</text>
+    <polyline points="89.5,108 196,108 196,30 113.5,30 113.5,36" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="89.5,110 198,110 198,4 128,4" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+</svg>
+

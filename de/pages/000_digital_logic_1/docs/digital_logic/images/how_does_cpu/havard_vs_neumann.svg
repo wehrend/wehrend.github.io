@@ -1,0 +1,86 @@
+<svg width="200.00" height="90.00" style="background-color:lightgray"
+     viewBox="0.0 0.0 200.0 90.0" 
+     viewPort="0 0 200px 90px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="startarrow" markerWidth="4" markerHeight="3" refX="4" refY="1.5" orient="auto">
+            <polygon points="4 0, 4 3, 0 1.5" fill="black" />
+        </marker>
+        <marker id="endarrow" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <polygon points="0 0, 4 1.5, 0 3" fill="black" />
+        </marker>
+    </defs>
+    <rect x="50" y="5" width="30" height="15" rx="5" ry="5" 
+        style="fill:orange;stroke:grey;stroke-width:0.5px"/>
+    <text x="62" y="15" font-size="3">ALU</text>
+    
+    <rect x="10" y="35" width="30" height="15" rx="5" ry="5" 
+        style="fill:lightgreen;stroke:grey;stroke-width:0.5px"/>
+    <text x="12" y="42" font-size="3">Instruction Memory</text>
+    
+    <rect x="90" y="35" width="30" height="15" rx="5" ry="5" 
+        style="fill:lightyellow;stroke:grey;stroke-width:0.5px"/>
+    <text x="95" y="42" font-size="3">Data Memory</text>
+    
+    <rect x="50" y="35" width="30" height="15" rx="5" ry="5" 
+        style="fill:black;stroke:grey;stroke-width:0.5px"/>
+    <text x="55" y="42" font-size="3" style="fill:white">Control Unit</text>
+    
+    <rect x="50" y="65" width="30" height="15" rx="5" ry="5" 
+        style="fill:lightskyblue;stroke:grey;stroke-width:0.5px"/>
+    <text x="62" y="73" font-size="3">I/O</text>
+    
+    <line x1="65" y1="22" x2="65" y2="33"
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="42" y1="42" x2="48" y2="42"
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="82" y1="42" x2="88" y2="42" 
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="65" y1="52" x2="65" y2="63"
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <text x="35" y="87" font-size="6">Havard architecture</text>
+    
+    
+    <rect x="140" y="5" width="30" height="15" rx="5" ry="5" 
+        style="fill:orange;stroke:grey;stroke-width:0.5px"/>
+    <text x="152" y="15" font-size="3">ALU</text>
+    
+    <g transform="rotate(90,192,40)">
+    <rect x="180" y="35" width="30" height="15" rx="5" ry="5" 
+        style="fill:lightyellow;stroke:grey;stroke-width:0.5px"/>
+    <text x="190" y="48" font-size="3">Memory</text>
+    </g>
+    <rect x="190" y="32" width="5" height="22"
+        style="fill:grey;stroke:grey;stroke-width:0.5px"/>
+    <rect x="190" y="42" width="5" height="4"
+        style="fill:orange;stroke-width:0.5px"/>
+    <rect x="190" y="38" width="5" height="4"
+        style="fill:lightskyblue;stroke-width:0.5px"/>
+    <rect x="190" y="50" width="5" height="4"
+        style="fill:orange;stroke-width:0.5px"/>
+    <rect x="190" y="46" width="5" height="4"
+        style="fill:lightskyblue;stroke-width:0.5px"/>
+    <text x="190" y="42" font-size="2">Data</text>
+    <text x="190" y="46" font-size="2">Code</text>
+    <text x="190" y="48" font-size="2">Data</text>
+    <text x="190" y="52" font-size="2">Code</text>
+    <rect x="140" y="35" width="30" height="15" rx="5" ry="5" 
+        style="fill:black;stroke:grey;stroke-width:0.5px"/>
+    <text x="145" y="42" font-size="3" style="fill:white">Control Unit</text>
+    
+    <rect x="140" y="65" width="30" height="15" rx="5" ry="5" 
+        style="fill:lightskyblue;stroke:grey;stroke-width:0.5px"/>
+    <text x="152" y="73" font-size="3">I/O</text>
+    
+    <line x1="155" y1="22" x2="155" y2="33"
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="172" y1="42" x2="180" y2="42" 
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="155" y1="52" x2="155" y2="63"
+          style="fill:none;stroke:black;stroke-width:0.6px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <text x="120" y="87" font-size="6">Von-Neumann architecture</text>
+    
+    
+</svg>

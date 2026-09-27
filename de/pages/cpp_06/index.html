@@ -1,0 +1,489 @@
+<!doctype html><html lang=de dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Einführung in die Themen Datenstrukturen, Algorithmen und Berechenbarkeit"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="http://wehrend.github.io/de/pages/cpp_06/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="C++-Einführungskurs (Teil 6)"><meta property="og:description" content="Einführung in die Themen Datenstrukturen, Algorithmen und Berechenbarkeit"><meta property="og:locale" content="de"><meta property="og:type" content="article"><meta property="article:section" content="pages"><meta property="article:published_time" content="2026-03-14T00:00:00+00:00"><meta property="article:modified_time" content="2026-03-14T00:00:00+00:00"><meta property="article:tag" content="C++"><meta property="article:tag" content="Synth"><meta itemprop=name content="C++-Einführungskurs (Teil 6)"><meta itemprop=description content="Einführung in die Themen Datenstrukturen, Algorithmen und Berechenbarkeit"><meta itemprop=datePublished content="2026-03-14T00:00:00+00:00"><meta itemprop=dateModified content="2026-03-14T00:00:00+00:00"><meta itemprop=wordCount content="1770"><meta itemprop=keywords content="C++,Synth"><title>C++-Einführungskurs (Teil 6) | Bits & pieces - Sven Wehrend</title>
+<link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=http://wehrend.github.io/de/pages/cpp_06/><link rel=alternate hreflang=en href=http://wehrend.github.io/pages/cpp_06/ title="Introduction into C++ (Part 6)"><link rel=stylesheet href=/book.min.eb8539073eb77df6ef69d2aa745902d4f25b69591991743ad207bac67b9cf345.css integrity="sha256-64U5Bz63ffbvadKqdFkC1PJbaVkZkXQ60ge6xnuc80U=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/de.search.min.e5099b3e26a7446e957c44103bff5bad0e1c6a5f3074159796104fe7130a8c27.js integrity="sha256-5QmbPianRG6VfEQQO/9brQ4cal8wdBWXlhBP5xMKjCc=" crossorigin=anonymous></script></head><body dir=ltr class="book-kind-page book-type-text"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/de/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Suche aria-label=Suche maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+Deutsch
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/pages/cpp_06/ class="flex flex-auto">English</a></li></ul></li></ul><ul><li><a href=/de/sitemap/>Sitemap (DE)</a></li><li><a href=/de/about/>Über</a></li><li><a href=/downloads>Download Archiv</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>C++-Einführungskurs (Teil 6)</h3><label for=toc-control><img src=/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#_einführung_in_die_themen_datenstrukturen_algorithmen_und_komplexität_berechenbarkeit_in_c>Einführung in die Themen Datenstrukturen, Algorithmen und Komplexität / Berechenbarkeit in C++</a><ul><li><a href=#_listen_wörterbücher_und_warteschlangen>Listen, Wörterbücher und Warteschlangen</a></li></ul></li></ul></nav></aside></header><article class="markdown book-article"><header class=book-header-icon style=margin-bottom:2rem><h1>C++-Einführungskurs (Teil 6)</h1></header><div class=page-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_einführung_in_die_themen_datenstrukturen_algorithmen_und_komplexität_berechenbarkeit_in_c>Einführung in die Themen Datenstrukturen, Algorithmen und Komplexität / Berechenbarkeit in C++</h2><div class=sectionbody><div class=paragraph><p>Achtung – dieses Tutorial ist sehr theorielastig – wir werden ein wenig über die Grundlagen von Datenstrukturen, Algorithmen
+und Komplexität sprechen – all das vor allem im Zusammenhang mit C – also fangen wir mit den Datenstrukturen in C an</p></div><div class=sect2><h3 id=_listen_wörterbücher_und_warteschlangen>Listen, Wörterbücher und Warteschlangen</h3><div class=paragraph><p>Wir beginnen mit einigen grundlegenden Datenstrukturen, die wir bereits verwendet haben, ohne tief in die Themen einzusteigen; diese beiden sind
+std::vector (im Grunde Listen) und std::map (im Grunde Wörterbücher).</p></div><div class=sect3><h4 id=_listen_und_vektoren>Listen und Vektoren</h4><div class=paragraph><p>Beginnen wir mit dem std::vector – wir verwenden diese Datentypen bereits für die verschiedenen Stimmen.
+Die Komplexität beträgt fast O(1) oder im schlimmsten Fall O(n).
+Für einen std::vector ist der Zugriff auf ein beliebiges Element seine „Superkraft“. Da ein Vektor seine Elemente in einem zusammenhängenden Speicherblock speichert,
+muss er die Liste nicht wie eine Kette durchlaufen.
+Daher beträgt die Komplexität für den Zugriff auf ein beliebiges Element in der Liste O(1) – also konstant.</p></div></div><div class=sect3><h4 id=_wörterbücher_und_maps>Wörterbücher und Maps</h4><div class=paragraph><p>Fahren wir mit dem Wörterbuch (oder besser gesagt der Map) in C++ fort. Wir verwenden std::map, um den verschiedenen Schlüsseln eine bestimmte Häufigkeit zuzuweisen.
+Im Gegensatz zu std::vector, das auf einem zusammenhängenden Array basiert, wird eine std::map typischerweise als Rot-Schwarz-Baum (eine Art
+selbstausgleichender binärer Suchbaum) implementiert. Dieser strukturelle Unterschied verändert die Art und Weise, wie Daten verarbeitet werden, grundlegend.</p></div><div class=paragraph><p>Bei std::map haben das Hinzufügen, Entfernen und sogar das Suchen eines Elements alle dieselbe Komplexität: logarithmische Zeit O(\log n).</p></div><div class=paragraph><p>Warum O(\log n)?</p></div><div class=paragraph><p>In einem ausgeglichenen Baum schließt man bei jedem „Schritt“ (dem Vergleich des Schlüssels mit dem aktuellen Knoten) effektiv
+die Hälfte der verbleibenden Möglichkeiten aus. Bei 8 Elementen sind höchstens 3 Schritte erforderlich ($2^3 = 8$). Bei 1.024 Elementen
+sind höchstens 10 Schritte erforderlich ($2^{10} = 1024$). Bei 1.000.000 Elementen sind es nur etwa 20 Schritte.</p></div></div><div class=sect3><h4 id=_warteschlangen_deques_und_stacks>Warteschlangen, Deques und Stacks</h4><div class=paragraph><p>Während Vektoren sich hervorragend für den wahlfreien Zugriff eignen, benötigen wir manchmal eine Struktur, die die Reihenfolge der Verarbeitung streng regelt.
+In C++ wird dies typischerweise durch std::queue gehandhabt. Eine Warteschlange folgt dem FIFO-Prinzip (First-In, First-Out).
+Stellen Sie sich eine reale Warteschlange im Supermarkt vor: Die erste Person, die sich anstellt, ist auch die erste, die wieder geht.
+In Ihrem Synth-Projekt ist eine Warteschlange (genauer gesagt ein threadsicherer Ringpuffer) unerlässlich, um MIDI-Nachrichten oder Audio-Samples
+zwischen dem UI-Thread und dem Audio-Callback-Thread mit hoher Priorität zu übertragen.
+Komplexität: Bei std::queue sind sowohl das Hinzufügen eines Elements (push) als auch das Entfernen des vordersten Elements (pop) $O(1)$.
+Deques sind doppelseitige Warteschlangen, bei denen Sie jedes Element <strong>von beiden Seiten</strong> der Warteschlange hinzufügen oder entfernen können.</p></div><table class="tableblock frame-all grid-all stretch"><col style=width:25%><col style=width:25%><col style=width:25%><col style=width:25%><tbody><tr><td class="tableblock halign-left valign-top"><p class=tableblock>Datenstruktur</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>Zugriff</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>Suche</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>Einfügen (Durchschnitt)</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class=tableblock>std::vector</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(1)</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(n)</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(1) (amortisiert am Ende)</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class=tableblock>std::map</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(log(n))</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(log(n))</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(log(n))</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class=tableblock>std::list</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(n)</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(n)</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O (1)</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class=tableblock>std::deque</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(1)</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(n)</p></td><td class="tableblock halign-left valign-top"><p class=tableblock>O(1) (an den Enden)</p></td></tr></tbody></table></div><div class=sect3><h4 id=_einen_benutzerdefinierten_datentyp_erstellen>Einen benutzerdefinierten Datentyp erstellen</h4><div class=paragraph><p>Nachdem wir nun an der Oberfläche des Themas gekratzt haben, wollen wir nun tiefer einsteigen und unsere eigene Datenstruktur erstellen: den (Audio-)Ringpuffer.
+Wir nutzen die Standard Template Library und erstellen unsere eigene Implementierung eines Ringpuffers…​</p></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#ifndef AUDIO_RING_BUFFER_H
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#define AUDIO_RING_BUFFER_H
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;atomic&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cstddef&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @brief A Single-Producer Single-Consumer (SPSC) Ring Buffer.
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Designed for passing audio samples from the Audio Thread to the UI.
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>template</span> <span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span> T, size_t Size<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AudioRingBuffer</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    T buffer[Size] <span style=color:#f92672>=</span> {<span style=color:#ae81ff>0</span>};
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Atomic index to prevent race conditions between threads
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    std<span style=color:#f92672>::</span>atomic<span style=color:#f92672>&lt;</span>size_t<span style=color:#f92672>&gt;</span> writeIndex{<span style=color:#ae81ff>0</span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    AudioRingBuffer() <span style=color:#f92672>=</span> <span style=color:#66d9ef>default</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * @brief Writes a single sample to the buffer.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * Called by the &#34;Producer&#34; (Audio Thread).
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>write</span>(T sample) {
+</span></span><span style=display:flex><span>        size_t currentWrite <span style=color:#f92672>=</span> writeIndex.load(std<span style=color:#f92672>::</span>memory_order_relaxed);
+</span></span><span style=display:flex><span>        buffer[currentWrite] <span style=color:#f92672>=</span> sample;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Ensure the sample is written before the index is updated
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        writeIndex.store((currentWrite <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>%</span> Size, std<span style=color:#f92672>::</span>memory_order_release);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * @brief Reads a sample at a specific relative index.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * Called by the &#34;Consumer&#34; (UI/Renderer).
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
+</span></span><span style=display:flex><span>    T <span style=color:#a6e22e>read</span>(size_t index) <span style=color:#66d9ef>const</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> buffer[index <span style=color:#f92672>%</span> Size];
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * @brief Returns the current write position.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * Use acquire semantics to ensure we see the most recent writes.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
+</span></span><span style=display:flex><span>    size_t <span style=color:#a6e22e>getWritePointer</span>() <span style=color:#66d9ef>const</span> {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> writeIndex.load(std<span style=color:#f92672>::</span>memory_order_acquire);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    size_t <span style=color:#a6e22e>getSize</span>() <span style=color:#66d9ef>const</span> { <span style=color:#66d9ef>return</span> Size; }
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#endif</span></span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><div class=hcode-wrapper style=position:relative><button class=hcode-copy-btn onclick=copyCodeToClipboard(this) title="Copy to clipboard">
+Copy</button><div class=hcode-multi-container data-comments=cpp;><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">103
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">104
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">105
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">106
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">107
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">108
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">109
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">110
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">111
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">112
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">113
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">114
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">115
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">116
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">117
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">118
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">119
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">120
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">121
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">123
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">124
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">125
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">126
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">127
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">128
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">129
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">130
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">131
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">132
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">133
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">134
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">135
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">136
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">137
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">138
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">139
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">140
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">141
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">142
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">143
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">144
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">145
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">146
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">147
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">148
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">149
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">150
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">151
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">152
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">153
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">154
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">155
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">156
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">157
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">158
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">159
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">160
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">161
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">162
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">163
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">164
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">165
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">166
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">167
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">168
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">169
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">170
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">171
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">172
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">173
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">174
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">175
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">176
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">177
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">178
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;SDL2/SDL.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;map&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;cmath&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;Oscillator.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;Envelope.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;Filter.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;Voice.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&#34;AudioRingBuffer.h&#34;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Global pre-allocated Ring Buffer for the Oscilloscope (2048 samples)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>AudioRingBuffer<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span>, <span style=color:#ae81ff>2048</span><span style=color:#f92672>&gt;</span> scopeBuffer;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SynthEngine</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// std::vector is great for iterating through active voices in the audio thread.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// However, adding/removing voices requires a Mutex (SDL_LockAudio) to be safe.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    std<span style=color:#f92672>::</span>vector<span style=color:#f92672>&lt;</span>Voice<span style=color:#f92672>*&gt;</span> voices;
+</span></span><span style=display:flex><span>    LowPassFilter filter;
+</span></span><span style=display:flex><span>    SquareOsc lfo;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> masterVolume <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.15f</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> syncMultiplier <span style=color:#f92672>=</span> <span style=color:#ae81ff>2.5f</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SynthEngine() <span style=color:#f92672>:</span> lfo(<span style=color:#ae81ff>0.5f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>44100.0f</span>) {
+</span></span><span style=display:flex><span>        filter.setCutoff(<span style=color:#ae81ff>0.8f</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>~</span>SynthEngine() {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>auto</span> v : voices) <span style=color:#66d9ef>delete</span> v;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// This is the High-Priority Audio Thread
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>AudioCallback</span>(<span style=color:#66d9ef>void</span><span style=color:#f92672>*</span> userdata, Uint8<span style=color:#f92672>*</span> stream, <span style=color:#66d9ef>int</span> len) {
+</span></span><span style=display:flex><span>        SynthEngine<span style=color:#f92672>*</span> engine <span style=color:#f92672>=</span> <span style=color:#66d9ef>static_cast</span><span style=color:#f92672>&lt;</span>SynthEngine<span style=color:#f92672>*&gt;</span>(userdata);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>float</span><span style=color:#f92672>*</span> buffer <span style=color:#f92672>=</span> <span style=color:#66d9ef>reinterpret_cast</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>float</span><span style=color:#f92672>*&gt;</span>(stream);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> length <span style=color:#f92672>=</span> len <span style=color:#f92672>/</span> <span style=color:#66d9ef>sizeof</span>(<span style=color:#66d9ef>float</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> length; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>float</span> mixedSample <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Process all active voices stored in the std::vector
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>auto</span> it <span style=color:#f92672>=</span> engine<span style=color:#f92672>-&gt;</span>voices.begin(); it <span style=color:#f92672>!=</span> engine<span style=color:#f92672>-&gt;</span>voices.end(); ) {
+</span></span><span style=display:flex><span>                Voice<span style=color:#f92672>*</span> v <span style=color:#f92672>=</span> <span style=color:#f92672>*</span>it;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// Real-time update of the Hard Sync frequency
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>                v<span style=color:#f92672>-&gt;</span>setSlaveFrequency(v<span style=color:#f92672>-&gt;</span>masterOsc<span style=color:#f92672>-&gt;</span>getFrequency() <span style=color:#f92672>*</span> engine<span style=color:#f92672>-&gt;</span>syncMultiplier);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                mixedSample <span style=color:#f92672>+=</span> v<span style=color:#f92672>-&gt;</span>getNextSample();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// If Envelope is finished, remove the voice from the vector
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>                <span style=color:#66d9ef>if</span> (v<span style=color:#f92672>-&gt;</span>env.getState() <span style=color:#f92672>==</span> OFF) {
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>delete</span> v;
+</span></span><span style=display:flex><span>                    it <span style=color:#f92672>=</span> engine<span style=color:#f92672>-&gt;</span>voices.erase(it);
+</span></span><span style=display:flex><span>                } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>++</span>it;
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Global FX Chain
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>float</span> filtered <span style=color:#f92672>=</span> engine<span style=color:#f92672>-&gt;</span>filter.process(mixedSample);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>float</span> finalSample <span style=color:#f92672>=</span> filtered <span style=color:#f92672>*</span> engine<span style=color:#f92672>-&gt;</span>masterVolume;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            buffer[i] <span style=color:#f92672>=</span> finalSample;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// PUSH to the custom lock-free structure for the UI to see
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            scopeBuffer.write(finalSample);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> argv[]) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (SDL_Init(SDL_INIT_AUDIO <span style=color:#f92672>|</span> SDL_INIT_VIDEO) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0</span>) <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_Window<span style=color:#f92672>*</span> window <span style=color:#f92672>=</span> SDL_CreateWindow(<span style=color:#e6db74>&#34;C++ Hard Sync Synth&#34;</span>,
+</span></span><span style=display:flex><span>        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, <span style=color:#ae81ff>800</span>, <span style=color:#ae81ff>400</span>, SDL_WINDOW_SHOWN);
+</span></span><span style=display:flex><span>    SDL_Renderer<span style=color:#f92672>*</span> renderer <span style=color:#f92672>=</span> SDL_CreateRenderer(window, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, SDL_RENDERER_ACCELERATED);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// std::map: Perfect for translating keys to MIDI notes at the UI level
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    std<span style=color:#f92672>::</span>map<span style=color:#f92672>&lt;</span>SDL_Keycode, <span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> keyMap <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>        {SDLK_a, <span style=color:#ae81ff>60</span>}, {SDLK_s, <span style=color:#ae81ff>62</span>}, {SDLK_d, <span style=color:#ae81ff>64</span>}, {SDLK_f, <span style=color:#ae81ff>65</span>},
+</span></span><span style=display:flex><span>        {SDLK_g, <span style=color:#ae81ff>67</span>}, {SDLK_h, <span style=color:#ae81ff>69</span>}, {SDLK_j, <span style=color:#ae81ff>71</span>}, {SDLK_k, <span style=color:#ae81ff>72</span>}
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SynthEngine engine;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_AudioSpec ds;
+</span></span><span style=display:flex><span>    ds.freq <span style=color:#f92672>=</span> <span style=color:#ae81ff>44100</span>;
+</span></span><span style=display:flex><span>    ds.format <span style=color:#f92672>=</span> AUDIO_F32SYS;
+</span></span><span style=display:flex><span>    ds.channels <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    ds.samples <span style=color:#f92672>=</span> <span style=color:#ae81ff>1024</span>;
+</span></span><span style=display:flex><span>    ds.callback <span style=color:#f92672>=</span> SynthEngine<span style=color:#f92672>::</span>AudioCallback;
+</span></span><span style=display:flex><span>    ds.userdata <span style=color:#f92672>=</span> <span style=color:#f92672>&amp;</span>engine;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (SDL_OpenAudio(<span style=color:#f92672>&amp;</span>ds, NULL) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0</span>) <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    SDL_PauseAudio(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>bool</span> running <span style=color:#f92672>=</span> true;
+</span></span><span style=display:flex><span>    SDL_Event e;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    std<span style=color:#f92672>::</span>cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;--- HARD SYNC SYNTH READY ---&#34;</span> <span style=color:#f92672>&lt;&lt;</span> std<span style=color:#f92672>::</span>endl;
+</span></span><span style=display:flex><span>    std<span style=color:#f92672>::</span>cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;A-K: Play Notes | UP/DOWN: Adjust Hard Sync | ESC: Quit&#34;</span> <span style=color:#f92672>&lt;&lt;</span> std<span style=color:#f92672>::</span>endl;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> (running) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> (SDL_PollEvent(<span style=color:#f92672>&amp;</span>e)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_QUIT) running <span style=color:#f92672>=</span> false;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_KEYDOWN <span style=color:#f92672>&amp;&amp;</span> e.key.repeat <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (e.key.keysym.sym <span style=color:#f92672>==</span> SDLK_ESCAPE) running <span style=color:#f92672>=</span> false;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (keyMap.count(e.key.keysym.sym)) {
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>int</span> note <span style=color:#f92672>=</span> keyMap[e.key.keysym.sym];
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>float</span> freq <span style=color:#f92672>=</span> <span style=color:#ae81ff>440.0f</span> <span style=color:#f92672>*</span> pow(<span style=color:#ae81ff>2.0f</span>, (note <span style=color:#f92672>-</span> <span style=color:#ae81ff>69</span>) <span style=color:#f92672>/</span> <span style=color:#ae81ff>12.0f</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                    SDL_LockAudio(); <span style=color:#75715e>// Protect std::vector from concurrent access
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>                    Voice<span style=color:#f92672>*</span> newVoice <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Voice(freq, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>44100.0f</span>, note);
+</span></span><span style=display:flex><span>                    newVoice<span style=color:#f92672>-&gt;</span>setSlaveFrequency(freq <span style=color:#f92672>*</span> engine.syncMultiplier);
+</span></span><span style=display:flex><span>                    engine.voices.push_back(newVoice);
+</span></span><span style=display:flex><span>                    SDL_UnlockAudio();
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (e.key.keysym.sym <span style=color:#f92672>==</span> SDLK_UP) {
+</span></span><span style=display:flex><span>                    engine.syncMultiplier <span style=color:#f92672>+=</span> <span style=color:#ae81ff>0.2f</span>;
+</span></span><span style=display:flex><span>                    std<span style=color:#f92672>::</span>cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Sync Multiplier: &#34;</span> <span style=color:#f92672>&lt;&lt;</span> engine.syncMultiplier <span style=color:#f92672>&lt;&lt;</span> std<span style=color:#f92672>::</span>endl;
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (e.key.keysym.sym <span style=color:#f92672>==</span> SDLK_DOWN) {
+</span></span><span style=display:flex><span>                    engine.syncMultiplier <span style=color:#f92672>=</span> std<span style=color:#f92672>::</span>max(<span style=color:#ae81ff>1.0f</span>, engine.syncMultiplier <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.2f</span>);
+</span></span><span style=display:flex><span>                    std<span style=color:#f92672>::</span>cout <span style=color:#f92672>&lt;&lt;</span> <span style=color:#e6db74>&#34;Sync Multiplier: &#34;</span> <span style=color:#f92672>&lt;&lt;</span> engine.syncMultiplier <span style=color:#f92672>&lt;&lt;</span> std<span style=color:#f92672>::</span>endl;
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (e.type <span style=color:#f92672>==</span> SDL_KEYUP) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (keyMap.count(e.key.keysym.sym)) {
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>int</span> note <span style=color:#f92672>=</span> keyMap[e.key.keysym.sym];
+</span></span><span style=display:flex><span>                    SDL_LockAudio();
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>auto</span> v : engine.voices) {
+</span></span><span style=display:flex><span>                        <span style=color:#66d9ef>if</span> (v<span style=color:#f92672>-&gt;</span>note <span style=color:#f92672>==</span> note) v<span style=color:#f92672>-&gt;</span>env.triggerOff();
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                    SDL_UnlockAudio();
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// --- UI RENDERING (Uses the AudioRingBuffer) ---
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        SDL_SetRenderDrawColor(renderer, <span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>25</span>, <span style=color:#ae81ff>255</span>);
+</span></span><span style=display:flex><span>        SDL_RenderClear(renderer);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        SDL_SetRenderDrawColor(renderer, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>204</span>, <span style=color:#ae81ff>255</span>); <span style=color:#75715e>// Neon Cyan
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Get the current write pointer from the audio thread
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        size_t writePos <span style=color:#f92672>=</span> scopeBuffer.getWritePointer();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// We draw 800 samples from the buffer
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; x <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>799</span>; x<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Read samples relative to the current write position (last 800 samples)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#75715e>// This prevents the &#34;jumping&#34; effect of a static buffer
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>float</span> s1 <span style=color:#f92672>=</span> scopeBuffer.read(writePos <span style=color:#f92672>+</span> x <span style=color:#f92672>-</span> <span style=color:#ae81ff>800</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>float</span> s2 <span style=color:#f92672>=</span> scopeBuffer.read(writePos <span style=color:#f92672>+</span> x <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>800</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>int</span> y1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span> <span style=color:#f92672>-</span> (<span style=color:#66d9ef>int</span>)(s1 <span style=color:#f92672>*</span> <span style=color:#ae81ff>150</span>);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>int</span> y2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>200</span> <span style=color:#f92672>-</span> (<span style=color:#66d9ef>int</span>)(s2 <span style=color:#f92672>*</span> <span style=color:#ae81ff>150</span>);
+</span></span><span style=display:flex><span>            SDL_RenderDrawLine(renderer, x, y1, x <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, y2);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        SDL_RenderPresent(renderer);
+</span></span><span style=display:flex><span>        SDL_Delay(<span style=color:#ae81ff>16</span>); <span style=color:#75715e>// Target ~60 FPS
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    SDL_CloseAudio();
+</span></span><span style=display:flex><span>    SDL_DestroyRenderer(renderer);
+</span></span><span style=display:flex><span>    SDL_DestroyWindow(window);
+</span></span><span style=display:flex><span>    SDL_Quit();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div></div><div class=paragraph><p>Dieser benutzerdefinierte Ringpuffer ist eine perfekte Brücke zwischen reiner Theorie und praktischer Synthesizer-Entwicklung. Bei der Audio-Programmierung
+können wir std::vector oder std::map oft nicht direkt innerhalb des Audio-Callbacks verwenden, da diese möglicherweise Speicher zuweisen, was
+einen Systemaufruf auslöst und das Risiko eines Audio-Fehlers (einer „Prioritätsinversion“) birgt.</p></div><div class=paragraph><p>Deine Implementierung nutzt Atomics, die das Geheimnis für lock-freie Parallelität sind. Lassen Sie uns das „Wie“ und
+„Warum“ dieser Struktur aufschlüsseln, um den Abschnitt „Datenstrukturen“ abzuschließen, bevor wir zu den Algorithmen übergehen.</p></div><div class=sect4><h5 id=_die_anatomie_des_audio_ringpuffers>Die Anatomie des Audio-Ringpuffers</h5><div class=paragraph><p>Ein Ringpuffer (oder zirkulärer Puffer) behandelt ein Array fester Größe so, als wäre es Ende an Ende verbunden. Wenn der writeIndex
+das Ende des Arrays erreicht, springt er mithilfe des Modulo-Operators (%) zurück an den Anfang.</p></div><div class=paragraph><p>Warum std::atomic?</p></div><div class=paragraph><p>In einem multithreaded Synth laufen der Audio-Thread (Producer) und der GUI-Thread (Consumer) gleichzeitig.
+Würden wir ein reguläres size_t verwenden, könnte ein Thread einen teilweise aktualisierten Wert sehen, was zu einem Absturz oder „mangelhaften“ Audiodaten führen würde.
+std::atomic stellt sicher, dass die Indexaktualisierung „atomar“ (alles oder nichts) ist und über verschiedene CPU-Kerne hinweg sichtbar ist.</p></div><div class=paragraph><p>Speicherbarrieren (Acquire/Release)</p></div><div class=paragraph><p>Im Code werden Sie std::memory_order_release und std::memory_order_acquire bemerken. Diese dienen nicht nur der Show; es handelt sich um Speicherbarrieren:</p></div><div class=ulist><ul><li><p>Release: Weist die CPU an: „Stelle sicher, dass alle meine Datenschreibvorgänge (die Audio-Samples) abgeschlossen sind, bevor du den Index aktualisierst.“</p></li><li><p>Acquire: Weist die CPU an: „Bevor ich den Index lese, stelle sicher, dass ich über die neuesten damit verbundenen Daten verfüge.“</p></li></ul></div><div class=paragraph><p>Übersetzt mit DeepL.com (kostenlose Version)</p></div></div></div></div></div></div></div><hr style=margin-top:3rem><nav class=book-navigation style="display:flex;justify-content:space-between;padding:1rem 0"><div class=prev><a href=http://wehrend.github.io/de/pages/cpp_05/ style=text-decoration:none>← C++-Einführungskurs (Teil 5)</a></div><div class=next style=text-align:right><a href=http://wehrend.github.io/de/pages/cpp_cmake/ style=text-decoration:none>C++-Einführungskurs (CMake Zwischenspiel) →</a></div></nav></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><div class=book-comments></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#_einführung_in_die_themen_datenstrukturen_algorithmen_und_komplexität_berechenbarkeit_in_c>Einführung in die Themen Datenstrukturen, Algorithmen und Komplexität / Berechenbarkeit in C++</a><ul><li><a href=#_listen_wörterbücher_und_warteschlangen>Listen, Wörterbücher und Warteschlangen</a></li></ul></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

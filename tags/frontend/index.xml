@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Frontend on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/frontend/</link><description>Recent content in Frontend on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 26 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml"/><item><title>Modify the Odoo Frontend</title><link>http://wehrend.github.io/posts/web/29-odoo-with-frontend/</link><pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/29-odoo-with-frontend/</guid><description>&lt;div class="paragraph">
+&lt;p>Today, I want to show you how you can modify your Odoo frontend, I wont go to deep into owl and
+instead just show the basic steps for implementing modifications and changes via HTML5, CSS und javascript.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Lets dive in and wet the toes.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We begin by writing a short cut-through css file to change and modify the view
+(in my example case here removing carets on the provisioning reports) but feel free to change any other element (or attribute)
+you want&lt;/p>
+&lt;/div></description></item></channel></rss>

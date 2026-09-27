@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C++ on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/c++/</link><description>Recent content in C++ on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to C++ (Qt GUI - Part I)</title><link>http://wehrend.github.io/pages/cpp_qt_1/</link><pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_qt_1/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_a_gui_is_a_fantastic_idea_but_what_should_it_be_sdl_wxwidgets_or_qt">A GUI is a &lt;strong>fantastic&lt;/strong> idea…​ But what should it be - SDL, wxWidgets, or Qt?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>Choosing a GUI framework for a C++ audio project is a &amp;#34;fork in the road&amp;#34; moment. Each of these options pulls the project in a completely different architectural direction.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Since your course currently uses SDL, it’s the natural frontrunner, but here is how they stack up for a synth-building context:&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++ (CMake interlude)</title><link>http://wehrend.github.io/pages/cpp_cmake/</link><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_cmake/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_introduction_to_efficient_build_tools_for_c_projects">Introduction to efficient build tools for C++ projects&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>We now reach a &lt;strong>rite of passage&lt;/strong> by moving from a &lt;code>Make&lt;/code>-based build process to a &lt;code>CMake&lt;/code>-based workflow.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>The traditional &amp;#34;rule of three&amp;#34; (found in many classic open-source projects) — &lt;code>./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install&lt;/code>
+— is gradually being replaced by the CMake approach. This modern workflow typically involves creating a separate build
+directory to keep the source tree clean (so-called &amp;#34;out-of-source builds&amp;#34;):&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++ (Part 6)</title><link>http://wehrend.github.io/pages/cpp_06/</link><pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_06/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_introduction_to_the_topics_data_structures_algorithms_and_complexity_computability_in_c">Introduction to the topics data structures, algorithms and complexity / computability in C++&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Caution - this tutorial is a theory-loaded one - we will discuss a bit of the basics about data structures, algorithms
+and complexity - all that especially in context with C - so let&amp;#39;s get started with the data structures in C&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_lists_dictionaries_and_queues">Lists, Dictionaries and Queues&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>We begin with some basic data structures we already used without going much into the topics; those two are
+std::vector (basically lists) and std::map (basically dicts).&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++ (Part 5)</title><link>http://wehrend.github.io/pages/cpp_05/</link><pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_05/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_beyond_the_single_note_implementing_polyphony">Beyond the Single Note: Implementing Polyphony&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In our previous tutorials, our synthesizer was limited to one note at a time. If you pressed a new key, the old sound simply disappeared.
+Today, we change that by implementing &lt;strong>Polyphony&lt;/strong>—the ability to play chords and manage multiple &amp;#34;Voices&amp;#34; simultaneously.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_what_is_a_voice">1. What is a &amp;#34;Voice&amp;#34;?&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>In professional synthesizer design, we use the &lt;strong>Voice Architecture&lt;/strong>. A &amp;#34;Voice&amp;#34; is a self-contained unit that holds everything
+needed to produce one sound: an &lt;strong>Oscillator&lt;/strong> and an &lt;strong>Envelope&lt;/strong>.&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++ (Part 4)</title><link>http://wehrend.github.io/pages/cpp_04/</link><pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_04/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_from_stateless_to_stateful_filters_composition">From Stateless to Stateful: Filters &amp;amp; Composition&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In previous parts, we built an oscillator. It was &amp;#34;stateless&amp;#34;—you give it a phase, it gives you a value. It doesn’t care
+what happened a microsecond ago. But to make music sound &amp;#34;warm&amp;#34; or &amp;#34;organic,&amp;#34; we need objects that have a &lt;strong>memory&lt;/strong>.&lt;/p>
+&lt;/div>
+&lt;div class="sect2">
+&lt;h3 id="_1_dsp_general_the_concept_of_state">1. DSP General: The Concept of State&lt;/h3>
+&lt;div class="paragraph">
+&lt;p>In Digital Signal Processing (DSP), a filter is &lt;strong>stateful&lt;/strong>. To calculate the &lt;strong>current&lt;/strong> output, a filter needs to know
+the &lt;strong>previous&lt;/strong> output.&lt;/p>
+&lt;/div></description></item><item><title>Introduction Course to C++</title><link>http://wehrend.github.io/pages/cpp_00/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_00/</guid><description>&lt;div id="preamble">
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;div class="book-hint info">
+ &lt;div class="paragraph">
+&lt;p>This course introduces &lt;strong>C++ programming through the development of a small audio / synthesizer application&lt;/strong>.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>The goal is to learn the language &lt;strong>step-by-step while building a working audio system&lt;/strong>.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Prerequisites:&lt;/p>
+&lt;/div>
+&lt;div class="ulist">
+&lt;ul>
+&lt;li>
+&lt;p>A &lt;strong>Linux system&lt;/strong> (Debian or Ubuntu recommended)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>GCC (GNU Compiler Collection)&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The &lt;strong>make&lt;/strong> build tool&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Basic familiarity with the &lt;strong>command line&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Some &lt;strong>mathematical background&lt;/strong> (helpful for the audio and signal-processing sections)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Windows users can follow the course using &lt;strong>Windows Subsystem for Linux (WSL)&lt;/strong>.&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++ (Part 3)</title><link>http://wehrend.github.io/pages/cpp_03/</link><pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_03/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_introduction_into_c_part_3">Introduction into C++ (Part 3)&lt;/h2>
+&lt;div class="sectionbody">
+
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_c_oop_mastery_the_power_of_composition_has_a">C++ OOP Mastery: The Power of Composition (Has-A)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In software architecture, there are two primary ways to connect objects: &lt;strong>Inheritance&lt;/strong> (Is-A) and &lt;strong>Composition&lt;/strong> (Has-A).
+While beginners often try to solve everything through inheritance (&amp;#34;An Oscillator &lt;strong>is an&lt;/strong> Envelope&amp;#34;), professionals prefer composition:
+&lt;strong>&amp;#34;A Synthesizer &lt;strong>has an&lt;/strong> Envelope.&amp;#34;&lt;/strong>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_1_why_composition">1. Why Composition?&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Think of our synthesizer as a modular rack. Each module (Oscillator, Envelope) is an independent class. The &lt;code>SynthEngine&lt;/code> acts
+as the chassis where these modules are plugged in.&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++ (Part 2)</title><link>http://wehrend.github.io/pages/cpp_02/</link><pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_02/</guid><description>&lt;div class="paragraph">
+&lt;link rel="stylesheet" href="http://wehrend.github.io/katex/katex.min.css" />&lt;script defer src="http://wehrend.github.io/katex/katex.min.js">&lt;/script>&lt;script defer src="http://wehrend.github.io/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});">&lt;/script>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_introduction_into_c_part_2">Introduction into C++ (Part 2)&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>In this next example / tutorial we will have a look at sound producing program (aka a synth), for which we utilize the SDL library
+(Simple direct media library). We will go about the program, line for line and explain the different items.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>Lets begin…​&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>First of all we have the includes for the SDL library, we will have a look at the header file later. Also we include cmath for math and iostream
+for in- and output (but in this example only output).&lt;/p>
+&lt;/div></description></item><item><title>Introduction into C++</title><link>http://wehrend.github.io/pages/cpp_01/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/pages/cpp_01/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_a_simple_introduction_into_c">A simple introduction into C++&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hello folks,
+this time I want to start with a series about programming with C++.
+While Python is a general purpose programming language, C++ is often chosen when you need tighter control over performance and latency.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>We start simple by creating a short program that spits out the limits for the different data types.
+Install Microsoft code so that have one simple IDE you can work with…​&lt;/p>
+&lt;/div></description></item></channel></rss>

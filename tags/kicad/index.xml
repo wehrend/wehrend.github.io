@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kicad on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/kicad/</link><description>Recent content in Kicad on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/kicad/index.xml" rel="self" type="application/rss+xml"/><item><title>Compiling Kicad on Debian Bookworm</title><link>http://wehrend.github.io/posts/web/27-compiling-kicad-on-debian/</link><pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/27-compiling-kicad-on-debian/</guid><description>&lt;div class="paragraph">
+&lt;p>&lt;strong>This is an updated blog post from the 08-05-2025, to ensure that you can enjoy to compile the latest version of Kicad and its dependencies.&lt;/strong>&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>With my new hobby, there came the desire to learn to build and design my own PCB. With that in mind, I began to use the
+open source ecad solution Kicad. Now I became interested in participating in this project, but, to compile the code you
+have endure a few challenges - you know, collecting the dependencies,installing them, choose the right branch whiche compiles down
+and so on. Here I want to show you my experience with that.&lt;/p>
+&lt;/div></description></item></channel></rss>

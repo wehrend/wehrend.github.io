@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11 -11 22 22" role="img" aria-label="Polares Koordinatensystem">
+  <!-- Hintergrund -->
+  <rect x="-11" y="-11" width="22" height="22" fill="#ffffff"></rect>
+
+  <!-- Definitionen -->
+  <defs>
+    <!-- Strich-Stile -->
+    <style>
+      .grid   { stroke: #e6e6e6; stroke-width: 0.02; fill: none; }
+      .grid5  { stroke: #d0d0d0; stroke-width: 0.04; fill: none; }
+      .axis   { stroke: #111111; stroke-width: 0.08; stroke-linecap: round; }
+      .spoke  { stroke: #c7c7c7; stroke-width: 0.03; }
+      .spoke30{ stroke: #aaaaaa; stroke-width: 0.05; }
+      .label  { fill: #222222; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      .tick   { stroke: #444444; stroke-width: 0.06; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- Mathematische Orientierung: y nach oben -->
+  <g transform="scale(1,-1)">
+    <!-- Konzentrierte Kreise: r = 1..10 (fein) -->
+    <g class="grid">
+      <circle r="1"></circle><circle r="2"></circle><circle r="3"></circle><circle r="4"></circle>
+      <!-- r=5 dicker -->
+      <circle r="6"></circle><circle r="7"></circle><circle r="8"></circle><circle r="9"></circle><circle r="10"></circle>
+    </g>
+    <!-- r=5 als kräftigere Hilfslinie -->
+    <circle class="grid5" r="5"></circle>
+
+    <!-- Winkelstrahlen: alle 15°, 30° dicker -->
+    <g>
+      <!-- 0° bis 345° -->
+      <!-- Dünne 15°-Speichen -->
+      <g class="spoke">
+        <path d="M 0 0 L 10 0"></path>
+        <path d="M 0 0 L 9.659 2.588"></path>   <!-- 15° -->
+        <path d="M 0 0 L 8.660 5.000"></path>   <!-- 30° (wird gleich dicker überlagert) -->
+        <path d="M 0 0 L 6.427 7.660"></path>   <!-- 50? nein, wir bleiben bei 45°,60° etc. -->
+      </g>
+      <!-- Präzise Speichen alle 15° generieren -->
+      <!-- Um exakt und knapp zu bleiben, listen wir alle 24 Speichen: -->
+      <g class="spoke">
+        <path d="M 0 0 L 10 0"></path>                         <!-- 0° -->
+        <path d="M 0 0 L 9.659 2.588"></path>                 <!-- 15° -->
+        <path d="M 0 0 L 8.660 5.000"></path>                 <!-- 30° -->
+        <path d="M 0 0 L 7.071 7.071"></path>                 <!-- 45° -->
+        <path d="M 0 0 L 5.000 8.660"></path>                 <!-- 60° -->
+        <path d="M 0 0 L 2.588 9.659"></path>                 <!-- 75° -->
+        <path d="M 0 0 L 0 10"></path>                        <!-- 90° -->
+        <path d="M 0 0 L -2.588 9.659"></path>                <!-- 105° -->
+        <path d="M 0 0 L -5.000 8.660"></path>                <!-- 120° -->
+        <path d="M 0 0 L -7.071 7.071"></path>                <!-- 135° -->
+        <path d="M 0 0 L -8.660 5.000"></path>                <!-- 150° -->
+        <path d="M 0 0 L -9.659 2.588"></path>                <!-- 165° -->
+        <path d="M 0 0 L -10 0"></path>                       <!-- 180° -->
+        <path d="M 0 0 L -9.659 -2.588"></path>               <!-- 195° -->
+        <path d="M 0 0 L -8.660 -5.000"></path>               <!-- 210° -->
+        <path d="M 0 0 L -7.071 -7.071"></path>               <!-- 225° -->
+        <path d="M 0 0 L -5.000 -8.660"></path>               <!-- 240° -->
+        <path d="M 0 0 L -2.588 -9.659"></path>               <!-- 255° -->
+        <path d="M 0 0 L 0 -10"></path>                       <!-- 270° -->
+        <path d="M 0 0 L 2.588 -9.659"></path>                <!-- 285° -->
+        <path d="M 0 0 L 5.000 -8.660"></path>                <!-- 300° -->
+        <path d="M 0 0 L 7.071 -7.071"></path>                <!-- 315° -->
+        <path d="M 0 0 L 8.660 -5.000"></path>                <!-- 330° -->
+        <path d="M 0 0 L 9.659 -2.588"></path>                <!-- 345° -->
+      </g>
+      <!-- Kräftigere Speichen bei 0°, 30°, 60°,..., 330° -->
+      <g class="spoke30">
+        <path d="M 0 0 L 10 0"></path>
+        <path d="M 0 0 L 8.660 5.000"></path>
+        <path d="M 0 0 L 5.000 8.660"></path>
+        <path d="M 0 0 L 0 10"></path>
+        <path d="M 0 0 L -5.000 8.660"></path>
+        <path d="M 0 0 L -8.660 5.000"></path>
+        <path d="M 0 0 L -10 0"></path>
+        <path d="M 0 0 L -8.660 -5.000"></path>
+        <path d="M 0 0 L -5.000 -8.660"></path>
+        <path d="M 0 0 L 0 -10"></path>
+        <path d="M 0 0 L 5.000 -8.660"></path>
+        <path d="M 0 0 L 8.660 -5.000"></path>
+      </g>
+    </g>
+
+    <!-- Achsenpfeile (x nach rechts, y nach oben) -->
+    <g class="axis">
+      <path d="M -10 0 H 10"></path>  <!-- x-Achse -->
+      <path d="M 0 -10 V 10"></path>  <!-- y-Achse -->
+    </g>
+    <g fill="#111111">
+      <path d="M 10 0 l -0.4 0.2 l 0 -0.4 Z"></path>  <!-- x-Pfeil -->
+      <path d="M 0 10 l 0.2 -0.4 l -0.4 0 Z"></path>  <!-- y-Pfeil -->
+    </g>
+
+    <!-- kleine Radial-Ticks auf der 0°-Halbgeraden bei r=1..10 -->
+    <g class="tick">
+      <path d="M 1 -0.15 V 0.15"></path>
+      <path d="M 2 -0.15 V 0.15"></path>
+      <path d="M 3 -0.15 V 0.15"></path>
+      <path d="M 4 -0.15 V 0.15"></path>
+      <path d="M 5 -0.2  V 0.2"></path>
+      <path d="M 6 -0.15 V 0.15"></path>
+      <path d="M 7 -0.15 V 0.15"></path>
+      <path d="M 8 -0.15 V 0.15"></path>
+      <path d="M 9 -0.15 V 0.15"></path>
+      <path d="M 10 -0.2 V 0.2"></path>
+    </g>
+
+    <!-- Beschriftungen: Text erneut spiegeln, damit er nicht invertiert ist -->
+    <g transform="scale(1,-1)" class="label" font-size="0.6">
+      <!-- Radius-Beschriftungen auf der +x-Achse -->
+      <g text-anchor="middle">
+        <text x="1" y="-0.6">1</text>
+        <text x="2" y="-0.6">2</text>
+        <text x="3" y="-0.6">3</text>
+        <text x="4" y="-0.6">4</text>
+        <text x="5" y="-0.6">5</text>
+        <text x="6" y="-0.6">6</text>
+        <text x="7" y="-0.6">7</text>
+        <text x="8" y="-0.6">8</text>
+        <text x="9" y="-0.6">9</text>
+        <text x="10" y="-0.6">10</text>
+      </g>
+
+      <!-- Winkel-Beschriftungen außen am Rand -->
+      <g font-size="0.55">
+        <text x="10.4" y=" 0.9">0°</text>
+        <text x=" 9.0" y=" 3.7">30°</text>
+        <text x=" 6.0" y=" 6.3">60°</text>
+        <text x=" 0.6" y="10.6">90°</text>
+        <text x="-5.9" y=" 6.3">120°</text>
+        <text x="-9.0" y=" 3.7">150°</text>
+        <text x="-10.8" y=" 0.9">180°</text>
+        <text x="-9.4" y="-2.0">210°</text>
+        <text x="-6.3" y="-5.3">240°</text>
+        <text x="-0.4" y="-10.4">270°</text>
+        <text x=" 6.3" y="-5.3">300°</text>
+        <text x=" 9.4" y="-2.0">330°</text>
+      </g>
+
+      <!-- Achsen-Labels -->
+      <text x="10.3" y="0.9" font-size="0.9">x</text>
+      <text x="-0.9" y="10.6" font-size="0.9">y</text>
+
+      <!-- Ursprungsmarke -->
+      <circle cx="0" cy="0" r="0.12" fill="#d52a2a"></circle>
+      <text x="0.5" y="-0.5" font-size="0.6">r=0</text>
+
+      <!-- System-Label -->
+      <text x="-10" y="-10.2" font-size="0.6">Polar: r in Einheiten, θ in Grad</text>
+    </g>
+  </g>
+</svg>

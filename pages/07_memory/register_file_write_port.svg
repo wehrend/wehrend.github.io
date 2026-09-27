@@ -1,0 +1,95 @@
+<svg width="102px" 
+     height="85px" 
+     viewBox="0.0 0.0 102.00 85.00" 
+     viewPort = "0 0 102 85" 
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,3 L4.5,2 z" fill="black" />
+        </marker>
+        <g id="mux">
+                <rect x="10" y="10" rx="5" ry="5" width="6" height="29" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+                <text x="12" y="22.5" font-size="3">M</text>
+                <text x="12" y="25" font-size="3">U</text>
+                <text x="12" y="27.5" font-size="3">X</text>
+            </g>
+            <g id="and" transform="scale(0.11)">
+                    <polyline
+            points="70,10 30,10 30,90, 70,90"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="polyline5" />
+        <path
+            id="ellipse8"
+            style="fill:#ffffff;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="70"
+            cy="50"
+            rx="40"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="m 69.504453,10.00307 a 40,40 0 0 1 34.935157,19.652064 40,40 0 0 1 0.352,40.081724 40,40 0 0 1 -34.584606,20.262606" />
+        </g>
+    </defs>
+    <rect x="20" y="10" width="80" height="65" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <rect x="25" y="20" width="15" height="30" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="27" y="29" font-size="3">n-to-2^n</text>
+    <text x="27" y="34" font-size="3">decoder</text>
+    <rect x="70" y="20" width="20" height="10" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="71" y="23" font-size="3">C</text>
+    <text x="71" y="29" font-size="3">D</text>
+    <text x="74" y="25" font-size="3">Register 0</text>
+    <rect x="70" y="30" width="20" height="10" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="71" y="33" font-size="3">C</text>
+    <text x="71" y="39" font-size="3">D</text>
+    <text x="74" y="35" font-size="3">Register 1</text>
+    <rect x="70" y="40" width="20" height="10" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="71" y="43" font-size="3">C</text>
+    <text x="71" y="49" font-size="3">D</text>
+    <text x="74" y="45" font-size="3">...</text>
+    <rect x="70" y="50" width="20" height="10" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="71" y="53" font-size="3">C</text>
+    <text x="71" y="59" font-size="3">D</text>
+    <text x="74" y="55" font-size="3">Register n-2</text>
+    <rect x="70" y="60" width="20" height="10" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="71" y="63" font-size="3">C</text>
+    <text x="71" y="69" font-size="3">D</text>
+    <text x="74" y="65" font-size="3">Register n-1</text>
+    <polyline points="62,22 70,22" style="fill:none;stroke:black;stroke-width:0.3px;"/>
+    <use x="50" y="16" href="#and"/>
+    <polyline points="62,32 70,32" style="fill:none;stroke:black;stroke-width:0.3px;"/>
+    <use x="50" y="27" href="#and"/>
+    <polyline points="62,52 70,52" style="fill:none;stroke:black;stroke-width:0.3px;"/>
+    <use x="50" y="46" href="#and"/>
+    <polyline points="62,62 70,62" style="fill:none;stroke:black;stroke-width:0.3px;"/>
+    <use x="50" y="57" href="#and"/>
+    <text x="5" y="15" font-size="3">Write</text>
+    <polyline points="15,15 48,15 48,59 53.5,59" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="48,48 53.5,48" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <circle cx="48" cy="48" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="48,29 53.5,29" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <circle cx="48" cy="29" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="48,18 53.5,18" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <circle cx="48" cy="18" r="0.5" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="40,24 53.5,24" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="38" y="24" font-size="3">0</text>
+    <polyline points="40,29 45,29 45,35 53.5,35" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="38" y="30" font-size="3">1</text>
+    <polyline points="40,40 45,40 45,53 53.5,53" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="35" y="40" font-size="3">n-2</text>
+    <polyline points="40,45 43,45 43,65 53.5,65" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="35" y="46" font-size="3">n-1</text>
+    <polyline points="15,36 23,36" style="fill:none;stroke:black;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="5" y="37" font-size="3">Reg No.</text>
+    <polyline points="15,68 67.5,68" style="fill:none;stroke:blue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="65" cy="68" r="0.5" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="65,68 65,28 67.5,28"  style="fill:none;stroke:blue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="65" cy="38" r="0.5" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="65,38 67.5,38" style="fill:none;stroke:blue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <circle cx="65" cy="58" r="0.5" style="fill:none;stroke:blue;stroke-width:0.5px;"/>
+    <polyline points="65,58 67.5,58" style="fill:none;stroke:blue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="4" y="68" font-size="3">Reg data</text>
+</svg>
+

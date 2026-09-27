@@ -1,0 +1,37 @@
+<svg width="80.00" height="60.00" 
+     viewBox="0.0 0.0 80.0 60.0" 
+     viewPort="0 0 80px 60px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <g id="mux01">
+            <text x="-5" y="15" font-size="4">A</text>
+            <text x="-5" y="28" font-size="4">B</text>
+            <polyline points="13,5 13,10"  style="fill:none;stroke:lightskyblue;stroke-width:0.5px;"/>
+            <rect x="10" y="10" rx="5" ry="5" width="6" height="20" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+            <polyline points="-2,14 10,14"  style="fill:none;stroke:black;stroke-width:0.5px;"/>
+            <polyline points="-2,26 10,26"  style="fill:none;stroke:black;stroke-width:0.5px;"/>
+            <text x="12" y="13" font-size="3">0</text>
+            <text x="12" y="28" font-size="3">1</text>
+            <polyline points="16,20 22,20"  style="fill:none;stroke:black;stroke-width:0.5px;"/>
+            <text x="23" y="21" font-size="4">Z</text>
+        </g>
+    </defs>
+    <line x1="25" y1="8" x2="25" y2="15" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="25" y="7" font-size="4">Sel</text>
+    <polyline points="20,10 30,15 30,35 20,40 20,10 30,15" style="fill:lightskyblue;stroke:black;stroke-width:0.5px;"/>
+    <text x="21" y="26" font-size="4">Mux</text>
+    <line x1="10" y1="18" x2="20" y2="18" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="5" y="19" font-size="4">A</text>
+    <line x1="10" y1="32" x2="20" y2="32" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="5" y="33" font-size="4">B</text>
+
+    <text x="22" y="19" font-size="4">0</text>
+    <text x="22" y="33" font-size="4">1</text>
+    <!--     out -->
+    <line x1="30" y1="25" x2="40" y2="25" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+    <text x="42" y="26" font-size="4">Z</text>
+    <use x="54" y="5" href="#mux01"/>
+    
+</svg>

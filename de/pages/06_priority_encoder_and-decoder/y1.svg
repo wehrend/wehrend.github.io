@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="506" height="350" viewBox="0 0 506 350">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Labels -->
+  <text x="65" y="80" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#111">y<tspan baseline-shift="sub" font-size="26">1</tspan></text>
+
+  <!-- Top bars / labels -->
+  <g stroke="#111" stroke-width="4" stroke-linecap="square">
+    <line x1="240" y1="35" x2="490" y2="35"/>
+    <line x1="200" y1="67" x2="395" y2="67"/>
+    <line x1="175" y1="87" x2="255" y2="87"/>
+    <line x1="340" y1="87" x2="440" y2="87"/>
+  </g>
+  <text x="355" y="28" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#111">S<tspan baseline-shift="sub" font-size="16">in</tspan></text>
+  <text x="272" y="61" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111">x<tspan baseline-shift="sub" font-size="16">j+2</tspan></text>
+  <text x="208" y="83" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111">x<tspan baseline-shift="sub" font-size="16">j</tspan></text>
+  <text x="375" y="83" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111">x<tspan baseline-shift="sub" font-size="16">j</tspan></text>
+
+  <!-- Outer frame -->
+  <rect x="81" y="116" width="412" height="207" fill="none" stroke="#111" stroke-width="4"/>
+
+  <!-- Main divider -->
+  <line x1="287" y1="116" x2="287" y2="323" stroke="#111" stroke-width="4"/>
+
+  <!-- Left grid lines -->
+  <g stroke="#111" stroke-width="3">
+    <line x1="133" y1="116" x2="133" y2="167"/>
+    <line x1="185" y1="116" x2="185" y2="218"/>
+    <line x1="81" y1="167" x2="185" y2="167"/>
+    <line x1="81" y1="218" x2="287" y2="218" stroke-width="4"/>
+  </g>
+
+  <!-- Cell outlines -->
+  <rect x="81" y="116" width="52" height="51" fill="none" stroke="#111" stroke-width="3"/>
+  <rect x="133" y="116" width="52" height="51" fill="none" stroke="#111" stroke-width="3"/>
+  <rect x="81" y="167" width="104" height="51" fill="none" stroke="#111" stroke-width="3"/>
+  <rect x="185" y="116" width="102" height="102" fill="none" stroke="#111" stroke-width="3"/>
+
+  <!-- Colored blocks -->
+  <rect x="89" y="220" width="190" height="97" rx="18" ry="18" fill="#77c8f2" opacity="0.95"/>
+  <rect x="193" y="173" width="86" height="148" rx="18" ry="18" fill="#f2c300" opacity="0.95"/>
+
+  <!-- Text -->
+  <text x="107.0" y="151.7" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#6cbf2a">*</text>
+  <text x="159.0" y="152.72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111">0</text>
+  <text x="133.0" y="202.7" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111">0</text>
+
+  <text x="236.0" y="205" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#111">1</text>
+  <text x="184.0" y="276.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#111">1</text>
+
+  <text x="390.0" y="219.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#6cbf2a">*</text>
+
+  <!-- Left measurement marks (approx) -->
+  <g stroke="#111" stroke-width="4" fill="none">
+    <line x1="56" y1="126" x2="56" y2="313"/>
+    <line x1="71" y1="162" x2="71" y2="228"/>
+  </g>
+  <text x="36" y="219.5" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111" transform="rotate(-90 36 219.5)">x<tspan baseline-shift="sub" font-size="16">i+3</tspan></text>
+  <text x="61" y="202.5" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111" transform="rotate(-90 61 202.5)">x<tspan baseline-shift="sub" font-size="16">i+1</tspan></text>
+</svg>

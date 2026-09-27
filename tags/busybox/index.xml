@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Busybox on Bits &amp; pieces - Sven Wehrend</title><link>http://wehrend.github.io/tags/busybox/</link><description>Recent content in Busybox on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://wehrend.github.io/tags/busybox/index.xml" rel="self" type="application/rss+xml"/><item><title>Busybox - How does it work and why ist it needed</title><link>http://wehrend.github.io/posts/web/35_busybox/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>http://wehrend.github.io/posts/web/35_busybox/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_what_is_busybox_and_why_is_it_needed">What is BusyBox and why is it needed?&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Hello folks,&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>today I want to explain how the Swiss knife of Linux command line tools works and why it is needed, especially in embedded systems.&lt;/p>
+&lt;/div>
+&lt;div class="paragraph">
+&lt;p>On a normal Linux desktop system, tools like &lt;code>ls&lt;/code>, &lt;code>cp&lt;/code>, &lt;code>mount&lt;/code> or &lt;code>sh&lt;/code> are all separate binaries. Each of those binaries depends on libraries and contains its own startup code. This is usually not a problem on desktops or servers.&lt;/p>
+&lt;/div></description></item></channel></rss>

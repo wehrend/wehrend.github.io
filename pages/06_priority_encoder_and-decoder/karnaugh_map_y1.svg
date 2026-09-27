@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520">
+  <defs>
+    <style>
+      .grid { stroke: #111; stroke-width: 2; fill: none; }
+      .thin { stroke: #111; stroke-width: 1; }
+      .lbl  { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #111; }
+      .hdr  { font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 700; fill: #111; }
+      .cell { font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #111; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+  </defs>
+
+  <!-- Layout constants (visual) -->
+  <!-- Grid origin -->
+  <!-- x0=180, y0=120; cell=100 -->
+
+  <!-- Titles -->
+  <text class="hdr" x="180" y="70">Karnaugh Map (4 Variablen)</text>
+
+  <!-- Axis labels -->
+  <text class="hdr" x="80" y="110">AB</text>
+  <text class="hdr" x="410" y="110">CD</text>
+
+  <!-- Column headers (CD Gray code: 00 01 11 10) -->
+  <text class="lbl" x="230" y="110">00</text>
+  <text class="lbl" x="330" y="110">01</text>
+  <text class="lbl" x="430" y="110">11</text>
+  <text class="lbl" x="530" y="110">10</text>
+
+  <!-- Row headers (AB Gray code: 00 01 11 10) -->
+  <text class="lbl" x="140" y="170">00</text>
+  <text class="lbl" x="140" y="270">01</text>
+  <text class="lbl" x="140" y="370">11</text>
+  <text class="lbl" x="140" y="470">10</text>
+
+  <!-- Outer border -->
+  <rect class="grid" x="180" y="120" width="400" height="400"/>
+
+  <!-- Inner grid lines -->
+  <!-- Vertical lines -->
+  <line class="thin" x1="280" y1="120" x2="280" y2="520"/>
+  <line class="thin" x1="380" y1="120" x2="380" y2="520"/>
+  <line class="thin" x1="480" y1="120" x2="480" y2="520"/>
+  <!-- Horizontal lines -->
+  <line class="thin" x1="180" y1="220" x2="580" y2="220"/>
+  <line class="thin" x1="180" y1="320" x2="580" y2="320"/>
+  <line class="thin" x1="180" y1="420" x2="580" y2="420"/>
+
+  <!-- Cell IDs / placeholders (edit these texts to 0/1/X or minterm numbers) -->
+  <!-- Row 00 -->
+  <text class="cell" id="c00_00" x="230" y="170"> </text>
+  <text class="cell" id="c00_01" x="330" y="170"> </text>
+  <text class="cell" id="c00_11" x="430" y="170"> </text>
+  <text class="cell" id="c00_10" x="530" y="170"> </text>
+
+  <!-- Row 01 -->
+  <text class="cell" id="c01_00" x="230" y="270"> </text>
+  <text class="cell" id="c01_01" x="330" y="270"> </text>
+  <text class="cell" id="c01_11" x="430" y="270"> </text>
+  <text class="cell" id="c01_10" x="530" y="270"> </text>
+
+  <!-- Row 11 -->
+  <text class="cell" id="c11_00" x="230" y="370"> </text>
+  <text class="cell" id="c11_01" x="330" y="370"> </text>
+  <text class="cell" id="c11_11" x="430" y="370"> </text>
+  <text class="cell" id="c11_10" x="530" y="370"> </text>
+
+  <!-- Row 10 -->
+  <text class="cell" id="c10_00" x="230" y="470"> </text>
+  <text class="cell" id="c10_01" x="330" y="470"> </text>
+  <text class="cell" id="c10_11" x="430" y="470"> </text>
+  <text class="cell" id="c10_10" x="530" y="470"> </text>
+
+  <!-- Optional: tiny minterm index labels in each cell (comment in if you want) -->
+  <!--
+  <g class="lbl" font-size="12" fill="#444">
+    <text x="190" y="135">m0</text>  ... etc
+  </g>
+  -->
+</svg>

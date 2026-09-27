@@ -1,0 +1,49 @@
+<svg width="100.00" height="130.00" 
+     viewBox="0.0 0.0 100.0 130.0" 
+     viewPort="0 0 100px 130px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+    <g transform="translate(-23,0)" id="pmos">
+        <g transform="rotate(270,50,50)" >
+            <polyline points="50,38 40,38  40,53 50,53" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+            <circle cx="37" cy="45" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+            <line x1="38" y1="38" x2="38" y2="53" style="stroke:black;stroke-width:1;fill:none;"/>
+            <line x1="25" y1="45" x2="36" y2="45" style="stroke:black;stroke-width:1;fill:none;"/>
+        </g>
+    </g>
+    
+    <g transform="rotate(90,50,50)" id="nmos">
+        <polyline points="50,70 40,70  40,85 50,85" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <line x1="38" y1="70" x2="38" y2="85" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="25" y1="77" x2="38" y2="77" style="stroke:black;stroke-width:1;fill:none;"/>
+    </g>
+</defs>
+
+<!-- in -->
+<line x1="15" y1="35" x2="35" y2="35" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="35" cy="35" r="0.7" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="14" cy="35" r="1.2" style="stroke:black;stroke-width:1;fill:none;"/>
+<text x="8.5" y="36" font-size="5">B</text>
+<line x1="15" y1="90" x2="35" y2="90" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="35" cy="90" r="0.7" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="14" cy="90" r="1.2" style="stroke:black;stroke-width:1;fill:none;"/>
+<text x="8.5" y="91" font-size="5">A</text>
+
+<use x="20" y="-15" href="#nmos"/>
+<text x="42" y="9" font-size="5">S</text>
+<text x="40" y="65" font-size="5" text-decoration="overline">S</text>
+<text x="40" y="120" font-size="5">S</text>
+<use x="20" y="-15" href="#pmos"/>
+<polyline points="50,35  65,35  65,90 50,90" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="50" cy="35" r="0.7" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="50" cy="90" r="0.7" style="stroke:black;stroke-width:1;fill:none;"/>
+<use x="20" y="40" href="#nmos"/>
+<use x="20" y="40" href="#pmos"/>
+<!-- out -->
+<line x1="65" y1="60" x2="75" y2="60" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="65" cy="60" r="0.7" style="stroke:black;stroke-width:1;fill:none;"/>
+<circle cx="76.5" cy="60" r="1.2" style="fill:none;stroke:black;stroke-width:0.8px;fill:none;"/>
+<text x="79" y="61" font-size="5">Y</text>
+</svg>
