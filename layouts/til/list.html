@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="til-section">
+  <h1>{{ .Title }}</h1>
+  <div>{{ .Content }}</div>
+
+  <ul class="til-list">
+    {{ range .Pages }}
+    <li>
+      <span class="date">{{ .Date.Format "2006-01-02" }}</span> —
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

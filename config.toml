@@ -5,6 +5,7 @@ theme = "hugo-book"
 publishDir = "public"
 
 # englisch
+
 [languages.en]
   languageName = "English"
   contentDir = "content/en"
@@ -208,3 +209,15 @@ publishDir = "public"
     isPlainText = false
     notAlternative = true
     permalinkable = true
+
+# Englisch (am Ende einfügen)
+[[languages.en.menu.before]]
+  name = "Today I Learned"
+  url = "/til/"
+  weight = 12
+
+# Deutsch (falls gewünscht)
+[[languages.de.menu.before]]
+  name = "Today I Learned"
+  url = "/til/"
+  weight = 12

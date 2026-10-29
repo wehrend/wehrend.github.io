@@ -1,0 +1,30 @@
+---
+title: "Hugo: Forcing a Valid XML Sitemap Instead of HTML Dumps"
+date: 2026-10-29T10:00:00+00:00
+description: "How to create a proper XML sitemap in Hugo when your theme defaults to rendering unformatted HTML lists instead."
+tags: ["Hugo", "SEO", "Webdev", "GitHub Pages"]
+type: "posts"
+---
+
+### The Problem
+When checking the sitemap on a Hugo website (e.g., hosted on GitHub Pages), you might occasionally land on an HTML page (`/sitemap/`) where all URLs are jammed together without formatting or separating tags. Search engine crawlers (like Google) fail to parse such invalid sitemaps and will reject them entirely.
+
+### The Solution
+You can force Hugo to generate a clean, valid XML sitemap by providing a custom layout template.
+
+To do this, create the directory structure `layouts/_default/` in the root of your project (if it doesn't already exist), and place a file named **`sitemap.xml`** inside it with the following content:
+
+```xml
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">
+  {{ range .Site.Pages }}
+    {{ if not .Params.private }}
+    <url>
+      <loc>{{ .Permalink }}</loc>
+      {{ if not .Lastmod.IsZero }}
+        <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+      {{ end }}
+    </url>
+    {{ end }}
+  {{ end }}
+</urlset>
