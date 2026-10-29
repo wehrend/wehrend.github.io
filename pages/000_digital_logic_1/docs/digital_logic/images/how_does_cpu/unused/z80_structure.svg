@@ -1,0 +1,45 @@
+<svg width="150.00" height="75.00" 
+     viewBox="0.0 0.0 150.0 75.0" 
+     viewPort="0 0 150px 75px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="startarrow" markerWidth="4" markerHeight="3" refX="4" refY="1.5" orient="auto">
+            <polygon points="4 0, 4 3, 0 1.5" fill="black" />
+        </marker>
+        <marker id="endarrow" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <polygon points="0 0, 4 1.5, 0 3" fill="black" />
+        </marker>
+    </defs>
+    <rect x="50" y="10" width="30" height="15" 
+        style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="52" y="17" font-size="3">instruction decoder / </text>
+    <text x="52" y="21" font-size="3">control unit</text>
+    
+    <rect x="50" y="50" width="30" height="15" 
+        style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="62" y="57" font-size="3">ALU</text>
+    
+    <rect x="10" y="30" width="30" height="15" 
+        style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="18" y="38" font-size="3">data bus</text>
+
+    <rect x="90" y="30" width="12" height="15" 
+        style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="92" y="38" font-size="3">register</text>
+    
+    <rect x="110" y="30" width="30" height="15" 
+        style="fill:none;stroke:black;stroke-width:0.5px"/>
+    <text x="115" y="38" font-size="3">adress bus</text>
+    
+    <line x1="42" y1="37" x2="63" y2="37"
+          style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="67" y1="37" x2="88" y2="37" 
+          style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#endarrow)" marker-start="url(#startarrow)"/>
+    <line x1="65" y1="25" x2="65" y2="50"
+          style="fill:none;stroke:black;stroke-width:0.5px"/>
+    
+    <line x1="102" y1="37" x2="108" y2="37"
+          style="fill:none;stroke:black;stroke-width:0.5px" marker-end="url(#endarrow)"/>
+</svg>

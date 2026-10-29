@@ -1,0 +1,66 @@
+<svg width="100.00" height="60.00"
+     viewBox="0.0 0.0 100.0 60.0"
+     viewPort="0 0 100px 60px"
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <symbol id="op-amp-full-pinout">
+        <polygon points="15,5  15,25  35,15 " style="stroke:black;stroke-width:0.6px;fill:none;"/>
+        <line x1="10" y1="10" x2="15" y2="10" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+        <line x1="10" y1="21" x2="15" y2="21" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+        <line x1="35" y1="15" x2="45" y2="15" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+        <text x="16" y="12" font-size="5">-</text>
+        <text x="17" y="22" font-size="5">+</text>
+        <line x1="25" y1="5" x2="25" y2="10" style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+        <line x1="25" y1="20" x2="25" y2="25" style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+        <line x1="30" y1="8" x2="30" y2="12" style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+        <line x1="30" y1="17.5" x2="30" y2="23"
+              style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+    </symbol>
+    <!-- amperemeter (LA1) -->
+    <symbol id="ampere" viewBox="0 0 200 100">
+        <circle cx="100" cy="52.5" r="11.25" fill="none" stroke="red" stroke-width="1.5"/>
+        <text x="95" y="55" font-size="14" fill="red">A</text>
+    </symbol>
+    <!--ground-->
+    <symbol id="gnd">
+        <line x1="40" y1="18" x2="40" y2="22" style="stroke:black;stroke-width:1;"/>
+        <polygon points="36,22 44,22 40,27" style="stroke:black;stroke-width:1;fill:none;"/>
+    </symbol>
+
+    <line x1="5" y1="18" x2="10" y2="20" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+
+    <line x1="5" y1="33" x2="10" y2="31" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+    <circle cx="5" cy="3" r="0.5" style="stroke:black;fill:none;"/>
+    <circle cx="5" cy="18" r="0.5" style="stroke:black;fill:none;"/>
+    <circle cx="5" cy="33" r="0.5" style="stroke:black;fill:none;"/>
+    <circle cx="5" cy="56" r="0.5" style="stroke:black;fill:none;"/>
+    <use href="#op-amp-full-pinout" transform="translate(0,10) scale(1,1)"/>
+    <use href="#ampere" transform="translate(0,-5) scale(1,1)"/>
+    <line x1="60" y1="3" x2="60" y2="56" style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+    <circle cx="60" cy="12" r="5" style="stroke:black;fill:none;"/>
+    <circle cx="60" cy="40" r="5" style="stroke:black;fill:none;"/>
+    <line x1="5" y1="3" x2="60" y2="3" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+    <line x1="5" y1="56" x2="60" y2="56" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+    <line x1="56" y1="25" x2="65" y2="25" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+    <use href="#gnd" transform="translate(37,12) scale(0.7,0.7)"/>
+    <circle cx="60" cy="25" r="0.5" style="stroke:black;fill:none;"/>
+    <line x1="25" y1="3" x2="25" y2="15" style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+    <line x1="25" y1="35" x2="25" y2="55.5" style="stroke:black;stroke-width:0.6px;fill:none;stroke-linecap:round;"/>
+    <line x1="5" y1="45" x2="20" y2="45" style="stroke:black;stroke-width:0.6px;fill:none;"/>
+    <use href="#gnd" transform="translate(-8,32) scale(0.7,0.7)"/>
+    <circle cx="5" cy="45" r="0.5" style="stroke:black;fill:none;"/>
+    <!--    <line x1="10" y1="30" x2="40" y2="30" style="stroke:black;stroke-width:0.6px;fill:none;"/>-->
+    <!--    <line x1="40" y1="30" x2="40" y2="15" style="stroke:black;stroke-width:0.6px;fill:none;"/>-->
+    <!--    <circle cx="40" cy="15" r="0.5" style="stroke:black;stroke-width:0.6px;fill:none;">-->
+    <!-- <polygon points="10,21 10,30, 40,30 40,20" style="stroke:black;stroke-width:0.6px;fill:none;"/> -->
+     <text x="3" y="24" font-size="5">E-</text>
+     <text x="3" y="38" font-size="5">E+</text>
+     <text x="3" y="8" font-size="5">+</text>
+    <text x="3" y="50" font-size="5">0</text>
+
+
+    <!-- <text x="42" y="16" font-size="4">V_out</text> -->
+
+
+</svg>

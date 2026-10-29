@@ -1,0 +1,43 @@
+<svg width="250px"
+     height="50px"
+     viewBox="0.0 0.0 250.00 50.00"
+     viewPort = "0 0 250 50"
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,3 L4.5,2 z" fill="lightskyblue" />
+        </marker>
+    </defs>
+    <polyline points="5,35 30,35" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="05" y="32" font-size="3" fill="red">continuous in Time</text>
+
+    <text x="05" y="42" font-size="3" fill="red">continuous in amplitude</text>
+    <polyline points="65,35 80,35" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <rect x="35" y="25" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:red;stroke-width:0.5px;"/>
+    <text x="40" y="35" font-size="4">SAMPLE</text>
+
+    <text x="65" y="32" font-size="3" fill="blue">discrete in Time</text>
+    <text x="65" y="42" font-size="3" fill="red">continous in amplitude</text>
+    <polyline points="115,35 130,35" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <rect x="85" y="25" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:red;stroke-width:0.5px;"/>
+    <text x="95" y="35" font-size="4">HOLD</text>
+
+
+    <text x="115" y="32" font-size="3" fill="blue">discrete in Time</text>
+    <text x="115" y="42" font-size="3" fill="red">continous in amplitude</text>
+    <polyline points="165,35 185,35" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <rect x="135" y="25" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:red;stroke-width:0.5px;"/>
+    <text x="140" y="35" font-size="4">QUANTIZE</text>
+
+
+    <text x="165" y="32" font-size="3" fill="blue">discrete in Time</text>
+    <text x="165" y="42" font-size="3" fill="blue">discrete in amplitude</text>
+    <rect x="190" y="25" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:red;stroke-width:0.5px;"/>
+    <text x="195" y="35" font-size="4">ENCODE</text>
+    <polyline points="222,35 235,35" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-end="url(#arrow)"/>
+    <text x="165" y="32" font-size="3" fill="blue">discrete in Time</text>
+    <text x="165" y="42" font-size="3" fill="blue">discrete in amplitude</text>
+
+    <text x="220" y="32" font-size="3" fill="blue">discrete in Time</text>
+    <text x="220" y="42" font-size="3" fill="blue">discrete in amplitude</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg width="200.00" height="100.00" 
+     viewBox="0.0 0.0 200.0 100.0" 
+     viewPort="0 0 200px 100px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="fulladder">
+        <rect x="10" y="10" width="26" height="26" style="fill:none;stroke:black;"/>
+        <text x="15" y="25" font-size="12">FA</text>
+        <!-- inputs -->
+        <line x1="15" y1="0" x2="15" y2="10" style="fill:none;stroke:black;"/>
+        <line x1="30" y1="0" x2="30" y2="10" style="fill:none;stroke:black;"/>
+        <text x="17" y="4" font-size="4">a</text>
+        <text x="32" y="4" font-size="4">b</text>
+        <!--  sum -->    
+        <line x1="22.5" y1="36" x2="22.5" y2="46" style="fill:none;stroke:black;"/>
+        <text x="24" y="46" font-size="4">s</text>
+        <!-- carry -->
+        <line x1="3" y1="23" x2="10" y2="23" style="fill:none;stroke:black;"/>
+        <line x1="36" y1="23" x2="43" y2="23" style="fill:none;stroke:black;"/>
+    </symbol>
+    <rect x="20" y="15" width="160" height="35" style="fill:none;stroke:red;"/> 
+    <use x="20" y="10" href="#fulladder"/>
+    <use x="60" y="10" href="#fulladder"/>
+    <use x="100" y="10" href="#fulladder"/>
+    <use x="140" y="10" href="#fulladder"/>
+    <polyline points="25,33 10,33 10,55" style="fill:none;stroke:black;"/>
+    <text x="12" y="55" font-size="4">c
+        <tspan baseline-shift = "sub">4</tspan>
+    </text>
+    <text x="182" y="30" font-size="4">c
+        <tspan baseline-shift = "sub">0</tspan>
+    </text>
+    <text x="55" y="70" font-size="10">4-bit RC-adder</text>
+    
+</svg>
