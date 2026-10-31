@@ -1,0 +1,60 @@
+{{ $lang := site.Language.Lang }}
+{{ $de := eq $lang "de" }}
+<div class="learning-paths">
+{{ range site.Data.paths }}
+  {{ $count := 0 }}
+  {{ range .steps }}{{ $count = add $count (cond (reflect.IsSlice .) (len .) 1) }}{{ end }}
+
+  <details class="book-card learning-path">
+    <summary>
+      <span class="book-card__title">{{ index .title $lang }}</span>
+      {{ with index .goal $lang }}<span class="book-card__summary">{{ . }}</span>{{ end }}
+      <span class="book-card__meta">{{ $count }} {{ cond $de "Kurse" "courses" }}</span>
+    </summary>
+
+    <ol class="learning-path__steps">
+    {{ range $i, $step := .steps }}
+      {{ $group := cond (reflect.IsSlice $step) $step (slice $step) }}
+      <li class="learning-path__step">
+        <span class="learning-path__num">{{ add $i 1 }}</span>
+        <div class="learning-path__courses">
+        {{ range $group }}{{ with site.GetPage . }}
+          {{ $course := . }}
+
+          {{/* Lektionen des Kurses (Kurse ohne category = Einzelseite) */}}
+          {{ $lessons := slice }}
+          {{ with $course.Params.category }}
+            {{ $lessons = sort (where (where site.RegularPages "Params.category" .) "Params.overview" "ne" true) "File.Path" }}
+          {{ end }}
+          {{ $ids := slice }}
+          {{ range (cond (gt (len $lessons) 0) $lessons (slice $course)) }}
+            {{ with .File }}{{ $ids = $ids | append .Dir }}{{ end }}
+          {{ end }}
+
+          <details class="learning-path__course" data-lessons="{{ delimit $ids "," }}">
+            <summary>
+              {{ with $course.Params.icon }}{{ with resources.Get (trim . "/") }}
+                <span class="card-icon">{{ .Content | safeHTML }}</span>
+              {{ end }}{{ end }}
+              <span>{{ $course.LinkTitle }}</span>
+              <span class="path-progress"></span>
+            </summary>
+
+            <div class="learning-path__body">
+              {{ with $course.Params.summary }}<p class="book-card__summary">{{ . }}</p>{{ end }}
+              {{ with $lessons }}
+                <ol class="learning-path__lessons">
+                  {{ range . }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+                </ol>
+              {{ end }}
+              <a class="learning-path__open" href="{{ $course.RelPermalink }}">{{ cond $de "Zum Kurs" "Open course" }} →</a>
+            </div>
+          </details>
+        {{ end }}{{ end }}
+        </div>
+      </li>
+    {{ end }}
+    </ol>
+  </details>
+{{ end }}
+</div>

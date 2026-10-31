@@ -1,0 +1,14 @@
+- id: hardware
+  title: { en: "From transistor to CPU", de: "Vom Transistor zur CPU" }
+  goal:
+    {
+      en: "Understand how a CPU works, bottom-up",
+      de: "Verstehen, wie eine CPU funktioniert – von unten nach oben",
+    }
+  steps:
+    - /pages/electronics-100
+    - /pages/000_digital_logic_1
+    - /pages/10_digital_logic_2
+    - /pages/adc_dac
+    - /pages/mcu_vs_cpu
+    - /pages/interrupts
