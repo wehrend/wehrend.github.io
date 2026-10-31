@@ -1,5 +1,5 @@
 ---
-title: X2_cordic (de)
+title: "CORDIC"
 date: 2023-03-26
 category:
 link:
@@ -26,7 +26,7 @@ image:../images/unit_circle.svg[width=40%]
 == Der CORDIC-Algorithmus
 In der folgenden Abbildung zeigt V0 den Startvektor
 
-[role=„image“,„../images/startvector.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/startvector.svg",imgfmt="svg", width="70%"]
 \[v_{0}=\begin{bmatrix}
 0 \\
 1
@@ -37,10 +37,10 @@ image:../images/cordic_circle.svg[width=40%]
 
 
 die wir nun durch Multiplikation mit der unten angegebenen Rotationsmatrix iterieren:
-[role=„image“,„../images/vector_rotation.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
 \[v_{i+1}= R_i v_i\]
 
-[role=„image“,„../images/vector_rotation.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
 \[ R_i = \begin{bmatrix}
 cos(\theta) & -sin(\theta) \\
 sin(\theta) & cos(\theta)
@@ -48,19 +48,19 @@ sin(\theta) & cos(\theta)
 \]
 Wir verwenden die folgenden zwei trigonometrischen Identitäten:
 
-[role=„image“,„../images/trigonometric_identity_cos.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/trigonometric_identity_cos.svg",imgfmt="svg", width="70%"]
 \[
 cos(\theta) = \frac{1}{\sqrt{1+tan^2(\theta)}}
 \]
 
-[role=„image“,„../images/trigonometric_identity_cos.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/trigonometric_identity_cos.svg",imgfmt="svg", width="70%"]
 \[
 sin(\theta) = \frac{tan(\theta)}{\sqrt{1+tan^2(\theta)}}
 \]
 
 wird die Rotationsmatrix zu
 
-[role=„image“,„../images/vector_rotation.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation.svg",imgfmt="svg", width="70%"]
 \[ R_i = \frac{1}{\sqrt{1+tan^2(\theta)}} \begin{bmatrix}
 1 & -tan(\theta) \\
 tan(\theta) & 1
@@ -70,7 +70,7 @@ tan(\theta) & 1
 Dann wird der Rotationsvektor $v_{i+1}= R_i v_i$ zu:
 
 
-[role=„image“,„../images/vector_rotation_1.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation_1.svg",imgfmt="svg", width="70%"]
 \[ \begin{bmatrix}
 x_{i+1} \\
 y_{i+1} \\
@@ -84,7 +84,7 @@ y_{i} \\
 \]
 
 Wir ersetzen die Tangensfunktion durch einen einfacheren Ausdruck, was zu einer Bitverschiebung führt.
-[role=„image“,„../images/vector_rotation_2.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation_2.svg",imgfmt="svg", width="70%"]
 \[ \begin{bmatrix}
 x_{i+1} \\
 y_{i+1} \\
@@ -106,10 +106,10 @@ positiv ist, ist $\sigma{i}$ +1, andernfalls -1.
 
 Der Faktor Ki kann für den iterativen Prozess vollständig faktorisiert werden.
 
-[role=„image“,„../images/vector_rotation_Kn.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation_Kn.svg",imgfmt="svg", width="70%"]
 \[ K(n) = \prod_{i=0}^{n-1}K_{i} = \prod_{i=0}^{n-1} \frac{1}{\sqrt{1+2^{-2i}}} \]
 
-[role=„image“,„../images/vector_rotation_Kn.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/vector_rotation_Kn.svg",imgfmt="svg", width="70%"]
 \[ K = lim_{n-> \infty} K \approx  0,60725293500888 ]
 
 

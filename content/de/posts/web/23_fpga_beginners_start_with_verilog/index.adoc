@@ -103,10 +103,10 @@ von 50 MHz hat. Wir müssen diese auf eine Frequenz von etwa 1 Hz herunterteilen
 Dazu müssen wir das Signal durch etwa 50.000.000 teilen. Um zu berechnen, wie viel Bitbreite wir
 benötigen, müssen wir eine kleine Berechnung durchführen:
 
-[role=„image“,„../images/compute_bitwidth.svg“ ,imgfmt=„svg“]
+[role="image","../images/compute_bitwidth.svg" ,imgfmt="svg"]
 \[50.000.000 = 2^x\]
 
-[role=„image“,„../images/compute_bitwidth_2.svg“ ,imgfmt=„svg“]
+[role="image","../images/compute_bitwidth_2.svg" ,imgfmt="svg"]
 \[x = log_{2}(50.000.000)= 25.575\]
 
 Da wir das Ergebnis aufrunden müssen, benötigen wir eine Bitbreite von 26 Bit.

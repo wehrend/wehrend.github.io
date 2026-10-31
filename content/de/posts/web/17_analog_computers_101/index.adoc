@@ -1,5 +1,5 @@
 ---
-title: "Analoge Rechner Grundlagen (de)"
+title: "Analoge Rechner Grundlagen"
 date: 2023-09-24
 tags: ["knowhow","analog", "computing"]
 draft: false
@@ -34,7 +34,7 @@ image:./sum_up.png[sum up]
 Um einen analogen Multiplizierer zu erstellen, wenden wir hier einen Trick an, indem wir die Eingangssignale in den logarithmischen Raum transformieren
 das Ergebnis aufsummieren und wieder in den linearen Raum zurücktransformieren. Mathematisch gesehen tun wir Folgendes
 
-[role=„image“,„../images/analog_multiplier_equation.svg“ ,imgfmt=„svg“]
+[role="image","../images/analog_multiplier_equation.svg" ,imgfmt="svg"]
 \[c= a*b = alog( \log(a) + \log(b))\]
 
 Unten sehen Sie den entsprechenden Schaltplan: Die erste Stufe an den Eingängen sind beide logarithmische Verstärker, man sieht die

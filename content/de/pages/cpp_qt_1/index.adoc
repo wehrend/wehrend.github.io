@@ -434,7 +434,7 @@ Human perception of pitch and loudness is logarithmic, so the slider must be map
 
 The standard approach:
 
-[role=“image”,“./logarithmic_scale_formula.svg” ,imgfmt=“svg”]
+[role="image","./logarithmic_scale_formula.svg" ,imgfmt="svg"]
 \large \[f = f_{min} * (f_{max} / f_{min} )^{(slider/maxSlider)}\]
 
 This is the valid approach for both, volume and frequency.

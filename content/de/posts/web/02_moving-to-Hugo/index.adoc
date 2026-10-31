@@ -1,5 +1,5 @@
 ---
-title: Umziehen zu Hugo (de)
+title: Umziehen zu Hugo
 date: 2022-04-15T12:17:41Z
 tags: ["web", "Hugo"]
 draft: false

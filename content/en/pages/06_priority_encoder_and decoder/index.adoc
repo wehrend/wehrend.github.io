@@ -1,5 +1,5 @@
 ---
-title: 06_priority_encoder_and_decoder
+title: "Priority Encoders and Decoders"
 date: 2025-12-23
 weight: 60
 tags:
@@ -17,7 +17,7 @@ menu:
 
 Hello Folks,
 
-today we want to have a peek look into cascaded combinatorics with the example of priority encoder and decoders....
+today we want to have a peek into cascaded combinatorics with the example of priority encoder and decoders....
 Second, we will introduce Karnaugh maps to do the optimization part.
 
 == Cascaded combinatorics and Priority encoder

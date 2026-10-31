@@ -1,5 +1,5 @@
 ---
-title: 11_sequential_logic
+title: "Sequential Logic"
 date: 2023-05-01
 weight: 110
 category: "digital_logic_2"

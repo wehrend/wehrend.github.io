@@ -13,6 +13,7 @@ overview: true
 icon: "svg/cpu.svg"
 ---
 {{< katex />}}
+
 == How does a CPU work – Table of Contents
 
 == *Introduction and Overview*

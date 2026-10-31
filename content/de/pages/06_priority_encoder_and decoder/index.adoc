@@ -1,5 +1,5 @@
 ---
-title: 06_priority_encoder_and_decoder
+title: "Prioritätsencoder und Decoder"
 date: 2025-12-23
 weight: 60
 tags:
@@ -31,7 +31,7 @@ Zunächst einmal: Was ist ein Prioritätscodierer? Und wozu wird er verwendet? D
 
 == Die Wahrheitstabelle und die Ableitung
 
-[width=„100%“]
+[width="100%"]
 |================
 | Nr. | I_7 | I_6 | I_5 | I_4  | I_3  | I_2 | I_1 | I_0 |  Y_2 | Y_1 | Y_0
 | 0   |  0  | 0   |  0  |  0   |  0   | 0   | 0   |  0  |  *   | *   | *
@@ -50,13 +50,13 @@ Zunächst einmal: Was ist ein Prioritätscodierer? Und wozu wird er verwendet? D
 
 image:./karnaugh_maps.svg[test]
 
-[role=„image“,„./y2.svg“,imgfmt=„svg“, width="75%"]
+[role="image","./y2.svg",imgfmt="svg", width="75%"]
 \[Y_2 = I_7 + I_6 + I_5 + I_4\]
 
-[role=„image“,„./y1.svg“,imgfmt=„svg“, width="75%"]
+[role="image","./y1.svg",imgfmt="svg", width="75%"]
 \[Y_1 = I_7 + I_6 + ( I_3 + I_2 ) \cdot ( \overline{I_7 + I_6 + I_5 + I_4 })\]
 
-[role=„image“,„./y0.svg“,imgfmt=„svg“, width="75%"]
+[role="image","./y0.svg",imgfmt="svg", width="75%"]
 \[Y_0 = I_7 + I_5 \cdot \overline{I_7 + I_6} + I_3 \cdot {\overline{(I_7 + I_6 + I_5 + I_4 )}} + I_1 \cdot ( \overline{I_7 + I_6 + I_5 + I_4 + I_3 + I_2})\]
 
 
@@ -70,7 +70,7 @@ image:./sn74hc148.png[74hc148]
 
 
 
-[width=„100%“]
+[width="100%"]
 |================
 | Nr. | A_2 | A_1 | A_0 | Y_7 | Y_6 | Y_5 | Y_4 | Y_3 | Y_2 | Y_1 | Y_0
 | 0   |  0  |  0  |  0  |  1  |  1  |  1  |  1  |  1  |  1  |  1  |  0
@@ -89,23 +89,23 @@ image:./karnaugh_map_decoder.svg[test]
 
 Der 74HC138 hat aktiv-niedrige Ausgänge; genau ein Ausgang wird für jede Adresse niedrig (wenn aktiviert).
 
-[width=„100%“ cols="a,a,a"]
+[width="100%" cols="a,a,a"]
 |=====
 |
-| image:./cd74hc138.png[size=„1550px“]
+| image:./cd74hc138.png[size="1550px"]
 |
 |=====
 
 
 == Kaskadierte Kombinatorik und Prioritätscodierer
 
-image:./cascaded_table.png[size=„1550px“]
+image:./cascaded_table.png[size="1550px"]
 
 {{< asciihint danger >}}
 Aus der Tabelle geht hervor, dass jeder Block entlang der Diagonalen die gleiche Funktion erfüllt.
 {{< /asciihint >}}
 
-[width=„100%“]
+[width="100%"]
 |================
 | Nr.   | S_in | X_j+3 | X_j+2 | X_j+1 | X_j+0 | S_out | Y_1 | Y_0
 | 0     |  0   |  0    |  0    |  0    |  0    |  0    |  *  |  *
@@ -117,29 +117,29 @@ Aus der Tabelle geht hervor, dass jeder Block entlang der Diagonalen die gleiche
 |================
 
 
-[width=„100%“ cols="a,a"]
+[width="100%" cols="a,a"]
 |=====
-| image:./y0.svg[size=„1550px“]
-| image:./y1.svg[size=„1550px“]
+| image:./y0.svg[size="1550px"]
+| image:./y1.svg[size="1550px"]
 |=====
 
 
 
 
-[width=„100%“ cols="a,a"]
+[width="100%" cols="a,a"]
 |=====
 |
-[role=„image“,„./Sout.svg“,imgfmt=„svg“, width="75%"]
+[role="image","./Sout.svg",imgfmt="svg", width="75%"]
 \[S_{out} = S_{in} \lor X_{j+3} \lor X_{j+2} \lor  X_{j+1} \lor X_{j+0} \]
 
-[role=„image“,„./y0.svg“,imgfmt=„svg“, width="75%"]
+[role="image","./y0.svg",imgfmt="svg", width="75%"]
 \[Y_{0} =  \overline{S_{in}}\overline{X_{j+2}} X_{j+1} \lor \overline{S_{in}}X_{j+3}\]
 
-[role=„image“,„./y0.svg“,imgfmt=„svg“, width="75%"]
+[role="image","./y0.svg",imgfmt="svg", width="75%"]
 \[Y_{1} =  \overline{S_{in}}X_{j+2} \lor \overline{S_{in}}X_{j+3}\]
 
 
-| image:./single_block.png[size=„1550px“]
+| image:./single_block.png[size="1550px"]
 |=====
 
 image:./cascaded_circuit.png[size="1550px"]

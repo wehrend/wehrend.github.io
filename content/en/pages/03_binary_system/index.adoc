@@ -1,5 +1,5 @@
 ---
-title: 03_binary_system
+title: "The Binary System"
 date: 2021-12-02
 weight: 30
 tags: 
@@ -17,7 +17,7 @@ menu:
 ==  The Binary System
 
 
-All computer we act with on a daily base do not know about the decimal system we are using, based on the ten digits at our hands.
+All computer we act with on a daily basis do not know about the decimal system we are using, based on the ten digits at our hands.
 All they know about are the states `on` and `off`. We build an imaginary circuit with a power source a control light - here an LED (Light Emitting Diode)  - and a switch,
 closing the connection let the light flash. An off light counts as zero, and on light counts as one. Simple as it.We switch the light on
 and get a one.
@@ -132,8 +132,8 @@ without the carry, we evaluate the half-adder cell.
 | 1 | 1 || 1 | 0
 |===
 
-As we can see, the halfadder consists only of the two gates 'AND' and 'XOR'.
-Two halfadder and a separate 'OR'-gate for the carry-signal result in a fulladder.
+As we can see, the half adder consists only of the two gates 'AND' and 'XOR'.
+Two half adders and a separate 'OR'-gate for the carry-signal result in a full adder.
 
 [role="image","../images/half-adder.svg",imgfmt="svg", width="30%"]
 \[

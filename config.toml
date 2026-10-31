@@ -11,10 +11,10 @@ publishDir = "public"
   contentDir = "content/en"
   weight = 1
 
-[[languages.en.menu.before]]
-  name = ""
-  url = "/docs/"
-  weight = 10
+#[[languages.en.menu.before]]
+#  name = ""
+#  url = "/docs/"
+#  weight = 10
 #
 #[[languages.en.menu.before]]
 #  name = "Web-Blog"

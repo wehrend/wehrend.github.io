@@ -1,5 +1,5 @@
 ---
-title: "Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym (de)"
+title: "Die Geheimnisse der Seltenerdmetalle lüften: Der bemerkenswerte Fall von Neodym"
 date: 2023-11-03
 tags: ["chemistry", "electronics"]
 draft: false

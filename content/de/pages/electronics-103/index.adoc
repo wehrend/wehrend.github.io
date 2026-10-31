@@ -235,7 +235,7 @@ Diese Beziehung ist der Grund dafür, dass ein Transistor sowohl als **Schalter*
 
 Ein BJT kann je nach den Spannungen zwischen seinen Anschlüssen in drei Hauptbereichen betrieben werden.
 
-[cols=„3“]
+[cols="3"]
 |===
 a| **Sperrzone**
 *Basis-Emitter-Übergang nicht in Vorwärtsrichtung vorgespannt.*
@@ -732,7 +732,7 @@ a| image:./drain_circuit.svg[width="280px"]
 //
 // Diese Seite befindet sich noch im Aufbau.
 //
-// image:./under_construction.png[width=„350px“]
+// image:./under_construction.png[width="350px"]
 
 //
 // === Anwendungen als Schalter

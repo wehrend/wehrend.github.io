@@ -1,5 +1,5 @@
 ---
-title: 01_boolean_algebra (de)
+title: "Boolesche Algebra und Logikgatter"
 date: 2020-12-23
 tags:
 math:
@@ -15,6 +15,7 @@ menu:
     weight: 5
 ---
 {{< katex />}}
+
 (translation 2024-12-29)
 
 == Boolesche Algebra und logische Grundgatter
@@ -46,7 +47,7 @@ wird als \[\overline{A} = \neg A = Q\] bezeichnet
 
 
 
-[width=„50%“ cols=„1,1“]
+[width="50%" cols="1,1"]
 |==========
 | A | Q
 | 0 | 1
@@ -66,7 +67,7 @@ Trotz seiner scheinbar einfachen Funktionalität gibt es viel über den Inverter
 Die Und-Operation, auch als Konjunktion bezeichnet,
  wird als \[A \land B = Q\] bezeichnet
 
-[width=„50%“ cols=„1,1,1“]
+[width="50%" cols="1,1,1"]
 |================
 | A | B | Q
 | 0 | 0 | 0
@@ -83,7 +84,7 @@ image:./and_symbol.svg[width=200]
 Die Oder-Operation, auch als Disjunktion bezeichnet,
  wird als \[A \lor B = Q\] bezeichnet
 
-[width=„50%“ cols=„1,1,1“]
+[width="50%" cols="1,1,1"]
 |================
 | A | B | Q
 | 0 | 0 | 0
@@ -100,7 +101,7 @@ image:./or_symbol.svg[width=200]
 Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
  wird als A ⊕ B = Q bezeichnet
 
-[width=„50%“]
+[width="50%"]
 |================
 | A | B | Q
 | 0 | 0 | 0
@@ -185,7 +186,7 @@ Die NAND-Operation wird als \[\overline{A \land B} = Q\]
 bezeichnet, während die NOR-Operation als \[\overline{A \lor B} = Q\] aufgeführt ist-
 
 
-[width=„100%“ cols=„a,a“]
+[width="100%" cols="a,a"]
 |======
 | NAND | NOR
 |image:./nand_symbol.svg[width=200] |image:./nor_symbol.svg[width=200]
@@ -203,7 +204,7 @@ Zusätzlich zu den oben eingeführten grundlegenden Axiomen gibt es den **De-Mor
 den wir benötigen, um NAND und NOR einfach umzuwandeln. Der Einfachheit halber zeigen wir nur für
 zwei Elemente, aber der Satz ist unabhängig von einer beliebigen Anzahl von Elementen/Eingaben.
 
-[role=„image“,„../images/demorgan_nand.svg“,imgfmt=„svg“, width=„75%“]
+[role="image","../images/demorgan_nand.svg",imgfmt="svg", width="75%"]
 \[\overline{p_1 \land p_2} = \overline{p_1} \lor \overline{p_2}\]
 
 [width="100%" cols="a,a,25a,25a,25a,25a"]
@@ -219,13 +220,13 @@ zwei Elemente, aber der Satz ist unabhängig von einer beliebigen Anzahl von Ele
 image:./de_morgan_nand_equivalence.svg[width=400]
 
 
-[role=„image“,„../images/demorgan_nor.svg“,imgfmt=„svg“, width=„75%“]
+[role="image","../images/demorgan_nor.svg",imgfmt="svg", width="75%"]
 \[\overline{p_1 \lor p_2} = \overline{p_1} \land \overline{p_2}\]
 
 
-[width=„75%“ cols=„a,a,25a,25a,25a,25a“]
+[width="75%" cols="a,a,25a,25a,25a,25a"]
 |==========================================================================================
-| A | B |\[\overline{A}\] | \[\overline{B}\] |  \[\overline{AB}\]| \[\overline{A} \lor \overline{B}\]
+| A | B |\[\overline{A}\] | \[\overline{B}\] |  \[\overline{A \lor B}\]| \[\overline{A} \land \overline{B}\]
 | 0 | 0 | 1 | 1 | 1 | 1
 | 0 | 1 | 1 | 0 | 0 | 0
 | 1 | 0 | 0 | 1 | 0 | 0
@@ -254,7 +255,7 @@ Wir beginnen unsere Reise mit einem vereinfachten Schaltkreisentwurf für „und
 Dieser Schaltkreisentwurf ist so einfach, dass es nicht einmal möglich ist, einen Inverter darin zu implementieren.
 
 
-[width=„100%“ cols=„100a,100a“]
+[width="100%" cols="100a,100a"]
 |======
 | verdrahtet und | verdrahtet oder
 |image:./wire_and.svg[width=250] | image:./wire_or.svg[width=250]
@@ -268,7 +269,7 @@ Halbleiter sind eine Gruppe von Materialien (hier sind aufgrund ihrer chemischen
 nicht wirklich leitfähig, aber auch kein Isolator. Tatsächlich hängt die Leitfähigkeit des Materials von der beabsichtigten Verunreinigung
 seiner Kristallgitterstruktur mit Elementen der fünften Hauptgruppe ab, bei einem n(egativ)-dotierten Material bzw.
 der dritten Hauptgruppe
-für ein p(ositiv)-gepunktetes Material. Dieser Vorgang wird als Dotierung bezeichnet. Für den interessierten Leser
+für ein p(ositiv)-dotiertes Material. Dieser Vorgang wird als Dotierung bezeichnet. Für den interessierten Leser
 https://www.electrical4u.com/semiconductor-physics/[hier]
 ein Link zu allen physikalischen Hintergründen, die der Autor zu faul war zu wiederholen, da sie oft und besser bereits
 im Internet erklärt werden ;-) .
@@ -390,7 +391,7 @@ die eigentliche Invertierungsfunktion kennzeichnet.
 
 '''
 
-[width=„100%“ cols=„a,a“]
+[width="100%" cols="a,a"]
 |======
 | NMOS NAND | NMOS NOR
 |image:./nand_nmos.svg[width=200] | image:./nor_nmos.svg[width=500]
@@ -409,7 +410,7 @@ Wenn wir diese anstelle des Widerstands für den Pull-up-Pfad verwenden, können
 Wie Sie sich denken können, gibt es diese Technik, bei der beide Transistortypen kombiniert werden, und sie wird CMOS
 ( kurz für Complementary Metal Oxid Semiconductor) genannt.
 
-[width=„100%“ cols=„a,a“]
+[width="100%" cols="a,a"]
 |======
 | CMOS NAND | CMOS NOR
 |image:./nand_cmos.svg[width=250] | image:./nor_cmos.svg[width=500]

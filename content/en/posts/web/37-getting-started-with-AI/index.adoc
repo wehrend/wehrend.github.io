@@ -9,7 +9,7 @@ type: blog
 Hello folks,
 
 today I want to give you a tutorial on how to start with AI on your own local machine. This is a very rewarding task,
-expecially if you can use your self-hosted AI on a daily base on your own machine. Todo that only three points have to be done.
+especially if you can use your self-hosted AI on a daily basis on your own machine. To do that only three points have to be done.
 I'll show you for Debian Trixie...
 
 1. Run the ollama script and install a model (the backend / core logic)

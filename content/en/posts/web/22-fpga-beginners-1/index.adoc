@@ -184,7 +184,7 @@ so we need to modify the design, for better comparison we also add an or gate an
 
 image:./quartus_circuit_extended.png[Quartus - Extended Circuit]
 
-I leave it open to the reader to figure out how to design the circuit as shown. If not successfull (or to lazy) the bdf file can be found here (link below).
+I leave it open to the reader to figure out how to design the circuit as shown. If not successful (or too lazy) the bdf file can be found here (link below).
 
 link:./andGate.bdf[extended Circuit BDF]
 

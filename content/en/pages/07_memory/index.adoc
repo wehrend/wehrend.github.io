@@ -1,5 +1,5 @@
 ---
-title: 07_Memory
+title: "Memory Organization"
 date: 2022-03-20
 weight: 70
 category: "digital_logic_1"
@@ -42,7 +42,7 @@ image:./memhierarchy.svg[width="100%"]
 At the bottom is also the low-priced memory (per byte). 
 The higher you go on the hierarchy the costlier the memory becomes.
 In this article we will expand our knowledge about the RAM. 
-Caches are more complex and will eventually be handeled in a future 
+Caches are more complex and will eventually be handled in a future 
 article.
 
 === RAM and ROM

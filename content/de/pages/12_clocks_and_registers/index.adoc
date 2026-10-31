@@ -1,5 +1,5 @@
 ---
-title: 12_Clocks_flipflops_and_registers (de)
+title: "Taktgeber, Flipflops und Register"
 date: 2022-03-12
 category: "digital_logic_2"
 link:
@@ -44,7 +44,7 @@ Es gibt verschiedene Möglichkeiten, eine Taktquelle zu erzeugen:
 
 Ersterer ist die klassische, letzterer eine modernere Variante.
 
-[cols=„a,a“ width=„100%“]
+[cols="a,a" width="100%"]
 |===
 | *Quarzoszillator* | *Ringoszillator*
 |image:./crystal_symbol.svg[width=50%]
@@ -82,7 +82,7 @@ image:./inverter_chain.svg[width=50%]
 Die Frequenz hängt von der Anzahl der Inverter sowie von der Laufzeit Tp ab (siehe Gleichung unten). Die Zeit, die das Signal benötigt, um
 durch das Gate zu laufen, wird als Laufzeit Tp bezeichnet.
 
-[role=„image“,„../images/how_does_cpu/ring_oscillator_frequency.svg“,imgfmt=„svg“, width=„40%“]
+[role="image","../images/how_does_cpu/ring_oscillator_frequency.svg",imgfmt="svg", width="40%"]
 \[f_{ro} = \frac{1}{2nT_{p}}\]
 
 Hier hängt die Genauigkeit hauptsächlich von der Stabilität der Stromversorgung ab.
@@ -99,14 +99,14 @@ Das klassische Flipflop besteht aus zwei NAND-Gattern, deren Ausgänge an das ko
 Wie zu sehen ist, sperrt das Flipflop den Ausgang auf einen Zustand, „1“ oder „0“.
 Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert (und entspricht der bevorzugten Position).
 
-[cols=„a,a“ width=„100%“]
+[cols="a,a" width="100%"]
 |===
 | *RS-Flipflop-Struktur* | *RS-Flipflop-Symbol*
 |image:./flipflop_circuit.svg[width=50%]
 |image:./flipflop_symbol.svg[width=50%]
 |===
 
-[width=„50%“]
+[width="50%"]
 |===
 |̅R | ̅S || Q | ̅Q | comments
 | 0 | 0 | 1 | 1 | invalid
@@ -126,14 +126,14 @@ die durch einen Taktimpuls gesteuert werden. Nur wenn der Takt hoch ist (d. h. �
 am (D)ata-Eingang anliegende Datum gültig und wird im RS-Flipflop gespeichert. Andernfalls ist das
 anliegende Datum ungültig.
 
-[cols=„a,a“ width=„100%“]
+[cols="a,a" width="100%"]
 |===
 | *D-Flipflop-Struktur* | *D-Flipflop-Symbol*
 |image:./dflipflop_circuit.svg[width=90%]
 |image:./dflipflop_symbol.svg[width=90%]
 |===
 
-[width=„50%“]
+[width="50%"]
 |===
 |Clock | D | Q | ̅Q | comments
 | 🠓 >>0 | x | Q | ₯Q | keine Änderung
@@ -149,7 +149,7 @@ Mit dem D-Flipflop, das wir im letzten Abschnitt kennengelernt haben,
 können wir einen (asynchronen) Binärzähler konstruieren.
 Dieser Ausgang kann als Adresse für eine ROM-Tabelle verwendet werden, wie wir in einem anderen Blogbeitrag sehen werden.
 
-[cols=„a“ width=„100%“]
+[cols="a" width="100%"]
 |===
 | *Asynchroner Binärzähler mit D-Flipflops*
 |image:./dflipflop_counter.svg[width=100%]

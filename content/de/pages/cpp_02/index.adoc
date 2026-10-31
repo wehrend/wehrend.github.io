@@ -75,7 +75,7 @@ Wenn die Tonfrequenz FREQUENCY (z. B. 440 Hz) und die Abtastrate SAMPLE_RATE (z.
 sollte jedes Sample die Phase um folgenden Wert vorrücken:
 
 
-[role=“image”,“./phaseIncrement.svg” ,imgfmt=“svg”]
+[role="image","./phaseIncrement.svg" ,imgfmt="svg"]
 \[ phaseIncrement = 2 \pi \cdot \frac{FREQUENCY}{SAMPLE_RATE} \]
 
 

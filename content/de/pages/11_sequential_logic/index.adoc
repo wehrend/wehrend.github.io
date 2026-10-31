@@ -1,5 +1,5 @@
 ---
-title: 11_sequential_logic (de)
+title: "Sequentielle Logik"
 date: 2023-05-01
 category: "digital_logic_2"
 link:

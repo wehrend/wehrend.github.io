@@ -1,5 +1,5 @@
 ---
-title: 07_Memory (de)
+title: "Speicherorganisation"
 date: 2022-03-20
 category: "digital_logik_1"
 link: 
@@ -63,7 +63,7 @@ unterschiedlich sind und im nächsten Abschnitt erläutert werden.
 ==== Die verschiedenen Speicherzellen
 
 
-[cols=„a,a“ width=„100%“]
+[cols="a,a" width="100%"]
 |===
 | statischer RAM (SRAM) | dynamischer RAM (DRAM)
 | image:./sram_nmos.svg[width=350]
@@ -110,7 +110,7 @@ die Oberfläche ansehen und nicht auf Dinge wie den direkten Speicherzugriff (DM
 Der Z80 ist ein recht einfacher Prozessor, der 1976 entwickelt wurde.
 
 *Speicher-Pins*
-[cols=„a,a,a“,autowidth,options=„header“]
+[cols="a,a,a",autowidth,options="header"]
 |===
 | Pin(s) | Beschreibung | Kommentar
 | A0 - An | Adressleitungen / Bus |
@@ -121,7 +121,7 @@ Der Z80 ist ein recht einfacher Prozessor, der 1976 entwickelt wurde.
 |===
 
 *Zilog Z80 - Übersicht über die speicherrelevanten Pins*
-[cols=„a,a,a“ autowidth options=„header“]
+[cols="a,a,a" autowidth options="header"]
 |===
 | Pin(s) | Beschreibung | Kommentar
 | Clk | Taktgeber |
