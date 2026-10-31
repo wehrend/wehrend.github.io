@@ -262,13 +262,13 @@ As you can see, this circuit is not to complicate - even laymans in electronc sh
 of - the inputs are connected to a diode, each. A diode is a simple semiconductor which acts as a one-way for electric current.
 Semiconductors are a group of materials (only silicon and germanium are useful here, due to their chemical properties),
 not really conductor but also no insulator. In fact the conductiviy of the material is dependent on the deliberated pollution 
-of their crystall lattice structure with elements of the fifth main group, for an n(egative)-dotted material respectively of the third main group
-for a p(ositive) dotted material. This process is called dotting. For the interested reader https://www.electrical4u.com/semiconductor-physics/[here]
+of their crystall lattice structure with elements of the fifth main group, for an n(egative)-doped material respectively of the third main group
+for a p(ositive)-doped material. This process is called doping. For the interested reader https://www.electrical4u.com/semiconductor-physics/[here]
 is a link to all the physical background the author was to lazy to repeat since it is often and better explained on the internet already ;-) .
 
 image:./diode_structure.svg[width=450]
 
-All we need to know right now is that a diode consist of one substrate (in most cases today silicon) which becomes n-dotted on one side and p-dotted on the other,
+All we need to know right now is that a diode consist of one substrate (in most cases today silicon) which becomes n-doped on one side and p-doped on the other,
 forming a pn-junction in between acting as said one-way barrier: It is possible for electrons to rush from n-side to the p-side but not the other way round. 
 
 The second component of the circuits shown above is a resistor, its solely purpose is to reduce the current flowing. 
@@ -325,7 +325,7 @@ As the name suggests a MOSFET is a transistor (or semiconductor) where the load 
 
 image:./mosfet_model.svg[width=500]
 
-The image above sketches the principal structure of a mosfet on the silicon. Source and drain are both connected to an own n-well, in the p dotted substrate,
+The image above sketches the principal structure of a mosfet on the silicon. Source and drain are both connected to an own n-well, in the p-doped substrate,
 while the gate in between is isolated by a thin silicon dioxide layer. There is a forth connector 'bulk', leading to the substrate, in discrete MOSFETs connected to the source,
 but for now this one is not relevant.
 There is a lot of complex physics behind the workings of a MOSFET all we want to know for now, is that when a voltage is applied to the gate, an electrical field is induced, 
@@ -374,7 +374,7 @@ Now it becomes clear, why the inverse function of AND and OR on the gate level i
 Because you have to add an inverter circuit afterwards, increasing the transistor count.
 
 One big drawback of the implementation is the high power consumption caused by the pull-up resistor. Let us see if there is a way to
-solve that issue. What if there is transistor labeled PMOS with a complementary structure - p-wells on an n dotted substrate - to our 
+solve that issue. What if there is transistor labeled PMOS with a complementary structure - p-wells on an n-doped substrate - to our 
 up-to-now used NMOS circuit?
 
 When we use those instead the resistor for the pull-up path we can drastically reduce power dissipation. 

@@ -268,7 +268,7 @@ Halbleiter sind eine Gruppe von Materialien (hier sind aufgrund ihrer chemischen
 nicht wirklich leitfähig, aber auch kein Isolator. Tatsächlich hängt die Leitfähigkeit des Materials von der beabsichtigten Verunreinigung
 seiner Kristallgitterstruktur mit Elementen der fünften Hauptgruppe ab, bei einem n(egativ)-dotierten Material bzw.
 der dritten Hauptgruppe
-für ein p(ositiv)-gepunktetes Material. Dieser Vorgang wird als Dotierung bezeichnet. Für den interessierten Leser
+für ein p(ositiv)-dotiertes Material. Dieser Vorgang wird als Dotierung bezeichnet. Für den interessierten Leser
 https://www.electrical4u.com/semiconductor-physics/[hier]
 ein Link zu allen physikalischen Hintergründen, die der Autor zu faul war zu wiederholen, da sie oft und besser bereits
 im Internet erklärt werden ;-) .
