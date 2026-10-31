@@ -37,6 +37,6 @@ s = x \oplus y
 \end{array}
 \]
 
-Just as side-note: It describes a halfadder.
+Just as side-note: It describes a half adder.
 
 *Edit* Improved grammar.

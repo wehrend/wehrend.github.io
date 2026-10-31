@@ -15,7 +15,7 @@ https://www.davidhaillant.com/category/electronic-projects/simple/simple-lfo/[si
 
 It was the very first module I began my dives into the world of diy.
 
-Quite simple and not to complicated to begin with...
+Quite simple and not too complicated to begin with...
 
 image:./simpleLFO.png[Simple LFO schematic].
 

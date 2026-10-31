@@ -30,7 +30,7 @@ image:./addition_extended.svg[width="50%"]
 
 === One complement
 
-As the previous approach does not fullfill the requirements let us introduce
+As the previous approach does not fulfill the requirements let us introduce
 the one complement and two complement here.
 The one complement is just an inversion of every bit, independent from its significance.
 

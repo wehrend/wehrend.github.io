@@ -22,8 +22,8 @@ it is dedicated an own blog post. Two of the most important are:
 - XOR operations are often used in a Linear Feedback Shift Registers (LFSR). 
 LFSR are a crucial step  in scrambler / descrambler respectively, 
 which are used in transmitters / receivers
-- Part of an encryption algorithmus
-- Last but not least an important part of a halfadder.
+- Part of an encryption algorithm
+- Last but not least an important part of a half adder.
 
 ////
 //as you can expect for a such basic and fundamental operation, but still
@@ -84,9 +84,9 @@ Of course real test pattern generators have a much higher bit width.
 | 8    | 1   | 1  | 1
 |================
 
-=== Halfadder
-In the next blogpost we dive deeper into the halfadder application.
-The halfadder essentialy consists of the two following particular equations
+=== Half adder
+In the next blogpost we dive deeper into the half adder application.
+The half adder essentially consists of the two following particular equations
 for sum (making use of the XOR ) and carry (using a simple AND). 
 
 [role="image","../images/half-adder.svg",imgfmt="svg", width="40%"]

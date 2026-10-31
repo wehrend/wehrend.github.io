@@ -25,7 +25,7 @@ already are valid instructions of a regular CPU:
 *NOT, AND and OR*
 
 
-Logical functions - also called operations, the author will use both terms interchangebly here -
+Logical functions - also called operations, the author will use both terms interchangeably here -
 can be described in various ways, most often it is described implicit
 as boolean equation, but it can also be explained explicit in a truth table.
 
@@ -59,7 +59,7 @@ The not operation is the only one with only one input, it can not be expanded.
 Accordingly the gate-level implementation is also known by the name inverter.
 Despite its seemingly simple functionality there is a lot to say about the inverter 
 for both the logical as well the implementation, so the author will dedicate it an own 
-post in the mid-feature.
+post in the near future.
 
 === AND
 
@@ -157,9 +157,9 @@ changing the result of the operation.
 The associative law implies, that parenthesis are swappable. Conjunctions can be condensed without operator.
 
 The absorptions law is probably not known to you from school, as it is only used in logic and has no counterpart in at least
-school mathmatics.
+school mathematics.
 
-The distributive law, again, is known from school. It implies that variables / operations outside of paranthesis needs 
+The distributive law, again, is known from school. It implies that variables / operations outside of parentheses need 
 to be applied to all variables in the parenthesis.
 
 The law of neutral elements, again is something special to boolean algebra. The logic one is the correspondent to 'true',
@@ -247,7 +247,7 @@ image:./common_symbols.svg[width=500]
 
 === The diode
 
-We are beginning the journey with a simplificated circuit design for 'and' and 'or' called wired logic.
+We are beginning the journey with a simplified circuit design for 'and' and 'or' called wired logic.
 This circuit design is so simple it is even not possible to implement an inverter in it.
 
 
@@ -258,13 +258,13 @@ This circuit design is so simple it is even not possible to implement an inverte
 | # diodes: 2 | # diodes : 2
 |======
 
-As you can see, this circuit is not to complicate - even laymans in electronc should be able to identify the essential parts
+As you can see, this circuit is not too complicated - even laypeople in electronics should be able to identify the essential parts
 of - the inputs are connected to a diode, each. A diode is a simple semiconductor which acts as a one-way for electric current.
 Semiconductors are a group of materials (only silicon and germanium are useful here, due to their chemical properties),
-not really conductor but also no insulator. In fact the conductiviy of the material is dependent on the deliberated pollution 
-of their crystall lattice structure with elements of the fifth main group, for an n(egative)-doped material respectively of the third main group
+not really conductor but also no insulator. In fact the conductivity of the material is dependent on the deliberate introduction of impurities
+into their crystal lattice structure with elements of the fifth main group, for an n(egative)-doped material respectively of the third main group
 for a p(ositive)-doped material. This process is called doping. For the interested reader https://www.electrical4u.com/semiconductor-physics/[here]
-is a link to all the physical background the author was to lazy to repeat since it is often and better explained on the internet already ;-) .
+is a link to all the physical background the author was too lazy to repeat since it is often and better explained on the internet already ;-) .
 
 image:./diode_structure.svg[width=450]
 
@@ -277,7 +277,7 @@ The wire-and only reaches a sufficient high-level if all inputs go high-level. S
 goes high level.To prevent current flowing from pull-up resistor to the output of the previous circuit (wire and) respectively current flowing 
 from one input back to the other input (wire-or), the diodes are in place.
 
-A problem of this setup which we will definitely encounter at some point, is that the signal is weakend when flowing from input to the output 
+A problem of this setup which we will definitely encounter at some point, is that the signal is weakened when flowing from input to the output 
 and there is no ability  provided to recover the signal, so at the output the signal level might not be distinguished correctly by the subsequent circuit. 
 Allow the author a remark in a subtle detail in the terminology at this point: Although it is often described as amplifying we want holding on here, that we want a 
 somewhat 'intelligent' signal amplifier here recognizing the signal level of the input signal and recovering, complementary to a 'stupid' amplifier just
@@ -319,7 +319,7 @@ the contacts of the load circuit.
 === The MOSFET transistor
 
 The type of transistor we want to introduce and use here is a MOSFET (Metal Oxid Semiconductor Field Effect Transistor) - as opposed to classical bipolar transistor.
-As the name suggests a MOSFET is a transistor (or semiconductor) where the load currrent can be controlled by the strength of the electrical field, created on the gate input
+As the name suggests a MOSFET is a transistor (or semiconductor) where the load current can be controlled by the strength of the electrical field, created on the gate input
 //https://www.power-and-beyond.com/whats-the-difference-between-mosfet-and-bjt-a-909006/
 
 
@@ -329,32 +329,32 @@ The image above sketches the principal structure of a mosfet on the silicon. Sou
 while the gate in between is isolated by a thin silicon dioxide layer. There is a forth connector 'bulk', leading to the substrate, in discrete MOSFETs connected to the source,
 but for now this one is not relevant.
 There is a lot of complex physics behind the workings of a MOSFET all we want to know for now, is that when a voltage is applied to the gate, an electrical field is induced, 
-which creates a chanel between source and drain and allows electrons to flow from source to drain. The higher the gate voltage the bigger  (wider) the channel, the more electrons 
+which creates a channel between source and drain and allows electrons to flow from source to drain. The higher the gate voltage the bigger  (wider) the channel, the more electrons 
 flowing (until a certain boundary of course). And if the gate voltage is zero, also the channel is non-existent.
 
 image:./inverter_nmos.svg[width=500]
 
 Common used symbols for MOSFET used in electrical schematics as well as some other we need due to course are shown below, some has more then only one, especially the MOSFET has a number 
-of sligthly various symbols reflecting the differences in the physical component.
+of slightly different symbols reflecting the differences in the physical component.
 
 image:./mosfet_symbols.svg[width=500]
 
 With the MOSFET element introduced and a single resistor,an element which reduces the current flow, added, we can straight-forward implement an inverter circuit as shown in the image above.
-Source is connected to the ground and Drain is connected to the inverter output and also to the voltage source via a high-impedance resitor. Gate is the input of the inverter.
+Source is connected to the ground and Drain is connected to the inverter output and also to the voltage source via a high-impedance resistor. Gate is the input of the inverter.
 When the voltage is set to low on the gate, the MOSFET does not conduct and so the potential available on the output is sufficient for a logic one.
-Whene a voltage is set to the gate,the drain-source path of the MOSFET becomes conductive, the potential available on the output breaks down an drains away via the drain-source path.
+When a voltage is applied to the gate, the drain-source path of the MOSFET becomes conductive, the potential available on the output breaks down and drains away via the drain-source path.
 
 image:./inverter_cmos.svg[width=500]
 
 '''
-On the electrical level inverter has two different tasks to fullfill
+On the electrical level inverter has two different tasks to fulfill
 
-1. Refreshing the signal (level) the inverters gets from the preceeding circuit 
+1. Refreshing the signal (level) the inverters gets from the preceding circuit 
 2. Actually, inverting the signal 
 
 There are also integrated circuits, called buffer or driver, solely dedicated to the first task mentioned, we will discuss that in a later blog post / lesson.
 Here we want to focus only on the logical part of inverting the signal, although for that both functions are equal important, thats why they are combined in one 
-circuit. Of course, the logic signals have to be refreshed also in other logical circuits - like and and or - but in most cases this task is solely handeled by 
+circuit. Of course, the logic signals have to be refreshed also in other logical circuits - like and and or - but in most cases this task is solely handled by 
 those inverter stages, afterwards or before.
 
 image:./inverter_symbol.svg[width=200]
@@ -374,7 +374,7 @@ Now it becomes clear, why the inverse function of AND and OR on the gate level i
 Because you have to add an inverter circuit afterwards, increasing the transistor count.
 
 One big drawback of the implementation is the high power consumption caused by the pull-up resistor. Let us see if there is a way to
-solve that issue. What if there is transistor labeled PMOS with a complementary structure - p-wells on an n-doped substrate - to our 
+solve that issue. What if there is transistor labeled PMOS with a complementary structure - p-wells on an n-doped substrate - to our
 up-to-now used NMOS circuit?
 
 When we use those instead the resistor for the pull-up path we can drastically reduce power dissipation. 
@@ -394,7 +394,7 @@ As you guess this technique, both types of transistor combined, exists and is na
 It becomes apparent now where the CMOS technology has its name from:
 As we can see in the implementation of NAND and NOR in CMOS technology, the P circuit above is exactly the complementary of the N circuit below.
 For the inverter this property was just not recognizable due to the symmetry.
-But we can also see the drawback of the CMOS technology: The number of transistors doubles, increasing the effort and complexity of the manuacturing process
+But we can also see the drawback of the CMOS technology: The number of transistors doubles, increasing the effort and complexity of the manufacturing process
 (complexer masks and layouts, more processing steps due to different types of transistors, nmos and pmos both on one wafer) and the integrated circuit as the end product.
 
 However the toolchain, the CMOS process and its related technologies are evolved and matured already since decades, so today it does not matter anymore, in fact

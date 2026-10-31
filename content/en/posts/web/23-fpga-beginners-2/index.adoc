@@ -50,7 +50,7 @@ output reg [0:7] out;
 
 Then we define the essential module, by specifing what happens
 between the begin and the end statement, before we use the keyword
-always followed by an '@' and the sensitivity list in paranthesis.
+always followed by an '@' and the sensitivity list in parentheses.
 The sensitivity list list's the clock with podsedge, meaning it reacts
 on transitions from low (0) to high  (1).
 In between begin and end we simply increment the counter of the out signal.
