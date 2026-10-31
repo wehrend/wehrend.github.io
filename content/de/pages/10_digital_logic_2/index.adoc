@@ -10,6 +10,7 @@ overview: true
 icon: "svg/cpu.svg"
 ---
 {{< katex />}}
+
 == Wie funktioniert eine CPU 2 - Inhaltsverzeichnis
 
 == *Von kombinatorischer zu sequentieller Logik - Einführung*

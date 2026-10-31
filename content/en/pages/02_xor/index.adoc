@@ -13,6 +13,7 @@ menu:
 ---
 
 {{< katex />}}
+
 == XOR
 
 As there are a lot of important applications for the exclusive-or (XOR) operation

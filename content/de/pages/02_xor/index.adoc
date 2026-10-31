@@ -13,6 +13,7 @@ menu:
 ---
 (translation 2024-12-29)
 {{< katex />}}
+
 == XOR
 
 Da es viele wichtige Anwendungen für die Exklusiv-Oder-Operation (XOR) gibt,

@@ -14,6 +14,7 @@ menu:
     weight: 1
 ---
 {{< katex />}}
+
 (translation 2024-12-29)
 
 Dieser Kurs über digitale Logik ist in zwei große Abschnitte unterteilt:
