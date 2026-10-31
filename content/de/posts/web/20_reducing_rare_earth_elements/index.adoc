@@ -1,5 +1,5 @@
 ---
-title: "Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien (de)"
+title: "Verringerung der Abhängigkeit von seltenen Erden: Die Suche nach alternativen magnetischen Materialien"
 date: 2023-11-03
 tags: ["chemistry", "electronics"]
 draft: false

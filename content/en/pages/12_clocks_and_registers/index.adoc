@@ -1,5 +1,5 @@
 ---
-title: 12_Clocks_flipflops_and_registers
+title: "Clocks, Flip-Flops and Registers"
 date: 2022-03-12
 weight: 120
 category: "digital_logic_2"

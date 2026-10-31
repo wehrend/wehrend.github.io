@@ -1,5 +1,5 @@
 ---
-title: 02_XOR
+title: "XOR – Exclusive OR"
 date: 2021-11-08
 weight: 20
 category: "digital_logic_1"

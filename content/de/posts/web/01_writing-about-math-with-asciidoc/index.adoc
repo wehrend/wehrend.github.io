@@ -1,5 +1,5 @@
 ---
-title: Über Mathematik schreiben mit Asciidoc (de)
+title: Über Mathematik schreiben mit Asciidoc
 date: 2020-12-12
 tags: 
 category: 

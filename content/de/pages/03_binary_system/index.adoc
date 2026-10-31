@@ -1,5 +1,5 @@
 ---
-title: 03_binary_system (de)
+title: "Das Binärsystem"
 date: 2021-12-02
 tags: 
 category: "digital_logik_1"

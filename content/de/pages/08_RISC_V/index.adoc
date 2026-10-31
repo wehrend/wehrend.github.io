@@ -1,5 +1,5 @@
 ---
-title: 08_RISC-V (de)
+title: "RISC-V und Rechnerarchitektur"
 date: 2022-03-21
 tags: ['draft']
 category: "digital_logik_1"

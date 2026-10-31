@@ -1,5 +1,5 @@
 ---
-title: 01_boolean_algebra
+title: "Boolean Algebra and Logic Gates"
 date: 2020-12-23
 weight: 10
 tags:

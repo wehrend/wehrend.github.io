@@ -1,5 +1,5 @@
 ---
-title: 01_boolean_algebra (de)
+title: "Boolesche Algebra und Logikgatter"
 date: 2020-12-23
 tags:
 math:

@@ -1,5 +1,5 @@
 ---
-title: X2_cordic (de)
+title: "CORDIC"
 date: 2023-03-26
 category:
 link:

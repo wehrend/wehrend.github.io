@@ -1,5 +1,5 @@
 ---
-title: 04_Signs
+title: "Signed Numbers"
 date: 2022-02-06
 weight: 40
 category: "digital_logic_1"

@@ -1,5 +1,5 @@
 ---
-title: 06_priority_encoder_and_decoder
+title: "Prioritätsencoder und Decoder"
 date: 2025-12-23
 weight: 60
 tags:

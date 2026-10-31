@@ -1,5 +1,5 @@
 ---
-title: 00_combinatorial_logic (de)
+title: "Kombinatorische Logik"
 date: 2022-04-16
 tags:
 math:

@@ -1,5 +1,5 @@
 ---
-title: "Analoge Rechner Grundlagen (de)"
+title: "Analoge Rechner Grundlagen"
 date: 2023-09-24
 tags: ["knowhow","analog", "computing"]
 draft: false

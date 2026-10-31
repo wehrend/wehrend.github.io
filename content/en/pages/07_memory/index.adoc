@@ -1,5 +1,5 @@
 ---
-title: 07_Memory
+title: "Memory Organization"
 date: 2022-03-20
 weight: 70
 category: "digital_logic_1"

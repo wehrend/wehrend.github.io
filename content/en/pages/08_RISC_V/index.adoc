@@ -1,5 +1,5 @@
 ---
-title: 08_RISC-V
+title: "RISC-V and Computer Architecture"
 date: 2022-03-21
 weight: 80
 tags: ['draft']

@@ -1,5 +1,5 @@
 ---
-title: 02_XOR (de)
+title: "XOR – Exklusiv-Oder"
 date: 2021-11-08
 category: "digital_logik_1"
 link: 

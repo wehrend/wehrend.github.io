@@ -1,5 +1,5 @@
 ---
-title: 03_binary_system
+title: "The Binary System"
 date: 2021-12-02
 weight: 30
 tags: 

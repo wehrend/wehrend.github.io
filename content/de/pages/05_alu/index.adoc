@@ -1,5 +1,5 @@
 ---
-title: 05_ALU (de)
+title: "Die ALU"
 date: 2022-03-11
 category: "digital_logik_1"
 link: 

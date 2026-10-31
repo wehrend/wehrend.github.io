@@ -1,5 +1,5 @@
 ---
-title: 04_Signs (de)
+title: "Vorzeichenbehaftete Zahlen"
 date: 2022-02-06
 category: "digital_logik_1"
 link: 

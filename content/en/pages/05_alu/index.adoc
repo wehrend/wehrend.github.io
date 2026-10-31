@@ -1,5 +1,5 @@
 ---
-title: 05_ALU
+title: "The ALU"
 date: 2022-03-11
 weight: 50
 category: "digital_logic_1"

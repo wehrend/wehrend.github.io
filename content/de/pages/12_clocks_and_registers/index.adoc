@@ -1,5 +1,5 @@
 ---
-title: 12_Clocks_flipflops_and_registers (de)
+title: "Taktgeber, Flipflops und Register"
 date: 2022-03-12
 category: "digital_logic_2"
 link:
