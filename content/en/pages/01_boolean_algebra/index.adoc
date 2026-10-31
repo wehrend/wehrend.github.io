@@ -224,7 +224,7 @@ image:./de_morgan_nand_equivalence.svg[width=400]
 
 [width="75%" cols="a,a,25a,25a,25a,25a"]
 |==========================================================================================
-| A   | B   |\[\overline{A}\] | \[\overline{B}\] |  \[\overline{AB}\]| \[\overline{A} \lor \overline{B}\]
+| A   | B   |\[\overline{A}\] | \[\overline{B}\] |  \[\overline{A \lor B}\]| \[\overline{A} \land \overline{B}\]
 | 0   | 0   |    1         |     1         |          1       | 1
 | 0   | 1   |    1         |     0         |          0       | 0
 | 1   | 0   |    0         |     1         |          0       | 0
