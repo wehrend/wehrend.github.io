@@ -57,7 +57,7 @@ die Größe des in das Register geladenen Wertes (normalerweise 4) bzw. des in d
 
 Nachfolgend finden Sie eine Übersicht über die Befehlsformate der verschiedenen Typen:
 
-image:./instruction_types.png[width=„140%“]
+image:./instruction_types.png[width="140%"]
 
 
 == Eine minimale Implementierung
@@ -101,7 +101,7 @@ und zeigen dessen Funktionsweise für typische Befehle.
 
 Der vollständige Zyklus ist: Fetch -> Decode -> Fetch Operands -> Execute -> Write Back
 
-[options=„header“]
+[options="header"]
 |==================
 | Typ | Beispielanweisung| Fetch | Decode | Fetch Operands | Execute | Write Back
 | Register |add, sub,and,or | fetch instruction, increase PC by 4 | Decode instruction | Fetch operands from registers | Execute calculation in ALU | Write value back to data memory.

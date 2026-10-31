@@ -58,7 +58,7 @@ Deques sind doppelseitige Warteschlangen, bei denen Sie jedes Element *von beide
 
 
 
-[width=„100%“ cols="a,a,a,a "]
+[width="100%" cols="a,a,a,a "]
 |=====
 | Datenstruktur | Zugriff | Suche | Einfügen (Durchschnitt)
 | std::vector | O(1) | O(n) | O(1) (amortisiert am Ende)

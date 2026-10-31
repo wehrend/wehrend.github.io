@@ -64,7 +64,7 @@ Quantisierung beschreibt den Prozess der Umwandlung eines analogen Signals in ei
 Während dieses Prozesses wird das kontinuierliche Signal durch eine Folge von diskreten Werten dargestellt.
 Dieser Prozess ermöglicht es, Signale mit digitalen Systemen zu verarbeiten, zu speichern und zu übertragen.
 
-image:./adc_abstraction.svg[width=„1000px“]
+image:./adc_abstraction.svg[width="1000px"]
 
 == Der Analog-Digital-Wandler (ADC)
 
@@ -73,13 +73,13 @@ ein einzelner IC, der (2^n) -1  Komparatoren enthält, wobei n für die Bitbreit
 
 
 
-[width=„100%“ cols="a,a"]
+[width="100%" cols="a,a"]
 |=====
-| image:./flash_adc_w_priority_encoder.svg[width=„500px“]
-| image:./flash_adc.svg[width=„500px“]
+| image:./flash_adc_w_priority_encoder.svg[width="500px"]
+| image:./flash_adc.svg[width="500px"]
 |=====
 
-// image:./Flash_ADC.png[width=„500px“]
+// image:./Flash_ADC.png[width="500px"]
 == Der Sigma-Delta-Wandler (ΣΔ-Wandler)
 
 Neben schnellen Wandlerarchitekturen wie dem Flash-ADC und einfachen DAC-Strukturen

@@ -29,7 +29,7 @@ Nach einigen Frustrationen mit den Pfaden für den Latex-Filter in asciidoc funk
 
 Als Beispiel für einen der zukünftigen Blogbeiträge hier wurden eine oder besser gesagt zwei mathematische Gleichungen auf diese Weise dargestellt:
 
-[role=„image“,„../images/half-adder.svg“,imgfmt=„svg“,width=„45%“]
+[role="image","../images/half-adder.svg",imgfmt="svg",width="45%"]
 \[
 \begin{array}{c}
 c = x \land y \\

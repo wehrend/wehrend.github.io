@@ -34,7 +34,7 @@ Da der vorherige Ansatz die Anforderungen nicht erfüllt, wollen wir
 hier das Einerkomplement und das Zweikomplement einführen.
 Das Einerkomplement ist einfach eine Inversion jedes Bits, unabhängig von seiner Bedeutung.
 
-[role=„image“,„../images/one-complement.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/one-complement.svg",imgfmt="svg", width="70%"]
 \[
 \begin{array}{l}
 00000011_{2} = +3_{10} \\
@@ -48,7 +48,7 @@ Wie jedoch in der folgenden Tabelle zu sehen ist, gibt es bei der Addition immer
  Daher wird in einem zweiten Schritt die invertierte Zahl um eins erhöht.
 Dies führt uns zum sogenannten Zweierkomplement, wie unten dargestellt.
 
-[role=„image“,„../images/two-complement.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/two-complement.svg",imgfmt="svg", width="70%"]
 \[
 \begin{array}{l}
 00000011_{2} = +3_{10} \\

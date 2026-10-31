@@ -33,7 +33,7 @@ die in Sendern/Empfängern verwendet werden
 Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
  wird als A ⊕ B = Q bezeichnet. Ihre Wahrheitstabelle ist unten dargestellt
 
-[width=„50%“]
+[width="50%"]
 |================
 | A | B | Q
 | 0 | 0 | 0
@@ -44,7 +44,7 @@ Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
 
 image:./xor_symbol.svg[width=250]
 
-[width=„100%“ cols=„a“]
+[width="100%" cols="a"]
 |======
 | CMOS XOR
 |image:./xor_cmos.svg[width=800]
@@ -70,7 +70,7 @@ Testmuster nach dem Zufallsprinzip gemäß der folgenden Tabelle. Die Register w
 nach 8 Taktzyklen wiederholen sich die Muster erneut.
 Echte Testmustergeneratoren haben natürlich eine viel höhere Bitbreite.
 
-[width=„50%“]
+[width="50%"]
 |================
 | CLK | FF1 | FF2 | FF3
 | 0 | 1 | 1 | 1
@@ -89,7 +89,7 @@ Im nächsten Blogbeitrag werden wir uns eingehender mit der Halbaddierer-Anwendu
 Der Halbaddierer besteht im Wesentlichen aus den beiden folgenden Gleichungen
 für die Summe (unter Verwendung des XOR) und den Übertrag (unter Verwendung eines einfachen UND).
 
-[role=„image“,„../images/half-adder.svg“,imgfmt=„svg“, width=„40%“]
+[role="image","../images/half-adder.svg",imgfmt="svg", width="40%"]
 \[
 \begin{array}{c}
 c = x \land y \\

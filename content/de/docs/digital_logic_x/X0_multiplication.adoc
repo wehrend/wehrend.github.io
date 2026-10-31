@@ -47,7 +47,7 @@ von einer Multiplikation im Dezimalsystem unterscheidet und sogar noch einfacher
 
 Multiplikand x Multiplikator = Produkt
 
-[role=„image“,„../images/multiplication.svg“,imgfmt=„svg“, width=„70%“]
+[role="image","../images/multiplication.svg",imgfmt="svg", width="70%"]
 \[ \begin{aligned}
 0111_2 \times 0110_2 \\
 \hline 0000 \\

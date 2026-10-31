@@ -210,7 +210,7 @@ Experimenten 5 und 6.
 Für invertierende Verstärker gilt Folgendes
 
 
-[role=„image“, „./inverting-amplifier.svg“, imgfmt=„svg“]
+[role="image", "./inverting-amplifier.svg", imgfmt="svg"]
 
 image:./op-amp-test-circuit-experiment3.svg[width="750px"]
 
@@ -244,7 +244,7 @@ Wenn U_{e} am invertierenden Eingang positiv wird, wird U_{a} negativ; umgekehrt
 Bei Betrieb als invertierender Verstärker folgt U_{a} der Eingangsspannung mit umgekehrtem Vorzeichen, d. h. um 180° phasenverschoben.
 Das Verhalten ist vergleichbar mit dem des Transistors in https://wehrend.github.io/pages/electronics-103/#_transistor_in_emitter_circuit[the emitter circuit].
 
-[role=“image”, “./inverting-amplifier3.svg”, imgfmt="svg"]
+[role="image", "./inverting-amplifier3.svg", imgfmt="svg"]
 \large \[U_{a} =  - (\frac{R_{2}}{R_{1}}) \cdot U_{e}\]
 
 Das Minuszeichen zeigt die Phasenumkehr an.
@@ -252,7 +252,7 @@ Das Minuszeichen zeigt die Phasenumkehr an.
 
 // Diese Seite befindet sich noch im Aufbau.
 //
-// image:./under_construction.png[width=„350px“]
+// image:./under_construction.png[width="350px"]
 
 // === Anwendungen als Verstärker
 

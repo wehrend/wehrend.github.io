@@ -45,7 +45,7 @@ entfernt das Lesezeichen und liest genau dort weiter, wo er aufgehört hat. Eben
 gespeicherten Zustand wieder her und setzt das unterbrochene Programm fort, als wäre nichts geschehen.
 
 
-image:./interrupts.svg[width=„800px“]
+image:./interrupts.svg[width="800px"]
 
 image:./interrupts-stack.svg[width="800px"]
 

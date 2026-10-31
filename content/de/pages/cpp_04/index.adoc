@@ -25,7 +25,7 @@ den *vorherigen* Ausgangswert kennen.
 
 Mathematisch sieht ein einfacher einpoliger Tiefpassfilter so aus:
 
-[role=„image“, „./lowpass.svg“, imgfmt="svg"]
+[role="image", "./lowpass.svg", imgfmt="svg"]
 \[y[n] = y[n-1] + a \cdot (x[n] - y[n-1])\]
 
 * x[n] ist dein aktuelles Roh-Sample (der Eingang).

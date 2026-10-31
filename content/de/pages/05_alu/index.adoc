@@ -26,7 +26,7 @@ der 1-Bit-ALU-Zelle.
 
 image:./alu_symbol.svg[width=500]
 
-[width=„50%“,cols=„5,4,2,2,4“,options=„header“]
+[width="50%",cols="5,4,2,2,4",options="header"]
 |===
 | Funktion | Beschreibung | Ainvert | Binvert | Operation
 | und | a & b | 0 | 0 | 00
@@ -71,15 +71,15 @@ image:./alu_array_with_less.svg[width=350]
 // auf eine größere Bitbreite erweitert werden. (Inspiriert von
 // http://www.csc.villanova.edu/~mdamian/Past/csc2400fa13/assign/ALU.html[diese Website])
 //
-// image:../images/how_does_cpu/alu_schematic.svg[width=„100%“]
+// image:../images/how_does_cpu/alu_schematic.svg[width="100%"]
 //
 // ==== Bitweise UND und ODER
 // Für die bitweisen logischen Operationen setzen wir einfach ein Gatter pro
 // Bit-Slice ein. So hat jedes Bit ein dediziertes UND-Gatter sowie ein ODER-Gatter.
 //
-// image:../images/how_does_cpu/and_array.svg[width=„100%“]
+// image:../images/how_does_cpu/and_array.svg[width="100%"]
 //
-// image:../images/how_does_cpu/or_array.svg[width=„100%“]
+// image:../images/how_does_cpu/or_array.svg[width="100%"]
 ////
 
 
@@ -92,9 +92,9 @@ image:./alu_array_with_less.svg[width=350]
 // den RCA, aber beachten Sie, dass diese Implementierung bei hohen Bitbreiten sehr langsam wird
 //!
 //
-// image:../images/how_does_cpu/fulladder_cell.svg[width=„60%“]
+// image:../images/how_does_cpu/fulladder_cell.svg[width="60%"]
 //
-// image:../images/how_does_cpu/fulladder_structure.svg[width=„100%“]
+// image:../images/how_does_cpu/fulladder_structure.svg[width="100%"]
 //
 // Wir haben auch bereits gesehen, wie die Subtraktion implementiert werden kann. Dies könnte
 // auch eine andere dedizierte Schaltung sein. Aber da wir schlau sind, verwenden wir die clevere
@@ -143,7 +143,7 @@ Bei einer Zweierkomplement-Interpretation tritt ein Überlauf in zwei Fällen au
 Die Wahrheitstabelle für den Überlauf sieht wie folgt aus (die Originalquelle
 finden Sie unter http://teaching.idallen.com/dat2343/01f/notes/overflow.txt[hier])
 
-[options=„header“]
+[options="header"]
 |==================
 | Binv| a(n-1) | b(n-1) | c(n-1) | OF
 | 0 | 0 | 0 | 0 | 0
@@ -171,7 +171,7 @@ image:./overflow_detection_gates.png[width=400]
 
 // Um dies zu erkennen, genügt ein einfaches XOR mit den Eingängen von Carry-In und Carry-Out.
 
-// image:../images/how_does_cpu/1bit_alu_cell_with_xor.svg[width=„120%“]
+// image:../images/how_does_cpu/1bit_alu_cell_with_xor.svg[width="120%"]
 
 ////
 // ==== Erweiterung der ALU
@@ -180,13 +180,13 @@ image:./overflow_detection_gates.png[width=400]
 // XOR. Um die Anzahl der Gatter gering zu halten, verwenden wir das XOR-Gatter
 // in den Halbaddierern auf geschickte Weise.
 //
-// image:../images/how_does_cpu/fulladder_structure_with_xor.svg[width=„100%“]
+// image:../images/how_does_cpu/fulladder_structure_with_xor.svg[width="100%"]
 //
 // Außerdem fügen wir acht Inverter (4 für jeden Eingang, A und B)
 // zur Tabelle hinzu. Aber um all die ganz neuen Funktionen nutzen zu können, brauchen wir ein paar
 // mehr Multiplexer.
 //
-// image:../images/how_does_cpu/alu_schematic_extended.svg[width=„100%“]
+// image:../images/how_does_cpu/alu_schematic_extended.svg[width="100%"]
 //
 // Wenn wir uns jedoch die folgende Wahrheitstabelle ansehen, sehen wir, dass
 // viel ungenutzter Platz vorhanden ist. Dieser ist für spätere Erweiterungen reserviert.
