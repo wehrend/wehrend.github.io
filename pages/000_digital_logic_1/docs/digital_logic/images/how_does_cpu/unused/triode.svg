@@ -1,0 +1,40 @@
+<svg width="72px" height="130px" viewBox="0.0 0.0 72.00 130.00" viewPort = "0 0 72 130" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    
+    <defs>
+        <pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 1" fill="none" stroke="grey" stroke-width="0.5"/>
+        </pattern>
+    </defs>
+    
+    <rect x="10" y="10" width="50" height="90" rx="12" ry="15" style="stroke:black;fill:none"/>
+    
+    
+    <!--heater-->
+    <rect x="35" y="94" width="1" height="28" style="stroke:none;fill:grey"/>
+    <rect x="34" y="15" width="3" height="80" rx="2" ry="2" style="stroke:gold;fill:orange"/>
+    
+    <!--cathode-->
+    <polyline points="37.5,92 40,95 40,120" style="stroke:grey;stroke-width:0.7;fill:none"/>
+    <rect x="33" y="18" width="5" height="75" rx="1" ry="1" style="stroke:none;fill:orangered;opacity:65%"/>
+    
+    <!--grid-->
+    <polyline points="30,84 27,88 27,120" style="stroke:grey;stroke-width:0.7;fill:none"/>
+    <circle cx="30" cy="84" r="0.22" style="stroke:grey;fill:grey"/>
+    <rect x="27" y="30" width="16" height="55" style="stroke:none;fill:url(#grid)"/>
+    
+    <!--anode-->
+    <polyline points="45.5,84 48,88 48,120" style="stroke:grey;stroke-width:0.7;fill:none"/>
+    <rect x="45" y="25" width="1" height="70" rx="2" ry="2" style="stroke:none;fill:black"/>
+    <rect x="24" y="25" width="1" height="70" rx="2" ry="2" style="stroke:none;fill:black"/>
+    
+    <!--socket-->
+    <rect x="20" y="100" width="30" height="12" style="stroke:black;fill:black"/>
+    <text x="10" y="122" font-size="5">Grid</text>
+    <line x1="26" y1="118" x2="20" y2="120" style="stroke:black;stroke-width:0.4;"/>
+    <text x="49" y="127" font-size="5">Cathode</text>
+    <line x1="41" y1="118" x2="48" y2="125" style="stroke:black;stroke-width:0.4;"/>
+    <text x="57" y="121" font-size="5">Anode</text>
+    <line x1="49" y1="118" x2="56" y2="119" style="stroke:black;stroke-width:0.4;"/>
+    <text x="29" y="125" font-size="5">Heater</text>
+    
+</svg>

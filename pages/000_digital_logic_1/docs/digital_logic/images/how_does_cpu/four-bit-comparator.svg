@@ -1,0 +1,279 @@
+<svg width="160.00" height="250.00" 
+     viewBox="0.0 0.0 160.0 250.0" 
+     viewPort="0 0 160px 250px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <g transform="scale(0.8)" id="inverter">
+            <line x1= "5" y1="15" x2="10" y2="15" style="fill:none;stroke:black" stroke-width="0.4px"/>
+            <polyline points= "10,20 10,10 20,15 10,20 10,10" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+            <circle cx="21" cy="15" r="0.7" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+            <line x1= "21.5" y1="15" x2="28" y2="15" style="fill:none;stroke:black" stroke-width="0.4px"/>
+        </g>
+    <g transform="scale(0.20)" id="and">
+    <!--inputs-->
+    <line x1= "10" y1="25" x2="30" y2="25" style="fill:#ffffff;stroke:#000000" stroke-width="2px"/>
+    <line x1= "10" y1="75" x2="30" y2="75" style="fill:#ffffff;stroke:#000000" stroke-width="2px"/>
+    <!--output-->
+    <line x1= "90" y1="50" x2="130" y2="50" style="fill:#ffffff;stroke:#000000" stroke-width="2px"/>
+    <polyline
+        points="70,10 30,10 30,90, 70,90"
+        style="fill:#ffffff;stroke:#000000"
+        stroke-width="2px"
+        id="polyline5" />
+    <path
+        id="ellipse8"
+        style="fill:#ffffff;stroke:#000000;stroke-width:2px"
+        type="arc"
+        cx="70"
+        cy="50"
+        rx="40"
+        ry="40"
+        start="4.7"
+        end="1.5656212"
+        open="true"
+        d="m 69.504453,10.00307 a 40,40 0 0 1 34.935157,19.652064 40,40 0 0 1 0.352,40.081724 40,40 0 0 1 -34.584606,20.262606" />
+    </g>
+    <g transform="scale(0.20)" id="or">
+        <!--inputs-->
+        <line
+            x1="10"
+            y1="25"
+            x2="40"
+            y2="25"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line5" />
+        <line
+            x1="10"
+            y1="75"
+            x2="40"
+            y2="75"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line7" />
+        <!--output-->
+        <line
+            x1="110"
+            y1="50"
+            x2="130"
+            y2="50"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line9" />
+        <!--symbol-->
+        <line
+            x1="30"
+            y1="10"
+            x2="70"
+            y2="10"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line11" />
+        <line
+            x1="30"
+            y1="90"
+            x2="70"
+            y2="90"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line13" />
+        <path
+            id="ellipse8"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="70"
+            cy="50"
+            rx="40"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="m 69.504453,10.00307 a 40,40 0 0 1 34.935157,19.652064 40,40 0 0 1 0.352,40.081724 40,40 0 0 1 -34.584606,20.262606" />
+        <path
+            id="ellipse9"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="30"
+            cy="50"
+            rx="12.351695"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="M 29.846979,10.00307 A 12.351695,40 0 0 1 40.634688,29.655134 12.351695,40 0 0 1 40.743385,69.736858 12.351695,40 0 0 1 30.063921,89.999464" />
+</g>
+    <g transform="scale(0.20)" id="xnor">
+         <!--inputs-->
+        <line x1= "0" y1="30" x2="35" y2="30" style="fill:#ffffff;stroke:#000000" stroke-width="2px"/>
+        <line x1= "0" y1="72" x2="35" y2="72" style="fill:#ffffff;stroke:#000000" stroke-width="2px"/>
+        <line
+            x1="30"
+            y1="10"
+            x2="70"
+            y2="10"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line11" />
+        <line
+            x1="30"
+            y1="90"
+            x2="70"
+            y2="90"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line13" />
+        <path
+            id="ellipse8"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="70"
+            cy="50"
+            rx="40"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="m 69.504453,10.00307 a 40,40 0 0 1 34.935157,19.652064 40,40 0 0 1 0.352,40.081724 40,40 0 0 1 -34.584606,20.262606" />
+        <path
+            id="ellipse9"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="30"
+            cy="50"
+            rx="12.351695"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="M 29.846979,10.00307 A 12.351695,40 0 0 1 40.634688,29.655134 12.351695,40 0 0 1 40.743385,69.736858 12.351695,40 0 0 1 30.063921,89.999464" />
+        <g transform="translate(-5.0 0.0)">
+        <path
+            id="ellipse10"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="15"
+            cy="50"
+            rx="12.351695"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="M 29.846979,10.00307 A 12.351695,40 0 0 1 40.634688,29.655134 12.351695,40 0 0 1 40.743385,69.736858 12.351695,40 0 0 1 30.063921,89.999464" />
+        </g>
+        <circle cx="114" cy="50" r="4.5" style="fill:none;stroke:black;stroke-width:2px;"/>
+    </g>
+    </defs>
+
+<!-- greater than -->
+<text x="40" y="5" font-size="5">A<tspan dy="1.5" font-size="4">3</tspan></text> 
+<text x="35" y="15" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">3</tspan></text> 
+<line x1= "50" y1="5" x2="85" y2="5" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="15" x2="85" y2="15" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<text x="40" y="25" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="35" y="32" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">2</tspan></text> 
+<line x1= "50" y1="25" x2="85" y2="25" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="30" x2="85" y2="30" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<text x="40" y="45" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="35" y="49" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">1</tspan></text> 
+<line x1= "50" y1="45" x2="85" y2="45" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="49" x2="85" y2="49" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<text x="40" y="65" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="35" y="69" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">0</tspan></text> 
+<line x1= "50" y1="65" x2="85" y2="65" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="68" x2="85" y2="68" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+
+<use x="75" y="0" href="#and"/>
+<use x="75" y="20" href="#and"/>
+<use x="75" y="40" href="#and"/>
+<use x="75" y="60" href="#and"/>
+<polyline points="100,10 110,10 110,35 115,35" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="100,30 105,30 105,38 118.6,38" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="100,50 105,50 105,42 118.6,42" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="100,70 110,70 110,45 115,45" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<use x="110" y="30" href="#or"/>
+<!-- equal  -->
+<text x="22" y="87" font-size="5">A<tspan dy="1.5" font-size="4">3</tspan></text> 
+<text x="22" y="107" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="22" y="127" font-size="5">A<tspan dy="1.5" font-size="4">1</tspan></text> 
+<text x="22" y="147" font-size="5">A<tspan dy="1.5" font-size="4">0</tspan></text>
+<text x="22" y="95" font-size="5">B<tspan dy="1.5" font-size="4">3</tspan></text> 
+<text x="22" y="115" font-size="5">B<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="22" y="135" font-size="5">B<tspan dy="1.5" font-size="4">1</tspan></text> 
+<text x="22" y="155" font-size="5">B<tspan dy="1.5" font-size="4">0</tspan></text> 
+<use x="30" y="80" href="#xnor"/>
+<use x="30" y="100" href="#xnor"/>
+<use x="30" y="120" href="#xnor"/>
+<use x="30" y="140" href="#xnor"/>
+<polyline points="53.5,90 100,90 100,115 120,115" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="53.5,110 98,110 98,118 120,118" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="53.5,130 98,130 98,122 120,122" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="53.5,150 100,150 100,125 120,125" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<use x="110" y="110" href="#and"/>
+<!-- less than -->
+
+<text x="40" y="165" font-size="5">A<tspan dy="1.5" font-size="4">3</tspan></text> 
+<text x="35" y="175" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">3</tspan></text> 
+<line x1= "50" y1="165" x2="85" y2="165" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="175" x2="85" y2="175" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<text x="40" y="185" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="35" y="190" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">2</tspan></text> 
+<line x1= "50" y1="185" x2="85" y2="185" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="190" x2="85" y2="190" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<text x="40" y="205" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="35" y="209" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">1</tspan></text> 
+<line x1= "50" y1="205" x2="85" y2="205" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="209" x2="85" y2="209" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<text x="40" y="225" font-size="5">A<tspan dy="1.5" font-size="4">2</tspan></text> 
+<text x="35" y="228" font-size="5" text-decoration="overline">B<tspan dy="1.5" font-size="4">0</tspan></text> 
+<line x1= "50" y1="225" x2="85" y2="225" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<line x1= "45" y1="228" x2="85" y2="228" style="fill:none;stroke:black" stroke-width="0.4px"/>
+
+<use x="75" y="160" href="#and"/>
+<use x="75" y="180" href="#and"/>
+<use x="75" y="200" href="#and"/>
+<use x="75" y="220" href="#and"/>
+<polyline points="100,170 110,170 110,195 115,195" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="100,190 105,190 105,198 118.6,198" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="100,210 105,210 105,202 118.6,202" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<polyline points="100,230 110,230 110,205 115,205" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<use x="110" y="190" href="#or"/>
+<!-- wiring -->
+<polyline points="77,75 72,75 72,235 77,235" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<circle cx="72" cy="130" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+<!-- 2 -->
+<polyline points="77,55 65,55 65,232 81,232" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<circle cx="65" cy="110" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+<line x1= "65" y1="72" x2="81" y2="72" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<circle cx="65" cy="72" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+<line x1= "65" y1="215" x2="80" y2="215" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<circle cx="65" cy="215" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+<!-- 3 -->
+<polyline points="81,35 60,35 60,230 81,230" style="fill:none;stroke:black;stroke-width:0.4px;"/>
+<circle cx="60" cy="90" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+
+<line x1= "60" y1="52" x2="81" y2="52" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<circle cx="60" cy="52" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+
+
+<line x1= "60" y1="70" x2="81" y2="70" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<circle cx="60" cy="70" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+
+<line x1= "60" y1="212" x2="81" y2="212" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<circle cx="60" cy="212" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+
+<line x1= "60" y1="195" x2="80" y2="195" style="fill:none;stroke:black" stroke-width="0.4px"/>
+<circle cx="60" cy="195" r="0.7" style="fill:black;stroke:black;stroke-width:0.4px;"/>
+<!-- outs -->
+<text x="140" y="42" font-size="5">A &gt; B</text> 
+<text x="140" y="122" font-size="5">A = B</text>
+<text x="140" y="202" font-size="5">A &lt; B</text>
+</svg>

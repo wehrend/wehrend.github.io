@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Synthesizer on Bits &amp; pieces - Sven Wehrend</title><link>https://wehrend.github.io/de/tags/synthesizer/</link><description>Recent content in Synthesizer on Bits &amp; pieces - Sven Wehrend</description><generator>Hugo</generator><language>de</language><lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://wehrend.github.io/de/tags/synthesizer/index.xml" rel="self" type="application/rss+xml"/><item><title>Oszillatoren – das verborgene Herz und der Motor hinter allen Synthesizern</title><link>https://wehrend.github.io/de/pages/oscillators/</link><pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate><guid>https://wehrend.github.io/de/pages/oscillators/</guid><description>&lt;div class="sect1">
+&lt;h2 id="_der_oszillator_bzw_die_oszillatoren_was_er_ist_und_wie_er_hinter_den_kulissen_funktioniert">Der Oszillator (bzw. die Oszillatoren) – was er ist und wie er hinter den Kulissen funktioniert…​&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Mit Ausnahme von Rauschen benötigt jeder Synthesizer eine Schwingungsschaltung – besser bekannt als Oszillator.
+Es gibt zahlreiche Schaltungen, die diese Aufgabe erfüllen, aber wir wollen uns zunächst mit dem Niederfrequenz-Oszillator befassen, besser bekannt
+als LFO…​&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="sect1">
+&lt;h2 id="_ein_einfacher_lfo">Ein einfacher (LF)O&lt;/h2>
+&lt;div class="sectionbody">
+&lt;div class="paragraph">
+&lt;p>Man kann sich diese Schaltung wie einen rasanten Wechselvorgang zwischen zwei Stufen des Operationsverstärkers vorstellen. Es ist eine selbsterhaltende Schleife, bei der die Abschnitte kontinuierlich aufeinander reagieren, um das Signal in Schwingung zu halten.&lt;/p>
+&lt;/div></description></item></channel></rss>

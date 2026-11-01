@@ -1,0 +1,51 @@
+<svg width="120.00" height="100.00" 
+     viewBox="0.0 0.0 120.0 100.0" 
+     viewPort="0 0 120px 100px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <g transform="translate(-15,-10)" id="mux">
+            <line x1="25" y1="8" x2="25" y2="15" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+            <text x="23" y="7" font-size="4">Sel</text>
+            <polyline points="20,10 30,15 30,35 20,40 20,10 30,15" style="fill:white;stroke:black;stroke-width:0.5px;"/>
+            <line x1="10" y1="18" x2="20" y2="18" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+            <line x1="10" y1="26" x2="20" y2="26" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+            <line x1="10" y1="34" x2="20" y2="34" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+            <line x1="30" y1="26" x2="40" y2="26" style="fill:none;stroke:black;stroke-width:0.7px;"/>
+        </g>
+    <g transform="scale(0.8)" id="buffer">
+        <polyline points="10,10 25,20  10,30 10,10 25,20" style="fill:white;stroke:black;stroke-width:1;"/>
+    </g>
+</defs>
+
+<text x="20" y="12" font-size="2">A<tspan dy="1">i+1</tspan> Left</text>
+<text x="32" y="12" font-size="2">A<tspan dy="1">i+1</tspan> Right</text>
+<!-- slice 1 -->
+<text x="10" y="31" font-size="4">A<tspan dy="1">i</tspan></text>
+<polyline points="35,17 35,22 70,22" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<polyline points="20,30 110,30" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<polyline points="35,90 35,38 70,38" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<circle cx="35" cy="70" r="0.7" style="fill:none;stroke:black;stroke-width:1;"/>
+<use x="65" y="14" href="#mux"/>
+<use x="80" y="14" href="#buffer"/>
+<text x="110" y="31" font-size="4">Y<tspan dy="1">i</tspan></text>
+<text x="10" y="71" font-size="4">A<tspan dy="1">i-1</tspan></text>
+<circle cx="35" cy="17" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<circle cx="25" cy="17" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<circle cx="25" cy="30" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<polyline points="25,17 25,30" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<polyline points="50,30 50,62 70,62" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<circle cx="50" cy="30" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<circle cx="20" cy="30" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<circle cx="20" cy="70" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<polyline points="20,70 110,70" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<use x="65" y="54" href="#mux"/>
+<use x="80" y="54" href="#buffer"/>
+<text x="110" y="71" font-size="4">Y<tspan dy="1">i-1</tspan></text>
+<polyline points="25,90 25,78 70,78" style="stroke:black;stroke-width:0.7;fill:none;"/>
+<circle cx="25" cy="90" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<circle cx="35" cy="90" r="0.5" style="fill:none;stroke:black;stroke-width:1;"/>
+<text x="20" y="95" font-size="2">A<tspan dy="1">i+1</tspan> Left</text>
+<text x="32" y="95" font-size="2">A<tspan dy="1">i+1</tspan> Right</text>
+</svg>

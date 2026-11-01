@@ -1,0 +1,66 @@
+<svg width="140.00" height="140.00" 
+     viewBox="0.0 0.0 140.0 140.0" 
+     viewPort="0 0 140px 140px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <!--core-->
+    <text x="40" y="5" font-size="5">Covalent bonding of silicon (Si)</text>
+    <defs>
+    <g id="silicon" transform="rotate(10,30,30)">
+        
+        <circle cx="30" cy="30" r="4"  style="stroke:black;stroke-width:0.2px;fill:white;"/>
+      <!--  <circle cx="30" cy="30" r="10" style="stroke:grey;fill:none;opacity:0.4;"/>-->
+
+        <!--layer 1-->
+         <g transform="rotate(33 30 30)"> 
+            <circle cx="30" cy="30" r="10" style="stroke:grey;fill:none;opacity:0.4;"/>
+            <circle cx="20" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+            <circle cx="40" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+         </g> 
+        
+        
+        <!--layer 2-->
+        <circle cx="30" cy="30" r="15" style="stroke:grey;fill:none;opacity:0.4;"/>
+        
+        <circle cx="30" cy="15" r="1.2" style="stroke:blue;fill:blue;"/>
+        <circle cx="30" cy="45" r="1.2" style="stroke:blue;fill:blue;"/>
+        <circle cx="15" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+        <circle cx="45" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+        
+        <g transform="rotate(-45 30 30)"> 
+            <circle cx="30" cy="15" r="1.2" style="stroke:blue;fill:blue;"/>
+            <circle cx="30" cy="45" r="1.2" style="stroke:blue;fill:blue;"/>
+            <circle cx="15" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+            <circle cx="45" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+        </g> 
+        
+        <!--layer 3-->
+        <circle cx="30" cy="30" r="20" style="stroke:grey;fill:none;opacity:0.4;"/>
+        <circle cx="30" cy="10" r="1.2" style="stroke:blue;fill:blue;"/>
+        <circle cx="30" cy="50" r="1.2" style="stroke:blue;fill:blue;"/>
+        <circle cx="10" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+        <circle cx="50" cy="30" r="1.2" style="stroke:blue;fill:blue;"/>
+    </g>
+    </defs>
+    <use xlink:href="#silicon" x="-5" y="0"/>
+    <use xlink:href="#silicon" x="35" y="0"/>
+    <use xlink:href="#silicon" x="75" y="0"/>
+    <use xlink:href="#silicon" x="-5" y="40"/>
+    <use xlink:href="#silicon" x="35" y="40"/>
+    <use xlink:href="#silicon" x="75" y="40"/>
+    <use xlink:href="#silicon" x="-5" y="80"/>
+    <use xlink:href="#silicon" x="35" y="80"/>
+    <use xlink:href="#silicon" x="75" y="80"/>
+    
+
+    <ellipse cx="65" cy="50" rx="8" ry="3" style="stroke:red;stroke-width:0.3px;fill:none;"/>
+    <ellipse cx="65" cy="90" rx="8" ry="3" style="stroke:red;stroke-width:0.3px;fill:none;"/>
+    <ellipse cx="45" cy="70" rx="3" ry="8" style="stroke:red;stroke-width:0.3px;fill:none;"/>
+    <ellipse cx="85" cy="70" rx="3" ry="8" style="stroke:red;stroke-width:0.3px;fill:none;"/>
+    
+   <!-- <use xlink:href="#si" x="0" y="50"/>
+    <use xlink:href="#si" x="50" y="0"/>-->
+<!--    <use xlink:href="#si" x="50" y="50"/>-->
+</svg>
