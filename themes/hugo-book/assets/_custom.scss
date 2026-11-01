@@ -41,7 +41,7 @@
   display: block;
   padding: 1.2rem;
   border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   text-decoration: none;
   background: var(--body-background);
   transition: 0.15s ease;
@@ -50,7 +50,7 @@
 /* hover */
 .book-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
 }
 
 /* icon row */
@@ -81,7 +81,10 @@
 
 .book-section-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Kleinere Karten
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); // Kleinere Karten
   gap: 1rem;
 }
 
@@ -91,22 +94,22 @@
   /* ... deine anderen Styles ... */
 
   .card-icon {
-    width: 64px;  /* Feste Breite für den Maßstab */
+    width: 64px; /* Feste Breite für den Maßstab */
     height: 64px; /* Feste Höhe */
     margin: 0 auto 1rem auto;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-    svg {
-      width: 10%;
-      height: 10%;
-      max-width: 64px;
-      max-height: 64px;
-      fill: none;
-      stroke: var(--color-link);
-      stroke-width: 1.5; /* Einheitliche Linienstärke für alle Icons */
-    }
+  svg {
+    width: 10%;
+    height: 10%;
+    max-width: 64px;
+    max-height: 64px;
+    fill: none;
+    stroke: var(--color-link);
+    stroke-width: 1.5; /* Einheitliche Linienstärke für alle Icons */
+  }
 
   h3 {
     font-size: 1rem;

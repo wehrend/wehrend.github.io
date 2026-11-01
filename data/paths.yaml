@@ -1,0 +1,42 @@
+- id: hardware
+  title: { en: "From transistor to CPU", de: "Vom Transistor zur CPU" }
+  goal:
+    {
+      en: "Understand how a CPU works, bottom-up",
+      de: "Verstehen, wie eine CPU funktioniert – von unten nach oben",
+    }
+  steps:
+    - /pages/electronics-100
+    - /pages/000_digital_logic_1
+    - /pages/10_digital_logic_2
+    - /pages/adc_dac
+    - [/pages/mcu_vs_cpu, /pages/interrupts]
+
+- id: synth
+  title: { en: "Understanding synthesizers", de: "Synthesizer verstehen" }
+  goal:
+    {
+      en: "From electronics basics to your own synth modules and audio code",
+      de: "Von Elektronik-Grundlagen zu eigenen Synth-Modulen und Audio-Code",
+    }
+  steps:
+    - /pages/electronics-100
+    - /pages/oscillators
+    - /pages/adc_dac
+    - [
+        /posts/synth/25-build-your-own-modules,
+        /posts/synth/25_build_your_own_modules,
+        /pages/cpp_00,
+      ]
+
+- id: firmware
+  title: { en: "Getting into firmware", de: "Einstieg in Firmware" }
+  goal:
+    {
+      en: "Program microcontrollers in C++ and react to hardware events",
+      de: "Mikrocontroller in C++ programmieren und auf Hardware-Ereignisse reagieren",
+    }
+  steps:
+    - /pages/cpp_00
+    - /pages/mcu_vs_cpu
+    - /pages/interrupts

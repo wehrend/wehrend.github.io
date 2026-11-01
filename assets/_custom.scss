@@ -26,7 +26,7 @@
   display: block;
   padding: 1.2rem;
   border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   text-decoration: none;
   background: var(--body-background);
   transition: 0.15s ease;
@@ -35,7 +35,7 @@
 /* hover */
 .book-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
 }
 
 /* icon row */
@@ -66,114 +66,249 @@
 
 /* Der Container für den Hint */
 .book-hint {
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 0.25rem; /* Runden der Ecken */
-    border-left: 0.5rem solid; /* Der dicke Balken links */
-    background-color: rgba(0, 0, 0, 0.05); /* Ein leichter Hintergrund */
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.25rem; /* Runden der Ecken */
+  border-left: 0.5rem solid; /* Der dicke Balken links */
+  background-color: rgba(0, 0, 0, 0.05); /* Ein leichter Hintergrund */
 }
 
 /* Spezifische Farben für den "info" Typ */
 .book-hint.info {
-    border-left-color: #6bf; /* Blau für Info */
-    background-color: rgba(107, 187, 255, 0.1);
+  border-left-color: #6bf; /* Blau für Info */
+  background-color: rgba(107, 187, 255, 0.1);
 }
 
 /* Falls du mal "warning" nutzt */
 .book-hint.warning {
-    border-left-color: #fd6; /* Gelb/Orange für Warning */
-    background-color: rgba(255, 221, 102, 0.1);
+  border-left-color: #fd6; /* Gelb/Orange für Warning */
+  background-color: rgba(255, 221, 102, 0.1);
 }
 
 /* Falls du mal "danger" nutzt */
 .book-hint.danger {
-    border-left-color: #f66; /* Rot für Danger */
-    background-color: rgba(255, 102, 102, 0.1);
+  border-left-color: #f66; /* Rot für Danger */
+  background-color: rgba(255, 102, 102, 0.1);
 }
 /* Verhindert, dass die Tooltip-Spans das Layout verschieben */
 .code-tip-trigger {
-    display: inline-block; /* Behält den Textfluss bei */
-    width: 100%;           /* Füllt die Zeile aus */
-    background-color: rgba(255, 255, 0, 0.05);
-    cursor: help;
+  display: inline-block; /* Behält den Textfluss bei */
+  width: 100%; /* Füllt die Zeile aus */
+  background-color: rgba(255, 255, 0, 0.05);
+  cursor: help;
 }
 
 /* Falls Hugo Tabellen nutzt (wie in deinem Bild vermutet) */
 td.code pre {
-    white-space: pre !important; /* Verhindert ungewollte Umbrüche */
+  white-space: pre !important; /* Verhindert ungewollte Umbrüche */
 }
 
 /* Das sorgt dafür, dass die Zeilennummern links bleiben */
-.highlight table, .highlight tr, .highlight td {
-    border: none;
-    padding: 0;
-    margin: 0;
+.highlight table,
+.highlight tr,
+.highlight td {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Ensure the container doesn't clip the tooltips */
 .hcode-multi-container pre {
-    overflow: visible !important;
+  overflow: visible !important;
 }
 
 .has-tooltip {
-    position: relative;
-    cursor: help;
-    transition: background 0.2s;
+  position: relative;
+  cursor: help;
+  transition: background 0.2s;
 }
 
 .has-tooltip:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
 }
 
 .has-tooltip:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 20px;       /* Floating slightly inside the block */
-    bottom: 110%;     /* Positioned above the line */
-    background: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    z-index: 999;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    pointer-events: none; /* Prevents flickering */
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 20px; /* Floating slightly inside the block */
+  bottom: 110%; /* Positioned above the line */
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  pointer-events: none; /* Prevents flickering */
 }
 
 /* Tooltip Arrow */
 .has-tooltip:hover::before {
-    content: "";
-    position: absolute;
-    left: 30px;
-    bottom: 100%;
-    border: 6px solid transparent;
-    border-top-color: #333;
+  content: "";
+  position: absolute;
+  left: 30px;
+  bottom: 100%;
+  border: 6px solid transparent;
+  border-top-color: #333;
 }
 
 .hcode-wrapper {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .hcode-copy-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    z-index: 10;
-    padding: 4px 8px;
-    font-size: 12px;
-    background-color: rgba(200, 200, 200, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  padding: 4px 8px;
+  font-size: 12px;
+  background-color: rgba(200, 200, 200, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .hcode-copy-btn:hover {
-    background-color: rgba(200, 200, 200, 0.5);
+  background-color: rgba(200, 200, 200, 0.5);
 }
 
 .hcode-copy-btn.copied {
-    background-color: #28a745;
-    color: white;
+  background-color: #28a745;
+  color: white;
+}
+
+/* ---------- Lernpfade (aufklappbar) ---------- */
+.learning-paths {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Standard-Dreieck entfernen, eigenen Pfeil setzen */
+.learning-paths summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  &::-webkit-details-marker {
+    display: none;
+  }
+  &::after {
+    content: "▸";
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    opacity: 0.5;
+    transition: transform 0.15s ease;
+  }
+}
+.learning-paths details[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+/* Pfad-Karte */
+.learning-path {
+  padding: 0;
+  > summary {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1.2rem 3rem 1.2rem 1.2rem;
+  }
+  &[open]:hover {
+    transform: none;
+  } /* kein Hochspringen im offenen Zustand */
+}
+
+/* Zeitleiste der Schritte */
+.learning-path__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.2rem 1.2rem;
+}
+.learning-path__step {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.8rem;
+  position: relative;
+  padding-bottom: 1rem;
+  &:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    bottom: 0;
+    border-left: 2px solid currentColor;
+    opacity: 0.2;
+  }
+}
+.learning-path__num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  background: var(--body-background);
+}
+
+/* Kurse eines Schritts nebeneinander */
+.learning-path__courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.6rem;
+  align-items: start; /* offene Karte zieht Nachbarn nicht mit */
+}
+
+/* kompakte Kurs-Karte */
+.learning-path__course {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 2.2rem 0.6rem 0.8rem;
+    font-weight: 600;
+    &::after {
+      top: 0.6rem;
+      right: 0.8rem;
+    }
+  }
+  .card-icon {
+    width: 28px;
+    height: 28px;
+    flex: none;
+    fill: currentColor;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &.is-complete {
+    border-color: var(--color-link);
+  }
+}
+.path-progress {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+.learning-path__body {
+  padding: 0 0.8rem 0.8rem;
+}
+.learning-path__lessons {
+  margin: 0.4rem 0 0.6rem;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+.learning-path__open {
+  font-size: 0.9rem;
+  font-weight: 600;
 }

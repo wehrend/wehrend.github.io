@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Analog-Digital-converters and Digital-Analog-Converters"
+title: "Einführung in Analog-Digital- und Digital-Analog-Wandler"
 slug: adc_dac
 date: 2025-12-30
 tags:
@@ -8,7 +8,7 @@ link:
 description:
 type: text
 bookHidden: true
-outdir: ~/development/blog
+summary: "Wie aus analogen Signalen Zahlen werden und umgekehrt – vom Flash-ADC über Sigma-Delta bis zum R-2R-DAC."
 draft: false
 weight: 1600
 overview: true
