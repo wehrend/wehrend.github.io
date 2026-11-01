@@ -112,7 +112,7 @@ shell.
 | covalent bonding of carbon | covalent bonding of silicon
 | image:./covalent_bonding_c.svg[width="400px"]
 | image:./covalent_bonding_si.svg[width="400px"]
-2+>|semiconductor | conductor
+2+>|semiconductor
 |=====
 
 === Voltage and potential

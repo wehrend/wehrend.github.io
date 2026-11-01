@@ -108,11 +108,11 @@ Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert
 
 [width="50%"]
 |===
-|̅R | ̅S || Q | ̅Q | comments
-| 0 | 0 | 1 | 1 | invalid
-| 0 | 1 | 1 | 0 | Reset
-| 1 | 0 | 0 | 1 | Setzen
-| 1 | 1 | Q | Q | --
+|&#773;R | &#773;S || Q | &#773;Q | Kommentar
+| 0  | 0  || 1 | 1 | ungültig
+| 0  | 1  || 1 | 0 | Zurücksetzen
+| 1  | 0  || 0 | 1 | Setzen
+| 1  | 1  || Q | &#773;Q | --
 |===
 Eine Anwendung des klassischen RS-Flipflops ist die Entprellung von Schaltern.
 
@@ -135,11 +135,11 @@ anliegende Datum ungültig.
 
 [width="50%"]
 |===
-|Clock | D | Q | ̅Q | comments
-| 🠓 >>0 | x | Q | ₯Q | keine Änderung
+|Takt | D | Q | &#773;Q | Kommentar
+| 🠓 >>0 | x | Q | &#773;Q | keine Änderung
 | 🠓 >>0 | 1 | 1 | 0 | Zurücksetzen
 | 🠑 >>1 | 0 | 0 | 1 | Setzen
-| 🠑 >>1 | 1 | Q | ₯Q | -
+| 🠑 >>1 | 1 | Q | &#773;Q | -
 |===
 
 

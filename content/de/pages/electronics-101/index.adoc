@@ -111,7 +111,7 @@ verbraucht.
 | kovalente Bindung von Kohlenstoff | kovalente Bindung von Silizium
 | image:./covalent_bonding_c.svg[width="400px"]
 | image:./covalent_bonding_si.svg[width="400px"]
-2+>|Halbleiter | Leiter
+2+>|Halbleiter
 |=====
 
 == Spannung und Potential

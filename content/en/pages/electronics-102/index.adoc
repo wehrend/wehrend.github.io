@@ -90,7 +90,7 @@ as they have complementary properties.
 
 [width="100%" cols="a,a"]
 |=====
-| conductor | coil
+| capacitor | coil
 | image:./capacitor.svg[width="300px"]
 | image:./coil.svg[width="300px"]
 | circuit symbol of a capacitor | circuit symbol of a coil
@@ -99,7 +99,6 @@ as they have complementary properties.
 | stores energy in electrical field | stores energy in a magnetic field
 | leads in phase | lags in phase
 | blocks in DC Mode | in DC mode current is growing while, voltage is taken done, with the same rate
-|
 |=====
 
 
