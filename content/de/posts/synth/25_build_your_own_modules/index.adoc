@@ -1,5 +1,5 @@
 ---
-title: Build your own synthesizer modules
+title: Baue deine eigenen Eurorack-Synthesizer-Module
 date: 2024-03-06
 tags: ["DIY", "Synth"]
 category:
@@ -9,7 +9,7 @@ type: blog
 overview: true
 ---
 
-= Bau deine eigenen eurorack synthesizer Module
+= Bau deine eigenen Eurorack Synthesizer Module
 
 == Einleitung
 Hallo,
