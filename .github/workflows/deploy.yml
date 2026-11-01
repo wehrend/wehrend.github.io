@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y ruby
-          sudo gem install asciidoctor
+          sudo gem install asciidoctor rouge
 
       - name: Build Hugo site
         run: |

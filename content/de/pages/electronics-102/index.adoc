@@ -90,7 +90,7 @@ da sie sich in ihren Eigenschaften ergänzen.
 
 [width="100%" cols="a,a"]
 |=====
-| Leiter | Spule
+| Kondensator | Spule
 | image:./capacitor.svg[width="300px"]
 | image:./coil.svg[width="300px"]
 | Schaltzeichen eines Kondensators | Schaltzeichen einer Spule
@@ -99,7 +99,6 @@ da sie sich in ihren Eigenschaften ergänzen.
 | speichert Energie im elektrischen Feld | speichert Energie im magnetischen Feld
 | führt in Phase | hinkt in Phase
 | blockiert im Gleichstrommodus | im Gleichstrommodus wächst der Strom, während die Spannung mit derselben Rate abnimmt
-|
 |=====
 
 

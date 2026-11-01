@@ -16,7 +16,7 @@ To do this, create the directory structure `layouts/_default/` in the root of yo
 
 ```xml
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
-<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {{ range .Site.Pages }}
     {{ if not .Params.private }}
     <url>
@@ -28,3 +28,4 @@ To do this, create the directory structure `layouts/_default/` in the root of yo
     {{ end }}
   {{ end }}
 </urlset>
+```

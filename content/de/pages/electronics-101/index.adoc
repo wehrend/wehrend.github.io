@@ -55,8 +55,8 @@ Wie die folgende Tabelle zeigt, verfügen beide Elemente über freie Elektronen 
  die, wie oben beschrieben, erforderlich sind, damit Elektronen von einem Atom
 zum anderen springen können und somit eine Bewegung der Elektronen ermöglichen, wodurch das Element (in seiner reinen Form) zu einem Leiter wird.
 
-Natürlich gibt es in der Realität mehrere Faktoren, die den hier dargestellten idealen Eigenschaften entgegenwirken
-. So müssen wir unter anderem berücksichtigen, dass Metalle oxidieren, wenn sie mit Sauerstoff in Kontakt kommen,
+Natürlich gibt es in der Realität mehrere Faktoren, die den hier dargestellten idealen Eigenschaften entgegenwirken.
+So müssen wir unter anderem berücksichtigen, dass Metalle oxidieren, wenn sie mit Sauerstoff in Kontakt kommen,
 wodurch sich eine dünne, aber wirksame Isolierschicht auf der Oberfläche des Metalls bildet,
 die einen guten Kontakt verhindert. Wir werden solche Effekte später noch diskutieren. Lassen Sie uns zunächst mit dem Thema fortfahren...
 
@@ -111,7 +111,7 @@ verbraucht.
 | kovalente Bindung von Kohlenstoff | kovalente Bindung von Silizium
 | image:./covalent_bonding_c.svg[width="400px"]
 | image:./covalent_bonding_si.svg[width="400px"]
-2+>|Halbleiter | Leiter
+2+>|Halbleiter
 |=====
 
 == Spannung und Potential
@@ -345,7 +345,7 @@ image:./example.svg[Beispiel svg]
 
 ==== Lösung:
 
-1. Kirchhoffsches erstes Gesetz
+===== 1. Erstes kirchhoffsches Gesetz
 
 Das Netz in der obigen Abbildung enthält drei Knotenpunkte. Bei der Anwendung der obigen Gleichung (Kirchhoffsches erstes Gesetz) auf einen Knotenpunkt
 werden den einfließenden Strömen ein positives Vorzeichen und den ausfließenden Strömen ein negatives Vorzeichen zugewiesen.
@@ -368,7 +368,7 @@ Gemäß der Knotenregel muss für die drei äußeren Ströme Folgendes gelten:
 
   + I_1 + I_2 - I_1 -I_3 -I_2 + I_3 = 0
 
-2. Zweites kirchhoffsches Gesetz
+===== 2. Zweites kirchhoffsches Gesetz
 
 Im Allgemeinen ist es nicht möglich, Vorhersagen über die Richtung der Ströme zu treffen. Daher werden die Stromrichtungen angenommen.
 Die Spannungspfeile auf den Widerständen zeigen dann in die gewählte Stromrichtung. Die Quellspannungspfeile zeigen vom Pluspol

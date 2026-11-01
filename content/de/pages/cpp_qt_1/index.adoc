@@ -11,38 +11,38 @@ draft: false
 ---
 {{< katex />}}
 
-=== Eine GUI ist eine *fantastische* Idee ... Aber welche soll es sein – SDL, wxWidgets oder Qt?
+== Eine GUI ist eine *fantastische* Idee ... Aber welche soll es sein – SDL, wxWidgets oder Qt?
 
 Die Wahl eines GUI-Frameworks für ein C++-Audio-Projekt ist ein „Fork in the Road“-Moment. Jede dieser Optionen lenkt das Projekt in eine völlig andere architektonische Richtung.
 
 Da dein Kurs derzeit SDL verwendet, ist es der natürliche Favorit. So sieht der Vergleich im Kontext eines Synthesizer-Projekts aus:
 
 1. **SDL (Simple DirectMedia Layer) – Die „Low-Level“-Wahl**
-
++
 Da du SDL bereits in Tutorial 02 eingeführt hast, ist es der Weg mit dem geringsten Widerstand, dabei zu bleiben.
-
++
 *Pros:* Es „übernimmt“ deine `main()`-Funktion nicht so aggressiv wie die anderen. Es eignet sich hervorragend für selbst gezeichnete Drehregler und Slider mit einfachen Formen oder Bitmaps.
-
++
 *Der „Audio“-Fit:* Es ist ideal für Visualizer (Oszilloskope oder Spektrumanalysatoren), da du direkten Zugriff auf den Pixelpuffer oder hardwarebeschleunigtes Rendering hast.
-
++
 *Cons:* Es hat keine eingebauten „Widgets“ (Buttons, Texteingaben). Du musst dein eigenes UI-System von Grund auf bauen oder eine Bibliothek wie Dear ImGui verwenden.
 
 2. **Qt – Die „professionelle/industrielle“ Wahl**
-
++
 Qt ist der Schwergewichtschampion. Wenn dein Synth wie eine moderne DAW (Digital Audio Workstation) oder ein kommerzielles Plugin aussehen soll, ist das die richtige Wahl.
-
++
 *Pros:* Hervorragende Dokumentation und ein „What You See Is What You Get“ (WYSIWYG) Editor. High-DPI-Skalierung und komplexe Layouts werden sehr elegant gehandhabt.
-
++
 *Der „Audio“-Fit:* Für ein einfaches Tutorial ist es vielleicht überdimensioniert, aber es eignet sich hervorragend, um **Signals und Slots** zu vermitteln – einen C++-Mechanismus, der perfekt nachbildet, wie Patchkabel in einem modularen Synthesizer funktionieren.
-
++
 *Cons:* Große Binärgröße und eine steile Lernkurve. Außerdem benötigt Qt den **moc** (Meta-Object Compiler), der eine zusätzliche Ebene von „Magie“ hinzufügt und möglicherweise die rohe C++-Logik verbirgt, die du eigentlich vermitteln möchtest.
 
 3. **wxWidgets – Die „native“ Wahl**
-
++
 wxWidgets verwendet die nativen Controls des Host-Betriebssystems (es sieht unter Windows wie eine Windows-App und unter Linux wie eine GTK-App aus).
-
++
 *Pros:* Keine „magischen“ Präprozessoren wie bei Qt. Es ist im traditionellen Sinne „reines“ C++.
-
++
 *Cons:* Es wirkt etwas altmodisch. Eigene, „cool aussehende“ Synth-Regler zu gestalten ist in wxWidgets deutlich schwieriger als in SDL oder Qt, da es darauf ausgelegt ist, wie eine klassische Tabellen- oder Dateimanager-Oberfläche auszusehen.
 
 [width="100%" cols="a,a,a,a"]
