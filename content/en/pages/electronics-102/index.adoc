@@ -218,6 +218,10 @@ this becomes clearer with the following examples.
 
 image:./lowpass.svg[width="400px"]
 
+{{< falstad ctz="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgA3EYwkFPPN15h+UcOATFqVGdARsA5kL4Dl2NGMhsA7spGCwGYaK0AncEfCjcNK4Kph4OkDbsu8t-VDYBjd5+sPFXsoWHhICC1dbCD+QR5g72igrxoaAxM2AA8XFD4REEJbFALPXgBVAH0ASwA7bPzPRz4MB2aykAAlAB0AZwBePrA+gGtASuAGmjh8vJoEXhLZ8F4AYT7B3uHegFaAMUn58Gx6GgSwY9plkCqAewBXABcGkSoYqhpW93erEAAzdaGkj6AAkAF59QASRH1fpUFADNgB6AAUKEAA8CdFYASjYN2oRTEU1IyFCETEeSQ2BxYnx70gROaMFJEHJ3iAA" height="520" 
+caption="RC low-pass filter at the cutoff frequency: current and voltage across the capacitor (top), input and output voltages (bottom)" >}}
+ 
+
 frequency response
 
 [role="image","../images/electronic_basics/lowpass_fr.svg", imgfmt="svg"]
@@ -342,6 +346,8 @@ link:./lowpass.asc[LTSpice Lowpass]
 
 image:./highpass.svg[width="400px"]
 
+
+{{< falstad ctz="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgA3EYwkFPPN15h+UcOATFqVGdARsA5kL4Dl2NGMhsA7spGCwGYaK0BjcEfCjcNK4Nnw4ELbpt2Q2PLf1Q2AJw8vd09bfntkOB1A0NUeFXsokPcaGgMTNgAPDxQ+ERBCULzvXgBVAH0ASwA7TL5IYTAqIhzWKmKQAGEAHQBnAF5esF6AVoAxWpo4XJyaBF4UIvBeACVegZ6hnoBrQErgCbnwbHoaOLAj2iWQcoB7AFcAF1qRKk82jBe8NqsQADM1wckvQAEgAvXqACSJej8ygp-hsAPQAChQgAHgZYdACUbGuHnytjakFIyCgsGcfFx2GxYgKYkmRMaJMgEAgOSQWiAA" height="520" caption="RC high-pass filter at the cutoff frequency: current and voltage across the capacitor (top), input and output voltages (bottom)" >}}
 
 frequency response
 

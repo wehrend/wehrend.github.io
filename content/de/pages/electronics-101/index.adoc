@@ -325,6 +325,8 @@ Betrachten wir eine typische Netzkonfiguration und wenden wir Kirchhoffs erstes 
 
 image:./example.svg[Beispiel svg]
 
+{{< falstad ctz="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgBLEQm8Ylbr2KEoUWOwDmgvgJ4gUKXlUhsA7tOHhCVTSuwYqYbSE2KdIiCoBO8muZDZsI3chXrHzkXfvWt9o1QKSvJobPqGxkF+DmjgUGrR2LFmMcpsAG6pWSlJyqJ21HkwCAm5Wd5Zega0cOW1UZZsNhVRFS6ObjX2NJq6nLSaYPwDnqIwiGxSPRbD0yHBVVQVZct4vI1TtdhrXbRGY2wAHuCUIHiGGALntFogAArsxzRgVNd0V0u3d9hHe7zYBToIgBn32dxQv1iYFONAE0NBIgAkgBDX6UCynBAoPAnBEgREAI1+z3+1SBDjJt0RAGNfmAMCICHxeEz1kjHuBFPJqmBYdy8YiIU9efzaElRWz8T9jkQcbhAsQqPKbvsAKoARzYQA" height="480" caption="Kirchhoff-Beispiel: Ia, Ib, Uq oder R-Werte ändern und Knoten- und Maschenregel überprüfen" >}}
+
 ==== Kirchhoffsches zweites Gesetz
 
 Das zweite Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Spannungen in einem Netz ist gleich Null:

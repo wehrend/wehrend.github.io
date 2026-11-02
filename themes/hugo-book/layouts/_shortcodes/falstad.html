@@ -1,0 +1,12 @@
+{{- $ctz := .Get "ctz" -}}
+{{- $height := .Get "height" | default "420" -}}
+{{- $params := slice
+      (printf "ctz=%s" $ctz)
+      "hideMenu=true" "hideSidebar=true" "whiteBackground=true"
+      (printf "editable=%s" (.Get "editable" | default "true")) -}}
+<figure class="falstad">
+  <iframe src="https://www.falstad.com/circuit/circuitjs.html?{{ delimit $params "&" | safeURL }}"
+          loading="lazy" style="width:100%;height:{{ $height }}px;border:0"
+          title="{{ .Get "title" | default "Circuit simulation" }}"></iframe>
+  {{ with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

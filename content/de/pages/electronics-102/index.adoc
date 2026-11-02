@@ -221,6 +221,10 @@ Tiefpass 1. Ordnung
 
 image:./lowpass.svg[width="400px"]
 
+
+{{< falstad ctz="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgA3EYwkFPPN15h+UcOATFqVGdARsA5kL4Dl2NGMhsA7spGCwGYaK0AncEfCjcNK4Kph4OkDbsu8t-VDYBjd5+sPFXsoWHhICC1dbCD+QR5g72igrxoaAxM2AA8XFD4REEJbFALPXgBVAH0ASwA7bPzPRz4MB2aykAAlAB0AZwBePrA+gGtASuAGmjh8vJoEXhLZ8F4AYT7B3uHegFaAMUn58Gx6GgSwY9plkCqAewBXABcGkSoYqhpW93erEAAzdaGkj6AAkAF59QASRH1fpUFADNgB6AAUKEAA8CdFYASjYN2oRTEU1IyFCETEeSQ2BxYnx70gROaMFJEHJ3iAA" height="520" caption="RC-Tiefpass bei der Grenzfrequenz: Strom und Spannung am Kondensator (oben), Ein- und Ausgangsspannung (unten)" >}}
+ 
+
 Frequenzgang
 
 [role="image","../images/electronic_basics/lowpass_fr.svg", imgfmt="svg"]

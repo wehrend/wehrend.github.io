@@ -325,6 +325,8 @@ Let's consider a typical mesh configuration and apply Kirchhoff's first and seco
 
 image:./example.svg[Example svg]
 
+{{< falstad ctz="CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgpABZsKBTAWjDACgBLEQm8Ylbr2KEoUWOwDmgvgJ4gUKXlUhsA7tOHhCVTSuwYqYbSE2KdIiCoBO8muZDZsI3chXrHzkXfvWt9o1QKSvJobPqGxkF+DmjgUGrR2LFmMcpsAG6pWSlJyqJ21HkwCAm5Wd5Zega0cOW1UZZsNhVRFS6ObjX2NJq6nLSaYPwDnqIwiGxSPRbD0yHBVVQVZct4vI1TtdhrXbRGY2wAHuCUIHiGGALntFogAArsxzRgVNd0V0u3d9hHe7zYBToIgBn32dxQv1iYFONAE0NBIgAkgBDX6UCynBAoPAnBEgREAI1+z3+1SBDjJt0RAGNfmAMCICHxeEz1kjHuBFPJqmBYdy8YiIU9efzaElRWz8T9jkQcbhAsQqPKbvsAKoARzYQA" height="480" caption="Kirchhoff Example: Change Ia, Ib, Uq, or R-values and verify the node and loop rules" >}}
+
 ==== Solution:
 
 ===== 1. Kirchhoff's first law
