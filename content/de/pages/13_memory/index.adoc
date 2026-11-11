@@ -1,7 +1,7 @@
 ---
 title: "Speicherorganisation"
 date: 2022-03-20
-category: "digital_logik_1"
+category: "digital_logik_2"
 link: 
 description: 
 type: text

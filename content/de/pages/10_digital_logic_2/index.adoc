@@ -33,36 +33,39 @@ _link:/de/pages/12_automata/[Automaten]_
 Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
 asynchron sein.
 
-== *CPU-Steuerung*
+== *Speicher*
 
-_link:/de/pages/13_cpu_control/[CPU-Steuerung]_
+_link:/de/pages/13_memory/[Speicher]_
+Wir führen das Konzept des Speichers ein und wie er in einer CPU verwendet wird.
+Wir stellen auch das Konzept einer Speicherhierarchie vor und wie sie verwendet wird, um die Leistung
+zu verbessern.
 
-Hier sezieren wir das Gehirn einer CPU, die Steuereinheit, die alle Aktionen
-einer CPU handhabt und steuert.
+// Hier sezieren wir das Gehirn einer CPU, die Steuereinheit, die alle Aktionen
+// einer CPU handhabt und steuert.
 
-== *Programmierbare Logik*
+// == *Programmierbare Logik*
 
-_link:/de/pages/14_programmable_logic/[Programmierbare Logik]_
+// _link:/de/pages/14_programmable_logic/[Programmierbare Logik]_
 
-Wir stellen das Konzept der programmierbaren Logik sowohl für kombinatorische als auch sequentielle Logik vor.
+// Wir stellen das Konzept der programmierbaren Logik sowohl für kombinatorische als auch sequentielle Logik vor.
 
-== *Gründlich testen*
+// == *Gründlich testen*
 
-_link:/de/pages/15_testable_logic/[Testable Logic]_
+// _link:/de/pages/15_testable_logic/[Testable Logic]_
 
-Jede eingebettete Schaltung oder Logik benötigt eine Infrastruktur zum Testen. Hier stellen wir
-JTAG- und Boundary-Scan-Tests vor.
+// Jede eingebettete Schaltung oder Logik benötigt eine Infrastruktur zum Testen. Hier stellen wir
+// JTAG- und Boundary-Scan-Tests vor.
 
-== *HDLs*
+// == *HDLs*
 
-_VHDL und Verilog_
+// _VHDL und Verilog_
 
-Wir stellen das Konzept einer Hardwarebeschreibungssprache (HDL) wie VHDL und Verilog vor.
+// Wir stellen das Konzept einer Hardwarebeschreibungssprache (HDL) wie VHDL und Verilog vor.
 
-== Extra
+// == Extra
 
-=== *Register-Transfer-Level*
+// === *Register-Transfer-Level*
 
-_Register-Transfer-Level_
+// _Register-Transfer-Level_
 
-In dieser Lektion stellen wir das Konzept des Register-Transfer-Levels vor.
+// In dieser Lektion stellen wir das Konzept des Register-Transfer-Levels vor.
