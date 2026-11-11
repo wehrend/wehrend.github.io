@@ -78,27 +78,7 @@ Wir wollen die erste Serie mit diesem zweiten Kapitel über kombinatorische Logi
 
 Wir werden den Addierer zu einer einfachen ALU erweitern.
 
-// == *Überblick, was als nächstes kommt*
-
-// _Von kombinatorisch zu sequentiell_
-
-// In diesem ersten Kurs haben wir einige Grundlagen der digitalen Logik gelernt. Aber all diese Beispiele
-// verwenden nur statische Logik, uns fehlt noch ein Konzept, wie berechnete Werte gespeichert werden.
-
-// Wir müssen das Konzept von Registern und sequentieller Logik lernen.
-// Dies wird das Hauptthema der zweiten Beitragsreihe sein.
-
-// == Extra
-
 === Exkurs zu Prioritätscodierern und -decodierern
 In diesem Kapitel befassen wir uns mit Prioritätscodierern und -decodierern sowie der dahinterstehenden Logik...
 
 _link:/de/pages/06_priority_encoder_and-decoder/[Prioritätscodierer und -decodierer]_
-
-// === *Lass mich das nachschlagen*
-
-// _Erster Blick auf Speicher und Look-Up-Tables (LUTs)_
-
-// In dieser Lektion lernen wir, dass – im Prinzip – jede Form kombinatorischer Logik
-// in „Software“ umgewandelt werden kann, indem man sie in den Speicher legt. In einem praktischen Beispiel werden wir
-// zeigen, wie ein DDS-Sinuswellengenerator eine Look-Up-Table (LUT) verwendet, um den Sinus zu replizieren.

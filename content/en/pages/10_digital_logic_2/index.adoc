@@ -17,6 +17,26 @@ icon: "svg/cpu.svg"
 == How does a CPU work 2 - Table of contents
 
 
+// == *Outline: What Comes Next*
+
+// _From Combinatorial to Sequential Logic_
+
+// In this first course, we learned the basics of digital logic. But all examples so far
+// are based on static logic—we're still missing a way to store computed values.
+// To address this, we need to understand the concept of registers and sequential logic.
+// This will be the focus of the second part of the series.
+
+
+
+// == *Let Me Look That Up*
+
+// _An Introduction to Memory and Look-Up Tables (LUTs)_
+
+// In this lesson, we learn that—at least in principle—every form of combinatorial logic
+// can be transformed into 'software' by storing it in memory. In a practical example,
+// we will show how a DDS sine wave generator uses a Look-Up Table (LUT) to replicate a sine wave.
+
+
 ==  *From Combinatorial to Sequential Logic - Introduction*
 _link:/pages/10_sequential_logic[Introduction to Sequential Logic]_
 
