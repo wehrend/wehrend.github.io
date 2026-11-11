@@ -17,47 +17,34 @@ icon: "svg/cpu.svg"
 == How does a CPU work 2 - Table of contents
 
 
-// == *Outline: What Comes Next*
-
-// _From Combinatorial to Sequential Logic_
-
-// In this first course, we learned the basics of digital logic. But all examples so far
-// are based on static logic—we're still missing a way to store computed values.
-// To address this, we need to understand the concept of registers and sequential logic.
-// This will be the focus of the second part of the series.
 
 
 
-// == *Let Me Look That Up*
 
-// _An Introduction to Memory and Look-Up Tables (LUTs)_
 
-// In this lesson, we learn that—at least in principle—every form of combinatorial logic
-// can be transformed into 'software' by storing it in memory. In a practical example,
-// we will show how a DDS sine wave generator uses a Look-Up Table (LUT) to replicate a sine wave.
+
+
 
 
 ==  *From Combinatorial to Sequential Logic - Introduction*
-_link:/pages/10_sequential_logic[Introduction to Sequential Logic]_
+_link:/pages/11_sequential_logic[Introduction to Sequential Logic]_
 
 We get from purely conmbinatorial logic circuits wihout any form of memeory to sequential logic circuits with some
 type of memory (mostly flipflops)
 
 ==  *Clocks,Flipflops and registers*
 
-_link:/pages/11_clocks_and_registers/[Clocks,flipflops and registers]_
+_link:/pages/12_clocks_and_registers/[Clocks,flipflops and registers]_
 
 We make a leap into the area of sequential logic and introduce some concepts vital  for the sequential logics,
 like clock, flipflops and registers
 
-==  *Automata*
+// ==  *Automata*
 
-_link:/pages/12_automata/[Automata]_
+// _link:/pages/12_automata/[Automata]_
 
-We introduce the two (three) different automata Mealy, Moore (and Medwedjew). Those can be synchronous or
-asynchronous.
-
-
+// We introduce the two (three) different automata Mealy, Moore (and Medwedjew). Those can be synchronous or
+// asynchronous.
 
 ==  *Memory*
 
@@ -67,37 +54,21 @@ We also introduce the concept of a memory hierarchy and how it is used to improv
 
 
 
-// Here we are dissecting the brain of a CPU, the control unit, which handles and controls all actions
-// of a cpu
-// ==  *Programmable Logic*
-
-// _link:/pages/14_programmable_logic/[Programmable Logic]_
-
-// We introduce the concept of programmable logic for both, combinatorial and sequential logic.
 
 
-// ==  *Test thoroughly*
-
-// _link:/pages/15_testable_logic/[Testable Logic]_
-
-// Every embedded circuit or logic needs some infrastructure for testing. Here we introduce
-// JTAG and boundary-scan-tests.
 
 
-// ==  *HDLs*
-
-// _VHDL and Verilog_
-
-// We introduce the concept of a Hardware Description Language (HDL) like VHDL and Verilog.
 
 
-// == Extra
 
-// ==  *Register-Transfer-Level*
 
-// _Register-Transfer-Level_
 
-// In this lesson we introduce the concept of the register transfer level.
+
+
+
+
+
+
 
 
 

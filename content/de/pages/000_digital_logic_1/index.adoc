@@ -78,6 +78,8 @@ Wir wollen die erste Serie mit diesem zweiten Kapitel über kombinatorische Logi
 
 Wir werden den Addierer zu einer einfachen ALU erweitern.
 
+== Extra
+
 === Exkurs zu Prioritätscodierern und -decodierern
 In diesem Kapitel befassen wir uns mit Prioritätscodierern und -decodierern sowie der dahinterstehenden Logik...
 
