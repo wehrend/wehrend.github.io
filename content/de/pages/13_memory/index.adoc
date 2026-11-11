@@ -6,9 +6,10 @@ link:
 description: 
 type: text
 bookHidden: true
+aliases: ["/pages/07_memory/"]
 menu:
   docs:
-    parent: "digital_logic"
+    parent: "digital_logik_2"
     weight: 30
 ---
 {{< katex />}}

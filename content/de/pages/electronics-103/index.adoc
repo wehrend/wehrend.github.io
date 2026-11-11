@@ -391,7 +391,7 @@ Die Werte für diesen Rückkopplungswiderstand sollten zwischen 30 und 70 kOhm l
 === Das Flipflop
 
 Eine weitere wichtige Anwendung, die wir bereits vor einiger Zeit behandelt haben, ist die Verwendung als Flipflop,
- wie unter https://wehrend.github.io/pages/11_clocks_and_registers/#_a_binary_counter[hier] gezeigt.
+ wie unter link:/de/pages/12_clocks_and_registers/#_ein_binärzähler[hier] gezeigt.
 Das Flipflop ist eine zentrale Komponente in fast allen digitalen Schaltungen, die digitale Werte (0 und 1) speichert.
 
 [cols="3"]

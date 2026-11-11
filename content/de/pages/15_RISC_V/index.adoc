@@ -7,6 +7,7 @@ link:
 description:
 type: text
 bookHidden: true
+aliases: ["/pages/08_risc_v/"]
 ---
 
 {{< katex />}}

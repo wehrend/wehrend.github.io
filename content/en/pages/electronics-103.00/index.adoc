@@ -389,7 +389,7 @@ Values fo this feedback resistor should be 30 to 70kOhm...
 === The flipflop
 
 Another vital application, we already visited some time ago, is the application as a flip-flop
-as shown https://wehrend.github.io/pages/11_clocks_and_registers/#_a_binary_counter[here].
+as shown link:/pages/12_clocks_and_registers/#_a_binary_counter[here].
 The flipflop is a central component in almost all digital circuit, which stores digital values (0 and 1)
 
 [cols="3"]
