@@ -4,14 +4,14 @@ date: 2025-12-23
 weight: 60
 tags:
 math:
-category: "digital_logic_1"
+category: "digital_logik_1"
 link:
 description:
 type: text
-bookHidden: true
+bookHidden: false
 menu:
   docs:
-    parent: "digital_logic_1"
+    parent: "digital_logik_1"
 ---
 
 {{< katex />}}
