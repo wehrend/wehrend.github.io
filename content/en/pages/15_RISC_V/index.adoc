@@ -3,14 +3,15 @@ title: "RISC-V and Computer Architecture"
 date: 2022-03-21
 weight: 80
 tags: ['draft']
-category: "digital_logic_1"
+category: "digital_logic_2"
 link:
 description:
 type: text
 bookHidden: true
+aliases: ["/pages/08_risc_v/"]
 menu:
   docs:
-    parent: "digital_logic_1"
+    parent: "digital_logic_2"
 ---
 {{< katex />}}
 

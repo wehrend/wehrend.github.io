@@ -1,14 +1,14 @@
 ---
 title: "Sequentielle Logik"
 date: 2023-05-01
-category: "digital_logic_2"
+category: "digital_logik_2"
 link:
 description:
 type: text
 bookHidden: true
 menu:
   docs:
-    parent: "digital_logic_2"
+    parent: "digital_logik_2"
     weight: 10
 ---
 

@@ -14,55 +14,42 @@ icon: "svg/cpu.svg"
 == Wie funktioniert eine CPU 2 - Inhaltsverzeichnis
 
 == *Von kombinatorischer zu sequentieller Logik - Einführung*
-_link:/de/pages/10_sequential_logic[Einführung in sequentielle Logik]_
+_link:/de/pages/11_sequential_logic[Einführung in sequentielle Logik]_
 
 Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen Logikschaltungen mit irgendeiner
 Art von Speicher (meistens Flipflops)
 
-== *Uhren, Flipflops und Register*
+== *Taktgeber, Flipflops und Register*
 
-_link:/de/pages/11_clocks_and_registers/[Uhren, Flipflops und Register]_
+_link:/de/pages/12_clocks_and_registers/[Taktgeber, Flipflops und Register]_
 
 Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,
-wie Uhr, Flipflops und Register
+wie Taktgeber, Flipflops und Register
 
-== *Automaten*
+// == *Automaten*
 
-_link:/de/pages/12_automata/[Automaten]_
+// _link:/de/pages/12_automata/[Automaten]_
 
-Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
-asynchron sein.
+// Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
+// asynchron sein.
 
-== *CPU-Steuerung*
+== *Speicher*
 
-_link:/de/pages/13_cpu_control/[CPU-Steuerung]_
+_link:/de/pages/13_memory/[Speicher]_
+Wir führen das Konzept des Speichers ein und wie er in einer CPU verwendet wird.
+Wir stellen auch das Konzept einer Speicherhierarchie vor und wie sie verwendet wird, um die Leistung
+zu verbessern.
 
-Hier sezieren wir das Gehirn einer CPU, die Steuereinheit, die alle Aktionen
-einer CPU handhabt und steuert.
 
-== *Programmierbare Logik*
 
-_link:/de/pages/14_programmable_logic/[Programmierbare Logik]_
 
-Wir stellen das Konzept der programmierbaren Logik sowohl für kombinatorische als auch sequentielle Logik vor.
 
-== *Gründlich testen*
 
-_link:/de/pages/15_testable_logic/[Testable Logic]_
 
-Jede eingebettete Schaltung oder Logik benötigt eine Infrastruktur zum Testen. Hier stellen wir
-JTAG- und Boundary-Scan-Tests vor.
 
-== *HDLs*
 
-_VHDL und Verilog_
 
-Wir stellen das Konzept einer Hardwarebeschreibungssprache (HDL) wie VHDL und Verilog vor.
 
-== Extra
 
-=== *Register-Transfer-Level*
 
-_Register-Transfer-Level_
 
-In dieser Lektion stellen wir das Konzept des Register-Transfer-Levels vor.

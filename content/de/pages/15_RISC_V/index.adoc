@@ -2,11 +2,12 @@
 title: "RISC-V und Rechnerarchitektur"
 date: 2022-03-21
 tags: ['draft']
-category: "digital_logik_1"
+category: "digital_logik_2"
 link:
 description:
 type: text
 bookHidden: true
+aliases: ["/pages/08_risc_v/"]
 ---
 
 {{< katex />}}

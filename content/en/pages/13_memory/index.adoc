@@ -2,14 +2,15 @@
 title: "Memory Organization"
 date: 2022-03-20
 weight: 70
-category: "digital_logic_1"
+category: "digital_logic_2"
 link: 
 description: 
 type: text
 bookHidden: true
+aliases: ["/pages/07_memory/"]
 menu:
   docs:
-    parent: "digital_logic_1"
+    parent: "digital_logic_2"
 ---
 {{< katex />}}
 

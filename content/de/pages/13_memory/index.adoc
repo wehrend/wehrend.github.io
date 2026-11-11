@@ -1,14 +1,15 @@
 ---
 title: "Speicherorganisation"
 date: 2022-03-20
-category: "digital_logik_1"
+category: "digital_logik_2"
 link: 
 description: 
 type: text
 bookHidden: true
+aliases: ["/pages/07_memory/"]
 menu:
   docs:
-    parent: "digital_logic"
+    parent: "digital_logik_2"
     weight: 30
 ---
 {{< katex />}}
