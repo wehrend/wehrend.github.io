@@ -49,9 +49,15 @@ like clock, flipflops and registers
 ==  *Memory*
 
 _link:/pages/13_memory/[Memory]_
-We inttroduce the concept of memory and how it is used in a CPU. 
+We introduce the concept of memory and how it is used in a CPU. 
 We also introduce the concept of a memory hierarchy and how it is used to improve performance.
 
+== *RISC-V and Computer Architecture*
+
+_link:/pages/15_risc_v/[RISC-V and Computer Architecture]_
+
+We combine the ALU, registers, and memory into a data path and examine the
+fetch-decode-execute cycle using a minimal RISC-V CPU as an example.
 
 
 

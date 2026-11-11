@@ -81,7 +81,7 @@ Here, we expand the adder into a simple Arithmetic Logic Unit (ALU).
 
 == Extra
 
-== Excursion to priority encoder and decoder
+=== Excursion to priority encoder and decoder
 In this chapter we will have a look at priority encoders and decoders, as well as the logic behind them...
 
 _link:/pages/06_priority_encoder_and-decoder/[Priority encoder and decoder]_

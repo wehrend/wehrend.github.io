@@ -7,7 +7,7 @@ link:
 description:
 type: text
 bookHidden: true
-aliases: ["/pages/08_risc_v/"]
+aliases: ["/de/pages/08_risc_v/"]
 ---
 
 {{< katex />}}
@@ -128,9 +128,9 @@ image:./cpu_instruction_path.svg[width=500]
 
 === Der Datenpfad
 
-Der Datenpfad zeigt einige Elemente, mit denen wir bereits vertraut sind – die ALU – sowie Elemente,
- mit denen wir noch nicht vertraut sind – die Speicherblöcke – rechts die sogenannte Registerdatei
-und links der Datenspeicher. Beide Eingänge der ALU sind mit einem (anderen) Register verbunden.
+Der Datenpfad zeigt einige Elemente, mit denen wir bereits vertraut sind – die ALU sowiedie Speicherblöcke
+ – links die sogenannte Registerdatei
+und rechts der Datenspeicher. Beide Eingänge der ALU sind mit einem (anderen) Register verbunden.
 
 
 image:./cpu_data_path.svg[width=600]

@@ -6,7 +6,7 @@ link:
 description: 
 type: text
 bookHidden: true
-aliases: ["/pages/07_memory/"]
+aliases: ["/de/pages/07_memory/"]
 menu:
   docs:
     parent: "digital_logik_2"
@@ -90,9 +90,9 @@ Ergänzend dazu benötigt die dynamische RAM-Zelle (DRAM) nur einen Transistor u
 image:./register_file.svg[width=300]
 
 An dieser Stelle möchte der Autor die sogenannte Registerdatei vorstellen.
- Dabei handelt es sich um einen Speichertyp, der über mehrere Leseports verfügen kann.
-Dies ist nützlich als Eingabe für die ALU, die wir im letzten Blogbeitrag vorgestellt haben.
- Während die Anzahl der Leseports theoretisch unbegrenzt ist,
+Dabei handelt es sich um einen Speichertyp, der über mehrere Leseports verfügen kann.
+Dies ist nützlich als Eingabe für die link:/de/pages/05_alu/[ALU], die wir in Teil 1 vorgestellt haben.
+Während die Anzahl der Leseports theoretisch unbegrenzt ist,
 beträgt die Anzahl der Schreibports in der Regel eins. Der Grund dafür ist, wie sich der aufmerksame
 Leser vorstellen kann, die Minderung von Gefahren, die bei mehreren
 Schreibports schwer zu handhaben sind.

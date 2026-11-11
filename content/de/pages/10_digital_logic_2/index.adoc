@@ -40,6 +40,12 @@ Wir führen das Konzept des Speichers ein und wie er in einer CPU verwendet wird
 Wir stellen auch das Konzept einer Speicherhierarchie vor und wie sie verwendet wird, um die Leistung
 zu verbessern.
 
+== *RISC-V und Rechnerarchitektur*
+
+_link:/de/pages/15_risc_v/[RISC-V und Rechnerarchitektur]_
+
+Wir setzen ALU, Register und Speicher zu einem Datenpfad zusammen und sehen uns den
+Fetch-Decode-Execute-Zyklus am Beispiel einer minimalen RISC-V-CPU an.
 
 
 

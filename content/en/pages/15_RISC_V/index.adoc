@@ -131,9 +131,9 @@ image:./cpu_instruction_path.svg[width="120%"]
 
 === The data path 
 
-The data path shows some elements we already are familiar with - the ALU - as well as elments
-we are not yet familiar with - the memory blocks - on the right the so-called register file 
-and on the left the data memory. Both inputs of the ALU are connected to one (different) register.
+The data path shows some elements we already are familiar with - the ALU  and the memory blocks -
+on the left the so-called register file 
+and on the right  the data memory. Both inputs of the ALU are connected to one (different) register.
 
 
 image:./cpu_data_path.svg[width="120%"]
