@@ -8,7 +8,7 @@ category: "digital_logik_1"
 link:
 description:
 type: text
-bookHidden: false
+bookHidden: true
 menu:
   docs:
     parent: "digital_logik_1"
