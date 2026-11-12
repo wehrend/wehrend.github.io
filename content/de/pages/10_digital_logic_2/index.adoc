@@ -26,12 +26,12 @@ _link:/de/pages/12_clocks_and_registers/[Taktgeber, Flipflops und Register]_
 Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,
 wie Taktgeber, Flipflops und Register
 
-// == *Automaten*
+== *Automaten*
 
-// _link:/de/pages/12_automata/[Automaten]_
+_link:/de/pages/14_automata/[Automaten]_
 
-// Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
-// asynchron sein.
+Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
+asynchron sein.
 
 == *Speicher*
 

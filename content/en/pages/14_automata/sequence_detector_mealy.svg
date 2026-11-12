@@ -1,0 +1,67 @@
+<svg width="485pt" height="170pt"
+ viewBox="0.00 0.00 484.56 169.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(14.4 155.4)">
+<title>G</title>
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="black" stroke="black" stroke-width="0.8" cx="2.88" cy="-25" rx="2.88" ry="2.88"/>
+</g>
+<g id="node2" class="node">
+<title>S0</title>
+<ellipse fill="lightskyblue" stroke="black" stroke-width="0.8" cx="138.76" cy="-25" rx="25" ry="25"/>
+<text text-anchor="middle" x="138.76" y="-21.9" font-family="Helvetica,Arial,sans-serif" font-size="12.00">S0</text>
+</g>
+<g id="edge1" class="edge">
+<title>start&#45;&gt;S0</title>
+<path fill="none" stroke="black" stroke-width="0.8" d="M5.77,-25C16.54,-25 70.88,-25 106.39,-25"/>
+<polygon fill="black" stroke="black" stroke-width="0.8" points="106.66,-27.45 113.66,-25 106.66,-22.55 106.66,-27.45"/>
+<text text-anchor="middle" x="59.76" y="-28.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00">Reset</text>
+</g>
+<g id="edge2" class="edge">
+<title>S0&#45;&gt;S0</title>
+<path fill="none" stroke="black" stroke-width="0.8" d="M127.32,-47.52C122.43,-66.34 126.24,-86 138.76,-86 149.71,-86 154,-70.95 151.63,-54.58"/>
+<polygon fill="black" stroke="black" stroke-width="0.8" points="153.99,-53.9 150.2,-47.52 149.18,-54.87 153.99,-53.9"/>
+<text text-anchor="middle" x="138.76" y="-89.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00">0/0</text>
+</g>
+<g id="node3" class="node">
+<title>S1</title>
+<ellipse fill="lightskyblue" stroke="black" stroke-width="0.8" cx="284.76" cy="-68" rx="25" ry="25"/>
+<text text-anchor="middle" x="284.76" y="-64.9" font-family="Helvetica,Arial,sans-serif" font-size="12.00">S1</text>
+</g>
+<g id="edge3" class="edge">
+<title>S0&#45;&gt;S1</title>
+<path fill="none" stroke="black" stroke-width="0.8" d="M162.9,-31.91C187.56,-39.27 226.72,-50.97 253.75,-59.04"/>
+<polygon fill="black" stroke="black" stroke-width="0.8" points="253.27,-61.45 260.68,-61.11 254.68,-56.76 253.27,-61.45"/>
+<text text-anchor="middle" x="211.76" y="-51.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00">1/0</text>
+</g>
+<g id="edge4" class="edge">
+<title>S1&#45;&gt;S1</title>
+<path fill="none" stroke="black" stroke-width="0.8" d="M273.32,-90.52C268.43,-109.34 272.24,-129 284.76,-129 295.71,-129 300,-113.95 297.63,-97.58"/>
+<polygon fill="black" stroke="black" stroke-width="0.8" points="299.99,-96.9 296.2,-90.52 295.18,-97.87 299.99,-96.9"/>
+<text text-anchor="middle" x="284.76" y="-132.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00">1/0</text>
+</g>
+<g id="node4" class="node">
+<title>S2</title>
+<ellipse fill="lightskyblue" stroke="black" stroke-width="0.8" cx="430.76" cy="-55" rx="25" ry="25"/>
+<text text-anchor="middle" x="430.76" y="-51.9" font-family="Helvetica,Arial,sans-serif" font-size="12.00">S2</text>
+</g>
+<g id="edge5" class="edge">
+<title>S1&#45;&gt;S2</title>
+<path fill="none" stroke="black" stroke-width="0.8" d="M309.98,-69.26C325.88,-69.77 347.1,-69.88 365.76,-68 376.76,-66.89 388.66,-64.74 399.19,-62.51"/>
+<polygon fill="black" stroke="black" stroke-width="0.8" points="399.92,-64.86 406.23,-60.96 398.86,-60.07 399.92,-64.86"/>
+<text text-anchor="middle" x="357.76" y="-72.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00">0/0</text>
+</g>
+<g id="edge6" class="edge">
+<title>S2&#45;&gt;S0</title>
+<path fill="none" stroke="black" stroke-width="0.8" d="M407.8,-44.79C384.18,-34.41 345.23,-19.03 309.76,-13 261.42,-4.79 204.43,-12.23 170.24,-18.51"/>
+<polygon fill="black" stroke="black" stroke-width="0.8" points="169.73,-16.11 163.31,-19.82 170.64,-20.93 169.73,-16.11"/>
+<text text-anchor="middle" x="284.76" y="-16.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00">0/0</text>
+</g>
+<g id="edge7" class="edge">
+<title>S2&#45;&gt;S1</title>
+<path fill="none" stroke="#c00000" stroke-width="0.8" d="M405.53,-52.64C389.62,-51.52 368.39,-50.85 349.76,-53 338.61,-54.29 326.59,-56.8 316.01,-59.4"/>
+<polygon fill="#c00000" stroke="#c00000" stroke-width="0.8" points="315.11,-57.1 308.94,-61.21 316.33,-61.85 315.11,-57.1"/>
+<text text-anchor="middle" x="357.76" y="-56.2" font-family="Helvetica,Arial,sans-serif" font-size="11.00" fill="#c00000">1/1</text>
+</g>
+</g>
+</svg>

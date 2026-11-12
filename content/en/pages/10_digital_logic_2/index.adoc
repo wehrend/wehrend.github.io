@@ -39,12 +39,12 @@ _link:/pages/12_clocks_and_registers/[Clocks,flipflops and registers]_
 We make a leap into the area of sequential logic and introduce some concepts vital  for the sequential logics,
 like clock, flipflops and registers
 
-// ==  *Automata*
+==  *Automata*
 
-// _link:/pages/12_automata/[Automata]_
+_link:/pages/14_automata/[Automata]_
 
-// We introduce the two (three) different automata Mealy, Moore (and Medwedjew). Those can be synchronous or
-// asynchronous.
+We introduce the two (three) different automata Mealy, Moore (and Medwedjew). Those can be synchronous or
+asynchronous.
 
 ==  *Memory*
 
