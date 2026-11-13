@@ -1,0 +1,39 @@
+---
+title: "Wie funktioniert eine CPU? – Teil 3: Vom Schaltplan zum Chip"
+date: 2026-11-13
+tags: ['draft']
+category: "digital_logik_3"
+link:
+description: "Hardwarebeschreibungssprachen, Simulation und programmierbare Logik - die CPU aus Teil 2 in Verilog."
+bookHidden: true
+overview: true
+icon: "svg/fpga.svg"
+planned:
+  - slug: "21_hdl"
+    title: "Hardwarebeschreibungssprachen"
+    summary: "Warum man Hardware als Text beschreibt, und die Grundlagen von Verilog: Module, Signale, assign und always."
+  - slug: "22_simulation"
+    title: "Simulation und Testbenches"
+    summary: "Schaltungen testen, bevor es sie gibt: Testbenches schreiben, simulieren und Waveforms lesen."
+  - slug: "23_combinational_verilog"
+    title: "Kombinatorische Logik in Verilog"
+    summary: "Gatter, Volladdierer, Decoder und die ALU aus Teil 1 - diesmal als Verilog-Code."
+  - slug: "24_sequential_verilog"
+    title: "Sequentielle Logik in Verilog"
+    summary: "Flipflops, Register, Zähler und die Ampel aus dem Kapitel über endliche Automaten."
+  - slug: "25_programmable_logic"
+    title: "Programmierbare Logik"
+    summary: "Von PLA und PAL über CPLDs zum FPGA: Wie aus Code konfigurierbare Hardware wird."
+  - slug: "26_cpu_verilog"
+    title: "Die CPU in Verilog"
+    summary: "Registerdatei, Datenpfad und Steuerwerk aus Teil 2 - unser Zählprogramm läuft in der Simulation."
+  - slug: "27_code_to_chip"
+    title: "Vom Code zum Chip"
+    summary: "Was bei Synthese, Place & Route und Timing-Analyse passiert, bis die CPU auf dem FPGA läuft."
+---
+
+== Wie funktioniert eine CPU 3 - Inhaltsverzeichnis
+
+In Teil 1 und 2 haben wir eine CPU vom Logikgatter bis zum Steuerwerk entworfen - auf dem Papier.
+In Teil 3 beschreiben wir dieselbe Hardware mit einer Hardwarebeschreibungssprache (Verilog),
+testen sie in der Simulation und sehen uns an, wie daraus eine Schaltung auf einem FPGA wird.

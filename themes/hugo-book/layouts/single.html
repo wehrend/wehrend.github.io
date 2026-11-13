@@ -20,99 +20,78 @@
     <h1>{{ .Title }}</h1>
   </header>
 
-  {{/* --- ROBUSTE LOGIK-VORBEREITUNG --- */}} {{ $subPages := slice }} {{
-  $currentCat := .Params.category }} {{ $currentID := .File.UniqueID }} {{/*
-  Eindeutige ID der aktuellen Datei */}} {{ if and .Params.overview $currentCat
-  }} {{/* Wir suchen global über alle regulären Seiten */}} {{ range (where
-  .Site.RegularPages "Params.category" $currentCat) }} {{/* Wir fügen die Seite
-  nur hinzu, wenn es NICHT die aktuelle Seite selbst ist */}} {{ if ne
-  .File.UniqueID $currentID }} {{ $subPages = $subPages | append . }} {{ end }}
-  {{ end }} {{/* Sortierung nach Pfad für die richtige 101, 102... Reihenfolge
-  */}} {{ $subPages = sort $subPages "File.Path" "asc" }} {{ end }} {{/* 2.
-  Content Anzeige: Fallback auf Text, wenn $subPages leer ist */}} {{ if or (not
-  .Params.overview) (eq (len $subPages) 0) }}
+  {{/* --- Kursübersicht: vorhandene Lektionen + geplante Kapitel --- */}}
+  {{- $cards := slice -}}
+  {{- $currentCat := .Params.category -}}
+  {{- $currentID := .File.UniqueID -}}
+  {{- if and .Params.overview $currentCat -}}
+    {{- $existing := dict -}}
+    {{- range where .Site.RegularPages "Params.category" $currentCat -}}
+      {{- if ne .File.UniqueID $currentID -}}
+        {{- $key := lower .File.ContentBaseName -}}
+        {{- $existing = merge $existing (dict $key true) -}}
+        {{- $cards = $cards | append (dict "key" .File.Path "page" .) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- /* Geplante Kapitel aus dem Front Matter (planned), nur wenn es die Seite noch nicht gibt */ -}}
+    {{- range .Params.planned -}}
+      {{- if not (index $existing (lower .slug)) -}}
+        {{- $cards = $cards | append (dict "key" (printf "pages/%s/index" .slug) "planned" .) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $cards = sort $cards "key" "asc" -}}
+  {{- end -}}
+
+  {{/* Content-Anzeige: Fallback auf Text, wenn es keine Karten gibt */}}
+  {{ if or (not .Params.overview) (eq (len $cards) 0) }}
   <div class="page-content">{{- .Content -}}</div>
-  {{ end }} {{/* 3. Die Kurs-Liste (Cards): Nur wenn $subPages Inhalt hat */}}
-  {{ if and .Params.overview (gt (len $subPages) 0) }}
-  <div
-    class="book-card-list"
-    style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem"
-  >
-    {{ range $index, $page := $subPages }}
-    <a
-      class="book-card"
-      href="{{ .RelPermalink }}"
-      style="
-        text-decoration: none;
-        border: 1px solid #ddd;
-        padding: 1.25rem;
-        display: flex;
-        align-items: center;
-        border-radius: 10px;
-        background: rgba(0, 0, 0, 0.02);
-        transition: all 0.2s ease;
-      "
-    >
-      <div
-        class="card-number"
-        style="
-          font-size: 1.8rem;
-          font-weight: 800;
-          opacity: 0.1;
-          margin-right: 1.5rem;
-          min-width: 2.5rem;
-          font-family: sans-serif;
-        "
-      >
+  {{ end }}
+
+  {{/* Die Kurs-Liste (Cards) */}}
+  {{ if and .Params.overview (gt (len $cards) 0) }}
+  {{- $de := eq .Language.Lang "de" -}}
+  <div class="book-card-list" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem">
+    {{ range $index, $card := $cards }}
+    {{- $planned := $card.planned -}}
+    {{- $icon := "" -}}{{- $title := "" -}}{{- $summary := "" -}}
+    {{- with $card.page -}}
+      {{- $icon = .Params.icon -}}
+      {{- $title = .LinkTitle -}}
+      {{- $summary = .Params.summary | default (.Summary | plainify | truncate 140) -}}
+    {{- end -}}
+    {{- with $planned -}}
+      {{- $icon = .icon -}}
+      {{- $title = .title -}}
+      {{- $summary = .summary -}}
+    {{- end -}}
+    {{ if $planned }}
+    <div class="book-card book-card--planned" aria-disabled="true"
+      style="border: 1px dashed #ccc; padding: 1.25rem; display: flex; align-items: center; border-radius: 10px; opacity: 0.45; cursor: default;">
+    {{ else }}
+    <a class="book-card" href="{{ $card.page.RelPermalink }}"
+      style="text-decoration: none; border: 1px solid #ddd; padding: 1.25rem; display: flex; align-items: center; border-radius: 10px; background: rgba(0, 0, 0, 0.02); transition: all 0.2s ease;">
+    {{ end }}
+      <div class="card-number" style="font-size: 1.8rem; font-weight: 800; opacity: 0.1; margin-right: 1.5rem; min-width: 2.5rem; font-family: sans-serif;">
         {{ printf "%02d" (add $index 1) }}
       </div>
-
-      <div
-        class="card-icon"
-        style="
-          width: 50px;
-          height: 50px;
-          margin-right: 1.5rem;
-          flex-shrink: 0;
-          fill: currentColor;
-          color: var(--color-primary);
-        "
-      >
-        {{ if .Params.icon }} {{ $iPath := trim .Params.icon "/" }} {{ $i :=
-        resources.Get $iPath }} {{ if $i }}{{ $i.Content | safeHTML }}{{ end }}
-        {{ end }}
+      <div class="card-icon" style="width: 50px; height: 50px; margin-right: 1.5rem; flex-shrink: 0; fill: currentColor; color: var(--color-primary);">
+        {{ with $icon }}{{ with resources.Get (trim . "/") }}{{ .Content | safeHTML }}{{ end }}{{ end }}
       </div>
-
       <div class="card-content">
-        <div
-          class="book-card__title"
-          style="
-            font-weight: bold;
-            font-size: 1.15rem;
-            color: var(--color-primary);
-          "
-        >
-          {{ .LinkTitle }}
+        <div class="book-card__title" style="font-weight: bold; font-size: 1.15rem; color: var(--color-primary);">
+          {{ $title }}
+          {{ if $planned }}<span class="book-card__badge" style="font-size: 0.75rem; font-weight: normal; margin-left: 0.5rem; padding: 0.1rem 0.5rem; border: 1px solid currentColor; border-radius: 999px;">{{ cond $de "in Planung" "planned" }}</span>{{ end }}
         </div>
-        <div
-          class="book-card__summary"
-          style="
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.3rem;
-            line-height: 1.4;
-          "
-        >
-          {{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify |
-          truncate 140 }}{{ end }}
+        <div class="book-card__summary" style="font-size: 0.9rem; color: #666; margin-top: 0.3rem; line-height: 1.4;">
+          {{ $summary }}
         </div>
       </div>
-    </a>
+    {{ if $planned }}</div>{{ else }}</a>{{ end }}
     {{ end }}
   </div>
 
   <style>
-    .book-card:hover {
+    a.book-card:hover {
       background: rgba(0, 0, 0, 0.05) !important;
       border-color: var(--color-primary) !important;
       transform: translateX(5px);
