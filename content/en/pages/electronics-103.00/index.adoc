@@ -82,7 +82,7 @@ form the basis of all modern semiconductor devices.
 
 
 Let us start our tour of semiconductor devices with a short repetition of this topic from
-https://wehrend.github.io/pages/prequel-short-introduction-to-electronics[electronics 101].
+link:/pages/electronics-101/[electronics 101].
 
 If we make sure that the semiconductor material, here silicon, is not contaminated or *doped*
 with any trivalent or pentavalent atoms, the only relevant factor is temperature.
@@ -701,7 +701,7 @@ image:./induction-coupling.svg[width="450px"]
 ==== RC coupling
 The RC-coupling is probably the most used technique to de-couple amplifier stages.
 the attentive reader will note, that the capacitor and the resistor are forming a high-pass
-filter which we have seen first in https://wehrend.github.io/pages/short-introduction-to-electronics-102/#_highpass_filter[here...]
+filter which we have seen first in link:/pages/electronics-102/#_highpass_filter[electronics 102].
 This coupling is easy anc cheap; but has the disadvantage of also being a high-pass filter shaping the signal.
 Very low frequencies cannot be transmitted that way...
 

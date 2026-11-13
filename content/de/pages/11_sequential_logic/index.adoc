@@ -33,11 +33,14 @@ image:./moore_logic.svg[width=50%]
 
 === Synchrone und asynchrone sequentielle Logik
 
-Es gibt zwei verschiedene Arten sequentieller Logik: die synchrone sequentielle Logik
-mit einem zentralen Taktgeber sowie die asnychrone Logik mit mehreren Taktgeber-Domänen.
+Es gibt zwei verschiedene Arten sequentieller Logik: die synchrone sequentielle Logik,
+bei der alle Speicherelemente von einem gemeinsamen Takt gesteuert werden, und die asynchrone
+Logik, die ganz ohne Takt auskommt und sofort auf Änderungen der Eingänge reagiert.
 
 image:./sequential_logic2.svg[width=50%]
 
-Wenn wir unserem oben gezeigten Automaten eine Taktgeberfunktion hinzufügen, wird der synchrone Automat zum asynchronen Automaten.
+Fügen wir unserem oben gezeigten Automaten einen Takt hinzu, wird aus dem asynchronen ein
+synchroner Automat. Wie man solche Automaten entwirft, sehen wir im Kapitel über
+link:/de/pages/14_automata/[endliche Automaten].
 
 (translation: 2024-12-29)

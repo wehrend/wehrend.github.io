@@ -1,5 +1,5 @@
 ---
-title: How does a CPU work 2? Overview
+title: "Wie funktioniert eine CPU? – Teil 2: Sequentielle Logik und Prozessor"
 date: 2023-05-14
 tags: ['draft']
 category: "digital_logik_2"

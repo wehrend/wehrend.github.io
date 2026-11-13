@@ -1,5 +1,5 @@
 ---
-title: How does a CPU work? Overview
+title: "How does a CPU work? – Part 1: Combinational Logic"
 date: 2020-12-20
 tags: ['draft']
 type: 'docs'

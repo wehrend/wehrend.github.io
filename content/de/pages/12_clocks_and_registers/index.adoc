@@ -147,7 +147,7 @@ anliegende Datum ungültig.
 
 Mit dem D-Flipflop, das wir im letzten Abschnitt kennengelernt haben,
 können wir einen (asynchronen) Binärzähler konstruieren.
-Dieser Ausgang kann als Adresse für eine ROM-Tabelle verwendet werden, wie wir in einem anderen Blogbeitrag sehen werden.
+Dieser Ausgang kann zum Beispiel als Adresse für einen Speicher dienen.
 
 [cols="a" width="100%"]
 |===

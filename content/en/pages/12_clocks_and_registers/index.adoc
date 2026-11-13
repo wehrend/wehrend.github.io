@@ -148,7 +148,7 @@ input is invalid.
 
 Using the D-flipflop we got acquainted with in the last section,
 we can construct an (asynchronous) binary counter.
-This output can be used as adresses for a ROM table, as we will see in another blog post.
+This output can, for example, be used as an address for a memory.
 
 [cols="a" width="100%"]
 |===

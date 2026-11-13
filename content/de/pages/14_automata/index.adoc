@@ -221,4 +221,4 @@ link:/de/pages/17_cpu_control/[Steuerwerk] an.
 Zum Weiterlesen: David Money Harris und Sarah L. Harris, „Digital Design and Computer Architecture - RISC-V Edition“,
 Kapitel 3, behandelt Zustandsautomaten ausführlich.
 
-(Erstellt von Claude AI)
+(Erstellt mit Claude AI)

@@ -32,11 +32,12 @@ image:./moore_logic.svg[width=50%]
 
 === Synchronous and Asynchronous sequential Logic
 
-There are two different types of sequential logic, the synchronous sequential logic
-with one central clock, as well as the asnychonous logic which has multiple clock
-domains.
+There are two different types of sequential logic: synchronous sequential logic,
+where all storage elements are controlled by one common clock, and asynchronous logic,
+which works without any clock and reacts immediately to changes at its inputs.
 
 image:./sequential_logic2.svg[width=50%]
 
-When we add a clock function to our automata shown above the synchronous
-automata becomes an asynchronous automata.
+When we add a clock to the automaton shown above, the asynchronous automaton becomes
+a synchronous one. How such automata are designed is shown in the chapter about
+link:/pages/14_automata/[finite state machines].

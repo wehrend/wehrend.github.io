@@ -222,4 +222,4 @@ link:/pages/17_cpu_control/[control unit].
 Further reading: David Money Harris and Sarah L. Harris, 'Digital Design and Computer Architecture - RISC-V Edition',
 chapter 3, covers state machines in detail.
 
-(Created by Claude AI)
+(Created with Claude AI)

@@ -1,5 +1,6 @@
 {{- return and
   (not (eq .Params.bookToC false))
+  (not .Params.overview)
   (not (eq .Site.Params.BookToC false))
   (not (eq .TableOfContents "<nav id=\"TableOfContents\"></nav>"))
 -}}

@@ -83,7 +83,7 @@ die Grundlage aller modernen Halbleiterbauelemente bilden.
 
 
 Beginnen wir unseren Rundgang durch die Halbleiterbauelemente mit einer kurzen Wiederholung dieses Themas aus
-„https://wehrend.github.io/pages/prequel-short-introduction-to-electronics[electronics 101]”.
+link:/de/pages/electronics-101/[Elektronik 101].
 
 Wenn wir sicherstellen, dass das Halbleitermaterial, hier Silizium, nicht mit dreiwertigen oder fünfwertigen Atomen verunreinigt oder *dotiert* ist,
  ist der einzige relevante Faktor die Temperatur.
@@ -601,7 +601,7 @@ image:./induction-coupling.svg[width="450px"]
 ==== RC-Kopplung
 Die RC-Kopplung ist wahrscheinlich die am häufigsten verwendete Technik zur Entkopplung von Verstärkerstufen.
 Aufmerksamen Lesern wird auffallen, dass der Kondensator und der Widerstand einen Hochpassfilter bilden,
-den wir bereits in https://wehrend.github.io/pages/short-introduction-to-electronics-102/#_highpass_filter[hier...] kennengelernt haben.
+den wir bereits in link:/de/pages/electronics-102/#_hochpassfilter[Elektronik 102] kennengelernt haben.
 Diese Kopplung ist einfach und kostengünstig, hat jedoch den Nachteil, dass sie ebenfalls ein Hochpassfilter ist, der das Signal formt.
 Sehr niedrige Frequenzen können auf diese Weise nicht übertragen werden. ..
 
