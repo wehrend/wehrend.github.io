@@ -208,14 +208,15 @@ Ein paar Dinge gilt es zu beachten:
 
 === Ausblick: Das Steuerwerk als Automat
 
-In link:/de/pages/15_risc_v/[RISC-V-Beitrag], dem folgenden Beitrag werden wie sehen, dass jeder Befehl die Phasen 
+Im Beitrag über den link:/de/pages/16_datapath/[Datenpfad] werden wir sehen, dass jeder Befehl die Phasen
 Befehl holen, Dekodieren, Ausführen, Speicherzugriff und Zurückschreiben durchläuft. In einer *Multi-Cycle-CPU*, 
 die pro Phase einen Takt verwendet, ist das Steuerwerk genau so ein Automat: Jede Phase ist ein Zustand, und die
 Ausgänge sind die Steuersignale für Multiplexer, ALU, Registerdatei und Speicher. Der Opcode des Befehls ist der 
 Eingang, der bestimmt, welcher Zustand als nächstes folgt.
 
 In unserer ersten CPU gehen wir den einfacheren Weg: In einer Single-Cycle-CPU werden alle Phasen in einem Takt
-durchlaufen, und das Steuerwerk wird zu reiner kombinatorischer Logik. Das sehen wir uns im nächsten Beitrag an.
+durchlaufen, und das Steuerwerk wird zu reiner kombinatorischer Logik. Das sehen wir uns im Kapitel über das
+link:/de/pages/17_cpu_control/[Steuerwerk] an.
 
 Zum Weiterlesen: David Money Harris und Sarah L. Harris, „Digital Design and Computer Architecture - RISC-V Edition“,
 Kapitel 3, behandelt Zustandsautomaten ausführlich.

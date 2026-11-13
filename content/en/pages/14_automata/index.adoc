@@ -209,14 +209,15 @@ There are a few things to watch out for:
 
 === Outlook: The control unit as a state machine
 
-In the following page link:/pages/15_risc_v/[RISC-V post] we will see that every instruction passes through the phases
+In the post about the link:/pages/16_datapath/[data path] we will see that every instruction passes through the phases
 fetch, decode, execute, memory access and write back. In a *multi-cycle CPU*, which uses one clock cycle per phase,
 the control unit is exactly such a state machine: every phase is a state, and the outputs are the control signals
 for multiplexers, ALU, register file and memory. The opcode of the instruction is the input which determines,
 which state follows.
 
 In our first CPU we take the simpler path: in a single-cycle CPU all phases are executed in one clock cycle,
-and the control unit becomes pure combinational logic. We will look at this in the next post.
+and the control unit becomes pure combinational logic. We will look at this in the chapter about the
+link:/pages/17_cpu_control/[control unit].
 
 Further reading: David Money Harris and Sarah L. Harris, 'Digital Design and Computer Architecture - RISC-V Edition',
 chapter 3, covers state machines in detail.

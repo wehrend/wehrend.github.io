@@ -1,13 +1,14 @@
 ---
 title: "The Control Unit"
 date: 2026-11-12
-weight: 160
+weight: 170
 tags: ['draft']
 category: "digital_logic_2"
 link:
 description: "The control unit of a single-cycle RISC-V CPU - from the opcode to the control signals, ALU control, immediate generator and a complete example program traced clock by clock."
 type: text
 bookHidden: true
+aliases: ["/pages/16_cpu_control/"]
 menu:
   docs:
     parent: "digital_logic_2"
@@ -16,7 +17,7 @@ menu:
 
 == The Control Unit
 
-At the end of the link:/pages/15_risc_v/[RISC-V post] one question remained open:
+At the end of the link:/pages/16_datapath/[post about the data path] one question remained open:
 how do the multiplexers, the ALU, the register file and the data memory know what to do
 for a particular instruction? In this post the author wants to answer this question by
 building the last missing piece of our CPU - the control unit.

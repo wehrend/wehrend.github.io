@@ -16,65 +16,51 @@ icon: "svg/cpu.svg"
 
 == How does a CPU work 2 - Table of contents
 
+== *From Combinational to Sequential Logic - Introduction*
 
+_link:/pages/11_sequential_logic/[Introduction to Sequential Logic]_
 
+We get from purely combinational logic circuits without any form of memory to sequential logic circuits
+with some type of memory (mostly flip-flops).
 
+== *Clocks, Flip-Flops and Registers*
 
+_link:/pages/12_clocks_and_registers/[Clocks, Flip-Flops and Registers]_
 
+We make a leap into the area of sequential logic and introduce some concepts vital for sequential logic,
+like clocks, flip-flops and registers.
 
+== *Memory*
 
+_link:/pages/13_memory/[Memory Organization]_
 
+We introduce the concept of memory and show how it is used in a CPU: memory hierarchy, RAM and ROM,
+SRAM vs. DRAM and the register file.
 
+== *Finite State Machines*
 
-==  *From Combinatorial to Sequential Logic - Introduction*
-_link:/pages/11_sequential_logic[Introduction to Sequential Logic]_
+_link:/pages/14_automata/[Finite State Machines]_
 
-We get from purely conmbinatorial logic circuits wihout any form of memeory to sequential logic circuits with some
-type of memory (mostly flipflops)
+We introduce Mealy and Moore (and Medvedev) machines and design a traffic light and a sequence detector -
+from the state diagram to the circuit.
 
-==  *Clocks,Flipflops and registers*
+== *RISC-V: The Instruction Set*
 
-_link:/pages/12_clocks_and_registers/[Clocks,flipflops and registers]_
+_link:/pages/15_risc_v/[RISC-V: The Instruction Set]_
 
-We make a leap into the area of sequential logic and introduce some concepts vital  for the sequential logics,
-like clock, flipflops and registers
+We decide what our CPU should be able to do: RISC vs. CISC, the RISC-V instruction set, the instruction formats
+and a first assembler program.
 
-==  *Automata*
+== *The Data Path*
 
-_link:/pages/14_automata/[Automata]_
+_link:/pages/16_datapath/[The Data Path]_
 
-We introduce the two (three) different automata Mealy, Moore (and Medwedjew). Those can be synchronous or
-asynchronous.
+We combine the ALU, registers and memory into a data path and look at the execution phases
+of the different instruction types.
 
-==  *Memory*
+== *The Control Unit*
 
-_link:/pages/13_memory/[Memory]_
-We introduce the concept of memory and how it is used in a CPU. 
-We also introduce the concept of a memory hierarchy and how it is used to improve performance.
+_link:/pages/17_cpu_control/[The Control Unit]_
 
-== *RISC-V and Computer Architecture*
-
-_link:/pages/15_risc_v/[RISC-V and Computer Architecture]_
-
-We combine the ALU, registers, and memory into a data path and examine the
-fetch-decode-execute cycle using a minimal RISC-V CPU as an example.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The last missing piece: the control unit generates the control signals from the opcode. In the end, our example
+program runs clock cycle by clock cycle through the finished CPU.

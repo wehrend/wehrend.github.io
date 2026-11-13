@@ -7,16 +7,17 @@ link:
 description: "Das Steuerwerk einer Single-Cycle-RISC-V-CPU - vom Opcode zu den Steuersignalen, ALU-Steuerung, Immediate-Generator und ein komplettes Beispielprogramm Takt für Takt."
 type: text
 bookHidden: true
+aliases: ["/de/pages/16_cpu_control/"]  # mit /de/, solange das CI Hugo 0.146.x nutzt
 menu:
   docs:
     parent: "digital_logik_2"
-    weight: 160
+    weight: 170
 ---
 {{< katex />}}
 
 == Das Steuerwerk
 
-Am Ende des link:/de/pages/15_risc_v/[RISC-V-Beitrags] blieb eine Frage offen:
+Am Ende des link:/de/pages/16_datapath/[Beitrags über den Datenpfad] blieb eine Frage offen:
 Woher wissen Multiplexer, ALU, Registerdatei und Datenspeicher, was sie bei einem bestimmten Befehl
 tun sollen? In diesem Beitrag möchte der Autor diese Frage beantworten und dafür das letzte fehlende
 Teil unserer CPU bauen - das Steuerwerk.

@@ -14,48 +14,50 @@ icon: "svg/cpu.svg"
 == Wie funktioniert eine CPU 2 - Inhaltsverzeichnis
 
 == *Von kombinatorischer zu sequentieller Logik - Einführung*
-_link:/de/pages/11_sequential_logic[Einführung in sequentielle Logik]_
 
-Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen Logikschaltungen mit irgendeiner
-Art von Speicher (meistens Flipflops)
+_link:/de/pages/11_sequential_logic/[Einführung in sequentielle Logik]_
+
+Wir gelangen von rein kombinatorischen Logikschaltungen ohne jegliche Form von Speicher zu sequentiellen
+Logikschaltungen mit irgendeiner Art von Speicher (meistens Flipflops).
 
 == *Taktgeber, Flipflops und Register*
 
 _link:/de/pages/12_clocks_and_registers/[Taktgeber, Flipflops und Register]_
 
-Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik wichtige Konzepte ein,
-wie Taktgeber, Flipflops und Register
-
-== *Automaten*
-
-_link:/de/pages/14_automata/[Automaten]_
-
-Wir stellen die zwei (drei) verschiedenen Automaten Mealy, Moore (und Medwedjew) vor. Diese können synchron oder
-asynchron sein.
+Wir machen einen Sprung in den Bereich der sequentiellen Logik und führen einige für die sequentielle Logik
+wichtige Konzepte ein, wie Taktgeber, Flipflops und Register.
 
 == *Speicher*
 
-_link:/de/pages/13_memory/[Speicher]_
-Wir führen das Konzept des Speichers ein und wie er in einer CPU verwendet wird.
-Wir stellen auch das Konzept einer Speicherhierarchie vor und wie sie verwendet wird, um die Leistung
-zu verbessern.
+_link:/de/pages/13_memory/[Speicherorganisation]_
 
-== *RISC-V und Rechnerarchitektur*
+Wir führen das Konzept des Speichers ein und zeigen, wie er in einer CPU verwendet wird:
+Speicherhierarchie, RAM und ROM, SRAM vs. DRAM und die Registerdatei.
 
-_link:/de/pages/15_risc_v/[RISC-V und Rechnerarchitektur]_
+== *Endliche Automaten*
 
-Wir setzen ALU, Register und Speicher zu einem Datenpfad zusammen und sehen uns den
-Fetch-Decode-Execute-Zyklus am Beispiel einer minimalen RISC-V-CPU an.
+_link:/de/pages/14_automata/[Endliche Automaten]_
 
+Wir stellen die Automaten nach Mealy und Moore (und Medwedew) vor und entwerfen eine Ampel und einen
+Sequenzdetektor - vom Zustandsdiagramm bis zur Schaltung.
 
+== *RISC-V: Der Befehlssatz*
 
+_link:/de/pages/15_risc_v/[RISC-V: Der Befehlssatz]_
 
+Wir legen fest, was unsere CPU können soll: RISC vs. CISC, der RISC-V-Befehlssatz, die Befehlsformate
+und ein erstes Assemblerprogramm.
 
+== *Der Datenpfad*
 
+_link:/de/pages/16_datapath/[Der Datenpfad]_
 
+Wir setzen ALU, Register und Speicher zu einem Datenpfad zusammen und sehen uns die Ausführungsphasen
+der verschiedenen Befehlstypen an.
 
+== *Das Steuerwerk*
 
+_link:/de/pages/17_cpu_control/[Das Steuerwerk]_
 
-
-
-
+Das letzte fehlende Teil: Das Steuerwerk erzeugt aus dem Opcode die Steuersignale. Am Ende läuft unser
+Beispielprogramm Takt für Takt durch die fertige CPU.

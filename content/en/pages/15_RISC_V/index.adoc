@@ -1,5 +1,5 @@
 ---
-title: "RISC-V and Computer Architecture"
+title: "RISC-V: The Instruction Set"
 date: 2022-03-21
 weight: 150
 tags: ['draft']
@@ -19,8 +19,8 @@ menu:
 
 So far we have looked at the individual building blocks of a processor: logic gates,
 adders and the ALU in part 1, and flip-flops, registers and memory in part 2.
-In this chapter we combine these building blocks into a simple CPU.
-Before we can do that, we have to decide *which* instructions this CPU should understand at all.
+In the next three chapters we combine these building blocks into a simple CPU.
+But first we have to decide *which* instructions this CPU should understand at all.
 This decision is called the **instruction set architecture** (ISA).
 It is the interface between software and hardware: the programmer (or compiler)
 only sees the instructions, and the hardware has to be able to execute them.
@@ -85,7 +85,7 @@ A few remarks:
   with an endless loop. `j done` is a so-called pseudo-instruction, which the assembler translates into `jal x0, done`.
 
 If you want to try the program yourself, you can use a RISC-V simulator such as Ripes, RARS or Venus.
-Ripes even shows the data path we discuss further below.
+Ripes even shows the data path we discuss in the next chapter.
 
 The instructions we use follow these formats:
 
@@ -113,108 +113,8 @@ An overview of the bit fields of the different instruction formats is given belo
 
 image:./instruction_types.png[width="140%"]
 
+== What's next?
 
-== A minimal implementation
-
-The minimal working subset of a RISC-V implementation contains the following instructions:
-
-* the arithmetic-logical instructions `add`, `sub`, `and` and `or` [R-type]
-* the memory instructions load word (`lw`) and store word (`sw`) [I-type and S-type]
-* the conditional branch instruction branch if equal (`beq`) [B-type]
-
-We will see how the chosen instruction set architecture affects key performance aspects such as
-clock rate and cycles per instruction (CPI).
-We will also see that the different instruction types only differ in the later phases
-of execution.
-
-For every instruction the first two steps are identical:
-
-  1. The program counter (PC) holds the address of the current instruction. This address is sent to the
-     instruction memory, which returns the instruction.
-
-  2. One or two registers are read from the register file; the register numbers are contained in the fields
-     of the instruction. `lw` and `addi` read only one register (`rs1`), all other instructions in our subset
-     read two (`rs1` and `rs2`).
-
-The next steps depend on the instruction type, but still use the same resources.
-R-type instructions use the ALU to compute the result, memory instructions use it to compute
-the address, and branch instructions use it for the equality test.
-Only after the ALU do the different instruction types really differ.
-
-image:./cpu_structure.svg[width="120%"]
-
-This abstract schematic does not explain all cases yet, however: for example, it does not show how the ALU knows
-which operation to perform, or when the register file is written.
-For that we need an extended schematic that also shows the control.
-
-image:./cpu_structure_with_control.svg[width="120%"]
-
-
-== The execution phases for the different instruction types
-
-We start with the five classic phases of a RISC processor
-and show what happens in each phase for typical instructions:
-
-Instruction fetch (IF) -> Decode and register read (ID) -> Execute (EX) -> Memory access (MEM) -> Write back (WB)
-
-[options="header"]
-|==================
-| Type | Instruction | Fetch (IF) | Decode (ID) | Execute (EX) | Memory access (MEM) | Write back (WB)
-| Register | `add`, `sub`, `and`, `or` | fetch instruction, compute PC + 4 | decode instruction, read rs1 and rs2 | ALU computes rs1 op rs2 | – | write result to rd
-| Load | `lw` | fetch instruction, compute PC + 4 | decode instruction, read rs1 | ALU computes address rs1 + offset | read word from data memory | write loaded word to rd
-| Store | `sw` | fetch instruction, compute PC + 4 | decode instruction, read rs1 and rs2 | ALU computes address rs1 + offset | write rs2 to data memory | –
-| Branch | `beq` | fetch instruction, compute PC + 4 | decode instruction, read rs1 and rs2 | ALU compares rs1 and rs2; second adder computes target PC + offset | – | PC = target if equal, otherwise PC + 4
-|==================
-
-So in the fetch phase, *every* instruction initially only computes PC + 4.
-Whether a branch is taken instead is only known for `beq` after the ALU has compared the two registers.
-A multiplexer then selects between PC + 4 and the branch target as the new value of the program counter.
-
-In our first, simple implementation all five phases are completed within a single clock cycle
-(single-cycle processor). Splitting execution into phases still helps understanding –
-and it is the foundation of pipelining, where several instructions are processed in different phases at the same time.
-
-
-=== The instruction part
-
-To explain a CPU on this abstract level, we need a few more concepts.
-An **instruction** is stored in memory and is accessible under a specific address.
-An **address** in RISC-V (in its 32-bit variant RV32) is a 32-bit value pointing to a specific byte
-in memory.
-The **program counter (PC)** is a register that holds the address of the current instruction in instruction memory.
-The program counter is connected to the first adder, which adds the constant 4 to it:
-an instruction is 32 bits = 4 bytes long, so the next instruction is located 4 addresses further on.
-
-image:./cpu_instruction_part.svg[width="120%"]
-
-If the instruction is a branch instruction, a second adder adds the offset contained in the instruction to the
-program counter. This is how **jumps** are created: if the branch condition is met, this result is loaded
-into the program counter instead of PC + 4.
-
-image:./cpu_instruction_path.svg[width="120%"]
-
-=== The data path
-
-The data path shows elements we are already familiar with: the ALU and the two memory blocks –
-the register file on the left and the data memory on the right.
-The first input of the ALU is connected to the first read port of the register file (`rs1`).
-The second input receives either the value of the second read port (`rs2`) or a constant from the instruction,
-such as the offset for `lw` and `sw`.
-Depending on the instruction, the ALU result is used as the value for the register file or as the address for data memory;
-for `lw`, the value read from data memory is written back to the register file.
-
-image:./cpu_data_path.svg[width="120%"]
-
-=== The control part
-
-So far, the control part is the most black-boxed element in our schematics.
-We already know how multiplexers work, and we can already see the feedback path
-through which a branch affects the program counter.
-What is still open is the central question: how do the multiplexers, the ALU, the register file and the data memory know
-what to do for a particular instruction?
-The answer is the control unit, which derives the appropriate control signals from the instruction's opcode.
-
-image:./cpu_structure_with_control.svg[width="120%"]
-
-NOTE: To be continued: in the next chapter we take a detailed look at the control unit
-and trace our example program clock cycle by clock cycle through the CPU.
+Now we know *what* our CPU should be able to do: we know the instruction set and the instruction formats,
+and we have written a first program. In the next chapter we look at *how* the hardware executes these
+instructions: link:/pages/16_datapath/[The Data Path].
