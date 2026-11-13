@@ -1,0 +1,34 @@
+---
+title: "The evolution of HDLs (Hardware Description Languages)"
+date: 2026-11-13
+weight: 170
+tags: ['draft']
+category: "digital_logic_3"
+link:
+description: "This chapter explains the origins and the evolution of so-called Hardware Description Languages (HDLs) 
+and their role in the design of digital circuits and systems."
+type: text
+bookHidden: true
+menu:
+  docs:
+    parent: "digital_logic_3"
+---
+{{< katex />}}
+
+
+== Hardware Description Languages (HDLs) and their use in modern digital design development
+
+
+== Origins of HDLs
+
+=== The (brief) history of HDLs
+
+
+=== Origins of VHDL 
+
+
+=== Origins of Verilog 
+
+
+== Which language to use and why...
+
