@@ -7,7 +7,7 @@ link:
 description:
 type: text
 bookHidden: true
-aliases: ["/de/pages/08_risc_v/"]  # mit /de/, solange das CI Hugo 0.146.x nutzt
+aliases: ["/pages/08_risc_v/"]
 menu:
   docs:
     parent: "digital_logik_2"

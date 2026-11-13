@@ -1,7 +1,7 @@
 {{ $lang := site.Language.Lang }}
 {{ $de := eq $lang "de" }}
 <div class="learning-paths">
-{{ range site.Data.paths }}
+{{ range hugo.Data.paths }}
   {{ $count := 0 }}
   {{ range .steps }}{{ $count = add $count (cond (reflect.IsSlice .) (len .) 1) }}{{ end }}
 

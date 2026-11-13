@@ -7,7 +7,7 @@ link:
 description: "Das Steuerwerk einer Single-Cycle-RISC-V-CPU - vom Opcode zu den Steuersignalen, ALU-Steuerung, Immediate-Generator und ein komplettes Beispielprogramm Takt für Takt."
 type: text
 bookHidden: true
-aliases: ["/de/pages/16_cpu_control/"]  # mit /de/, solange das CI Hugo 0.146.x nutzt
+aliases: ["/pages/16_cpu_control/"]
 menu:
   docs:
     parent: "digital_logik_2"

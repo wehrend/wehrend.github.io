@@ -6,7 +6,7 @@ link:
 description: 
 type: text
 bookHidden: true
-aliases: ["/de/pages/07_memory/"]
+aliases: ["/pages/07_memory/"]
 menu:
   docs:
     parent: "digital_logik_2"
