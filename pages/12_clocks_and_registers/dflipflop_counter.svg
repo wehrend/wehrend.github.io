@@ -1,0 +1,99 @@
+<svg width="150.00" height="100.00" 
+     viewBox="0.0 0.0 150.0 100.0" 
+     viewPort="0 0 150px 100px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="dflipflop">
+        <rect x="5" y="5" width="15" height="20" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="0" y1="10" x2="5" y2="10" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="0" y1="20" x2="5" y2="20" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <text x="6" y="12" font-size="6">D</text>
+<!--         <text x="6" y="22" font-size="6">Clk</text> -->
+        <line x1="20" y1="10" x2="26" y2="10" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="20" y1="20" x2="26" y2="20" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <polyline points="5,18 8,20 5,22" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <text x="14" y="12" font-size="6">Q</text>
+        <text x="14" y="22" text-decoration="overline" font-size="6">Q</text>
+    </symbol>
+    <use href="#dflipflop" x="20" y="10"/>
+    <line x1="6" y1="30" x2="25" y2="30" style="stroke:blue;stroke-width:0.5px;fill:none;"/>
+    <text x="6" y="28" font-size="4">Clk</text>
+    <polyline points="20,20 19,20 19,40 45,40 45,30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <circle cx="45" cy="30" r="0.5px" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <line x1="46" y1="30" x2="50" y2="30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <use href="#dflipflop" x="50" y="10"/>
+    <polyline points="50,20 49,20 49,40 75,40 75,30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <circle cx="75" cy="30" r="0.5px" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <line x1="76" y1="30" x2="80" y2="30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <use href="#dflipflop" x="80" y="10"/>
+    <polyline points="80,20 79,20 79,40 105,40 105,30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <circle cx="105" cy="30" r="0.5px" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <line x1="106" y1="30" x2="110" y2="30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <use href="#dflipflop" x="110" y="10"/>
+    <polyline points="110,20 109,20 109,40 135,40 135,30" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <circle cx="135" cy="30" r="0.5px" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <!--     outputs -->    
+    <line x1="46" y1="20" x2="46" y2="10" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <text x="40" y="10" font-size="4">Q
+        <tspan dx="-0.5" dy="2">0</tspan>
+    </text>
+    <line x1="76" y1="20" x2="76" y2="10" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <text x="70" y="10" font-size="4">Q
+        <tspan dx="-0.5" dy="2">1</tspan>
+    </text>
+    <line x1="106" y1="20" x2="106" y2="10" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <text x="100" y="10" font-size="4">Q
+        <tspan dx="-0.5" dy="2">2</tspan>
+    </text>
+    <line x1="136" y1="20" x2="136" y2="10" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <text x="130" y="10" font-size="4">Q
+        <tspan dx="-0.5" dy="2">3</tspan>
+    </text>
+    
+    <text x="4" y="48" font-size="3">Clk</text>
+    <line x1="10" y1="52" x2="150" y2="52" style="stroke:blue;stroke-width:0.5px;fill:none;"/>
+    <rect x="20" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="30" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="40" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="50" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="60" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="70" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="80" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="90" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="100" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="110" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="120" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="130" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="140" y="46" width="2" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <text x="6" y="58" font-size="3">Q
+        <tspan dx="-0.5" dy="2">0</tspan>
+    </text>
+    <line x1="10" y1="62" x2="140" y2="62" style="stroke:blue;stroke-width:0.5px;fill:none;"/>
+    <rect x="20" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="40" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="60" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="80" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="100" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="120" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="140" y="56" width="10" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <text x="6" y="68" font-size="3">Q
+        <tspan dx="-0.5" dy="2">1</tspan>
+    </text>
+    <line x1="10" y1="72" x2="150" y2="72" style="stroke:blue;stroke-width:0.5px;fill:none;"/>
+    <rect x="40" y="66" width="20" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="80" y="66" width="20" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="120" y="66" width="20" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <text x="6" y="78" font-size="3">Q
+        <tspan dx="-0.5" dy="2">2</tspan>
+    </text>
+    <line x1="10" y1="82" x2="150" y2="82" style="stroke:blue;stroke-width:0.5px;fill:none;"/>
+    <rect x="80" y="76" width="40" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <rect x="80" y="76" width="40" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+    <text x="6" y="88" font-size="3">Q
+        <tspan dx="-0.5" dy="2">3</tspan>
+    </text>
+    <line x1="10" y1="92" x2="150" y2="92" style="stroke:blue;stroke-width:0.5px;fill:none;"/>
+    <rect x="120" y="86" width="40" height="6" style="stroke:blue;stroke-width:0.5px;fill:blue;"/>
+</svg>

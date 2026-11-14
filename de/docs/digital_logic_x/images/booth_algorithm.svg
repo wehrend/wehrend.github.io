@@ -1,0 +1,89 @@
+<svg width="140px" 
+     height="100px"
+     viewBox="0.0 0.0 140.00 100.00"
+     viewPort = "0 0 140 100"
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <text x="10" y="5" font-size="5">A = (0100)<tspan baseline-shift = "sub" font-size="3.5">2</tspan> = 4</text>
+    <text x="10" y="15" font-size="5">B = (0111)<tspan baseline-shift = "sub" font-size="3.5">2</tspan> = 7</text>
+    <text x="55" y="15" font-size="5">-B = (1001)<tspan baseline-shift = "sub" font-size="3.5">2</tspan></text>
+
+    <text x="90" y="5" font-size="5">00: no action</text>
+    <text x="90" y="10" font-size="5">11: no action</text>
+    <text x="90" y="15" font-size="5">10: subtraction</text>
+    <text x="90" y="20" font-size="5">01: addition</text>
+
+    <text x="10" y="30" font-size="5">Iteration</text>
+    <text x="35" y="30" font-size="5">Step</text>
+    <text x="50" y="30" font-size="5">Product</text>
+    <text x="77" y="30" font-size="5">L</text>
+    <text x="95" y="30" font-size="5">Desc</text>
+    <line x1="10" y1="35" x2="120" y2="35" style="fill:none;stroke:black;stroke-width:0.6px;"/>
+    <!-- first line-->
+    <text x="10" y="40" font-size="5">0</text>
+    <text x="35" y="40" font-size="5">0</text>
+    <text x="50" y="40" font-size="5">0000 01000</text>
+    <text x="95" y="40" font-size="5">Initialize</text>
+    <line x1="61" y1="40.5" x2="71" y2="40.5" style="fill:none;stroke:blue;stroke-width:0.6px;"/>
+    <rect x="68.6" y="35.5" width="5.8" height="5" style="fill:none;stroke:red;stroke-width:0.5px;"/>
+    <!-- second line-->
+    <text x="10" y="45" font-size="5">1</text>
+    <text x="35" y="45" font-size="5">1.00</text>
+    <text x="60" y="45" font-size="5">"</text>
+    <text x="95" y="45" font-size="5">no action</text>
+    <!-- third line-->
+    <text x="10" y="50" font-size="5">1</text>
+    <text x="35" y="50" font-size="5">2</text>
+    <text x="50" y="50" font-size="5">0000 00100</text>
+    <text x="95" y="50" font-size="5">shift</text>
+    <line x1="64" y1="50.5" x2="71.1" y2="50.5" style="fill:none;stroke:blue;stroke-width:0.6px;"/>
+    <rect x="68.6" y="45.5" width="5.8" height="5" style="fill:none;stroke:red;stroke-width:0.5px;"/>
+    <!-- fourth line-->
+    <text x="10" y="55" font-size="5">2</text>
+    <text x="35" y="55" font-size="5">1.00</text>
+    <text x="60" y="55" font-size="5">"</text>
+    <text x="95" y="55" font-size="5">no action</text>
+    <!-- fifth line-->
+    <text x="10" y="60" font-size="5">2</text>
+    <text x="35" y="60" font-size="5">2</text>
+    <text x="50" y="60" font-size="5">0000 00010</text>
+    <text x="95" y="60" font-size="5">shift</text>
+    <line x1="67" y1="60.5" x2="71.1" y2="60.5" style="fill:none;stroke:blue;stroke-width:0.6px;"/>
+    <rect x="68.6" y="55.5" width="5.8" height="5" style="fill:none;stroke:red;stroke-width:0.5px;"/>
+    <!-- sixth line-->
+    <text x="10" y="65" font-size="5">3</text>
+    <text x="35" y="65" font-size="5">1.10</text>
+    <text x="50" y="65" font-size="5">1001 00010</text>
+    <text x="95" y="65" font-size="5">subtraction</text>
+    <line x1="67" y1="65.5" x2="71.1" y2="65.5" style="fill:none;stroke:blue;stroke-width:0.6px;"/>
+    <rect x="68.6" y="60.5" width="5.8" height="5" style="fill:none;stroke:red;stroke-width:0.5px;"/>
+    <!-- seventh line-->
+    <text x="10" y="70" font-size="5">3</text>
+    <text x="35" y="70" font-size="5">2</text>
+    <text x="50" y="70" font-size="5">1100 10001</text>
+    <text x="95" y="70" font-size="5">shift</text>
+    <line x1="68.8" y1="70.5" x2="71.1" y2="70.5" style="fill:none;stroke:blue;stroke-width:0.6px;"/>
+    <rect x="68.6" y="72.5" width="5.8" height="5" style="fill:none;stroke:red;stroke-width:0.5px;"/>
+    <text x="50.5" y="72.9" font-size="3.6">0</text>
+    <text x="52.9" y="72.9" font-size="3.6">1</text>
+    <text x="55.3" y="72.9" font-size="3.6">1</text>
+    <text x="57.7" y="72.9" font-size="3.6">1</text>
+    <!-- eigth line-->
+    <text x="10" y="77" font-size="5">4</text>
+    <text x="35" y="77" font-size="5">1.01</text>
+    <text x="50" y="77" font-size="5">0011 10001</text>
+    <text x="95" y="77" font-size="5">add</text>
+    <line x1="68.8" y1="77.5" x2="71.1" y2="77.5" style="fill:none;stroke:blue;stroke-width:0.6px;"/>
+    <!-- ninth line-->
+    <text x="10" y="82" font-size="5">4</text>
+    <text x="35" y="82" font-size="5">1.01</text>
+    <text x="50" y="82" font-size="5">0001 11000</text>
+    <text x="95" y="82" font-size="5">shift</text>
+
+    <line x1="50" y1="85" x2="50" y2="83" style="fill:none;stroke:black;stroke-width:0.6px;" stroke-linecap="round"/>
+    <line x1="71" y1="85" x2="71" y2="83" style="fill:none;stroke:black;stroke-width:0.6px;" stroke-linecap="round"/>
+    <line x1="50" y1="85" x2="71" y2="85" style="fill:none;stroke:black;stroke-width:0.6px;"/>
+
+
+    <text x="40" y="90" font-size="5">B = (00011100)<tspan baseline-shift = "sub" font-size="3.5">2</tspan> = 16+8+4 = 28</text>
+</svg>
+

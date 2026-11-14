@@ -1,0 +1,41 @@
+<svg width="100.00" height="60.00" 
+     viewBox="0.0 0.0 100.0 60.0" 
+     viewPort="0 0 100px 60px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="nand">
+        <line x1="0" y1="8" x2="5" y2="8" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="0" y1="16" x2="5" y2="16" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <rect x="5" y="5" width="10" height="12" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <text x="8" y="13" font-size="6">&amp;</text>
+        <circle cx="16" cy="11" r="1" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="17" y1="11" x2="26" y2="11" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    </symbol>
+   
+    <use href="#nand" x="34" y="7"/>
+    <use href="#nand" x="34" y="35"/>
+    <!--     clk -->
+    <text x="12" y="30" font-size="4">Clk</text>
+    <line x1="12" y1="32" x2="34" y2="32" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <circle cx="34" cy="32" r="0.5" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <line x1="34" y1="23" x2="34" y2="43" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <text x="12" y="14" font-size="4">D</text>
+    <line x1="24" y1="15" x2="24" y2="35" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <circle cx="24" cy="15" r="0.5" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <polyline points="21,35 27,35 24,40 21,35" style="stroke:black;stroke-width:0.5px;stroke-linecap:round;fill:none;"/>
+    <circle cx="24" cy="41" r="0.8" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <polyline points="24,42 24,51 34,51" style="stroke:black;stroke-width:0.5px;stroke-linecap:round;fill:none;"/>
+    <line x1="12" y1="15" x2="34" y2="15" style="stroke:black;stroke-width:0.5px;fill:none;stroke-linecap:round;"/>
+    <use href="#nand" x="60" y="10"/>
+    <use href="#nand" x="60" y="30"/>
+    <polyline points="82,21 82,28 60,34 60,38" style="stroke:black;stroke-width:0.5px;stroke-linecap:round;fill:none;"/>
+    <polyline points="82,41 82,34 60,28 60,26" style="stroke:black;stroke-width:0.5px;stroke-linecap:round;fill:none;"/>
+    <circle cx="82" cy="21" r="0.5" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <circle cx="82" cy="41" r="0.5" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+    <text x="58" y="16" text-decoration="overline" font-size="4">S</text>
+    <text x="58" y="44" text-decoration="overline" font-size="4">R</text>
+    <text x="88" y="23" font-size="6">Q</text>
+    <text x="88" y="43" text-decoration="overline" font-size="6">Q</text>
+</svg>

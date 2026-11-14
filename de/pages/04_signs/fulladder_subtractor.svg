@@ -1,0 +1,108 @@
+<svg width="200.00" height="100.00" 
+     viewBox="0.0 0.0 200.0 100.0" 
+     viewPort="0 0 200px 100px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <g transform="scale(0.22)" id="xor">
+            <g transform="rotate(90,70,50)">
+        <!--symbol-->
+        <line
+            x1="30"
+            y1="10"
+            x2="70"
+            y2="10"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line11" />
+        <line
+            x1="30"
+            y1="90"
+            x2="70"
+            y2="90"
+            style="fill:#ffffff;stroke:#000000"
+            stroke-width="2px"
+            id="line13" />
+        <path
+            id="ellipse8"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="70"
+            cy="50"
+            rx="40"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="m 69.504453,10.00307 a 40,40 0 0 1 34.935157,19.652064 40,40 0 0 1 0.352,40.081724 40,40 0 0 1 -34.584606,20.262606" />
+        <path
+            id="ellipse9"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="30"
+            cy="50"
+            rx="12.351695"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="M 29.846979,10.00307 A 12.351695,40 0 0 1 40.634688,29.655134 12.351695,40 0 0 1 40.743385,69.736858 12.351695,40 0 0 1 30.063921,89.999464" />
+        <g transform="translate(-5.0 0.0)">
+        <path
+            id="ellipse10"
+            style="fill:none;stroke:#000000;stroke-width:2px"
+            type="arc"
+            cx="15"
+            cy="50"
+            rx="12.351695"
+            ry="40"
+            start="4.7"
+            end="1.5656212"
+            open="true"
+            d="M 29.846979,10.00307 A 12.351695,40 0 0 1 40.634688,29.655134 12.351695,40 0 0 1 40.743385,69.736858 12.351695,40 0 0 1 30.063921,89.999464" />
+        </g>
+    </g>
+    </g>
+    </defs>
+    <symbol id="fulladder">
+        <rect x="10" y="40" width="26" height="26" style="fill:none;stroke:black;"/>
+        <text x="15" y="55" font-size="12">FA</text>
+        <!-- inputs -->
+        <line x1="13" y1="0" x2="13" y2="18" style="fill:none;stroke:black;"/>
+        <line x1="30" y1="0" x2="30" y2="40" style="fill:none;stroke:black;"/>
+        <text x="16" y="4" font-size="4">a</text>
+        <text x="32" y="4" font-size="4">b</text>
+        <line x1="24" y1="12" x2="24" y2="18" style="fill:none;stroke:black;"/>
+        <use x="3" y="15" href="#xor"/>
+        <line x1="18" y1="35" x2="18" y2="40" style="fill:none;stroke:black;"/>
+        <!--  sum -->    
+        <line x1="22.5" y1="66" x2="22.5" y2="80" style="fill:none;stroke:black;"/>
+        <text x="24" y="80" font-size="4">s</text>
+        <!-- carry -->
+        <line x1="3" y1="55" x2="10" y2="55" style="fill:none;stroke:black;"/>
+        <line x1="36" y1="55" x2="43" y2="55" style="fill:none;stroke:black;"/>
+    </symbol>
+    <rect x="20" y="15" width="165" height="70" style="fill:none;stroke:blue;"/> 
+    <use x="20" y="10" href="#fulladder"/>
+    <use x="60" y="10" href="#fulladder"/>
+    <use x="100" y="10" href="#fulladder"/>
+    <use x="140" y="10" href="#fulladder"/>
+    <circle cx="84" cy="22" r="0.7" style="fill:black;stroke:black;"/>
+    <circle cx="124" cy="22" r="0.7" style="fill:black;stroke:black;"/>
+    <circle cx="164" cy="22" r="0.7" style="fill:black;stroke:black;"/>
+    <circle cx="183" cy="22" r="0.7" style="fill:black;stroke:black;"/>
+    <polyline points="25,65 10,65 10,75" style="fill:none;stroke:black;"/>
+    <text x="12" y="75" font-size="4">c
+        <tspan baseline-shift = "sub">4</tspan>
+    </text>
+    <text x="178" y="68" font-size="4">c
+        <tspan baseline-shift = "sub">0</tspan>
+    </text>
+<!--     K -->
+    <text x="186" y="20" font-size="4">add/sub</text>
+    <line x1="44" y1="22" x2="190" y2="22" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <line x1="183" y1="22" x2="183" y2="65" style="fill:none;stroke:black;stroke-linecap:round;"/>
+     <text x="40" y="100" font-size="10">4-bit RC-adder / subtractor</text> 
+    
+</svg>

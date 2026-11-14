@@ -1,0 +1,81 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://wehrend.github.io/tags/pipewire/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="Pipewire"><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><meta itemprop=name content="Pipewire"><meta itemprop=datePublished content="2026-03-16T00:00:00+00:00"><meta itemprop=dateModified content="2026-03-16T00:00:00+00:00"><title>Pipewire | Bits & pieces - Sven Wehrend</title><link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=https://wehrend.github.io/tags/pipewire/><link rel=stylesheet href=/book.min.760ae2e99093035d9b01574aac690ed78becaacb12a017d20f46a306a109e441.css integrity="sha256-dgri6ZCTA12bAVdKrGkO14vsqssSoBfSD0ajBqEJ5EE=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/en.search.min.6f12c751dccb77bb22821e59ea13dc70a6d55c16759dc028aa75289d736f10c5.js integrity="sha256-bxLHUdzLd7sigh5Z6hPccKbVXBZ1ncAoqnUonXNvEMU=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://wehrend.github.io/tags/pipewire/index.xml title="Bits & pieces - Sven Wehrend"></head><body dir=ltr class="book-kind-term book-type-tags"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+English
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/de/ class="flex flex-auto">Deutsch</a></li></ul></li></ul><ul><li><a href=/sitemap/>Sitemap (EN)</a></li><li><a href=/about/>About</a></li><li><a href=/til/>Today I Learned</a></li><li><a href=/downloads>Download Archive</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Pipewire</h3><label for=toc-control></label></div></header><article class="markdown book-post"><h2><a href=/posts/web/36_pipewire_wireplumber/>Could not share my screen on Zoom, Google Meet or Discord - and how to solve it</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>March 16, 2026</span></div><div class=text-small><a href=/tags/linux/>Linux</a>,
+<a href=/tags/pipewire/>Pipewire</a>,
+<a href=/tags/wireplumber/>Wireplumber</a></div><div class=book-post-content><div class=sect1><h2 id=_could_not_share_my_screen_on_zoom_google_meet_or_discord_and_how_to_solve_it>Could not share my screen on Zoom, Google Meet or Discord - and how to solve it</h2><div class=sectionbody><div class=paragraph><p>If you are running <strong>Debian 12 (Bookworm)</strong> or a similar modern Linux distribution, you might have encountered a frustrating issue: you try to share your screen in a browser or a communication app, and nothing happens—or you get a cryptic error like <code>Failed to connect PipeWire context</code>.</p></div><div class=paragraph><p>The root cause is usually a disconnect between your desktop session and the <strong>PipeWire</strong> multimedia framework.</p></div><div class=sect2><h3 id=_the_problem_why_it_fails>The Problem: Why it fails</h3><div class=paragraph><p>Modern Linux desktops use <strong>Wayland</strong> for security, which requires a "Portal" to share your screen. If the PipeWire service or the session manager (<strong>WirePlumber</strong>) isn’t running correctly within your user session, the portal cannot "see" your monitor.</p></div><div class=paragraph><p>The most common mistake? Trying to fix it as the <code>root</code> user. PipeWire is a <strong>user-level service</strong> and must be managed by your standard user account.</p></div></div><div class=sect2><h3 id=_the_solution_reconnecting_the_wires>The Solution: Reconnecting the Wires</h3><div class=paragraph><p>Follow these steps to reset your PipeWire stack. <strong>Important:</strong> Do not use <code>sudo</code> for these commands!</p></div><div class="olist arabic"><ol class=arabic><li><p><strong>Switch to your standard user</strong>
+Make sure your terminal prompt shows your username (e.g., <code>sven@kali-yuga:~$</code>) and not <code>root#</code>.</p></li><li><p><strong>Reload and Enable the Services</strong>
+Run the following commands to ensure the services start automatically every time you log in:</p></li></ol></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=bash><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+2
+</pre></td><td class=code><pre>systemctl <span style=color:#116329>--user</span> daemon-reload
+systemctl <span style=color:#116329>--user</span> <span style=color:#953800>enable</span> <span style=color:#116329>--now</span> pipewire pipewire-pulse wireplumber
+</pre></td></tr></tbody></table></code></pre></div></div><div class="olist arabic"><ol class=arabic><li><p><strong>Restart the Session Manager</strong>
+If things are still glitchy, force a restart of the components:</p></li></ol></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=bash><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>systemctl <span style=color:#116329>--user</span> restart pipewire pipewire-pulse wireplumber
+</pre></td></tr></tbody></table></code></pre></div></div></div><div class=sect2><h3 id=_troubleshooting_the_bus_error>Troubleshooting: The "Bus" Error</h3><div class=paragraph><p>If you see <code>Failed to connect to bus: Operation not permitted</code>, you are likely still trying to run the commands as <code>root</code>. Exit the root shell and try again as a normal user.</p></div></div><div class=sect2><h3 id=_persistence>Persistence</h3><div class=paragraph><p>By using the <code>enable</code> flag, these settings will persist across reboots. Your screen sharing should now work seamlessly in Zoom, Discord, and Google Meet.</p></div><div class="admonitionblock tip"><table><tbody><tr><td class=icon><div class=title>Tip</div></td><td class=content><div class=paragraph><p>If you are using a Chromium-based browser, make sure to visit <code>chrome://flags/#enable-webrtc-pipewire-capturer</code> and set it to <strong>Enabled</strong> for the best experience.</p></div></td></tr></tbody></table></div><hr><div class=paragraph><p>You can check the status with the following command it should look similar like below (green - enabled)</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=bash><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno>1
+</pre></td><td class=code><pre>systemctl <span style=color:#116329>--user</span> restart pipewire pipewire-pulse wireplumber
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p><span class=image><img src=./systemctl_pipewire_wireplumber.png alt=systemctl></span></p></div></div></div></div></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav><ul><li class=book-section-flat><a>Categories</a><ul></ul></li><li class=book-section-flat><a>Tags</a><ul><li class="flex align-center"><a href=/tags/draft/>Draft</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/github-pages/>GitHub Pages</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/hugo/>Hugo</a>
+<span>4</span></li><li class="flex align-center"><a href=/tags/seo/>SEO</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/webdev/>Webdev</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/audio/>Audio</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/freertos/>FreeRTOS</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/rp2040/>RP2040</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/vocoder/>Vocoder</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ai/>AI</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ollama/>Ollama</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/qwen/>Qwen</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ltspice/>LTspice</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/spice/>SPICE</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/synth/>Synth</a>
+<span>18</span></li><li class="flex align-center"><a href=/tags/linux/>Linux</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/pipewire/>Pipewire</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/wireplumber/>Wireplumber</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/c++/>C++</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/qmake/>Qmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/qt/>Qt</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/cmake/>Cmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/dsp/>DSP</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/sdl/>SDL</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/cpu/>Cpu</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/desktop/>Desktop</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/embedded/>Embedded</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/mcu/>Mcu</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/busybox/>Busybox</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/web/>Web</a>
+<span>9</span></li><li class="flex align-center"><a href=/tags/nlc/>NLC</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/sloth/>Sloth</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/gh-actions/>Gh-Actions</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/gh-pages/>Gh-Pages</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/frontend/>Frontend</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/odoo/>Odoo</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/debian/>Debian</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/postgres/>Postgres</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/python/>Python</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/beginners/>Beginners</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/ecad/>Ecad</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/eda/>Eda</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/fpga/>Fpga</a>
+<span>5</span></li><li class="flex align-center"><a href=/tags/icecube2/>IceCube2</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/kicad/>Kicad</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/lattice/>Lattice</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/nandland-go/>Nandland Go</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/diy/>DIY</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/duckburg/>Duckburg</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/ltb/>LTB</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/quartus/>Quartus</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/verilog/>Verilog</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/modelsim/>Modelsim</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/chemistry/>Chemistry</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/electronics/>Electronics</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/analog/>Analog</a>
+<span>2</span></li><li class="flex align-center"><a href=/tags/computing/>Computing</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/knowhow/>Knowhow</a>
+<span>3</span></li><li class="flex align-center"><a href=/tags/blog/>Blog</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/consciousness/>Consciousness</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/electronic/>Electronic</a>
+<span>1</span></li><li class="flex align-center"><a href=/tags/nikola/>Nikola</a>
+<span>1</span></li></ul></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

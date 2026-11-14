@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1950" viewBox="0 0 900 1950">
+  <defs>
+    <style>
+      .grid { stroke:#111; stroke-width:2; fill:none; }
+      .thin { stroke:#111; stroke-width:1; }
+      .hdr  { font-family: Arial, Helvetica, sans-serif; font-size:20px; font-weight:700; fill:#111; }
+      .lbl  { font-family: Arial, Helvetica, sans-serif; font-size:18px; fill:#111; }
+      .cell { font-family: Arial, Helvetica, sans-serif; font-size:26px; fill:#111;
+              text-anchor:middle; dominant-baseline:middle; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size:14px; fill:#333; }
+    </style>
+  </defs>
+
+  <!-- ========================================================= -->
+  <!-- Header / conventions                                      -->
+  <!-- ========================================================= -->
+  <text class="hdr" x="40" y="40">Karnaugh-Maps (4×4) für Y₂, Y₁, Y₀ aus deiner Wahrheitstabelle</text>
+  <text class="note" x="40" y="66">
+    Gray-Code: Zeilen AB = 00,01,11,10; Spalten CD = 00,01,11,10.
+    Zellindizes je Zeile: AB00→(0,1,3,2), AB01→(4,5,7,6), AB11→(12,13,15,14), AB10→(8,9,11,10).
+    '*' / nicht definierte Fälle = X (Don’t Care).
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- MAP 1: Y2                                                 -->
+  <!-- ========================================================= -->
+
+  <rect x="290" y="450" width="450" height="180" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <rect x="385" y="350" width="250" height="180" rx="15" ry="15" style="fill:none;stroke:red;stroke-width:1px;"/>
+  <rect x="500" y="350" width="250" height="180" rx="15" ry="15" style="fill:none;stroke:blue;stroke-width:1px;"/>
+  <text class="hdr" x="40" y="120">Karnaugh-Map (4×4) für Y₂</text>
+
+  <!-- Axis labels -->
+  <text class="hdr" x="90" y="210">AB</text>
+  <text class="hdr" x="450" y="210">CD</text>
+
+  <!-- Column headers (CD Gray: 00 01 11 10) -->
+  <text class="lbl" x="340" y="210">00</text>
+  <text class="lbl" x="460" y="210">01</text>
+  <text class="lbl" x="580" y="210">11</text>
+  <text class="lbl" x="700" y="210">10</text>
+
+  <!-- Row headers (AB Gray: 00 01 11 10) -->
+  <text class="lbl" x="220" y="290">00</text>
+  <text class="lbl" x="220" y="390">01</text>
+  <text class="lbl" x="220" y="490">11</text>
+  <text class="lbl" x="220" y="590">10</text>
+
+  <!-- Grid: origin (270,240); cell=120; 4x4 -->
+  <rect class="grid" x="270" y="240" width="480" height="400"/>
+  <!-- Inner grid lines -->
+  <line class="thin" x1="390" y1="240" x2="390" y2="640"/>
+  <line class="thin" x1="510" y1="240" x2="510" y2="640"/>
+  <line class="thin" x1="630" y1="240" x2="630" y2="640"/>
+  <line class="thin" x1="270" y1="340" x2="750" y2="340"/>
+  <line class="thin" x1="270" y1="440" x2="750" y2="440"/>
+  <line class="thin" x1="270" y1="540" x2="750" y2="540"/>
+
+  <!-- Cell centers: cols 330/450/570/690; rows 290/390/490/590 -->
+  <!-- Y2 from table: m0=X, m1=0, m2=0, m3=0, m4=0, m5=1, m6=1, m7=X; others X -->
+  <!-- AB=00: (0,1,3,2) => (X,0,0,0) -->
+  <text class="cell" x="330" y="290">X</text>
+  <text class="cell" x="450" y="290">0</text>
+  <text class="cell" x="570" y="290">0</text>
+  <text class="cell" x="690" y="290">0</text>
+  <!-- AB=01: (4,5,7,6) => (0,1,X,1) -->
+  <text class="cell" x="330" y="390">0</text>
+  <text class="cell" x="450" y="390">1</text>
+  <text class="cell" x="570" y="390">X</text>
+  <text class="cell" x="690" y="390">1</text>
+  <!-- AB=11: (12,13,15,14) => X X X X -->
+  <text class="cell" x="330" y="490">X</text>
+  <text class="cell" x="450" y="490">X</text>
+  <text class="cell" x="570" y="490">X</text>
+  <text class="cell" x="690" y="490">X</text>
+  <!-- AB=10: (8,9,11,10) => X X X X -->
+  <text class="cell" x="330" y="590">X</text>
+  <text class="cell" x="450" y="590">X</text>
+  <text class="cell" x="570" y="590">X</text>
+  <text class="cell" x="690" y="590">X</text>
+
+
+  <!-- ========================================================= -->
+  <!-- MAP 2: Y1                                                 -->
+  <!-- ========================================================= -->
+  <text class="hdr" x="40" y="750">Karnaugh-Map (4×4) für Y₁</text>
+
+
+  <rect x="290" y="1080" width="450" height="180" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <rect x="280" y="880" width="120" height="360" rx="15" ry="15" style="fill:none;stroke:red;stroke-width:1px;"/>
+  <rect x="510" y="880" width="120" height="360" rx="15" ry="15" style="fill:none;stroke:blue;stroke-width:1px;"/>
+  <!-- Axis labels -->
+  <text class="hdr" x="90" y="840">AB</text>
+  <text class="hdr" x="450" y="840">CD</text>
+
+  <!-- Column headers -->
+  <text class="lbl" x="340" y="840">00</text>
+  <text class="lbl" x="460" y="840">01</text>
+  <text class="lbl" x="580" y="840">11</text>
+  <text class="lbl" x="700" y="840">10</text>
+
+  <!-- Row headers -->
+  <text class="lbl" x="220" y="920">00</text>
+  <text class="lbl" x="220" y="1020">01</text>
+  <text class="lbl" x="220" y="1120">11</text>
+  <text class="lbl" x="220" y="1220">10</text>
+
+  <!-- Grid: origin (270,870) -->
+  <rect class="grid" x="270" y="870" width="480" height="400"/>
+  <!-- Inner grid lines -->
+  <line class="thin" x1="390" y1="870" x2="390" y2="1270"/>
+  <line class="thin" x1="510" y1="870" x2="510" y2="1270"/>
+  <line class="thin" x1="630" y1="870" x2="630" y2="1270"/>
+  <line class="thin" x1="270" y1="970" x2="750" y2="970"/>
+  <line class="thin" x1="270" y1="1070" x2="750" y2="1070"/>
+  <line class="thin" x1="270" y1="1170" x2="750" y2="1170"/>
+
+  <!-- Cell centers: cols 330/450/570/690; rows 920/1020/1120/1220 -->
+  <!-- Y1 from table: m0=X, m1=0, m2=0, m3=1, m4=1, m5=0, m6=0, m7=X; others X -->
+  <!-- AB=00: (0,1,3,2) => (X,0,1,0) -->
+  <text class="cell" x="330" y="920">X</text>
+  <text class="cell" x="450" y="920">0</text>
+  <text class="cell" x="570" y="920">1</text>
+  <text class="cell" x="690" y="920">0</text>
+  <!-- AB=01: (4,5,7,6) => (1,0,X,0) -->
+  <text class="cell" x="330" y="1020">1</text>
+  <text class="cell" x="450" y="1020">0</text>
+  <text class="cell" x="570" y="1020">X</text>
+  <text class="cell" x="690" y="1020">0</text>
+  <!-- AB=11: X X X X -->
+  <text class="cell" x="330" y="1120">X</text>
+  <text class="cell" x="450" y="1120">X</text>
+  <text class="cell" x="570" y="1120">X</text>
+  <text class="cell" x="690" y="1120">X</text>
+  <!-- AB=10: X X X X -->
+  <text class="cell" x="330" y="1220">X</text>
+  <text class="cell" x="450" y="1220">X</text>
+  <text class="cell" x="570" y="1220">X</text>
+  <text class="cell" x="690" y="1220">X</text>
+
+
+  <!-- ========================================================= -->
+  <!-- MAP 3: Y0                                                 -->
+  <!-- ========================================================= -->
+  <text class="hdr" x="40" y="1380">Karnaugh-Map (4×4) für Y₀</text>
+  <rect x="272" y="1500" width="120" height="380" rx="15" ry="15" style="fill:lightblue;stroke:none;stroke-width:1px;"/>
+  <rect x="630" y="1500" width="120" height="380" rx="15" ry="15" style="fill:lightblue;stroke:none;stroke-width:1px;"/><rect x="290" y="1705" width="450" height="180" rx="15" ry="15" style="fill:green;stroke:none;stroke-width:0.5px;"/>
+  <!-- Axis labels -->
+  <text class="hdr" x="90" y="1470">AB</text>
+  <text class="hdr" x="450" y="1470">CD</text>
+
+  <!-- Column headers -->
+  <text class="lbl" x="340" y="1470">00</text>
+  <text class="lbl" x="460" y="1470">01</text>
+  <text class="lbl" x="580" y="1470">11</text>
+  <text class="lbl" x="700" y="1470">10</text>
+
+  <!-- Row headers -->
+  <text class="lbl" x="220" y="1550">00</text>
+  <text class="lbl" x="220" y="1650">01</text>
+  <text class="lbl" x="220" y="1750">11</text>
+  <text class="lbl" x="220" y="1850">10</text>
+
+  <!-- Grid: origin (270,1500) -->
+  <rect class="grid" x="270" y="1500" width="480" height="400"/>
+  <!-- Inner grid lines -->
+  <line class="thin" x1="390" y1="1500" x2="390" y2="1900"/>
+  <line class="thin" x1="510" y1="1500" x2="510" y2="1900"/>
+  <line class="thin" x1="630" y1="1500" x2="630" y2="1900"/>
+  <line class="thin" x1="270" y1="1600" x2="750" y2="1600"/>
+  <line class="thin" x1="270" y1="1700" x2="750" y2="1700"/>
+  <line class="thin" x1="270" y1="1800" x2="750" y2="1800"/>
+
+  <!-- Cell centers: cols 330/450/570/690; rows 1550/1650/1750/1850 -->
+  <!-- Y0 from table: m0=X, m1=0, m2=1, m3=0, m4=1, m5=0, m6=1, m7=X; others X -->
+  <!-- AB=00: (0,1,3,2) => (X,0,0,1) -->
+  <text class="cell" x="330" y="1550">X</text>
+  <text class="cell" x="450" y="1550">0</text>
+  <text class="cell" x="570" y="1550">0</text>
+  <text class="cell" x="690" y="1550">1</text>
+  <!-- AB=01: (4,5,7,6) => (1,0,X,1) -->
+  <text class="cell" x="330" y="1650">1</text>
+  <text class="cell" x="450" y="1650">0</text>
+  <text class="cell" x="570" y="1650">X</text>
+  <text class="cell" x="690" y="1650">1</text>
+  <!-- AB=11: X X X X -->
+  <text class="cell" x="330" y="1750">X</text>
+  <text class="cell" x="450" y="1750">X</text>
+  <text class="cell" x="570" y="1750">X</text>
+  <text class="cell" x="690" y="1750">X</text>
+  <!-- AB=10: X X X X -->
+  <text class="cell" x="330" y="1850">X</text>
+  <text class="cell" x="450" y="1850">X</text>
+  <text class="cell" x="570" y="1850">X</text>
+  <text class="cell" x="690" y="1850">X</text>
+
+</svg>

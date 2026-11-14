@@ -1,0 +1,33 @@
+<svg width="150px" 
+     height="100px" 
+     viewBox="0.0 0.0 150.00 100.00" 
+     viewPort = "0 0 150 100" 
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <marker id="startarrow" markerWidth="4" markerHeight="3" refX="4" refY="1.5" orient="auto">
+            <polygon points="4 0, 4 3, 0 1.5" fill="lightskyblue" />
+        </marker>
+        <marker id="endarrow" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto" markerUnits="strokeWidth">
+            <polygon points="0 0, 4 1.5, 0 3" fill="lightskyblue" />
+        </marker>
+    </defs>
+    <rect x="15" y="10" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
+    <text x="20" y="20" font-size="4">Formula</text>
+    
+    <rect x="65" y="10" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
+    <text x="70" y="20" font-size="4">Truth Table</text>
+    
+    <polyline points="30,35 30,45" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-start="url(#startarrow)" marker-end="url(#endarrow)"/>
+    <polyline points="80,35 80,45" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-start="url(#startarrow)" marker-end="url(#endarrow)"/>
+    
+    <polyline points="50,20 60,20" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-start="url(#startarrow)" marker-end="url(#endarrow)"/>
+    <polyline points="50,60 60,60" style="fill:none;stroke:lightskyblue;stroke-width:0.5px;" marker-start="url(#startarrow)" marker-end="url(#endarrow)"/>
+    <rect x="15" y="50" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
+    <text x="20" y="60" font-size="4">Circuit</text>
+    
+    <rect x="65" y="50" width="30" height="20" rx="5" ry="5" style="fill:lightgrey;stroke:black;stroke-width:0.5px;"/>
+    <text x="68" y="60" font-size="4">Karnaugh Map</text>
+    
+   
+</svg>
+

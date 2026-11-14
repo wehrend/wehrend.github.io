@@ -1,0 +1,95 @@
+<svg width="200" height="200" viewBox="0 0 200 200"
+     xmlns="http://www.w3.org/2000/svg">
+  <text x="100" y="18" font-size="9" text-anchor="middle">Covalent bonding of germanium (Ge)</text>
+
+  <defs>
+    <g id="GeAtom">
+      <!-- Zentrum -->
+      <circle cx="0" cy="0" r="4" style="fill:white;stroke:black;stroke-width:0.3"/>
+      <text x="-3" y="1.5" font-size="3">Ge</text>
+
+      <!-- Schalen -->
+      <circle cx="0" cy="0" r="8" style="stroke:gray;fill:none;opacity:0.3"/>
+      <circle cx="0" cy="0" r="14" style="stroke:gray;fill:none;opacity:0.3"/>
+      <circle cx="0" cy="0" r="20" style="stroke:gray;fill:none;opacity:0.3"/>
+      <circle cx="0" cy="0" r="26" style="stroke:gray;fill:none;opacity:0.3"/>
+
+      <!-- K-Schale: 2 e⁻ -->
+      <circle cx="8" cy="0" r="1.2" style="fill:blue"/>
+      <circle cx="-8" cy="0" r="1.2" style="fill:blue"/>
+
+      <!-- L-Schale: 8 e⁻ -->
+      <g>
+        <circle cx="14" cy="0" r="1.2" style="fill:blue"/>
+        <circle cx="9.9" cy="9.9" r="1.2" style="fill:blue"/>
+        <circle cx="0" cy="14" r="1.2" style="fill:blue"/>
+        <circle cx="-9.9" cy="9.9" r="1.2" style="fill:blue"/>
+        <circle cx="-14" cy="0" r="1.2" style="fill:blue"/>
+        <circle cx="-9.9" cy="-9.9" r="1.2" style="fill:blue"/>
+        <circle cx="0" cy="-14" r="1.2" style="fill:blue"/>
+        <circle cx="9.9" cy="-9.9" r="1.2" style="fill:blue"/>
+      </g>
+
+      <!-- M-Schale: 18 e⁻ -->
+      <g>
+        <!-- 18 Elektronen gleichmäßig -->
+        <circle cx="20" cy="0" r="1.2" style="fill:blue"/>
+        <circle cx="18.8" cy="6.8" r="1.2" style="fill:blue"/>
+        <circle cx="15.3" cy="13" r="1.2" style="fill:blue"/>
+        <circle cx="10.2" cy="17.7" r="1.2" style="fill:blue"/>
+        <circle cx="3.5" cy="19.7" r="1.2" style="fill:blue"/>
+        <circle cx="-3.5" cy="19.7" r="1.2" style="fill:blue"/>
+        <circle cx="-10.2" cy="17.7" r="1.2" style="fill:blue"/>
+        <circle cx="-15.3" cy="13" r="1.2" style="fill:blue"/>
+        <circle cx="-18.8" cy="6.8" r="1.2" style="fill:blue"/>
+        <circle cx="-20" cy="0" r="1.2" style="fill:blue"/>
+        <circle cx="-18.8" cy="-6.8" r="1.2" style="fill:blue"/>
+        <circle cx="-15.3" cy="-13" r="1.2" style="fill:blue"/>
+        <circle cx="-10.2" cy="-17.7" r="1.2" style="fill:blue"/>
+        <circle cx="-3.5" cy="-19.7" r="1.2" style="fill:blue"/>
+        <circle cx="3.5" cy="-19.7" r="1.2" style="fill:blue"/>
+        <circle cx="10.2" cy="-17.7" r="1.2" style="fill:blue"/>
+        <circle cx="15.3" cy="-13" r="1.2" style="fill:blue"/>
+        <circle cx="18.8" cy="-6.8" r="1.2" style="fill:blue"/>
+      </g>
+
+      <!-- N-Schale: 4 Valenzelektronen -->
+      <circle cx="26" cy="0" r="1.2" style="fill:blue"/>
+      <circle cx="-26" cy="0" r="1.2" style="fill:blue"/>
+      <circle cx="0" cy="26" r="1.2" style="fill:blue"/>
+      <circle cx="0" cy="-26" r="1.2" style="fill:blue"/>
+    </g>
+  </defs>
+
+  <!-- Gitter (3x3 Ge-Atome) zentriert -->
+  <g transform="translate(40,40)">
+    <use href="#GeAtom" x="0" y="0"/>
+    <use href="#GeAtom" x="60" y="0"/>
+    <use href="#GeAtom" x="120" y="0"/>
+
+    <use href="#GeAtom" x="0" y="60"/>
+    <use href="#GeAtom" x="60" y="60"/>
+    <use href="#GeAtom" x="120" y="60"/>
+
+    <use href="#GeAtom" x="0" y="120"/>
+    <use href="#GeAtom" x="60" y="120"/>
+    <use href="#GeAtom" x="120" y="120"/>
+
+    <!-- Rote Ellipsen: Kovalente Bindungspaare -->
+    <!-- horizontal -->
+    <ellipse cx="30" cy="0" rx="8" ry="3" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="90" cy="0" rx="8" ry="3" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="30" cy="60" rx="8" ry="3" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="90" cy="60" rx="8" ry="3" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="30" cy="120" rx="8" ry="3" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="90" cy="120" rx="8" ry="3" style="stroke:red;fill:none;stroke-width:0.3"/>
+
+    <!-- vertikal -->
+    <ellipse cx="0" cy="30" rx="3" ry="8" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="60" cy="30" rx="3" ry="8" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="120" cy="30" rx="3" ry="8" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="0" cy="90" rx="3" ry="8" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="60" cy="90" rx="3" ry="8" style="stroke:red;fill:none;stroke-width:0.3"/>
+    <ellipse cx="120" cy="90" rx="3" ry="8" style="stroke:red;fill:none;stroke-width:0.3"/>
+  </g>
+</svg>

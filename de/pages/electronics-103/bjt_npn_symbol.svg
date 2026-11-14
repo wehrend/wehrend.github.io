@@ -1,0 +1,40 @@
+<svg width="150.00" height="110.00"
+     viewBox="0.0 0.0 150.0 110.0"
+     viewPort="0 0 150px 110px"
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+
+
+    <text x="65" y="12" font-size="10">NPN</text>
+
+    <g transform="translate(0 15.5)">
+    <g id="npn_classic">
+        <!--Collector-->
+        <text x="81" y="13" font-size="5">C</text>
+        <polyline points="73,20 80,15 80,05 " style="stroke:black;stroke-width:1;fill:none;"/>
+        <circle cx="58" cy="25" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+
+        <!--Basis-->
+        <text x="38" y="25" font-size="5">Basis</text>
+        <line x1="58" y1="25" x2="73" y2="25" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <line x1="73" y1="18" x2="73" y2="31" style="stroke:black;stroke-width:1;fill:none;"/>
+
+        <!--Emitter-->
+        <text x="81" y="40" font-size="5">E</text>
+        <polyline points="73,28 80,35 80,42" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!-- Arrow for NPN emitter -->
+        <line x1="77" y1="34" x2="80" y2="37" style="stroke:black;stroke-width:1;marker-end:url(#arrowhead)"/>
+
+        <!--Circle-->
+        <circle cx="76" cy="25" r="11" style="stroke:black;stroke-width:1;fill:none;"/>
+    </g>
+    </g>
+    <!-- Marker definition for arrowhead -->
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3"
+              orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L6,3 z" fill="black" />
+      </marker>
+    </defs>
+</svg>

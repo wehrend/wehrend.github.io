@@ -1,0 +1,75 @@
+<svg width="150.00" height="110.00" 
+     viewBox="0.0 0.0 150.0 110.0" 
+     viewPort="0 0 150px 110px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    
+    <text x="10" y="8" font-size="6">PMOS</text>
+    <g id="pmos_simple">
+        <polyline points="50,18 40,18  40,33 50,33" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <text x="51" y="19" font-size="5">S</text>
+        <text x="51" y="34" font-size="5">D</text>
+        <circle cx="37" cy="25" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="38" y1="18" x2="38" y2="33" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="25" y1="25" x2="36" y2="25" style="stroke:black;stroke-width:1;fill:none;"/>
+        <text x="21" y="26" font-size="5">G</text>
+    </g>
+    
+    <g id="pmos_classic">
+        <line x1="75" y1="17" x2="75" y2="21" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="75" y1="23" x2="75" y2="27" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="75" y1="29" x2="75" y2="33" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Source-->
+        <text x="81" y="13" font-size="5">S</text>
+        <polyline points="75,19 80,19 80,10" style="stroke:black;stroke-width:1;fill:none;"/> 
+        <polyline points="75,25 80,25 80,10" style="stroke:black;stroke-width:1;fill:none;"/>
+        <polygon points="77,24 79,25 77,26 77,24" stroke="black"/>
+        <circle cx="37" cy="25" r="1" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Gate-->
+        <text x="58" y="19" font-size="5">G</text>
+        <line x1="62" y1="18" x2="73" y2="18" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <line x1="73" y1="18" x2="73" y2="31" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Drain-->
+        <text x="81" y="40" font-size="5">D</text>
+        <polyline points="75,31 80,31 80,40" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Circle-->
+        <circle cx="76" cy="25" r="11" style="stroke:black;stroke-width:1;fill:none;"/>
+    </g>
+    
+    
+    
+    <text x="10" y="48" font-size="6">NMOS</text>
+    <g id="nmos_simple">
+        <polyline points="50,60 40,60  40,75 50,75" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <text x="51" y="62" font-size="5">D</text>
+        <text x="51" y="77" font-size="5">S</text>
+        <line x1="38" y1="60" x2="38" y2="75" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="25" y1="67" x2="38" y2="67" style="stroke:black;stroke-width:1;fill:none;"/>
+        <text x="21" y="69" font-size="5">G</text>
+    </g>
+    
+    <g id="nmos_classic">
+        <line x1="75" y1="62" x2="75" y2="66" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="75" y1="68" x2="75" y2="72" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="75" y1="74" x2="75" y2="78" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Source-->
+        <text x="81" y="85" font-size="5">S</text>
+        <polyline points="75,76 80,76 80,85" style="stroke:black;stroke-width:1;fill:none;"/> 
+        <polyline points="75,70 80,70 80,85" style="stroke:black;stroke-width:1;fill:none;"/>
+        <g id="arrow" rotate="90">
+            <polygon points="78,69 76,70 78,71 78,69" stroke="black"/>
+        </g>
+        <!--Gate-->
+        <text x="58" y="78" font-size="5">G</text>
+        <line x1="62" y1="76" x2="73" y2="76" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <line x1="73" y1="63" x2="73" y2="76" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Drain-->
+        <text x="81" y="57" font-size="5">D</text>
+        <polyline points="75,64 80,64 80,53" style="stroke:black;stroke-width:1;fill:none;"/>
+        <!--Circle-->
+        <circle cx="76" cy="70" r="11" style="stroke:black;stroke-width:1;fill:none;"/>
+    </g>
+    
+</svg>
