@@ -118,3 +118,5 @@ image:./instruction_types.png[width="140%"]
 Now we know *what* our CPU should be able to do: we know the instruction set and the instruction formats,
 and we have written a first program. In the next chapter we look at *how* the hardware executes these
 instructions: link:/pages/16_datapath/[The Data Path].
+
+(Proofread with Claude AI)

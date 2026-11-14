@@ -1,0 +1,42 @@
+---
+title: "How does a CPU work? – Part 3: From Schematic to Chip"
+date: 2026-11-13
+tags: ['draft']
+category: "digital_logic_3"
+type: 'docs'
+link:
+description: "Hardware description languages, simulation and programmable logic - the CPU from part 2 in Verilog."
+identifier: digital_logic_3
+weight: 30
+bookHidden: true
+overview: true
+icon: "svg/fpga.svg"
+planned:
+  - slug: "21_hdl"
+    title: "Hardware Description Languages"
+    summary: "Why hardware is described as text, and the basics of Verilog: modules, signals, assign and always."
+  - slug: "22_simulation"
+    title: "Simulation and Testbenches"
+    summary: "Testing circuits before they exist: writing testbenches, simulating and reading waveforms."
+  - slug: "23_combinational_verilog"
+    title: "Combinational Logic in Verilog"
+    summary: "Gates, full adders, decoders and the ALU from part 1 - this time as Verilog code."
+  - slug: "24_sequential_verilog"
+    title: "Sequential Logic in Verilog"
+    summary: "Flip-flops, registers, counters and the traffic light from the chapter on finite state machines."
+  - slug: "25_arithmetic_units"
+    title: "Arithmetic Units"
+    summary: "Barrel shifters, multipliers, and dividers—how hardware shifts, multiplies, and divides."
+  - slug: "26_cpu_verilog"
+    title: "The CPU in Verilog"
+    summary: "Register file, data path and control unit from part 2 - our counter program runs in simulation."
+  - slug: "27_code_to_chip"
+    title: "From Code to Chip"
+    summary: "What happens during synthesis, place & route and timing analysis until the CPU runs on an FPGA."
+---
+
+== How does a CPU work 3 - Table of contents
+
+In parts 1 and 2 we designed a CPU from the logic gate up to the control unit - on paper.
+In part 3 we describe the same hardware in a hardware description language (Verilog),
+test it in simulation and look at how it becomes a circuit on an FPGA.

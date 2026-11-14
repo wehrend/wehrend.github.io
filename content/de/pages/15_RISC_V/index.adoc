@@ -121,3 +121,5 @@ ein erstes Programm geschrieben. Im nächsten Kapitel schauen wir uns an, *wie* 
 ausführt: link:/de/pages/16_datapath/[Der Datenpfad].
 
 (translation: 2024-12-29)
+
+(Gegengelesen mit Claude AI)

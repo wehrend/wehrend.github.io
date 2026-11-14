@@ -1,0 +1,164 @@
+---
+title: "Die Entwicklung der HDLs (Hardwarebeschreibungssprachen)"
+date: 2026-11-13
+tags: ['draft']
+category: "digital_logik_3"
+link:
+description: "Dieses Kapitel erklärt die Ursprünge und die Entwicklung der sogenannten Hardwarebeschreibungssprachen (HDLs)
+und ihre Rolle beim Entwurf digitaler Schaltungen und Systeme."
+type: text
+bookHidden: true
+menu:
+  docs:
+    parent: "digital_logik_3"
+    weight: 210
+---
+{{< katex />}}
+
+== Hardwarebeschreibungssprachen (HDLs) und ihr Einsatz im modernen Digitalentwurf
+
+In den ersten beiden Teilen dieser Reihe haben wir eine komplette CPU entworfen - vom einzelnen Logikgatter
+bis zum Steuerwerk. Wir haben das auf klassische Weise getan: mit Wahrheitstabellen, booleschen Gleichungen
+und Schaltplänen. Für einen Volladdierer oder einen 4-Bit-Zähler funktioniert das gut. Ein moderner Prozessor
+besteht aber aus Milliarden von Transistoren, und niemand zeichnet Milliarden von Transistoren von Hand.
+
+Hier kommen Hardwarebeschreibungssprachen (englisch: Hardware Description Languages, HDLs) ins Spiel.
+Eine HDL beschreibt eine Schaltung als Text: welche Signale es gibt, wie sie verbunden sind und wie sich die Schaltung
+verhält. Auf den ersten Blick sieht HDL-Code aus wie ein Programm in einer gewöhnlichen Programmiersprache -
+er ist aber etwas grundlegend anderes. Ein Programm beschreibt eine *Abfolge von Schritten*, die ein Prozessor
+nacheinander ausführt. Eine HDL beschreibt *Hardware*, in der alle Teile gleichzeitig arbeiten.
+
+Dieselbe HDL-Beschreibung dient mehreren Zwecken:
+
+* *Dokumentation:* Die Beschreibung ist präzise und kann von Menschen und Maschinen gelesen werden.
+* *Simulation:* Wir können die Schaltung am Rechner testen, bevor es sie physisch gibt.
+* *Synthese:* Werkzeuge übersetzen die Beschreibung automatisch in Gatter und Flipflops -
+  für ein FPGA oder für einen eigenen Chip (ASIC).
+
+In diesem Teil der Reihe gehen wir genau diesen Weg: Wir beschreiben die Schaltungen aus Teil 1 und 2 in einer HDL,
+testen sie in der Simulation und sehen uns an, wie daraus schließlich Hardware wird.
+
+== Die Ursprünge der HDLs
+
+=== Eine (kurze) Geschichte der HDLs
+
+Die Idee, Hardware als Text zu beschreiben, ist älter, als man denken könnte.
+Schon in den 1960er- und 1970er-Jahren entwickelten Forscher Notationen, um Rechner auf Registerebene zu beschreiben,
+zum Beispiel CDL (Computer Design Language, Yaohan Chu, 1965), ISP (Instruction Set Processor notation,
+Bell und Newell, 1971) und AHPL (A Hardware Programming Language). In Deutschland entstand in den 1970er-Jahren
+an der Universität Kaiserslautern KARL (Kaiserslautern Register Transfer Language).
+Diese Sprachen dienten vor allem der Dokumentation und der Lehre - Werkzeuge, die daraus echte Schaltungen
+erzeugten, gab es kaum.
+
+Anfang der 1980er-Jahre wurden einfache programmierbare Logikbausteine (PALs) populär, und mit ihnen Sprachen wie
+PALASM und ABEL (1983), mit denen sich Logikgleichungen schreiben und direkt in einen solchen Baustein laden ließen.
+
+Der eigentliche Durchbruch kam Mitte der 1980er-Jahre mit zwei Sprachen, die bis heute vorherrschen: VHDL und Verilog.
+
+=== Die Ursprünge von VHDL
+
+VHDL geht auf das US-Verteidigungsministerium zurück. In seinem VHSIC-Programm (Very High Speed Integrated Circuits)
+kaufte das Ministerium komplexe Chips von vielen Zulieferern und brauchte eine einheitliche Möglichkeit,
+sie zu dokumentieren und zu simulieren. Die Entwicklung der Sprache begann 1983 bei Intermetrics, IBM und
+Texas Instruments; der Name steht für *VHSIC Hardware Description Language*.
+
+Ihre Syntax orientiert sich an der Programmiersprache Ada, die damals ebenfalls im Verteidigungsministerium
+verwendet wurde. Dadurch ist VHDL streng typisiert und eher ausführlich - Fehler werden früh gefunden,
+dafür wird der Code länger. 1987 wurde VHDL als IEEE 1076 standardisiert und seitdem mehrfach überarbeitet,
+zuletzt 2019.
+
+=== Die Ursprünge von Verilog
+
+Verilog wurde um 1984 von Phil Moorby bei der Firma Gateway Design Automation entwickelt -
+zusammen mit einem Simulator namens Verilog-XL. Seine Syntax ist bewusst an die Programmiersprache C angelehnt,
+was es kompakt und für Softwareentwickler leicht erlernbar macht.
+
+1989 wurde Gateway von Cadence übernommen. Da VHDL als offener Standard an Boden gewann,
+gab Cadence Verilog 1990 für die Öffentlichkeit frei. 1995 wurde Verilog zum Standard IEEE 1364,
+gefolgt von Überarbeitungen 2001 und 2005. Heute lebt Verilog in *SystemVerilog* (IEEE 1800) weiter,
+das es um Funktionen für die Verifikation erweitert.
+
+Ein weiterer wichtiger Schritt für beide Sprachen war die *Logiksynthese*: Ab Ende der 1980er-Jahre konnten
+Werkzeuge wie der Design Compiler von Synopsys aus HDL-Code automatisch Schaltungen auf Gatterebene erzeugen.
+Von da an wurden HDLs nicht mehr nur verwendet, um Hardware zu beschreiben und zu simulieren - sondern um sie zu *bauen*.
+
+== Welche Sprache und warum...
+
+Das folgende Beispiel zeigt den Volladdierer aus Teil 1 in beiden Sprachen. Beide Beschreibungen sind
+gleichwertig und ergeben genau dieselbe Schaltung:
+
+[cols="a,a", width="100%"]
+|===
+| *Verilog* | *VHDL*
+|
+[source,verilog]
+----
+module full_adder (
+    input  wire a,
+    input  wire b,
+    input  wire cin,
+    output wire sum,
+    output wire cout
+);
+    assign sum  = a ^ b ^ cin;
+    assign cout = (a & b) | (cin & (a ^ b));
+endmodule
+----
+|
+[source,vhdl]
+----
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity full_adder is
+    port (
+        a, b, cin : in  std_logic;
+        sum, cout : out std_logic
+    );
+end entity full_adder;
+
+architecture rtl of full_adder is
+begin
+    sum  <= a xor b xor cin;
+    cout <= (a and b) or (cin and (a xor b));
+end architecture rtl;
+----
+|===
+
+Beide Sprachen können dieselbe Hardware beschreiben, und beide werden von allen großen Werkzeugen unterstützt.
+Die Wahl ist deshalb oft eine Frage der Branche, der Region und des persönlichen Geschmacks:
+
+[width="100%"]
+|===
+| | *Verilog / SystemVerilog* | *VHDL*
+| Syntax | kompakt, ähnlich wie C | ausführlich, ähnlich wie Ada
+| Typsystem | schwach, wenige Prüfungen | streng, viele Fehler fallen schon beim Übersetzen auf
+| typischer Einsatz | ASIC-Entwurf, Chipindustrie, USA | FPGAs, Luft- und Raumfahrt, Verteidigung, Europa
+| Verifikation | SystemVerilog (UVM) ist Industriestandard | VHDL mit Bibliotheken wie OSVVM oder UVVM
+|===
+
+In dieser Reihe verwenden wir *Verilog*, aus drei Gründen:
+
+. Es ist kompakt - die Beispiele bleiben kurz, und wir können uns auf die Hardware konzentrieren.
+. Die Open-Source-Werkzeuge, die wir verwenden werden - Icarus Verilog für die Simulation und Yosys für die Synthese -
+  sind auf Verilog ausgerichtet.
+. Wer Verilog kann, hat es nicht weit zu SystemVerilog, das in weiten Teilen der Chipindustrie verwendet wird.
+
+Neben VHDL und Verilog gibt es auch neuere Ansätze, die Verilog aus einer modernen Programmiersprache erzeugen,
+zum Beispiel Chisel (auf Basis von Scala, verwendet für viele RISC-V-Prozessoren) oder Amaranth (auf Basis von Python).
+Sie sind einen Blick wert, sobald man die Grundlagen kennt.
+
+== Was uns in Teil 3 erwartet
+
+In den folgenden Kapiteln werden wir:
+
+* die Grundlagen von Verilog lernen und Schaltungen mit Simulation und Testbenches testen,
+* die kombinatorischen und sequentiellen Schaltungen aus Teil 1 und 2 in Verilog beschreiben,
+* Rechenwerke wie einen Barrel-Shifter, einen Multiplizierer und einen Dividierer bauen,
+* alles zu unserer RISC-V-CPU zusammensetzen
+* und uns schließlich ansehen, wie aus dem Code eine Schaltung auf einem FPGA wird.
+
+Wer schon jetzt mit echter Hardware loslegen möchte, findet in den
+link:/de/posts/web/21_fpga_beginners_0/[Beiträgen des Autors zum Einstieg in FPGAs] einen guten Startpunkt.
+
+(Erstellt mit Claude AI)

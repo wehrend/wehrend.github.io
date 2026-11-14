@@ -125,3 +125,5 @@ image:./cpu_structure_with_control.svg[width="120%"]
 
 How the control unit works is shown in the next chapter:
 link:/pages/17_cpu_control/[The Control Unit]. There we also trace our example program clock cycle by clock cycle through the CPU.
+
+(Proofread with Claude AI)

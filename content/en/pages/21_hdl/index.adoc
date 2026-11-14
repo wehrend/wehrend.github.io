@@ -1,0 +1,161 @@
+---
+title: "The evolution of HDLs (Hardware Description Languages)"
+date: 2026-11-13
+weight: 210
+tags: ['draft']
+category: "digital_logic_3"
+link:
+description: "This chapter explains the origins and the evolution of so-called Hardware Description Languages (HDLs)
+and their role in the design of digital circuits and systems."
+type: text
+bookHidden: true
+menu:
+  docs:
+    parent: "digital_logic_3"
+---
+{{< katex />}}
+
+== Hardware Description Languages (HDLs) and their use in modern digital design development
+
+In the first two parts of this series we designed a complete CPU - from the single logic gate
+up to the control unit. We did this the classical way: with truth tables, boolean equations and schematics.
+For a full adder or a 4-bit counter this works well. But a modern processor consists of billions of transistors,
+and nobody draws billions of transistors by hand.
+
+This is where Hardware Description Languages (HDLs) come in. An HDL describes a circuit as text:
+which signals exist, how they are connected and how the circuit behaves. At first glance, HDL code looks like
+a program in an ordinary programming language - but it is something fundamentally different.
+A program describes a *sequence of steps* that a processor executes one after another.
+An HDL describes *hardware*, in which all parts work at the same time.
+
+The same HDL description serves several purposes:
+
+* *Documentation:* the description is precise and can be read by humans and machines.
+* *Simulation:* we can test the circuit on the computer before it physically exists.
+* *Synthesis:* tools translate the description automatically into gates and flip-flops -
+  for an FPGA or for a custom chip (ASIC).
+
+In this part of the series we use exactly this workflow: we describe the circuits from parts 1 and 2 in an HDL,
+test them in simulation and look at how they finally become hardware.
+
+== Origins of HDLs
+
+=== The (brief) history of HDLs
+
+The idea of describing hardware as text is older than one might think.
+As early as the 1960s and 1970s, researchers developed notations to describe computers at the register level,
+for example CDL (Computer Design Language, Yaohan Chu, 1965), ISP (Instruction Set Processor notation,
+Bell and Newell, 1971) and AHPL (A Hardware Programming Language). In Germany, KARL (Kaiserslautern Register
+Transfer Language) was developed at the University of Kaiserslautern in the 1970s.
+These languages were mainly used for documentation and teaching - tools that turned them into real circuits hardly existed.
+
+In the early 1980s, simple programmable logic devices (PALs) became popular, and with them languages like
+PALASM and ABEL (1983), with which logic equations could be written and loaded directly into such a device.
+
+The real breakthrough came in the mid-1980s with two languages that are still dominant today: VHDL and Verilog.
+
+=== Origins of VHDL
+
+VHDL goes back to the US Department of Defense. In its VHSIC program (Very High Speed Integrated Circuits),
+the DoD bought complex chips from many suppliers and needed a uniform way to document and simulate them.
+The development of the language started in 1983 by Intermetrics, IBM and Texas Instruments;
+the name stands for *VHSIC Hardware Description Language*.
+
+Its syntax is based on the programming language Ada, which was also used by the DoD at that time.
+This makes VHDL strongly typed and rather verbose - mistakes are found early, but the code is longer.
+In 1987 VHDL was standardized as IEEE 1076 and has been revised several times since then, most recently in 2019.
+
+=== Origins of Verilog
+
+Verilog was developed around 1984 by Phil Moorby at the company Gateway Design Automation -
+together with a simulator called Verilog-XL. Its syntax is deliberately close to the programming language C,
+which makes it compact and easy to learn for software developers.
+
+In 1989 Gateway was acquired by Cadence. Since VHDL as an open standard was gaining ground,
+Cadence released Verilog to the public in 1990. In 1995 Verilog became the standard IEEE 1364,
+followed by revisions in 2001 and 2005. Today Verilog lives on in *SystemVerilog* (IEEE 1800),
+which extends it with features for verification.
+
+Another important step for both languages was *logic synthesis*: from the end of the 1980s,
+tools like Synopsys Design Compiler were able to generate gate-level circuits automatically from HDL code.
+From that moment on, HDLs were no longer only used to describe and simulate hardware - they were used to *build* it.
+
+== Which language to use and why...
+
+The following example shows the full adder from part 1 in both languages. Both descriptions are
+equivalent and result in exactly the same circuit:
+
+[cols="a,a", width="100%"]
+|===
+| *Verilog* | *VHDL*
+|
+[source,verilog]
+----
+module full_adder (
+    input  wire a,
+    input  wire b,
+    input  wire cin,
+    output wire sum,
+    output wire cout
+);
+    assign sum  = a ^ b ^ cin;
+    assign cout = (a & b) | (cin & (a ^ b));
+endmodule
+----
+|
+[source,vhdl]
+----
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity full_adder is
+    port (
+        a, b, cin : in  std_logic;
+        sum, cout : out std_logic
+    );
+end entity full_adder;
+
+architecture rtl of full_adder is
+begin
+    sum  <= a xor b xor cin;
+    cout <= (a and b) or (cin and (a xor b));
+end architecture rtl;
+----
+|===
+
+Both languages can describe the same hardware, and both are supported by all major tools.
+The choice is therefore often a matter of industry, region and personal taste:
+
+[width="100%"]
+|===
+| | *Verilog / SystemVerilog* | *VHDL*
+| syntax | compact, similar to C | verbose, similar to Ada
+| type system | weak, few checks | strong, many errors are found at compile time
+| typical use | ASIC design, chip industry, USA | FPGAs, aerospace, defense, Europe
+| verification | SystemVerilog (UVM) is the industry standard | VHDL with libraries like OSVVM or UVVM
+|===
+
+In this series we use *Verilog*, for three reasons:
+
+. It is compact - the examples stay short and we can concentrate on the hardware.
+. The open-source tools we will use - Icarus Verilog for simulation and Yosys for synthesis - are built around Verilog.
+. If you know Verilog, the step to SystemVerilog, which is used in large parts of the chip industry, is small.
+
+Besides VHDL and Verilog there are also newer approaches, which generate Verilog from a modern programming language,
+for example Chisel (based on Scala, used for many RISC-V processors) or Amaranth (based on Python).
+They are worth a look once you know the basics.
+
+== What's ahead in part 3
+
+In the following chapters we will:
+
+* learn the basics of Verilog and how to test circuits with simulation and testbenches,
+* describe the combinational and sequential circuits from parts 1 and 2 in Verilog,
+* build arithmetic units like a barrel shifter, a multiplier and a divider,
+* put everything together into our RISC-V CPU,
+* and finally look at how the code becomes a circuit on an FPGA.
+
+If you want to get your hands on real hardware already, the author's
+link:/posts/web/21-fpga-beginners-0/[posts about getting started with FPGAs] are a good starting point.
+
+(Created with Claude AI)
