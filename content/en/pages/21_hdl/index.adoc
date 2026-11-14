@@ -157,3 +157,5 @@ In the following chapters we will:
 
 If you want to get your hands on real hardware already, the author's
 link:/posts/web/21-fpga-beginners-0/[posts about getting started with FPGAs] are a good starting point.
+
+(Created with Claude AI)

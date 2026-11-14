@@ -322,3 +322,5 @@ So that a finished chip can be tested at all, testability has to be planned into
 
 In the next chapter we use these tools to describe the combinational circuits from part 1 in Verilog -
 and of course to test them right away.
+
+(Created with Claude AI)

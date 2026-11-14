@@ -126,3 +126,5 @@ image:./cpu_structure_with_control.svg[width=600]
 
 Wie das Steuerwerk aufgebaut ist, sehen wir im nächsten Kapitel:
 link:/de/pages/17_cpu_control/[Das Steuerwerk]. Dort verfolgen wir auch unser Beispielprogramm Takt für Takt durch die CPU.
+
+(Gegengelesen mit Claude AI)

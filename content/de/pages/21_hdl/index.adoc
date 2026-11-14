@@ -160,3 +160,5 @@ In den folgenden Kapiteln werden wir:
 
 Wer schon jetzt mit echter Hardware loslegen möchte, findet in den
 link:/de/posts/web/21_fpga_beginners_0/[Beiträgen des Autors zum Einstieg in FPGAs] einen guten Startpunkt.
+
+(Erstellt mit Claude AI)

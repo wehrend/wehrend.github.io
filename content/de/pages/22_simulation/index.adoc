@@ -323,3 +323,5 @@ Damit sich ein fertiger Chip überhaupt testen lässt, muss die Testbarkeit von 
 
 Im nächsten Kapitel nutzen wir diese Werkzeuge, um die kombinatorischen Schaltungen aus Teil 1 in Verilog zu beschreiben -
 und sie natürlich gleich zu testen.
+
+(Erstellt mit Claude AI)
