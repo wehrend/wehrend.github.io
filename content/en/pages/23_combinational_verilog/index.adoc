@@ -317,6 +317,11 @@ image:./mux3_latch_waveform.svg[width="100%"]
 
 Between 20 and 40 ns, sel = 3. The output keeps the value 20 - even when input b changes to 99 at 30 ns.
 
+A *latch* is a simple storage element that is controlled by the level of a signal, not by a clock edge:
+as long as it is enabled, its output follows the input, otherwise it holds its last value.
+The RS circuit from the link:/pages/12_clocks_and_registers/[chapter about clocks and flip-flops]
+is such a latch. We will look at the difference between latches and flip-flops in detail in the next chapter.
+
 The synthesis tool reacts in the same way: it builds a *latch* for every bit of `y`. Yosys reports this in its log:
 
 ----

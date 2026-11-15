@@ -99,6 +99,7 @@ The classic flipflop consists of two Nand gates which outputs are feedback'ed to
 gate, as can be seen in the table below. Below the circuit the truth table is given.
 As can be seen the flipflop locks the output to one state, '1' or '0'. 
 If both inputs are set low, the output is undefined (and conforms to the preferred position).
+The classic flipflop is also known as RS-Latch.
 
 [cols="a,a" width="100%"]
 |===

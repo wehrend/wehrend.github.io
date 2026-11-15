@@ -95,10 +95,10 @@ http://www.righto.com/2018/08/inside-die-of-intels-8087-coprocessor.html[Ken Shi
 ==== Das klassische RS-Flipflop
 
 Das klassische Flipflop besteht aus zwei NAND-Gattern, deren Ausgänge an das komplementäre Gatter rückgekoppelt werden,
- wie in der folgenden Tabelle zu sehen ist. Unterhalb der Schaltung ist die Wahrheitstabelle angegeben.
+wie in der folgenden Tabelle zu sehen ist. Unterhalb der Schaltung ist die Wahrheitstabelle angegeben.
 Wie zu sehen ist, sperrt das Flipflop den Ausgang auf einen Zustand, „1“ oder „0“.
 Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert (und entspricht der bevorzugten Position).
-
+Das klassische Flipflop ist auch bekannt als RS-Latch.
 [cols="a,a" width="100%"]
 |===
 | *RS-Flipflop-Struktur* | *RS-Flipflop-Symbol*

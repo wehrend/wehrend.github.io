@@ -319,6 +319,11 @@ image:./mux3_latch_waveform.svg[width="100%"]
 
 Zwischen 20 und 40 ns ist sel = 3. Der Ausgang behält den Wert 20 - selbst als sich der Eingang b bei 30 ns auf 99 ändert.
 
+Ein *Latch* ist ein einfaches Speicherelement, das über den Pegel eines Signals gesteuert wird, nicht über eine
+Taktflanke: Solange es freigegeben ist, folgt sein Ausgang dem Eingang, sonst hält es seinen letzten Wert.
+Die RS-Schaltung aus dem link:/de/pages/12_clocks_and_registers/[Kapitel über Taktgeber und Flipflops]
+ist ein solches Latch. Den Unterschied zwischen Latches und Flipflops sehen wir uns im nächsten Kapitel genauer an.
+
 Das Synthesewerkzeug reagiert genauso: Es baut für jedes Bit von `y` ein *Latch*. Yosys meldet das in seinem Log:
 
 ----
