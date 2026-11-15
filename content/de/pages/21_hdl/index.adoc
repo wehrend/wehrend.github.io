@@ -1,7 +1,7 @@
 ---
 title: "Die Entwicklung der HDLs (Hardwarebeschreibungssprachen)"
 date: 2026-11-13
-tags: ['draft']
+tags: []
 category: "digital_logik_3"
 link:
 description: "Dieses Kapitel erklärt die Ursprünge und die Entwicklung der sogenannten Hardwarebeschreibungssprachen (HDLs)
@@ -181,6 +181,14 @@ hello.v:4: $finish called at 0 (1s)
 
 Dieses Modul ist keine Hardware - es hat keine Eingänge, keine Ausgänge und keine Logik. Es nutzt den Simulator nur,
 um eine Textzeile auszugeben. Im nächsten Kapitel werden wir sehen, dass genau so Testbenches funktionieren.
+
+== Repo „hdl-training“ klonen
+
+Für den nächsten Schritt sollten wir unser Repository https://github.com/wehrend/hdl-training.git wie folgt in ein leeres Verzeichnis klonen:
+
+----
+git clone https://github.com/wehrend/hdl-training.git
+----
 
 
 == Was uns in Teil 3 erwartet

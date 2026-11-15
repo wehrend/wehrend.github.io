@@ -2,7 +2,7 @@
 title: "The evolution of HDLs (Hardware Description Languages)"
 date: 2026-11-13
 weight: 210
-tags: ['draft']
+tags: []
 category: "digital_logic_3"
 link:
 description: "This chapter explains the origins and the evolution of so-called Hardware Description Languages (HDLs)
@@ -179,6 +179,15 @@ hello.v:4: $finish called at 0 (1s)
 
 This module is not hardware - it has no inputs, no outputs and no logic. It only uses the simulator to print
 a line of text. In the next chapter we will see that this is exactly how testbenches work.
+
+== Clone repo hdl-training
+
+For the next part we should git clone our repository https://github.com/wehrend/hdl-training.git in an empty directory as follows:
+
+----
+git clone https://github.com/wehrend/hdl-training.git
+----
+
 
 == What's ahead in part 3
 
