@@ -16,11 +16,10 @@ menu:
 {{< katex />}}
 
 == Hardware Description Languages (HDLs) and their use in modern digital design development
-
-In the first two parts of this series we designed a complete CPU - from the single logic gate
-up to the control unit. We did this the classical way: with truth tables, boolean equations and schematics.
-For a full adder or a 4-bit counter this works well. But a modern processor consists of billions of transistors,
-and nobody draws billions of transistors by hand.
+After the two fundamental parts of this series - part 1 (combinational logic) and part 2 (sequential logic) -
+we have designed a complete CPU, from the single logic gate up to the control unit. We did this the classical way:
+with truth tables, boolean equations and schematics. For a full adder or a 4-bit counter this works well,
+but a modern processor consists of billions of transistors, and nobody draws them by hand.
 
 This is where Hardware Description Languages (HDLs) come in. An HDL describes a circuit as text:
 which signals exist, how they are connected and how the circuit behaves. At first glance, HDL code looks like

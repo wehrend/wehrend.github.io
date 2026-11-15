@@ -17,10 +17,10 @@ menu:
 
 == Hardwarebeschreibungssprachen (HDLs) und ihr Einsatz im modernen Digitalentwurf
 
-In den ersten beiden Teilen dieser Reihe haben wir eine komplette CPU entworfen - vom einzelnen Logikgatter
-bis zum Steuerwerk. Wir haben das auf klassische Weise getan: mit Wahrheitstabellen, booleschen Gleichungen
-und Schaltplänen. Für einen Volladdierer oder einen 4-Bit-Zähler funktioniert das gut. Ein moderner Prozessor
-besteht aber aus Milliarden von Transistoren, und niemand zeichnet Milliarden von Transistoren von Hand.
+Nach den beiden grundlegenden Teilen dieser Reihe - Teil 1 (kombinatorische Logik) und Teil 2 (sequentielle Logik) -
+haben wir eine komplette CPU entworfen, vom einzelnen Logikgatter bis zum Steuerwerk. Wir haben das auf klassische Weise getan:
+mit Wahrheitstabellen, booleschen Gleichungen und Schaltplänen. Für einen Volladdierer oder einen 4-Bit-Zähler funktioniert das gut,
+aber ein moderner Prozessor besteht aus Milliarden von Transistoren, und niemand zeichnet sie von Hand.
 
 Hier kommen Hardwarebeschreibungssprachen (englisch: Hardware Description Languages, HDLs) ins Spiel.
 Eine HDL beschreibt eine Schaltung als Text: welche Signale es gibt, wie sie verbunden sind und wie sich die Schaltung
