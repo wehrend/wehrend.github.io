@@ -40,20 +40,8 @@ testen sie in der Simulation und sehen uns an, wie daraus schließlich Hardware 
 
 == Die Ursprünge der HDLs
 
-=== Eine (kurze) Geschichte der HDLs
-
-Die Idee, Hardware als Text zu beschreiben, ist älter, als man denken könnte.
-Schon in den 1960er- und 1970er-Jahren entwickelten Forscher Notationen, um Rechner auf Registerebene zu beschreiben,
-zum Beispiel CDL (Computer Design Language, Yaohan Chu, 1965), ISP (Instruction Set Processor notation,
-Bell und Newell, 1971) und AHPL (A Hardware Programming Language). In Deutschland entstand in den 1970er-Jahren
-an der Universität Kaiserslautern KARL (Kaiserslautern Register Transfer Language).
-Diese Sprachen dienten vor allem der Dokumentation und der Lehre - Werkzeuge, die daraus echte Schaltungen
-erzeugten, gab es kaum.
-
-Anfang der 1980er-Jahre wurden einfache programmierbare Logikbausteine (PALs) populär, und mit ihnen Sprachen wie
-PALASM und ABEL (1983), mit denen sich Logikgleichungen schreiben und direkt in einen solchen Baustein laden ließen.
-
-Der eigentliche Durchbruch kam Mitte der 1980er-Jahre mit zwei Sprachen, die bis heute vorherrschen: VHDL und Verilog.
+Die Idee, Hardware als Text zu beschreiben, reicht bis in die 1960er-Jahre zurück. Durchgesetzt haben sich
+zwei Sprachen aus der Mitte der 1980er-Jahre, die bis heute vorherrschen: VHDL und Verilog.
 
 === Die Ursprünge von VHDL
 
@@ -147,6 +135,53 @@ In dieser Reihe verwenden wir *Verilog*, aus drei Gründen:
 Neben VHDL und Verilog gibt es auch neuere Ansätze, die Verilog aus einer modernen Programmiersprache erzeugen,
 zum Beispiel Chisel (auf Basis von Scala, verwendet für viele RISC-V-Prozessoren) oder Amaranth (auf Basis von Python).
 Sie sind einen Blick wert, sobald man die Grundlagen kennt.
+
+== Die Werkzeuge installieren
+
+In diesem Teil der Reihe verwenden wir zwei freie Werkzeuge: *Icarus Verilog*, um Verilog-Code zu übersetzen und zu
+simulieren, und einen Waveform-Viewer, um die Ergebnisse anzusehen. *GTKWave* ist der Klassiker; *Surfer* ist eine
+moderne Alternative, die auch direkt im Browser läuft.
+
+[width="100%"]
+|===
+| System | Installation
+| Debian / Ubuntu | `sudo apt install iverilog gtkwave`
+| Fedora | `sudo dnf install iverilog gtkwave`
+| Arch Linux | `sudo pacman -S iverilog gtkwave`
+| macOS (Homebrew) | `brew install icarus-verilog`, als Viewer am besten Surfer
+| Windows | Installer von https://bleyer.org/icarus/[bleyer.org/icarus] (enthält GTKWave)
+|===
+
+Surfer gibt es unter https://surfer-project.org/[surfer-project.org], einschließlich einer Browser-Version,
+die gar keine Installation braucht.
+
+=== Ein erster Test
+
+Um die Installation zu prüfen, schreiben wir das kleinstmögliche Verilog-Programm in eine Datei `hello.v`:
+
+[source,verilog]
+----
+module hello;
+    initial begin
+        $display("Hello, Verilog!");
+        $finish;
+    end
+endmodule
+----
+
+Eine Simulation besteht immer aus zwei Schritten: `iverilog` übersetzt den Quelltext in eine Simulationsdatei,
+und `vvp` führt sie aus:
+
+----
+$ iverilog -o hello hello.v
+$ vvp hello
+Hello, Verilog!
+hello.v:4: $finish called at 0 (1s)
+----
+
+Dieses Modul ist keine Hardware - es hat keine Eingänge, keine Ausgänge und keine Logik. Es nutzt den Simulator nur,
+um eine Textzeile auszugeben. Im nächsten Kapitel werden wir sehen, dass genau so Testbenches funktionieren.
+
 
 == Was uns in Teil 3 erwartet
 

@@ -40,19 +40,8 @@ test them in simulation and look at how they finally become hardware.
 
 == Origins of HDLs
 
-=== The (brief) history of HDLs
-
-The idea of describing hardware as text is older than one might think.
-As early as the 1960s and 1970s, researchers developed notations to describe computers at the register level,
-for example CDL (Computer Design Language, Yaohan Chu, 1965), ISP (Instruction Set Processor notation,
-Bell and Newell, 1971) and AHPL (A Hardware Programming Language). In Germany, KARL (Kaiserslautern Register
-Transfer Language) was developed at the University of Kaiserslautern in the 1970s.
-These languages were mainly used for documentation and teaching - tools that turned them into real circuits hardly existed.
-
-In the early 1980s, simple programmable logic devices (PALs) became popular, and with them languages like
-PALASM and ABEL (1983), with which logic equations could be written and loaded directly into such a device.
-
-The real breakthrough came in the mid-1980s with two languages that are still dominant today: VHDL and Verilog.
+The idea of describing hardware as text goes back to the 1960s. Two languages from the mid-1980s
+became established and still dominate today: VHDL and Verilog.
 
 === Origins of VHDL
 
@@ -144,6 +133,52 @@ In this series we use *Verilog*, for three reasons:
 Besides VHDL and Verilog there are also newer approaches, which generate Verilog from a modern programming language,
 for example Chisel (based on Scala, used for many RISC-V processors) or Amaranth (based on Python).
 They are worth a look once you know the basics.
+
+== Installing the tools
+
+In this part of the series we use two free tools: *Icarus Verilog* to compile and simulate Verilog code,
+and a waveform viewer to look at the results. *GTKWave* is the classic choice; *Surfer* is a modern
+alternative that also runs directly in the browser.
+
+[width="100%"]
+|===
+| System | Installation
+| Debian / Ubuntu | `sudo apt install iverilog gtkwave`
+| Fedora | `sudo dnf install iverilog gtkwave`
+| Arch Linux | `sudo pacman -S iverilog gtkwave`
+| macOS (Homebrew) | `brew install icarus-verilog`, as viewer preferably Surfer
+| Windows | installer from https://bleyer.org/icarus/[bleyer.org/icarus] (includes GTKWave)
+|===
+
+Surfer is available at https://surfer-project.org/[surfer-project.org], including a browser version
+that needs no installation at all.
+
+=== A first test
+
+To check the installation, we write the smallest possible Verilog program into a file `hello.v`:
+
+[source,verilog]
+----
+module hello;
+    initial begin
+        $display("Hello, Verilog!");
+        $finish;
+    end
+endmodule
+----
+
+Simulating a design always takes two steps: `iverilog` compiles the source code into a simulation file,
+and `vvp` runs it:
+
+----
+$ iverilog -o hello hello.v
+$ vvp hello
+Hello, Verilog!
+hello.v:4: $finish called at 0 (1s)
+----
+
+This module is not hardware - it has no inputs, no outputs and no logic. It only uses the simulator to print
+a line of text. In the next chapter we will see that this is exactly how testbenches work.
 
 == What's ahead in part 3
 
