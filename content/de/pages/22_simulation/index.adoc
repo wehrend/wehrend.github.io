@@ -305,14 +305,8 @@ ob unser *Entwurf* korrekt ist. Aber auch ein korrekter Entwurf kann in der real
 kann ein winziges Staubteilchen eine Verbindung unterbrechen oder zwei Leitungen kurzschließen. Solche Fertigungsfehler zu finden,
 ist die Aufgabe des *Testens*.
 
-Damit sich ein fertiger Chip überhaupt testen lässt, muss die Testbarkeit von Anfang an im Entwurf eingeplant werden
-(Design for Testability). Zwei verbreitete Techniken:
-
-* *Scan-Ketten:* In einem speziellen Testmodus werden alle Flipflops eines Chips zu einem langen Schieberegister verbunden.
-  So lassen sich beliebige Zustände hineinschieben und die Ergebnisse herausschieben - jedes Flipflop wird von außen zugänglich.
-* *Boundary Scan (JTAG):* eine standardisierte Schnittstelle (IEEE 1149.1), über die sich die Pins eines Chips von außen
-  steuern und auslesen lassen, zum Beispiel um die Lötstellen auf einer Platine zu prüfen. Heute ist JTAG auch die übliche
-  Schnittstelle zum Programmieren und Debuggen von Mikrocontrollern und FPGAs.
+Wie ein fertiger Chip getestet wird, wird im Kapitel link:/de/pages/27_code_to_chip/[Vom Code zum Chip] behandelt,
+wenn unser Entwurf schließlich auf echter Hardware zum Einsatz kommt.
 
 === Zusammenfassung
 

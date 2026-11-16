@@ -304,14 +304,8 @@ Finally an important distinction. Everything we did in this chapter is *verifica
 is correct. But even a correct design can fail in the real world: during manufacturing of a chip, a tiny particle of dust
 can break a connection or short two wires. Finding such manufacturing defects is the job of *testing*.
 
-So that a finished chip can be tested at all, testability has to be planned into the design from the beginning
-(design for testability). Two common techniques:
-
-* *Scan chains:* in a special test mode, all flip-flops of a chip are connected to form one long shift register.
-  This way, arbitrary states can be shifted in and the results shifted out - every flip-flop becomes accessible from the outside.
-* *Boundary scan (JTAG):* a standardized interface (IEEE 1149.1), with which the pins of a chip can be controlled and read
-  from the outside, for example to test the solder joints on a circuit board. Today JTAG is also the usual interface
-  for programming and debugging microcontrollers and FPGAs.
+How a finished chip is tested is covered in the chapter link:/pages/27_code_to_chip/[From Code to Chip],
+when our design ends up on real hardware.
 
 === Summary
 
