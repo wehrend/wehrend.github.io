@@ -312,3 +312,82 @@ td.code pre {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+/* ---------- Admonitions (NOTE, TIP, IMPORTANT, WARNING, CAUTION) ----------
+   Asciidoctor renders them as a two-cell table; reset the markdown table
+   styles and show a round icon instead of the text label. */
+.markdown .admonitionblock {
+  --admonition-color: var(--color-link);
+  --admonition-icon: "!";
+  margin: 1.5rem 0;
+
+  > table {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-left: 4px solid var(--admonition-color);
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--admonition-color) 8%, transparent);
+    overflow: visible;
+  }
+
+  tbody,
+  tr {
+    display: flex;
+    align-items: flex-start;
+    border: 0;
+    background: none;
+  }
+
+  tr td {
+    border: 0;
+    padding: 0.8rem 1rem;
+    background: none;
+  }
+
+  td.icon {
+    flex: none;
+    padding-right: 0;
+
+    // round icon
+    &::before {
+      content: var(--admonition-icon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      background: var(--admonition-color);
+      color: var(--body-background);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    // keep "Note" etc. for screen readers, hide it visually
+    .title {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+
+  td.content {
+    flex: 1;
+    min-width: 0;
+
+    > :first-child,
+    > :first-child > :first-child { margin-top: 0; }
+    > :last-child,
+    > :last-child > :last-child { margin-bottom: 0; }
+  }
+
+  &.tip       { --admonition-color: #2f9e44; --admonition-icon: "i"; }
+  &.important { --admonition-color: #7048e8; }
+  &.warning   { --admonition-color: #e8590c; }
+  &.caution   { --admonition-color: #e03131; }
+}
