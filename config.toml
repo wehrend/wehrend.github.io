@@ -161,8 +161,8 @@ publishDir = "public"
   BookFavicon = 'svg/cpu.svg'
 
 [markup]
-  [markup.asciice]
-    backend = "html5"
+  [markup.goldmark.renderer]
+    unsafe = true
   [markup.asciidocExt]
     workingFolderCurrent = true
     [markup.asciidocExt.attributes]
@@ -179,23 +179,7 @@ publishDir = "public"
     allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
     osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
 
-[markup.asciidocext]
-    extensions = ["asciidoctor"]
-    workingFolderCurrent = true
-    trace = true
-    verbose = true
-
-[languages.en.markup]
-  [languages.en.markup.goldmark]
-    [languages.en.markup.goldmark.renderer]
-      unsafe = true
-
-[languages.de.markup]
-  [languages.de.markup.goldmark]
-    [languages.de.markup.goldmark.renderer]
-      unsafe = true
-
-  [frontmatter.handlers]
+[frontmatter.handlers]
     adoc = "yaml"
 
 [outputs]
