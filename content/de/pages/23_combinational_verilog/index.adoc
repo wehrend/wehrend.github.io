@@ -1,6 +1,6 @@
 ---
 title: "Kombinatorische Logik in Verilog"
-date: 2026-11-15
+date: 2026-11-17
 tags: ['draft']
 category: "digital_logik_3"
 link:
@@ -121,9 +121,22 @@ endmodule
 Jede Zeile der `case`-Anweisung ist eine Zeile der Wahrheitstabelle: Beim Eingang `4'h2` leuchten die Segmente g, e, d, b und a -
 das ist eine 2. Die Bits von `seg` sind von g (Bit 6) bis a (Bit 0) geordnet.
 
-Wer macht aus dieser Tabelle Gatter? Das Synthesewerkzeug. Es leitet die booleschen Gleichungen ab und vereinfacht sie -
-genau die Arbeit, die wir in Teil 1 mit der link:/de/pages/01_boolean_algebra/[booleschen Algebra] von Hand erledigt haben.
-Für unseren Decoder erzeugt das Open-Source-Synthesewerkzeug Yosys etwa 30 Gatter.
+==== Von der Tabelle zur Hardware
+
+Wer macht aus dieser Tabelle Hardware? Das Synthesewerkzeug - und was es baut, hängt vom *Ziel* ab:
+
+* Für einen *Chip* (ASIC) leitet das Werkzeug aus der Tabelle boolesche Gleichungen ab, vereinfacht sie - genau die Arbeit,
+  die wir in Teil 1 mit der link:/de/pages/01_boolean_algebra/[booleschen Algebra] von Hand erledigt haben - und baut sie
+  aus den Gattern der Zellbibliothek des Herstellers.
+* Ein *FPGA* hat überhaupt keine einzelnen Gatter. Es besteht aus Tausenden kleiner *Lookup-Tabellen* (LUTs): winzigen
+  Speichern, die die Wahrheitstabelle einer Funktion mit wenigen Eingängen enthalten - bei vielen FPGAs 4 Eingänge,
+  also 16 Bit. Für eine LUT spielt es keine Rolle, wie kompliziert die Funktion ist: Sie schlägt das Ergebnis einfach nach.
+
+Unser Decoder zeigt das schön: Jedes Segment ist eine Funktion von genau 4 Eingängen. Auf einem Lattice-iCE40-FPGA
+braucht Yosys deshalb genau *7 LUTs* - eine pro Segment, jede enthält eine Spalte unserer Wahrheitstabelle.
+Boolesche Vereinfachung ist dafür nicht einmal nötig.
+
+Wie LUTs funktionieren und wie ein FPGA aufgebaut ist, sehen wir uns im Kapitel _Vom Code zum Chip_ an.
 
 NOTE: Viele echte Anzeigen haben eine *gemeinsame Anode*: Ein Segment leuchtet, wenn sein Signal 0 ist, nicht 1.
 Für solche Anzeigen wird der Ausgang einfach invertiert: `assign seg_n = ~seg;`.
@@ -230,9 +243,65 @@ module ripple_adder #(
 endmodule
 ----
 
-Die `for`-Schleife im `generate`-Block wird nicht zur Laufzeit ausgeführt wie eine Schleife in Software. Sie wird *vor*
-der Simulation oder Synthese aufgelöst: Sie erzeugt einfach N Volladdierer, genau so, als hätten wir sie von Hand hingeschrieben.
 Ein 32-Bit-Addierer ist jetzt nur noch `ripple_adder #(.N(32)) add32 (...)`.
+
+==== Schleifen beschreiben Kopien, keine Schritte
+
+Diese Schleife sieht aus wie eine Schleife in jeder Programmiersprache - sie tut aber etwas völlig anderes.
+Sie wird *nicht* ausgeführt, während die Schaltung läuft. Sie wird *vor* der Simulation oder Synthese aufgelöst
+und erzeugt einfach N Volladdierer, genau so, als hätten wir sie von Hand hingeschrieben. Für N = 4 erzeugt Yosys
+diese vier Instanzen:
+
+----
+ripple_adder/stage[0].fa
+ripple_adder/stage[1].fa
+ripple_adder/stage[2].fa
+ripple_adder/stage[3].fa
+----
+
+Das ist dieselbe Schaltung wie der von Hand geschriebene 4-Bit-Addierer oben. Der Name `stage` hinter dem `begin` wird Teil
+der Instanznamen - und unter genau diesen Namen finden wir die Volladdierer später im Waveform-Viewer wieder.
+
+Dasselbe gilt für eine `for`-Schleife *innerhalb* eines `always @(*)`-Blocks. Dieses Modul berechnet die Parität von 8 Bit,
+also ob eine ungerade Anzahl von Bits gesetzt ist:
+
+[source,verilog]
+----
+// Parität über 8 Bit: p = 1, wenn eine ungerade Anzahl Bits gesetzt ist
+module parity8 (
+    input  wire [7:0] d,
+    output reg        p
+);
+    integer i;
+
+    always @(*) begin
+        p = 1'b0;
+        for (i = 0; i < 8; i = i + 1)
+            p = p ^ d[i];
+    end
+endmodule
+----
+
+Das liest sich wie acht Schritte nacheinander. Das Synthesewerkzeug löst die Schleife aber in *7 XOR-Gatter* auf,
+die alle gleichzeitig arbeiten. Es gibt keinen Zähler `i` in der Hardware, und nichts wird achtmal ausgeführt.
+
+Zum Vergleich die Testbenches aus dem letzten Kapitel: Dort läuft eine `for`-Schleife mit `#10` tatsächlich Schritt für Schritt
+durch die simulierte Zeit - weil Testbenches nie zu Hardware werden. Dieselbe Schreibweise hat also zwei Bedeutungen:
+In einer Testbench kostet eine Schleife *Zeit*, in einer Schaltung kostet sie *Fläche*.
+
+[NOTE]
+.Für Softwareentwickler
+====
+In synthetisierbarem Verilog bedeutet eine Schleife *Vervielfältigung im Raum*, nicht *Wiederholung in der Zeit*.
+Die nächsten Analogien aus der Software sind der C-Präprozessor, C++-Templates oder das Abrollen von Schleifen
+(Loop Unrolling) durch einen Compiler: Alles passiert, bevor das Programm - hier: die Schaltung - läuft. Was keine dieser
+Analogien erfasst: Alle Kopien arbeiten *gleichzeitig*. Daraus folgt:
+
+* Die Anzahl der Durchläufe muss vor der Synthese feststehen. Eine Schleife, die bei einem Eingangswert dreimal und bei
+  einem anderen siebenmal läuft, gibt es in Hardware nicht.
+* Aus demselben Grund gibt es kein `break`, das von Daten abhängt.
+* Mehr Durchläufe dauern nicht länger - sie brauchen mehr Hardware.
+====
 
 ==== Den Addierer testen
 
@@ -281,11 +350,15 @@ Die Simulation dauert weniger als eine Sekunde:
 PASSED: all 131072 combinations correct
 ----
 
-Übrigens: In einem echten Entwurf würde man einfach `assign {cout, sum} = a + b + cin;` schreiben. Das Synthesewerkzeug
-kennt viele Addiererstrukturen und wählt eine passende aus. Wir bauen den Addierer hier selbst, um Hierarchie zu üben -
-und weil es zeigt, was hinter dem `+` steckt. Seine Schwäche ist ebenfalls sichtbar: Im schlimmsten Fall muss der Übertrag
-durch alle N Stufen laufen, die Verzögerung wächst also mit der Breite. Schnellere Addierer, wie der Carry-Lookahead-Addierer,
-berechnen die Überträge parallel.
+Übrigens: In einem echten Entwurf würde man einfach `assign {cout, sum} = a + b + cin;` schreiben. Was das Synthesewerkzeug
+daraus macht, hängt wieder vom Ziel ab. Für einen Chip kennt es viele Addiererstrukturen und wählt eine, die schnell genug ist.
+Viele FPGAs enthalten dagegen eine eigene *Carry-Kette* - zusätzliche Hardware nur für Überträge. Für ein 8-Bit-`+` verwendet
+Yosys auf dem iCE40 8 LUTs und 8 Carry-Zellen (`SB_CARRY`).
+
+Wir bauen den Addierer hier selbst, um Hierarchie zu üben - und weil es zeigt, was hinter dem `+` steckt.
+Seine Schwäche ist ebenfalls sichtbar: Im schlimmsten Fall muss der Übertrag durch alle N Stufen laufen, die Verzögerung wächst
+also mit der Breite. Schnellere Addierer, wie der Carry-Lookahead-Addierer aus dem link:/de/pages/03_binary_system/[Kapitel über
+das Binärsystem], berechnen die Überträge parallel.
 
 === Die klassische Falle: ungewollte Latches
 
@@ -311,30 +384,60 @@ endmodule
 ----
 
 Der Code lässt sich ohne Fehler übersetzen. Aber `sel` hat 2 Bit und damit vier mögliche Werte - und für `2'b11` wird `y`
-kein Wert zugewiesen. Was soll die Hardware in diesem Fall tun? Verilog legt es fest: `y` behält seinen *alten Wert*.
-Einen Wert behalten heißt, ihn zu speichern - die kombinatorische Schaltung hat plötzlich ein Gedächtnis bekommen.
-Die Simulation zeigt das deutlich:
+kein Wert zugewiesen. Die Simulation zeigt, was passiert:
 
 image:./mux3_latch_waveform.svg[width="100%"]
 
 Zwischen 20 und 40 ns ist sel = 3. Der Ausgang behält den Wert 20 - selbst als sich der Eingang b bei 30 ns auf 99 ändert.
+Die kombinatorische Schaltung hat plötzlich ein Gedächtnis bekommen.
+
+==== Warum passiert das?
+
+Der Grund ist eine Regel, die Verilog mit Software gemeinsam hat: *Ein `reg` behält seinen Wert, bis ihm etwas Neues
+zugewiesen wird.* Der `always @(*)`-Block läuft erneut, sobald sich ein Eingang ändert. Ist sel = 3, trifft keiner der drei
+Zweige zu, mit `y` passiert nichts - und `y` hat noch den Wert vom letzten Durchlauf.
+
+Das Synthesewerkzeug muss Hardware bauen, die sich genau so verhält. Es baut, was wir *beschrieben* haben, nicht was wir
+*gemeint* haben. Und beschrieben haben wir: Bei sel = 3 hängt `y` davon ab, was *vorher* war. Reine kombinatorische Logik kann
+das nicht - ihr Ausgang hängt nur von den aktuellen Eingängen ab. Sobald etwas von der Vergangenheit abhängt, brauchen wir Speicher.
+
+Welche Art von Speicher? Sehen wir uns das Verhalten an:
+
+* bei sel = 0, 1 oder 2 folgt `y` *sofort* dem gewählten Eingang, ohne auf einen Takt zu warten,
+* bei sel = 3 *hält* `y` seinen Wert.
 
 Ein *Latch* ist ein einfaches Speicherelement, das über den Pegel eines Signals gesteuert wird, nicht über eine
 Taktflanke: Solange es freigegeben ist, folgt sein Ausgang dem Eingang, sonst hält es seinen letzten Wert.
 Die RS-Schaltung aus dem link:/de/pages/12_clocks_and_registers/[Kapitel über Taktgeber und Flipflops]
 ist ein solches Latch. Den Unterschied zwischen Latches und Flipflops sehen wir uns im nächsten Kapitel genauer an.
 
-Das Synthesewerkzeug reagiert genauso: Es baut für jedes Bit von `y` ein *Latch*. Yosys meldet das in seinem Log:
+Unser Multiplexer wird also genau dazu: zu einem Latch, dessen Dateneingang der Multiplexer ist und dessen Freigabe
+„einer der drei Fälle trifft zu“ lautet, also sel ≠ 3. Wir können dieses Verhalten auch so schreiben:
+
+[source,verilog]
+----
+y = (sel != 2'b11) ? mux(a, b, c) : y;   // Pseudocode, kein synthetisierbares Verilog
+----
+
+`y` hängt von sich selbst ab. Genau diese Rückkopplung macht in Kapitel 12 aus zwei NAND-Gattern ein RS-Latch und gibt in
+link:/de/pages/14_automata/[Kapitel 14] einem Automaten sein Gedächtnis - nur wollte sie hier niemand haben.
+
+==== Was das Synthesewerkzeug daraus macht
+
+Yosys meldet das in seinem Log:
 
 ----
 Latch inferred for signal `\mux3.\y' ...
 ----
 
 und die synthetisierte Schaltung enthält 8 Latches (`$_DLATCH_N_`), eines pro Ausgangsbit.
-Das ist ein Problem: Latches sind pegelgesteuert, können Timing-Probleme verursachen und werden auf FPGAs schlecht unterstützt -
-und vor allem wollte sie hier niemand haben.
+Auf einem FPGA wird es noch schlimmer: Der iCE40 hat überhaupt keine Latch-Zellen. Yosys baut jedes Latch deshalb aus LUTs
+mit einer Rückkopplungsschleife - 16 LUTs statt eines sauberen Multiplexers. Solche Schleifen verursachen Timing-Probleme und
+lassen sich schlecht analysieren. Und vor allem: Diesen Speicher wollte niemand.
 
-Die Abhilfe ist einfach: Jeder Ausgang muss auf *jedem* Pfad durch den `always`-Block einen Wert bekommen.
+==== Die Abhilfe
+
+Jeder Ausgang muss auf *jedem* Pfad durch den `always`-Block einen Wert bekommen.
 Entweder mit einem `default`-Zweig:
 
 [source,verilog]
@@ -370,8 +473,12 @@ always @(*) begin
 end
 ----
 
-Damit erzeugt Yosys keine Latches mehr. Deshalb hat auch unser 7-Segment-Decoder einen `default`-Zweig,
+Jetzt ist `y` für jeden Wert von `sel` festgelegt und hängt nur noch von den aktuellen Eingängen ab - keine Rückkopplung,
+kein Speicher, und Yosys erzeugt keine Latches mehr. Deshalb hat auch unser 7-Segment-Decoder einen `default`-Zweig,
 obwohl alle 16 Werte abgedeckt sind: Es ist eine gute Gewohnheit, die vor diesem Fehler schützt.
+
+Als Merksatz: *Weist ein kombinatorischer Block auf irgendeinem Pfad keinen Wert zu, haben wir „behalte den alten Wert“
+beschrieben - und Behalten heißt Speichern.*
 
 Die Regeln für kombinatorische `always`-Blöcke in Kürze:
 
@@ -388,7 +495,9 @@ Taucht `$_DLATCH_` auf, fehlt ein Pfad.
 * Vektoren, Verkettung und Zahlen mit Breitenangabe sind die Grundbausteine für Signale mit mehreren Bits.
 * Kombinatorische Logik lässt sich mit `assign` oder mit einem `always @(*)`-Block beschreiben; `case`-Anweisungen beschreiben
   Wahrheitstabellen direkt.
+* Was das Synthesewerkzeug baut, hängt vom Ziel ab: Gatter auf einem Chip, Lookup-Tabellen auf einem FPGA.
 * Module lassen sich in anderen Modulen instanziieren; `parameter` und `generate` machen sie konfigurierbar.
+* Schleifen in synthetisierbarem Code werden vor der Synthese aufgelöst: Sie erzeugen Kopien von Hardware, keine Schritte in der Zeit.
 * Ein `always @(*)`-Block, in dem ein Ausgang nicht auf jedem Pfad zugewiesen wird, erzeugt ein ungewolltes Latch.
 
 Im nächsten Kapitel wenden wir uns der sequentiellen Logik zu: Flipflops, Register, Zähler - und die Ampel aus dem Kapitel über

@@ -1,6 +1,6 @@
 ---
 title: "Combinational Logic in Verilog"
-date: 2026-11-15
+date: 2026-11-17
 weight: 230
 tags: ['draft']
 category: "digital_logic_3"
@@ -120,9 +120,22 @@ endmodule
 Every line of the `case` statement is one row of the truth table: for the input `4'h2`, the segments g, e, d, b and a light up -
 that is a 2. The bits of `seg` are ordered from g (bit 6) to a (bit 0).
 
-Who turns this table into gates? The synthesis tool. It derives the boolean equations and simplifies them -
-exactly the work we did by hand with link:/pages/01_boolean_algebra/[boolean algebra] in part 1.
-For our decoder, the open-source synthesis tool Yosys generates about 30 gates.
+==== From the table to hardware
+
+Who turns this table into hardware? The synthesis tool - and what it builds depends on the *target*:
+
+* For a *chip* (ASIC), the tool derives boolean equations from the table, simplifies them - exactly the work we did by hand
+  with link:/pages/01_boolean_algebra/[boolean algebra] in part 1 - and builds them from the gates of the manufacturer's
+  cell library.
+* An *FPGA* has no individual gates at all. It consists of thousands of small *lookup tables* (LUTs): tiny memories
+  that store the truth table of a function with a few inputs - on many FPGAs, 4 inputs and thus 16 bits.
+  For a LUT, it does not matter how complicated the function is: it simply looks up the result.
+
+Our decoder shows this nicely: every segment is a function of exactly 4 inputs. On a Lattice iCE40 FPGA,
+Yosys therefore needs exactly *7 LUTs* - one per segment, each storing one column of our truth table.
+Boolean simplification is not even necessary.
+
+We will look at how LUTs work and how an FPGA is built in the chapter _From Code to Chip_.
 
 NOTE: Many real displays are *common anode*: a segment lights up when its signal is 0, not 1.
 For those displays, the output is simply inverted: `assign seg_n = ~seg;`.
@@ -228,9 +241,65 @@ module ripple_adder #(
 endmodule
 ----
 
-The `for` loop in the `generate` block is not executed at run time like a loop in software. It is expanded
-*before* the simulation or synthesis: it simply produces N full adders, exactly as if we had written them by hand.
 A 32-bit adder is now just `ripple_adder #(.N(32)) add32 (...)`.
+
+==== Loops describe copies, not steps
+
+This loop looks like a loop in any programming language - but it does something completely different.
+It is *not* executed while the circuit is running. It is resolved *before* simulation or synthesis
+and simply produces N full adders, exactly as if we had written them by hand. For N = 4, Yosys generates these
+four instances:
+
+----
+ripple_adder/stage[0].fa
+ripple_adder/stage[1].fa
+ripple_adder/stage[2].fa
+ripple_adder/stage[3].fa
+----
+
+This is the same circuit as the hand-written 4-bit adder above. The name `stage` behind the `begin` becomes part
+of the instance names - and under exactly these names we will find the full adders in the waveform viewer later.
+
+The same applies to a `for` loop *inside* an `always @(*)` block. This module computes the parity of 8 bits,
+i.e. whether an odd number of bits is set:
+
+[source,verilog]
+----
+// even parity over 8 bits: p = 1 if an odd number of bits is set
+module parity8 (
+    input  wire [7:0] d,
+    output reg        p
+);
+    integer i;
+
+    always @(*) begin
+        p = 1'b0;
+        for (i = 0; i < 8; i = i + 1)
+            p = p ^ d[i];
+    end
+endmodule
+----
+
+It reads like eight steps one after another. But the synthesis tool unrolls the loop into *7 XOR gates*,
+which all work at the same time. There is no counter `i` in the hardware, and nothing is executed eight times.
+
+Compare this with the testbenches from the last chapter: there, a `for` loop with `#10` really runs step by step
+through simulated time - because testbenches are never turned into hardware. The same syntax therefore has two meanings:
+in a testbench, a loop costs *time*; in a circuit, it costs *area*.
+
+[NOTE]
+.For software developers
+====
+In synthesizable Verilog, a loop means *replication in space*, not *repetition in time*.
+The closest analogies from software are the C preprocessor, C++ templates or loop unrolling by a compiler:
+everything happens before the program - here: the circuit - runs. What none of these analogies capture:
+all copies work *simultaneously*. This has some consequences:
+
+* The number of iterations must be known before synthesis. A loop that runs three times for one input value
+  and seven times for another does not exist in hardware.
+* For the same reason, there is no `break` that depends on data.
+* More iterations do not take longer - they need more hardware.
+====
 
 ==== Testing the adder
 
@@ -279,11 +348,15 @@ The simulation takes less than a second:
 PASSED: all 131072 combinations correct
 ----
 
-By the way: in a real design you would simply write `assign {cout, sum} = a + b + cin;`. The synthesis tool
-knows many adder structures and picks a suitable one. We build the adder ourselves here to practice hierarchy -
-and because it shows what is behind the `+`. Its weakness is also visible: in the worst case the carry has to
-ripple through all N stages, so the delay grows with the width. Faster adders, such as the carry-lookahead adder,
-calculate the carries in parallel.
+By the way: in a real design you would simply write `assign {cout, sum} = a + b + cin;`. What the synthesis tool
+makes of it again depends on the target. For a chip, it knows many adder structures and picks one that is fast enough.
+Many FPGAs, on the other hand, contain a dedicated *carry chain* - extra hardware just for carries. For an 8-bit `+`,
+Yosys uses 8 LUTs and 8 carry cells (`SB_CARRY`) on the iCE40.
+
+We build the adder ourselves here to practice hierarchy - and because it shows what is behind the `+`.
+Its weakness is also visible: in the worst case the carry has to ripple through all N stages, so the delay grows
+with the width. Faster adders, such as the carry-lookahead adder from the link:/pages/03_binary_system/[chapter about
+the binary system], calculate the carries in parallel.
 
 === The classic pitfall: unintended latches
 
@@ -309,30 +382,60 @@ endmodule
 ----
 
 The code compiles without errors. But `sel` has 2 bits and thus four possible values - and for `2'b11`, no value is
-assigned to `y`. What should the hardware do in this case? Verilog defines it: `y` keeps its *old value*.
-Keeping a value means storing it - the combinational circuit has suddenly got a memory.
-The simulation shows this clearly:
+assigned to `y`. The simulation shows what happens:
 
 image:./mux3_latch_waveform.svg[width="100%"]
 
 Between 20 and 40 ns, sel = 3. The output keeps the value 20 - even when input b changes to 99 at 30 ns.
+The combinational circuit has suddenly got a memory.
+
+==== Why does this happen?
+
+The reason is a rule that Verilog shares with software: *a `reg` keeps its value until something new is assigned to it.*
+The `always @(*)` block runs again whenever an input changes. If sel = 3, none of the three branches applies,
+nothing happens to `y` - and `y` still holds the value from the last run.
+
+The synthesis tool has to build hardware that behaves exactly like that. It builds what we *described*, not what we *meant*.
+And we described: for sel = 3, `y` depends on what happened *before*. Purely combinational logic cannot do that -
+its output only depends on the current inputs. As soon as something depends on the past, we need storage.
+
+Which kind of storage? Let's look at the behaviour:
+
+* for sel = 0, 1 or 2, `y` follows the selected input *immediately*, without waiting for a clock,
+* for sel = 3, `y` *holds* its value.
 
 A *latch* is a simple storage element that is controlled by the level of a signal, not by a clock edge:
 as long as it is enabled, its output follows the input, otherwise it holds its last value.
 The RS circuit from the link:/pages/12_clocks_and_registers/[chapter about clocks and flip-flops]
 is such a latch. We will look at the difference between latches and flip-flops in detail in the next chapter.
 
-The synthesis tool reacts in the same way: it builds a *latch* for every bit of `y`. Yosys reports this in its log:
+So our multiplexer becomes exactly that: a latch whose data input is the multiplexer and whose enable is
+"one of the three cases applies", i.e. sel ≠ 3. We can also write this behaviour like this:
+
+[source,verilog]
+----
+y = (sel != 2'b11) ? mux(a, b, c) : y;   // pseudo code, not synthesizable Verilog
+----
+
+`y` depends on itself. This feedback is exactly what turns two NAND gates into an RS latch in chapter 12,
+and what gives a state machine its memory in link:/pages/14_automata/[chapter 14] - only here, nobody wanted it.
+
+==== What the synthesis tool does
+
+Yosys reports this in its log:
 
 ----
 Latch inferred for signal `\mux3.\y' ...
 ----
 
 and the synthesized circuit contains 8 latches (`$_DLATCH_N_`), one per output bit.
-That is a problem: latches are level-sensitive, can cause timing problems and are poorly supported on FPGAs -
-and above all, nobody wanted them here.
+On an FPGA it gets even worse: the iCE40 has no latch cells at all. Yosys therefore builds each latch
+from LUTs with a feedback loop - 16 LUTs instead of a clean multiplexer. Such loops cause timing problems
+and are hard to analyse. And above all: nobody wanted this memory.
 
-The fix is simple: every output must get a value on *every* path through the `always` block.
+==== The fix
+
+Every output must get a value on *every* path through the `always` block.
 Either with a `default` branch:
 
 [source,verilog]
@@ -368,8 +471,12 @@ always @(*) begin
 end
 ----
 
-With this, Yosys no longer generates any latches. This is also why our 7-segment decoder has a `default` branch,
+Now `y` is defined for every value of `sel` and only depends on the current inputs - no feedback, no memory,
+and Yosys no longer generates any latches. This is also why our 7-segment decoder has a `default` branch,
 although all 16 values are covered: it is a good habit that protects against this mistake.
+
+To remember: *if a combinational block does not assign a value on some path, we have described "keep the old value" -
+and keeping means storing.*
 
 The rules for combinational `always` blocks in short:
 
@@ -385,7 +492,9 @@ If `$_DLATCH_` appears, a path is missing.
 
 * Vectors, concatenation and sized numbers are the basic building blocks for multi-bit signals.
 * Combinational logic can be described with `assign` or with an `always @(*)` block; `case` statements describe truth tables directly.
+* What the synthesis tool builds depends on the target: gates on a chip, lookup tables on an FPGA.
 * Modules can be instantiated inside other modules; `parameter` and `generate` make them configurable.
+* Loops in synthesizable code are resolved before synthesis: they create copies of hardware, not steps in time.
 * An `always @(*)` block in which an output is not assigned on every path creates an unintended latch.
 
 In the next chapter we turn to sequential logic: flip-flops, registers, counters - and the traffic light from the chapter
