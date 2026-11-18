@@ -99,6 +99,7 @@ wie in der folgenden Tabelle zu sehen ist. Unterhalb der Schaltung ist die Wahrh
 Wie zu sehen ist, sperrt das Flipflop den Ausgang auf einen Zustand, „1“ oder „0“.
 Wenn beide Eingänge auf „niedrig“ gesetzt sind, ist der Ausgang undefiniert (und entspricht der bevorzugten Position).
 Das klassische Flipflop ist auch bekannt als RS-Latch.
+
 [cols="a,a" width="100%"]
 |===
 | *RS-Flipflop-Struktur* | *RS-Flipflop-Symbol*
@@ -110,36 +111,72 @@ Das klassische Flipflop ist auch bekannt als RS-Latch.
 |===
 |&#773;R | &#773;S || Q | &#773;Q | Kommentar
 | 0  | 0  || 1 | 1 | ungültig
-| 0  | 1  || 1 | 0 | Zurücksetzen
-| 1  | 0  || 0 | 1 | Setzen
-| 1  | 1  || Q | &#773;Q | --
+| 0  | 1  || 0 | 1 | Zurücksetzen
+| 1  | 0  || 1 | 0 | Setzen
+| 1  | 1  || Q | &#773;Q | keine Änderung
 |===
 Eine Anwendung des klassischen RS-Flipflops ist die Entprellung von Schaltern.
 
-Für die meisten Anwendungen ist jedoch ein weiterentwickeltes Flipflop erforderlich. Sehen wir uns
-das (D)ata-Flipflop an.
+Für die meisten Anwendungen ist jedoch ein weiterentwickeltes Speicherelement erforderlich.
 
-==== Das D-Flipflop
+NOTE: Im allgemeinen Sprachgebrauch werden all diese Speicherelemente oft Flipflops genannt.
+Genau genommen gibt es aber zwei Arten: Ein *Latch* reagiert auf den *Pegel* seines Steuersignals -
+solange es freigegeben ist, folgt sein Ausgang dem Eingang. Ein *Flipflop* reagiert nur auf eine *Flanke*
+des Takts - es übernimmt den Eingang in einem einzigen Moment. Dieser Unterschied wird später wichtig,
+deshalb verwenden wir beide Begriffe ab hier in ihrer genauen Bedeutung.
 
-Beim D-Flipflop wird der Schaltung des RS-Flipflops zwei NAND-Gatter vorgeschaltet,
-die durch einen Taktimpuls gesteuert werden. Nur wenn der Takt hoch ist (d. h. „1“), ist das
-am (D)ata-Eingang anliegende Datum gültig und wird im RS-Flipflop gespeichert. Andernfalls ist das
-anliegende Datum ungültig.
+==== Das D-Latch
+
+Beim D-Latch werden der Schaltung des RS-Flipflops zwei NAND-Gatter vorgeschaltet,
+die durch ein Freigabesignal (hier: den Takt) gesteuert werden. Solange der Takt hoch ist (d. h. „1“), wird das
+am (D)ata-Eingang anliegende Datum zum Ausgang Q durchgereicht - das Latch ist *transparent*.
+Geht der Takt auf „0“, hält das Latch den zuletzt anliegenden Wert.
 
 [cols="a,a" width="100%"]
 |===
-| *D-Flipflop-Struktur* | *D-Flipflop-Symbol*
+| *D-Latch-Struktur* | *D-Latch-Symbol*
 |image:./dflipflop_circuit.svg[width=90%]
+|image:./dlatch_symbol.svg[width=90%]
+|===
+
+[width="50%"]
+|===
+|Takt (EN) | D | Q | &#773;Q | Kommentar
+| 0 | x | Q | &#773;Q | keine Änderung
+| 1 | 0 | 0 | 1 | Zurücksetzen
+| 1 | 1 | 1 | 0 | Setzen
+|===
+
+==== Das D-Flipflop
+
+Für viele Schaltungen ist ein transparentes Latch ein Problem: Solange der Takt hoch ist, wird jede Änderung am
+Eingang - einschließlich kurzer Störimpulse - direkt zum Ausgang durchgereicht.
+Die Lösung ist das flankengesteuerte D-Flipflop. Es besteht aus zwei hintereinandergeschalteten D-Latches,
+dem *Master* und dem *Slave*, deren Freigabeeingänge von entgegengesetzten Taktpegeln gesteuert werden:
+
+image:./ms_flipflop_circuit.svg[width="80%"]
+
+* Solange der Takt niedrig ist, ist der Master transparent und folgt D, der Slave hält seinen Wert.
+* Steigt der Takt, schließt der Master und behält den Wert, den D genau in diesem Moment hatte.
+  Gleichzeitig öffnet der Slave und gibt diesen Wert an Q weiter.
+* Solange der Takt hoch ist, ist der Master geschlossen - Änderungen an D erreichen den Ausgang nicht mehr.
+
+Der Ausgang ändert sich also nur bei der steigenden Taktflanke. Das kleine Dreieck am Takteingang
+des Symbols steht für dieses flankengesteuerte Verhalten.
+
+[cols="a,a" width="100%"]
+|===
+| *D-Flipflop-Symbol* | 
 |image:./dflipflop_symbol.svg[width=90%]
+|
 |===
 
 [width="50%"]
 |===
 |Takt | D | Q | &#773;Q | Kommentar
-| 🠓 >>0 | x | Q | &#773;Q | keine Änderung
-| 🠓 >>0 | 1 | 1 | 0 | Zurücksetzen
-| 🠑 >>1 | 0 | 0 | 1 | Setzen
-| 🠑 >>1 | 1 | Q | &#773;Q | -
+| ↑ (steigende Flanke) | 0 | 0 | 1 | Zurücksetzen
+| ↑ (steigende Flanke) | 1 | 1 | 0 | Setzen
+| 0, 1 oder ↓ | x | Q | &#773;Q | keine Änderung
 |===
 
 
@@ -158,6 +195,9 @@ Dieser Ausgang kann zum Beispiel als Adresse für einen Speicher dienen.
 Wenn man die Ausgänge unabhängig voneinander betrachtet, kann man sehen, dass der Zähler
 auch als Frequenzteiler funktioniert: Bei jedem Ausgang wird die Frequenz
 im Verhältnis zu der vorherigen durch zwei geteilt.
+
+Das funktioniert nur mit flankengesteuerten Flipflops: Jede Stufe führt ihren invertierten Ausgang auf ihren D-Eingang zurück.
+Mit einem D-Latch würde der Ausgang immer wieder umschalten, solange der Takt hoch ist.
 
 == Register
 Was sind Register? Register werden verwendet, um Werte zu halten bzw. zu speichern.

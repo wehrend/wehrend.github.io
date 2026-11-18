@@ -112,36 +112,72 @@ The classic flipflop is also known as RS-Latch.
 |===
 |&#773;R | &#773;S || Q | &#773;Q | comments
 | 0  | 0  || 1 | 1 | invalid
-| 0  | 1  || 1 | 0 | Reset
-| 1  | 0  || 0 | 1 | Set
-| 1  | 1  || Q | &#773;Q | --
+| 0  | 1  || 0 | 1 | Reset
+| 1  | 0  || 1 | 0 | Set
+| 1  | 1  || Q | &#773;Q | no change
 |===
 One application of the classic RS-flipflop is to debounce switches.
 
-But for most applications a more evolved flipflop is necessary. Let's have
-a look at the (D)ata-flipflop.
+But for most applications a more evolved storage element is necessary.
 
-==== The D-flipflop
+NOTE: In everyday language, all of these storage elements are often called flipflops.
+Strictly speaking there are two kinds: a *latch* reacts to the *level* of its control signal -
+as long as it is enabled, its output follows the input. A *flipflop* reacts only to an *edge*
+of the clock - it takes over the input at one single moment. This difference will be
+important later, so from here on we use both terms in their strict meaning.
 
-In the D-flipflop the circuit of the RS-flipflop is preceeded by two Nand gates,
-controlled by a clock impulse. Only when the clock is high (i.e. '1') the date applied
-to the (D)ata-input is valid and stored in the RS-fliplop. Otherwise the applied data 
-input is invalid.
+==== The D-latch
+
+In the D-latch the circuit of the RS-flipflop is preceded by two Nand gates,
+controlled by an enable signal (here: the clock). As long as the clock is high (i.e. '1'), the data applied
+to the (D)ata-input is passed through to the output Q - the latch is *transparent*.
+When the clock goes low, the latch holds the last value.
 
 [cols="a,a" width="100%"]
 |===
-| *D-flipflop structure* | *D-flipflop symbol*
+| *D-latch structure* | *D-latch symbol*
 |image:./dflipflop_circuit.svg[width="80%"]
-|image:./dflipflop_symbol.svg[width="80%"]
+|image:./dlatch_symbol.svg[width="80%"]
 |===
 
 [width="50%"]
 |===
-|Clock   | D | Q | &#773;Q | comments
-| 🠓 >>0  | x  | Q | &#773;Q | no change
-| 🠓 >>0  | 1  | 1 | 0 | Reset
-| 🠑 >>1  | 0  | 0 | 1 | Set
-| 🠑 >>1   | 1  | Q | &#773;Q | -
+|Clock (EN) | D | Q | &#773;Q | comments
+| 0 | x | Q | &#773;Q | no change
+| 1 | 0 | 0 | 1 | Reset
+| 1 | 1 | 1 | 0 | Set
+|===
+
+==== The D-flipflop
+
+For many circuits, a transparent latch is a problem: while the clock is high, every change at
+the input - including short glitches - is passed straight through to the output.
+The solution is the edge-triggered D-flipflop. It is built from two D-latches in a row,
+the *master* and the *slave*, whose enable inputs are controlled by opposite clock levels:
+
+image:./ms_flipflop_circuit.svg[width="80%"]
+
+* While the clock is low, the master is transparent and follows D, the slave holds its value.
+* When the clock rises, the master closes and keeps the value D had at exactly this moment.
+  At the same time the slave opens and passes this value on to Q.
+* While the clock is high, the master is closed - changes at D no longer reach the output.
+
+So the output only changes at the rising edge of the clock. The small triangle at the clock input
+of the symbol stands for this edge-triggered behaviour.
+
+[cols="a,a" width="100%"]
+|===
+| *D-flipflop symbol* | 
+|image:./dflipflop_symbol.svg[width="80%"]
+|
+|===
+
+[width="50%"]
+|===
+|Clock | D | Q | &#773;Q | comments
+| ↑ (rising edge) | 0 | 0 | 1 | Reset
+| ↑ (rising edge) | 1 | 1 | 0 | Set
+| 0, 1 or ↓ | x | Q | &#773;Q | no change
 |===
 
 
@@ -160,6 +196,9 @@ This output can, for example, be used as an address for a memory.
 Using the outputs independent, it can be seen that the counter 
 also works as frequency divider: On every output the frequency
 is divided by two referenced to the previous one.
+
+This only works with edge-triggered flipflops: each stage feeds its inverted output back to its D-input.
+With a D-latch, the output would toggle again and again as long as the clock is high.
 
 == Registers
 What are registers? Registers are used to hold respectively store values.
