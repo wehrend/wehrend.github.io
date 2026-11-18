@@ -1,0 +1,243 @@
+From cad0ad1521225c954363e6af3841ab5280f0709f Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 19 Nov 2026 20:25:03 +0100
+Subject: [PATCH] chapter 24: grammar and spelling fixes
+
+Grammar, spelling and punctuation only; no content changes.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018Me4hCYmVEyo5oMdojf1Xo
+---
+ .../en/pages/24_sequential_verilog/index.adoc | 102 +++++++++---------
+ 1 file changed, 51 insertions(+), 51 deletions(-)
+
+diff --git a/content/en/pages/24_sequential_verilog/index.adoc b/content/en/pages/24_sequential_verilog/index.adoc
+index 2ed7c7b..4f151e0 100644
+--- a/content/en/pages/24_sequential_verilog/index.adoc
++++ b/content/en/pages/24_sequential_verilog/index.adoc
+@@ -17,9 +17,9 @@ menu:
+ 
+ == Sequential Verilog
+ 
+-In the link:/pages/23_combinational_verilog/[last chapter] we discussed the language feature of Verilog to describe purely combinational logic...
++In the link:/pages/23_combinational_verilog/[last chapter] we discussed the language features of Verilog to describe purely combinational logic...
+ We did this starting with a simple seven-segment decoder (code and testbench), continuing with the ripple-carry-adder as a second example
+- and ends with the latch trap we discussed.
++and ending with the latch trap we discussed.
+ In this chapter we take the leap from purely combinational Verilog logic to sequential logic... This adds another set of language features we 
+ already had a peek at...
+ 
+@@ -35,10 +35,10 @@ include::d_ff.v[]
+ ----
+ 
+ 
+-The difference between a D-Flipflop and a latch is, that a D-Flipflop is edge-triggered 
+-(meaning it ist changing its ouptput value only on positive clock edges), 
+-while a latch is level-triggered, 
+-meaning its output value changes everytime, as long as en(abled) pin is active..
++The difference between a D-Flipflop and a latch is that a D-Flipflop is edge-triggered
++(meaning it changes its output value only on positive clock edges),
++while a latch is level-triggered,
++meaning its output value changes every time, as long as the en(able) input is active.
+ 
+ [source,verilog]
+ ----
+@@ -46,17 +46,17 @@ include::d_latch.v[]
+ ----
+ 
+ 
+-How in line 9 of the testbench shown below is to see, the en(able) pin is connected with the clock of the testbench, while for the D-flipflop
+-the clock is also going into the clock input.
+-Thus, both (different) flipflops respectively latches borrow the same signals, but are reacting on different timespans: The latch is reacting 
+-during the whole timeframe while the flopflop is only changing on edges...
++As can be seen in line 9 of the testbench shown below, the en(able) input is connected to the clock of the testbench, while for the D-flipflop
++the clock also goes into the clock input.
++Thus, both the flipflop and the latch receive the same signals, but react to different time spans: the latch reacts
++during the whole time frame, while the flipflop only changes on edges...
+ 
+ 
+-*Inputs are never changing on edges.* 
++*Inputs never change on edges.* 
+ 
+ This has two reasons:
+ 
+-- In *real hardware*, the input of a flip-flop must be stable shortly before and after the edge (setup and hold times; see Chapter 22). If it changes exactly at the edge, the result is unpredictable.
++- In *real hardware*, the input of a flip-flop must be stable shortly before and after the edge (setup and hold times; see chapter 22). If it changes exactly at the edge, the result is unpredictable.
+ - In a *simulation*, the result would also be ambiguous: if two events occur at the same time, the result depends on the order in which the simulator processes them. This is called a race condition.
+ 
+ [source,verilog]
+@@ -64,17 +64,17 @@ This has two reasons:
+ include::latch_vs_ff_tb.v[]
+ ----
+ 
+-*$monitor*: This system function is called once and then remains active. As soon as one of the listed signals changes, it outputs a line—at most 
+-one per instance. That is why the lines shown above appear. Unlike $display, which outputs exactly once when it is called, $monitor monitors
++*$monitor*: This system function is called once and then remains active. As soon as one of the listed signals changes, it outputs a line—at most
++one per time step. That is why the lines shown above appear. Unlike $display, which outputs exactly once when it is called, $monitor monitors
+ continuously.
+ 
+ ==== The waveform 
+ 
+ Next, we have a look at the waveforms. The clock is high from 10-20ns, 30-40ns, 50-60ns and finally 70-80ns. During these times the latch is open.
+ 
+-Initially, both outputs (the one from the latch and the flipflop) are only in the state x, meaning undefined...
++Initially, both outputs (the one from the latch and the flipflop) are in the state x, meaning unknown...
+ 
+-The latch only gets a value when its opening on 10ns, the flipflop takes the value on the positive edge, also at 10ns. After that, both are zero.
++The latch only gets a value when it opens at 10 ns; the flipflop takes the value on the positive edge, also at 10 ns. After that, both are zero.
+ 
+ // At 13 and 17 ns, the latch follows d, but the flip-flop does not: The clock is 1, so the latch is open. d jumps to 1 at 13 ns, and the latch follows immediately. At 17 ns, d drops back to 0, and the latch follows again. The flip-flop has set its value at 10 ns and ignores everything until the next rising edge; it remains 0. A short pulse at the input therefore passes through the latch but not the flip-flop.
+ 
+@@ -88,13 +88,13 @@ In summary: The flip-flop checks only four times—at 10, 30, 50, and 70 ns—an
+ 
+ image:./latch_vs_ff_waveform.svg[width="100%"]
+ 
+-=== Example 2: Shift-register
++=== Example 2: Shift register
+ 
+-Both following verilog sources should describing the same hardware, a 4 bit shift register, but there is a trap:
++Both of the following Verilog sources should describe the same hardware, a 4-bit shift register, but there is a trap:
+ 
+-The reason is that the assignment syntax "=" not works but must be replaced by "<=", you can ask an LLM of your choice for the concrete reasons.
++The reason is that the assignment syntax "=" does not work but must be replaced by "<="; you can ask an LLM of your choice for the concrete reasons.
+ 
+-The first one is showing a non-blocking shift register - the one we want to have most of the time, while the second version
++The first one shows a non-blocking shift register - the one we want to have most of the time, while the second version
+ is blocking...
+ 
+ [source,verilog]
+@@ -107,7 +107,7 @@ include::shift_reg.v[]
+ include::shift_reg_blocking.v[]
+ ----
+ 
+-As the waveform of the testbench shows, the results between the first and the second version are quite different....
++As the waveform of the testbench shows, the results of the first and the second version are quite different...
+ 
+ [source,verilog]
+ ----
+@@ -131,41 +131,41 @@ include::counter_updown.v[]
+ 
+ As you can see above, this time we introduce parameters to the code:
+ 
+-First we handle bit width *WIDTH*, second we handle modulo counter *MOD*.
++First we handle the bit width *WIDTH*, second the modulo counter *MOD*.
+ 
+ This parameterisation eases the implementation of fine-tunable circuits.
+-We know the bit width from the example with the ripple carrier adder.
++We know the bit width from the example with the ripple-carry adder.
+ 
+-The modulo-10-Counter, for example is used in the 7-segment display.
++The modulo-10 counter, for example, is used in the 7-segment display.
+ 
+ ==== Priority of conditions
+ 
+-- The if-statement with reset "if (rst)" is first, so the reset works independent from en as long as its enabeled (en=1).
++- The if-statement with reset "if (rst)" is first, so the reset works independently of en as long as it is enabled (en=1).
+ - Only after that statement comes "else if (en)": Without enable, the counter holds its value. 
+ This way, no latch is implemented, but a flipflop that holds its value.
+ 
+ ==== Synchronous Reset
+ 
+-- The reset only apply on the edge trigger, due to its presence inside of the "always @(posedge clk)" syntax. 
++- The reset only applies on the clock edge, due to its presence inside the "always @(posedge clk)" block. 
+   This is called a synchronous reset. 
+-- The alternative would be an asynchrounous reset, which applies immediately: "always @(posedge clk or posedge rst)"
++- The alternative would be an asynchronous reset, which applies immediately: "always @(posedge clk or posedge rst)"
+ 
+ ==== The conditional operator
+ 
+-- The syntax "(q == MOD - 1) ? 0 : q + 1" reads like in the programming language C: When the counter is on 9, he becomes 0 else he is incremented by one.
+-- Downsides the same: Is the counter 0, he becomes 9 else a decrement by one.
+-- In hardware the syntax "? :" results in a multiplexer. Yosys creates 6 $_MUX_-cells.
++- The syntax "(q == MOD - 1) ? 0 : q + 1" reads like in the programming language C: when the counter is at 9, it becomes 0, otherwise it is incremented by one.
++- Counting down works the same way: if the counter is 0, it becomes 9, otherwise it is decremented by one.
++- In hardware the syntax "? :" results in a multiplexer. Yosys creates 6 $_MUX_ cells.
+ 
+ ==== Overflow in both directions
+ 
+-The counter from link:/pages/22_simulation/[chapter 22] overflows from 15 to 0, as it cannot hold more then 4 bit. 
+-So here is the overflow from 9 to 0 and 0 to 9 explicit described.
++The counter from link:/pages/22_simulation/[chapter 22] overflows from 15 to 0, as it cannot hold more than 4 bits. 
++Here, the overflow from 9 to 0 and from 0 to 9 is described explicitly.
+ 
+ 
+ ==== What happens for the values 10 to 15?
+ 
+-After a reset, they never apply. Should the counter misscount in such a value, it will recover itself: 
+-Upwards it goes from 12 to 13,14,15 back to zero, downside it goes from 11 and 10 to 9. This is exactly the "pitfall of unused states" described in
++After a reset, they never occur. Should the counter miscount into such a value, it recovers by itself: 
++Upwards it goes from 12 to 13,14,15 back to zero, downwards it goes from 11 and 10 to 9. This is exactly the "pitfall of unused states" described in
+ link:/pages/14_automata/[chapter 14], here solved (but only for real hardware, after 1 to 6 clock cycles).
+ 
+ 
+@@ -177,25 +177,25 @@ include::counter_updown_tb.v[]
+ 
+ ==== Synchronous instead of asynchronous
+ 
+-The binary counter from link:/pages/12_clocks_and_registers/[chapter 12] was asynchronous: Every Flipflop will be clocked with the output from the previous stage. 
+-Here, all Flipflops are connected to the same clock, so switching concurrently. This is the way counters in modern circuits are wired. 
++The binary counter from link:/pages/12_clocks_and_registers/[chapter 12] was asynchronous: Every Flipflop was clocked by the output of the previous stage. 
++Here, all Flipflops are connected to the same clock, so they switch concurrently. This is the way counters in modern circuits are wired. 
+ 
+-==== What Yosis synthesizes
++==== What Yosys synthesizes
+ 
+ 33 cells, including 4 × $_SDFFE_PP0P_: Those are flipflops with internal synchronous reset and enable. So Yosys recognizes the structure "if (rst) … else if (en)"
+-and generates the appropriate Flipflops. The remaining cells are used by the increment and decrement logic, the comparison and the selection
++and generates the appropriate Flipflops. The remaining cells are used by the increment and decrement logic, the comparison and the selection.
+ 
+ 
+ image:./counter_updown_waveform.svg[width="100%"]
+ 
+ === Example 4: A traffic light
+ 
+-Lets build the traffic light example from link:/pages/14_automata/[chapter 14] into a concrete description of the schematic based on verilog.
++Let's build the traffic light example from link:/pages/14_automata/[chapter 14] into a concrete description of the schematic based on Verilog.
+ 
+-- The traffic light is the Moore-Automaton from chapter 14: Four states (red, red-yellow, greeen, yellow), binary coded as 00,01,10,11 and both
+-  outputs are depending on the state. Chapter 14 has the boolean equations, manually derived: Q0' = ¬Q0, Q1' = Q1 ⊕ Q0, R = ¬Q1, Y = Q0, G = Q1 · ¬Q0.
+-  The result is "two D-flipflops, two inverter, one xor gate and one and gate"
+-- Yosys confirms this. Based on traffic_light_eq.v were synthesized to 2 Flipflops, 2 inverters, 1 xor and one Andnot (an and with one inverted input.
++- The traffic light is the Moore automaton from chapter 14: four states (red, red-yellow, green, yellow), binary coded as 00, 01, 10, 11, and both
++  outputs depend on the state. Chapter 14 has the boolean equations, manually derived: Q0' = ¬Q0, Q1' = Q1 ⊕ Q0, R = ¬Q1, Y = Q0, G = Q1 · ¬Q0.
++  The result is "two D-flipflops, two inverters, one XOR gate and one AND gate".
++- Yosys confirms this: traffic_light_eq.v is synthesized to 2 flipflops, 2 inverters, 1 XOR and 1 ANDNOT (an AND with one inverted input).
+ 
+ 
+ [source,verilog]
+@@ -207,9 +207,9 @@ include::traffic_light_eq.v[]
+ 
+ The traffic_light_eq.v above shows the equations directly in Verilog.
+ 
+-- The two single Flipflops q1 and q0 in a clocked block with <= .
+-- The output as three assing rows, exactly the boolean equations from chapter 14.
+-- Compact, but you have to derive the (boolean) equations yourself. On big automatas, this becomes quickly confusing.  
++- The two single flipflops q1 and q0 are in a clocked block with <=.
++- The outputs as three assign statements, exactly the boolean equations from chapter 14.
++- Compact, but you have to derive the (boolean) equations yourself. For big automata, this quickly becomes confusing.  
+ 
+ 
+ [source,verilog]
+@@ -221,14 +221,14 @@ include::traffic_light.v[]
+ 
+ ==== traffic_light.v: The common style with named states
+ 
+-- localparam gets name for the different states (RED, RED_YELLOW, GREEN, YELLOW). Contrary to a simple parameter, localparam is only valid inside a module and not overridable from outside of the module.
+-- Three different block, and the important thing about this is: They are exactly the same as the one from the block diagram from chapter 14.
++- localparam gives names to the different states (RED, RED_YELLOW, GREEN, YELLOW). In contrast to a normal parameter, a localparam is only valid inside its module and cannot be overridden from outside.
++- Three different blocks, and the important thing about this is: they correspond exactly to the blocks of the block diagram from chapter 14.
+   - state register: always @(posedge clk) with <=, the blue block.
+   - transition logic δ: always @(*) with case, defines next from state δ → Register.
+-  - output logic λ: always @(*) with case, defines R, Y and G from state, thus a Moore-Automat.
++  - output logic λ: always @(*) with case, defines R, Y and G from state, thus a Moore automaton.
+ 
+-- Rule of thumb: From the shift register in pure form: <= in clocked blocks,  = in combinatorial.
+-- No need to derive boolean equations, the automata is already described like in the state diagram. The boolean equations are derived by the synthesis tool.
++- The rule of thumb from the shift register, here in pure form: <= in clocked blocks, = in combinational blocks.
++- No need to derive boolean equations, the automaton is already described as in the state diagram. The boolean equations are derived by the synthesis tool.
+ 
+ 
+ 
+-- 
+2.43.0
+
