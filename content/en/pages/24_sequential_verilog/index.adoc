@@ -1,14 +1,14 @@
 ---
 title: "Sequential Logic in Verilog"
-date: 2026-11-18
+date: 2026-11-20
 weight: 240
-tags: []
+tags: ["verilog","Yosys"]
 category: "digital_logic_3"
 link:
 description: "Sequential Verilog in Detail"
 type: text
 bookHidden: true
-draft: true
+draft: false
 menu:
   docs:
     parent: "digital_logic_3"
@@ -305,3 +305,5 @@ Why does Yosys do this? Although one-hot encoding requires more flip-flops, the 
 faster. On FPGAs, which have many flip-flops anyway, this is often the better choice; more on this in Chapter 27.
 It’s important to note that the encoding is not specified in the Verilog code. The code describes the behavior; the encoding is chosen
 by the synthesis tool.
+
+(Created with Claude AI)
