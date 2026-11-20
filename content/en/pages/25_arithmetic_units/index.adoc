@@ -1,0 +1,24 @@
+---
+title: "Arithmetic Units"
+date: 2026-11-20
+weight: 210
+tags: []
+category: "digital_logic_3"
+link:
+description: "This chapter explains complexer arithmetic units"
+type: text
+bookHidden: true
+draft: true
+menu:
+  docs:
+    parent: "digital_logic_3"
+---
+{{< katex />}}
+
+== Barrel Shifter
+
+image:./arithmetic_shift.svg[width="100%"]
+
+
+image:./barrel_shifter_ptl.svg[width="100%"]
+
