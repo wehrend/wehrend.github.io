@@ -1,0 +1,103 @@
+Der bipolare Transistor hat der Elektronenröhre gegenüber neben vielen Vorteilen einen gewichtigren Nachteil: Er benötigt einen Steuerstrom, 
+folglich eine Steuerleistung. Sein Eingangswiderstand ist klein, er belastet die Quelle (z.B. Antenne, Mikrofon), und er kann aus hochohmigen 
+Quellen  oft nur mit Kunstgriffen angesteuert werden. 
+Die Elektronenröhre dagege ist leistungslos, nur mit der Feldstärke der angelegten Steuerspannung zu steuern. Die praktische Bedeutung liegt darin,
+dass ihr Eingangswiderstand seht groß ist und die Quelle (z.B. Mikrofon) nicht belastet wird. 
+Kein Wunder also, dass man nach einem Bauteil suchte, das die Vorzüge des Transistors mit denen der Röhre vereinigt. Das Ergebnis dieser Entwicklung
+ist die Gruppe der Feldeffekttransistoren (abgekürzt FET). Der Name weist auf das Funktionsprinzip hin: Gesteuert wird der FET nur mit der Feldstärke
+der angelegten Steuerspannung, ohne Steuerstrom, also leistungslos (von Leckströmen ujnd Verlusten abgesehen). Da in ihm nur Ladungsträger einer 
+Polarität bewegt werden - entweder Elektronen oder "Löcher"-, nennt man die FET unipolare Transistoren.
+
+== Funktionsprinzip des Feldeffekttransistoren
+
+Das Prinzip der Feldeffektsteuerung ist "alt" im Vergleich zum bipolaren Transistor. Bereits 1928 erhielt Julius Edgar Lilienfeld ein Patent auf das Prinzip,
+den Widerstand eines elektrischen Feldes zu verändern.
+Allerdings konnte diese Entdeckung noch nicht praktisch genutzt werden, denn in gute (metallische) Leiter dringt eine elektrisches Feld nicht tief ein; 
+die Eindringtiefe in Isolatoren ist zwar sehr groß, nur sind sie als Widerstände ( =Leiter) nicht zu gebrauchen. Die Entwicklung der Halbleiter brachte den 
+geeigneten Werkstoff der einerseits leitet, andererseits das elektrische Feld tief eindringen lässt. 1952 konnte Shockley den ersten brauchbaren FET vorstellen.
+Bis zur Produktionsreife vergingen aber noch viele Jahre.
+
+Um das Funktionsprinzip des FET zu verstehen, vergegenwärtigen wir uns wieder folgende Grundlagen:
+
+1. Ein Leiter leitet nur, wenn er bewegliche Ladungsträger (Elektronen oder "Löcher") enthält.
+2. Der Widerstand eines Leiters (aus ein- und demselben Material) wird umso größer, je kleiner sein Querschnitt ist: Der Widerstand eines dicken Kupferdrahts ist 
+kleiner als der eines dünnen.
+3. Gleiche Ladungen stoßen einander ab, ungleiche ziehen einenander an.
+
+Der Hauptteil des FET ist ein Strompfad ("Kanal") aus schwach dotiertem Silizium. Je nachdem, ob der Kanal n- oder p-dotiert ist, heißt er n-Kanal oder p-Kanal.
+Der Kanal ist ein Widerstand und leitet in beide Richtungen. Seine Enden heißen Source (abgekürzt S, von engl. = Quelle) und Drain (abgekürzt D, von engl. = Abfluß).
+Um den Kanal herum ist eine Elektrode, das Gate (abgekürzt G, von engl. = Sperrschranke, Tor) isoliert angebracht.
+
+Die Funktionsweise wird an einem n-Kanal FET erklärt: Der n-Kanal leitet, weil in ihm frei bewegliche Elektronen vorhanden sind. Erhält das Gate eine zum Kanal 
+(Source)
+negative Spannung,so stoßen die Elektronen des Gate die des Kanals ab und drängen sie aus der Randzone in die Mitte. In der Randzone wird der Kanal wieder ein 
+reiner Kristall, d. h. ein Isolator. Dadurch verengt sich der leitende Querschnitt des Kanals, sein Widerstand erhöht sich. 
+Steigert man die (negative) Gatespannng, so werden immer mehr Elektronen aus dem Kanal verdrängt, d.h. sein leitender Teil verengt sich zunehmend. Bei einer 
+bestimmten Gatespannung (der "Abschnürspannung") sind an einer Stelle schließlich alle Elektronen verdrängt, der Kanal ist "abgeschnürt", er leitet nicht mehr.
+
+Umgekehrt funktioniert die Steuerung auch: Ein sehr schwacj dotierter p-Kanal ist zunächst nicht-leitend. Eine positive Gate-Spannung saugt Elektronen in den Kanal
+und macht ihn leitend. Der Kanalwiderstand sinkt mit zunehmender U_{GS}.
+'''
+Der FET ist ein durch die Feldstärke der Steuerspannung steuerbarer Widerstand. 
+'''
+Der Steuerbereich ist sehr groß. Grundsätzlich kann man D und S vertauschen, da die FET aber nicht genau symmetrisch gefertigt werden, erzielt man mit der "richtigen"
+Anschlußweise die besseren Ergebnisse.
+Je nachdem, auf welche Weise das FET-Prinzip verwirklicht wird, unterscheidet man verschiedene Familien der FET. 
+Die beiden Hauptgruppen sind der Sperrschicht-FET  (=JFET) un der MOSFET.
+
+== Der Sperrschicht-FET (=JFET)
+
+Das Gate ist als stark dotierte Zone um den schwacj dotierten Kanal angebracht. Es ist gegensätzlich zum Kanal dotiert, so dass ein pn-Übergang entsteht, dessen Sperrschicht
+als Isolation wirkt. Daher heißt diese Gruppe der Feldeffekttransistoren Sperrschicht-FET oder JFET (J von engl. junction = Sperrschicht).
+
+image:./JFET.jpg[width="750px"]
+
+Die Funktion wird wieder am n-Kanal-FET dargestellt (siehe Bild oben): Zwischen D und S liegt U_{DS}. Die Elektronen fließen von S nach D. Nun wird die Spannung U_{GS} 
+(Minus-Pol an G) an das Gate angelegt. Dabei liegt der pn-Übergang zwischen G und dem Kanal in Sperrrichtung. Wie bei der https://en.wikipedia.org/wiki/Varicap[Kapazitätsdiode]
+wird die Sperrschicht mit zunehmender Spannung breiter. Da der Kanal im Verhältnis zum Gate schwach dotiert ist, wächst die Sperrschicht überwiegend in den Kanal hinein d.h. 
+die Elektronen werden aus einem Teil des Kanals verdrängt. Dieser Teil wird als reiner Kristall nichtleitend. Der leitfähige Teil des Kanals wird enger, sein Widerstand wächst, 
+bis der Kanal bei einer bestimmten Gatespannung "abgeschnürt" ist und nicht mehr leitet - s.o. Es fließt kein Steuerstrom - mit Ausnahme des bei allen Dioden vorhandenen kleinen 
+Leckstroms. Der p-Kanal-JFET arbeitet genauso nur mit umgekehrt gepolten Batterien (Spannungsquellen).
+
+
+== Der MOSFET
+
+Bei der zweiten Gruppe der FET besteht die Isolation zwischen Gate und Kanal aus einer hauchdünnen Schicht Siliziumdioxid (SiO_{2});
+das Gate ist als metallischer Belag (aufgedampftes Al) ausgeführt. Dem Aufbau entsprechend heißen diese FET nach dem Metall des Gate, dem Oxyd der Isolierschicht und dem Semiconductor 
+(engl. Halbleiter) des Kanals MOS-FET.
+
+image:./mosfet_model.svg[width="750px"]
+
+In obiger Abbildung bestehen der Kanal aus schwach p-dotiertem Material, D und S aus stark n-dotierten Inseln. Das Substrat, der "Untergrund" des Kristalls (B, von engl. bulk = Masse, Hauptteil)
+ist intern oder durch äußere Verdrahtung mit S verbunden.
+
+
+Wie man auch eine Spannung an S und D angelegt, einer der pn-Übergänge zwischen Kanal und Anschlussinsel liegt in Sperrrichtung. Der MOSFET sperrt, sofern an G keine Spannung anliegt.
+Erhält G eine positive Spannung U_{GS} so werden die Löcher als positive Ladungsträger unmittelbar gegenüber der Gate-Elektrode aus dem Kanalbereich verdängt, Elektronen aus dem mit S (negativer Pol 
+der Spannungsquelle) vorhandenen Substrat angezogen, so dass gegenüber G zwischen D und S eine n-leitende Brücke, die "Inversionsschicht" entsteht.
+Der Widerstand dieser Schicht sinkt mit steigender U_{GS}.
+Dieser MOSFET-Typ wird erst leitend, wenn die Kanalregion mit Elektronen angereichert wird; er heißt daher "Anreicherungstyp" (engl. enhancement type), ferner selbstsperrend, weil er bei offenem Gate 
+oder U_{GS} = 0V nicht leitet.
+Ein anderer Typ ist so gefertigt, dass der Kanalbereich bereits schwach n-dotiert ist. Bei offenem G oder U_{GS} = 0V leiter er; er ist "selbstleitend". Mit negativeer U_{GS} können die Elektronen aus
+dem Kanalbereich bis zu abschnürrung verdrängt werden; durch positive U_{GS} können Elektronen in den Kanalbereich gesaugt werden, so dass der Kanalwiderstand weiter sinkt und I_{D} entsprechend ansteigt.
+Die Steuerung mir negativer U_{GS}, also mit der Verdrängung der Elektronen wird bevorzugt angewendet. Daher heißt diese Familie der MOSFET "Verarmungstyp" (engl. depletion type).
+Das besondere Merkmal der selbstleitenden MOSFET ist, dass sie sowohl durch positive als auch durch negative Gatespannungen steuerbar sind.
+
+Die weiteren MOSFET-Typen sind Ableitungen der beiden obigen Hauptgruppen, auf deren Beschreibung in dieser Einführung verzichtet wird.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

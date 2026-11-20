@@ -1,0 +1,53 @@
+<svg width="220.00" height="120.00" 
+     viewBox="0.0 0.0 220.0 120.0" 
+     viewPort="0 0 220px 120px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="flipflop">
+        <rect x="20" y="10" width="20" height="30" style="fill:none;stroke:black;"/>
+        <text x="10" y="15" font-size="4">CLK</text>
+        <line x1="10" y1="17" x2="20" y2="17" style="fill:none;stroke:black;"/>
+        <polyline points="20,15 23,17 20,20" style="fill:none;stroke:black;"/>
+        <text x="10" y="30" font-size="4">D</text>
+        <line x1="10" y1="32" x2="20" y2="32" style="fill:none;stroke:black;"/>
+        <text x="42" y="15" font-size="4">Q</text>
+        <line x1="40" y1="17" x2="50" y2="17" style="fill:none;stroke:black;"/>
+        <text x="42" y="29" font-size="4">QZ</text>
+        <line x1="40" y1="29" x2="45" y2="32" style="fill:none;stroke:black;"/>
+        <line x1="40" y1="32" x2="50" y2="32" style="fill:none;stroke:black;"/>
+    </symbol>
+    <!-- clk -->
+    <polyline points="10,10 145,10 145,37 150,37" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <polyline points="30,10 30,37" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <polyline points="90,10 90,37" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <circle cx="30" cy="10" r="1" style="fill:black;stroke:black;"/>
+    <circle cx="90" cy="10" r="1" style="fill:black;stroke:black;"/>
+    <text x="10" y="8" font-size="4">CLK</text>
+    <!-- out -->
+    <polyline points="65,37 80,37 80,80 100,80" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <circle cx="80" cy="52" r="1" style="fill:black;stroke:black;"/>
+    <line x1="80" y1="52" x2="90" y2="52" style="fill:none;stroke:black;"/>
+    <text x="84" y="76" font-size="4">FF1 out</text>
+    <polyline points="125,37 140,37 140,90 130,90" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <circle cx="140" cy="52" r="1" style="fill:black;stroke:black;"/>    
+    <line x1="140" y1="52" x2="160" y2="52" style="fill:none;stroke:black;"/>
+    <circle cx="140" cy="80" r="1" style="fill:black;stroke:black;"/>    
+    <line x1="140" y1="80" x2="160" y2="80" style="fill:none;stroke:black;"/>
+    <text x="144" y="76" font-size="4">FF2 out</text>
+    
+    <polyline points="185,37 200,37 200,105 130,105" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    <line x1="200" y1="80" x2="225" y2="80" style="fill:none;stroke:black;"/>
+    <circle cx="200" cy="80" r="1" style="fill:black;stroke:black;"/>
+    <text x="205" y="76" font-size="4">FF3 out</text>
+    <use href="#flipflop" x="20" y="20"/>
+    <use href="#flipflop" x="80" y="20"/>
+    <use href="#flipflop" x="140" y="20"/>
+    <!-- xor -->
+    <rect x="110" y="85" width="20" height="25" style="fill:none;stroke:black;"/>
+    <text x="115" y="92" font-size="7">=1</text>
+    
+    <polyline points="110,95 20,95 20,52, 30,52" style="fill:none;stroke:black;stroke-linecap:round;"/>
+    
+</svg>

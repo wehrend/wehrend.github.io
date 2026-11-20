@@ -1,0 +1,18 @@
+<svg width="50px" 
+     height="45px" 
+     viewBox="0.0 0.0 50.00 45.00" 
+     viewPort = "0 0 50 45" 
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <rect x="3" y="0" width="46" height="40" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="5" y="5" font-size="4"  style="fill:blue;">Addition with signs:</text>
+    <text x="5" y="10" font-size="5"  style="fill:blue;">+4+(-3)=1</text>
+    <text x="10" y="20" font-size="5">00000100 = 4</text>
+    <text x="10" y="25" font-size="5">10000011 = -3</text>
+    <text x="5" y="25" font-size="5">+</text>
+    <line x1="10" y1="27" x2="30" y2="27" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="10" y="32" font-size="5">10000111 = -7 ≠ 1</text> 
+    <line x1="10" y1="34" x2="30" y2="34" style="fill:none;stroke:black;"/>
+    <text x="4" y="39" font-size="4" style="fill:red;">This approach is wrong!</text>
+    
+</svg>
+

@@ -1,0 +1,35 @@
+<svg width="150.00" height="40.00" 
+     viewBox="0.0 0.0 150.0 40.0" 
+     viewPort="0 0 150px 40px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <!--power -->
+    <text x="10" y="14" font-size="6">Power</text>
+    <polyline points="36,14 40,9 44,14" style="stroke:black;stroke-width:1;fill:white"/>
+    <line x1="40" y1="10" x2="40" y2="15" style="stroke:black;stroke-width:1;"/>
+    <!--ground(s)-->
+    <text x="10" y="26" font-size="6">Ground</text>
+    <line x1="40" y1="18" x2="40" y2="22" style="stroke:black;stroke-width:1;"/>
+    <polygon points="36,22 44,22 40,27" style="stroke:black;stroke-width:1;fill:none;"/>
+    
+    <line x1="50" y1="18" x2="50" y2="24" style="stroke:black;stroke-width:1;"/>
+    <line x1="47" y1="24" x2="53" y2="24" style="stroke:black;stroke-width:1;"/>
+    
+    <!--diode-->
+    <text x="75" y="7" font-size="6">Diode</text>
+    <g id="diode" rotate="180">
+        <line x1="75" y1="12" x2="90" y2="12" stroke="black"/>
+        <polygon points="81,10 83,12  81,14 81,12" stroke="black"/>
+        <line x1="84" y1="9" x2="84" y2="15" stroke="black"/>
+     </g>
+
+    <!--resistor-->
+    <text x="95" y="7" font-size="6">Resistor</text>
+    <line x1="94" y1="12" x2="100" y2="12" style="stroke:black;stroke-width:1;"/>
+    <rect x="100" y="10" width="14" height="4" style="stroke:black;stroke-width:1;fill:white;"/>
+    <line x1="114" y1="12" x2="120" y2="12" style="stroke:black;stroke-width:1;"/>
+    <polyline points="94,20  100,20 102,18 104,22 106,18 108,22 110,18 112,22 114,20 118,20" 
+              style="stroke:black;stroke-width:1;fill:none;"/>
+</svg>

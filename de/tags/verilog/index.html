@@ -1,0 +1,662 @@
+<!doctype html><html lang=de dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://wehrend.github.io/de/tags/verilog/"><meta property="og:site_name" content="Bits & pieces - Sven Wehrend"><meta property="og:title" content="Verilog"><meta property="og:locale" content="de"><meta property="og:type" content="website"><meta itemprop=name content="Verilog"><meta itemprop=datePublished content="2026-11-20T00:00:00+00:00"><meta itemprop=dateModified content="2026-11-20T00:00:00+00:00"><title>Verilog | Bits & pieces - Sven Wehrend</title><link rel=icon href=/svg/cpu.svg><link rel=manifest href=/manifest.json><link rel=canonical href=https://wehrend.github.io/de/tags/verilog/><link rel=alternate hreflang=en href=https://wehrend.github.io/tags/verilog/ title=Verilog><link rel=stylesheet href=/book.min.f6a0e681e3389abe8a54772c3c5151bc4c51bc4226a0dc99f03fed0105a8eec0.css integrity="sha256-9qDmgeM4mr6KVHcsPFFRvExRvEImoNyZ8D/tAQWo7sA=" crossorigin=anonymous><script defer src=/fuse.min.js></script><script defer src=/de.search.min.2a76f768e1bf0be8bfe1aa94af5d8fc2e05987eeda965f7a866ed0322896f8aa.js integrity="sha256-Knb3aOG/C+i/4aqUr12PwuBZh+7all96hm7QMiiW+Ko=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://wehrend.github.io/de/tags/verilog/index.xml title="Bits & pieces - Sven Wehrend"></head><body dir=ltr class="book-kind-term book-type-tags"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/de/><span>Bits & pieces - Sven Wehrend</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=Suche aria-label=Suche maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/icons/translate.svg class=book-icon alt=Languages>
+Deutsch
+</a><img src=/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/tags/verilog/ class="flex flex-auto">English</a></li></ul></li></ul><ul><li><a href=/de/sitemap/>Sitemap (DE)</a></li><li><a href=/de/about/>Über</a></li><li><a href=/til/>Today I Learned</a></li><li><a href=/downloads>Download Archiv</a></li></ul><ul></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/icons/menu.svg class=book-icon alt=Menu></label><h3>Verilog</h3><label for=toc-control></label></div></header><article class="markdown book-post"><h2><a href=/de/pages/24_sequential_verilog/>Sequentielle Logik in Verilog</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>November 20, 2026</span></div><div class=text-small><a href=/de/tags/verilog/>Verilog</a>,
+<a href=/de/tags/yosys/>Yosys</a></div><div class=book-post-content><div class=paragraph><link rel=stylesheet href=/katex/katex.min.css><script defer src=/katex/katex.min.js></script><script defer src=/katex/auto-render.min.js onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})'></script></div><div class=sect1><h2 id=_sequentielles_verilog>Sequentielles Verilog</h2><div class=sectionbody><div class=paragraph><p>Im <a href=/de/pages/23_combinational_verilog/>letzten Kapitel</a> haben wir die Sprachmittel von Verilog besprochen, mit denen sich rein kombinatorische Logik beschreiben lässt…​
+Begonnen haben wir mit einem einfachen 7-Segment-Decoder (Code und Testbench), weiter ging es mit dem Ripple-Carry-Addierer als zweitem Beispiel,
+und zum Schluss kam die Latch-Falle, die wir besprochen haben.
+In diesem Kapitel machen wir den Sprung von rein kombinatorischer Verilog-Logik zu sequentieller Logik…​ Dazu kommen weitere Sprachmittel,
+auf die wir schon einen kurzen Blick geworfen haben…​</p></div><div class=sect2><h3 id=_beispiel_1_d_flipflop_vs_latch>Beispiel 1: D-Flipflop vs. Latch</h3><div class=paragraph><p>Mit den Unterschieden zwischen D-Flipflops und Latches haben wir uns schon in <a href=/de/pages/12_clocks_and_registers/>Kapitel 12</a> beschäftigt.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+</pre></td><td class=code><pre><span style=color:#6e7781>// D-flip-flop: takes over d only at the rising edge of clk</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>d_ff</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>q</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Der Unterschied zwischen einem D-Flipflop und einem Latch: Ein D-Flipflop ist flankengesteuert
+(es ändert seinen Ausgangswert also nur bei steigenden Taktflanken),
+während ein Latch pegelgesteuert ist,
+sein Ausgangswert ändert sich also jedes Mal, solange der en(able)-Eingang aktiv ist.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+</pre></td><td class=code><pre><span style=color:#6e7781>// D-latch: transparent while en = 1, holds its value while en = 0</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>d_latch</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>q</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>*</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+            <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Wie in Zeile 9 der Testbench unten zu sehen ist, ist der en(able)-Eingang mit dem Takt der Testbench verbunden, während beim D-Flipflop
+der Takt ebenfalls auf den Takteingang geht.
+Flipflop und Latch bekommen also dieselben Signale, reagieren aber auf unterschiedliche Zeitspannen: Das Latch reagiert
+während des ganzen Zeitfensters, das Flipflop ändert sich nur an Flanken…​</p></div><div class=paragraph><p><strong>Eingänge ändern sich nie auf Flanken.</strong></p></div><div class=paragraph><p>Dafür gibt es zwei Gründe. In <strong>echter Hardware</strong> muss der Eingang eines Flipflops kurz vor und nach der Flanke stabil sein
+(Setup- und Hold-Zeiten; siehe Kapitel 22). Ändert er sich genau auf der Flanke, ist das Ergebnis nicht vorhersagbar.
+In einer <strong>Simulation</strong> wäre das Ergebnis ebenfalls mehrdeutig: Passieren zwei Ereignisse zur selben Zeit, hängt das Ergebnis von der Reihenfolge ab,
+in der der Simulator sie abarbeitet. Das nennt man eine Race Condition.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class=code><pre><span style=color:#6e7781>`timescale</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ns</span> <span style=color:#0550ae>/</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ps</span>
+
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>latch_vs_ff_tb</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>d</span>   <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>q_latch</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q_ff</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#6e7781>// the clock is used as enable for the latch</span>
+    <span style=color:#24292f;background-color:#f6f8fa>d_latch</span> <span style=color:#24292f;background-color:#f6f8fa>latch</span> <span style=color:#24292f;background-color:#f6f8fa>(.</span><span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q_latch</span><span style=color:#24292f;background-color:#f6f8fa>));</span>
+    <span style=color:#24292f;background-color:#f6f8fa>d_ff</span>    <span style=color:#24292f;background-color:#f6f8fa>ff</span>    <span style=color:#24292f;background-color:#f6f8fa>(.</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q_ff</span><span style=color:#24292f;background-color:#f6f8fa>));</span>
+
+    <span style=color:#6e7781>// clock: period 20 ns</span>
+    <span style=color:#cf222e>always</span> <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>10</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#cf222e>initial</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpfile</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;latch_vs_ff.vcd&#34;</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpvars</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>latch_vs_ff_tb</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>13</span> <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>    <span style=color:#6e7781>// clk = 1: latch follows, flip-flop holds</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>4</span>  <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>    <span style=color:#6e7781>// clk = 1: latch follows</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>8</span>  <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>    <span style=color:#6e7781>// clk = 0: both hold, both take 1 at the edge at 30 ns</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>8</span>  <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>    <span style=color:#6e7781>// clk = 1: latch follows, flip-flop holds</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>12</span> <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>    <span style=color:#6e7781>// clk = 0: both hold, both take 1 at the edge at 50 ns</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>10</span> <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>    <span style=color:#6e7781>// clk = 1: latch follows, flip-flop holds</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>25</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>finish</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#cf222e>initial</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>monitor</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;t=%0d ns  clk=%b d=%b  q_latch=%b q_ff=%b&#34;</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#cf222e>time</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q_latch</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q_ff</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p><strong>$monitor</strong>: Diese Systemfunktion wird einmal aufgerufen und bleibt danach aktiv. Sobald sich eines der aufgeführten Signale ändert, gibt sie eine Zeile aus, höchstens
+eine pro Zeitschritt. Deshalb erscheinen die oben gezeigten Zeilen. Anders als $display, das genau einmal beim Aufruf ausgibt, überwacht $monitor
+fortlaufend.</p></div><div class=sect3><h4 id=_die_waveform>Die Waveform</h4><div class=paragraph><p>Als Nächstes schauen wir uns die Waveforms an. Der Takt ist von 10-20 ns, 30-40 ns, 50-60 ns und schließlich 70-80 ns high. In diesen Zeiten ist das Latch offen.</p></div><div class=paragraph><p>Zu Beginn sind beide Ausgänge (der des Latches und der des Flipflops) im Zustand x, also unbekannt…​</p></div><div class=paragraph><p>Das Latch bekommt erst einen Wert, wenn es bei 10 ns öffnet; das Flipflop übernimmt den Wert an der steigenden Flanke, ebenfalls bei 10 ns. Danach sind beide null.</p></div><div class=paragraph><p>Zusammengefasst: Das Flipflop schaut nur viermal hin, bei 10, 30, 50 und 70 ns, und hält den Wert dazwischen. Das Latch überwacht das Signal die ganze Zeit, in der der Takt 1 ist.</p></div><div class=paragraph><p><span class=image><img src=./latch_vs_ff_waveform.svg alt="latch vs ff waveform" width=100%></span></p></div></div></div><div class=sect2><h3 id=_beispiel_2_schieberegister>Beispiel 2: Schieberegister</h3><div class=paragraph><p>Die beiden folgenden Verilog-Quellen sollen dieselbe Hardware beschreiben, ein 4-Bit-Schieberegister, aber es gibt eine Falle:</p></div><div class=paragraph><p>Der Grund ist, dass die Zuweisung "=" nicht funktioniert, sondern durch "⇐" ersetzt werden muss; die genauen Gründe kannst du ein LLM deiner Wahl fragen.</p></div><div class=paragraph><p>Die erste zeigt ein nicht-blockierendes Schieberegister - das, das wir meistens haben wollen, während die zweite Version
+blockierend ist…​</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+</pre></td><td class=code><pre><span style=color:#6e7781>// RIGHT: non-blocking assignments (&lt;=) in a clocked block</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>shift_reg</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>       <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>       <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>3</span><span style=color:#0550ae>:</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#24292f;background-color:#f6f8fa>q</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>];</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>2</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>];</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>3</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>2</span><span style=color:#24292f;background-color:#f6f8fa>];</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+</pre></td><td class=code><pre><span style=color:#6e7781>// WRONG: blocking assignments (=) in a clocked block</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>shift_reg_blocking</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>       <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>       <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>3</span><span style=color:#0550ae>:</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#24292f;background-color:#f6f8fa>q</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>];</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>2</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>];</span>
+        <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>3</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>2</span><span style=color:#24292f;background-color:#f6f8fa>];</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Wie die Waveform der Testbench zeigt, sind die Ergebnisse der ersten und der zweiten Version ziemlich unterschiedlich…​</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class=code><pre><span style=color:#6e7781>`timescale</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ns</span> <span style=color:#0550ae>/</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ps</span>
+
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>shift_reg_tb</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>        <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>        <span style=color:#24292f;background-color:#f6f8fa>d</span>   <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>3</span><span style=color:#0550ae>:</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#24292f;background-color:#f6f8fa>q_blocking</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q_nonblocking</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#24292f;background-color:#f6f8fa>shift_reg_blocking</span> <span style=color:#24292f;background-color:#f6f8fa>bad</span>  <span style=color:#24292f;background-color:#f6f8fa>(.</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q_blocking</span><span style=color:#24292f;background-color:#f6f8fa>));</span>
+    <span style=color:#24292f;background-color:#f6f8fa>shift_reg</span>          <span style=color:#24292f;background-color:#f6f8fa>good</span> <span style=color:#24292f;background-color:#f6f8fa>(.</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q_nonblocking</span><span style=color:#24292f;background-color:#f6f8fa>));</span>
+
+    <span style=color:#6e7781>// clock: period 10 ns</span>
+    <span style=color:#cf222e>always</span> <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>5</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#cf222e>initial</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpfile</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;shift_reg.vcd&#34;</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpvars</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>shift_reg_tb</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+
+        <span style=color:#6e7781>// shift in the pattern 1, 0, 0, 0, 0, ...</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>2</span>  <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>10</span> <span style=color:#24292f;background-color:#f6f8fa>d</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>50</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>finish</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#6e7781>// print both registers after every rising clock edge</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>strobe</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;t=%0d ns  d=%b  blocking q=%b  non-blocking q=%b&#34;</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#cf222e>time</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>d</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q_blocking</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q_nonblocking</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p><span class=image><img src=./shift_reg_waveform.svg alt="shift reg waveform" width=100%></span></p></div></div><div class=sect2><h3 id=_beispiel_3_ein_zähler>Beispiel 3: Ein Zähler</h3><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class=code><pre><span style=color:#6e7781>// up/down counter from 0 to MOD-1 with synchronous reset and enable</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>counter_updown</span> <span style=color:#24292f;background-color:#f6f8fa>#(</span>
+    <span style=color:#cf222e>parameter</span> <span style=color:#24292f;background-color:#f6f8fa>WIDTH</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>4</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>parameter</span> <span style=color:#24292f;background-color:#f6f8fa>MOD</span>   <span style=color:#0550ae>=</span> <span style=color:#0550ae>10</span>
+<span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>             <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>             <span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>             <span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span>             <span style=color:#24292f;background-color:#f6f8fa>up</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#24292f;background-color:#f6f8fa>WIDTH</span><span style=color:#0550ae>-</span><span style=color:#0550ae>1</span><span style=color:#0550ae>:</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#24292f;background-color:#f6f8fa>q</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+            <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>else</span> <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+            <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>up</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+                <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>==</span> <span style=color:#24292f;background-color:#f6f8fa>MOD</span> <span style=color:#0550ae>-</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#0550ae>?</span> <span style=color:#0550ae>0</span> <span style=color:#0550ae>:</span> <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>+</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#cf222e>else</span>
+                <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>==</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#0550ae>?</span> <span style=color:#24292f;background-color:#f6f8fa>MOD</span> <span style=color:#0550ae>-</span> <span style=color:#0550ae>1</span> <span style=color:#0550ae>:</span> <span style=color:#24292f;background-color:#f6f8fa>q</span> <span style=color:#0550ae>-</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>end</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=sect3><h4 id=_parameter>Parameter</h4><div class=paragraph><p>Wie oben zu sehen ist, führen wir diesmal Parameter in den Code ein:</p></div><div class=paragraph><p>Zuerst die Bitbreite <strong>WIDTH</strong>, dann den Modulo-Zähler <strong>MOD</strong>.</p></div><div class=paragraph><p>Diese Parametrisierung erleichtert die Umsetzung fein einstellbarer Schaltungen.
+Die Bitbreite kennen wir schon aus dem Beispiel mit dem Ripple-Carry-Addierer.</p></div><div class=paragraph><p>Der Modulo-10-Zähler wird zum Beispiel in der 7-Segment-Anzeige verwendet.</p></div></div><div class=sect3><h4 id=_priorität_der_bedingungen>Priorität der Bedingungen</h4><div class=paragraph><p>Der Reset "if (rst)" wird zuerst geprüft, er greift also immer, egal ob en 0 oder 1 ist.
+Erst danach kommt "else if (en)": Ohne Enable hält der Zähler einfach seinen Wert.
+Da das in einem getakteten Block passiert, entsteht kein Latch, sondern ein Flipflop, das seinen Wert behält.</p></div></div><div class=sect3><h4 id=_synchroner_reset>Synchroner Reset</h4><div class=paragraph><p>Weil der Reset im Block "always @(posedge clk)" steht, greift er nur an einer Taktflanke.
+Das nennt man einen synchronen Reset. Die Alternative ist ein asynchroner Reset, der sofort greift,
+unabhängig vom Takt: "always @(posedge clk or posedge rst)".</p></div></div><div class=sect3><h4 id=_der_bedingungsoperator>Der Bedingungsoperator</h4><div class=paragraph><p>Der Ausdruck "(q == MOD - 1) ? 0 : q + 1" liest sich wie in der Programmiersprache C: Steht der Zähler auf 9, wird er 0,
+sonst wird er um eins erhöht. Abwärts funktioniert es genauso: Steht der Zähler auf 0, wird er 9, sonst wird er um eins verringert.
+In Hardware wird aus "? :" ein Multiplexer; für diesen Zähler erzeugt Yosys 6 $<em>MUX</em>-Zellen.</p></div></div><div class=sect3><h4 id=_überlauf_in_beide_richtungen>Überlauf in beide Richtungen</h4><div class=paragraph><p>Der Zähler aus <a href=/de/pages/22_simulation/>Kapitel 22</a> läuft von 15 auf 0 über, da er nicht mehr als 4 Bit fassen kann.
+Hier ist der Überlauf von 9 auf 0 und von 0 auf 9 ausdrücklich beschrieben.</p></div></div><div class=sect3><h4 id=_was_passiert_bei_den_werten_10_bis_15>Was passiert bei den Werten 10 bis 15?</h4><div class=paragraph><p>Nach einem Reset kommen sie nie vor. Sollte sich der Zähler doch einmal auf einen solchen Wert verzählen, fängt er sich von selbst wieder:
+Aufwärts geht es von 12 über 13, 14, 15 zurück auf null, abwärts von 11 und 10 auf 9. Das ist genau die "Falle der unbenutzten Zustände" aus
+<a href=/de/pages/14_automata/>Kapitel 14</a>, hier gelöst (allerdings nur in echter Hardware, nach 1 bis 6 Taktzyklen).</p></div></div><div class=sect3><h4 id=_die_testbench>Die Testbench</h4><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class=code><pre><span style=color:#6e7781>`timescale</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ns</span> <span style=color:#0550ae>/</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ps</span>
+
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>counter_updown_tb</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>        <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>        <span style=color:#24292f;background-color:#f6f8fa>rst</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>        <span style=color:#24292f;background-color:#f6f8fa>en</span>  <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>        <span style=color:#24292f;background-color:#f6f8fa>up</span>  <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>3</span><span style=color:#0550ae>:</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#24292f;background-color:#f6f8fa>counter_updown</span> <span style=color:#24292f;background-color:#f6f8fa>#(.</span><span style=color:#24292f;background-color:#f6f8fa>WIDTH</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>4</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>MOD</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>10</span><span style=color:#24292f;background-color:#f6f8fa>))</span> <span style=color:#24292f;background-color:#f6f8fa>dut</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+        <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>up</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>up</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+    <span style=color:#24292f;background-color:#f6f8fa>);</span>
+
+    <span style=color:#6e7781>// clock: period 10 ns</span>
+    <span style=color:#cf222e>always</span> <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>5</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#cf222e>initial</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpfile</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;counter_updown.vcd&#34;</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpvars</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>counter_updown_tb</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>12</span>  <span style=color:#24292f;background-color:#f6f8fa>rst</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>10</span>  <span style=color:#24292f;background-color:#f6f8fa>en</span>  <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>     <span style=color:#6e7781>// count up: 0 ... 9, 0 ... 3</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>130</span> <span style=color:#24292f;background-color:#f6f8fa>up</span>  <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>     <span style=color:#6e7781>// count down: 2, 1, 0, 9, 8, 7</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>60</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>finish</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>strobe</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;t=%0d ns  rst=%b en=%b up=%b  q=%0d&#34;</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#cf222e>time</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>en</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>up</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=paragraph><p>Wird der Zähler mit #(.WIDTH(4), .MOD(10)) instanziiert, werden die Parameter überschrieben: So wird ein parametrisiertes Modul
+beim Einbinden konfiguriert. Der Takt hat eine Periode von 10 ns, die steigenden Flanken liegen also bei 5, 15, 25 … ns.
+Die Stimuli folgen mit relativen #-Verzögerungen aufeinander: Der Reset endet bei 12 ns, en geht bei 22 ns auf 1, up bei 152 ns auf 0,
+und die Simulation endet bei 212 ns. Weil $strobe in einem "always @(posedge clk)"-Block steht, gibt es pro steigender Flanke eine Zeile aus,
+mit dem Wert, der sich am Ende dieses Zeitschritts eingestellt hat.</p></div><div class=paragraph><p>In der Waveform ist q in den ersten 5 ns unbekannt (x), bis die erste Flanke bei aktivem Reset es auf 0 setzt.
+Ohne Reset würde die Simulation für immer auf x bleiben: x + 1 ist wieder x, und der Vergleich mit 9 ebenso.
+Ab 25 ns zählt der Zähler von 1 bis 9 aufwärts, springt bei 115 ns von 9 auf 0 und zählt weiter bis 3.
+Ab 155 ns zählt er abwärts, springt bei 185 ns von 0 auf 9 und endet bei 7. Es kommen nur die Werte 0 bis 9 vor.</p></div><div class=paragraph><p><span class=image><img src=./counter_updown_waveform.svg alt="counter updown waveform" width=100%></span></p></div></div><div class=sect3><h4 id=_synchron_statt_asynchron>Synchron statt asynchron</h4><div class=paragraph><p>Der Binärzähler aus <a href=/de/pages/12_clocks_and_registers/>Kapitel 12</a> war asynchron: Jedes Flipflop wurde vom Ausgang der vorherigen Stufe getaktet.
+Hier hängen alle Flipflops am selben Takt und schalten deshalb gleichzeitig. So werden Zähler in modernen Schaltungen aufgebaut.</p></div></div><div class=sect3><h4 id=_was_yosys_synthetisiert>Was Yosys synthetisiert</h4><div class=paragraph><p>33 Zellen, darunter 4 × $<em>SDFFE_PP0P</em>: Das sind Flipflops mit eingebautem synchronem Reset und Enable. Yosys erkennt also die Struktur "if (rst) … else if (en)"
+und erzeugt die passenden Flipflops. Die übrigen Zellen gehen an die Inkrement- und Dekrementlogik, den Vergleich und die Auswahl.</p></div></div></div><div class=sect2><h3 id=_beispiel_4_eine_ampel>Beispiel 4: Eine Ampel</h3><div class=paragraph><p>Bauen wir das Ampel-Beispiel aus <a href=/de/pages/14_automata/>Kapitel 14</a> als konkrete Beschreibung der Schaltung in Verilog nach.</p></div><div class=paragraph><p>Die Ampel ist der Moore-Automat aus Kapitel 14: vier Zustände (Rot, Rot-Gelb, Grün, Gelb), binär kodiert als 00, 01, 10, 11,
+und alle drei Ausgänge hängen nur vom Zustand ab. In Kapitel 14 haben wir die booleschen Gleichungen von Hand hergeleitet:
+Q0' = ¬Q0, Q1' = Q1 ⊕ Q0, R = ¬Q1, Y = Q0, G = Q1 · ¬Q0. Das Ergebnis waren "zwei D-Flipflops, zwei Inverter, ein XOR-Gatter und ein AND-Gatter".
+Yosys bestätigt das: traffic_light_eq.v wird zu 2 Flipflops, 2 Invertern, 1 XOR und 1 ANDNOT (ein AND mit einem invertierten Eingang) synthetisiert.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class=code><pre><span style=color:#6e7781>// traffic_light_eq.v </span>
+<span style=color:#6e7781>// traffic light as Moore machine, built from the equations of chapter 14</span>
+<span style=color:#6e7781>// next state:  Q0&#39; = ~Q0,  Q1&#39; = Q1 ^ Q0</span>
+<span style=color:#6e7781>// outputs:     R = ~Q1,  Y = Q0,  G = Q1 &amp; ~Q0</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>traffic_light_eq</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>g</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>reg</span> <span style=color:#24292f;background-color:#f6f8fa>q1</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>q0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+            <span style=color:#24292f;background-color:#f6f8fa>q1</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#0550ae>1&#39;b0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#24292f;background-color:#f6f8fa>q0</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#0550ae>1&#39;b0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>end</span> <span style=color:#cf222e>else</span> <span style=color:#cf222e>begin</span>
+            <span style=color:#24292f;background-color:#f6f8fa>q0</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>q0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#24292f;background-color:#f6f8fa>q1</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>q1</span> <span style=color:#0550ae>^</span> <span style=color:#24292f;background-color:#f6f8fa>q0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>end</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#cf222e>assign</span> <span style=color:#24292f;background-color:#f6f8fa>r</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>q1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>assign</span> <span style=color:#24292f;background-color:#f6f8fa>y</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>q0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>assign</span> <span style=color:#24292f;background-color:#f6f8fa>g</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>q1</span> <span style=color:#0550ae>&amp;</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>q0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=sect3><h4 id=_zwei_verschiedene_modelle>Zwei verschiedene Modelle</h4><div class=paragraph><p>Das traffic_light_eq.v oben schreibt die Gleichungen direkt in Verilog. Die beiden Flipflops q1 und q0 stehen in einem getakteten Block mit ⇐,
+und die Ausgänge sind drei assign-Anweisungen, genau die booleschen Gleichungen aus Kapitel 14.
+Das ist kompakt, aber die booleschen Gleichungen muss man selbst herleiten, und bei großen Automaten wird das schnell unübersichtlich.</p></div><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre></td><td class=code><pre><span style=color:#6e7781>// traffic_light.v </span>
+<span style=color:#6e7781>// traffic light as Moore machine with named states</span>
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>traffic_light</span> <span style=color:#24292f;background-color:#f6f8fa>(</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>input</span>  <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span>
+    <span style=color:#cf222e>output</span> <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>g</span>
+<span style=color:#24292f;background-color:#f6f8fa>);</span>
+    <span style=color:#cf222e>localparam</span> <span style=color:#24292f;background-color:#f6f8fa>RED</span>        <span style=color:#0550ae>=</span> <span style=color:#0550ae>2&#39;b00</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>localparam</span> <span style=color:#24292f;background-color:#f6f8fa>RED_YELLOW</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>2&#39;b01</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>localparam</span> <span style=color:#24292f;background-color:#f6f8fa>GREEN</span>      <span style=color:#0550ae>=</span> <span style=color:#0550ae>2&#39;b10</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>localparam</span> <span style=color:#24292f;background-color:#f6f8fa>YELLOW</span>     <span style=color:#0550ae>=</span> <span style=color:#0550ae>2&#39;b11</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#cf222e>reg</span> <span style=color:#24292f;background-color:#f6f8fa>[</span><span style=color:#0550ae>1</span><span style=color:#0550ae>:</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>]</span> <span style=color:#24292f;background-color:#f6f8fa>state</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>next</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#6e7781>// state register</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+            <span style=color:#24292f;background-color:#f6f8fa>state</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>RED</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>else</span>
+            <span style=color:#24292f;background-color:#f6f8fa>state</span> <span style=color:#0550ae>&lt;=</span> <span style=color:#24292f;background-color:#f6f8fa>next</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#6e7781>// next-state logic</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>*</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#cf222e>case</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>state</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+            <span style=color:#0550ae>RED:</span>        <span style=color:#24292f;background-color:#f6f8fa>next</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>RED_YELLOW</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>RED_YELLOW:</span> <span style=color:#24292f;background-color:#f6f8fa>next</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>GREEN</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>GREEN:</span>      <span style=color:#24292f;background-color:#f6f8fa>next</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>YELLOW</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>YELLOW:</span>     <span style=color:#24292f;background-color:#f6f8fa>next</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>RED</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>default:</span>    <span style=color:#24292f;background-color:#f6f8fa>next</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>RED</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>endcase</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#6e7781>// output logic: depends only on the state (Moore)</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>*</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3&#39;b000</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>case</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>state</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+            <span style=color:#0550ae>RED:</span>        <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3&#39;b100</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>RED_YELLOW:</span> <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3&#39;b110</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>GREEN:</span>      <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3&#39;b001</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>YELLOW:</span>     <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3&#39;b010</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+            <span style=color:#0550ae>default:</span>    <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>3&#39;b100</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>endcase</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div></div><div class=sect3><h4 id=_traffic_light_v_der_übliche_stil_mit_benannten_zuständen>traffic_light.v: Der übliche Stil mit benannten Zuständen</h4><div class=paragraph><p>Hier gibt localparam den Zuständen Namen: RED, RED_YELLOW, GREEN und YELLOW. Anders als ein normaler Parameter
+gilt ein localparam nur innerhalb seines Moduls und lässt sich von außen nicht überschreiben.</p></div><div class=paragraph><p>Das Modul besteht aus drei Blöcken, und die entsprechen genau den Blöcken des Blockdiagramms aus Kapitel 14.
+Das Zustandsregister ist ein "always @(posedge clk)"-Block mit ⇐, der blaue Block im Diagramm.
+Die Übergangslogik δ ist ein "always @(<strong>)"-Block mit einer case-Anweisung, die next aus state berechnet.
+Die Ausgangslogik λ ist ein weiterer "always @(</strong>)"-Block mit case, der R, Y und G allein aus state berechnet, und das macht sie zu einem Moore-Automaten.
+Das ist die Faustregel vom Schieberegister in ihrer reinsten Form: ⇐ in getakteten Blöcken, = in kombinatorischen Blöcken.</p></div><div class=paragraph><p>Der große Vorteil: Es gibt keine booleschen Gleichungen herzuleiten. Der Automat wird genau so beschrieben wie im Zustandsdiagramm,
+und das Synthesewerkzeug leitet die Gleichungen selbst her.</p></div></div><div class=sect3><h4 id=_testbench_und_waveform>Testbench und Waveform</h4><div class=listingblock><div class=content><pre class="rouge highlight" style=color:#24292f;background-color:#f6f8fa><code data-lang=verilog><table class=linenotable><tbody><tr><td class="linenos gl"><pre class=lineno> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class=code><pre><span style=color:#6e7781>`timescale</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ns</span> <span style=color:#0550ae>/</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>ps</span>
+
+<span style=color:#cf222e>module</span> <span style=color:#24292f;background-color:#f6f8fa>traffic_light_tb</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>reg</span>  <span style=color:#24292f;background-color:#f6f8fa>rst</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>r_eq</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y_eq</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g_eq</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>wire</span> <span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>integer</span> <span style=color:#24292f;background-color:#f6f8fa>errors</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#24292f;background-color:#f6f8fa>traffic_light_eq</span> <span style=color:#24292f;background-color:#f6f8fa>by_hand</span> <span style=color:#24292f;background-color:#f6f8fa>(.</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>r_eq</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>y_eq</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>g_eq</span><span style=color:#24292f;background-color:#f6f8fa>));</span>
+    <span style=color:#24292f;background-color:#f6f8fa>traffic_light</span>    <span style=color:#24292f;background-color:#f6f8fa>named</span>   <span style=color:#24292f;background-color:#f6f8fa>(.</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>rst</span><span style=color:#24292f;background-color:#f6f8fa>),</span> <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>),</span>    <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>),</span>    <span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#24292f;background-color:#f6f8fa>));</span>
+
+    <span style=color:#6e7781>// clock: period 10 ns</span>
+    <span style=color:#cf222e>always</span> <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>5</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>~</span><span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+
+    <span style=color:#cf222e>initial</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpfile</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;traffic_light.vcd&#34;</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>dumpvars</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>traffic_light_tb</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>12</span> <span style=color:#24292f;background-color:#f6f8fa>rst</span> <span style=color:#0550ae>=</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>100</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#24292f;background-color:#f6f8fa>errors</span> <span style=color:#0550ae>==</span> <span style=color:#0550ae>0</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>display</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;PASSED: both implementations are identical&#34;</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#cf222e>else</span>             <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>display</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;FAILED: %0d differences&#34;</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>errors</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>finish</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+
+    <span style=color:#6e7781>// compare both implementations after every rising clock edge</span>
+    <span style=color:#cf222e>always</span> <span style=color:#0550ae>@</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#cf222e>posedge</span> <span style=color:#24292f;background-color:#f6f8fa>clk</span><span style=color:#24292f;background-color:#f6f8fa>)</span> <span style=color:#cf222e>begin</span>
+        <span style=color:#24292f;background-color:#f6f8fa>#</span><span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+        <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#953800>display</span><span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0a3069>&#34;t=%0d ns  state=%b  R=%b Y=%b G=%b&#34;</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>$</span><span style=color:#cf222e>time</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>named</span><span style=color:#24292f;background-color:#f6f8fa>.</span><span style=color:#24292f;background-color:#f6f8fa>state</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#24292f;background-color:#f6f8fa>);</span>
+        <span style=color:#cf222e>if</span> <span style=color:#24292f;background-color:#f6f8fa>(</span><span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r_eq</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y_eq</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g_eq</span><span style=color:#0550ae>}</span> <span style=color:#0550ae>!==</span> <span style=color:#0550ae>{</span><span style=color:#24292f;background-color:#f6f8fa>r</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>y</span><span style=color:#24292f;background-color:#f6f8fa>,</span> <span style=color:#24292f;background-color:#f6f8fa>g</span><span style=color:#0550ae>}</span><span style=color:#24292f;background-color:#f6f8fa>)</span>
+            <span style=color:#24292f;background-color:#f6f8fa>errors</span> <span style=color:#0550ae>=</span> <span style=color:#24292f;background-color:#f6f8fa>errors</span> <span style=color:#0550ae>+</span> <span style=color:#0550ae>1</span><span style=color:#24292f;background-color:#f6f8fa>;</span>
+    <span style=color:#cf222e>end</span>
+<span style=color:#cf222e>endmodule</span>
+</pre></td></tr></tbody></table></code></pre></div></div><div class=sect4><h5 id=_die_testbench_2>Die Testbench</h5><div class=paragraph><p>Diese Testbench funktioniert anders als die bisherigen: Sie regt nicht nur eine Schaltung an, sondern vergleicht zwei
+Implementierungen miteinander. Dazu werden beide Module nebeneinander instanziiert. <code>by_hand</code> ist <code>traffic_light_eq.v</code> mit den
+Gleichungen aus Kapitel 14, <code>named</code> ist <code>traffic_light.v</code> mit den benannten Zuständen. Beide bekommen dieselben Signale <code>clk</code> und <code>rst</code>,
+ihre Ausgänge liegen auf getrennten Leitungen. Außer clk und rst hat die Ampel keine Eingänge, es gibt also nichts weiter
+anzuregen: Der Reset endet bei 12 ns, danach läuft der Automat allein durch den Takt weiter.</p></div><div class=paragraph><p>Verglichen wird nach jeder steigenden Flanke, allerdings erst nach #1. Bis dahin sind die nicht-blockierenden Zuweisungen
+in beiden Modulen übernommen. Ein Vergleich genau auf der Flanke wäre wieder eine Race Condition, wie wir sie in Beispiel 1 gesehen haben.
+Mit {r_eq, y_eq, g_eq} werden die drei Ausgänge zu einem 3-Bit-Wert zusammengefasst, so lassen sie sich
+in einem Schritt vergleichen.</p></div><div class=paragraph><p>Für den Vergleich verwenden wir !== statt !=. Der Unterschied liegt im Umgang mit x: !== vergleicht exakt, einschließlich x.
+Liefert eine Implementierung x und die andere einen gültigen Wert, zählt das als Fehler. Mit != wäre das Ergebnis selbst x,
+und das if würde gar nicht erst greifen.</p></div><div class=paragraph><p>Für die Ausgabe greift die Testbench mit named.state auf den internen Zustand der Instanz named zu, obwohl state gar kein Port ist.
+Ein solcher hierarchischer Name funktioniert nur in der Simulation. Am Ende steht kein Blick auf die Ausgabe mehr, sondern ein
+Urteil: PASSED oder FAILED, zusammen mit der Anzahl der Abweichungen.</p></div><div class=paragraph><p><strong>Hinweis:</strong> Die Testbench prüft nur, ob beide Implementierungen dasselbe ausgeben, nicht, ob die Ausgabe gültig ist.
+Ohne Reset bleiben beide die ganze Zeit auf x, und für !== ist x gleich x. Die Testbench meldet dann trotzdem PASSED.</p></div></div><div class=sect4><h5 id=_die_waveform_2>Die Waveform</h5><div class=paragraph><p>Die Waveform zeigt clk, rst und state sowie die Ausgänge R (Rot), Y (Gelb) und G (Grün) der Instanz named.</p></div><div class=paragraph><p>In den ersten 5 ns ist <code>state</code> noch <code>xx</code>, und auch R, Y und G sind unbekannt. Vor der ersten Flanke haben die Flipflops noch
+keinen Wert, genau wie beim Zähler. Die erste steigende Flanke bei 5 ns kommt bei aktivem Reset und setzt <code>state</code> auf 00,
+also Rot. Bei 12 ns fällt rst, und ab der nächsten Flanke bei 15 ns wechselt der Zustand mit jedem Takt, also alle 10 ns:
+von Rot (00) über Rot-Gelb (01) und Grün (10) zu Gelb (11) und wieder zurück zu Rot. Bis zum Ende der Simulation
+bei 112 ns läuft dieser Zyklus knapp dreimal durch.</p></div><div class=paragraph><p>Auffällig ist, dass sich R, Y und G nur zusammen mit <code>state</code> ändern, also nur an den Flanken. Daran erkennt man den
+Moore-Automaten: Die Ausgänge hängen ausschließlich vom Zustand ab und nicht direkt von einem Eingang. Die Werte passen auch
+zu den Gleichungen aus Kapitel 14. R = ¬Q1 ist in den Zuständen 00 und 01 gesetzt, Y = Q0 in 01 und 11, und G = Q1 · ¬Q0 nur in 10.</p></div><div class=paragraph><p>Eine echte Ampel ist das allerdings noch nicht, denn jede Phase dauert hier genau einen Takt. Für unterschiedlich lange
+Phasen bräuchte man zusätzlich einen Zähler, der in jedem Zustand eine bestimmte Zeit abwartet.</p></div><div class=paragraph><p><span class=image><img src=./traffic_light_waveform.svg alt="traffic light waveform" width=100%></span></p></div></div></div><div class=sect3><h4 id=_one_hot_was_yosys_aus_traffic_light_v_macht>One-hot: Was Yosys aus traffic_light.v macht</h4><div class=paragraph><p>Synthetisiert man traffic_light.v mit Yosys, kommt nicht die Schaltung aus Kapitel 14 heraus. Yosys erkennt den
+Zustandsautomaten und kodiert ihn um, in die sogenannte One-hot-Kodierung. Dabei bekommt jeder Zustand sein eigenes Flipflop,
+und es ist immer genau eines davon gesetzt: Aus 00 wird 0001, aus 10 wird 0010, aus 01 wird 0100 und aus 11 wird 1000.</p></div><div class=paragraph><p>Das Ergebnis sind 13 Zellen, darunter 4 Flipflops statt 2. Zum Vergleich: <code>traffic_light_eq.v</code> kommt mit 6 Zellen aus.
+Mit <code>synth -nofsm</code> lässt sich die Umkodierung abschalten, dann behält Yosys die binäre Kodierung bei und kommt auf 11 Zellen
+mit 2 Flipflops.</p></div><div class=paragraph><p>Warum macht Yosys das? One-hot braucht zwar mehr Flipflops, dafür ist die Logik für jeden einzelnen Zustand einfacher und damit
+schneller. Auf FPGAs, die ohnehin viele Flipflops haben, ist das oft die bessere Wahl; mehr dazu in Kapitel 27.
+Wichtig ist dabei: Die Kodierung steht nicht im Verilog-Code. Der Code beschreibt das Verhalten, die Kodierung wählt
+das Synthesewerkzeug.</p></div><div class=paragraph><p>(Erstellt mit Claude AI)</p></div></div></div></div></div></div></article><article class="markdown book-post"><h2><a href=/de/posts/web/23_fpga_beginners_start_with_verilog/>FPGA 101: Starte mit Quartus und Verilog</a></h2><div class="flex align-center text-small book-post-date"><img src=/icons/calendar.svg class=book-icon alt=Calendar>
+<span>Dezember 25, 2023</span></div><div class=text-small><a href=/de/tags/fpga/>Fpga</a>,
+<a href=/de/tags/beginners/>Beginners</a>,
+<a href=/de/tags/quartus/>Quartus</a>,
+<a href=/de/tags/verilog/>Verilog</a></div><div class=book-post-content><div class=paragraph><p>Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und haben die Voraussetzungen aus
+<a href=https://wehrend.uber.space/posts/web/21_fpga_beginners/>introduction 0</a> sowie
+<a href=https://wehrend.uber.space/posts/web/23_fpga_beginners_1/>simple logic circuit</a> über die BDF-Dateien von Quartus
+erfüllt. Heute möchten wir Ihnen zeigen, wie Sie Quartus verstehen, indem wir ein weiteres Hardware-Äquivalent des in
+der Softwarewelt verwendeten Hallo-Welt-Programms erstellen – wir programmieren einen Binärzähler, der durch die
+LED-Reihe angezeigt wird, die auf unserer DE0-nano-Platine verfügbar ist. Dazu verwenden wir sowohl die Blockdiagrammdateien
+(bdf) von Quartus als auch die beliebte HDL (Hardware Description Language) Verilog.</p></div></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div></div></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav><ul><li class=book-section-flat><a>Categories</a><ul></ul></li><li class=book-section-flat><a>Tags</a><ul><li class="flex align-center"><a href=/de/tags/verilog/>Verilog</a>
+<span>2</span></li><li class="flex align-center"><a href=/de/tags/yosys/>Yosys</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/draft/>Draft</a>
+<span>11</span></li><li class="flex align-center"><a href=/de/tags/ltspice/>LTspice</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/spice/>SPICE</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/synthesizer/>Synthesizer</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/c++/>C++</a>
+<span>9</span></li><li class="flex align-center"><a href=/de/tags/dsp/>DSP</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/qmake/>Qmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/qt/>Qt</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/sdl/>SDL</a>
+<span>3</span></li><li class="flex align-center"><a href=/de/tags/synth/>Synth</a>
+<span>16</span></li><li class="flex align-center"><a href=/de/tags/cmake/>Cmake</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/cpu/>Cpu</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/desktop/>Desktop</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/embedded/>Embedded</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/mcu/>Mcu</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/gh-actions/>Gh-Actions</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/gh-pages/>Gh-Pages</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/hugo/>Hugo</a>
+<span>3</span></li><li class="flex align-center"><a href=/de/tags/web/>Web</a>
+<span>7</span></li><li class="flex align-center"><a href=/de/tags/beginners/>Beginners</a>
+<span>5</span></li><li class="flex align-center"><a href=/de/tags/debian/>Debian</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/fpga/>Fpga</a>
+<span>5</span></li><li class="flex align-center"><a href=/de/tags/icecube2/>IceCube2</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/lattice/>Lattice</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/nandland-go/>Nandland Go</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/diy/>DIY</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/duckburg/>Duckburg</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/ltb/>LTB</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/quartus/>Quartus</a>
+<span>3</span></li><li class="flex align-center"><a href=/de/tags/modelsim/>Modelsim</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/chemistry/>Chemistry</a>
+<span>2</span></li><li class="flex align-center"><a href=/de/tags/electronics/>Electronics</a>
+<span>3</span></li><li class="flex align-center"><a href=/de/tags/analog/>Analog</a>
+<span>2</span></li><li class="flex align-center"><a href=/de/tags/audio/>Audio</a>
+<span>8</span></li><li class="flex align-center"><a href=/de/tags/computing/>Computing</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/knowhow/>Knowhow</a>
+<span>3</span></li><li class="flex align-center"><a href=/de/tags/blog/>Blog</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/consciousness/>Consciousness</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/electronic/>Electronic</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/odoo/>Odoo</a>
+<span>1</span></li><li class="flex align-center"><a href=/de/tags/nikola/>Nikola</a>
+<span>1</span></li></ul></li></ul></nav></div></aside></main><script src=https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js></script><script src=https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js></script><link rel=stylesheet href=https://unpkg.com/tippy.js@6/themes/light.css><script src=/js/code-annotation-tooltips.js></script><script src=/js/copy-button.js></script></body></html>

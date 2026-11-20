@@ -1,0 +1,32 @@
+<svg width="140.00" height="130.00" 
+     viewBox="0.0 0.0 140.0 130.0" 
+     viewPort="0 0 140px 120px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    
+    <symbol id="nmos">
+        <polyline points="50,70 40,70  40,85 50,85" style="stroke:black;stroke-width:1;fill:none;stroke-linecap:round"/>
+        <line x1="38" y1="70" x2="38" y2="85" style="stroke:black;stroke-width:1;fill:none;"/>
+        <line x1="25" y1="77" x2="38" y2="77" style="stroke:black;stroke-width:1;fill:none;"/>
+    </symbol>
+    <rect x="10" y="5" width="110" height="100" style="fill:none;stroke:blue;stroke-width:1"/>
+    <text x="12" y="10" font-size="5" style="fill:blue">DRAM cell</text>
+    <!--     cell -->
+    <circle cx="5" cy="30" r="0.6" style="stroke:black;stroke-width:1"/>
+    <polyline points="5,30 60,30 60,50" style="fill:none;stroke:black;stroke-width:1"/>
+    <use x="10" y="-20" xlink:href="#nmos" style="stroke:blue;stroke-width:1"/>
+    <line x1="60" y1="65" x2="60" y2="76" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="56" y1="76" x2="64" y2="76" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="56" y1="77.5" x2="64" y2="77.5" style="stroke:black;stroke-width:1;fill:none;"/>
+    <line x1="60" y1="77.5" x2="60" y2="90" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="60" cy="91" r="1" style="fill:none;stroke:black;stroke-width:1"/>
+    <text x="65" y="78" font-size="5">C</text>
+    <text x="62" y="92" font-size="5">Vss</text>
+    <line x1="5" y1="0" x2="5" y2="130" style="stroke:black;stroke-width:1;fill:none;"/>
+    <text x="7" y="125" font-size="4">Bit Line</text>
+    <line x1="0" y1="110" x2="140" y2="110" style="stroke:black;stroke-width:1;fill:none;"/>
+    <text x="55" y="115" font-size="4">Column Line</text>
+    <line x1="35" y1="56.5" x2="35" y2="110" style="stroke:black;stroke-width:1;fill:none;"/>
+    <circle cx="35" cy="110" r="0.6" style="stroke:black;stroke-width:1"/>
+</svg>
