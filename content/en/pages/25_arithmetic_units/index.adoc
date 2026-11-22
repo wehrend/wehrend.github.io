@@ -71,3 +71,4 @@ image:./barrel_shifter_files/barrel_shifter_stage3_sll.svg[width="100%"]
 ----
 include::./barrel_shifter_files/shifter_tb.v[Shifter-Testbench]
 ----
+

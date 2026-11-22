@@ -119,7 +119,7 @@ image:./complex_number.png[width="400px"]
 wobei i ist:
 
 [role="image","./imaginary_numbers.svg", imgfmt="svg"]
-\[ i = \sqrt(-1) \]
+\[ i^2 = -1 \]
 
 Komplexe Zahlen können sowohl im kartesischen Koordinatensystem wie oben gezeigt
 als auch als Polarkoordinaten mit einer Phase \phi und einem Radius r ausgedrückt werden.
@@ -155,7 +155,7 @@ Das werden wir im nächsten Unterabschnitt analysieren.
 \[ z = a + bi   w =  c + di \]
 
 [role="image","./multiplication-rule2.svg", imgfmt="svg"]
-\[ z \cdot w = (a + ci) \cdot (b +di)  = (ac -bd)+ (ad +bc)i mit i^2 = -1 \]
+\[ z \cdot w = (a + bi) \cdot (c +di)  = (ac -bd)+ (ad +bc)i mit i^2 = -1 \]
 
 
 ===== Division kartesischer Koordinaten
@@ -174,9 +174,8 @@ z {\displaystyle z} durch eine komplexe Zahl  w≠ 0
 
 
 ===== Addition und Subtraktion von Polarkoordinaten
-
-Da Addition und Subtraktion für Polarkoordinaten nicht definiert sind, müssen wir sie durch Berechnung in kartesischen Koordinaten berechnen
-und schließlich wieder in Polarkoordinaten umwandeln.
+Addition und Subtraktion sind zwar definiert, haben in Polarform aber keine einfache Formel:
+Für die Umrechnung müssen wir sie zunächst in kartesische Koordinaten umrechnen und schließlich wieder in Polarkoordinaten umwandeln.
 
 ===== Multiplikation von Polarkoordinaten
 
