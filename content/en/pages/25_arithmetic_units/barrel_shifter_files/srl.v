@@ -1,5 +1,5 @@
-// Stage 1: only shift right logical (srl), 8 bit, three stages written out
-module shifter1 (
+// srl: shift right logical, 8 bit. Zeros are shifted in from the left.
+module shifter_srl (
     input  wire [7:0] a,
     input  wire [2:0] shamt,
     output wire [7:0] y
