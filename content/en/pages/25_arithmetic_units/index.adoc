@@ -27,8 +27,29 @@ or to the right, which is division. More complex cases are handled and discussed
 
 == Barrel Shifter
 
+
 image:./barrel_shifter_files/arithmetic_shift.svg[width="100%"]
 
+=== sll, srl, sra
+
+[width="100%" cols="1,2,1,2,1,1",options="header"]
+|================
+| command | name                   | direction | shifted in                       | input      | result
+| `sll`   | shift left logical     | left      | zeros from the right             | `00101101` | `01011010`
+| `srl`   | shift right logical    | right     | zeros from the left              | `11011001` | `01101100`
+| `sra`   | shift right arithmetic | right     | copies of the sign bit from the left | `11011001` | `11101100`
+|================
+
+[IMPORTANT]
+.Why no shift left arithmetic (sla) ? 
+====
+The difference between “logical” and “arithmetic” lies solely in what is shifted into the space that becomes available.
+
+When shifting to the right, space becomes available on the left—that is, where the sign bit is located. There are two reasonable options: zeros for unsigned numbers (srl) or copies of the sign bit for signed numbers (sra).
+
+When shifting left, space is freed up on the right, at the least significant bit. A 0 is always correct there, regardless of whether the number has a sign or not. Even in two’s complement, “multiply by 2” simply means “shift everything one place to the left, with a 0 on the right”:
+
+====
 
 === Shift right logical 
 
