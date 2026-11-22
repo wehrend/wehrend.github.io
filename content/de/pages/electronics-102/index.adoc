@@ -113,16 +113,18 @@ nicht nur eine, sondern zwei Dimensionen von Zahlen haben, wie unten dargestellt
 image:./complex_number.png[width="400px"]
 
 
-[role="image","./complex_numbers.svg", imgfmt="svg"]
 \[ z = x + yi  \]
 
-wobei i ist:
+wobei i definiert ist durch:
 
-[role="image","./imaginary_numbers.svg", imgfmt="svg"]
 \[ i^2 = -1 \]
 
+{{< asciihint warning >}}
+Da die Variable i in der Elektrotechnik bereits für den Strom reserviert ist, verwenden wir ab dem Abschnitt über Filter j statt i!
+{{< /asciihint >}}
+
 Komplexe Zahlen können sowohl im kartesischen Koordinatensystem wie oben gezeigt
-als auch als Polarkoordinaten mit einer Phase \phi und einem Radius r ausgedrückt werden.
+als auch in Polarkoordinaten mit einer Phase φ und einem Radius r ausgedrückt werden.
 
 
 [width="100%" cols="a,a"]
@@ -131,6 +133,24 @@ als auch als Polarkoordinaten mit einer Phase \phi und einem Radius r ausgedrüc
 | image:./polar.svg[width="450px"]
 |=====
 
+=== Die Polarform
+
+In Polarkoordinaten wird eine komplexe Zahl durch ihren Radius r (auch Betrag genannt)
+und ihre Phase φ (den Winkel zur reellen Achse) beschrieben:
+
+\[ z = r \cdot e^{i\phi} \]
+
+Diese Schreibweise beruht auf der Eulerschen Formel, die die Exponentialfunktion mit Sinus und Kosinus verbindet:
+
+\[ e^{i\phi} = \cos\phi + i \sin\phi \]
+
+Beide Formen beschreiben also dieselbe Zahl: Der Realteil ist x = r · cos φ, der Imaginärteil y = r · sin φ.
+Umgekehrt berechnen sich Radius und Phase aus x und y:
+
+\[ r = |z| = \sqrt{x^2 + y^2} \qquad \phi = \operatorname{atan2}(y, x) \]
+
+atan2 ist der Arkustangens, der die Vorzeichen von x und y berücksichtigt und so den richtigen Quadranten liefert.
+
 === Berechnungsregeln für komplexe Zahlen
 
 Komplexe Zahlen können entweder in kartesischen Koordinaten oder in Polarkoordinaten berechnet werden.
@@ -138,65 +158,63 @@ Das werden wir im nächsten Unterabschnitt analysieren.
 
 ==== Berechnungsregeln für kartesische Koordinaten
 
-===== Addition und Subtraktion von kartesischen Koordinaten
-==== Berechnungsregeln für kartesische Koordinaten
-
 ===== Addition und Subtraktion kartesischer Koordinaten
 
-[role="image","./addition-rule.svg", imgfmt="svg"]
-\[ z = a + bi   w =  c + di \]
+\[ z = a + bi \qquad w = c + di \]
 
-[role="image","./addition-rule2.svg", imgfmt="svg"]
-\[ z + w = (a + c) + (b +d) i \]
+\[ z + w = (a + c) + (b + d) i \]
 
 ===== Multiplikation kartesischer Koordinaten
 
-[role="image","./multiplication-rule.svg", imgfmt="svg"]
-\[ z = a + bi   w =  c + di \]
+\[ z = a + bi \qquad w = c + di \]
 
-[role="image","./multiplication-rule2.svg", imgfmt="svg"]
-\[ z \cdot w = (a + bi) \cdot (c +di)  = (ac -bd)+ (ad +bc)i mit i^2 = -1 \]
+\[ z \cdot w = (a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i \quad \text{mit } i^2 = -1 \]
 
 
 ===== Division kartesischer Koordinaten
-Um eine komplexe Zahl
-z {\displaystyle z} durch eine komplexe Zahl  w≠ 0
-{\displaystyle w\neq 0} zu dividieren, erweitern Sie den Bruch um die komplexe Konjugierte zum Nenner.
 
-[role="image","./conjugated-complex-rule.svg", imgfmt="svg"]
-\[ \overline{w} = c -di\]
+Um eine komplexe Zahl z durch eine komplexe Zahl w ≠ 0 zu dividieren, erweitert man den Bruch mit der konjugiert komplexen Zahl des Nenners:
 
+\[ \overline{w} = c - di \]
 
-[role="image","./division-rule2.svg", imgfmt="svg"]
 \[ \frac{z}{w} = \frac{z \cdot \overline{w} }{w \cdot \overline{w}} = \frac{(a + bi) (c-di)}{(c+di)(c - di )} = \frac{ac+bd}{c^2 + d^2} +\frac{bc-ad}{c^2 + d^2} i \]
 
 ==== Berechnungsregeln für Polarkoordinaten
 
 
 ===== Addition und Subtraktion von Polarkoordinaten
+
 Addition und Subtraktion sind zwar definiert, haben in Polarform aber keine einfache Formel:
 Für die Umrechnung müssen wir sie zunächst in kartesische Koordinaten umrechnen und schließlich wieder in Polarkoordinaten umwandeln.
 
 ===== Multiplikation von Polarkoordinaten
 
-[role="image","./multiplication-polar-rule.svg", imgfmt="svg"]
-\[ z_{1} = a + bi   z_{2} =  c + di \]
+\[ z_{1} = r_{1} \cdot e^{i\phi_{1}} \qquad z_{2} = r_{2} \cdot e^{i\phi_{2}} \]
 
-[role="image","./multiplication-polar-rule2.svg", imgfmt="svg"]
-\[ z_{1} \cdot z_{2} = r_{1} r_{2} \cdot e^{i{(\phi_{1} + \phi_{2})}}\]
+\[ z_{1} \cdot z_{2} = r_{1} r_{2} \cdot e^{i(\phi_{1} + \phi_{2})} \]
+
+Die Radien werden multipliziert, die Phasen addiert.
 
 ===== Division von Polarkoordinaten
-Um eine komplexe Zahl
-z {\displaystyle z} durch eine komplexe Zahl  w≠ 0
 
-[role="image","./conjugated-divison-rule.svg", imgfmt="svg"]
-\[ \frac{z_{1}}{z_{2}} =\frac{r_{1}}{r_{2}} \cdot e^{{i(\phi_{1} - \phi_{2})}}, mit  r_{2} \neq 0\]
+Um eine komplexe Zahl z~1~ durch eine komplexe Zahl z~2~ ≠ 0 zu dividieren, werden die Radien dividiert und die Phasen subtrahiert:
 
+\[ \frac{z_{1}}{z_{2}} = \frac{r_{1}}{r_{2}} \cdot e^{i(\phi_{1} - \phi_{2})} \quad \text{mit } r_{2} \neq 0 \]
 
+=== Impedanz: Warum j so nützlich ist
 
-{{< asciihint warning >}}
-    Da die Variable i in der Elektrotechnik bereits für Strom reserviert ist, verwenden wir stattdessen j als i !
-{{< /asciihint >}}
+Mit komplexen Zahlen lassen sich Kondensatoren und Spulen wie Widerstände behandeln. Ihr „komplexer Widerstand“,
+die Impedanz Z, hängt von der Kreisfrequenz ω = 2πf ab:
+
+\[ Z_R = R \qquad Z_C = \frac{1}{j\omega C} = -j \frac{1}{\omega C} \qquad Z_L = j\omega L \]
+
+Die Multiplikation mit j bedeutet eine Drehung um 90° in der komplexen Ebene, denn j = e^(j·90°). Das ist genau die
+Phasenverschiebung aus der Tabelle oben: Beim Kondensator eilt der Strom der Spannung um 90° voraus, bei der Spule um 90° hinterher.
+Der Betrag 1/(ωC) zeigt, dass ein Kondensator tiefe Frequenzen sperrt und hohe durchlässt.
+
+Mit Impedanzen gelten für Reihen- und Parallelschaltungen und für Spannungsteiler dieselben Regeln wie für Widerstände,
+nur wird komplex gerechnet. Der Betrag |H| des Ergebnisses sagt, wie stark ein Signal gedämpft wird,
+die Phase arg H, wie weit es verschoben wird. Beides berechnen wir im nächsten Abschnitt für die Filter.
 
 ////
 - Aufbau Kondensator
