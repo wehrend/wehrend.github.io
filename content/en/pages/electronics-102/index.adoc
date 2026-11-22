@@ -113,16 +113,18 @@ not only one but two dimensions of numbers like shown below:
 image:./complex_number.png[width="400px"]
 
 
-[role="image","./complex_numbers.svg", imgfmt="svg"]
 \[ z = x + yi  \]
 
 where i is defined by:
 
-[role="image","./imaginary_numbers.svg", imgfmt="svg"]
 \[ i^2 = -1 \]
 
-Complex numbers can be expressed in  both, the cartresian coordinate system like shown above,
-or like polar coordinates with a phase \phi and a radius r .
+{{< asciihint warning >}}
+Since the variable i is already reserved for current in electronic engineering, we use j instead of i from the section about filters on!
+{{< /asciihint >}}
+
+Complex numbers can be expressed both in the cartesian coordinate system like shown above,
+and in polar coordinates with a phase φ and a radius r.
 
 
 [width="100%" cols="a,a"]
@@ -131,40 +133,50 @@ or like polar coordinates with a phase \phi and a radius r .
 | image:./polar.svg[width="450px"]
 |=====
 
+=== The polar form
+
+In polar coordinates, a complex number is written with its radius r (also called magnitude or absolute value)
+and its phase φ (the angle to the real axis):
+
+\[ z = r \cdot e^{i\phi} \]
+
+This notation is based on Euler's formula, which connects the exponential function with sine and cosine:
+
+\[ e^{i\phi} = \cos\phi + i \sin\phi \]
+
+So both forms describe the same number: the real part is x = r · cos φ, the imaginary part is y = r · sin φ.
+The other way round, radius and phase are calculated from x and y:
+
+\[ r = |z| = \sqrt{x^2 + y^2} \qquad \phi = \operatorname{atan2}(y, x) \]
+
+atan2 is the arctangent that takes the signs of x and y into account, so it returns the correct quadrant.
+
 === Calculation rules for complex numbers
 
 Complex numbers can be calculated either in cartesian coordinates or in polar coordinates.
-We will analyze that in the next subsection
+We will analyze that in the next subsection.
 
 ==== Calculation rules for cartesian coordinates
 
 ===== Addition and Subtraction of cartesian coordinates
 
-[role="image","./addition-rule.svg", imgfmt="svg"]
-\[ z = a + bi   w =  c + di \]
+\[ z = a + bi \qquad w = c + di \]
 
-[role="image","./addition-rule2.svg", imgfmt="svg"]
-\[ z + w = (a + c) + (b +d) i \]
+\[ z + w = (a + c) + (b + d) i \]
 
 ===== Multiplication of cartesian coordinates
 
-[role="image","./multiplication-rule.svg", imgfmt="svg"]
-\[ z = a + bi   w =  c + di \]
+\[ z = a + bi \qquad w = c + di \]
 
-[role="image","./multiplication-rule2.svg", imgfmt="svg"]
-\[ z \cdot w = (a + bi) \cdot (c +di)  = (ac -bd)+ (ad +bc)i with i^2 = -1 \]
+\[ z \cdot w = (a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i \quad \text{with } i^2 = -1 \]
 
 
 ===== Division of cartesian coordinates
-To divide a complex number
-z {\displaystyle z} by a complex number  w≠ 0
-{\displaystyle w\neq 0}, extend the fraction with the complex number conjugate to the denominator.
 
-[role="image","./conjugated-complex-rule.svg", imgfmt="svg"]
-\[ \overline{w} = c -di\]
+To divide a complex number z by a complex number w ≠ 0, extend the fraction with the complex conjugate of the denominator:
 
+\[ \overline{w} = c - di \]
 
-[role="image","./division-rule2.svg", imgfmt="svg"]
 \[ \frac{z}{w} = \frac{z \cdot \overline{w} }{w \cdot \overline{w}} = \frac{(a + bi) (c-di)}{(c+di)(c - di )} = \frac{ac+bd}{c^2 + d^2} +\frac{bc-ad}{c^2 + d^2} i \]
 
 ==== Calculation rules for polar coordinates
@@ -177,30 +189,38 @@ and eventually convert them back to polar coordinates.
 
 ===== Multiplication of polar coordinates
 
-[role="image","./multiplication-polar-rule.svg", imgfmt="svg"]
-\[ z_{1} = a + bi   z_{2} =  c + di \]
+\[ z_{1} = r_{1} \cdot e^{i\phi_{1}} \qquad z_{2} = r_{2} \cdot e^{i\phi_{2}} \]
 
-[role="image","./multiplication-polar-rule2.svg", imgfmt="svg"]
-\[ z_{1} \cdot z_{2} = r_{1} r_{2} \cdot e^{i{(\phi_{1} + \phi_{2})}}\]
+\[ z_{1} \cdot z_{2} = r_{1} r_{2} \cdot e^{i(\phi_{1} + \phi_{2})} \]
+
+The radii are multiplied, the phases are added.
 
 ===== Division of polar coordinates
-To divide a complex number
-z {\displaystyle z} by a complex number  w≠ 0
 
-[role="image","./conjugated-divison-rule.svg", imgfmt="svg"]
-\[ \frac{z_{1}}{z_{2}} =\frac{r_{1}}{r_{2}} \cdot e^{{i(\phi_{1} - \phi_{2})}}, with  r_{2} \neq 0\]
+To divide a complex number z~1~ by a complex number z~2~ ≠ 0, the radii are divided and the phases are subtracted:
+
+\[ \frac{z_{1}}{z_{2}} = \frac{r_{1}}{r_{2}} \cdot e^{i(\phi_{1} - \phi_{2})} \quad \text{with } r_{2} \neq 0 \]
+
+=== Impedance: why j is so useful
+
+With complex numbers, capacitors and coils can be treated like resistors. Their "complex resistance",
+called impedance Z, depends on the angular frequency ω = 2πf:
+
+\[ Z_R = R \qquad Z_C = \frac{1}{j\omega C} = -j \frac{1}{\omega C} \qquad Z_L = j\omega L \]
+
+Multiplying by j means a rotation by 90° in the complex plane, since j = e^(j·90°). This is exactly the phase shift
+from the table above: in a capacitor, the current leads the voltage by 90°; in a coil, it lags by 90°.
+The magnitude 1/(ωC) shows that a capacitor blocks low frequencies and lets high frequencies pass.
+
+With impedances, the rules for series and parallel circuits and for voltage dividers stay the same as for resistors,
+only the calculation is complex. The magnitude |H| of the result tells how much a signal is attenuated,
+the phase arg H how much it is shifted. Both are calculated for the filters in the next section.
 
 ////
 - Aufbau Kondensator
 - Kondensator im Gleichstromkreis
 - RC-Glieder
 ////
-
-
-{{< asciihint warning >}}
-Since the variable i is in electronic engineering already is reserved for current, we use instead j as i !
-{{< /asciihint >}}
-
 
 
 == Frequency-dependent networks (Filters)
