@@ -185,7 +185,45 @@ Writing `$signed(a) >>> shamt` into a register of its own first avoids this.
 
 == Multiplier 
 
-(To be continued)
+
+=== Long Multiplication
+
+
+image:./multiplier_files/long_multiplication.svg[Long Multiplication]
+
+=== Array-Multiplier 
+
+
+image:./multiplier_files/array_multiplier.svg[width="100%",Array Multiplier]
+
+
+[source,verilog]
+----
+include::./multiplier_files/array_multiplier.v[Array-Multiplier]
+----
+
+
+[source,verilog]
+----
+include::./multiplier_files/array_multiplier_tb.v[Array-Multiplier Testbench]
+----
+
+=== Sequential Multiplier 
+
+[source,verilog]
+----
+include::./multiplier_files/seq_multiplier.v[Sequential-Multiplier]
+----
+
+
+[source,verilog]
+----
+include::./multiplier_files/seq_multiplier_tb.v[Sequential-Multiplier Testbench]
+----
+
+image:./multiplier_files/seq_multiplier.svg[width="100%",Sequential Multiplier]
+
+image:./multiplier_files/seq_multiplier_waveform.svg[width="100%",Sequential Multiplier Waveform]
 
 
 == Divider
