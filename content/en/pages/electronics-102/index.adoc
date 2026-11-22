@@ -116,10 +116,10 @@ image:./complex_number.png[width="400px"]
 [role="image","./complex_numbers.svg", imgfmt="svg"]
 \[ z = x + yi  \]
 
-where i is:
+where i is defined by:
 
 [role="image","./imaginary_numbers.svg", imgfmt="svg"]
-\[ i = \sqrt(-1) \]
+\[ i^2 = -1 \]
 
 Complex numbers can be expressed in  both, the cartresian coordinate system like shown above,
 or like polar coordinates with a phase \phi and a radius r .
@@ -152,7 +152,7 @@ We will analyze that in the next subsection
 \[ z = a + bi   w =  c + di \]
 
 [role="image","./multiplication-rule2.svg", imgfmt="svg"]
-\[ z \cdot w = (a + ci) \cdot (b +di)  = (ac -bd)+ (ad +bc)i with i^2 = -1 \]
+\[ z \cdot w = (a + bi) \cdot (c +di)  = (ac -bd)+ (ad +bc)i with i^2 = -1 \]
 
 
 ===== Division of cartesian coordinates
@@ -172,7 +172,7 @@ z {\displaystyle z} by a complex number  w≠ 0
 
 ===== Addition and Subtraction of polar coordinates
 
-For the polar coordinates addition and subtraction are not defined, we have to calculating them by computing into cartesian coordinates,
+For the polar coordinates addition and subtraction are defined, but there is no easy equation. We have to calculate them by computing into cartesian coordinates,
 and eventually convert them back to polar coordinates.
 
 ===== Multiplication of polar coordinates
