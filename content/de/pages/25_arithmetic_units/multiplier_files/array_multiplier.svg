@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="688" viewBox="0 0 820 688" font-family="Liberation Serif, Times New Roman, serif">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="black"/></marker></defs>
+<text x="30" y="30" font-size="17" text-anchor="start" fill="black" font-weight="bold">4 × 4 array multiplier (array_multiplier.v)</text>
+<text x="30" y="52" font-size="13" text-anchor="start" fill="#1a8a3a" >example: a = 1101 (13), b = 1011 (11)  →  p = 10001111 (143)</text>
+<text x="310.0" y="84" font-size="13" text-anchor="middle" fill="#1f5fbf" >a = a3 a2 a1 a0   (to every AND row)</text>
+<line x1="120" y1="92" x2="120" y2="560" stroke="#1f5fbf" stroke-width="1.2"/>
+<line x1="120" y1="92" x2="310.0" y2="92" stroke="#1f5fbf" stroke-width="1.2"/>
+<line x1="120" y1="128" x2="160" y2="128" stroke="#1f5fbf" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="160" y="110" width="300" height="36" fill="#f6f6f6" stroke="black" stroke-width="1.4" />
+<text x="310.0" y="126" font-size="14" text-anchor="middle" fill="black" >4 AND gates:  pp0 = a AND b0</text>
+<text x="310.0" y="141" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">b0 = 1  →  pp0 = 1101</text>
+<path d="M460,128 H640" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="650" y="132" font-size="14" text-anchor="start" fill="#1a8a3a" >p0 = 1</text>
+<text x="472" y="122" font-size="11" text-anchor="start" fill="#777" >lowest bit is final</text>
+<rect x="160" y="186" width="300" height="36" fill="#f6f6f6" stroke="black" stroke-width="1.4" />
+<text x="310.0" y="202" font-size="14" text-anchor="middle" fill="black" >4 AND gates:  pp1 = a AND b1</text>
+<text x="310.0" y="217" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">b1 = 1  →  pp1 = 1101</text>
+<line x1="120" y1="204" x2="160" y2="204" stroke="#1f5fbf" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="310.0" y1="222" x2="310.0" y2="242" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="160" y="242" width="300" height="40" fill="#eef4fb" stroke="#1f5fbf" stroke-width="1.4" />
+<text x="310.0" y="259" font-size="14" text-anchor="middle" fill="black" >4-bit ripple-carry adder (chapter 23)</text>
+<text x="310.0" y="275" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">0110 + 1101 = cout 1, sum 0011</text>
+<path d="M310.0,146 V172 H490 V256 H460" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="318.0" y="164" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">other 3 bits, plus a 0 on top:  0110</text>
+<path d="M460,272 H640" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="650" y="276" font-size="14" text-anchor="start" fill="#1a8a3a" >p1 = 1</text>
+<rect x="160" y="320" width="300" height="36" fill="#f6f6f6" stroke="black" stroke-width="1.4" />
+<text x="310.0" y="336" font-size="14" text-anchor="middle" fill="black" >4 AND gates:  pp2 = a AND b2</text>
+<text x="310.0" y="351" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">b2 = 0  →  pp2 = 0000</text>
+<line x1="120" y1="338" x2="160" y2="338" stroke="#1f5fbf" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="310.0" y1="356" x2="310.0" y2="376" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="160" y="376" width="300" height="40" fill="#eef4fb" stroke="#1f5fbf" stroke-width="1.4" />
+<text x="310.0" y="393" font-size="14" text-anchor="middle" fill="black" >4-bit ripple-carry adder (chapter 23)</text>
+<text x="310.0" y="409" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1001 + 0000 = cout 0, sum 1001</text>
+<path d="M310.0,282 V306 H490 V390 H460" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="318.0" y="300" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">cout and upper 3 sum bits:  1001</text>
+<path d="M460,406 H640" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="650" y="410" font-size="14" text-anchor="start" fill="#1a8a3a" >p2 = 1</text>
+<rect x="160" y="454" width="300" height="36" fill="#f6f6f6" stroke="black" stroke-width="1.4" />
+<text x="310.0" y="470" font-size="14" text-anchor="middle" fill="black" >4 AND gates:  pp3 = a AND b3</text>
+<text x="310.0" y="485" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">b3 = 1  →  pp3 = 1101</text>
+<line x1="120" y1="472" x2="160" y2="472" stroke="#1f5fbf" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="310.0" y1="490" x2="310.0" y2="510" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<rect x="160" y="510" width="300" height="40" fill="#eef4fb" stroke="#1f5fbf" stroke-width="1.4" />
+<text x="310.0" y="527" font-size="14" text-anchor="middle" fill="black" >4-bit ripple-carry adder (chapter 23)</text>
+<text x="310.0" y="543" font-size="12" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">0100 + 1101 = cout 1, sum 0001</text>
+<path d="M310.0,416 V440 H490 V524 H460" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="318.0" y="434" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">cout and upper 3 sum bits:  0100</text>
+<path d="M460,540 H640" fill="none" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="650" y="544" font-size="14" text-anchor="start" fill="#1a8a3a" >p3 = 1</text>
+<line x1="310.0" y1="550" x2="310.0" y2="588" stroke="black" stroke-width="1.4" marker-end="url(#arr)"/>
+<text x="318.0" y="568" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">cout and upper 3 sum bits:  1000</text>
+<rect x="160" y="588" width="300" height="30" fill="white" stroke="black" stroke-width="1.4" stroke-dasharray="5,3"/>
+<text x="310.0" y="608" font-size="14" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">p7 p6 p5 p4 = 1000</text>
+<text x="650" y="608" font-size="15" text-anchor="start" fill="#1f5fbf" font-weight="bold">p = 10001111 = 143</text>
+<text x="30" y="648" font-size="14" text-anchor="start" fill="black" >One row of AND gates per bit of b, one adder per row: the long multiplication, built in hardware.</text>
+<text x="30" y="670" font-size="14" text-anchor="start" fill="black" >N bits need N rows of N AND gates and N−1 adders: the effort grows with N² (64 cells for 4 bit, 327 for 8 bit).</text>
+</svg>

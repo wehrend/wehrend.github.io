@@ -1,0 +1,413 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1022" height="842" viewBox="0 0 1022 842" font-family="Liberation Serif, Times New Roman, serif">
+<rect width="100%" height="100%" fill="white"/>
+<text x="30" y="26" font-size="16" text-anchor="start" fill="black" font-weight="bold">sll, srl and sra combined (shifter_all.v)</text>
+<text x="30" y="44" font-size="12" text-anchor="start" fill="#1a8a3a" >example: a = 10010110, shamt = 3 = 011, sll</text>
+<text x="200" y="82" font-size="13" text-anchor="middle" fill="black" >a7</text>
+<line x1="200" y1="87" x2="200" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="266" y="82" font-size="13" text-anchor="middle" fill="black" >a6</text>
+<line x1="266" y1="87" x2="266" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="332" y="82" font-size="13" text-anchor="middle" fill="black" >a5</text>
+<line x1="332" y1="87" x2="332" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="398" y="82" font-size="13" text-anchor="middle" fill="black" >a4</text>
+<line x1="398" y1="87" x2="398" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="464" y="82" font-size="13" text-anchor="middle" fill="black" >a3</text>
+<line x1="464" y1="87" x2="464" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="530" y="82" font-size="13" text-anchor="middle" fill="black" >a2</text>
+<line x1="530" y1="87" x2="530" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="596" y="82" font-size="13" text-anchor="middle" fill="black" >a1</text>
+<line x1="596" y1="87" x2="596" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="662" y="82" font-size="13" text-anchor="middle" fill="black" >a0</text>
+<line x1="662" y1="87" x2="662" y2="122" stroke="black" stroke-width="1.4"/>
+<text x="154" y="108" font-size="12" text-anchor="end" fill="#1a8a3a" font-family="monospace">a</text>
+<text x="212" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="278" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="344" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="410" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="476" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="542" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="608" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="674" y="108" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<line x1="30" y1="186" x2="682" y2="186" stroke="#1f5fbf" stroke-width="1.4"/>
+<text x="30" y="180" font-size="12" text-anchor="start" fill="#1f5fbf" >left = 1</text>
+<text x="702" y="190" font-size="12" text-anchor="start" fill="#333" font-family="monospace">in = left ? a_rev : a;</text>
+<line x1="200" y1="122" x2="200" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="200" cy="134" r="2.6" fill="black"/>
+<line x1="200" y1="134" x2="190" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="662" y1="134" x2="210" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="266" y1="122" x2="266" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="266" cy="134" r="2.6" fill="black"/>
+<line x1="266" y1="134" x2="256" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="596" y1="134" x2="276" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="332" y1="122" x2="332" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="332" cy="134" r="2.6" fill="black"/>
+<line x1="332" y1="134" x2="322" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="530" y1="134" x2="342" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="398" y1="122" x2="398" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="398" cy="134" r="2.6" fill="black"/>
+<line x1="398" y1="134" x2="388" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="464" y1="134" x2="408" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="464" y1="122" x2="464" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="464" cy="134" r="2.6" fill="black"/>
+<line x1="464" y1="134" x2="454" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="398" y1="134" x2="474" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="530" y1="122" x2="530" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="530" cy="134" r="2.6" fill="black"/>
+<line x1="530" y1="134" x2="520" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="332" y1="134" x2="540" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="596" y1="122" x2="596" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="596" cy="134" r="2.6" fill="black"/>
+<line x1="596" y1="134" x2="586" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="266" y1="134" x2="606" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="662" y1="122" x2="662" y2="134" stroke="black" stroke-width="1.4"/>
+<circle cx="662" cy="134" r="2.6" fill="black"/>
+<line x1="662" y1="134" x2="652" y2="174" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="200" y1="134" x2="672" y2="174" stroke="#1a8a3a" stroke-width="2"/>
+<path d="M180,174 L220,174 L212,198 L188,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="190" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="210" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M246,174 L286,174 L278,198 L254,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="256" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="276" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M312,174 L352,174 L344,198 L320,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="322" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="342" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M378,174 L418,174 L410,198 L386,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M444,174 L484,174 L476,198 L452,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="454" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="474" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M510,174 L550,174 L542,198 L518,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="520" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="540" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M576,174 L616,174 L608,198 L584,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="586" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="606" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M642,174 L682,174 L674,198 L650,198 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="652" y="185" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="672" y="185" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<text x="154" y="220" font-size="12" text-anchor="end" fill="#1a8a3a" font-family="monospace">in</text>
+<text x="212" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="278" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="344" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="410" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="476" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="542" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="608" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="674" y="220" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<rect x="10" y="232" width="110" height="40" fill="white" stroke="#c0392b" stroke-width="1.4"/>
+<text x="65" y="248" font-size="11" text-anchor="middle" fill="#c0392b" >fill = op[1] AND a7</text>
+<text x="65" y="264" font-size="11" text-anchor="middle" fill="#c0392b" >= 0</text>
+<line x1="120" y1="252" x2="166" y2="252" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="200" y1="198" x2="200" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="266" y1="198" x2="266" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="332" y1="198" x2="332" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="398" y1="198" x2="398" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="464" y1="198" x2="464" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="530" y1="198" x2="530" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="596" y1="198" x2="596" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="662" y1="198" x2="662" y2="274" stroke="black" stroke-width="1.4"/>
+<line x1="30" y1="330" x2="682" y2="330" stroke="#1f5fbf" stroke-width="1.4"/>
+<text x="30" y="324" font-size="12" text-anchor="start" fill="#1f5fbf" >shamt[0] = 1</text>
+<text x="702" y="334" font-size="12" text-anchor="start" fill="#333" font-family="monospace">s1 = shamt[0] ? {fill, in[7:1]} : in;</text>
+<line x1="200" y1="274" x2="190" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="200" y1="274" x2="276" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="266" y1="274" x2="256" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="266" y1="274" x2="342" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="332" y1="274" x2="322" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="332" y1="274" x2="408" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="398" y1="274" x2="388" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="398" y1="274" x2="474" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="464" y1="274" x2="454" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="464" y1="274" x2="540" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="530" y1="274" x2="520" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="530" y1="274" x2="606" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="596" y1="274" x2="586" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="596" y1="274" x2="672" y2="318" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="662" y1="274" x2="652" y2="318" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="166" y1="284" x2="210" y2="284" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="284" r="2.6" fill="#c0392b"/>
+<line x1="210" y1="284" x2="210" y2="318" stroke="#c0392b" stroke-width="2"/>
+<circle cx="200" cy="274" r="2.6" fill="black"/>
+<path d="M180,318 L220,318 L212,342 L188,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="190" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="210" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="266" cy="274" r="2.6" fill="black"/>
+<path d="M246,318 L286,318 L278,342 L254,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="256" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="276" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="332" cy="274" r="2.6" fill="black"/>
+<path d="M312,318 L352,318 L344,342 L320,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="322" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="342" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="398" cy="274" r="2.6" fill="black"/>
+<path d="M378,318 L418,318 L410,342 L386,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="464" cy="274" r="2.6" fill="black"/>
+<path d="M444,318 L484,318 L476,342 L452,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="454" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="474" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="530" cy="274" r="2.6" fill="black"/>
+<path d="M510,318 L550,318 L542,342 L518,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="520" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="540" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="596" cy="274" r="2.6" fill="black"/>
+<path d="M576,318 L616,318 L608,342 L584,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="586" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="606" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="662" cy="274" r="2.6" fill="black"/>
+<path d="M642,318 L682,318 L674,342 L650,342 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="652" y="329" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="672" y="329" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<text x="702" y="350" font-size="11" text-anchor="start" fill="#777" >shift by 1 or not</text>
+<text x="154" y="364" font-size="12" text-anchor="end" fill="#1a8a3a" font-family="monospace">s1</text>
+<text x="212" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="278" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="344" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="410" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="476" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="542" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="608" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="674" y="364" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<line x1="200" y1="342" x2="200" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="266" y1="342" x2="266" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="332" y1="342" x2="332" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="398" y1="342" x2="398" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="464" y1="342" x2="464" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="530" y1="342" x2="530" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="596" y1="342" x2="596" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="662" y1="342" x2="662" y2="418" stroke="black" stroke-width="1.4"/>
+<line x1="30" y1="474" x2="682" y2="474" stroke="#1f5fbf" stroke-width="1.4"/>
+<text x="30" y="468" font-size="12" text-anchor="start" fill="#1f5fbf" >shamt[1] = 1</text>
+<text x="702" y="478" font-size="12" text-anchor="start" fill="#333" font-family="monospace">s2 = shamt[1] ? {{2{fill}}, s1[7:2]} : s1;</text>
+<line x1="200" y1="418" x2="190" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="200" y1="418" x2="342" y2="462" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="266" y1="418" x2="256" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="266" y1="418" x2="408" y2="462" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="332" y1="418" x2="322" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="332" y1="418" x2="474" y2="462" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="398" y1="418" x2="388" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="398" y1="418" x2="540" y2="462" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="464" y1="418" x2="454" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="464" y1="418" x2="606" y2="462" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="530" y1="418" x2="520" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="530" y1="418" x2="672" y2="462" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="596" y1="418" x2="586" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="662" y1="418" x2="652" y2="462" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="166" y1="428" x2="210" y2="428" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="428" r="2.6" fill="#c0392b"/>
+<line x1="210" y1="428" x2="210" y2="462" stroke="#c0392b" stroke-width="2"/>
+<line x1="166" y1="432" x2="276" y2="432" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="432" r="2.6" fill="#c0392b"/>
+<line x1="276" y1="432" x2="276" y2="462" stroke="#c0392b" stroke-width="2"/>
+<circle cx="200" cy="418" r="2.6" fill="black"/>
+<path d="M180,462 L220,462 L212,486 L188,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="190" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="210" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="266" cy="418" r="2.6" fill="black"/>
+<path d="M246,462 L286,462 L278,486 L254,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="256" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="276" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="332" cy="418" r="2.6" fill="black"/>
+<path d="M312,462 L352,462 L344,486 L320,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="322" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="342" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="398" cy="418" r="2.6" fill="black"/>
+<path d="M378,462 L418,462 L410,486 L386,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="464" cy="418" r="2.6" fill="black"/>
+<path d="M444,462 L484,462 L476,486 L452,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="454" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="474" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="530" cy="418" r="2.6" fill="black"/>
+<path d="M510,462 L550,462 L542,486 L518,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="520" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="540" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="596" cy="418" r="2.6" fill="black"/>
+<path d="M576,462 L616,462 L608,486 L584,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="586" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="606" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<circle cx="662" cy="418" r="2.6" fill="black"/>
+<path d="M642,462 L682,462 L674,486 L650,486 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="652" y="473" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="672" y="473" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<text x="702" y="494" font-size="11" text-anchor="start" fill="#777" >shift by 2 or not</text>
+<text x="154" y="508" font-size="12" text-anchor="end" fill="#1a8a3a" font-family="monospace">s2</text>
+<text x="212" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="278" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="344" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="410" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="476" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="542" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="608" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="674" y="508" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<line x1="200" y1="486" x2="200" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="266" y1="486" x2="266" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="332" y1="486" x2="332" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="398" y1="486" x2="398" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="464" y1="486" x2="464" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="530" y1="486" x2="530" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="596" y1="486" x2="596" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="662" y1="486" x2="662" y2="562" stroke="black" stroke-width="1.4"/>
+<line x1="30" y1="618" x2="682" y2="618" stroke="#1f5fbf" stroke-width="1.4"/>
+<text x="30" y="612" font-size="12" text-anchor="start" fill="#1f5fbf" >shamt[2] = 0</text>
+<text x="702" y="622" font-size="12" text-anchor="start" fill="#333" font-family="monospace">s3 = shamt[2] ? {{4{fill}}, s2[7:4]} : s2;</text>
+<line x1="200" y1="562" x2="190" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="200" y1="562" x2="474" y2="606" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="266" y1="562" x2="256" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="266" y1="562" x2="540" y2="606" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="332" y1="562" x2="322" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="332" y1="562" x2="606" y2="606" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="398" y1="562" x2="388" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="398" y1="562" x2="672" y2="606" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="464" y1="562" x2="454" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="530" y1="562" x2="520" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="596" y1="562" x2="586" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="662" y1="562" x2="652" y2="606" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="166" y1="572" x2="210" y2="572" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="572" r="2.6" fill="#c0392b"/>
+<line x1="210" y1="572" x2="210" y2="606" stroke="#c0392b" stroke-width="1.3"/>
+<line x1="166" y1="576" x2="276" y2="576" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="576" r="2.6" fill="#c0392b"/>
+<line x1="276" y1="576" x2="276" y2="606" stroke="#c0392b" stroke-width="1.3"/>
+<line x1="166" y1="580" x2="342" y2="580" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="580" r="2.6" fill="#c0392b"/>
+<line x1="342" y1="580" x2="342" y2="606" stroke="#c0392b" stroke-width="1.3"/>
+<line x1="166" y1="584" x2="408" y2="584" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="166" cy="584" r="2.6" fill="#c0392b"/>
+<line x1="408" y1="584" x2="408" y2="606" stroke="#c0392b" stroke-width="1.3"/>
+<circle cx="200" cy="562" r="2.6" fill="black"/>
+<path d="M180,606 L220,606 L212,630 L188,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="190" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="210" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="266" cy="562" r="2.6" fill="black"/>
+<path d="M246,606 L286,606 L278,630 L254,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="256" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="276" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="332" cy="562" r="2.6" fill="black"/>
+<path d="M312,606 L352,606 L344,630 L320,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="322" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="342" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="398" cy="562" r="2.6" fill="black"/>
+<path d="M378,606 L418,606 L410,630 L386,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="408" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="464" cy="562" r="2.6" fill="black"/>
+<path d="M444,606 L484,606 L476,630 L452,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="454" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="474" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="530" cy="562" r="2.6" fill="black"/>
+<path d="M510,606 L550,606 L542,630 L518,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="520" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="540" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="596" cy="562" r="2.6" fill="black"/>
+<path d="M576,606 L616,606 L608,630 L584,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="586" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="606" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<circle cx="662" cy="562" r="2.6" fill="black"/>
+<path d="M642,606 L682,606 L674,630 L650,630 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="652" y="617" font-size="9" text-anchor="middle" fill="#1a8a3a" >0</text>
+<text x="672" y="617" font-size="9" text-anchor="middle" fill="black" >1</text>
+<text x="702" y="638" font-size="11" text-anchor="start" fill="#777" >shift by 4 or not</text>
+<text x="154" y="652" font-size="12" text-anchor="end" fill="#1a8a3a" font-family="monospace">s3</text>
+<text x="212" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="278" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="344" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="410" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="476" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="542" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="608" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="674" y="652" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<line x1="166" y1="252" x2="166" y2="584" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="30" y1="722" x2="682" y2="722" stroke="#1f5fbf" stroke-width="1.4"/>
+<text x="30" y="716" font-size="12" text-anchor="start" fill="#1f5fbf" >left = 1</text>
+<text x="702" y="726" font-size="12" text-anchor="start" fill="#333" font-family="monospace">y = left ? s3_rev : s3;</text>
+<line x1="200" y1="630" x2="200" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="200" cy="670" r="2.6" fill="black"/>
+<line x1="200" y1="670" x2="190" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="662" y1="670" x2="210" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="266" y1="630" x2="266" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="266" cy="670" r="2.6" fill="black"/>
+<line x1="266" y1="670" x2="256" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="596" y1="670" x2="276" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="332" y1="630" x2="332" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="332" cy="670" r="2.6" fill="black"/>
+<line x1="332" y1="670" x2="322" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="530" y1="670" x2="342" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="398" y1="630" x2="398" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="398" cy="670" r="2.6" fill="black"/>
+<line x1="398" y1="670" x2="388" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="464" y1="670" x2="408" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="464" y1="630" x2="464" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="464" cy="670" r="2.6" fill="black"/>
+<line x1="464" y1="670" x2="454" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="398" y1="670" x2="474" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="530" y1="630" x2="530" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="530" cy="670" r="2.6" fill="black"/>
+<line x1="530" y1="670" x2="520" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="332" y1="670" x2="540" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="596" y1="630" x2="596" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="596" cy="670" r="2.6" fill="black"/>
+<line x1="596" y1="670" x2="586" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="266" y1="670" x2="606" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<line x1="662" y1="630" x2="662" y2="670" stroke="black" stroke-width="1.4"/>
+<circle cx="662" cy="670" r="2.6" fill="black"/>
+<line x1="662" y1="670" x2="652" y2="710" stroke="#c4c4c4" stroke-width="1.2"/>
+<line x1="200" y1="670" x2="672" y2="710" stroke="#1a8a3a" stroke-width="2"/>
+<path d="M180,710 L220,710 L212,734 L188,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="190" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="210" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M246,710 L286,710 L278,734 L254,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="256" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="276" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M312,710 L352,710 L344,734 L320,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="322" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="342" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M378,710 L418,710 L410,734 L386,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M444,710 L484,710 L476,734 L452,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="454" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="474" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M510,710 L550,710 L542,734 L518,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="520" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="540" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M576,710 L616,710 L608,734 L584,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="586" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="606" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<path d="M642,710 L682,710 L674,734 L650,734 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="652" y="721" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="672" y="721" font-size="9" text-anchor="middle" fill="#1a8a3a" >1</text>
+<text x="154" y="756" font-size="12" text-anchor="end" fill="#1a8a3a" font-family="monospace">y</text>
+<text x="212" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="278" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="344" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="410" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">1</text>
+<text x="476" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="542" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="608" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<text x="674" y="756" font-size="12" text-anchor="start" fill="#1a8a3a" font-family="monospace" font-weight="bold">0</text>
+<line x1="200" y1="734" x2="200" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="200" y="790" font-size="13" text-anchor="middle" fill="black" >y7</text>
+<line x1="266" y1="734" x2="266" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="266" y="790" font-size="13" text-anchor="middle" fill="black" >y6</text>
+<line x1="332" y1="734" x2="332" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="332" y="790" font-size="13" text-anchor="middle" fill="black" >y5</text>
+<line x1="398" y1="734" x2="398" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="398" y="790" font-size="13" text-anchor="middle" fill="black" >y4</text>
+<line x1="464" y1="734" x2="464" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="464" y="790" font-size="13" text-anchor="middle" fill="black" >y3</text>
+<line x1="530" y1="734" x2="530" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="530" y="790" font-size="13" text-anchor="middle" fill="black" >y2</text>
+<line x1="596" y1="734" x2="596" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="596" y="790" font-size="13" text-anchor="middle" fill="black" >y1</text>
+<line x1="662" y1="734" x2="662" y2="774" stroke="black" stroke-width="1.4"/>
+<text x="662" y="790" font-size="13" text-anchor="middle" fill="black" >y0</text>
+<line x1="30" y1="820" x2="60" y2="820" stroke="#1a8a3a" stroke-width="2"/>
+<text x="66" y="824" font-size="12" text-anchor="start" fill="black" >active path (selected multiplexer input)</text>
+<line x1="330" y1="820" x2="360" y2="820" stroke="#c4c4c4" stroke-width="1.2"/>
+<text x="366" y="824" font-size="12" text-anchor="start" fill="black" >inactive input</text>
+<text x="500" y="824" font-size="12" text-anchor="start" fill="#1a8a3a" >green digits: values of the example</text>
+</svg>

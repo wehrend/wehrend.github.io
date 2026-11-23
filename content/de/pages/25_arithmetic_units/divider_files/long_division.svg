@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="414" viewBox="0 0 860 414" font-family="Liberation Serif, Times New Roman, serif">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="black"/></marker></defs>
+<text x="30" y="30" font-size="17" text-anchor="start" fill="black" font-weight="bold">Long division in binary: 100 : 7 = 14 remainder 2</text>
+<text x="60" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="82" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="104" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="126" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="148" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="170" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="192" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="220" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">:</text>
+<text x="236" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="258" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="280" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="308" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">=</text>
+<text x="324" y="80" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="346" y="80" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="368" y="80" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="390" y="80" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="432" y="80" font-size="13" text-anchor="start" fill="#333" >100 : 7 = 14</text>
+<text x="82" y="112" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="104" y="112" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="126" y="112" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="60" y="112" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">−</text>
+<line x1="52" y1="121" x2="134" y2="121" stroke="black" stroke-width="1.3"/>
+<text x="368" y="112" font-size="13" text-anchor="start" fill="#1a8a3a" >1100 = 12 ≥ 7: fits → quotient bit 1, subtract 111</text>
+<text x="82" y="144" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="104" y="144" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="126" y="144" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="148" y="144" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace">1</text>
+<path d="M148,88 V127" fill="none" stroke="#bbb" stroke-width="1" marker-end="url(#arr)"/>
+<text x="104" y="176" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="126" y="176" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="148" y="176" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="82" y="176" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">−</text>
+<line x1="74" y1="185" x2="156" y2="185" stroke="black" stroke-width="1.3"/>
+<text x="368" y="176" font-size="13" text-anchor="start" fill="#1a8a3a" >bring down the next bit: 1011 = 11 ≥ 7: fits → 1</text>
+<text x="104" y="208" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="126" y="208" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="148" y="208" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="170" y="208" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace">0</text>
+<path d="M170,88 V191" fill="none" stroke="#bbb" stroke-width="1" marker-end="url(#arr)"/>
+<text x="126" y="240" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="148" y="240" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="170" y="240" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="104" y="240" font-size="18" text-anchor="middle" fill="#c0392b" font-family="DejaVu Sans Mono, monospace">−</text>
+<line x1="96" y1="249" x2="178" y2="249" stroke="black" stroke-width="1.3"/>
+<text x="368" y="240" font-size="13" text-anchor="start" fill="#1a8a3a" >bring down the next bit: 1000 = 8 ≥ 7: fits → 1</text>
+<text x="170" y="272" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="192" y="272" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace">0</text>
+<path d="M192,88 V255" fill="none" stroke="#bbb" stroke-width="1" marker-end="url(#arr)"/>
+<text x="368" y="272" font-size="13" text-anchor="start" fill="#777" >bring down the last bit: 10 = 2 &lt; 7: does not fit → 0</text>
+<text x="368" y="300" font-size="13" text-anchor="start" fill="#1f5fbf" font-weight="bold">remainder 10 = 2</text>
+<text x="30" y="350" font-size="14" text-anchor="start" fill="black" >Like in school: take as many digits of the dividend as needed, check whether the divisor fits, write 1 or 0,</text>
+<text x="30" y="372" font-size="14" text-anchor="start" fill="black" >subtract if it fits, and bring down the next digit. In binary, the divisor fits at most once,</text>
+<text x="30" y="394" font-size="14" text-anchor="start" fill="black" >so every step is just a comparison and a subtraction, and each quotient bit is either 1 or 0.</text>
+</svg>

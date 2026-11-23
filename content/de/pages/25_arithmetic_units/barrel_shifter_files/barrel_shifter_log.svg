@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="754" height="556" viewBox="0 0 754 556" font-family="Liberation Serif, Times New Roman, serif" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="100%" height="100%" fill="white"/>
+<text x="150" y="22" font-size="13" text-anchor="middle" fill="black" >a7</text>
+<line x1="150" y1="27" x2="150" y2="58" stroke="black" stroke-width="1.4" />
+<text x="212" y="22" font-size="13" text-anchor="middle" fill="black" >a6</text>
+<line x1="212" y1="27" x2="212" y2="58" stroke="black" stroke-width="1.4" />
+<text x="274" y="22" font-size="13" text-anchor="middle" fill="black" >a5</text>
+<line x1="274" y1="27" x2="274" y2="58" stroke="black" stroke-width="1.4" />
+<text x="336" y="22" font-size="13" text-anchor="middle" fill="black" >a4</text>
+<line x1="336" y1="27" x2="336" y2="58" stroke="black" stroke-width="1.4" />
+<text x="398" y="22" font-size="13" text-anchor="middle" fill="black" >a3</text>
+<line x1="398" y1="27" x2="398" y2="58" stroke="black" stroke-width="1.4" />
+<text x="460" y="22" font-size="13" text-anchor="middle" fill="black" >a2</text>
+<line x1="460" y1="27" x2="460" y2="58" stroke="black" stroke-width="1.4" />
+<text x="522" y="22" font-size="13" text-anchor="middle" fill="black" >a1</text>
+<line x1="522" y1="27" x2="522" y2="58" stroke="black" stroke-width="1.4" />
+<text x="584" y="22" font-size="13" text-anchor="middle" fill="black" >a0</text>
+<line x1="584" y1="27" x2="584" y2="58" stroke="black" stroke-width="1.4" />
+<rect x="120" y="58" width="494" height="30" fill="#f4f4f4" stroke="black" stroke-dasharray="5,3"/>
+<text x="367.0" y="78" font-size="12" text-anchor="middle" fill="black" >for sll: reverse the bit order (a0 becomes the MSB), otherwise pass through</text>
+<rect x="8" y="102" width="84" height="36" fill="white" stroke="#c0392b" stroke-width="1.4"/>
+<text x="50" y="117" font-size="12" text-anchor="middle" fill="#c0392b" >fill =</text>
+<text x="50" y="132" font-size="12" text-anchor="middle" fill="#c0392b" >sra AND a7</text>
+<line x1="92" y1="120" x2="114" y2="120" stroke="#c0392b" stroke-width="1.4" />
+<line x1="25" y1="182" x2="604" y2="182" stroke="#1f5fbf" stroke-width="1.4" />
+<text x="25" y="176" font-size="12" text-anchor="start" fill="#1f5fbf" >shamt[0]</text>
+<text x="624" y="186" font-size="12" text-anchor="start" fill="#555" >shift by 1 or not</text>
+<line x1="150" y1="88" x2="150" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="150" cy="130" r="2.6" fill="black"/>
+<line x1="150" y1="130" x2="140" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="150" y1="130" x2="222" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="88" x2="212" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="212" cy="130" r="2.6" fill="black"/>
+<line x1="212" y1="130" x2="202" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="130" x2="284" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="88" x2="274" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="274" cy="130" r="2.6" fill="black"/>
+<line x1="274" y1="130" x2="264" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="130" x2="346" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="88" x2="336" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="336" cy="130" r="2.6" fill="black"/>
+<line x1="336" y1="130" x2="326" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="130" x2="408" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="398" y1="88" x2="398" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="398" cy="130" r="2.6" fill="black"/>
+<line x1="398" y1="130" x2="388" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="398" y1="130" x2="470" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="460" y1="88" x2="460" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="460" cy="130" r="2.6" fill="black"/>
+<line x1="460" y1="130" x2="450" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="460" y1="130" x2="532" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="522" y1="88" x2="522" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="522" cy="130" r="2.6" fill="black"/>
+<line x1="522" y1="130" x2="512" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="522" y1="130" x2="594" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="584" y1="88" x2="584" y2="130" stroke="black" stroke-width="1.4" />
+<circle cx="584" cy="130" r="2.6" fill="black"/>
+<line x1="584" y1="130" x2="574" y2="170" stroke="black" stroke-width="1.4" />
+<line x1="114" y1="138" x2="160" y2="138" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="138" r="2.6" fill="#c0392b"/>
+<line x1="160" y1="138" x2="160" y2="170" stroke="#c0392b" stroke-width="1.4" />
+<path d="M130,170 L170,170 L162,194 L138,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="140" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="160" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M192,170 L232,170 L224,194 L200,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="202" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="222" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M254,170 L294,170 L286,194 L262,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="264" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="284" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M316,170 L356,170 L348,194 L324,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="326" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="346" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M378,170 L418,170 L410,194 L386,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M440,170 L480,170 L472,194 L448,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="450" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="470" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M502,170 L542,170 L534,194 L510,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="512" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="532" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M564,170 L604,170 L596,194 L572,194 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="574" y="181" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="594" y="181" font-size="9" text-anchor="middle" fill="black" >1</text>
+<line x1="25" y1="312" x2="604" y2="312" stroke="#1f5fbf" stroke-width="1.4" />
+<text x="25" y="306" font-size="12" text-anchor="start" fill="#1f5fbf" >shamt[1]</text>
+<text x="624" y="316" font-size="12" text-anchor="start" fill="#555" >shift by 2 or not</text>
+<line x1="150" y1="194" x2="150" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="150" cy="260" r="2.6" fill="black"/>
+<line x1="150" y1="260" x2="140" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="150" y1="260" x2="284" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="194" x2="212" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="212" cy="260" r="2.6" fill="black"/>
+<line x1="212" y1="260" x2="202" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="260" x2="346" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="194" x2="274" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="274" cy="260" r="2.6" fill="black"/>
+<line x1="274" y1="260" x2="264" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="260" x2="408" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="194" x2="336" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="336" cy="260" r="2.6" fill="black"/>
+<line x1="336" y1="260" x2="326" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="260" x2="470" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="398" y1="194" x2="398" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="398" cy="260" r="2.6" fill="black"/>
+<line x1="398" y1="260" x2="388" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="398" y1="260" x2="532" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="460" y1="194" x2="460" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="460" cy="260" r="2.6" fill="black"/>
+<line x1="460" y1="260" x2="450" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="460" y1="260" x2="594" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="522" y1="194" x2="522" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="522" cy="260" r="2.6" fill="black"/>
+<line x1="522" y1="260" x2="512" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="584" y1="194" x2="584" y2="260" stroke="black" stroke-width="1.4" />
+<circle cx="584" cy="260" r="2.6" fill="black"/>
+<line x1="584" y1="260" x2="574" y2="300" stroke="black" stroke-width="1.4" />
+<line x1="114" y1="268" x2="160" y2="268" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="268" r="2.6" fill="#c0392b"/>
+<line x1="160" y1="268" x2="160" y2="300" stroke="#c0392b" stroke-width="1.4" />
+<line x1="114" y1="272" x2="222" y2="272" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="272" r="2.6" fill="#c0392b"/>
+<line x1="222" y1="272" x2="222" y2="300" stroke="#c0392b" stroke-width="1.4" />
+<path d="M130,300 L170,300 L162,324 L138,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="140" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="160" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M192,300 L232,300 L224,324 L200,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="202" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="222" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M254,300 L294,300 L286,324 L262,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="264" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="284" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M316,300 L356,300 L348,324 L324,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="326" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="346" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M378,300 L418,300 L410,324 L386,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M440,300 L480,300 L472,324 L448,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="450" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="470" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M502,300 L542,300 L534,324 L510,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="512" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="532" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M564,300 L604,300 L596,324 L572,324 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="574" y="311" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="594" y="311" font-size="9" text-anchor="middle" fill="black" >1</text>
+<line x1="25" y1="442" x2="604" y2="442" stroke="#1f5fbf" stroke-width="1.4" />
+<text x="25" y="436" font-size="12" text-anchor="start" fill="#1f5fbf" >shamt[2]</text>
+<text x="624" y="446" font-size="12" text-anchor="start" fill="#555" >shift by 4 or not</text>
+<line x1="150" y1="324" x2="150" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="150" cy="390" r="2.6" fill="black"/>
+<line x1="150" y1="390" x2="140" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="150" y1="390" x2="408" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="324" x2="212" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="212" cy="390" r="2.6" fill="black"/>
+<line x1="212" y1="390" x2="202" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="390" x2="470" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="324" x2="274" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="274" cy="390" r="2.6" fill="black"/>
+<line x1="274" y1="390" x2="264" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="390" x2="532" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="324" x2="336" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="336" cy="390" r="2.6" fill="black"/>
+<line x1="336" y1="390" x2="326" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="390" x2="594" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="398" y1="324" x2="398" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="398" cy="390" r="2.6" fill="black"/>
+<line x1="398" y1="390" x2="388" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="460" y1="324" x2="460" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="460" cy="390" r="2.6" fill="black"/>
+<line x1="460" y1="390" x2="450" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="522" y1="324" x2="522" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="522" cy="390" r="2.6" fill="black"/>
+<line x1="522" y1="390" x2="512" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="584" y1="324" x2="584" y2="390" stroke="black" stroke-width="1.4" />
+<circle cx="584" cy="390" r="2.6" fill="black"/>
+<line x1="584" y1="390" x2="574" y2="430" stroke="black" stroke-width="1.4" />
+<line x1="114" y1="398" x2="160" y2="398" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="398" r="2.6" fill="#c0392b"/>
+<line x1="160" y1="398" x2="160" y2="430" stroke="#c0392b" stroke-width="1.4" />
+<line x1="114" y1="402" x2="222" y2="402" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="402" r="2.6" fill="#c0392b"/>
+<line x1="222" y1="402" x2="222" y2="430" stroke="#c0392b" stroke-width="1.4" />
+<line x1="114" y1="406" x2="284" y2="406" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="406" r="2.6" fill="#c0392b"/>
+<line x1="284" y1="406" x2="284" y2="430" stroke="#c0392b" stroke-width="1.4" />
+<line x1="114" y1="410" x2="346" y2="410" stroke="#c0392b" stroke-width="1.4" />
+<circle cx="114" cy="410" r="2.6" fill="#c0392b"/>
+<line x1="346" y1="410" x2="346" y2="430" stroke="#c0392b" stroke-width="1.4" />
+<path d="M130,430 L170,430 L162,454 L138,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="140" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="160" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M192,430 L232,430 L224,454 L200,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="202" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="222" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M254,430 L294,430 L286,454 L262,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="264" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="284" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M316,430 L356,430 L348,454 L324,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="326" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="346" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M378,430 L418,430 L410,454 L386,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="388" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="408" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M440,430 L480,430 L472,454 L448,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="450" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="470" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M502,430 L542,430 L534,454 L510,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="512" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="532" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<path d="M564,430 L604,430 L596,454 L572,454 Z" fill="white" stroke="black" stroke-width="1.4"/>
+<text x="574" y="441" font-size="9" text-anchor="middle" fill="black" >0</text>
+<text x="594" y="441" font-size="9" text-anchor="middle" fill="black" >1</text>
+<line x1="114" y1="120" x2="114" y2="410" stroke="#c0392b" stroke-width="1.4" />
+<line x1="150" y1="454" x2="150" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="212" y1="454" x2="212" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="274" y1="454" x2="274" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="336" y1="454" x2="336" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="398" y1="454" x2="398" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="460" y1="454" x2="460" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="522" y1="454" x2="522" y2="476" stroke="black" stroke-width="1.4" />
+<line x1="584" y1="454" x2="584" y2="476" stroke="black" stroke-width="1.4" />
+<rect x="120" y="476" width="494" height="30" fill="#f4f4f4" stroke="black" stroke-dasharray="5,3"/>
+<text x="367.0" y="496" font-size="12" text-anchor="middle" fill="black" >for sll: reverse the bit order back, otherwise pass through</text>
+<line x1="150" y1="506" x2="150" y2="524" stroke="black" stroke-width="1.4" />
+<text x="150" y="540" font-size="13" text-anchor="middle" fill="black" >y7</text>
+<line x1="212" y1="506" x2="212" y2="524" stroke="black" stroke-width="1.4" />
+<text x="212" y="540" font-size="13" text-anchor="middle" fill="black" >y6</text>
+<line x1="274" y1="506" x2="274" y2="524" stroke="black" stroke-width="1.4" />
+<text x="274" y="540" font-size="13" text-anchor="middle" fill="black" >y5</text>
+<line x1="336" y1="506" x2="336" y2="524" stroke="black" stroke-width="1.4" />
+<text x="336" y="540" font-size="13" text-anchor="middle" fill="black" >y4</text>
+<line x1="398" y1="506" x2="398" y2="524" stroke="black" stroke-width="1.4" />
+<text x="398" y="540" font-size="13" text-anchor="middle" fill="black" >y3</text>
+<line x1="460" y1="506" x2="460" y2="524" stroke="black" stroke-width="1.4" />
+<text x="460" y="540" font-size="13" text-anchor="middle" fill="black" >y2</text>
+<line x1="522" y1="506" x2="522" y2="524" stroke="black" stroke-width="1.4" />
+<text x="522" y="540" font-size="13" text-anchor="middle" fill="black" >y1</text>
+<line x1="584" y1="506" x2="584" y2="524" stroke="black" stroke-width="1.4" />
+<text x="584" y="540" font-size="13" text-anchor="middle" fill="black" >y0</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo2ZGU1MThmNS1hYjdhLTQ2NmItOTFhYy0yODFhYzVjYzQ3MmQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaKO9bXLlOWupAh50YKckCzwAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDoxZjc4ODE1MS04ZDhhLTRiZTctYTI2NS1iZDA3ZjI2ZjdkZWNscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo4CU/yw6+/8rA1Ng4YPitRwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg7vXK1mIQY0XytzTstsXoEMbq9LT87OerfNDEfuC9zOKkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaOJFotljUa1BTsDgj3D1BLYAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIMQqVAW+LO7dtVCwwH98mQmOIx+5ekR1FdMomwLZo0/7ZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GUqwZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjZkZTUxOGY1LWFiN2EtNDY2Yi05MWFjLTI4MWFjNWNjNDcyZC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmUxM2RlZWRlLTU0ZWYtNDBjOS05N2NlLTI5Y2VhOGY1MWQ1M3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDu9crWYhBjRfK3NOy2xegQxur0tPzs56t80MR+4L3M4qJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggDRt8IEWjMqJEScmtwLgA4Vf35iFkNzNUrtUu/L8xY5KiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggN6xc+L1+VvcD7xWIUgbf4CJA+dKqSYuM7seFMpzV+wJ0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQGgwayeI4reAexofZvfEY4350QOouM744G4cqi8jJuniC9ynJw7BLQecs408vV/34w1M3mxpSzHoGNrfAol6iWk=</c2pa:manifest></metadata></svg>
