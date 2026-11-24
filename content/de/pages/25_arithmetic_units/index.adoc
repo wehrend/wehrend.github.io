@@ -423,3 +423,5 @@ Bei einer Division braucht jeder Schritt den Rest des vorherigen Schritts: Ob de
 wenn die vorherige Subtraktion fertig ist. Schnelle Dividierer berechnen mehrere Bits pro Takt, aber nicht alle Bits auf einmal.
 Deshalb ersetzen Compiler eine Division durch eine Konstante, wo immer es geht, durch eine Multiplikation,
 und deshalb ist der Shift vom Anfang dieses Kapitels noch immer der schnellste Weg, durch eine Zweierpotenz zu teilen.
+
+(Erstellt mit Claude AI)

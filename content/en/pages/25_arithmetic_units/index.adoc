@@ -423,3 +423,5 @@ In a division, every step needs the remainder of the step before: whether the di
 once the previous subtraction is done. Fast dividers do several bits per cycle, but they cannot do all bits at once.
 That is why compilers replace a division by a constant with a multiplication whenever they can,
 and why the shift from the beginning of this chapter is still the fastest way to divide by a power of two.
+
+(Created with Claude AI)
