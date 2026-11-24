@@ -1,0 +1,1247 @@
+From fe5d227c942db21822aed68a151494a49bdb123e Mon Sep 17 00:00:00 2001
+From: Sven Wehrend <wehrend@users.noreply.github.com>
+Date: Tue, 24 Nov 2026 19:46:10 +0100
+Subject: [PATCH] chapter 26: the CPU in Verilog (EN)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018Me4hFC2uG4Mhf8ZGvsPeu
+---
+ content/en/pages/26_cpu_verilog/alu.v         |  45 ++
+ content/en/pages/26_cpu_verilog/alu_cell.v    |  30 ++
+ content/en/pages/26_cpu_verilog/alu_control.v |  23 +
+ content/en/pages/26_cpu_verilog/alu_tb.v      |  68 +++
+ content/en/pages/26_cpu_verilog/control.v     |  29 ++
+ content/en/pages/26_cpu_verilog/control_tb.v  |  56 +++
+ content/en/pages/26_cpu_verilog/cpu.v         |  75 +++
+ content/en/pages/26_cpu_verilog/cpu_tb.v      |  60 +++
+ .../en/pages/26_cpu_verilog/cpu_waveform.svg  | 120 +++++
+ content/en/pages/26_cpu_verilog/data_mem.v    |  21 +
+ content/en/pages/26_cpu_verilog/imm_gen.v     |  19 +
+ content/en/pages/26_cpu_verilog/index.adoc    | 458 ++++++++++++++++++
+ content/en/pages/26_cpu_verilog/instr_mem.v   |  15 +
+ content/en/pages/26_cpu_verilog/program.hex   |  10 +
+ content/en/pages/26_cpu_verilog/regfile.v     |  22 +
+ content/en/pages/26_cpu_verilog/regfile_tb.v  |  54 +++
+ 16 files changed, 1105 insertions(+)
+ create mode 100644 content/en/pages/26_cpu_verilog/alu.v
+ create mode 100644 content/en/pages/26_cpu_verilog/alu_cell.v
+ create mode 100644 content/en/pages/26_cpu_verilog/alu_control.v
+ create mode 100644 content/en/pages/26_cpu_verilog/alu_tb.v
+ create mode 100644 content/en/pages/26_cpu_verilog/control.v
+ create mode 100644 content/en/pages/26_cpu_verilog/control_tb.v
+ create mode 100644 content/en/pages/26_cpu_verilog/cpu.v
+ create mode 100644 content/en/pages/26_cpu_verilog/cpu_tb.v
+ create mode 100644 content/en/pages/26_cpu_verilog/cpu_waveform.svg
+ create mode 100644 content/en/pages/26_cpu_verilog/data_mem.v
+ create mode 100644 content/en/pages/26_cpu_verilog/imm_gen.v
+ create mode 100644 content/en/pages/26_cpu_verilog/index.adoc
+ create mode 100644 content/en/pages/26_cpu_verilog/instr_mem.v
+ create mode 100644 content/en/pages/26_cpu_verilog/program.hex
+ create mode 100644 content/en/pages/26_cpu_verilog/regfile.v
+ create mode 100644 content/en/pages/26_cpu_verilog/regfile_tb.v
+
+diff --git a/content/en/pages/26_cpu_verilog/alu.v b/content/en/pages/26_cpu_verilog/alu.v
+new file mode 100644
+index 0000000..9d568eb
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/alu.v
+@@ -0,0 +1,45 @@
++// N-bit ALU: a chain of 1-bit ALU cells, as in chapter 05.
++// ctrl = {Ainvert, Binvert, Operation}:
++//   0000 and    0001 or    0010 add    0110 sub    0111 slt    1100 nor    1101 nand
++module alu #(
++    parameter N = 32
++) (
++    input  wire [N-1:0] a,
++    input  wire [N-1:0] b,
++    input  wire [3:0]   ctrl,
++    output wire [N-1:0] result,
++    output wire         zero,
++    output wire         overflow
++);
++    wire ainvert = ctrl[3];
++    wire binvert = ctrl[2];
++    wire [1:0] operation = ctrl[1:0];
++
++    wire [N:0]   c;        // carry chain
++    wire [N-1:0] sum;
++    wire         is_less;   // "a < b" for slt
++
++    // subtraction a - b = a + ~b + 1: Binvert also provides the +1 as carry in
++    assign c[0] = binvert;
++
++    genvar i;
++    generate
++        for (i = 0; i < N; i = i + 1) begin : slice
++            alu_cell u (
++                .a(a[i]), .b(b[i]),
++                .ainvert(ainvert), .binvert(binvert),
++                .cin(c[i]),
++                .less(i == 0 ? is_less : 1'b0),   // only bit 0 gets the result of slt
++                .operation(operation),
++                .result(result[i]), .cout(c[i+1]), .sum(sum[i])
++            );
++        end
++    endgenerate
++
++    // overflow: carry into the sign bit differs from carry out of it
++    assign overflow = c[N-1] ^ c[N];
++    // slt: the sign of a - b, corrected if the subtraction overflowed
++    assign is_less = sum[N-1] ^ overflow;
++    // zero: a NOR over all result bits
++    assign zero = ~|result;
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/alu_cell.v b/content/en/pages/26_cpu_verilog/alu_cell.v
+new file mode 100644
+index 0000000..9b32683
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/alu_cell.v
+@@ -0,0 +1,30 @@
++// 1-bit ALU cell from part 1 (chapter 05):
++// Ainvert and Binvert invert the inputs, Operation selects the result.
++//   Operation = 00: and   01: or   10: sum (add)   11: less (for slt)
++module alu_cell (
++    input  wire       a,
++    input  wire       b,
++    input  wire       ainvert,
++    input  wire       binvert,
++    input  wire       cin,
++    input  wire       less,
++    input  wire [1:0] operation,
++    output reg        result,
++    output wire       cout,
++    output wire       sum           // needed by the most significant cell for slt
++);
++    wire aa = a ^ ainvert;          // the XOR as a controllable inverter
++    wire bb = b ^ binvert;
++
++    assign sum  = aa ^ bb ^ cin;    // full adder
++    assign cout = (aa & bb) | (cin & (aa ^ bb));
++
++    always @(*) begin
++        case (operation)
++            2'b00: result = aa & bb;
++            2'b01: result = aa | bb;
++            2'b10: result = sum;
++            2'b11: result = less;
++        endcase
++    end
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/alu_control.v b/content/en/pages/26_cpu_verilog/alu_control.v
+new file mode 100644
+index 0000000..dcad6c7
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/alu_control.v
+@@ -0,0 +1,23 @@
++// ALU control (chapter 17): the second decoding stage.
++// From the 2-bit ALUOp of the main control and, for R-type instructions,
++// from funct7 (only bit 30 of the instruction) and funct3, it generates
++// the 4 control bits {Ainvert, Binvert, Operation} of the ALU.
++module alu_control (
++    input  wire [1:0] alu_op,
++    input  wire       funct7_5,       // instruction bit 30
++    input  wire [2:0] funct3,
++    output reg  [3:0] alu_ctrl
++);
++    always @(*) begin
++        case (alu_op)
++            2'b00:   alu_ctrl = 4'b0010;                 // lw, sw, addi: add
++            2'b01:   alu_ctrl = 4'b0110;                 // beq, bne: sub
++            default: case (funct3)                       // R-type: look at funct
++                         3'b000:  alu_ctrl = funct7_5 ? 4'b0110 : 4'b0010;   // sub / add
++                         3'b111:  alu_ctrl = 4'b0000;    // and
++                         3'b110:  alu_ctrl = 4'b0001;    // or
++                         default: alu_ctrl = 4'b0010;
++                     endcase
++        endcase
++    end
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/alu_tb.v b/content/en/pages/26_cpu_verilog/alu_tb.v
+new file mode 100644
+index 0000000..ae29f91
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/alu_tb.v
+@@ -0,0 +1,68 @@
++`timescale 1ns / 1ps
++
++// Tests all seven ALU operations with interesting and random values
++// against the Verilog operators.
++module alu_tb;
++    reg  [31:0] a, b;
++    reg  [3:0]  ctrl;
++    wire [31:0] result;
++    wire        zero, overflow;
++    reg  [31:0] expected;
++    integer i, k, errors = 0, tests = 0;
++
++    alu #(.N(32)) dut (.a(a), .b(b), .ctrl(ctrl), .result(result), .zero(zero), .overflow(overflow));
++
++    reg [3:0]  ops    [0:6];
++    reg [31:0] values [0:7];
++
++    task check;
++        begin
++            #1;
++            case (ctrl)
++                4'b0000: expected = a & b;
++                4'b0001: expected = a | b;
++                4'b0010: expected = a + b;
++                4'b0110: expected = a - b;
++                4'b0111: expected = ($signed(a) < $signed(b)) ? 1 : 0;
++                4'b1100: expected = ~(a | b);
++                4'b1101: expected = ~(a & b);
++            endcase
++            tests = tests + 1;
++            if (result !== expected || zero !== (expected == 0)) begin
++                errors = errors + 1;
++                $display("ERROR: ctrl=%b a=%h b=%h result=%h expected=%h", ctrl, a, b, result, expected);
++            end
++        end
++    endtask
++
++    initial begin
++        ops[0] = 4'b0000; ops[1] = 4'b0001; ops[2] = 4'b0010; ops[3] = 4'b0110;
++        ops[4] = 4'b0111; ops[5] = 4'b1100; ops[6] = 4'b1101;
++        // values at the edges: 0, 1, -1, largest and smallest number, ...
++        values[0] = 0;            values[1] = 1;            values[2] = 32'hFFFFFFFF;
++        values[3] = 32'h7FFFFFFF; values[4] = 32'h80000000; values[5] = 10;
++        values[6] = 32'hFFFFFFF7; values[7] = 32'h12345678;
++
++        // the operations of our example program
++        ctrl = 4'b0010; a = 1;  b = 1;  check; $display("add: 1 + 1   = %0d", $signed(result));
++        ctrl = 4'b0110; a = 1;  b = 10; check; $display("sub: 1 - 10  = %0d, zero = %b", $signed(result), zero);
++        ctrl = 4'b0110; a = 10; b = 10; check; $display("sub: 10 - 10 = %0d, zero = %b", $signed(result), zero);
++        // slt with overflow: -2^31 < 1, although -2^31 - 1 has a positive sign bit
++        ctrl = 4'b0111; a = 32'h80000000; b = 1; check;
++        $display("slt: %0d < 1 = %0d (overflow = %b)", $signed(a), result, overflow);
++
++        for (k = 0; k < 7; k = k + 1) begin
++            ctrl = ops[k];
++            for (i = 0; i < 64; i = i + 1) begin
++                a = values[i / 8]; b = values[i % 8]; check;
++            end
++            for (i = 0; i < 1000; i = i + 1) begin
++                a = $random; b = $random; check;
++            end
++        end
++
++        if (errors == 0) $display("PASSED: %0d tests", tests);
++        else             $display("FAILED: %0d of %0d tests", errors, tests);
++        $finish;
++    end
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/control.v b/content/en/pages/26_cpu_verilog/control.v
+new file mode 100644
+index 0000000..88daa39
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/control.v
+@@ -0,0 +1,29 @@
++// Main control unit of the single-cycle CPU (chapter 17), pure combinational logic.
++// A decoder recognizes the opcode and activates exactly one line,
++// every control signal is an OR of the lines in which it is 1.
++module control (
++    input  wire [6:0] opcode,
++    output wire       reg_write,
++    output wire       alu_src,
++    output wire       mem_to_reg,
++    output wire       mem_read,
++    output wire       mem_write,
++    output wire       branch,
++    output wire [1:0] alu_op
++);
++    // decoder: one line per instruction type
++    wire r   = (opcode == 7'b0110011);   // add, sub, and, or
++    wire lw  = (opcode == 7'b0000011);
++    wire sw  = (opcode == 7'b0100011);
++    wire br  = (opcode == 7'b1100011);   // beq, bne
++    wire imm = (opcode == 7'b0010011);   // addi
++
++    // the equations from chapter 17, including the extension for addi
++    assign reg_write  = r | lw | imm;
++    assign alu_src    = lw | sw | imm;
++    assign mem_to_reg = lw;
++    assign mem_read   = lw;
++    assign mem_write  = sw;
++    assign branch     = br;
++    assign alu_op     = {r, br};         // ALUOp1 = R, ALUOp0 = BR
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/control_tb.v b/content/en/pages/26_cpu_verilog/control_tb.v
+new file mode 100644
+index 0000000..faf5c6a
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/control_tb.v
+@@ -0,0 +1,56 @@
++`timescale 1ns / 1ps
++
++// Feeds the instructions of our example program (chapter 17) into
++// control, ALU control and immediate generator, and compares with the tables.
++module control_tb;
++    reg  [31:0] inst;
++    wire        reg_write, alu_src, mem_to_reg, mem_read, mem_write, branch;
++    wire [1:0]  alu_op;
++    wire [3:0]  alu_ctrl;
++    wire [31:0] imm;
++    integer errors = 0;
++
++    control ctl (
++        .opcode(inst[6:0]), .reg_write(reg_write), .alu_src(alu_src),
++        .mem_to_reg(mem_to_reg), .mem_read(mem_read), .mem_write(mem_write),
++        .branch(branch), .alu_op(alu_op)
++    );
++    alu_control actl (.alu_op(alu_op), .funct7_5(inst[30]), .funct3(inst[14:12]), .alu_ctrl(alu_ctrl));
++    imm_gen ig (.inst(inst), .imm(imm));
++
++    // expected: RegWrite ALUSrc MemToReg MemRead MemWrite Branch ALUOp(2) ALUctrl(4) and the immediate
++    // (for sw and bne/beq, MemToReg is "don't care"; our logic gives 0.
++    //  R-type instructions have no immediate, the value of imm does not matter there)
++    task check(input [31:0] i, input [127:0] name, input [7:0] exp_signals, input [3:0] exp_ctrl, input integer exp_imm);
++        begin
++            inst = i; #1;
++            $display("%-16s RegWrite=%b ALUSrc=%b MemToReg=%b MemRead=%b MemWrite=%b Branch=%b ALUOp=%b ALUctrl=%b imm=%0d",
++                     name, reg_write, alu_src, mem_to_reg, mem_read, mem_write, branch, alu_op, alu_ctrl, $signed(imm));
++            if ({reg_write, alu_src, mem_to_reg, mem_read, mem_write, branch, alu_op} !== exp_signals
++                || alu_ctrl !== exp_ctrl
++                || ((alu_src || branch) && $signed(imm) !== exp_imm)) begin
++                errors = errors + 1;
++                $display("  ERROR");
++            end
++        end
++    endtask
++
++    initial begin
++        //                                      RW AS MR MRd MW Br ALUOp
++        check(32'h00a00193, "addi x3,x0,10",   8'b11_0_0_0_0_00, 4'b0010, 10);
++        check(32'h002080b3, "add x1,x1,x2",    8'b10_0_0_0_0_10, 4'b0010, 0);
++        check(32'h40208133, "sub x2,x1,x2",    8'b10_0_0_0_0_10, 4'b0110, 1026);
++        check(32'h0020f0b3, "and x1,x1,x2",    8'b10_0_0_0_0_10, 4'b0000, 2);
++        check(32'h0020e0b3, "or x1,x1,x2",     8'b10_0_0_0_0_10, 4'b0001, 2);
++        check(32'h00832283, "lw x5,8(x6)",     8'b11_1_1_0_0_00, 4'b0010, 8);
++        check(32'h00102223, "sw x1,4(x0)",     8'b01_0_0_1_0_00, 4'b0010, 4);
++        check(32'hfe309ce3, "bne x1,x3,-8",    8'b00_0_0_0_1_01, 4'b0110, -8);
++        check(32'h00000063, "beq x0,x0,0",     8'b00_0_0_0_1_01, 4'b0110, 0);
++        // the addi trap from chapter 17: bit 30 is 1, but ALUOp = 00 still selects add
++        check(32'hfff28293, "addi x5,x5,-1",   8'b11_0_0_0_0_00, 4'b0010, -1);
++
++        if (errors == 0) $display("PASSED");
++        else             $display("FAILED: %0d errors", errors);
++        $finish;
++    end
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/cpu.v b/content/en/pages/26_cpu_verilog/cpu.v
+new file mode 100644
+index 0000000..cc3022d
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/cpu.v
+@@ -0,0 +1,75 @@
++// Single-cycle RISC-V CPU from part 2 (chapters 16 and 17).
++// Instructions: add, sub, and, or, addi, lw, sw, beq, bne.
++// Every instruction is executed in one clock cycle: everything between two
++// rising edges is combinational logic, only PC, register file and data memory store values.
++module cpu #(
++    parameter PROGRAM = "program.hex"
++) (
++    input  wire clk,
++    input  wire rst
++);
++    // ---- instruction fetch -------------------------------------------------
++    reg  [31:0] pc;
++    wire [31:0] inst;
++    wire [31:0] pc_plus4 = pc + 4;               // first adder
++
++    instr_mem #(.PROGRAM(PROGRAM)) imem (.addr(pc), .inst(inst));
++
++    // ---- decode: the fields of the instruction ----------------------------
++    wire [6:0] opcode = inst[6:0];
++    wire [4:0] rd     = inst[11:7];
++    wire [2:0] funct3 = inst[14:12];
++    wire [4:0] rs1    = inst[19:15];
++    wire [4:0] rs2    = inst[24:20];
++
++    // ---- control ------------------------------------------------------------
++    wire       reg_write, alu_src, mem_to_reg, mem_read, mem_write, branch;
++    wire [1:0] alu_op;
++    wire [3:0] alu_ctrl;
++
++    control ctl (
++        .opcode(opcode), .reg_write(reg_write), .alu_src(alu_src),
++        .mem_to_reg(mem_to_reg), .mem_read(mem_read), .mem_write(mem_write),
++        .branch(branch), .alu_op(alu_op)
++    );
++    alu_control actl (.alu_op(alu_op), .funct7_5(inst[30]), .funct3(funct3), .alu_ctrl(alu_ctrl));
++
++    // ---- register file and immediate ---------------------------------------
++    wire [31:0] rd1, rd2, imm, write_data;
++
++    regfile rf (
++        .clk(clk), .rs1(rs1), .rs2(rs2), .rd1(rd1), .rd2(rd2),
++        .we(reg_write), .rd(rd), .wd(write_data)
++    );
++    imm_gen ig (.inst(inst), .imm(imm));
++
++    // ---- execute -------------------------------------------------------------
++    wire [31:0] alu_b = alu_src ? imm : rd2;     // multiplexer in front of the ALU
++    wire [31:0] alu_result;
++    wire        zero, overflow;
++
++    alu #(.N(32)) alu (
++        .a(rd1), .b(alu_b), .ctrl(alu_ctrl),
++        .result(alu_result), .zero(zero), .overflow(overflow)
++    );
++
++    // ---- memory access ---------------------------------------------------------
++    wire [31:0] mem_data;
++
++    data_mem dmem (
++        .clk(clk), .addr(alu_result), .mem_read(mem_read), .mem_write(mem_write),
++        .wd(rd2), .rd(mem_data)
++    );
++
++    // ---- write back ------------------------------------------------------------
++    assign write_data = mem_to_reg ? mem_data : alu_result;   // multiplexer behind the memory
++
++    // ---- next PC ---------------------------------------------------------------
++    wire [31:0] branch_target = pc + imm;                     // second adder
++    wire        pc_src = branch & (zero ^ inst[12]);          // inst[12] = 1 for bne
++    wire [31:0] pc_next = pc_src ? branch_target : pc_plus4;  // multiplexer in front of the PC
++
++    always @(posedge clk)
++        if (rst) pc <= 0;
++        else     pc <= pc_next;
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/cpu_tb.v b/content/en/pages/26_cpu_verilog/cpu_tb.v
+new file mode 100644
+index 0000000..4bba773
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/cpu_tb.v
+@@ -0,0 +1,60 @@
++`timescale 1ns / 1ps
++
++// Runs the example program and prints one line per clock cycle,
++// like the table in chapter 17. At the end, the results are checked.
++// (Icarus warns that program.hex has fewer than 64 words: that is fine,
++//  the rest of the instruction memory is simply never used.)
++module cpu_tb;
++    reg clk = 0;
++    reg rst = 1;
++    integer cycle = 0, errors = 0, writes = 0;
++
++    cpu #(.PROGRAM("program.hex")) dut (.clk(clk), .rst(rst));
++
++    // short names for the waveform: lowest byte of the PC, the registers and memory[4]
++    wire [7:0]  pc    = dut.pc[7:0];
++    wire [31:0] x1    = dut.rf.regs[1];
++    wire [31:0] x3    = dut.rf.regs[3];
++    wire [31:0] mem4  = dut.dmem.mem[1];      // address 4 = word 1
++
++    // clock: period 10 ns
++    always #5 clk = ~clk;
++
++    initial begin
++        $dumpfile("cpu.vcd");
++        $dumpvars(0, cpu_tb);
++        #12 rst = 0;
++        #350;                                 // 35 clock cycles
++
++        // check the results
++        if (x1 !== 10)   begin errors = errors + 1; $display("ERROR: x1 = %0d", x1); end
++        if (x3 !== 10)   begin errors = errors + 1; $display("ERROR: x3 = %0d", x3); end
++        if (mem4 !== 10) begin errors = errors + 1; $display("ERROR: memory[4] = %0d", mem4); end
++        if (dut.pc !== 32'h18) begin errors = errors + 1; $display("ERROR: PC = %h", dut.pc); end
++        if (writes !== 10) begin errors = errors + 1; $display("ERROR: %0d writes to memory", writes); end
++
++        if (errors == 0) $display("PASSED: counted to 10 in 33 clock cycles, CPU loops at 0x18");
++        else             $display("FAILED: %0d errors", errors);
++        $finish;
++    end
++
++    // one line per clock cycle, like the table in chapter 17.
++    // At the rising edge, the non-blocking assignments have not happened yet:
++    // we still see the instruction of this cycle and the values that are about to be stored.
++    always @(posedge clk)
++        if (!rst) begin
++            cycle = cycle + 1;
++            $write("clock %2d  PC=0x%02h  inst=%h  ", cycle, dut.pc[7:0], dut.inst);
++            if (dut.reg_write) $write("x%0d = %0d", dut.rd, $signed(dut.write_data));
++            if (dut.mem_write) $write("memory[%0d] = %0d", dut.alu_result, dut.rd2);
++            if (dut.branch)    $write("Zero=%b PCSrc=%b", dut.zero, dut.pc_src);
++            $display("  ->  next PC=0x%02h", dut.pc_next[7:0]);
++            if (dut.mem_write) begin
++                writes = writes + 1;
++                if (dut.rd2 !== writes) begin
++                    errors = errors + 1;
++                    $display("ERROR: write %0d stores %0d", writes, dut.rd2);
++                end
++            end
++        end
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/cpu_waveform.svg b/content/en/pages/26_cpu_verilog/cpu_waveform.svg
+new file mode 100644
+index 0000000..6d8d872
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/cpu_waveform.svg
+@@ -0,0 +1,120 @@
++<svg xmlns="http://www.w3.org/2000/svg" width="780" height="346" viewBox="0 0 780 346" font-family="sans-serif">
++<style>.w{fill:none;stroke:black;stroke-width:1.2}.b{fill:lightskyblue;stroke:black;stroke-width:1}.g{stroke:#ccc;stroke-width:0.6;stroke-dasharray:2,3}</style>
++<line class="g" x1="70.0" y1="10" x2="70.0" y2="321"/>
++<text x="70.0" y="336" font-size="10" text-anchor="middle">0</text>
++<line class="g" x1="138.5" y1="10" x2="138.5" y2="321"/>
++<text x="138.5" y="336" font-size="10" text-anchor="middle">20</text>
++<line class="g" x1="207.0" y1="10" x2="207.0" y2="321"/>
++<text x="207.0" y="336" font-size="10" text-anchor="middle">40</text>
++<line class="g" x1="275.5" y1="10" x2="275.5" y2="321"/>
++<text x="275.5" y="336" font-size="10" text-anchor="middle">60</text>
++<line class="g" x1="344.0" y1="10" x2="344.0" y2="321"/>
++<text x="344.0" y="336" font-size="10" text-anchor="middle">80</text>
++<line class="g" x1="412.5" y1="10" x2="412.5" y2="321"/>
++<text x="412.5" y="336" font-size="10" text-anchor="middle">100</text>
++<line class="g" x1="481.0" y1="10" x2="481.0" y2="321"/>
++<text x="481.0" y="336" font-size="10" text-anchor="middle">120</text>
++<line class="g" x1="549.5" y1="10" x2="549.5" y2="321"/>
++<text x="549.5" y="336" font-size="10" text-anchor="middle">140</text>
++<line class="g" x1="618.0" y1="10" x2="618.0" y2="321"/>
++<text x="618.0" y="336" font-size="10" text-anchor="middle">160</text>
++<line class="g" x1="686.5" y1="10" x2="686.5" y2="321"/>
++<text x="686.5" y="336" font-size="10" text-anchor="middle">180</text>
++<line class="g" x1="755.0" y1="10" x2="755.0" y2="321"/>
++<text x="755.0" y="336" font-size="10" text-anchor="middle">200</text>
++<text x="5" y="336" font-size="10">t / ns</text>
++<text x="5" y="33.0" font-size="12">clk</text>
++<polyline class="w" points="70.0,38.0 87.1,38.0 87.1,20.0 104.2,20.0 104.2,38.0 121.4,38.0 121.4,20.0 138.5,20.0 138.5,38.0 155.6,38.0 155.6,20.0 172.8,20.0 172.8,38.0 189.9,38.0 189.9,20.0 207.0,20.0 207.0,38.0 224.1,38.0 224.1,20.0 241.2,20.0 241.2,38.0 258.4,38.0 258.4,20.0 275.5,20.0 275.5,38.0 292.6,38.0 292.6,20.0 309.8,20.0 309.8,38.0 326.9,38.0 326.9,20.0 344.0,20.0 344.0,38.0 361.1,38.0 361.1,20.0 378.2,20.0 378.2,38.0 395.4,38.0 395.4,20.0 412.5,20.0 412.5,38.0 429.6,38.0 429.6,20.0 446.8,20.0 446.8,38.0 463.9,38.0 463.9,20.0 481.0,20.0 481.0,38.0 498.1,38.0 498.1,20.0 515.2,20.0 515.2,38.0 532.4,38.0 532.4,20.0 549.5,20.0 549.5,38.0 566.6,38.0 566.6,20.0 583.8,20.0 583.8,38.0 600.9,38.0 600.9,20.0 618.0,20.0 618.0,38.0 635.1,38.0 635.1,20.0 652.2,20.0 652.2,38.0 669.4,38.0 669.4,20.0 686.5,20.0 686.5,38.0 703.6,38.0 703.6,20.0 720.8,20.0 720.8,38.0 737.9,38.0 737.9,20.0 755.0,20.0 755.0,38.0 755.0,38.0"/>
++<text x="5" y="67.0" font-size="12">rst</text>
++<polyline class="w" points="70.0,54.0 111.1,54.0 111.1,72.0 755.0,72.0"/>
++<text x="5" y="101.0" font-size="12">PC</text>
++<polygon points="70.0,97.0 73.0,88 84.1,88 87.1,97.0 84.1,106 73.0,106" style="fill:#eee;stroke:black;stroke-width:1"/>
++<text x="78.6" y="101.0" font-size="10" text-anchor="middle">x</text>
++<polygon points="87.1,97.0 90.1,88 118.4,88 121.4,97.0 118.4,106 90.1,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="104.2" y="101.0" font-size="10" text-anchor="middle">0</text>
++<polygon points="121.4,97.0 124.4,88 152.6,88 155.6,97.0 152.6,106 124.4,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="138.5" y="101.0" font-size="10" text-anchor="middle">4</text>
++<polygon points="155.6,97.0 158.6,88 186.9,88 189.9,97.0 186.9,106 158.6,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="172.8" y="101.0" font-size="10" text-anchor="middle">8</text>
++<polygon points="189.9,97.0 192.9,88 221.1,88 224.1,97.0 221.1,106 192.9,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="207.0" y="101.0" font-size="10" text-anchor="middle">c</text>
++<polygon points="224.1,97.0 227.1,88 255.4,88 258.4,97.0 255.4,106 227.1,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="241.2" y="101.0" font-size="10" text-anchor="middle">10</text>
++<polygon points="258.4,97.0 261.4,88 289.6,88 292.6,97.0 289.6,106 261.4,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="275.5" y="101.0" font-size="10" text-anchor="middle">14</text>
++<polygon points="292.6,97.0 295.6,88 323.9,88 326.9,97.0 323.9,106 295.6,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="309.8" y="101.0" font-size="10" text-anchor="middle">c</text>
++<polygon points="326.9,97.0 329.9,88 358.1,88 361.1,97.0 358.1,106 329.9,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="344.0" y="101.0" font-size="10" text-anchor="middle">10</text>
++<polygon points="361.1,97.0 364.1,88 392.4,88 395.4,97.0 392.4,106 364.1,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="378.2" y="101.0" font-size="10" text-anchor="middle">14</text>
++<polygon points="395.4,97.0 398.4,88 426.6,88 429.6,97.0 426.6,106 398.4,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="412.5" y="101.0" font-size="10" text-anchor="middle">c</text>
++<polygon points="429.6,97.0 432.6,88 460.9,88 463.9,97.0 460.9,106 432.6,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="446.8" y="101.0" font-size="10" text-anchor="middle">10</text>
++<polygon points="463.9,97.0 466.9,88 495.1,88 498.1,97.0 495.1,106 466.9,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="481.0" y="101.0" font-size="10" text-anchor="middle">14</text>
++<polygon points="498.1,97.0 501.1,88 529.4,88 532.4,97.0 529.4,106 501.1,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="515.2" y="101.0" font-size="10" text-anchor="middle">c</text>
++<polygon points="532.4,97.0 535.4,88 563.6,88 566.6,97.0 563.6,106 535.4,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="549.5" y="101.0" font-size="10" text-anchor="middle">10</text>
++<polygon points="566.6,97.0 569.6,88 597.9,88 600.9,97.0 597.9,106 569.6,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="583.8" y="101.0" font-size="10" text-anchor="middle">14</text>
++<polygon points="600.9,97.0 603.9,88 632.1,88 635.1,97.0 632.1,106 603.9,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="618.0" y="101.0" font-size="10" text-anchor="middle">c</text>
++<polygon points="635.1,97.0 638.1,88 666.4,88 669.4,97.0 666.4,106 638.1,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="652.2" y="101.0" font-size="10" text-anchor="middle">10</text>
++<polygon points="669.4,97.0 672.4,88 700.6,88 703.6,97.0 700.6,106 672.4,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="686.5" y="101.0" font-size="10" text-anchor="middle">14</text>
++<polygon points="703.6,97.0 706.6,88 734.9,88 737.9,97.0 734.9,106 706.6,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="720.8" y="101.0" font-size="10" text-anchor="middle">c</text>
++<polygon points="737.9,97.0 740.9,88 752.0,88 755.0,97.0 752.0,106 740.9,106" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="746.4" y="101.0" font-size="10" text-anchor="middle">10</text>
++<text x="5" y="135.0" font-size="12">RegWrite</text>
++<polyline class="w" points="70.0,131.0 87.1,131.0 87.1,122.0 189.9,122.0 189.9,122.0 224.1,122.0 224.1,140.0 292.6,140.0 292.6,122.0 326.9,122.0 326.9,140.0 395.4,140.0 395.4,122.0 429.6,122.0 429.6,140.0 498.1,140.0 498.1,122.0 532.4,122.0 532.4,140.0 600.9,140.0 600.9,122.0 635.1,122.0 635.1,140.0 703.6,140.0 703.6,122.0 737.9,122.0 737.9,140.0 755.0,140.0"/>
++<rect x="70.0" y="122" width="17.1" height="18" style="fill:#e0e0e0;stroke:none"/>
++<text x="78.6" y="135.0" font-size="10" text-anchor="middle">x</text>
++<text x="5" y="169.0" font-size="12">MemWrite</text>
++<polyline class="w" points="70.0,165.0 87.1,165.0 87.1,174.0 224.1,174.0 224.1,156.0 258.4,156.0 258.4,174.0 326.9,174.0 326.9,156.0 361.1,156.0 361.1,174.0 429.6,174.0 429.6,156.0 463.9,156.0 463.9,174.0 532.4,174.0 532.4,156.0 566.6,156.0 566.6,174.0 635.1,174.0 635.1,156.0 669.4,156.0 669.4,174.0 737.9,174.0 737.9,156.0 755.0,156.0"/>
++<rect x="70.0" y="156" width="17.1" height="18" style="fill:#e0e0e0;stroke:none"/>
++<text x="78.6" y="169.0" font-size="10" text-anchor="middle">x</text>
++<text x="5" y="203.0" font-size="12">PCSrc</text>
++<polyline class="w" points="70.0,199.0 87.1,199.0 87.1,208.0 258.4,208.0 258.4,190.0 292.6,190.0 292.6,208.0 361.1,208.0 361.1,190.0 395.4,190.0 395.4,208.0 463.9,208.0 463.9,190.0 498.1,190.0 498.1,208.0 566.6,208.0 566.6,190.0 600.9,190.0 600.9,208.0 669.4,208.0 669.4,190.0 703.6,190.0 703.6,208.0 755.0,208.0"/>
++<rect x="70.0" y="190" width="17.1" height="18" style="fill:#e0e0e0;stroke:none"/>
++<text x="78.6" y="203.0" font-size="10" text-anchor="middle">x</text>
++<text x="5" y="237.0" font-size="12">x1</text>
++<polygon points="70.0,233.0 73.0,224 118.4,224 121.4,233.0 118.4,242 73.0,242" style="fill:#eee;stroke:black;stroke-width:1"/>
++<text x="95.7" y="237.0" font-size="10" text-anchor="middle">x</text>
++<polygon points="121.4,233.0 124.4,224 221.1,224 224.1,233.0 221.1,242 124.4,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="172.8" y="237.0" font-size="10" text-anchor="middle">0</text>
++<polygon points="224.1,233.0 227.1,224 323.9,224 326.9,233.0 323.9,242 227.1,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="275.5" y="237.0" font-size="10" text-anchor="middle">1</text>
++<polygon points="326.9,233.0 329.9,224 426.6,224 429.6,233.0 426.6,242 329.9,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="378.2" y="237.0" font-size="10" text-anchor="middle">2</text>
++<polygon points="429.6,233.0 432.6,224 529.4,224 532.4,233.0 529.4,242 432.6,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="481.0" y="237.0" font-size="10" text-anchor="middle">3</text>
++<polygon points="532.4,233.0 535.4,224 632.1,224 635.1,233.0 632.1,242 535.4,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="583.8" y="237.0" font-size="10" text-anchor="middle">4</text>
++<polygon points="635.1,233.0 638.1,224 734.9,224 737.9,233.0 734.9,242 638.1,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="686.5" y="237.0" font-size="10" text-anchor="middle">5</text>
++<polygon points="737.9,233.0 740.9,224 752.0,224 755.0,233.0 752.0,242 740.9,242" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="746.4" y="237.0" font-size="10" text-anchor="middle">6</text>
++<text x="5" y="271.0" font-size="12">x3</text>
++<polygon points="70.0,267.0 73.0,258 186.9,258 189.9,267.0 186.9,276 73.0,276" style="fill:#eee;stroke:black;stroke-width:1"/>
++<text x="129.9" y="271.0" font-size="10" text-anchor="middle">x</text>
++<polygon points="189.9,267.0 192.9,258 752.0,258 755.0,267.0 752.0,276 192.9,276" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="472.4" y="271.0" font-size="10" text-anchor="middle">10</text>
++<text x="5" y="305.0" font-size="12">memory[4]</text>
++<polygon points="70.0,301.0 73.0,292 255.4,292 258.4,301.0 255.4,310 73.0,310" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="164.2" y="305.0" font-size="10" text-anchor="middle">0</text>
++<polygon points="258.4,301.0 261.4,292 358.1,292 361.1,301.0 358.1,310 261.4,310" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="309.8" y="305.0" font-size="10" text-anchor="middle">1</text>
++<polygon points="361.1,301.0 364.1,292 460.9,292 463.9,301.0 460.9,310 364.1,310" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="412.5" y="305.0" font-size="10" text-anchor="middle">2</text>
++<polygon points="463.9,301.0 466.9,292 563.6,292 566.6,301.0 563.6,310 466.9,310" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="515.2" y="305.0" font-size="10" text-anchor="middle">3</text>
++<polygon points="566.6,301.0 569.6,292 666.4,292 669.4,301.0 666.4,310 569.6,310" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="618.0" y="305.0" font-size="10" text-anchor="middle">4</text>
++<polygon points="669.4,301.0 672.4,292 752.0,292 755.0,301.0 752.0,310 672.4,310" style="fill:lightskyblue;stroke:black;stroke-width:1"/>
++<text x="712.2" y="305.0" font-size="10" text-anchor="middle">5</text>
++</svg>
+\ No newline at end of file
+diff --git a/content/en/pages/26_cpu_verilog/data_mem.v b/content/en/pages/26_cpu_verilog/data_mem.v
+new file mode 100644
+index 0000000..e635b30
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/data_mem.v
+@@ -0,0 +1,21 @@
++// Data memory: 64 words. Reading is combinational (MemRead),
++// writing happens on the rising clock edge (MemWrite).
++module data_mem (
++    input  wire        clk,
++    input  wire [31:0] addr,
++    input  wire        mem_read,
++    input  wire        mem_write,
++    input  wire [31:0] wd,
++    output wire [31:0] rd
++);
++    reg [31:0] mem [0:63];
++
++    integer i;
++    initial for (i = 0; i < 64; i = i + 1) mem[i] = 0;
++
++    assign rd = mem_read ? mem[addr[7:2]] : 32'd0;
++
++    always @(posedge clk)
++        if (mem_write)
++            mem[addr[7:2]] <= wd;
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/imm_gen.v b/content/en/pages/26_cpu_verilog/imm_gen.v
+new file mode 100644
+index 0000000..37df43b
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/imm_gen.v
+@@ -0,0 +1,19 @@
++// Immediate generator (chapter 17): extracts the constant from the instruction
++// and sign-extends it to 32 bits. The sign bit is always inst[31].
++module imm_gen (
++    input  wire [31:0] inst,
++    output reg  [31:0] imm
++);
++    wire [6:0] opcode = inst[6:0];
++
++    always @(*) begin
++        case (opcode)
++            7'b0100011:                                          // S-type: sw
++                imm = {{20{inst[31]}}, inst[31:25], inst[11:7]};
++            7'b1100011:                                          // B-type: beq, bne
++                imm = {{19{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0};
++            default:                                             // I-type: lw, addi
++                imm = {{20{inst[31]}}, inst[31:20]};
++        endcase
++    end
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/index.adoc b/content/en/pages/26_cpu_verilog/index.adoc
+new file mode 100644
+index 0000000..ea703b4
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/index.adoc
+@@ -0,0 +1,458 @@
++---
++title: "The CPU in Verilog"
++date: 2026-11-24
++weight: 260
++tags: ["verilog", "RISC-V"]
++category: "digital_logic_3"
++link:
++description: "Register file, ALU, control unit and data path from part 2 in Verilog - tested block by block, until our counter program runs in simulation."
++type: text
++bookHidden: true
++draft: false
++menu:
++  docs:
++    parent: "digital_logic_3"
++---
++{{< katex />}}
++
++== The CPU in Verilog
++
++In part 2 we designed a complete single-cycle RISC-V CPU on paper: the link:/pages/16_datapath/[data path] in chapter 16
++and the link:/pages/17_cpu_control/[control unit] in chapter 17. At the end of chapter 17 we traced our counter program
++clock by clock through a table - by hand.
++
++In the chapters since then we collected the tools to do this with a computer: modules and signals
++(link:/pages/21_hdl/[chapter 21]), testbenches and waveforms (link:/pages/22_simulation/[chapter 22]),
++vectors, hierarchy and `generate` (link:/pages/23_combinational_verilog/[chapter 23]), flip-flops and registers
++(link:/pages/24_sequential_verilog/[chapter 24]), and arithmetic in hardware (link:/pages/25_arithmetic_units/[chapter 25]).
++
++Now we put everything together. We describe the CPU in Verilog and let the simulator execute the counter program.
++At the end, the simulator prints the same table we filled in by hand in chapter 17.
++
++[TIP]
++====
++All examples of this chapter are in the folder `26_cpu_verilog` of our repository link:https://github.com/wehrend/hdl-training[hdl-training],
++which we cloned in link:/pages/21_hdl/[chapter 21]: `00-register-file`, `01-alu`, `02-control`, `03-cpu`.
++If you cloned it earlier, `git pull` fetches the latest version. The README of the repository lists the command to simulate each example.
++====
++
++=== The plan: block by block
++
++We could write the whole CPU in one file and simulate it. If it does not count to 10, we would have a problem:
++the error could be anywhere. That is why we build the CPU in four steps, and every block gets its own testbench
++before it is used:
++
++[width="100%",options="header"]
++|===
++| Step | Block | Designed in | Files
++| 1 | Register file | link:/pages/16_datapath/[chapter 16] | `regfile.v`
++| 2 | ALU | link:/pages/05_alu/[chapter 05] | `alu_cell.v`, `alu.v`
++| 3 | Control unit, ALU control, immediate generator | link:/pages/17_cpu_control/[chapter 17] | `control.v`, `alu_control.v`, `imm_gen.v`
++| 4 | Memories and the complete CPU | chapters 16 and 17 | `instr_mem.v`, `data_mem.v`, `cpu.v`
++|===
++
++This is how chips are developed in practice as well: first every block is tested on its own (unit test),
++then the assembled system (integration test). If the integration test fails, we at least know that the blocks
++themselves are correct, and the error must be in the wiring between them.
++
++=== Step 1: The register file
++
++The register file holds the 32 registers x0 to x31, each 32 bits wide. In chapter 16 we drew it with three ports:
++
++* two *read ports*: the register numbers rs1 and rs2 go in, the contents rd1 and rd2 come out,
++* one *write port*: if RegWrite is 1, the value wd is written into register rd.
++
++Reading is combinational: as soon as rs1 changes, rd1 shows the new register after a short delay.
++Writing happens on the rising clock edge, like with every register from chapter 24.
++And register x0 is special: it always reads as 0, writing to it has no effect.
++
++[source,verilog]
++----
++include::./regfile.v[]
++----
++
++==== A new language feature: arrays
++
++So far, a signal was either a single bit or a vector like `wire [31:0] a`. The line
++
++[source,verilog]
++----
++reg [31:0] regs [0:31];
++----
++
++declares an *array*: 32 elements (the range after the name), each of them a vector of 32 bits (the range before the name).
++`regs[5]` is the complete register x5, and `regs[5][31]` would be its sign bit. The index does not have to be a constant:
++`regs[rs1]` selects the register whose number is currently at rs1. In hardware, this is a large multiplexer
++with 32 inputs of 32 bits each - and since we have two read ports, we get two of them.
++
++==== Why is x0 checked when reading?
++
++The write block refuses to write register 0 (`rd != 0`). So regs[0] is never written at all - but this also means
++that it is never initialized, and in simulation it contains `x`. That is why the read ports check for register 0 themselves
++and deliver a constant 0. In hardware, regs[0] does not even have to exist: the synthesis tool notices that
++it is never written and removes it.
++
++==== The testbench
++
++[source,verilog]
++----
++include::./regfile_tb.v[]
++----
++
++The testbench first writes the value i · 3 into every register i. For x0 it tries to write 0xDEAD instead.
++New values are applied on the falling edge (`@(negedge clk)`), so they are stable at the rising edge.
++As in chapter 22, the inputs change away from the clock edge. Then all registers are read on both ports at the same time: port 1 counts up
++from x0, port 2 counts down from x31. Finally the testbench checks that nothing is written while we = 0.
++
++----
++x0 = 0 (0xDEAD was written, x0 stays 0), x7 = 21
++PASSED
++----
++
++=== Step 2: The ALU
++
++The ALU from link:/pages/05_alu/[chapter 05] is a chain of identical 1-bit cells. This is exactly what Verilog's
++hierarchy and `generate` are made for (link:/pages/23_combinational_verilog/[chapter 23]).
++We start with a single cell:
++
++[source,verilog]
++----
++include::./alu_cell.v[]
++----
++
++Everything in this cell is known from part 1:
++
++* The two XOR gates are *controllable inverters*: if ainvert = 1, the cell works with the inverted a. The same for b.
++* `sum` and `cout` form a full adder.
++* The `case` statement is the multiplexer at the output, controlled by the two Operation bits.
++* The input `less` is only used for slt; we will see in a moment where its value comes from.
++
++==== From the cell to the 32-bit ALU
++
++[source,verilog]
++----
++include::./alu.v[]
++----
++
++The `generate` loop creates 32 copies of the cell and connects the carry output of every cell
++to the carry input of the next one, via the vector c. The four control bits are split up into Ainvert,
++Binvert and Operation. This gives us the following operations:
++
++[width="70%",options="header"]
++|===
++| ctrl | Ainvert | Binvert | Operation | Function
++| 0000 | 0 | 0 | 00 | and
++| 0001 | 0 | 0 | 01 | or
++| 0010 | 0 | 0 | 10 | add
++| 0110 | 0 | 1 | 10 | sub
++| 0111 | 0 | 1 | 11 | slt
++| 1100 | 1 | 1 | 00 | nor
++| 1101 | 1 | 1 | 01 | nand
++|===
++
++Four lines deserve a closer look:
++
++* `assign c[0] = binvert;` - a subtraction is a - b = a + ~b + 1 in link:/pages/04_signs/[two's complement].
++  Binvert inverts b in every cell, and since Binvert is also the carry into the first cell, it provides the + 1 as well.
++* `assign overflow = c[N-1] ^ c[N];` - an overflow occurs if the carry into the sign bit differs from the carry out of it.
++* `assign is_less = sum[N-1] ^ overflow;` - for slt the ALU computes a - b. If the result is negative, a < b.
++  The sign bit of the sum tells us this - unless the subtraction overflowed, then the sign bit is wrong and the XOR corrects it.
++  This value goes to the `less` input of cell 0. All other cells get a 0, so the result is either 1 or 0.
++* `assign zero = ~|result;` - the `|` in front of a vector is a *reduction operator*: it ORs all bits of the vector together.
++  The `~` inverts the result. So zero is 1 exactly when all 32 result bits are 0 - a NOR gate with 32 inputs.
++
++The line with `is_less` might look like a loop: the result of the last cell goes back into the first cell.
++But it is not one: is_less depends on `sum` of the last cell, and `sum` does not depend on `less` at all.
++The signal simply runs through the carry chain once and then into the output multiplexer of cell 0.
++A real combinational loop, in which a signal depends on itself, would be an error.
++
++[NOTE]
++.Why not simply write `a + b`?
++====
++In practice we would: `assign result = a + b;` is shorter, and the synthesis tool knows very well how to build an adder,
++for example with the dedicated carry logic of an FPGA. Here we build the ALU from cells on purpose, because we want to see
++that the circuit from part 1 actually works. In link:/pages/27_code_to_chip/[chapter 27] we will see what the synthesis tool makes of it.
++====
++
++==== The testbench
++
++[source,verilog]
++----
++include::./alu_tb.v[]
++----
++
++Testing all combinations, like we did for the 8-bit shifter in chapter 25, is not possible here:
++with two 32-bit inputs, there are 2^64^ combinations. Instead, the testbench uses two kinds of values:
++
++* *Edge values*: 0, 1, -1, the largest and the smallest number, and a few others. Most errors happen at the edges:
++  at the carry from bit 30 into bit 31, at the overflow, at the transition from -1 to 0.
++  Every operation is tested with all 64 pairs of these 8 values.
++* *Random values*: 1000 random pairs per operation, generated with `$random`. They find errors nobody thought of.
++
++Together with the four examples at the beginning, these are 4 + 7 · (64 + 1000) = 7452 tests.
++Every result is compared with the Verilog operators `&`, `|`, `+`, `-` and `<`:
++
++----
++add: 1 + 1   = 2
++sub: 1 - 10  = -9, zero = 0
++sub: 10 - 10 = 0, zero = 1
++slt: -2147483648 < 1 = 1 (overflow = 1)
++PASSED: 7452 tests
++----
++
++The last example line is the interesting one: -2^31^ - 1 does not fit into 32 bits, the subtraction overflows,
++and the sign bit of the result is 0. Without the overflow correction, slt would claim that -2^31^ is not less than 1.
++
++=== Step 3: The control unit
++
++In chapter 17 the control consisted of three blocks: the main control, the ALU control and the immediate generator.
++In Verilog, each of them becomes a small module of pure combinational logic.
++
++==== The main control
++
++[source,verilog]
++----
++include::./control.v[]
++----
++
++This is the circuit from chapter 17, one to one: a decoder with one line per instruction type,
++and every control signal is an OR of the lines in which it is 1. The line `imm` and its two ORs are the extension for `addi`
++from chapter 17. ALUOp is built with a concatenation: `{r, br}` puts r into bit 1 and br into bit 0.
++
++We could also have written the main control table as a `case` statement over the opcode, with one line per instruction.
++The result after synthesis would be the same. The form chosen here has the advantage that the code looks like
++the equations in chapter 17.
++
++==== The ALU control
++
++[source,verilog]
++----
++include::./alu_control.v[]
++----
++
++The two-stage decoding from chapter 17: ALUOp makes the rough decision, and only for R-type instructions (ALUOp = 10)
++funct3 and bit 30 are looked at. Note that there is a `default` in both `case` statements: as we learned in
++link:/pages/23_combinational_verilog/[chapter 23], an `always @(*)` block in which an output is not assigned in every case
++produces a latch.
++
++The `addi` trap from chapter 17 is solved by the main control, not here: since `addi` gets ALUOp = 00,
++the ALU control never looks at bit 30 of an `addi`, which belongs to the constant there.
++
++==== The immediate generator
++
++[source,verilog]
++----
++include::./imm_gen.v[]
++----
++
++Here the concatenation shows its strength. The table from chapter 17 can be written down almost literally:
++`{inst[31:25], inst[11:7]}` puts the two parts of the S-type constant together.
++`{20{inst[31]}}` is a *replication*: 20 copies of the sign bit. This is the sign extension in a single expression.
++
++The B-type line is the strangest one: the bits of the constant come from four places in the instruction,
++and a 0 is appended at the end because branch targets are always even. Counting the bits shows that it adds up:
++19 + 1 + 1 + 6 + 4 + 1 = 32.
++
++==== The testbench
++
++[source,verilog]
++----
++include::./control_tb.v[]
++----
++
++The testbench feeds real machine instructions into all three blocks: the instructions of our counter program,
++and a few more for `sub`, `and`, `or` and `lw`. The expected values are copied from the tables in chapter 17.
++The last line tests the `addi` trap: in `addi x5, x5, -1` bit 30 is 1, and the ALU control must still choose addition.
++
++----
++addi x3,x0,10    RegWrite=1 ALUSrc=1 MemToReg=0 MemRead=0 MemWrite=0 Branch=0 ALUOp=00 ALUctrl=0010 imm=10
++add x1,x1,x2     RegWrite=1 ALUSrc=0 MemToReg=0 MemRead=0 MemWrite=0 Branch=0 ALUOp=10 ALUctrl=0010 imm=2
++sub x2,x1,x2     RegWrite=1 ALUSrc=0 MemToReg=0 MemRead=0 MemWrite=0 Branch=0 ALUOp=10 ALUctrl=0110 imm=1026
++and x1,x1,x2     RegWrite=1 ALUSrc=0 MemToReg=0 MemRead=0 MemWrite=0 Branch=0 ALUOp=10 ALUctrl=0000 imm=2
++or x1,x1,x2      RegWrite=1 ALUSrc=0 MemToReg=0 MemRead=0 MemWrite=0 Branch=0 ALUOp=10 ALUctrl=0001 imm=2
++lw x5,8(x6)      RegWrite=1 ALUSrc=1 MemToReg=1 MemRead=1 MemWrite=0 Branch=0 ALUOp=00 ALUctrl=0010 imm=8
++sw x1,4(x0)      RegWrite=0 ALUSrc=1 MemToReg=0 MemRead=0 MemWrite=1 Branch=0 ALUOp=00 ALUctrl=0010 imm=4
++bne x1,x3,-8     RegWrite=0 ALUSrc=0 MemToReg=0 MemRead=0 MemWrite=0 Branch=1 ALUOp=01 ALUctrl=0110 imm=-8
++beq x0,x0,0      RegWrite=0 ALUSrc=0 MemToReg=0 MemRead=0 MemWrite=0 Branch=1 ALUOp=01 ALUctrl=0110 imm=0
++addi x5,x5,-1    RegWrite=1 ALUSrc=1 MemToReg=0 MemRead=0 MemWrite=0 Branch=0 ALUOp=00 ALUctrl=0010 imm=-1
++PASSED
++----
++
++The immediate generator also delivers a value for R-type instructions (imm=2, imm=1026). It just interprets the
++instruction as I-type. This does not matter: ALUSrc = 0, so the multiplexer in front of the ALU ignores it.
++That is why the testbench only checks imm where ALUSrc or Branch is 1.
++
++=== Step 4: The complete CPU
++
++Two blocks are still missing: the memories. Then we can connect everything.
++
++==== Instruction memory and data memory
++
++[source,verilog]
++----
++include::./instr_mem.v[]
++----
++
++The instruction memory is an array of 64 words. `$readmemh` loads it from a text file with hexadecimal numbers
++when the simulation starts - one instruction per line:
++
++----
++include::./program.hex[]
++----
++
++This is our counter program from chapters 15 and 17, translated into machine code. Everything after `//` is a comment.
++
++The PC contains byte addresses: 0x00, 0x04, 0x08, ... But the memory is organized in words of 4 bytes.
++That is why the address is divided by 4 by simply leaving out the two lowest bits: `addr[7:2]`.
++Address 0x0C becomes word 3. Six address bits give 64 words - enough for our program.
++
++[source,verilog]
++----
++include::./data_mem.v[]
++----
++
++The data memory works like the register file, just with one port: reading is combinational, writing happens
++on the rising edge if MemWrite = 1. The `initial` loop sets all words to 0 at the beginning of the simulation,
++so we do not see `x` in the waveform.
++
++==== Connecting everything
++
++[source,verilog]
++----
++include::./cpu.v[]
++----
++
++If you hold the picture from link:/pages/17_cpu_control/[chapter 17] next to this code, you will find every block and every wire.
++The code is ordered like the phases of an instruction:
++
++* *Instruction fetch:* the PC addresses the instruction memory, the first adder computes PC + 4.
++* *Decode:* the instruction is cut into its fields. These are just wires, no logic: `inst[19:15]` *is* rs1.
++* *Control:* main control and ALU control generate the control signals.
++* *Register file and immediate:* the register file reads rs1 and rs2, the immediate generator extracts the constant.
++* *Execute:* the multiplexer in front of the ALU selects the second operand, the ALU computes.
++* *Memory access:* the ALU result is the address for the data memory, rs2 is the data to write.
++* *Write back:* the multiplexer behind the memory selects what is written into rd.
++* *Next PC:* the second adder computes the branch target, PCSrc selects the next PC.
++
++All multiplexers are a single line with the conditional operator from chapter 24, for example
++`alu_b = alu_src ? imm : rd2`. And the branch decision with the extension for `bne` is the formula from chapter 17:
++
++\[PCSrc = Branch \cdot (Zero \oplus inst_{12})\]
++
++In the whole module, there is only one `always` block: the PC. Together with the register file and the data memory,
++it is the only part of the CPU that stores anything. Everything else is combinational logic between two clock edges -
++this is exactly what "single-cycle" means.
++
++The PC has a *synchronous reset*: as long as rst = 1, the PC is set to 0 at every rising edge.
++Without a reset, the PC would start with `x`, and the CPU would fetch an instruction from an unknown address.
++
++==== The testbench
++
++[source,verilog]
++----
++include::./cpu_tb.v[]
++----
++
++The testbench does three things:
++
++* It generates the clock and releases the reset after 12 ns.
++* At every rising edge it prints one line: PC, instruction and what the instruction does.
++  At the rising edge the new values are not stored yet (they are non-blocking assignments, see chapter 24),
++  so we still see the instruction of this cycle and the value that is about to be written.
++* After 35 clock cycles it checks the result: x1 and x3 must be 10, memory[4] must be 10, the PC must be at 0x18,
++  and there must have been exactly 10 writes to the memory, with the values 1 to 10.
++
++The testbench looks into the CPU with *hierarchical names*: `dut.rf.regs[1]` is element 1 of the array regs
++in the instance rf inside the instance dut. This only works in simulation, a synthesis tool would reject it.
++But for a testbench, it is very handy: we can watch any signal without having to lead it out of the CPU through ports.
++
++[NOTE]
++.Why the extra wires x1, x3 and mem4?
++====
++Most simulators, Icarus Verilog among them, do not write arrays into the VCD file automatically.
++The wires `x1`, `x3` and `mem4` in the testbench are copies of single array elements, so they appear in the waveform.
++====
++
++==== The CPU counts to 10
++
++----
++clock  1  PC=0x00  inst=00000093  x1 = 0  ->  next PC=0x04
++clock  2  PC=0x04  inst=00100113  x2 = 1  ->  next PC=0x08
++clock  3  PC=0x08  inst=00a00193  x3 = 10  ->  next PC=0x0c
++clock  4  PC=0x0c  inst=002080b3  x1 = 1  ->  next PC=0x10
++clock  5  PC=0x10  inst=00102223  memory[4] = 1  ->  next PC=0x14
++clock  6  PC=0x14  inst=fe309ce3  Zero=0 PCSrc=1  ->  next PC=0x0c
++clock  7  PC=0x0c  inst=002080b3  x1 = 2  ->  next PC=0x10
++...
++clock 31  PC=0x0c  inst=002080b3  x1 = 10  ->  next PC=0x10
++clock 32  PC=0x10  inst=00102223  memory[4] = 10  ->  next PC=0x14
++clock 33  PC=0x14  inst=fe309ce3  Zero=1 PCSrc=0  ->  next PC=0x18
++clock 34  PC=0x18  inst=00000063  Zero=1 PCSrc=1  ->  next PC=0x18
++clock 35  PC=0x18  inst=00000063  Zero=1 PCSrc=1  ->  next PC=0x18
++PASSED: counted to 10 in 33 clock cycles, CPU loops at 0x18
++----
++
++Compare this with the table at the end of chapter 17: it is the same, line by line.
++In clock 6, `bne` sees Zero = 0 (1 - 10 is not 0) and jumps back to 0x0C. In clock 33, x1 = x3 = 10,
++Zero = 1, and the branch is not taken. From clock 34 on, the CPU circles in the endless loop at 0x18.
++
++Icarus prints one warning at the start: `program.hex` contains only 7 instructions, but the memory has 64 words.
++That is fine, the rest of the instruction memory is never used.
++
++The waveform shows the first 200 ns:
++
++image:./cpu_waveform.svg[width="100%"]
++
++We can read a lot from it:
++
++* Until the first rising edge at 5 ns, the PC is `x`. Only then the reset takes effect and sets it to 0.
++* After the reset, the PC runs through 0, 4, 8 and then repeats the loop c, 10, 14 - every three clock cycles.
++* RegWrite is 1 for `addi` and `add`, MemWrite for `sw`, PCSrc for the taken `bne`.
++* x1 counts up with every loop iteration, and memory[4] follows one clock later - the `sw` comes after the `add`.
++
++=== Simulation is not hardware (yet)
++
++Our CPU works - in simulation. Can we now load it onto an FPGA? We tried it with the Lattice iCE40 HX1K, the FPGA
++on the Nandland Go Board, which we will use in the next chapter. The result: the design needs more than three times
++as many logic cells as the chip has.
++
++The reason lies in the memories. Register file and data memory are read combinationally. The FPGA has fast block RAM,
++but block RAM can only be read on a clock edge. So the synthesis tool builds our memories from single flip-flops
++and huge multiplexers - more than 3000 flip-flops just for storage. In simulation, this makes no difference at all.
++
++How to fix this, and what happens between the Verilog code and the chip - synthesis, place and route, timing analysis -
++is the topic of link:/pages/27_code_to_chip/[chapter 27].
++
++=== Try it yourself
++
++. *Add `slt`.* The ALU can already compute slt (ctrl = 0111), but the ALU control does not know the instruction yet.
++  `slt` is an R-type instruction with funct3 = 010. One additional line in `alu_control.v` is enough.
++  Test it with a small program, for example:
+++
++----
++00300093  // addi x1, x0, 3
++ffb00113  // addi x2, x0, -5
++0020a1b3  // slt  x3, x1, x2     3 < -5 ?  -> x3 = 0
++00112233  // slt  x4, x2, x1    -5 <  3 ?  -> x4 = 1
++00000063  // beq  x0, x0, 0
++----
+++
++The negative number shows whether the comparison really is signed.
++. *A different program.* Change `program.hex` so that the CPU adds up the numbers from 1 to 10 and stores the sum (55)
++  in memory[8]. You need one more register and one more `add`. The machine code can be built by hand with the formats
++  from link:/pages/15_RISC_V/[chapter 15], or with an assembler such as the one in the simulator Ripes.
++. *Break it on purpose.* Change bit 30 to bit 29 in the `alu_control` instance in `cpu.v`, or swap two inputs of a multiplexer.
++  Which testbench finds the error? How quickly can you find it in the waveform?
++  (Hint for bit 29: does our counter program contain a `sub`? A test can only find errors in what it actually uses.)
++
++=== Summary
++
++* We built the single-cycle CPU from part 2 in Verilog, from four kinds of blocks: register file, ALU,
++  control (main control, ALU control, immediate generator) and memories.
++* Every block got its own testbench before it was used. The CPU testbench then only had to check the wiring.
++* New language features: arrays (`reg [31:0] regs [0:31]`), the reduction operator (`~|result`), replication (`{20{inst[31]}}`),
++  `$readmemh` for loading memory contents, and hierarchical names in testbenches.
++* The CPU executes our counter program in 33 clock cycles - exactly as we predicted by hand in chapter 17.
++* What works in simulation does not automatically fit onto a chip. That is the topic of the next chapter.
++
++(Created with Claude AI)
+diff --git a/content/en/pages/26_cpu_verilog/instr_mem.v b/content/en/pages/26_cpu_verilog/instr_mem.v
+new file mode 100644
+index 0000000..af4518d
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/instr_mem.v
+@@ -0,0 +1,15 @@
++// Instruction memory: 64 words, read-only, loaded from a hex file at simulation start.
++// The address is a byte address; since every instruction is 4 bytes long,
++// the lowest two bits are always 0 and are not used.
++module instr_mem #(
++    parameter PROGRAM = "program.hex"
++) (
++    input  wire [31:0] addr,
++    output wire [31:0] inst
++);
++    reg [31:0] mem [0:63];
++
++    initial $readmemh(PROGRAM, mem);
++
++    assign inst = mem[addr[7:2]];
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/program.hex b/content/en/pages/26_cpu_verilog/program.hex
+new file mode 100644
+index 0000000..5ec5514
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/program.hex
+@@ -0,0 +1,10 @@
++// Example program from chapters 15 and 17: counts from 1 to 10
++// and writes every value to data memory address 4.
++// One instruction (32 bit) per line, starting at address 0x00.
++00000093  // 0x00:        addi x1, x0, 0      x1 = 0  (counter)
++00100113  // 0x04:        addi x2, x0, 1      x2 = 1  (step)
++00a00193  // 0x08:        addi x3, x0, 10     x3 = 10 (end value)
++002080b3  // 0x0C: loop:  add  x1, x1, x2     x1 = x1 + x2
++00102223  // 0x10:        sw   x1, 4(x0)      memory[4] = x1
++fe309ce3  // 0x14:        bne  x1, x3, loop   offset -8
++00000063  // 0x18: done:  beq  x0, x0, done   endless loop, offset 0
+diff --git a/content/en/pages/26_cpu_verilog/regfile.v b/content/en/pages/26_cpu_verilog/regfile.v
+new file mode 100644
+index 0000000..e06ebdc
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/regfile.v
+@@ -0,0 +1,22 @@
++// RISC-V register file: 32 registers of 32 bits,
++// two read ports (combinational) and one write port (on the rising clock edge).
++// Register x0 is hard-wired to 0: reading it always returns 0, writing it has no effect.
++module regfile (
++    input  wire        clk,
++    input  wire [4:0]  rs1,         // read port 1
++    input  wire [4:0]  rs2,         // read port 2
++    output wire [31:0] rd1,
++    output wire [31:0] rd2,
++    input  wire        we,          // RegWrite
++    input  wire [4:0]  rd,          // write port
++    input  wire [31:0] wd
++);
++    reg [31:0] regs [0:31];
++
++    assign rd1 = (rs1 == 0) ? 32'd0 : regs[rs1];
++    assign rd2 = (rs2 == 0) ? 32'd0 : regs[rs2];
++
++    always @(posedge clk)
++        if (we && rd != 0)
++            regs[rd] <= wd;
++endmodule
+diff --git a/content/en/pages/26_cpu_verilog/regfile_tb.v b/content/en/pages/26_cpu_verilog/regfile_tb.v
+new file mode 100644
+index 0000000..3a308b4
+--- /dev/null
++++ b/content/en/pages/26_cpu_verilog/regfile_tb.v
+@@ -0,0 +1,54 @@
++`timescale 1ns / 1ps
++
++module regfile_tb;
++    reg         clk = 0;
++    reg  [4:0]  rs1 = 0, rs2 = 0, rd = 0;
++    reg         we = 0;
++    reg  [31:0] wd = 0;
++    wire [31:0] rd1, rd2;
++    integer i, errors = 0;
++
++    regfile dut (.clk(clk), .rs1(rs1), .rs2(rs2), .rd1(rd1), .rd2(rd2),
++                 .we(we), .rd(rd), .wd(wd));
++
++    // clock: period 10 ns
++    always #5 clk = ~clk;
++
++    initial begin
++        $dumpfile("regfile.vcd");
++        $dumpvars(0, regfile_tb);
++
++        // write i * 3 into register i, and 0xDEAD into x0 (which must ignore it)
++        for (i = 0; i < 32; i = i + 1) begin
++            @(negedge clk);
++            we = 1; rd = i; wd = (i == 0) ? 32'hDEAD : i * 3;
++        end
++        @(negedge clk);
++        we = 0;
++
++        // read all registers on both ports
++        for (i = 0; i < 32; i = i + 1) begin
++            rs1 = i; rs2 = 31 - i; #1;
++            if (rd1 !== (i == 0 ? 0 : i * 3) || rd2 !== (i == 31 ? 0 : (31 - i) * 3)) begin
++                errors = errors + 1;
++                $display("ERROR: x%0d = %0d, x%0d = %0d", rs1, rd1, rs2, rd2);
++            end
++        end
++
++        // write without we: nothing must change
++        @(negedge clk);
++        we = 0; rd = 5; wd = 999;
++        @(negedge clk);
++        rs1 = 5; #1;
++        if (rd1 !== 15) begin
++            errors = errors + 1;
++            $display("ERROR: x5 changed without we: %0d", rd1);
++        end
++
++        rs1 = 0; rs2 = 7; #1;
++        $display("x0 = %0d (0xDEAD was written, x0 stays 0), x7 = %0d", rd1, rd2);
++        if (errors == 0) $display("PASSED");
++        else             $display("FAILED: %0d errors", errors);
++        $finish;
++    end
++endmodule
+-- 
+2.43.0
+
