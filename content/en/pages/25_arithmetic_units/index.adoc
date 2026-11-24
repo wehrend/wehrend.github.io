@@ -25,6 +25,13 @@ For multipliers and divisors that are powers of two this is easy, as it just mea
 or to the right, which is division. More complex cases are handled and discussed later - for now let's look at shifting.
 
 
+[TIP]
+====
+All examples of this chapter are in the folder `25_arithmetic_units` of our repository link:https://github.com/wehrend/hdl-training[hdl-training],
+which we cloned in link:/pages/21_hdl/[chapter 21]: `00-barrel-shifter`, `01-array-multiplier`, `02-shift-add-multiplier`, `03-divider`.
+If you cloned it earlier, `git pull` fetches the latest version. The README of the repository lists the command to simulate each example.
+====
+
 == Shifting and Barrel Shifter
 
 

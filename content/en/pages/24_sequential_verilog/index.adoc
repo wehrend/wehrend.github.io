@@ -24,6 +24,13 @@ In this chapter we take the leap from purely combinational Verilog logic to sequ
 already had a peek at...
 
 
+[TIP]
+====
+All examples of this chapter are in the folder `24_sequential_verilog` of our repository link:https://github.com/wehrend/hdl-training[hdl-training],
+which we cloned in link:/pages/21_hdl/[chapter 21]: `00-latch-vs-flipflop`, `01-shift-register`, `02-counter`, `03-traffic-light`, `04-sequence-detector`.
+If you cloned it earlier, `git pull` fetches the latest version. The README of the repository lists the command to simulate each example.
+====
+
 === Example 1: D-Flipflop vs. latch
 
 We started explaining the differences between D-Flipflops and latches in link:/pages/12_clocks_and_registers/[chapter 12]. 

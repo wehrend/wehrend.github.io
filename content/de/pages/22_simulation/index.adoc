@@ -28,6 +28,13 @@ In einer Simulation dagegen sehen wir *jedes* Signal zu *jedem* Zeitpunkt.
 
 Deshalb fließt in der Chipentwicklung oft mehr Aufwand in die Verifikation als in den Entwurf selbst.
 
+[TIP]
+====
+Alle Beispiele dieses Kapitels liegen im Ordner `22_simulation` unseres Repositorys link:https://github.com/wehrend/hdl-training[hdl-training],
+das wir in link:/de/pages/21_hdl/[Kapitel 21] geklont haben: `00-full-adder`, `01-counter`.
+Wer es schon früher geklont hat, holt mit `git pull` den aktuellen Stand. In der README des Repositorys steht für jedes Beispiel der Befehl zum Simulieren.
+====
+
 === Wie ein Simulator arbeitet
 
 Ein Simulator führt die Schaltung nicht wie ein Programm Zeile für Zeile aus. Stattdessen bildet er das Verhalten der

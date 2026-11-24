@@ -28,6 +28,13 @@ In a simulation, on the other hand, we can see *every* signal at *every* point i
 
 That is why in chip development often more effort goes into verification than into the design itself.
 
+[TIP]
+====
+All examples of this chapter are in the folder `22_simulation` of our repository link:https://github.com/wehrend/hdl-training[hdl-training],
+which we cloned in link:/pages/21_hdl/[chapter 21]: `00-full-adder`, `01-counter`.
+If you cloned it earlier, `git pull` fetches the latest version. The README of the repository lists the command to simulate each example.
+====
+
 === How a simulator works
 
 A simulator does not execute the circuit like a program, line by line. Instead, it simulates the behaviour

@@ -25,6 +25,13 @@ Für Multiplikatoren und Divisoren, die Zweierpotenzen sind, ist das einfach, de
 oder nach rechts, das ist die Division. Die komplizierteren Fälle behandeln wir später - sehen wir uns zuerst das Schieben an.
 
 
+[TIP]
+====
+Alle Beispiele dieses Kapitels liegen im Ordner `25_arithmetic_units` unseres Repositorys link:https://github.com/wehrend/hdl-training[hdl-training],
+das wir in link:/de/pages/21_hdl/[Kapitel 21] geklont haben: `00-barrel-shifter`, `01-array-multiplier`, `02-shift-add-multiplier`, `03-divider`.
+Wer es schon früher geklont hat, holt mit `git pull` den aktuellen Stand. In der README des Repositorys steht für jedes Beispiel der Befehl zum Simulieren.
+====
+
 == Schieben und Barrel-Shifter
 
 

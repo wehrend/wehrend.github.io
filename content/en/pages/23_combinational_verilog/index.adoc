@@ -25,6 +25,13 @@ In this chapter we learn these tools with two new circuits: a *7-segment decoder
 pattern for a digit display, and a *ripple-carry adder*, which we build from our full adders.
 At the end we look at the most common mistake when describing combinational logic.
 
+[TIP]
+====
+All examples of this chapter are in the folder `23_combinational_verilog` of our repository link:https://github.com/wehrend/hdl-training[hdl-training],
+which we cloned in link:/pages/21_hdl/[chapter 21]: `00-seven-segment-decoder`, `01-ripple-carry-adder`, `02-latch`.
+If you cloned it earlier, `git pull` fetches the latest version. The README of the repository lists the command to simulate each example.
+====
+
 === Vectors and numbers
 
 So far all our signals were a single bit. In Verilog, a signal can also be a *vector* of several bits:

@@ -25,6 +25,13 @@ In diesem Kapitel lernen wir diese Werkzeuge an zwei neuen Schaltungen kennen: e
 in das Muster für eine Ziffernanzeige umwandelt, und einem *Ripple-Carry-Addierer*, den wir aus unseren Volladdierern bauen.
 Zum Schluss sehen wir uns den häufigsten Fehler bei der Beschreibung kombinatorischer Logik an.
 
+[TIP]
+====
+Alle Beispiele dieses Kapitels liegen im Ordner `23_combinational_verilog` unseres Repositorys link:https://github.com/wehrend/hdl-training[hdl-training],
+das wir in link:/de/pages/21_hdl/[Kapitel 21] geklont haben: `00-seven-segment-decoder`, `01-ripple-carry-adder`, `02-latch`.
+Wer es schon früher geklont hat, holt mit `git pull` den aktuellen Stand. In der README des Repositorys steht für jedes Beispiel der Befehl zum Simulieren.
+====
+
 === Vektoren und Zahlen
 
 Bisher waren alle unsere Signale ein einzelnes Bit. In Verilog kann ein Signal auch ein *Vektor* aus mehreren Bits sein:
