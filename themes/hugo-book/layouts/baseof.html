@@ -99,6 +99,9 @@
       {{ template "toc" . }}
     </div>
   </aside>
+  {{ else if .Params.overview }}
+  <!-- overview pages: empty column, keeps the width of the content the same as on chapter pages -->
+  <aside class="book-toc" aria-hidden="true"></aside>
   {{ end }}
 {{ end }}
 
