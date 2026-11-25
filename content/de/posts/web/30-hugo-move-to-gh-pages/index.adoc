@@ -4,7 +4,7 @@ date: 2025-03-16
 tags: ["hugo", "web", "gh-pages", "gh-actions"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/30_hugo_move_to_gh_pages/"]
+aliases: ["/posts/web/30_hugo_move_to_gh_pages/"]
 ---
 
 Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Webspace wechseln möchte, für die ich kein Geld ausgeben muss.

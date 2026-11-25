@@ -7,7 +7,7 @@ link:
 description: How to build your own synthesizer modules
 type: blog
 overview: true
-aliases: ["/de/posts/synth/25_build_your_own_modules/"]
+aliases: ["/posts/synth/25_build_your_own_modules/"]
 ---
 
 = Bau deine eigenen Eurorack Synthesizer Module

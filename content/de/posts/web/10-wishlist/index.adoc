@@ -4,7 +4,7 @@ date: 2023-05-21
 tags: ["web", "blog"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/10_wishlist/"]
+aliases: ["/posts/web/10_wishlist/"]
 ---
 Dies ist eine kleine, unvollständige Liste von Themen, über die ich in der mittleren bis fernen Zukunft schreiben möchte.
 

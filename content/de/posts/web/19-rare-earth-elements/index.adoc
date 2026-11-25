@@ -4,7 +4,7 @@ date: 2023-11-03
 tags: ["chemistry", "electronics"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/19_rare_earth_elements/"]
+aliases: ["/posts/web/19_rare_earth_elements/"]
 ---
 
 === Einführung

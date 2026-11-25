@@ -4,7 +4,7 @@ date: 2023-12-23
 tags: ["fpga","beginners","quartus"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/22_fpga_beginners_1/"]
+aliases: ["/posts/web/22_fpga_beginners_1/"]
 ---
 Sie haben sich also entschieden, FPGA-Programmierung zu lernen, und die Voraussetzungen aus dem
 https://wehrend.uber.space/posts/web/21_fpga_beginners/[letzten Blogbeitrag] erfüllt.

@@ -6,7 +6,7 @@ category:
 link:
 description: How to setup Nikola (on Docker)
 type: blog
-aliases: ["/de/posts/web/00_setting_up_nikola/"]
+aliases: ["/posts/web/00_setting_up_nikola/"]
 ---
 
 Ich habe Nikola vor einigen Monaten entdeckt, als ich nach einem einfachen statischen Website-Generator suchte, um mit minimalem Aufwand einen Blog einzurichten.

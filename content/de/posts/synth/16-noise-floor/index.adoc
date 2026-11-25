@@ -4,7 +4,7 @@ date: 2023-09-24
 tags: ["audio", "Synth"]
 draft: false
 type: blog
-aliases: ["/de/posts/synth/16_noise_floor/"]
+aliases: ["/posts/synth/16_noise_floor/"]
 ---
 On my mobile setup, the NiftyVCase I have collected my diy modules (with excepition to the Doepfer
 A-124, I had to include for its great sound). It features a kick-drum from erica synths, an even

@@ -4,7 +4,7 @@ date: 2023-07-01
 tags: ["audio", "Synth"]
 draft: false
 type: blog
-aliases: ["/de/posts/synth/14_another_small_patch/"]
+aliases: ["/posts/synth/14_another_small_patch/"]
 ---
 
 So here is another small patch idea for the Doepfer A-100 system,

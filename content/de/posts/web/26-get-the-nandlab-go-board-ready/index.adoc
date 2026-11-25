@@ -4,7 +4,7 @@ date: 2024-03-10
 tags: ["fpga","beginners", "Lattice","Nandland Go", "IceCube2", "debian"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/26_get_the_nandlab_go_board_ready_on_Debian/"]
+aliases: ["/posts/web/26_get_the_nandlab_go_board_ready_on_Debian/"]
 ---
 
 Hallo zusammen,

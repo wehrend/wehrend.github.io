@@ -4,7 +4,7 @@ date: 2023-05-18
 tags: ["consciousness"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/08_religion_spirituality/"]
+aliases: ["/posts/web/08_religion_spirituality/"]
 ---
 Was ich in den letzten Jahren und Jahrzehnten über Religionen und Spiritualität gelernt habe, lässt sich auf eine
 einfache Aussage reduzieren:

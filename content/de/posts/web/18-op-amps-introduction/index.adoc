@@ -4,7 +4,7 @@ date: 2023-10-14
 tags: ["analog", "electronics"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/18_op-amps_introduction/"]
+aliases: ["/posts/web/18_op-amps_introduction/"]
 ---
 
 == OP-Amp

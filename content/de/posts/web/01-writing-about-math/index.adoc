@@ -6,7 +6,7 @@ category:
 link: 
 description: 
 type: blog
-aliases: ["/de/posts/web/01_writing-about-math-with-asciidoc/"]
+aliases: ["/posts/web/01_writing-about-math-with-asciidoc/"]
 ---
 {{< katex />}}
 

@@ -4,7 +4,7 @@ date: 2024-01-14
 tags: ["fpga","beginners"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/24_fpga_beginners_DE10_board/"]
+aliases: ["/posts/web/24_fpga_beginners_DE10_board/"]
 ---
 
 Heute möchte ich Ihnen zeigen, wie Sie eine Verbindung zum DE10-nano-Board herstellen, dem Nachfolger des DE0-nano-Boards.

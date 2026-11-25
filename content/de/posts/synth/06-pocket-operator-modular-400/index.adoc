@@ -4,7 +4,7 @@ date: 2023-05-14
 tags: ["audio", "Synth"]
 draft: false
 type: blog
-aliases: ["/de/posts/synth/06_pocket_operator_modular_400/"]
+aliases: ["/posts/synth/06_pocket_operator_modular_400/"]
 ---
 
 image:./plong_plong_plong.jpg[Plong...]

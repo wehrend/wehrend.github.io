@@ -4,7 +4,7 @@ date: 2023-05-18
 tags: ["electronic", "knowhow"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/07_serial_interfaces/"]
+aliases: ["/posts/web/07_serial_interfaces/"]
 ---
 USB, SPI, I²C, Sata – all diese Schnittstellen haben gemeinsam, dass es sich um serielle Schnittstellen handelt.
 Serielle Schnittstellen sind heutzutage weit verbreitet. Aber warum ist das so, insbesondere bei der Hochgeschwindigkeits-

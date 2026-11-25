@@ -4,7 +4,7 @@ date: 2023-06-10
 tags: ["knowhow","web"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/12_caches_and_caching/"]
+aliases: ["/posts/web/12_caches_and_caching/"]
 ---
 
 Wenn Sie Ihren Browser starten, um eine Website zu besuchen, haben Sie höchstwahrscheinlich einen sehr

@@ -4,7 +4,7 @@ date: 2024-01-20
 tags: ["LTB","duckburg"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/ltb162/"]
+aliases: ["/posts/web/ltb162/"]
 ---
 
 Es ist an der Zeit, einen weiteren meiner Favoriten mit Ihnen zu teilen, und das ist Entenhausen und das Entenuniversum.

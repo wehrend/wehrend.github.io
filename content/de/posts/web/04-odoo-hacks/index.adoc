@@ -4,7 +4,7 @@ date: 2023-04-22
 tags: ["web", "Odoo"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/04_odoo_hacks/"]
+aliases: ["/posts/web/04_odoo_hacks/"]
 ---
 
 Heute möchte ich eine Lösung für ein Usability-Problem vorstellen, das ich kürzlich in Odoo hatte.

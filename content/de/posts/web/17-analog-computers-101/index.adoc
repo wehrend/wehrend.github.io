@@ -4,7 +4,7 @@ date: 2023-09-24
 tags: ["knowhow","analog", "computing"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/17_analog_computers_101/"]
+aliases: ["/posts/web/17_analog_computers_101/"]
 ---
 
 == Analogrechner

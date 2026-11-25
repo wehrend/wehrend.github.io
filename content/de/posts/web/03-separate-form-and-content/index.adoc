@@ -4,7 +4,7 @@ date: 2023-02-04
 tags: ["web", "Hugo"]
 draft: false
 type: blog
-aliases: ["/de/posts/web/03_separate_form_and_content/"]
+aliases: ["/posts/web/03_separate_form_and_content/"]
 ---
 
 Als der Blog immer größer wurde und nach dem Umzug zu Hugo, bemerkte ich eine Lücke im Workflow, da

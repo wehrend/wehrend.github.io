@@ -4,7 +4,7 @@ date: 2023-05-21
 tags: ["audio", "Synth"]
 draft: false
 type: blog
-aliases: ["/de/posts/synth/09_eurorack_modular/"]
+aliases: ["/posts/synth/09_eurorack_modular/"]
 ---
 
 So I bought a low cost eurorack case from doepfer and a set of frontpanels plus power adapter
