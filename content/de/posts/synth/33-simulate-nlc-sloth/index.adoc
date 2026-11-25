@@ -1,0 +1,34 @@
+---
+title: Simulation des NLC Sloth mit LTspice
+date: 2025-05-02
+tags: ["LTspice", "SPICE", "NLC", "sloth"]
+category:
+link:
+description: Wie man analoge Schaltungen simuliert
+type: blog
+---
+
+Hallo zusammen,
+
+heute setze ich die Reihe über die Simulation von Synthesizer-Modulen mit LTspice fort.
+
+Wir wollen das https://www.nonlinearcircuits.com/modules/p/4hp-sloth-chaos[Sloth-Modul von NLC] analysieren.
+
+Beginnen wir mit dem Schaltplan:
+
+image:./sloth_circuit.png[Sloth-Schaltplan]
+
+Direkt darunter sehen Sie eine Nachbildung des Schaltplans in LTspice, allerdings ohne das bzw. die Potentiometer.
+
+image:./sloth_simulation.png[Sloth-Simulation]
+
+Wichtig ist hier, dass wir beim vierten Operationsverstärker eine Offsetspannung
+von 1 µV hinzufügen mussten, damit er funktioniert.
+Außerdem müssen wir das Einschalten der Versorgungsspannung simulieren. Dazu geben wir die Spannungsquelle
+als stückweise lineare Funktion (PWL) mit den Wertepaaren (t0, v0, t1, v1) an, hier 1 ms 0 V 100 ms 12 V.
+
+Hier die Datei zum Ausprobieren:
+
+link:./sloth.asc[sloth.asc]
+
+Das war es für heute, bis zum nächsten Blogbeitrag.

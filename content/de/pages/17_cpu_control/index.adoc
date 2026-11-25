@@ -339,7 +339,7 @@ Die wichtigsten nächsten Schritte, die man in der Literatur findet:
   oder eine Division durch null auftritt.
 
 Wer die CPU selbst bauen möchte, für den sind eine Hardwarebeschreibungssprache und ein FPGA der nächste Schritt.
-Der Autor hat dazu einige link:/de/posts/web/21_fpga_beginners_0/[Beiträge zum Einstieg in FPGAs] geschrieben.
+Der Autor hat dazu einige link:/de/posts/web/21-fpga-beginners-0/[Beiträge zum Einstieg in FPGAs] geschrieben.
 
 === Fazit
 
