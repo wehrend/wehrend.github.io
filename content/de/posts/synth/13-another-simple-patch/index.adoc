@@ -1,0 +1,20 @@
+---
+title: "Eurorack Synthesizer - Another simple patch"
+date: 2023-06-16
+tags: ["audio", "Synth"]
+draft: false
+type: blog
+aliases: ["/de/posts/synth/13_another_simple_patch/"]
+---
+
+So here is another simple patch idea for the Doepfer A-100 system,
+this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+modul A-106-5.
+We also utilize two A-110 oscillator modules (one standard, one basic), and the LFO.
+
+image:./lfo_sem_patch.jpg[SEM Patch ]
+
+link:./lfo_sem_patch.mp4[SEM Patch video]
+
+To this day I did not find the right audio recorder,and I am recording with my smartphone,
+so the sound quality is rather bad. I am still searching for the ideal recording hardware.

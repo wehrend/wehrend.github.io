@@ -202,6 +202,6 @@ In den folgenden Kapiteln werden wir:
 * und uns schließlich ansehen, wie aus dem Code eine Schaltung auf einem FPGA wird.
 
 Wer schon jetzt mit echter Hardware loslegen möchte, findet in den
-link:/de/posts/web/21_fpga_beginners_0/[Beiträgen des Autors zum Einstieg in FPGAs] einen guten Startpunkt.
+link:/de/posts/web/21-fpga-beginners-0/[Beiträgen des Autors zum Einstieg in FPGAs] einen guten Startpunkt.
 
 (Erstellt mit Claude AI)
