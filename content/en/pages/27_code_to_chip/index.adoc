@@ -1,0 +1,167 @@
+---
+title: "From Code to Chip"
+date: 2026-11-25
+weight: 270
+tags: ["verilog", "FPGA", "iCE40"]
+category: "digital_logic_3"
+link:
+description: "What happens during synthesis, place & route and timing analysis until the CPU runs on an FPGA."
+type: text
+bookHidden: true
+draft: true
+menu:
+  docs:
+    parent: "digital_logic_3"
+---
+
+== From Code to Chip
+
+// TODO intro
+// - Chapter 26 ended with: works in simulation, but needs >3x the logic cells of the HX1K.
+// - This chapter: what happens between Verilog code and a configured chip, and how we make the CPU fit.
+// - Goal at the end: the counter program runs on the Go Board, x1 visible on the 7-segment display.
+
+[TIP]
+====
+All examples of this chapter are in the folder `27_code_to_chip` of our repository link:https://github.com/wehrend/hdl-training[hdl-training],
+which we cloned in link:/pages/21_hdl/[chapter 21]: `00-blinky`, `01-synthesis`, `02-cpu-go-board`.
+If you cloned it earlier, `git pull` fetches the latest version. The README of the repository lists the commands for each example.
+====
+
+=== What is an FPGA?
+
+// TODO
+// - Link back to programmable logic (part 1/2): a chip whose function is configured, not fixed.
+// - Building blocks of the iCE40:
+//   * logic cell = 4-input LUT (truth table in 16 bits of SRAM) + D flip-flop + carry logic
+//   * block RAM (SB_RAM40_4K, 4 kbit each, synchronous read!)
+//   * I/O cells, global clock network, programmable routing
+// - Key idea: a LUT can implement ANY function of 4 inputs -> connect to truth tables from chapter 00/01.
+// - Picture: one logic cell (SVG to draw).
+// - Table: iCE40 HX1K = 1280 logic cells, 16 block RAMs (64 kbit), package VQ100.
+
+==== The Nandland Go Board
+
+// TODO
+// - iCE40 HX1K, 25 MHz oscillator, 4 LEDs, 4 buttons, two 7-segment displays, USB (programming + UART), VGA, PMOD.
+// - Photo or schematic overview (own photo).
+// - Pin names: from the board's constraint file (.pcf) -> link to Nandland's file instead of copying it.
+
+=== The open-source toolchain
+
+// TODO
+// - Four tools, one pipeline (diagram):
+//   Verilog --Yosys--> netlist (.json) --nextpnr--> placed & routed (.asc) --icepack--> bitstream (.bin) --iceprog--> board
+// - Installation (Debian/Ubuntu packages or OSS CAD Suite), short.
+// - The same four commands for every example; maybe a small Makefile.
+
+=== Step 1: Blinky
+
+// TODO  (example 00-blinky)
+// - The "hello world" of FPGAs: a counter divides 25 MHz down, the top bit drives an LED.
+// - Show: blinky.v, go_board.pcf (only the used pins), the four commands, the LED blinking (photo/GIF).
+// - Exercise inside the text: compute the counter width for ~1 Hz (2^24 / 25 MHz = 0.67 s).
+// - First contact with the reports: how many logic cells does a 24-bit counter need?
+
+=== Step 2: Synthesis
+
+// TODO  (example 01-synthesis)
+// - What Yosys does: read -> elaborate (hierarchy, generate) -> optimize -> map to iCE40 cells.
+// - Show with a small known circuit (full adder or 7-segment decoder from ch. 23):
+//   `yosys -p "synth_ice40; stat"` -> SB_LUT4, SB_DFF, SB_CARRY
+//   optional: schematic of the result (yosys `show` or netlistsvg).
+// - Synthesizable vs. simulation only:
+//   initial (only partly), #delays, $display, hierarchical names, $readmemh (works for ROM/BRAM init).
+// - Pitfall from ch. 26: if nothing is connected to an output, Yosys removes everything.
+// - Pitfall: constant ROM content lets Yosys optimize away unused registers -> numbers depend on the program.
+
+=== Step 3: Place and route
+
+// TODO
+// - nextpnr places every LUT/FF on a concrete logic cell and connects them via the routing network.
+// - Reading the utilization report: ICESTORM_LC, ICESTORM_RAM, SB_IO.
+// - Analogy: synthesis = parts list, place & route = PCB layout (connect to the vocoder PCB?).
+
+=== Step 4: Timing analysis
+
+// TODO
+// - Back to setup time and clock period from chapter 12: the critical path decides the maximum clock.
+// - nextpnr reports "Max frequency for clock": how to read it, what the critical path is.
+// - For our single-cycle CPU: PC -> instruction memory -> register file -> ALU -> data memory -> write back.
+//   Same argument as in chapter 17 (lw is the slowest instruction), now with real numbers.
+// - Teaser for part 4: pipelining shortens exactly this path.
+
+=== Step 5: The CPU on the Go Board
+
+// TODO  (example 02-cpu-go-board)
+
+==== First attempt: it does not fit
+
+// - Synthesize the CPU from chapter 26 unchanged -> results table (about 4000 of 1280 logic cells, >300 %).
+// - Reason: memories with combinational read become flip-flops + multiplexers (~3000 FFs).
+// - Yosys stat: no SB_RAM40_4K at all.
+
+==== Making the memories fit
+
+// - Register file in block RAM: synchronous read, two copies (bank1, bank2) for two read ports.
+// - First idea: read on the FALLING edge -> CPU stays single-cycle (half a period for reading,
+//   half for ALU + write back). Fits: 832 logic cells. But timing: Fmax 15.2 MHz -> nextpnr
+//   "FAIL at 25.00 MHz" and ERROR. Good real-world example for step 4!
+// - Solution: read on the RISING edge (regfile.v). Works because of the clock enable:
+//   one instruction needs ce = 1 plus at least one more clock edge to read the operands
+//   -> ce must never be 1 in two cycles in a row (CE_DIV >= 2).
+//   Strictly speaking, the CPU is no longer single-cycle - small teaser for part 4.
+// - Data memory: 8 words instead of 64 (stays in flip-flops: 256 SB_DFFE).
+//   Alternative: data memory in block RAM too, lw in two cycles.
+// - Results table (all measured):
+//     chapter 26 unchanged:               ~4000 of 1280 logic cells (>300 %), does not fit
+//     regfile BRAM, read on falling edge:   832 (65 %), Fmax 15.2 MHz, FAIL at 25 MHz
+//     regfile BRAM, read on rising edge:    839 (65 %), 4 block RAMs, Fmax 30.3 MHz, PASS
+// - Lesson: Verilog for simulation is not yet Verilog for a specific chip.
+//   Describe memories the way the tool can map them to block RAM (check: SB_RAM40_4K in `make stat`).
+
+==== Clock, reset and output
+
+// - Clock enable instead of a divided clock: everything runs on 25 MHz on the global clock network,
+//   ce = 1 for one cycle every CE_DIV cycles (CE_DIV = 6,250,000 -> 4 instructions per second).
+//   Why a divided clock from a counter bit is a bad idea on an FPGA (not on the clock network, skew).
+// - Reset: power-on reset (first 15 cycles) + button 1 with synchronizer (two flip-flops,
+//   metastability -> chapter 11/12). Bouncing does not matter for a reset.
+// - Output: lowest byte of x1 as two hex digits on the 7-segment displays (decoder from chapter 23,
+//   inverted: the Go Board's segments are active low), instruction number PC/4 on the LEDs.
+// - Debug output: dbg_x1 is a copy of x1, updated on every write to x1 - the contents of a
+//   block RAM cannot be watched from outside, and hierarchical names do not exist in hardware.
+// - Testbench go_board_top_tb.v with CE_DIV = 4: one line per instruction, checks "0A" on the display.
+
+==== The CPU counts on real hardware
+
+// - Photo/GIF: display counts 01..0A (hex!), then stops; LEDs show the instruction number.
+// - Compare with the simulation from chapter 26: same 33 instructions, now 4 per second (~8 s).
+
+=== Simulation vs. hardware: a checklist
+
+// TODO short list
+// - Everything has a reset value (no x in hardware - but also no guarantee what is in it).
+// - Memories: synchronous read if they should become block RAM.
+// - No #delays, $display only in testbenches.
+// - Buttons are asynchronous: synchronize and debounce.
+// - Check the reports: utilization, RAM cells, Fmax.
+
+=== Try it yourself
+
+// TODO
+// - Single-step mode: one button press = one clock cycle (with debouncing). Watch the PC on the LEDs.
+// - Show the PC or memory[4] on the display instead of x1.
+// - Replace the ALU from cells with `assign result = a + b;` etc. Compare logic cells and Fmax.
+// - Give the data memory 16 words: how far can it grow before it no longer fits?
+
+=== Summary
+
+// TODO
+// - FPGA = LUTs + flip-flops + block RAM + routing; the toolchain Yosys -> nextpnr -> icepack -> iceprog.
+// - Synthesis, place & route and timing analysis, each with its report.
+// - The CPU from chapter 26 needed two changes in the memories to fit onto the HX1K.
+// - The counter program runs on real hardware: part 3 is complete.
+// - Outlook: part 4 - performance, pipelining, hazards, Tomasulo.
+
+(Created with Claude AI)
