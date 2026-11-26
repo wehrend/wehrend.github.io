@@ -7,6 +7,7 @@ link:
 description: "Performance, Pipelining, Hazards und Out-of-Order-Ausführung - wie moderne CPUs mehr Befehle pro Sekunde schaffen."
 bookHidden: true
 overview: true
+draft: true
 icon: "svg/pipeline.svg"
 planned:
   - slug: "31_performance"

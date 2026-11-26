@@ -10,6 +10,7 @@ identifier: digital_logic_4
 weight: 40
 bookHidden: true
 overview: true
+draft: true
 icon: "svg/pipeline.svg"
 planned:
   - slug: "31_performance"
