@@ -391,3 +391,10 @@ td.code pre {
   &.warning   { --admonition-color: #e8590c; }
   &.caution   { --admonition-color: #e03131; }
 }
+
+// Language switcher: language without translation for the current page
+.book-languages .book-languages-missing {
+  display: block;
+  opacity: 0.5;
+  cursor: not-allowed;
+}

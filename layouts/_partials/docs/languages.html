@@ -1,0 +1,58 @@
+{{/*
+  Site override of hugo-book's language switcher.
+  - Translation exists       -> link to it (as before).
+  - Regular page, no translation -> language shown greyed out, not clickable,
+    so the reader stays on the current page instead of landing on the other
+    language's home page.
+  - Sections/taxonomies without counterpart -> fall back to that language's home.
+*/}}
+{{ $translations := dict }}
+{{ range .Translations }}
+  {{ $translations = merge $translations (dict .Language.Lang .) }}
+{{ end }}
+{{ $notTranslated := dict
+  "de" "Noch nicht auf Deutsch verfügbar"
+  "en" "Not yet available in English"
+}}
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex">
+      <a role="button">
+        <img src="{{ partial "docs/icon" "translate" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Languages" }}" />
+        {{ $.Site.Language.Label }}
+      </a>
+      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Expand" }}" />
+    </label>
+
+    <ul>
+      {{ range hugo.Sites }}
+        {{ $lang := .Language.Lang }}
+        {{ if ne $lang $.Language.Lang }}
+          {{ with index $translations $lang }}
+      <li>
+        <a href="{{ cond hugo.IsMultihost .Permalink .RelPermalink }}" class="flex flex-auto" hreflang="{{ $lang }}">
+          {{ .Language.Label }}
+        </a>
+      </li>
+          {{ else }}
+            {{ if $.IsPage }}
+      <li>
+        <span class="book-languages-missing" aria-disabled="true" title="{{ index $notTranslated $lang | default "Not translated" }}">
+          {{ .Language.Label }} <small>({{ index $notTranslated $lang | default "not translated" }})</small>
+        </span>
+      </li>
+            {{ else }}
+      <li>
+        <a href="{{ cond hugo.IsMultihost .Home.Permalink .Home.RelPermalink }}" class="flex flex-auto" hreflang="{{ $lang }}">
+          {{ .Language.Label }}
+        </a>
+      </li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </ul>
+  </li>
+</ul>
