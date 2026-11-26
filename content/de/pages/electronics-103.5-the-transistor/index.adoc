@@ -10,7 +10,7 @@ type: text
 bookHidden: true
 outdir: ~/development/blog
 draft:  false
-weight: 1300
+weight: 1350
 icon: "svg/transistor.svg"
 ---
 {{< katex />}}
