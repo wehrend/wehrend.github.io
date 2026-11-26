@@ -5,7 +5,7 @@ tags: ['draft']
 category: "digital_logic_4"
 type: 'docs'
 link:
-description: "Performance, pipelining, hazards and out-of-order execution - how modern CPUs execute more instructions per second."
+description: "Performance, multi-cycle CPU, pipelining, hazards and out-of-order execution - how modern CPUs execute more instructions per second."
 identifier: digital_logic_4
 weight: 40
 bookHidden: true
@@ -16,19 +16,22 @@ planned:
   - slug: "31_performance"
     title: "Measuring Performance"
     summary: "CPU time = instructions × CPI × clock period, Amdahl's law - and why our single-cycle CPU is slow."
-  - slug: "32_pipelining"
+  - slug: "32_multicycle"
+    title: "The Multi-Cycle CPU"
+    summary: "Fast instructions need fewer clock cycles: the data path in steps and the control unit as a finite state machine."
+  - slug: "33_pipelining"
     title: "Pipelining"
     summary: "Five stages, pipeline registers, throughput versus latency - the pipeline in Verilog."
-  - slug: "33_data_hazards"
+  - slug: "34_data_hazards"
     title: "Data Hazards"
     summary: "When an instruction needs a result that is not ready yet: forwarding, stalls and the hazard unit."
-  - slug: "34_control_hazards"
+  - slug: "35_control_hazards"
     title: "Control Hazards"
     summary: "Branches in the pipeline: flushing, deciding earlier and predicting branches."
-  - slug: "35_tomasulo"
+  - slug: "36_tomasulo"
     title: "Out-of-Order Execution and Tomasulo"
     summary: "Executing instructions out of order: register renaming, reservation stations and the common data bus."
-  - slug: "36_speculation"
+  - slug: "37_speculation"
     title: "Speculation and the Reorder Buffer"
     summary: "Executing before it is certain: the reorder buffer, precise exceptions and a look at superscalar CPUs."
 ---
@@ -39,5 +42,5 @@ At the end of part 3, our CPU runs on a real FPGA - but slowly: every instructio
 and the slowest instruction decides how long that is. Most parts of the CPU are idle most of the time.
 
 In part 4 we look at how real processors get faster: first we learn how to measure performance,
-then we split the CPU into stages that work at the same time (pipelining) and solve the problems this creates (hazards).
+then we let every instruction take only as many clock cycles as it needs (multi-cycle), split the CPU into stages that work at the same time (pipelining) and solve the problems this creates (hazards).
 Finally we see how processors execute instructions out of order and even before they know whether they are needed.
