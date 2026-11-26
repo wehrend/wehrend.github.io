@@ -148,7 +148,7 @@ Wie wir sehen können, wird nur eine Hälfte der Sinuswelle verwendet...
 link:./half_wave_rectifier.asc[Halbwellen-Gleichrichter – LTspice-Datei]
 
 Unten sehen Sie denselben Schaltkreis, jedoch mit einem Kondensator zur Beseitigung der Welligkeit...
-image:./half_wave_rectifier_with_C.png [Halbwellen-Gleichrichter mit C]
+image:./half_wave_rectifier_with_C.png[Halbwellen-Gleichrichter mit C]
 
 link:./half_wave_rectifier_with_C.asc[Halbwellen-Gleichrichter mit Kondensator – LTspice-Datei]
 
@@ -420,12 +420,114 @@ image:./astable_multivibrator.png[width="700px"]
 
 link:./astable_multivibrator.asc[astabiler Multivibrator – ltspice-Datei]
 
-=== BJT als Verstärker
+////
+
+Die Formel für die Frequenz ($f$) eines astabilen Multivibrators, $f = \frac{1}{(R_{B1} \cdot C_1 + R_{B2} \cdot C_2)\,\ln(2)}$, ergibt sich aus der Analyse der **Lade- und Entladezyklen** der Kondensatoren ($C_1$ und $C_2$) über die Basiswiderstände ($R_{B1}$ und $R_{B2}$).
+
+Hier die schrittweise Herleitung der **Periodendauer ($T$)**, aus der sich die Frequenz ($f$) leicht ergibt.
+
+---
+
+## 1. Funktionsweise des astabilen Multivibrators
+
+Ein astabiler Multivibrator besteht aus zwei kreuzgekoppelten Transistorstufen in Emitterschaltung ($Q_1$ und $Q_2$).
+
+* Die Schaltung wechselt zwischen zwei quasistabilen Zuständen:
+    * **Zustand 1:** $Q_1$ ist **EIN** (gesättigt), $Q_2$ ist **AUS** (gesperrt).
+    * **Zustand 2:** $Q_1$ ist **AUS**, $Q_2$ ist **EIN**.
+* Der Übergang von einem Zustand in den anderen wird durch das Aufladen der Koppelkondensatoren ($C_1$ und $C_2$) über die Basiswiderstände ($R_{B1}$ und $R_{B2}$) gesteuert.
+
+Betrachten wir die erste Halbperiode $T_1$, in der $Q_1$ AUS und $Q_2$ EIN ist.
+
+---
+
+## 2. Herleitung der Halbperiode $T_1$
+
+Angenommen, der Übergang hat gerade stattgefunden: **$Q_2$ ist EIN** (gesättigt, $V_{CE2} \approx 0 \text{ V}$) und **$Q_1$ ist AUS** ($V_{CE1} \approx V_{CC}$).
+
+### Anfangsbedingung von $C_1$
+
+1.  Als $Q_1$ gerade abgeschaltet hat, ist seine Kollektorspannung ($V_{C1}$) auf **$V_{CC}$** gesprungen.
+2.  Da $C_2$ die Spannung $V_{C1}$ auf die Basis von $Q_2$ ($V_{B2}$) koppelt, hat der plötzliche Anstieg von $V_{C1}$ auch $V_{B2}$ ansteigen lassen und $Q_2$ eingeschaltet.
+3.  Gleichzeitig ist beim Einschalten von $Q_2$ dessen Kollektorspannung ($V_{C2}$) auf $\approx 0 \text{ V}$ gefallen.
+4.  Da $C_1$ die Spannung $V_{C2}$ auf die Basis von $Q_1$ ($V_{B1}$) koppelt, treibt der plötzliche Abfall von $V_{C2}$ die Spannung $V_{B1}$ ins Negative, genauer gesagt auf $V_{B1} \approx -V_{CC}$.
+
+### Aufladen von $C_1$
+
+1.  Solange $Q_1$ AUS ist, beginnt der Kondensator $C_1$ sich von seiner Anfangsspannung $V_{B1}(0) \approx -V_{CC}$ über den Widerstand **$R_{B1}$** und den gesättigten $Q_2$ ($V_{CE2} \approx 0 \text{ V}$) in Richtung der Versorgungsspannung **$V_{CC}$** **aufzuladen**.
+2.  Die allgemeine Gleichung für das Aufladen eines Kondensators in einem RC-Glied lautet:
+    $$V_C(t) = V_F - (V_F - V_I)e^{-t/\tau}$$
+    Dabei ist:
+    * $V_C(t)$ die Kondensatorspannung (hier $V_{B1}$),
+    * $V_F$ die **End- bzw. Zielspannung** = $V_{CC}$ (die Spannung, auf die sich $C_1$ auflädt),
+    * $V_I$ die **Anfangsspannung** = $-V_{CC}$,
+    * $\tau$ die **Zeitkonstante** = $R_{B1}C_1$.
+3.  Setzt man diese Werte ein:
+    $$V_{B1}(t) = V_{CC} - (V_{CC} - (-V_{CC}))e^{-t/(R_{B1}C_1)}$$
+    $$V_{B1}(t) = V_{CC} - 2V_{CC}e^{-t/(R_{B1}C_1)}$$
+
+### Ende der Halbperiode $T_1$
+
+1.  Die Halbperiode $T_1$ endet, wenn $Q_1$ wieder **einschaltet**. Das geschieht, sobald seine Basis-Emitter-Strecke in Durchlassrichtung gepolt ist, also wenn $V_{B1}$ die **Schwellenspannung** erreicht ($V_{cut-in} \approx 0{,}7 \text{ V}$ bei Silizium, in der Herleitung zur Vereinfachung aber oft mit **$0 \text{ V}$** angenähert).
+2.  Setze $V_{B1}(t) = 0 \text{ V}$ und $t = T_1$:
+    $$0 = V_{CC} - 2V_{CC}e^{-T_1/(R_{B1}C_1)}$$
+3.  Umformen:
+    $$2V_{CC}e^{-T_1/(R_{B1}C_1)} = V_{CC}$$
+    $$e^{-T_1/(R_{B1}C_1)} = \frac{V_{CC}}{2V_{CC}} = \frac{1}{2}$$
+4.  Den natürlichen Logarithmus ($\ln$) auf beiden Seiten bilden:
+    $$-\frac{T_1}{R_{B1}C_1} = \ln\left(\frac{1}{2}\right)$$
+    Mit der Logarithmusregel $\ln(a/b) = -\ln(b/a)$:
+    $$-\frac{T_1}{R_{B1}C_1} = -\ln(2)$$
+5.  Nach $T_1$ auflösen:
+    $$T_1 = R_{B1}C_1 \cdot \ln(2)$$
+
+---
+
+## 3. Herleitung der Halbperiode $T_2$
+
+Bei der symmetrischen Analyse der zweiten Halbperiode ($T_2$), in der $Q_1$ EIN und $Q_2$ AUS ist, übernimmt **$R_{B2}C_2$** die Rolle von $R_{B1}C_1$.
+
+Die Zeitkonstante für das Aufladen von $C_2$ über $R_{B2}$ ist $\tau_2 = R_{B2}C_2$.
+
+Mit genau denselben Schritten erhalten wir:
+$$T_2 = R_{B2}C_2 \cdot \ln(2)$$
+
+---
+
+## 4. Endgültige Formel für die Frequenz ($f$)
+
+### Periodendauer ($T$)
+Die gesamte Periodendauer $T$ ist die Summe der beiden Halbperioden:
+$$T = T_1 + T_2$$
+$$T = (R_{B1}C_1 \cdot \ln(2)) + (R_{B2}C_2 \cdot \ln(2))$$
+$$T = (R_{B1}C_1 + R_{B2}C_2) \cdot \ln(2)$$
+
+### Frequenz ($f$)
+Die Frequenz ist der Kehrwert der Periodendauer:
+$$f = \frac{1}{T}$$
+$$\bbox[#D3D3D3]{\mathbf{f = \frac{1}{(R_{B1}C_1 + R_{B2}C_2) \cdot \ln(2)}}}$$
+
+---
+
+### Symmetrischer Fall
+
+Im häufigen Fall $R_{B1} = R_{B2} = R$ und $C_1 = C_2 = C$ gilt:
+$$T = (RC + RC) \cdot \ln(2) = 2RC \cdot \ln(2)$$
+Wegen $\ln(2) \approx 0{,}693$:
+$$T \approx 1{,}386 RC$$
+Und für die Frequenz:
+$$f = \frac{1}{T} = \frac{1}{2RC \cdot \ln(2)}$$
+$$\bbox[#D3D3D3]{\mathbf{f \approx \frac{0{,}72}{RC}}}$$
+
+Möchten Sie einen Vergleich von astabilen, monostabilen und bistabilen Multivibratoren sehen?
+////
+
+== BJT als Verstärker
 
 Dieses Kapitel werde ich größtenteils 1:1 aus dem Buch „Wege in die Elektronik” von Joseph Glagla und Gert Lindner aus dem Jahr 1980 übernehmen.
 
 
-==== Zwei-Port-Theorie Grundschaltungen und  h-Parameter
+=== Zwei-Port-Theorie: Grundschaltungen und h-Parameter
 
 Die Zwei-Port-Theorie und die h-Parameter sind die theoretische Grundlage für Zwei-Port-Schaltungen.
 Sie wird beispielsweise zur Beschreibung von Verstärkern verwendet, wobei alle hier behandelten Schaltungen eine gemeinsame Grundlage haben.
@@ -441,8 +543,8 @@ a|
 
 Je nach Schaltung hat der transistorbasierte Verstärker unterschiedliche Eigenschaften, wie in der
 nachstehenden Tabelle dargestellt...
-Um den Verstärkungsfaktor einer Schaltung zu berechnen, werden die dynamische Eingangsimpedanz (Wechselstrom) [r_{BE} = h_{11}]
-und die dynamische Ausgangsimpedanz [r_{CE}= 1: h_22] sowie die Wechselstromverstärkung [\beta = h_{21}]
+Um den Verstärkungsfaktor einer Schaltung zu berechnen, werden die dynamische Eingangsimpedanz (Wechselstrom) stem:[r_{BE} = h_{11}]
+und die dynamische Ausgangsimpedanz stem:[r_{CE}= 1: h_22] sowie die Wechselstromverstärkung stem:[\beta = h_{21}]
 
 Diese h-Parameter werden später erläutert und erklärt – zunächst wollen wir uns die verschiedenen Schaltungen ansehen...
 

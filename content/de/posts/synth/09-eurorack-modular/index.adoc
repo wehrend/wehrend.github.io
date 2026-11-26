@@ -1,5 +1,5 @@
 ---
-title: "Pocket Operator Modular 400 in eurorack"
+title: "Der Pocket Operator Modular 400 im Eurorack"
 date: 2023-05-21
 tags: ["audio", "Synth"]
 draft: false
@@ -7,11 +7,11 @@ type: blog
 aliases: ["/posts/synth/09_eurorack_modular/"]
 ---
 
-So I bought a low cost eurorack case from doepfer and a set of frontpanels plus power adapter
-for the pocket operator modular 400 from Oddvolt to put the said machine into a eurorack modular
-system. I also bought a small, but decent sequencer, since the one from teenage engineering is not
-very handy to use. I have two further modules on my list, the https://doepfer.de/a119.htm[Doepfer A-119],
-an input module, as well as the https://doepfer.de/a124.htm[Doepfer A-124], a wasp filter, to complete the setup.
+Ich habe mir also ein günstiges Eurorack-Gehäuse von Doepfer gekauft und dazu von Oddvolt einen Satz Frontplatten samt Netzteiladapter
+für den Pocket Operator Modular 400, um das Gerät in ein Eurorack-Modularsystem einzubauen.
+Außerdem habe ich mir einen kleinen, aber ordentlichen Sequencer zugelegt, denn der von Teenage Engineering ist nicht
+besonders handlich. Zwei weitere Module stehen noch auf meiner Liste, um das Setup zu vervollständigen: das https://doepfer.de/a119.htm[Doepfer A-119],
+ein Eingangsmodul, sowie das https://doepfer.de/a124.htm[Doepfer A-124], ein Wasp-Filter.
 
 image:./eurorack_modular.jpg[Eurorack Modular...]
 

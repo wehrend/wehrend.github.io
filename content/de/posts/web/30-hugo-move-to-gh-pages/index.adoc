@@ -1,5 +1,5 @@
 ---
-title: "Move Hugo Web-presence to GH-Pages"
+title: "Den Hugo-Webauftritt auf GitHub Pages umziehen"
 date: 2025-03-16
 tags: ["hugo", "web", "gh-pages", "gh-actions"]
 draft: false
@@ -11,6 +11,57 @@ Hallo, vor ein paar Monaten habe ich beschlossen, dass ich zu einer Form von Web
 Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzuziehen... dies ist im Grunde ein Tutorial, um auf github-Seiten umzusteigen...
 
 *Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden*
+
+Zunächst ein Blick auf den Verzeichnisbaum, um zu zeigen, wie die einzelnen Teile zusammenhängen:
+
+----
+sven@debian:~/development/hugo$ tree -L 2
+.
+├── config.toml
+├── content
+│   ├── de
+│   └── en
+├── public
+│   ├── 404.html
+│   ├── about
+│   ├── About _ Interdependent_files
+│   ├── agenda.png
+│   ├── book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css
+│   ├── categories
+│   ├── de
+│   ├── de.search-data.min.cc10ee5d6f454883af3d2c31576a2ad90ef1ecae0a79fd2f36e9af9fb3ff3c84.json
+│   ├── de.search.min.2adf38a9a0cb592541f5b8f227b9091ac117d1667e43dca86a4d336f453b4606.js
+│   ├── docs
+│   ├── drafts
+│   ├── en
+│   ├── en.search-data.min.b083db226cd7541947b6dd0fdf7a563f455a790763f341883dc37963899504c8.json
+│   ├── en.search.min.004100e27f248b7e46aef29f1b0ae4e8d53aed5c868e797c8696fa00f834cd5f.js
+│   ├── favicon.png
+│   ├── favicon.svg
+│   ├── flexsearch.min.js
+│   ├── fonts
+│   ├── index.html
+│   ├── index.xml
+│   ├── katex
+│   ├── Makefile
+│   ├── manifest.json
+│   ├── mermaid.min.js
+│   ├── pages
+│   ├── posts
+│   ├── sitemap.xml
+│   ├── svg
+│   └── tags
+├── resources
+│   └── _gen
+└── themes
+    └── hugo-book
+
+----
+
+Wie man sieht, ist das public-Verzeichnis hier bereits befüllt dargestellt. Zuoberst liegt die config.toml (das könnte auch eine .yaml sein,
+aber ich habe nun einmal mit toml angefangen, egal). Dann folgt das content-Verzeichnis mit den verschiedenen Sprachen (hier Deutsch und
+Englisch). Danach kommt ein resources-Verzeichnis mit generierten Assets. Und zu guter Letzt das themes-Verzeichnis,
+hier mit dem Theme hugo-book...
 
 Wir beginnen mit der Workflow-Datei deploy.yml . Mein neues Setup sieht wie folgt aus:
 

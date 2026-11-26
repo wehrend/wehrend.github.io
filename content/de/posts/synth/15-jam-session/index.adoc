@@ -1,5 +1,5 @@
 ---
-title: "Eurorack Synthesizer - Jam Session"
+title: "Eurorack-Synthesizer – Jam-Session"
 date: 2023-07-22
 tags: ["audio", "Synth"]
 draft: false
@@ -7,11 +7,11 @@ type: blog
 aliases: ["/posts/synth/15_jam_session/"]
 ---
 
-This time, we have a convoluted patch, featuring a new member, the random sequencer
-from rat-king, which,as the name suggests, delivers nice randomly sequences. Also
-we have a new mixer module, self-build.
-We also utilize both VCOs and both LFO modules...
+Diesmal gibt es einen verschachtelten Patch mit einem neuen Mitglied: dem Random-Sequencer
+von Rat King, der, wie der Name schon sagt, schöne zufällige Sequenzen liefert. Außerdem
+ist ein neues, selbst gebautes Mixer-Modul dabei.
+Wir verwenden beide VCOs und beide LFO-Module...
 
-image:./jam_session.jpg[jam session ]
+image:./jam_session.jpg[Jam-Session]
 
-link:./jam_session.m4a[jam session Audio]
+link:./jam_session.m4a[Jam-Session Audio]

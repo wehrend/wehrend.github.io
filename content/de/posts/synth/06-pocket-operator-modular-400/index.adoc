@@ -1,5 +1,5 @@
 ---
-title: "The Pocket Operator Modular 400 patch ideas (II)"
+title: "Patch-Ideen für den Pocket Operator Modular 400 (II)"
 date: 2023-05-14
 tags: ["audio", "Synth"]
 draft: false
@@ -11,8 +11,8 @@ image:./plong_plong_plong.jpg[Plong...]
 
 link:./plong_plong_plong.mp4[Plong... Video]
 
-With the random module we can sample & hold a signal from the input. Its companionship is the noise module.
-We feed the saw output to the input of the rand module.
+Mit dem Random-Modul können wir ein Eingangssignal per Sample & Hold abtasten. Sein Partner ist das Noise-Modul.
+Wir führen den Sägezahn-Ausgang auf den Eingang des Random-Moduls.
 
 image:./bleep_bleep.jpg[Beep,bleep...]
 
@@ -20,20 +20,20 @@ link:./bleep_bleep.mp4[Beep,bleep... Video]
 
 '''
 
-. sine output -> speaker right
-. envelope output -> sine key
-. LFO square -> envelope trig
-. LFO square -> sine fm
+. Sinus-Ausgang -> Lautsprecher rechts
+. Hüllkurven-Ausgang -> Sinus Key
+. LFO Rechteck -> Hüllkurve Trig
+. LFO Rechteck -> Sinus FM
 
 
-image:./sweeping_sinus.jpg[Sweeping sinus...]
+image:./sweeping_sinus.jpg[Sweepender Sinus...]
 
-link:./sweeping_sinus.mp4[sweeping sinus... Video]
+link:./sweeping_sinus.mp4[Sweepender Sinus... Video]
 
-We can expand the setup by using the sequencer and utilize the filter. Because  the nice
-thing about modular synthesizers is, that the filter can be used not only in signal paths but
-also in control paths ;-) .
+Wir können das Setup erweitern, indem wir den Sequencer und das Filter einsetzen. Das Schöne an
+modularen Synthesizern ist nämlich, dass sich das Filter nicht nur im Signalweg, sondern auch
+im Steuerweg einsetzen lässt ;-) .
 
-. filter output -> sine control
-. sequencer output -> filter input
+. Filter-Ausgang -> Sinus Control
+. Sequencer-Ausgang -> Filter-Eingang
 ---

@@ -132,7 +132,7 @@ Enthält:
 
 == C++ 06
 
-link:https://wehrend.github.io/de/pages/cpp_06/ [cpp_06]
+link:https://wehrend.github.io/de/pages/cpp_06/[cpp_06]
 
 Konzentriert sich auf Leistung und Systemkonzepte.
 

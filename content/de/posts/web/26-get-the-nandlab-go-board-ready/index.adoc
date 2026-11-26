@@ -1,5 +1,5 @@
 ---
-title: "FPGA 101: Get the Nandland Go board ready on Debian Bullseye"
+title: "FPGA 101: Das Nandland Go Board unter Debian Bullseye einrichten"
 date: 2024-03-10
 tags: ["fpga","beginners", "Lattice","Nandland Go", "IceCube2", "debian"]
 draft: false

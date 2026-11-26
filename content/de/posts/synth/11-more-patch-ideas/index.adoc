@@ -1,5 +1,5 @@
 ---
-title: "Eurorack Synthesizer - More patch ideas"
+title: "Eurorack-Synthesizer – Weitere Patch-Ideen"
 date: 2023-06-10
 tags: ["audio", "Synth"]
 draft: false
@@ -7,12 +7,12 @@ type: blog
 aliases: ["/posts/synth/11_more_patch_ideas/"]
 ---
 
-So here is another patch idea for the Doepfer A-100 system.
-The results of the Doepfer oscillators are pithlily "knarzig-kernige" sounds.
-We utilize two A-110 oscillator modules (one standard, one basic), a ring-modulator (A-114)
-and a wasp-filter (A-124), together with some utility modules like a sequencer and an LFO.
+Hier also eine weitere Patch-Idee für das Doepfer-A-100-System.
+Heraus kommen bei den Doepfer-Oszillatoren knarzig-kernige Sounds.
+Wir verwenden zwei A-110-Oszillatormodule (einen Standard, einen Basic), einen Ringmodulator (A-114)
+und ein Wasp-Filter (A-124), dazu einige Hilfsmodule wie einen Sequencer und einen LFO.
 
-image:./pithily_sounds.jpg[pithily ]
+image:./pithily_sounds.jpg[knarzig-kernig]
 
-link:./pithily_sounds.m4a[pithily... Audio]
+link:./pithily_sounds.m4a[knarzig-kernig... Audio]
 

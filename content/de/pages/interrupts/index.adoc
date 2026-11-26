@@ -1,5 +1,5 @@
 ---
-title: "A short guide to Interrupts"
+title: "Ein kurzer Leitfaden zu Interrupts"
 slug: interrupts
 date: 2026-01-03
 tags:

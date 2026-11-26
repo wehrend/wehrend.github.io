@@ -86,6 +86,20 @@ scharfen Spitzen „abzurunden“. Es ist ein bisschen so, als würde man eine H
 Ecken am unteren Ende abschleift, verwandeln sich die linearen Steigungen in den glatten, mathematischen Bogen einer Sinuswelle.
 
 Der „Even“-Ausgang – Namensgeber des Moduls – ist ein einzigartiger Formungstrick. Er erzeugt ein Signal, das hauptsächlich aus
-**geraden Obertönen** besteht, was ihm einen äußerst charakteristischen, fast stimmartigen oder „hohlen“ Klangcharakter verleiht
+**geraden Obertönen** besteht, was ihm im Vergleich zu einem gewöhnlichen Sägezahn einen äußerst charakteristischen, fast stimmartigen oder „hohlen“ Klangcharakter verleiht.
+Dazu wird die Frequenz der internen Rampe verdoppelt und so wieder zugemischt, dass genau diese Obertöne betont werden.
+Es geht hier weniger darum, eine Form zu schnitzen, als vielmehr darum, die harmonische DNA des Klangs zu verschieben.
+
+
+Für die **PWM- und Rechteck**-Signale schließlich verwendet die Schaltung einen Komparator, ähnlich dem Schmitt-Trigger, den wir vorhin besprochen haben.
+Er vergleicht die rohe Rampe mit einem festen (oder per CV gesteuerten) Spannungspegel. Solange die Rampe über diesem Pegel liegt, bleibt der
+Ausgang „High“, liegt sie darunter, bleibt er „Low“. Verschiebt man diesen Pegel mit dem PWM-Regler nach oben oder unten, ändert man genau
+die Stelle, an der das Signal „umschnappt“ – und so wird der Puls breiter oder schmaler.
+
+link:./evenVCO_subcircuit_even.asc[Hier ist meine Interpretation des evenVCO]
+
+image:./evenVCO_simulation.png[evenVCO – Simulation]
+
+_Dieser Blogbeitrag wurde mit Hilfe von KI erstellt, konkret mit Google Gemini._
 
 Übersetzt mit DeepL.com (kostenlose Version)

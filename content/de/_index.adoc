@@ -9,8 +9,8 @@ description:
 type: text
 ---
 
-*So, you want to learn about electronics, digital logic and how a cpu is able to do what she is doing?*
+*Sie möchten also etwas über Elektronik, digitale Logik und darüber lernen, wie eine CPU das tut, was sie tut?*
 
-*We'll get you started here*
+*Hier geht es los*
 
 image:./cpu_structure_with_control.svg[width=80%]
