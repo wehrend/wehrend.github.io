@@ -1,0 +1,862 @@
+From 622d7609af9a77de6bfd0578cf4b00d3acffac54 Mon Sep 17 00:00:00 2001
+From: Sven Wehrend <wehrend@users.noreply.github.com>
+Date: Thu, 26 Nov 2026 20:18:16 +0100
+Subject: [PATCH] fix order of electronics 103 / 103.5
+
+Overview cards and prev/next navigation sort by File.Path with Hugo's
+collation, which ignores punctuation: 'electronics-103/index' sorted after
+'electronics-103.5-...'. Restore the original folder name electronics-103.00
+(now in both languages, URL unchanged via slug) and give 103.5 weight 1350.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018Me4hFnybPX5P4M4eKtaqK
+---
+ .../JFET.jpg                                        | Bin
+ .../amplifier_symbol.svg                            |   0
+ .../astable_multivibrator.asc                       |   0
+ .../astable_multivibrator.png                       | Bin
+ .../astable_multivibrator.svg                       |   0
+ .../astable_multivibrator_circuit.png               | Bin
+ .../atomic_model_C.svg                              |   0
+ .../atomic_model_Ge.svg                             |   0
+ .../atomic_model_Si.svg                             |   0
+ .../base_circuit.asc                                |   0
+ .../base_circuit.png                                | Bin
+ .../base_circuit.svg                                |   0
+ .../bipolar-transistors.svg                         |   0
+ .../bjt_npn_symbol.svg                              |   0
+ .../bjt_pnp_symbol.svg                              |   0
+ .../collector_circuit.asc                           |   0
+ .../collector_circuit.png                           | Bin
+ .../collector_circuit.svg                           |   0
+ .../common_base.svg                                 |   0
+ .../common_collector.svg                            |   0
+ .../common_emitter.svg                              |   0
+ .../covalent_bonding_As.svg                         |   0
+ .../covalent_bonding_B.svg                          |   0
+ .../covalent_bonding_Ge.svg                         |   0
+ .../covalent_bonding_si.svg                         |   0
+ .../diode_behaviour.png                             | Bin
+ .../direct-coupling.svg                             |   0
+ .../drain_circuit.svg                               |   0
+ .../emitter_circuit.asc                             |   0
+ .../emitter_circuit.png                             | Bin
+ .../emitter_circuit.svg                             |   0
+ .../flipflop_circuit.svg                            |   0
+ .../flipflop_discrete.svg                           |   0
+ .../flipflop_symbol.svg                             |   0
+ .../full_wave_rectifier.asc                         |   0
+ .../full_wave_rectifier.png                         | Bin
+ .../full_wave_rectifier_with_C.asc                  |   0
+ .../full_wave_rectifier_with_C.png                  | Bin
+ .../gate_circuit.svg                                |   0
+ .../half_wave_rectifier.asc                         |   0
+ .../half_wave_rectifier.png                         | Bin
+ .../half_wave_rectifier_with_C.asc                  |   0
+ .../half_wave_rectifier_with_C.png                  | Bin
+ .../index.adoc                                      |   0
+ .../induction-coupling.svg                          |   0
+ .../jfet-mosfet.txt                                 |   0
+ .../led_colors.jpg                                  | Bin
+ .../led_colors.ods                                  | Bin
+ .../led_colors.png                                  | Bin
+ .../led_die.svg                                     |   0
+ .../led_querschnitt.svg                             |   0
+ .../led_schematic.svg                               |   0
+ .../mosfet_model.svg                                |   0
+ .../negative-feedback-circuit.svg                   |   0
+ .../pn-junction.svg                                 |   0
+ .../rc-coupling.svg                                 |   0
+ .../simple_circuit.png                              | Bin
+ .../simple_led_circuit.png                          | Bin
+ .../simple_led_circuit.svg                          |   0
+ .../simple_led_circuit_reversed.svg                 |   0
+ .../simple_led_comparison.png                       | Bin
+ .../source_circuit.svg                              |   0
+ .../the_simple_circuit.svg                          |   0
+ .../the_simple_circuit_w_feedback_wo_poti.svg       |   0
+ .../to-92.png                                       | Bin
+ .../transistor_npn_schema.svg                       |   0
+ .../transistor_pnp_schema.svg                       |   0
+ .../under_construction.png                          | Bin
+ .../electronics-103.5-the-transistor/index.adoc     |   2 +-
+ .../JFET.jpg                                        | Bin
+ .../amplifier_symbol.svg                            |   0
+ .../astable_multivibrator.asc                       |   0
+ .../astable_multivibrator.png                       | Bin
+ .../astable_multivibrator.svg                       |   0
+ .../astable_multivibrator_circuit.png               | Bin
+ .../atomic_model_C.svg                              |   0
+ .../atomic_model_Ge.svg                             |   0
+ .../atomic_model_Si.svg                             |   0
+ .../base_circuit.asc                                |   0
+ .../base_circuit.png                                | Bin
+ .../base_circuit.svg                                |   0
+ .../bipolar-transistors.svg                         |   0
+ .../bjt_npn_symbol.svg                              |   0
+ .../bjt_pnp_symbol.svg                              |   0
+ .../collector_circuit.asc                           |   0
+ .../collector_circuit.png                           | Bin
+ .../collector_circuit.svg                           |   0
+ .../common_base.svg                                 |   0
+ .../common_collector.svg                            |   0
+ .../common_emitter.svg                              |   0
+ .../covalent_bonding_As.svg                         |   0
+ .../covalent_bonding_B.svg                          |   0
+ .../covalent_bonding_Ge.svg                         |   0
+ .../covalent_bonding_si.svg                         |   0
+ .../diode_behaviour.png                             | Bin
+ .../direct-coupling.svg                             |   0
+ .../drain_circuit.svg                               |   0
+ .../emitter_circuit.asc                             |   0
+ .../emitter_circuit.png                             | Bin
+ .../emitter_circuit.svg                             |   0
+ .../flipflop_circuit.svg                            |   0
+ .../flipflop_discrete.svg                           |   0
+ .../flipflop_symbol.svg                             |   0
+ .../full_wave_rectifier.asc                         |   0
+ .../full_wave_rectifier.png                         | Bin
+ .../full_wave_rectifier_with_C.asc                  |   0
+ .../full_wave_rectifier_with_C.png                  | Bin
+ .../gate_circuit.svg                                |   0
+ .../half_wave_rectifier.asc                         |   0
+ .../half_wave_rectifier.png                         | Bin
+ .../half_wave_rectifier_with_C.asc                  |   0
+ .../half_wave_rectifier_with_C.png                  | Bin
+ .../index.adoc                                      |   0
+ .../induction-coupling.svg                          |   0
+ .../jfet-mosfet.txt                                 |   0
+ .../led_colors.jpg                                  | Bin
+ .../led_colors.ods                                  | Bin
+ .../led_colors.png                                  | Bin
+ .../led_die.svg                                     |   0
+ .../led_querschnitt.svg                             |   0
+ .../led_schematic.svg                               |   0
+ .../mosfet_model.svg                                |   0
+ .../negative-feedback-circuit.svg                   |   0
+ .../pn-junction.svg                                 |   0
+ .../rc-coupling.svg                                 |   0
+ .../simple_circuit.png                              | Bin
+ .../simple_led_circuit.png                          | Bin
+ .../simple_led_circuit.svg                          |   0
+ .../simple_led_circuit_reversed.svg                 |   0
+ .../simple_led_comparison.png                       | Bin
+ .../source_circuit.svg                              |   0
+ .../the_simple_circuit.svg                          |   0
+ .../the_simple_circuit_w_feedback_wo_poti.svg       |   0
+ .../to-92.png                                       | Bin
+ .../transistor_npn_schema.svg                       |   0
+ .../transistor_pnp_schema.svg                       |   0
+ .../under_construction.png                          | Bin
+ .../electronics-103.5-the-transistor/index.adoc     |   2 +-
+ 138 files changed, 2 insertions(+), 2 deletions(-)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/JFET.jpg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/amplifier_symbol.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/astable_multivibrator.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/astable_multivibrator.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/astable_multivibrator.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/astable_multivibrator_circuit.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/atomic_model_C.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/atomic_model_Ge.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/atomic_model_Si.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/base_circuit.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/base_circuit.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/base_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/bipolar-transistors.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/bjt_npn_symbol.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/bjt_pnp_symbol.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/collector_circuit.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/collector_circuit.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/collector_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/common_base.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/common_collector.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/common_emitter.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/covalent_bonding_As.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/covalent_bonding_B.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/covalent_bonding_Ge.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/covalent_bonding_si.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/diode_behaviour.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/direct-coupling.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/drain_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/emitter_circuit.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/emitter_circuit.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/emitter_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/flipflop_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/flipflop_discrete.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/flipflop_symbol.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier_with_C.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier_with_C.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/gate_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier_with_C.asc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier_with_C.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/index.adoc (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/induction-coupling.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/jfet-mosfet.txt (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/led_colors.jpg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/led_colors.ods (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/led_colors.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/led_die.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/led_querschnitt.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/led_schematic.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/mosfet_model.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/negative-feedback-circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/pn-junction.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/rc-coupling.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/simple_circuit.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/simple_led_circuit.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/simple_led_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/simple_led_circuit_reversed.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/simple_led_comparison.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/source_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/the_simple_circuit.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/the_simple_circuit_w_feedback_wo_poti.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/to-92.png (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/transistor_npn_schema.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/transistor_pnp_schema.svg (100%)
+ rename content/de/pages/{electronics-103 => electronics-103.00}/under_construction.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/JFET.jpg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/amplifier_symbol.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/astable_multivibrator.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/astable_multivibrator.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/astable_multivibrator.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/astable_multivibrator_circuit.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/atomic_model_C.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/atomic_model_Ge.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/atomic_model_Si.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/base_circuit.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/base_circuit.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/base_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/bipolar-transistors.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/bjt_npn_symbol.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/bjt_pnp_symbol.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/collector_circuit.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/collector_circuit.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/collector_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/common_base.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/common_collector.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/common_emitter.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/covalent_bonding_As.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/covalent_bonding_B.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/covalent_bonding_Ge.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/covalent_bonding_si.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/diode_behaviour.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/direct-coupling.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/drain_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/emitter_circuit.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/emitter_circuit.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/emitter_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/flipflop_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/flipflop_discrete.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/flipflop_symbol.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier_with_C.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/full_wave_rectifier_with_C.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/gate_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier_with_C.asc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/half_wave_rectifier_with_C.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/index.adoc (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/induction-coupling.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/jfet-mosfet.txt (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/led_colors.jpg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/led_colors.ods (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/led_colors.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/led_die.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/led_querschnitt.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/led_schematic.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/mosfet_model.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/negative-feedback-circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/pn-junction.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/rc-coupling.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/simple_circuit.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/simple_led_circuit.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/simple_led_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/simple_led_circuit_reversed.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/simple_led_comparison.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/source_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/the_simple_circuit.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/the_simple_circuit_w_feedback_wo_poti.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/to-92.png (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/transistor_npn_schema.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/transistor_pnp_schema.svg (100%)
+ rename content/en/pages/{electronics-103 => electronics-103.00}/under_construction.png (100%)
+
+diff --git a/content/de/pages/electronics-103/JFET.jpg b/content/de/pages/electronics-103.00/JFET.jpg
+similarity index 100%
+rename from content/de/pages/electronics-103/JFET.jpg
+rename to content/de/pages/electronics-103.00/JFET.jpg
+diff --git a/content/de/pages/electronics-103/amplifier_symbol.svg b/content/de/pages/electronics-103.00/amplifier_symbol.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/amplifier_symbol.svg
+rename to content/de/pages/electronics-103.00/amplifier_symbol.svg
+diff --git a/content/de/pages/electronics-103/astable_multivibrator.asc b/content/de/pages/electronics-103.00/astable_multivibrator.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/astable_multivibrator.asc
+rename to content/de/pages/electronics-103.00/astable_multivibrator.asc
+diff --git a/content/de/pages/electronics-103/astable_multivibrator.png b/content/de/pages/electronics-103.00/astable_multivibrator.png
+similarity index 100%
+rename from content/de/pages/electronics-103/astable_multivibrator.png
+rename to content/de/pages/electronics-103.00/astable_multivibrator.png
+diff --git a/content/de/pages/electronics-103/astable_multivibrator.svg b/content/de/pages/electronics-103.00/astable_multivibrator.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/astable_multivibrator.svg
+rename to content/de/pages/electronics-103.00/astable_multivibrator.svg
+diff --git a/content/de/pages/electronics-103/astable_multivibrator_circuit.png b/content/de/pages/electronics-103.00/astable_multivibrator_circuit.png
+similarity index 100%
+rename from content/de/pages/electronics-103/astable_multivibrator_circuit.png
+rename to content/de/pages/electronics-103.00/astable_multivibrator_circuit.png
+diff --git a/content/de/pages/electronics-103/atomic_model_C.svg b/content/de/pages/electronics-103.00/atomic_model_C.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/atomic_model_C.svg
+rename to content/de/pages/electronics-103.00/atomic_model_C.svg
+diff --git a/content/de/pages/electronics-103/atomic_model_Ge.svg b/content/de/pages/electronics-103.00/atomic_model_Ge.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/atomic_model_Ge.svg
+rename to content/de/pages/electronics-103.00/atomic_model_Ge.svg
+diff --git a/content/de/pages/electronics-103/atomic_model_Si.svg b/content/de/pages/electronics-103.00/atomic_model_Si.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/atomic_model_Si.svg
+rename to content/de/pages/electronics-103.00/atomic_model_Si.svg
+diff --git a/content/de/pages/electronics-103/base_circuit.asc b/content/de/pages/electronics-103.00/base_circuit.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/base_circuit.asc
+rename to content/de/pages/electronics-103.00/base_circuit.asc
+diff --git a/content/de/pages/electronics-103/base_circuit.png b/content/de/pages/electronics-103.00/base_circuit.png
+similarity index 100%
+rename from content/de/pages/electronics-103/base_circuit.png
+rename to content/de/pages/electronics-103.00/base_circuit.png
+diff --git a/content/de/pages/electronics-103/base_circuit.svg b/content/de/pages/electronics-103.00/base_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/base_circuit.svg
+rename to content/de/pages/electronics-103.00/base_circuit.svg
+diff --git a/content/de/pages/electronics-103/bipolar-transistors.svg b/content/de/pages/electronics-103.00/bipolar-transistors.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/bipolar-transistors.svg
+rename to content/de/pages/electronics-103.00/bipolar-transistors.svg
+diff --git a/content/de/pages/electronics-103/bjt_npn_symbol.svg b/content/de/pages/electronics-103.00/bjt_npn_symbol.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/bjt_npn_symbol.svg
+rename to content/de/pages/electronics-103.00/bjt_npn_symbol.svg
+diff --git a/content/de/pages/electronics-103/bjt_pnp_symbol.svg b/content/de/pages/electronics-103.00/bjt_pnp_symbol.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/bjt_pnp_symbol.svg
+rename to content/de/pages/electronics-103.00/bjt_pnp_symbol.svg
+diff --git a/content/de/pages/electronics-103/collector_circuit.asc b/content/de/pages/electronics-103.00/collector_circuit.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/collector_circuit.asc
+rename to content/de/pages/electronics-103.00/collector_circuit.asc
+diff --git a/content/de/pages/electronics-103/collector_circuit.png b/content/de/pages/electronics-103.00/collector_circuit.png
+similarity index 100%
+rename from content/de/pages/electronics-103/collector_circuit.png
+rename to content/de/pages/electronics-103.00/collector_circuit.png
+diff --git a/content/de/pages/electronics-103/collector_circuit.svg b/content/de/pages/electronics-103.00/collector_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/collector_circuit.svg
+rename to content/de/pages/electronics-103.00/collector_circuit.svg
+diff --git a/content/de/pages/electronics-103/common_base.svg b/content/de/pages/electronics-103.00/common_base.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/common_base.svg
+rename to content/de/pages/electronics-103.00/common_base.svg
+diff --git a/content/de/pages/electronics-103/common_collector.svg b/content/de/pages/electronics-103.00/common_collector.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/common_collector.svg
+rename to content/de/pages/electronics-103.00/common_collector.svg
+diff --git a/content/de/pages/electronics-103/common_emitter.svg b/content/de/pages/electronics-103.00/common_emitter.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/common_emitter.svg
+rename to content/de/pages/electronics-103.00/common_emitter.svg
+diff --git a/content/de/pages/electronics-103/covalent_bonding_As.svg b/content/de/pages/electronics-103.00/covalent_bonding_As.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/covalent_bonding_As.svg
+rename to content/de/pages/electronics-103.00/covalent_bonding_As.svg
+diff --git a/content/de/pages/electronics-103/covalent_bonding_B.svg b/content/de/pages/electronics-103.00/covalent_bonding_B.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/covalent_bonding_B.svg
+rename to content/de/pages/electronics-103.00/covalent_bonding_B.svg
+diff --git a/content/de/pages/electronics-103/covalent_bonding_Ge.svg b/content/de/pages/electronics-103.00/covalent_bonding_Ge.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/covalent_bonding_Ge.svg
+rename to content/de/pages/electronics-103.00/covalent_bonding_Ge.svg
+diff --git a/content/de/pages/electronics-103/covalent_bonding_si.svg b/content/de/pages/electronics-103.00/covalent_bonding_si.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/covalent_bonding_si.svg
+rename to content/de/pages/electronics-103.00/covalent_bonding_si.svg
+diff --git a/content/de/pages/electronics-103/diode_behaviour.png b/content/de/pages/electronics-103.00/diode_behaviour.png
+similarity index 100%
+rename from content/de/pages/electronics-103/diode_behaviour.png
+rename to content/de/pages/electronics-103.00/diode_behaviour.png
+diff --git a/content/de/pages/electronics-103/direct-coupling.svg b/content/de/pages/electronics-103.00/direct-coupling.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/direct-coupling.svg
+rename to content/de/pages/electronics-103.00/direct-coupling.svg
+diff --git a/content/de/pages/electronics-103/drain_circuit.svg b/content/de/pages/electronics-103.00/drain_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/drain_circuit.svg
+rename to content/de/pages/electronics-103.00/drain_circuit.svg
+diff --git a/content/de/pages/electronics-103/emitter_circuit.asc b/content/de/pages/electronics-103.00/emitter_circuit.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/emitter_circuit.asc
+rename to content/de/pages/electronics-103.00/emitter_circuit.asc
+diff --git a/content/de/pages/electronics-103/emitter_circuit.png b/content/de/pages/electronics-103.00/emitter_circuit.png
+similarity index 100%
+rename from content/de/pages/electronics-103/emitter_circuit.png
+rename to content/de/pages/electronics-103.00/emitter_circuit.png
+diff --git a/content/de/pages/electronics-103/emitter_circuit.svg b/content/de/pages/electronics-103.00/emitter_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/emitter_circuit.svg
+rename to content/de/pages/electronics-103.00/emitter_circuit.svg
+diff --git a/content/de/pages/electronics-103/flipflop_circuit.svg b/content/de/pages/electronics-103.00/flipflop_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/flipflop_circuit.svg
+rename to content/de/pages/electronics-103.00/flipflop_circuit.svg
+diff --git a/content/de/pages/electronics-103/flipflop_discrete.svg b/content/de/pages/electronics-103.00/flipflop_discrete.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/flipflop_discrete.svg
+rename to content/de/pages/electronics-103.00/flipflop_discrete.svg
+diff --git a/content/de/pages/electronics-103/flipflop_symbol.svg b/content/de/pages/electronics-103.00/flipflop_symbol.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/flipflop_symbol.svg
+rename to content/de/pages/electronics-103.00/flipflop_symbol.svg
+diff --git a/content/de/pages/electronics-103/full_wave_rectifier.asc b/content/de/pages/electronics-103.00/full_wave_rectifier.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/full_wave_rectifier.asc
+rename to content/de/pages/electronics-103.00/full_wave_rectifier.asc
+diff --git a/content/de/pages/electronics-103/full_wave_rectifier.png b/content/de/pages/electronics-103.00/full_wave_rectifier.png
+similarity index 100%
+rename from content/de/pages/electronics-103/full_wave_rectifier.png
+rename to content/de/pages/electronics-103.00/full_wave_rectifier.png
+diff --git a/content/de/pages/electronics-103/full_wave_rectifier_with_C.asc b/content/de/pages/electronics-103.00/full_wave_rectifier_with_C.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/full_wave_rectifier_with_C.asc
+rename to content/de/pages/electronics-103.00/full_wave_rectifier_with_C.asc
+diff --git a/content/de/pages/electronics-103/full_wave_rectifier_with_C.png b/content/de/pages/electronics-103.00/full_wave_rectifier_with_C.png
+similarity index 100%
+rename from content/de/pages/electronics-103/full_wave_rectifier_with_C.png
+rename to content/de/pages/electronics-103.00/full_wave_rectifier_with_C.png
+diff --git a/content/de/pages/electronics-103/gate_circuit.svg b/content/de/pages/electronics-103.00/gate_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/gate_circuit.svg
+rename to content/de/pages/electronics-103.00/gate_circuit.svg
+diff --git a/content/de/pages/electronics-103/half_wave_rectifier.asc b/content/de/pages/electronics-103.00/half_wave_rectifier.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/half_wave_rectifier.asc
+rename to content/de/pages/electronics-103.00/half_wave_rectifier.asc
+diff --git a/content/de/pages/electronics-103/half_wave_rectifier.png b/content/de/pages/electronics-103.00/half_wave_rectifier.png
+similarity index 100%
+rename from content/de/pages/electronics-103/half_wave_rectifier.png
+rename to content/de/pages/electronics-103.00/half_wave_rectifier.png
+diff --git a/content/de/pages/electronics-103/half_wave_rectifier_with_C.asc b/content/de/pages/electronics-103.00/half_wave_rectifier_with_C.asc
+similarity index 100%
+rename from content/de/pages/electronics-103/half_wave_rectifier_with_C.asc
+rename to content/de/pages/electronics-103.00/half_wave_rectifier_with_C.asc
+diff --git a/content/de/pages/electronics-103/half_wave_rectifier_with_C.png b/content/de/pages/electronics-103.00/half_wave_rectifier_with_C.png
+similarity index 100%
+rename from content/de/pages/electronics-103/half_wave_rectifier_with_C.png
+rename to content/de/pages/electronics-103.00/half_wave_rectifier_with_C.png
+diff --git a/content/de/pages/electronics-103/index.adoc b/content/de/pages/electronics-103.00/index.adoc
+similarity index 100%
+rename from content/de/pages/electronics-103/index.adoc
+rename to content/de/pages/electronics-103.00/index.adoc
+diff --git a/content/de/pages/electronics-103/induction-coupling.svg b/content/de/pages/electronics-103.00/induction-coupling.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/induction-coupling.svg
+rename to content/de/pages/electronics-103.00/induction-coupling.svg
+diff --git a/content/de/pages/electronics-103/jfet-mosfet.txt b/content/de/pages/electronics-103.00/jfet-mosfet.txt
+similarity index 100%
+rename from content/de/pages/electronics-103/jfet-mosfet.txt
+rename to content/de/pages/electronics-103.00/jfet-mosfet.txt
+diff --git a/content/de/pages/electronics-103/led_colors.jpg b/content/de/pages/electronics-103.00/led_colors.jpg
+similarity index 100%
+rename from content/de/pages/electronics-103/led_colors.jpg
+rename to content/de/pages/electronics-103.00/led_colors.jpg
+diff --git a/content/de/pages/electronics-103/led_colors.ods b/content/de/pages/electronics-103.00/led_colors.ods
+similarity index 100%
+rename from content/de/pages/electronics-103/led_colors.ods
+rename to content/de/pages/electronics-103.00/led_colors.ods
+diff --git a/content/de/pages/electronics-103/led_colors.png b/content/de/pages/electronics-103.00/led_colors.png
+similarity index 100%
+rename from content/de/pages/electronics-103/led_colors.png
+rename to content/de/pages/electronics-103.00/led_colors.png
+diff --git a/content/de/pages/electronics-103/led_die.svg b/content/de/pages/electronics-103.00/led_die.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/led_die.svg
+rename to content/de/pages/electronics-103.00/led_die.svg
+diff --git a/content/de/pages/electronics-103/led_querschnitt.svg b/content/de/pages/electronics-103.00/led_querschnitt.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/led_querschnitt.svg
+rename to content/de/pages/electronics-103.00/led_querschnitt.svg
+diff --git a/content/de/pages/electronics-103/led_schematic.svg b/content/de/pages/electronics-103.00/led_schematic.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/led_schematic.svg
+rename to content/de/pages/electronics-103.00/led_schematic.svg
+diff --git a/content/de/pages/electronics-103/mosfet_model.svg b/content/de/pages/electronics-103.00/mosfet_model.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/mosfet_model.svg
+rename to content/de/pages/electronics-103.00/mosfet_model.svg
+diff --git a/content/de/pages/electronics-103/negative-feedback-circuit.svg b/content/de/pages/electronics-103.00/negative-feedback-circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/negative-feedback-circuit.svg
+rename to content/de/pages/electronics-103.00/negative-feedback-circuit.svg
+diff --git a/content/de/pages/electronics-103/pn-junction.svg b/content/de/pages/electronics-103.00/pn-junction.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/pn-junction.svg
+rename to content/de/pages/electronics-103.00/pn-junction.svg
+diff --git a/content/de/pages/electronics-103/rc-coupling.svg b/content/de/pages/electronics-103.00/rc-coupling.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/rc-coupling.svg
+rename to content/de/pages/electronics-103.00/rc-coupling.svg
+diff --git a/content/de/pages/electronics-103/simple_circuit.png b/content/de/pages/electronics-103.00/simple_circuit.png
+similarity index 100%
+rename from content/de/pages/electronics-103/simple_circuit.png
+rename to content/de/pages/electronics-103.00/simple_circuit.png
+diff --git a/content/de/pages/electronics-103/simple_led_circuit.png b/content/de/pages/electronics-103.00/simple_led_circuit.png
+similarity index 100%
+rename from content/de/pages/electronics-103/simple_led_circuit.png
+rename to content/de/pages/electronics-103.00/simple_led_circuit.png
+diff --git a/content/de/pages/electronics-103/simple_led_circuit.svg b/content/de/pages/electronics-103.00/simple_led_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/simple_led_circuit.svg
+rename to content/de/pages/electronics-103.00/simple_led_circuit.svg
+diff --git a/content/de/pages/electronics-103/simple_led_circuit_reversed.svg b/content/de/pages/electronics-103.00/simple_led_circuit_reversed.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/simple_led_circuit_reversed.svg
+rename to content/de/pages/electronics-103.00/simple_led_circuit_reversed.svg
+diff --git a/content/de/pages/electronics-103/simple_led_comparison.png b/content/de/pages/electronics-103.00/simple_led_comparison.png
+similarity index 100%
+rename from content/de/pages/electronics-103/simple_led_comparison.png
+rename to content/de/pages/electronics-103.00/simple_led_comparison.png
+diff --git a/content/de/pages/electronics-103/source_circuit.svg b/content/de/pages/electronics-103.00/source_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/source_circuit.svg
+rename to content/de/pages/electronics-103.00/source_circuit.svg
+diff --git a/content/de/pages/electronics-103/the_simple_circuit.svg b/content/de/pages/electronics-103.00/the_simple_circuit.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/the_simple_circuit.svg
+rename to content/de/pages/electronics-103.00/the_simple_circuit.svg
+diff --git a/content/de/pages/electronics-103/the_simple_circuit_w_feedback_wo_poti.svg b/content/de/pages/electronics-103.00/the_simple_circuit_w_feedback_wo_poti.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/the_simple_circuit_w_feedback_wo_poti.svg
+rename to content/de/pages/electronics-103.00/the_simple_circuit_w_feedback_wo_poti.svg
+diff --git a/content/de/pages/electronics-103/to-92.png b/content/de/pages/electronics-103.00/to-92.png
+similarity index 100%
+rename from content/de/pages/electronics-103/to-92.png
+rename to content/de/pages/electronics-103.00/to-92.png
+diff --git a/content/de/pages/electronics-103/transistor_npn_schema.svg b/content/de/pages/electronics-103.00/transistor_npn_schema.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/transistor_npn_schema.svg
+rename to content/de/pages/electronics-103.00/transistor_npn_schema.svg
+diff --git a/content/de/pages/electronics-103/transistor_pnp_schema.svg b/content/de/pages/electronics-103.00/transistor_pnp_schema.svg
+similarity index 100%
+rename from content/de/pages/electronics-103/transistor_pnp_schema.svg
+rename to content/de/pages/electronics-103.00/transistor_pnp_schema.svg
+diff --git a/content/de/pages/electronics-103/under_construction.png b/content/de/pages/electronics-103.00/under_construction.png
+similarity index 100%
+rename from content/de/pages/electronics-103/under_construction.png
+rename to content/de/pages/electronics-103.00/under_construction.png
+diff --git a/content/de/pages/electronics-103.5-the-transistor/index.adoc b/content/de/pages/electronics-103.5-the-transistor/index.adoc
+index 0dd15bd..d7059b1 100644
+--- a/content/de/pages/electronics-103.5-the-transistor/index.adoc
++++ b/content/de/pages/electronics-103.5-the-transistor/index.adoc
+@@ -10,7 +10,7 @@ type: text
+ bookHidden: true
+ outdir: ~/development/blog
+ draft:  false
+-weight: 1300
++weight: 1350
+ icon: "svg/transistor.svg"
+ ---
+ {{< katex />}}
+diff --git a/content/en/pages/electronics-103/JFET.jpg b/content/en/pages/electronics-103.00/JFET.jpg
+similarity index 100%
+rename from content/en/pages/electronics-103/JFET.jpg
+rename to content/en/pages/electronics-103.00/JFET.jpg
+diff --git a/content/en/pages/electronics-103/amplifier_symbol.svg b/content/en/pages/electronics-103.00/amplifier_symbol.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/amplifier_symbol.svg
+rename to content/en/pages/electronics-103.00/amplifier_symbol.svg
+diff --git a/content/en/pages/electronics-103/astable_multivibrator.asc b/content/en/pages/electronics-103.00/astable_multivibrator.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/astable_multivibrator.asc
+rename to content/en/pages/electronics-103.00/astable_multivibrator.asc
+diff --git a/content/en/pages/electronics-103/astable_multivibrator.png b/content/en/pages/electronics-103.00/astable_multivibrator.png
+similarity index 100%
+rename from content/en/pages/electronics-103/astable_multivibrator.png
+rename to content/en/pages/electronics-103.00/astable_multivibrator.png
+diff --git a/content/en/pages/electronics-103/astable_multivibrator.svg b/content/en/pages/electronics-103.00/astable_multivibrator.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/astable_multivibrator.svg
+rename to content/en/pages/electronics-103.00/astable_multivibrator.svg
+diff --git a/content/en/pages/electronics-103/astable_multivibrator_circuit.png b/content/en/pages/electronics-103.00/astable_multivibrator_circuit.png
+similarity index 100%
+rename from content/en/pages/electronics-103/astable_multivibrator_circuit.png
+rename to content/en/pages/electronics-103.00/astable_multivibrator_circuit.png
+diff --git a/content/en/pages/electronics-103/atomic_model_C.svg b/content/en/pages/electronics-103.00/atomic_model_C.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/atomic_model_C.svg
+rename to content/en/pages/electronics-103.00/atomic_model_C.svg
+diff --git a/content/en/pages/electronics-103/atomic_model_Ge.svg b/content/en/pages/electronics-103.00/atomic_model_Ge.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/atomic_model_Ge.svg
+rename to content/en/pages/electronics-103.00/atomic_model_Ge.svg
+diff --git a/content/en/pages/electronics-103/atomic_model_Si.svg b/content/en/pages/electronics-103.00/atomic_model_Si.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/atomic_model_Si.svg
+rename to content/en/pages/electronics-103.00/atomic_model_Si.svg
+diff --git a/content/en/pages/electronics-103/base_circuit.asc b/content/en/pages/electronics-103.00/base_circuit.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/base_circuit.asc
+rename to content/en/pages/electronics-103.00/base_circuit.asc
+diff --git a/content/en/pages/electronics-103/base_circuit.png b/content/en/pages/electronics-103.00/base_circuit.png
+similarity index 100%
+rename from content/en/pages/electronics-103/base_circuit.png
+rename to content/en/pages/electronics-103.00/base_circuit.png
+diff --git a/content/en/pages/electronics-103/base_circuit.svg b/content/en/pages/electronics-103.00/base_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/base_circuit.svg
+rename to content/en/pages/electronics-103.00/base_circuit.svg
+diff --git a/content/en/pages/electronics-103/bipolar-transistors.svg b/content/en/pages/electronics-103.00/bipolar-transistors.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/bipolar-transistors.svg
+rename to content/en/pages/electronics-103.00/bipolar-transistors.svg
+diff --git a/content/en/pages/electronics-103/bjt_npn_symbol.svg b/content/en/pages/electronics-103.00/bjt_npn_symbol.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/bjt_npn_symbol.svg
+rename to content/en/pages/electronics-103.00/bjt_npn_symbol.svg
+diff --git a/content/en/pages/electronics-103/bjt_pnp_symbol.svg b/content/en/pages/electronics-103.00/bjt_pnp_symbol.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/bjt_pnp_symbol.svg
+rename to content/en/pages/electronics-103.00/bjt_pnp_symbol.svg
+diff --git a/content/en/pages/electronics-103/collector_circuit.asc b/content/en/pages/electronics-103.00/collector_circuit.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/collector_circuit.asc
+rename to content/en/pages/electronics-103.00/collector_circuit.asc
+diff --git a/content/en/pages/electronics-103/collector_circuit.png b/content/en/pages/electronics-103.00/collector_circuit.png
+similarity index 100%
+rename from content/en/pages/electronics-103/collector_circuit.png
+rename to content/en/pages/electronics-103.00/collector_circuit.png
+diff --git a/content/en/pages/electronics-103/collector_circuit.svg b/content/en/pages/electronics-103.00/collector_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/collector_circuit.svg
+rename to content/en/pages/electronics-103.00/collector_circuit.svg
+diff --git a/content/en/pages/electronics-103/common_base.svg b/content/en/pages/electronics-103.00/common_base.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/common_base.svg
+rename to content/en/pages/electronics-103.00/common_base.svg
+diff --git a/content/en/pages/electronics-103/common_collector.svg b/content/en/pages/electronics-103.00/common_collector.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/common_collector.svg
+rename to content/en/pages/electronics-103.00/common_collector.svg
+diff --git a/content/en/pages/electronics-103/common_emitter.svg b/content/en/pages/electronics-103.00/common_emitter.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/common_emitter.svg
+rename to content/en/pages/electronics-103.00/common_emitter.svg
+diff --git a/content/en/pages/electronics-103/covalent_bonding_As.svg b/content/en/pages/electronics-103.00/covalent_bonding_As.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/covalent_bonding_As.svg
+rename to content/en/pages/electronics-103.00/covalent_bonding_As.svg
+diff --git a/content/en/pages/electronics-103/covalent_bonding_B.svg b/content/en/pages/electronics-103.00/covalent_bonding_B.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/covalent_bonding_B.svg
+rename to content/en/pages/electronics-103.00/covalent_bonding_B.svg
+diff --git a/content/en/pages/electronics-103/covalent_bonding_Ge.svg b/content/en/pages/electronics-103.00/covalent_bonding_Ge.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/covalent_bonding_Ge.svg
+rename to content/en/pages/electronics-103.00/covalent_bonding_Ge.svg
+diff --git a/content/en/pages/electronics-103/covalent_bonding_si.svg b/content/en/pages/electronics-103.00/covalent_bonding_si.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/covalent_bonding_si.svg
+rename to content/en/pages/electronics-103.00/covalent_bonding_si.svg
+diff --git a/content/en/pages/electronics-103/diode_behaviour.png b/content/en/pages/electronics-103.00/diode_behaviour.png
+similarity index 100%
+rename from content/en/pages/electronics-103/diode_behaviour.png
+rename to content/en/pages/electronics-103.00/diode_behaviour.png
+diff --git a/content/en/pages/electronics-103/direct-coupling.svg b/content/en/pages/electronics-103.00/direct-coupling.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/direct-coupling.svg
+rename to content/en/pages/electronics-103.00/direct-coupling.svg
+diff --git a/content/en/pages/electronics-103/drain_circuit.svg b/content/en/pages/electronics-103.00/drain_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/drain_circuit.svg
+rename to content/en/pages/electronics-103.00/drain_circuit.svg
+diff --git a/content/en/pages/electronics-103/emitter_circuit.asc b/content/en/pages/electronics-103.00/emitter_circuit.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/emitter_circuit.asc
+rename to content/en/pages/electronics-103.00/emitter_circuit.asc
+diff --git a/content/en/pages/electronics-103/emitter_circuit.png b/content/en/pages/electronics-103.00/emitter_circuit.png
+similarity index 100%
+rename from content/en/pages/electronics-103/emitter_circuit.png
+rename to content/en/pages/electronics-103.00/emitter_circuit.png
+diff --git a/content/en/pages/electronics-103/emitter_circuit.svg b/content/en/pages/electronics-103.00/emitter_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/emitter_circuit.svg
+rename to content/en/pages/electronics-103.00/emitter_circuit.svg
+diff --git a/content/en/pages/electronics-103/flipflop_circuit.svg b/content/en/pages/electronics-103.00/flipflop_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/flipflop_circuit.svg
+rename to content/en/pages/electronics-103.00/flipflop_circuit.svg
+diff --git a/content/en/pages/electronics-103/flipflop_discrete.svg b/content/en/pages/electronics-103.00/flipflop_discrete.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/flipflop_discrete.svg
+rename to content/en/pages/electronics-103.00/flipflop_discrete.svg
+diff --git a/content/en/pages/electronics-103/flipflop_symbol.svg b/content/en/pages/electronics-103.00/flipflop_symbol.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/flipflop_symbol.svg
+rename to content/en/pages/electronics-103.00/flipflop_symbol.svg
+diff --git a/content/en/pages/electronics-103/full_wave_rectifier.asc b/content/en/pages/electronics-103.00/full_wave_rectifier.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/full_wave_rectifier.asc
+rename to content/en/pages/electronics-103.00/full_wave_rectifier.asc
+diff --git a/content/en/pages/electronics-103/full_wave_rectifier.png b/content/en/pages/electronics-103.00/full_wave_rectifier.png
+similarity index 100%
+rename from content/en/pages/electronics-103/full_wave_rectifier.png
+rename to content/en/pages/electronics-103.00/full_wave_rectifier.png
+diff --git a/content/en/pages/electronics-103/full_wave_rectifier_with_C.asc b/content/en/pages/electronics-103.00/full_wave_rectifier_with_C.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/full_wave_rectifier_with_C.asc
+rename to content/en/pages/electronics-103.00/full_wave_rectifier_with_C.asc
+diff --git a/content/en/pages/electronics-103/full_wave_rectifier_with_C.png b/content/en/pages/electronics-103.00/full_wave_rectifier_with_C.png
+similarity index 100%
+rename from content/en/pages/electronics-103/full_wave_rectifier_with_C.png
+rename to content/en/pages/electronics-103.00/full_wave_rectifier_with_C.png
+diff --git a/content/en/pages/electronics-103/gate_circuit.svg b/content/en/pages/electronics-103.00/gate_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/gate_circuit.svg
+rename to content/en/pages/electronics-103.00/gate_circuit.svg
+diff --git a/content/en/pages/electronics-103/half_wave_rectifier.asc b/content/en/pages/electronics-103.00/half_wave_rectifier.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/half_wave_rectifier.asc
+rename to content/en/pages/electronics-103.00/half_wave_rectifier.asc
+diff --git a/content/en/pages/electronics-103/half_wave_rectifier.png b/content/en/pages/electronics-103.00/half_wave_rectifier.png
+similarity index 100%
+rename from content/en/pages/electronics-103/half_wave_rectifier.png
+rename to content/en/pages/electronics-103.00/half_wave_rectifier.png
+diff --git a/content/en/pages/electronics-103/half_wave_rectifier_with_C.asc b/content/en/pages/electronics-103.00/half_wave_rectifier_with_C.asc
+similarity index 100%
+rename from content/en/pages/electronics-103/half_wave_rectifier_with_C.asc
+rename to content/en/pages/electronics-103.00/half_wave_rectifier_with_C.asc
+diff --git a/content/en/pages/electronics-103/half_wave_rectifier_with_C.png b/content/en/pages/electronics-103.00/half_wave_rectifier_with_C.png
+similarity index 100%
+rename from content/en/pages/electronics-103/half_wave_rectifier_with_C.png
+rename to content/en/pages/electronics-103.00/half_wave_rectifier_with_C.png
+diff --git a/content/en/pages/electronics-103/index.adoc b/content/en/pages/electronics-103.00/index.adoc
+similarity index 100%
+rename from content/en/pages/electronics-103/index.adoc
+rename to content/en/pages/electronics-103.00/index.adoc
+diff --git a/content/en/pages/electronics-103/induction-coupling.svg b/content/en/pages/electronics-103.00/induction-coupling.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/induction-coupling.svg
+rename to content/en/pages/electronics-103.00/induction-coupling.svg
+diff --git a/content/en/pages/electronics-103/jfet-mosfet.txt b/content/en/pages/electronics-103.00/jfet-mosfet.txt
+similarity index 100%
+rename from content/en/pages/electronics-103/jfet-mosfet.txt
+rename to content/en/pages/electronics-103.00/jfet-mosfet.txt
+diff --git a/content/en/pages/electronics-103/led_colors.jpg b/content/en/pages/electronics-103.00/led_colors.jpg
+similarity index 100%
+rename from content/en/pages/electronics-103/led_colors.jpg
+rename to content/en/pages/electronics-103.00/led_colors.jpg
+diff --git a/content/en/pages/electronics-103/led_colors.ods b/content/en/pages/electronics-103.00/led_colors.ods
+similarity index 100%
+rename from content/en/pages/electronics-103/led_colors.ods
+rename to content/en/pages/electronics-103.00/led_colors.ods
+diff --git a/content/en/pages/electronics-103/led_colors.png b/content/en/pages/electronics-103.00/led_colors.png
+similarity index 100%
+rename from content/en/pages/electronics-103/led_colors.png
+rename to content/en/pages/electronics-103.00/led_colors.png
+diff --git a/content/en/pages/electronics-103/led_die.svg b/content/en/pages/electronics-103.00/led_die.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/led_die.svg
+rename to content/en/pages/electronics-103.00/led_die.svg
+diff --git a/content/en/pages/electronics-103/led_querschnitt.svg b/content/en/pages/electronics-103.00/led_querschnitt.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/led_querschnitt.svg
+rename to content/en/pages/electronics-103.00/led_querschnitt.svg
+diff --git a/content/en/pages/electronics-103/led_schematic.svg b/content/en/pages/electronics-103.00/led_schematic.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/led_schematic.svg
+rename to content/en/pages/electronics-103.00/led_schematic.svg
+diff --git a/content/en/pages/electronics-103/mosfet_model.svg b/content/en/pages/electronics-103.00/mosfet_model.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/mosfet_model.svg
+rename to content/en/pages/electronics-103.00/mosfet_model.svg
+diff --git a/content/en/pages/electronics-103/negative-feedback-circuit.svg b/content/en/pages/electronics-103.00/negative-feedback-circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/negative-feedback-circuit.svg
+rename to content/en/pages/electronics-103.00/negative-feedback-circuit.svg
+diff --git a/content/en/pages/electronics-103/pn-junction.svg b/content/en/pages/electronics-103.00/pn-junction.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/pn-junction.svg
+rename to content/en/pages/electronics-103.00/pn-junction.svg
+diff --git a/content/en/pages/electronics-103/rc-coupling.svg b/content/en/pages/electronics-103.00/rc-coupling.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/rc-coupling.svg
+rename to content/en/pages/electronics-103.00/rc-coupling.svg
+diff --git a/content/en/pages/electronics-103/simple_circuit.png b/content/en/pages/electronics-103.00/simple_circuit.png
+similarity index 100%
+rename from content/en/pages/electronics-103/simple_circuit.png
+rename to content/en/pages/electronics-103.00/simple_circuit.png
+diff --git a/content/en/pages/electronics-103/simple_led_circuit.png b/content/en/pages/electronics-103.00/simple_led_circuit.png
+similarity index 100%
+rename from content/en/pages/electronics-103/simple_led_circuit.png
+rename to content/en/pages/electronics-103.00/simple_led_circuit.png
+diff --git a/content/en/pages/electronics-103/simple_led_circuit.svg b/content/en/pages/electronics-103.00/simple_led_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/simple_led_circuit.svg
+rename to content/en/pages/electronics-103.00/simple_led_circuit.svg
+diff --git a/content/en/pages/electronics-103/simple_led_circuit_reversed.svg b/content/en/pages/electronics-103.00/simple_led_circuit_reversed.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/simple_led_circuit_reversed.svg
+rename to content/en/pages/electronics-103.00/simple_led_circuit_reversed.svg
+diff --git a/content/en/pages/electronics-103/simple_led_comparison.png b/content/en/pages/electronics-103.00/simple_led_comparison.png
+similarity index 100%
+rename from content/en/pages/electronics-103/simple_led_comparison.png
+rename to content/en/pages/electronics-103.00/simple_led_comparison.png
+diff --git a/content/en/pages/electronics-103/source_circuit.svg b/content/en/pages/electronics-103.00/source_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/source_circuit.svg
+rename to content/en/pages/electronics-103.00/source_circuit.svg
+diff --git a/content/en/pages/electronics-103/the_simple_circuit.svg b/content/en/pages/electronics-103.00/the_simple_circuit.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/the_simple_circuit.svg
+rename to content/en/pages/electronics-103.00/the_simple_circuit.svg
+diff --git a/content/en/pages/electronics-103/the_simple_circuit_w_feedback_wo_poti.svg b/content/en/pages/electronics-103.00/the_simple_circuit_w_feedback_wo_poti.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/the_simple_circuit_w_feedback_wo_poti.svg
+rename to content/en/pages/electronics-103.00/the_simple_circuit_w_feedback_wo_poti.svg
+diff --git a/content/en/pages/electronics-103/to-92.png b/content/en/pages/electronics-103.00/to-92.png
+similarity index 100%
+rename from content/en/pages/electronics-103/to-92.png
+rename to content/en/pages/electronics-103.00/to-92.png
+diff --git a/content/en/pages/electronics-103/transistor_npn_schema.svg b/content/en/pages/electronics-103.00/transistor_npn_schema.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/transistor_npn_schema.svg
+rename to content/en/pages/electronics-103.00/transistor_npn_schema.svg
+diff --git a/content/en/pages/electronics-103/transistor_pnp_schema.svg b/content/en/pages/electronics-103.00/transistor_pnp_schema.svg
+similarity index 100%
+rename from content/en/pages/electronics-103/transistor_pnp_schema.svg
+rename to content/en/pages/electronics-103.00/transistor_pnp_schema.svg
+diff --git a/content/en/pages/electronics-103/under_construction.png b/content/en/pages/electronics-103.00/under_construction.png
+similarity index 100%
+rename from content/en/pages/electronics-103/under_construction.png
+rename to content/en/pages/electronics-103.00/under_construction.png
+diff --git a/content/en/pages/electronics-103.5-the-transistor/index.adoc b/content/en/pages/electronics-103.5-the-transistor/index.adoc
+index 1830011..9b1827a 100644
+--- a/content/en/pages/electronics-103.5-the-transistor/index.adoc
++++ b/content/en/pages/electronics-103.5-the-transistor/index.adoc
+@@ -10,7 +10,7 @@ type: text
+ bookHidden: true
+ outdir: ~/development/blog
+ draft:  false
+-weight: 1300
++weight: 1350
+ icon: "svg/transistor.svg"
+ ---
+ {{< katex />}}
+-- 
+2.43.0
+
