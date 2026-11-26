@@ -1,0 +1,703 @@
+From 7d1cb8bfcbef4b2af57d1b3e3a5d4da6871bd173 Mon Sep 17 00:00:00 2001
+From: Sven Wehrend <wehrend@users.noreply.github.com>
+Date: Thu, 26 Nov 2026 19:55:00 +0100
+Subject: [PATCH] German pages: translate remaining English parts, fill gaps,
+ remove duplicates
+
+- translate start page, synth posts 06, 09, 11, 13, 14, 15, 16
+- translate titles: interrupts, storytelling, synth 05, web 26, web 30
+- electronics-103: restore stem: macros (formulas were shown as raw text),
+  translate (commented) astable multivibrator derivation, align heading levels,
+  fix broken half_wave_rectifier_with_C image macro
+- cpp_00: fix broken link to cpp_06 (space before [)
+- oscillators: complete truncated ending (even output, PWM, asc link, simulation)
+- web 30: add missing tree view section
+- electronics-102: remove duplicated high-pass block, align heading level
+- electronics-105: replace stale copy of the ADC/DAC draft (now pages/adc_dac)
+  with translation of the English placeholder
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_018Me4hFnybPX5P4M4eKtaqK
+---
+ content/de/_index.adoc                        |   4 +-
+ content/de/pages/cpp_00/index.adoc            |   2 +-
+ content/de/pages/electronics-102/index.adoc   |  27 +----
+ content/de/pages/electronics-103/index.adoc   | 112 +++++++++++++++++-
+ content/de/pages/electronics-105/index.adoc   |  53 ++-------
+ content/de/pages/interrupts/index.adoc        |   2 +-
+ content/de/pages/oscillators/index.adoc       |  16 ++-
+ content/de/pages/storytelling/index.adoc      |   2 +-
+ .../05-pocket-operator-modular-400/index.adoc |   2 +-
+ .../06-pocket-operator-modular-400/index.adoc |  28 ++---
+ .../synth/09-eurorack-modular/index.adoc      |  12 +-
+ .../synth/11-more-patch-ideas/index.adoc      |  14 +--
+ .../synth/13-another-simple-patch/index.adoc  |  18 +--
+ .../synth/14-another-small-patch/index.adoc   |  14 +--
+ .../de/posts/synth/15-jam-session/index.adoc  |  14 +--
+ .../de/posts/synth/16-noise-floor/index.adoc  |  10 +-
+ .../index.adoc                                |   2 +-
+ .../web/30-hugo-move-to-gh-pages/index.adoc   |  53 ++++++++-
+ 18 files changed, 244 insertions(+), 141 deletions(-)
+
+diff --git a/content/de/_index.adoc b/content/de/_index.adoc
+index 8a4d07e..199d328 100644
+--- a/content/de/_index.adoc
++++ b/content/de/_index.adoc
+@@ -9,8 +9,8 @@ description:
+ type: text
+ ---
+ 
+-*So, you want to learn about electronics, digital logic and how a cpu is able to do what she is doing?*
++*Sie möchten also etwas über Elektronik, digitale Logik und darüber lernen, wie eine CPU das tut, was sie tut?*
+ 
+-*We'll get you started here*
++*Hier geht es los*
+ 
+ image:./cpu_structure_with_control.svg[width=80%]
+\ No newline at end of file
+diff --git a/content/de/pages/cpp_00/index.adoc b/content/de/pages/cpp_00/index.adoc
+index 96d0948..01256ae 100644
+--- a/content/de/pages/cpp_00/index.adoc
++++ b/content/de/pages/cpp_00/index.adoc
+@@ -132,7 +132,7 @@ Enthält:
+ 
+ == C++ 06
+ 
+-link:https://wehrend.github.io/de/pages/cpp_06/ [cpp_06]
++link:https://wehrend.github.io/de/pages/cpp_06/[cpp_06]
+ 
+ Konzentriert sich auf Leistung und Systemkonzepte.
+ 
+diff --git a/content/de/pages/electronics-102/index.adoc b/content/de/pages/electronics-102/index.adoc
+index efbe970..e0e88ee 100644
+--- a/content/de/pages/electronics-102/index.adoc
++++ b/content/de/pages/electronics-102/index.adoc
+@@ -21,7 +21,7 @@ Nach diesem Kapitel kennen Sie alle Grundlagen zu zeitkritischen Bauteilen wie S
+ 
+ == Elektronik 102
+ 
+-=== Zeitabhängige Bauteile
++== Zeitabhängige Bauteile
+ 
+ Nachdem wir im ersten Teil das wichtigste Bauteil, den Widerstand, behandelt und ausführlich beschrieben haben,
+ wollen wir uns nun das nächste wichtige
+@@ -364,31 +364,6 @@ Hochpass 1. Ordnung
+ image:./highpass.svg[width="400px"]
+ 
+ 
+-Frequenzgang
+-
+-[role="image","../images/electronic_basics/highpass_fr.svg", imgfmt="svg"]
+-\[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{R}{R+ 1/j\omega C} = \frac{j \omega C}{1+ j \omega RC} =
+-\frac{j\omega / \omega_g}{1+ j\omega/ \omega_g}\]
+-
+-Grenzfrequenz (mit Beispielwerten von R=1kOhm, C= 1µF)
+-
+-////
+-[role="image", "../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
+-\[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^6}= 10^3= 1000 \cdot 1/s\]
+-////
+-
+-image:./highpass_bode_diagram.svg[width="1250px"]
+-
+-image:./highpass_pz_plot.svg[width="400px"]
+-
+-Und hier noch einmal das Python-Skript, diesmal für den Hochpass:
+-
+-=== Hochpassfilter
+-Hochpass 1. Ordnung
+-
+-image:./highpass.svg[width="400px"]
+-
+-
+ Frequenzgang
+ 
+ [role="image","../images/electronic_basics/highpass_fr.svg", imgfmt="svg"]
+diff --git a/content/de/pages/electronics-103/index.adoc b/content/de/pages/electronics-103/index.adoc
+index e4fd0f2..5c6030c 100644
+--- a/content/de/pages/electronics-103/index.adoc
++++ b/content/de/pages/electronics-103/index.adoc
+@@ -148,7 +148,7 @@ Wie wir sehen können, wird nur eine Hälfte der Sinuswelle verwendet...
+ link:./half_wave_rectifier.asc[Halbwellen-Gleichrichter – LTspice-Datei]
+ 
+ Unten sehen Sie denselben Schaltkreis, jedoch mit einem Kondensator zur Beseitigung der Welligkeit...
+-image:./half_wave_rectifier_with_C.png [Halbwellen-Gleichrichter mit C]
++image:./half_wave_rectifier_with_C.png[Halbwellen-Gleichrichter mit C]
+ 
+ link:./half_wave_rectifier_with_C.asc[Halbwellen-Gleichrichter mit Kondensator – LTspice-Datei]
+ 
+@@ -420,12 +420,114 @@ image:./astable_multivibrator.png[width="700px"]
+ 
+ link:./astable_multivibrator.asc[astabiler Multivibrator – ltspice-Datei]
+ 
+-=== BJT als Verstärker
++////
++
++Die Formel für die Frequenz ($f$) eines astabilen Multivibrators, $f = \frac{1}{(R_{B1} \cdot C_1 + R_{B2} \cdot C_2)\,\ln(2)}$, ergibt sich aus der Analyse der **Lade- und Entladezyklen** der Kondensatoren ($C_1$ und $C_2$) über die Basiswiderstände ($R_{B1}$ und $R_{B2}$).
++
++Hier die schrittweise Herleitung der **Periodendauer ($T$)**, aus der sich die Frequenz ($f$) leicht ergibt.
++
++---
++
++## 1. Funktionsweise des astabilen Multivibrators
++
++Ein astabiler Multivibrator besteht aus zwei kreuzgekoppelten Transistorstufen in Emitterschaltung ($Q_1$ und $Q_2$).
++
++* Die Schaltung wechselt zwischen zwei quasistabilen Zuständen:
++    * **Zustand 1:** $Q_1$ ist **EIN** (gesättigt), $Q_2$ ist **AUS** (gesperrt).
++    * **Zustand 2:** $Q_1$ ist **AUS**, $Q_2$ ist **EIN**.
++* Der Übergang von einem Zustand in den anderen wird durch das Aufladen der Koppelkondensatoren ($C_1$ und $C_2$) über die Basiswiderstände ($R_{B1}$ und $R_{B2}$) gesteuert.
++
++Betrachten wir die erste Halbperiode $T_1$, in der $Q_1$ AUS und $Q_2$ EIN ist.
++
++---
++
++## 2. Herleitung der Halbperiode $T_1$
++
++Angenommen, der Übergang hat gerade stattgefunden: **$Q_2$ ist EIN** (gesättigt, $V_{CE2} \approx 0 \text{ V}$) und **$Q_1$ ist AUS** ($V_{CE1} \approx V_{CC}$).
++
++### Anfangsbedingung von $C_1$
++
++1.  Als $Q_1$ gerade abgeschaltet hat, ist seine Kollektorspannung ($V_{C1}$) auf **$V_{CC}$** gesprungen.
++2.  Da $C_2$ die Spannung $V_{C1}$ auf die Basis von $Q_2$ ($V_{B2}$) koppelt, hat der plötzliche Anstieg von $V_{C1}$ auch $V_{B2}$ ansteigen lassen und $Q_2$ eingeschaltet.
++3.  Gleichzeitig ist beim Einschalten von $Q_2$ dessen Kollektorspannung ($V_{C2}$) auf $\approx 0 \text{ V}$ gefallen.
++4.  Da $C_1$ die Spannung $V_{C2}$ auf die Basis von $Q_1$ ($V_{B1}$) koppelt, treibt der plötzliche Abfall von $V_{C2}$ die Spannung $V_{B1}$ ins Negative, genauer gesagt auf $V_{B1} \approx -V_{CC}$.
++
++### Aufladen von $C_1$
++
++1.  Solange $Q_1$ AUS ist, beginnt der Kondensator $C_1$ sich von seiner Anfangsspannung $V_{B1}(0) \approx -V_{CC}$ über den Widerstand **$R_{B1}$** und den gesättigten $Q_2$ ($V_{CE2} \approx 0 \text{ V}$) in Richtung der Versorgungsspannung **$V_{CC}$** **aufzuladen**.
++2.  Die allgemeine Gleichung für das Aufladen eines Kondensators in einem RC-Glied lautet:
++    $$V_C(t) = V_F - (V_F - V_I)e^{-t/\tau}$$
++    Dabei ist:
++    * $V_C(t)$ die Kondensatorspannung (hier $V_{B1}$),
++    * $V_F$ die **End- bzw. Zielspannung** = $V_{CC}$ (die Spannung, auf die sich $C_1$ auflädt),
++    * $V_I$ die **Anfangsspannung** = $-V_{CC}$,
++    * $\tau$ die **Zeitkonstante** = $R_{B1}C_1$.
++3.  Setzt man diese Werte ein:
++    $$V_{B1}(t) = V_{CC} - (V_{CC} - (-V_{CC}))e^{-t/(R_{B1}C_1)}$$
++    $$V_{B1}(t) = V_{CC} - 2V_{CC}e^{-t/(R_{B1}C_1)}$$
++
++### Ende der Halbperiode $T_1$
++
++1.  Die Halbperiode $T_1$ endet, wenn $Q_1$ wieder **einschaltet**. Das geschieht, sobald seine Basis-Emitter-Strecke in Durchlassrichtung gepolt ist, also wenn $V_{B1}$ die **Schwellenspannung** erreicht ($V_{cut-in} \approx 0{,}7 \text{ V}$ bei Silizium, in der Herleitung zur Vereinfachung aber oft mit **$0 \text{ V}$** angenähert).
++2.  Setze $V_{B1}(t) = 0 \text{ V}$ und $t = T_1$:
++    $$0 = V_{CC} - 2V_{CC}e^{-T_1/(R_{B1}C_1)}$$
++3.  Umformen:
++    $$2V_{CC}e^{-T_1/(R_{B1}C_1)} = V_{CC}$$
++    $$e^{-T_1/(R_{B1}C_1)} = \frac{V_{CC}}{2V_{CC}} = \frac{1}{2}$$
++4.  Den natürlichen Logarithmus ($\ln$) auf beiden Seiten bilden:
++    $$-\frac{T_1}{R_{B1}C_1} = \ln\left(\frac{1}{2}\right)$$
++    Mit der Logarithmusregel $\ln(a/b) = -\ln(b/a)$:
++    $$-\frac{T_1}{R_{B1}C_1} = -\ln(2)$$
++5.  Nach $T_1$ auflösen:
++    $$T_1 = R_{B1}C_1 \cdot \ln(2)$$
++
++---
++
++## 3. Herleitung der Halbperiode $T_2$
++
++Bei der symmetrischen Analyse der zweiten Halbperiode ($T_2$), in der $Q_1$ EIN und $Q_2$ AUS ist, übernimmt **$R_{B2}C_2$** die Rolle von $R_{B1}C_1$.
++
++Die Zeitkonstante für das Aufladen von $C_2$ über $R_{B2}$ ist $\tau_2 = R_{B2}C_2$.
++
++Mit genau denselben Schritten erhalten wir:
++$$T_2 = R_{B2}C_2 \cdot \ln(2)$$
++
++---
++
++## 4. Endgültige Formel für die Frequenz ($f$)
++
++### Periodendauer ($T$)
++Die gesamte Periodendauer $T$ ist die Summe der beiden Halbperioden:
++$$T = T_1 + T_2$$
++$$T = (R_{B1}C_1 \cdot \ln(2)) + (R_{B2}C_2 \cdot \ln(2))$$
++$$T = (R_{B1}C_1 + R_{B2}C_2) \cdot \ln(2)$$
++
++### Frequenz ($f$)
++Die Frequenz ist der Kehrwert der Periodendauer:
++$$f = \frac{1}{T}$$
++$$\bbox[#D3D3D3]{\mathbf{f = \frac{1}{(R_{B1}C_1 + R_{B2}C_2) \cdot \ln(2)}}}$$
++
++---
++
++### Symmetrischer Fall
++
++Im häufigen Fall $R_{B1} = R_{B2} = R$ und $C_1 = C_2 = C$ gilt:
++$$T = (RC + RC) \cdot \ln(2) = 2RC \cdot \ln(2)$$
++Wegen $\ln(2) \approx 0{,}693$:
++$$T \approx 1{,}386 RC$$
++Und für die Frequenz:
++$$f = \frac{1}{T} = \frac{1}{2RC \cdot \ln(2)}$$
++$$\bbox[#D3D3D3]{\mathbf{f \approx \frac{0{,}72}{RC}}}$$
++
++Möchten Sie einen Vergleich von astabilen, monostabilen und bistabilen Multivibratoren sehen?
++////
++
++== BJT als Verstärker
+ 
+ Dieses Kapitel werde ich größtenteils 1:1 aus dem Buch „Wege in die Elektronik” von Joseph Glagla und Gert Lindner aus dem Jahr 1980 übernehmen.
+ 
+ 
+-==== Zwei-Port-Theorie Grundschaltungen und  h-Parameter
++=== Zwei-Port-Theorie: Grundschaltungen und h-Parameter
+ 
+ Die Zwei-Port-Theorie und die h-Parameter sind die theoretische Grundlage für Zwei-Port-Schaltungen.
+ Sie wird beispielsweise zur Beschreibung von Verstärkern verwendet, wobei alle hier behandelten Schaltungen eine gemeinsame Grundlage haben.
+@@ -441,8 +543,8 @@ a|
+ 
+ Je nach Schaltung hat der transistorbasierte Verstärker unterschiedliche Eigenschaften, wie in der
+ nachstehenden Tabelle dargestellt...
+-Um den Verstärkungsfaktor einer Schaltung zu berechnen, werden die dynamische Eingangsimpedanz (Wechselstrom) [r_{BE} = h_{11}]
+-und die dynamische Ausgangsimpedanz [r_{CE}= 1: h_22] sowie die Wechselstromverstärkung [\beta = h_{21}]
++Um den Verstärkungsfaktor einer Schaltung zu berechnen, werden die dynamische Eingangsimpedanz (Wechselstrom) stem:[r_{BE} = h_{11}]
++und die dynamische Ausgangsimpedanz stem:[r_{CE}= 1: h_22] sowie die Wechselstromverstärkung stem:[\beta = h_{21}]
+ 
+ Diese h-Parameter werden später erläutert und erklärt – zunächst wollen wir uns die verschiedenen Schaltungen ansehen...
+ 
+diff --git a/content/de/pages/electronics-105/index.adoc b/content/de/pages/electronics-105/index.adoc
+index cefbe5f..646c3bd 100644
+--- a/content/de/pages/electronics-105/index.adoc
++++ b/content/de/pages/electronics-105/index.adoc
+@@ -1,57 +1,18 @@
+ ---
+-title: "Introduction to Analog-Digital-converters and Digital-Analog-Converters"
+-slug: adc_dac
+-date: 2025-12-14
++title: "Einführung in die Elektronik - 105 - Integrierte Schaltungen"
++slug: electronics-105
++date: 2025-09-25
+ tags:
+-category: "electronics"
++category:
+ link:
+ description:
+ type: text
+ bookHidden: true
+ outdir: ~/development/blog
+-draft: true
++draft: false
+ weight: 1500
+ ---
+ 
+-==  The theory about analog signals, digital signals and quantisation
++Diese Seite ist noch im Aufbau.
+ 
+-Analog signals are characterized by being continuous in time and continuous in value.
+-The conversion process of analog signals
+-is often referred to as quantization.
+-
+-Digital signals, on the other hand, are signals that have undergone a form of
+-quantization process, which means that instead of being continuous signals, they are discrete signals.
+-Digital signals are both time-discrete and value-discrete.
+-
+-Analog Signals
+-
+-Analog signals are continuous in time and continuous in value.
+-This means that the signal exists at every moment in time and can
+-take any value within a certain range. There are no jumps or gaps in the signal.
+-Many physical quantities, such as sound, temperature, or light intensity,
+-can naturally be described by analog signals.
+-
+-Because analog signals change continuously, they provide a direct representation
+-of real-world processes.
+-
+-Digital Signals
+-
+-Digital signals, on the other hand, are not continuous. They are signals that have undergone a quantisation process.
+-As a result, digital signals are discrete in time and discrete in value.
+-Instead of being defined at every point in time, a digital signal is only defined at certain time instants.
+-In addition, the signal values are restricted to a finite set of possible values. Digital signals therefore consist
+-of individual values rather than a continuous waveform.
+-
+-=== Quantisation
+-
+-
+-Quantisation describes the process of converting an analog signal into a digital signal.
+-During this process, the continuous signal is represented by a sequence of discrete values.
+-This makes it possible to process, store, and transmit signals using digital systems.
+-
+-
+-
+-
+-// This page is still under construction
+-//
+-// image:./under_construction.png[width="350px"]
+\ No newline at end of file
++image:./under_construction.png[width="350px"]
+diff --git a/content/de/pages/interrupts/index.adoc b/content/de/pages/interrupts/index.adoc
+index 485cd0d..dbf07e4 100644
+--- a/content/de/pages/interrupts/index.adoc
++++ b/content/de/pages/interrupts/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "A short guide to Interrupts"
++title: "Ein kurzer Leitfaden zu Interrupts"
+ slug: interrupts
+ date: 2026-01-03
+ tags:
+diff --git a/content/de/pages/oscillators/index.adoc b/content/de/pages/oscillators/index.adoc
+index 5905336..34947f9 100644
+--- a/content/de/pages/oscillators/index.adoc
++++ b/content/de/pages/oscillators/index.adoc
+@@ -86,6 +86,20 @@ scharfen Spitzen „abzurunden“. Es ist ein bisschen so, als würde man eine H
+ Ecken am unteren Ende abschleift, verwandeln sich die linearen Steigungen in den glatten, mathematischen Bogen einer Sinuswelle.
+ 
+ Der „Even“-Ausgang – Namensgeber des Moduls – ist ein einzigartiger Formungstrick. Er erzeugt ein Signal, das hauptsächlich aus
+-**geraden Obertönen** besteht, was ihm einen äußerst charakteristischen, fast stimmartigen oder „hohlen“ Klangcharakter verleiht
++**geraden Obertönen** besteht, was ihm im Vergleich zu einem gewöhnlichen Sägezahn einen äußerst charakteristischen, fast stimmartigen oder „hohlen“ Klangcharakter verleiht.
++Dazu wird die Frequenz der internen Rampe verdoppelt und so wieder zugemischt, dass genau diese Obertöne betont werden.
++Es geht hier weniger darum, eine Form zu schnitzen, als vielmehr darum, die harmonische DNA des Klangs zu verschieben.
++
++
++Für die **PWM- und Rechteck**-Signale schließlich verwendet die Schaltung einen Komparator, ähnlich dem Schmitt-Trigger, den wir vorhin besprochen haben.
++Er vergleicht die rohe Rampe mit einem festen (oder per CV gesteuerten) Spannungspegel. Solange die Rampe über diesem Pegel liegt, bleibt der
++Ausgang „High“, liegt sie darunter, bleibt er „Low“. Verschiebt man diesen Pegel mit dem PWM-Regler nach oben oder unten, ändert man genau
++die Stelle, an der das Signal „umschnappt“ – und so wird der Puls breiter oder schmaler.
++
++link:./evenVCO_subcircuit_even.asc[Hier ist meine Interpretation des evenVCO]
++
++image:./evenVCO_simulation.png[evenVCO – Simulation]
++
++_Dieser Blogbeitrag wurde mit Hilfe von KI erstellt, konkret mit Google Gemini._
+ 
+ Übersetzt mit DeepL.com (kostenlose Version)
+\ No newline at end of file
+diff --git a/content/de/pages/storytelling/index.adoc b/content/de/pages/storytelling/index.adoc
+index 51a2ba5..23a2f08 100644
+--- a/content/de/pages/storytelling/index.adoc
++++ b/content/de/pages/storytelling/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Storytelling and the order of things"
++title: "Storytelling und die Reihenfolge der Dinge"
+ slug: storytelling
+ date: 2025-07-12
+ tags:
+diff --git a/content/de/posts/synth/05-pocket-operator-modular-400/index.adoc b/content/de/posts/synth/05-pocket-operator-modular-400/index.adoc
+index 993b617..14e2b71 100644
+--- a/content/de/posts/synth/05-pocket-operator-modular-400/index.adoc
++++ b/content/de/posts/synth/05-pocket-operator-modular-400/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "The Pocket Operator Modular 400 patch ideas"
++title: "Patch-Ideen für den Pocket Operator Modular 400"
+ date: 2023-04-29
+ tags: ["audio", "Synth"]
+ draft: false
+diff --git a/content/de/posts/synth/06-pocket-operator-modular-400/index.adoc b/content/de/posts/synth/06-pocket-operator-modular-400/index.adoc
+index 4e0fc0d..f974fe0 100644
+--- a/content/de/posts/synth/06-pocket-operator-modular-400/index.adoc
++++ b/content/de/posts/synth/06-pocket-operator-modular-400/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "The Pocket Operator Modular 400 patch ideas (II)"
++title: "Patch-Ideen für den Pocket Operator Modular 400 (II)"
+ date: 2023-05-14
+ tags: ["audio", "Synth"]
+ draft: false
+@@ -11,8 +11,8 @@ image:./plong_plong_plong.jpg[Plong...]
+ 
+ link:./plong_plong_plong.mp4[Plong... Video]
+ 
+-With the random module we can sample & hold a signal from the input. Its companionship is the noise module.
+-We feed the saw output to the input of the rand module.
++Mit dem Random-Modul können wir ein Eingangssignal per Sample & Hold abtasten. Sein Partner ist das Noise-Modul.
++Wir führen den Sägezahn-Ausgang auf den Eingang des Random-Moduls.
+ 
+ image:./bleep_bleep.jpg[Beep,bleep...]
+ 
+@@ -20,20 +20,20 @@ link:./bleep_bleep.mp4[Beep,bleep... Video]
+ 
+ '''
+ 
+-. sine output -> speaker right
+-. envelope output -> sine key
+-. LFO square -> envelope trig
+-. LFO square -> sine fm
++. Sinus-Ausgang -> Lautsprecher rechts
++. Hüllkurven-Ausgang -> Sinus Key
++. LFO Rechteck -> Hüllkurve Trig
++. LFO Rechteck -> Sinus FM
+ 
+ 
+-image:./sweeping_sinus.jpg[Sweeping sinus...]
++image:./sweeping_sinus.jpg[Sweepender Sinus...]
+ 
+-link:./sweeping_sinus.mp4[sweeping sinus... Video]
++link:./sweeping_sinus.mp4[Sweepender Sinus... Video]
+ 
+-We can expand the setup by using the sequencer and utilize the filter. Because  the nice
+-thing about modular synthesizers is, that the filter can be used not only in signal paths but
+-also in control paths ;-) .
++Wir können das Setup erweitern, indem wir den Sequencer und das Filter einsetzen. Das Schöne an
++modularen Synthesizern ist nämlich, dass sich das Filter nicht nur im Signalweg, sondern auch
++im Steuerweg einsetzen lässt ;-) .
+ 
+-. filter output -> sine control
+-. sequencer output -> filter input
++. Filter-Ausgang -> Sinus Control
++. Sequencer-Ausgang -> Filter-Eingang
+ ---
+diff --git a/content/de/posts/synth/09-eurorack-modular/index.adoc b/content/de/posts/synth/09-eurorack-modular/index.adoc
+index a5eee6d..7f74284 100644
+--- a/content/de/posts/synth/09-eurorack-modular/index.adoc
++++ b/content/de/posts/synth/09-eurorack-modular/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Pocket Operator Modular 400 in eurorack"
++title: "Der Pocket Operator Modular 400 im Eurorack"
+ date: 2023-05-21
+ tags: ["audio", "Synth"]
+ draft: false
+@@ -7,11 +7,11 @@ type: blog
+ aliases: ["/posts/synth/09_eurorack_modular/"]
+ ---
+ 
+-So I bought a low cost eurorack case from doepfer and a set of frontpanels plus power adapter
+-for the pocket operator modular 400 from Oddvolt to put the said machine into a eurorack modular
+-system. I also bought a small, but decent sequencer, since the one from teenage engineering is not
+-very handy to use. I have two further modules on my list, the https://doepfer.de/a119.htm[Doepfer A-119],
+-an input module, as well as the https://doepfer.de/a124.htm[Doepfer A-124], a wasp filter, to complete the setup.
++Ich habe mir also ein günstiges Eurorack-Gehäuse von Doepfer gekauft und dazu von Oddvolt einen Satz Frontplatten samt Netzteiladapter
++für den Pocket Operator Modular 400, um das Gerät in ein Eurorack-Modularsystem einzubauen.
++Außerdem habe ich mir einen kleinen, aber ordentlichen Sequencer zugelegt, denn der von Teenage Engineering ist nicht
++besonders handlich. Zwei weitere Module stehen noch auf meiner Liste, um das Setup zu vervollständigen: das https://doepfer.de/a119.htm[Doepfer A-119],
++ein Eingangsmodul, sowie das https://doepfer.de/a124.htm[Doepfer A-124], ein Wasp-Filter.
+ 
+ image:./eurorack_modular.jpg[Eurorack Modular...]
+ 
+diff --git a/content/de/posts/synth/11-more-patch-ideas/index.adoc b/content/de/posts/synth/11-more-patch-ideas/index.adoc
+index b63f9f8..44904cb 100644
+--- a/content/de/posts/synth/11-more-patch-ideas/index.adoc
++++ b/content/de/posts/synth/11-more-patch-ideas/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Eurorack Synthesizer - More patch ideas"
++title: "Eurorack-Synthesizer – Weitere Patch-Ideen"
+ date: 2023-06-10
+ tags: ["audio", "Synth"]
+ draft: false
+@@ -7,12 +7,12 @@ type: blog
+ aliases: ["/posts/synth/11_more_patch_ideas/"]
+ ---
+ 
+-So here is another patch idea for the Doepfer A-100 system.
+-The results of the Doepfer oscillators are pithlily "knarzig-kernige" sounds.
+-We utilize two A-110 oscillator modules (one standard, one basic), a ring-modulator (A-114)
+-and a wasp-filter (A-124), together with some utility modules like a sequencer and an LFO.
++Hier also eine weitere Patch-Idee für das Doepfer-A-100-System.
++Heraus kommen bei den Doepfer-Oszillatoren knarzig-kernige Sounds.
++Wir verwenden zwei A-110-Oszillatormodule (einen Standard, einen Basic), einen Ringmodulator (A-114)
++und ein Wasp-Filter (A-124), dazu einige Hilfsmodule wie einen Sequencer und einen LFO.
+ 
+-image:./pithily_sounds.jpg[pithily ]
++image:./pithily_sounds.jpg[knarzig-kernig]
+ 
+-link:./pithily_sounds.m4a[pithily... Audio]
++link:./pithily_sounds.m4a[knarzig-kernig... Audio]
+ 
+diff --git a/content/de/posts/synth/13-another-simple-patch/index.adoc b/content/de/posts/synth/13-another-simple-patch/index.adoc
+index 6d0afdb..5d0a418 100644
+--- a/content/de/posts/synth/13-another-simple-patch/index.adoc
++++ b/content/de/posts/synth/13-another-simple-patch/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Eurorack Synthesizer - Another simple patch"
++title: "Eurorack-Synthesizer – Noch ein einfacher Patch"
+ date: 2023-06-16
+ tags: ["audio", "Synth"]
+ draft: false
+@@ -7,14 +7,14 @@ type: blog
+ aliases: ["/posts/synth/13_another_simple_patch/"]
+ ---
+ 
+-So here is another simple patch idea for the Doepfer A-100 system,
+-this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+-modul A-106-5.
+-We also utilize two A-110 oscillator modules (one standard, one basic), and the LFO.
++Hier also eine weitere einfache Patch-Idee für das Doepfer-A-100-System,
++diesmal mit dem SEM-Filter von Oberheim, umgesetzt im Doepfer-Modul
++A-106-5.
++Außerdem verwenden wir zwei A-110-Oszillatormodule (einen Standard, einen Basic) und den LFO.
+ 
+-image:./lfo_sem_patch.jpg[SEM Patch ]
++image:./lfo_sem_patch.jpg[SEM-Patch]
+ 
+-link:./lfo_sem_patch.mp4[SEM Patch video]
++link:./lfo_sem_patch.mp4[SEM-Patch Video]
+ 
+-To this day I did not find the right audio recorder,and I am recording with my smartphone,
+-so the sound quality is rather bad. I am still searching for the ideal recording hardware.
++Bis heute habe ich nicht den richtigen Audiorecorder gefunden und nehme mit dem Smartphone auf,
++deshalb ist die Klangqualität eher schlecht. Ich suche noch nach der idealen Aufnahme-Hardware.
+diff --git a/content/de/posts/synth/14-another-small-patch/index.adoc b/content/de/posts/synth/14-another-small-patch/index.adoc
+index dc385d7..9b0ad75 100644
+--- a/content/de/posts/synth/14-another-small-patch/index.adoc
++++ b/content/de/posts/synth/14-another-small-patch/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Eurorack Synthesizer - Another small patch"
++title: "Eurorack-Synthesizer – Noch ein kleiner Patch"
+ date: 2023-07-01
+ tags: ["audio", "Synth"]
+ draft: false
+@@ -7,10 +7,10 @@ type: blog
+ aliases: ["/posts/synth/14_another_small_patch/"]
+ ---
+ 
+-So here is another small patch idea for the Doepfer A-100 system,
+-this time featuring the SEM filter from Oberheim, incarnated in the Doepfer
+-modul A-106-5.
+-We also utilize two LFO modules...
++Hier also eine weitere kleine Patch-Idee für das Doepfer-A-100-System,
++diesmal mit dem SEM-Filter von Oberheim, umgesetzt im Doepfer-Modul
++A-106-5.
++Außerdem verwenden wir zwei LFO-Module...
+ 
+ image:./lfo_sem_patch.jpg[LFO SEM Patch ]
+ 
+@@ -22,5 +22,5 @@ link:./lfo_sem_patch2.mp4[LFO SEM Patch video 2]
+ 
+ link:./lfo_sem_patch3.mp4[LFO SEM Patch video 3]
+ 
+-To this day I did not find the right audio recorder,and I am recording with my smartphone,
+-so the sound quality is rather bad. I am still searching for the ideal recording hardware.
++Bis heute habe ich nicht den richtigen Audiorecorder gefunden und nehme mit dem Smartphone auf,
++deshalb ist die Klangqualität eher schlecht. Ich suche noch nach der idealen Aufnahme-Hardware.
+diff --git a/content/de/posts/synth/15-jam-session/index.adoc b/content/de/posts/synth/15-jam-session/index.adoc
+index 7682d58..6dc9e05 100644
+--- a/content/de/posts/synth/15-jam-session/index.adoc
++++ b/content/de/posts/synth/15-jam-session/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Eurorack Synthesizer - Jam Session"
++title: "Eurorack-Synthesizer – Jam-Session"
+ date: 2023-07-22
+ tags: ["audio", "Synth"]
+ draft: false
+@@ -7,11 +7,11 @@ type: blog
+ aliases: ["/posts/synth/15_jam_session/"]
+ ---
+ 
+-This time, we have a convoluted patch, featuring a new member, the random sequencer
+-from rat-king, which,as the name suggests, delivers nice randomly sequences. Also
+-we have a new mixer module, self-build.
+-We also utilize both VCOs and both LFO modules...
++Diesmal gibt es einen verschachtelten Patch mit einem neuen Mitglied: dem Random-Sequencer
++von Rat King, der, wie der Name schon sagt, schöne zufällige Sequenzen liefert. Außerdem
++ist ein neues, selbst gebautes Mixer-Modul dabei.
++Wir verwenden beide VCOs und beide LFO-Module...
+ 
+-image:./jam_session.jpg[jam session ]
++image:./jam_session.jpg[Jam-Session]
+ 
+-link:./jam_session.m4a[jam session Audio]
++link:./jam_session.m4a[Jam-Session Audio]
+diff --git a/content/de/posts/synth/16-noise-floor/index.adoc b/content/de/posts/synth/16-noise-floor/index.adoc
+index e20b3df..a6cdd3e 100644
+--- a/content/de/posts/synth/16-noise-floor/index.adoc
++++ b/content/de/posts/synth/16-noise-floor/index.adoc
+@@ -1,15 +1,15 @@
+ ---
+-title: "Eurorack Synthesizer - Noise Floor"
++title: "Eurorack-Synthesizer – Noise Floor"
+ date: 2023-09-24
+ tags: ["audio", "Synth"]
+ draft: false
+ type: blog
+ aliases: ["/posts/synth/16_noise_floor/"]
+ ---
+-On my mobile setup, the NiftyVCase I have collected my diy modules (with excepition to the Doepfer
+-A-124, I had to include for its great sound). It features a kick-drum from erica synths, an even
+-VCO, Sampling Modulator, A*B+C and Rampage from Befaco. As well as the Divebomb III for some delay.
+-Last but not least a Zlon skew lfo and a BCM086 Diode Ladder High pass filter.
++In meinem mobilen Setup, dem NiftyVCase, habe ich meine selbst gebauten Module versammelt (mit Ausnahme des Doepfer
++A-124, den ich wegen seines großartigen Klangs unbedingt dabeihaben wollte). Mit dabei sind eine Kickdrum von Erica Synths sowie Even
++VCO, Sampling Modulator, A*B+C und Rampage von Befaco. Dazu der Divebomb III für etwas Delay.
++Und schließlich ein Zlon Skew LFO und ein BCM086 Diode-Ladder-Hochpassfilter.
+ 
+ 
+ image:./noise_floor.jpg[noise floor]
+diff --git a/content/de/posts/web/26-get-the-nandlab-go-board-ready/index.adoc b/content/de/posts/web/26-get-the-nandlab-go-board-ready/index.adoc
+index 179aefb..cae87d9 100644
+--- a/content/de/posts/web/26-get-the-nandlab-go-board-ready/index.adoc
++++ b/content/de/posts/web/26-get-the-nandlab-go-board-ready/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "FPGA 101: Get the Nandland Go board ready on Debian Bullseye"
++title: "FPGA 101: Das Nandland Go Board unter Debian Bullseye einrichten"
+ date: 2024-03-10
+ tags: ["fpga","beginners", "Lattice","Nandland Go", "IceCube2", "debian"]
+ draft: false
+diff --git a/content/de/posts/web/30-hugo-move-to-gh-pages/index.adoc b/content/de/posts/web/30-hugo-move-to-gh-pages/index.adoc
+index 727abd6..16cac5b 100644
+--- a/content/de/posts/web/30-hugo-move-to-gh-pages/index.adoc
++++ b/content/de/posts/web/30-hugo-move-to-gh-pages/index.adoc
+@@ -1,5 +1,5 @@
+ ---
+-title: "Move Hugo Web-presence to GH-Pages"
++title: "Den Hugo-Webauftritt auf GitHub Pages umziehen"
+ date: 2025-03-16
+ tags: ["hugo", "web", "gh-pages", "gh-actions"]
+ draft: false
+@@ -12,6 +12,57 @@ Obwohl es nur ein paar Dollar kostet, dachte ich, es wäre an der Zeit, weiterzu
+ 
+ *Edit vom 20-04-2025: Zuvor hatte ich einen Makefile-basierten Ansatz, aber das war nicht der ideale Weg, also habe ich es jetzt geändert, um stattdessen github actiosn zu verwenden*
+ 
++Zunächst ein Blick auf den Verzeichnisbaum, um zu zeigen, wie die einzelnen Teile zusammenhängen:
++
++----
++sven@debian:~/development/hugo$ tree -L 2
++.
++├── config.toml
++├── content
++│   ├── de
++│   └── en
++├── public
++│   ├── 404.html
++│   ├── about
++│   ├── About _ Interdependent_files
++│   ├── agenda.png
++│   ├── book.min.a638a97f489029f3eda833b0905717d5a2da0b571423db855dd7ce4336238e77.css
++│   ├── categories
++│   ├── de
++│   ├── de.search-data.min.cc10ee5d6f454883af3d2c31576a2ad90ef1ecae0a79fd2f36e9af9fb3ff3c84.json
++│   ├── de.search.min.2adf38a9a0cb592541f5b8f227b9091ac117d1667e43dca86a4d336f453b4606.js
++│   ├── docs
++│   ├── drafts
++│   ├── en
++│   ├── en.search-data.min.b083db226cd7541947b6dd0fdf7a563f455a790763f341883dc37963899504c8.json
++│   ├── en.search.min.004100e27f248b7e46aef29f1b0ae4e8d53aed5c868e797c8696fa00f834cd5f.js
++│   ├── favicon.png
++│   ├── favicon.svg
++│   ├── flexsearch.min.js
++│   ├── fonts
++│   ├── index.html
++│   ├── index.xml
++│   ├── katex
++│   ├── Makefile
++│   ├── manifest.json
++│   ├── mermaid.min.js
++│   ├── pages
++│   ├── posts
++│   ├── sitemap.xml
++│   ├── svg
++│   └── tags
++├── resources
++│   └── _gen
++└── themes
++    └── hugo-book
++
++----
++
++Wie man sieht, ist das public-Verzeichnis hier bereits befüllt dargestellt. Zuoberst liegt die config.toml (das könnte auch eine .yaml sein,
++aber ich habe nun einmal mit toml angefangen, egal). Dann folgt das content-Verzeichnis mit den verschiedenen Sprachen (hier Deutsch und
++Englisch). Danach kommt ein resources-Verzeichnis mit generierten Assets. Und zu guter Letzt das themes-Verzeichnis,
++hier mit dem Theme hugo-book...
++
+ Wir beginnen mit der Workflow-Datei deploy.yml . Mein neues Setup sieht wie folgt aus:
+ 
+ ----
+-- 
+2.43.0
+
