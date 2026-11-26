@@ -1,60 +1,70 @@
-// ---
-// title: "Compiling Kicad on Debian Bullseye"
-// date: 2024-03-10
-// tags: ["kicad","ecad","eda", "debian"]
-// draft: false
-// type: blog
-// ---
-//
-// With my new hobby, there came the desire to learn to build and design my own PCB. With that in mind, I began to use the
-// open source ecad solution Kicad. Now I became interested in participating in this project, but, to compile the code you
-// have endure a few challenges - you know, collecting the dependencies,installing them, choose the right branch whiche compiles down
-// and so on. Here I want to show you my experience with that.
-//
-// First, clone the gitlab repository:
-//
-//     git clone https://gitlab.com/kicad/code/kicad.git
-//     git checkout 8.0
-//
-// Then, you need to install a couple of dependencies I list them in a hopefully complete list
-//
-//     sudo apt-get install cmake libgl-dev libglew-dev libcurl4-openssl-dev ngspice xfonts-scalable libocct-data-exchange-dev
-//     libocct-draw-dev libocct-foundation-dev libocct-modeling-algorithms-dev libocct-modeling-data-dev libocct-ocaf-dev
-//     libocct-visualization-dev protobuf-compiler libprotobuf-dev swig python3 python3-pip libwxgtk3.0-gtk3-dev
-//     unixodbc unixodbc-dev libsecret1
-//
-//
-// But cmake and wxwidgets both are too old under Debian Bullseye,so you need to install them separately...
-//
-// For cmake it is straightforward, you clone the repository and build the program from source:
-//
-//     git clone https://github.com/Kitware/CMake.git
-//     cd CMake
-//     ./bootstrap && make && sudo make install
-//
-// For wxwidgets its a bit harder, you clone the repository with:
-//
-//     git clone https://github.com/wxWidgets/wxWidgets.git
-//     git checkout v3.2.4
-//     cd wxWidgets/
-//     git submodule update --init src/jpeg
-//     git submodule update --init src/tiff
-//     git submodule update --init src/stc/scintilla
-//     git submodule update --init 3rdparty/catch
-//     git submodule update --init 3rdparty/nanosvg
-//     mkdir buildgtk
-//     cd buildgtk/
-//     ../configure --with-gtk --prefix=/usr
-//     make -j3
-//     sudo make install
-//
-//
-//
-// Now you are finally ready to build Kicad itself...
-//
-//     git clone https://gitlab.com/kicad/code/kicad.git
-//     git checkout 8.0
-//     mkdir -p build/release
-//     cmake  -DCMAKE_BUILD_TYPE=RelWithDebInfo -DKICAD_USE_EGL=ON -DKICAD_WAYLAND=OFF  ../../
-//     make -j3
-//
+---
+title: "KiCad unter Debian Bookworm kompilieren"
+date: 2024-03-10
+tags: ["kicad","ecad","eda", "debian"]
+draft: false
+type: blog
+---
+
+*Dies ist eine aktualisierte Fassung des Blogbeitrags vom 08.05.2025, damit Sie auch die neueste Version von KiCad samt Abhängigkeiten kompilieren können.*
+
+Mit meinem neuen Hobby kam der Wunsch, eigene Platinen entwerfen und bauen zu lernen. Deshalb habe ich angefangen, die
+Open-Source-ECAD-Lösung KiCad zu nutzen. Inzwischen möchte ich mich auch an dem Projekt beteiligen, aber um den Code zu kompilieren,
+muss man ein paar Hürden nehmen: die Abhängigkeiten zusammensuchen und installieren, den richtigen Branch wählen, der sich auch
+tatsächlich kompilieren lässt, und so weiter. Hier möchte ich meine Erfahrungen damit teilen.
+
+Klonen Sie zuerst das GitLab-Repository:
+
+    git clone https://gitlab.com/kicad/code/kicad.git
+    git checkout 9.0
+
+Anschließend müssen Sie einige Abhängigkeiten installieren. Hier eine hoffentlich vollständige Liste:
+
+    sudo apt-get install cmake libgl-dev libglew-dev libcurl4-openssl-dev ngspice xfonts-scalable libocct-data-exchange-dev \
+    libocct-draw-dev libocct-foundation-dev libocct-modeling-algorithms-dev libocct-modeling-data-dev libocct-ocaf-dev \
+    libocct-visualization-dev protobuf-compiler libprotobuf-dev swig python3 python3-pip libwxgtk3.0-gtk3-dev \
+    unixodbc unixodbc-dev libsecret1 libgl-dev libglu1-mesa-dev freeglut3-dev libglew-dev libglm-dev libnng-dev
+
+Zuerst bauen wir Protobuf (wir verwenden eine getaggte Version, um Probleme mit Abseil und utf8_range zu vermeiden):
+
+    # Build-Werkzeuge installieren
+    sudo apt install cmake git g++ autoconf automake libtool curl make unzip
+
+    # Protobuf klonen und bauen
+    cd software
+    git clone https://github.com/protocolbuffers/protobuf.git
+    cd ./protobuf
+    git fetch --tags
+    git checkout v21.12
+
+    # Alte Builds entfernen
+    rm -rf build CMakeCache.txt
+    mkdir build && cd build
+
+    cmake .. \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/protobuf \
+      -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+      -Dprotobuf_BUILD_TESTS=OFF
+
+    make -j8
+    sudo make install
+
+Jetzt können Sie endlich KiCad selbst bauen...
+
+    git clone https://gitlab.com/kicad/code/kicad.git
+    git checkout 8.0
+    mkdir -p build/release
+    cd build/release
+    cmake ../.. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/opt/kicad \
+    -DUSE_GLEW=ON \
+    -DGLEW_INCLUDE_DIR=/usr/include/GL \
+    -DGLEW_LIBRARY=/usr/lib/x86_64-linux-gnu/libGLEW.so \
+    -DGLU_LIBRARY=/usr/lib/x86_64-linux-gnu/libGLU.so \
+    -DOPENGL_gl_LIBRARY=/usr/lib/x86_64-linux-gnu/libGL.so \
+    -DOPENGL_INCLUDE_DIR=/usr/include/GL
+    make -j8
+    sudo make install
+
