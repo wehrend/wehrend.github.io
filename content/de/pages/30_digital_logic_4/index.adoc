@@ -1,0 +1,39 @@
+---
+title: "Wie funktioniert eine CPU? – Teil 4: Schneller rechnen"
+date: 2026-11-26
+tags: ['draft']
+category: "digital_logik_4"
+link:
+description: "Performance, Pipelining, Hazards und Out-of-Order-Ausführung - wie moderne CPUs mehr Befehle pro Sekunde schaffen."
+bookHidden: true
+overview: true
+icon: "svg/pipeline.svg"
+planned:
+  - slug: "31_performance"
+    title: "Performance messen"
+    summary: "CPU-Zeit = Befehle × CPI × Taktperiode, das Gesetz von Amdahl - und warum unsere Single-Cycle-CPU langsam ist."
+  - slug: "32_pipelining"
+    title: "Pipelining"
+    summary: "Fünf Stufen, Pipeline-Register, Durchsatz und Latenz - die Pipeline in Verilog."
+  - slug: "33_data_hazards"
+    title: "Datenhazards"
+    summary: "Wenn ein Befehl ein Ergebnis braucht, das noch nicht fertig ist: Forwarding, Stalls und die Hazard-Einheit."
+  - slug: "34_control_hazards"
+    title: "Steuerhazards"
+    summary: "Sprünge in der Pipeline: Flush, frühere Entscheidung und Sprungvorhersage."
+  - slug: "35_tomasulo"
+    title: "Out-of-Order-Ausführung und Tomasulo"
+    summary: "Befehle außer der Reihe ausführen: Register-Renaming, Reservation Stations und der Common Data Bus."
+  - slug: "36_speculation"
+    title: "Spekulation und Reorder Buffer"
+    summary: "Ausführen, bevor es sicher ist: der Reorder Buffer, präzise Exceptions und ein Blick auf superskalare CPUs."
+---
+
+== Wie funktioniert eine CPU 4 - Inhaltsverzeichnis
+
+Am Ende von Teil 3 läuft unsere CPU auf einem echten FPGA - aber langsam: Jeder Befehl braucht einen langen Takt,
+und der langsamste Befehl bestimmt, wie lang dieser Takt ist. Die meisten Teile der CPU haben die meiste Zeit nichts zu tun.
+
+In Teil 4 sehen wir uns an, wie echte Prozessoren schneller werden: Zuerst lernen wir, Performance zu messen,
+dann teilen wir die CPU in Stufen auf, die gleichzeitig arbeiten (Pipelining), und lösen die Probleme, die dabei entstehen (Hazards).
+Zum Schluss sehen wir, wie Prozessoren Befehle außer der Reihe ausführen - und sogar, bevor feststeht, ob sie überhaupt gebraucht werden.
