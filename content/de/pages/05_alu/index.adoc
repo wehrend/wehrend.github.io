@@ -215,7 +215,7 @@ image:./overflow_detection_gates.png[width=400]
 
 
 
-Multiplexer und Demultiplexer
+=== Multiplexer und Demultiplexer
 
 Um eine Leitung aus mehreren Quellen auszuwählen,
  benötigen wir eine weitere Schlüsselkomponente, den Multiplexer.

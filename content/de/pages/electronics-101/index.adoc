@@ -325,24 +325,6 @@ Betrachten wir eine typische Netzkonfiguration und wenden wir Kirchhoffs erstes 
 
 image:./example.svg[Beispiel svg]
 
-==== Kirchhoffsches zweites Gesetz
-
-Das zweite Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Spannungen in einem Netz ist gleich Null:
-
-
-[role="image","./kirchhoff_law2.svg" ,imgfmt="svg"]
-\large \[ \sum_{i=1}^{n} U_i = 0\]
-
-Ein Netz ist jeder geschlossene Stromkreis in einer Schaltung. Für jedes Netz gilt dasselbe wie für eine unverzweigte Schaltung:
-Die Summe aller Spannungen ist gleich Null, da die Ladung nach Abschluss eines Stromkreises wieder auf das gleiche Potenzial wie am Ausgangspunkt zurückgekehrt ist..
-
-
-==== Beispiel
-
-Betrachten wir eine typische Netzkonfiguration und wenden wir Kirchhoffs erstes und zweites Gesetz darauf an.
-
-image:./example.svg[Beispiel svg]
-
 ==== Lösung:
 
 ===== 1. Erstes kirchhoffsches Gesetz

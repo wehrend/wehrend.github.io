@@ -164,7 +164,7 @@ Beachten Sie bei der Zuweisung der Busbreite unter „Eigenschaften“, dass die
 
 image:./quartus_counter_schematic_3.png[Quartus - Counter.bdf 3]
 
-iamge:./quartus_counter_schematic_4.png[Quartus - Counter.bdf 4]
+image:./quartus_counter_schematic_4.png[Quartus - Counter.bdf 4]
 
 image:./quartus_counter_schematic_5.png[Quartus - Counter.bdf 5]
 

@@ -35,7 +35,7 @@ link:./pom400_patch_idea0.mp4[POM 400 Video]
 
 image:./patch_idea_song_from_tibet.jpg[Song from Tibet]
 
-Link:./song_from_tibet.mp4[Song from Tibet Video]
+link:./song_from_tibet.mp4[Song from Tibet Video]
 
 '''
 

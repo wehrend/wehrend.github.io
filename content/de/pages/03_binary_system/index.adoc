@@ -192,7 +192,7 @@ die Konzepte vorgestellt.
 
 *Ripple-Carry-Addierer*
 
-iamge:./fulladder_array.svg[width=„120%“]
+image:./fulladder_array.svg[width="120%"]
 
 *Carry-Lookahead Adder*
 

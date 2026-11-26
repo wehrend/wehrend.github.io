@@ -436,7 +436,7 @@ int main(int argc, char* argv[]) {
     SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
 
     // Wir brauchen dieses Fenster, damit das Betriebssystem weiß, wohin es die Tastaturereignisse senden soll
-    SDL_Window* window = SDL_CreateWindow(„Synth Focus“, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 300, 200, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("Synth Focus", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 300, 200, SDL_WINDOW_SHOWN);
 
     SynthEngine engine;
     // ... SDL-Audio-Einrichtung ...

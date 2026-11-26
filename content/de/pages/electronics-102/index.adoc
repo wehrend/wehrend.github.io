@@ -294,22 +294,22 @@ plt.figure(figsize=(10, 6))
 
 # Verstärkungsdiagramm (Betrag)
 plt.subplot(2, 1, 1)
-plt.semilogx(frequency, gain_db, label=‚Verstärkung (dB)‘)
-plt.ylabel(‚Verstärkung (dB)‘)
-plt.title(‚Bode-Diagramm eines Tiefpassfilters erster Ordnung‘)
-plt.grid(which=‚both‘, axis=‚both‘, linestyle=‚--‘)
+plt.semilogx(frequency, gain_db, label='Verstärkung (dB)')
+plt.ylabel('Verstärkung (dB)')
+plt.title('Bode-Diagramm eines Tiefpassfilters erster Ordnung')
+plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
 # Phasendiagramm
 plt.subplot(2, 1, 2)
-plt.semilogx(frequency, phase_deg, label=‚Phase (Grad)‘)
-plt.xlabel(‚Frequenz (Hz)‘)
-plt.ylabel(‚Phase (Grad)‘)
-plt.grid(which=‚both‘, axis=‚both‘, linestyle=‚--‘)
+plt.semilogx(frequency, phase_deg, label='Phase (Grad)')
+plt.xlabel('Frequenz (Hz)')
+plt.ylabel('Phase (Grad)')
+plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
 plt.tight_layout()
-plt.savefig(‚lowpass_bode_phase.svg‘, format=‚svg‘)
+plt.savefig('lowpass_bode_phase.svg', format='svg')
 plt.show()
 
 # --- S-PLANE POLE-ZERO PLOT ---------------------------------------------
@@ -330,20 +330,20 @@ plt.axvline(0, linewidth=0.5, zorder=0)
 
 # Pol(e) – gut sichtbar machen
 plt.scatter(pole_real, pole_imag,
-            marker=‚x‘, s=150,
-            label=‚Pole‘, zorder=3)
+            marker='x', s=150,
+            label='Pole', zorder=3)
 
 # Hier gäbe es theoretisch keine endliche Nullstelle.
 # Wenn du eine hypothetische Nullstelle plotten willst, kannst du z.B. s = ∞ nicht darstellen,
 # daher lassen wir sie weg.
 
-plt.xlabel(‚Re{s}‘)
-plt.ylabel(‚Im{s}‘)
-plt.title(‚Pole-Zero Plot (s-plane) of 1st-Order Low-Pass‘)
-plt.grid(True, linestyle=‚--‘)
+plt.xlabel('Re{s}')
+plt.ylabel('Im{s}')
+plt.title('Pole-Zero Plot (s-plane) of 1st-Order Low-Pass')
+plt.grid(True, linestyle='--')
 plt.legend()
 plt.tight_layout()
-plt.savefig(‚lowpass_pz_plot.svg‘, format=‚svg‘)
+plt.savefig('lowpass_pz_plot.svg', format='svg')
 plt.show()
 {{</highlight>}}
 ----
@@ -440,24 +440,24 @@ plt.figure(figsize=(10, 6))
 
 # Verstärkungsdiagramm (Betrag)
 plt.subplot(2, 1, 1)
-plt.semilogx(frequency, gain_db, label=‚Verstärkung (dB)‘)
-plt.ylabel(‚Verstärkung (dB)‘)
-plt.title(‚Bode-Diagramm eines Hochpassfilters erster Ordnung‘)
-plt.grid(which=‚both‘, axis=‚both‘, linestyle=‚--‘)
+plt.semilogx(frequency, gain_db, label='Verstärkung (dB)')
+plt.ylabel('Verstärkung (dB)')
+plt.title('Bode-Diagramm eines Hochpassfilters erster Ordnung')
+plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
 # Phasendiagramm
 plt.subplot(2, 1, 2)
-plt.semilogx(frequency, phase_deg, label=‚Phase (Grad)‘)
-plt.xlabel(‚Frequenz (Hz)‘)
-plt.ylabel(‚Phase (Grad)‘)
-plt.grid(which=‚both‘, axis=‚both‘, linestyle=‚--‘)
+plt.semilogx(frequency, phase_deg, label='Phase (Grad)')
+plt.xlabel('Frequenz (Hz)')
+plt.ylabel('Phase (Grad)')
+plt.grid(which='both', axis='both', linestyle='--')
 plt.legend()
 
 plt.tight_layout()
 
 # Speichern Sie das Bode-Diagramm als SVG-Datei.
-plt.savefig(‚highpass_bode_diagram.svg‘, format=‚svg‘)
+plt.savefig('highpass_bode_diagram.svg', format='svg')
 
 # Optional können Sie das Bode-Diagramm anzeigen.
 plt.show()
@@ -480,23 +480,23 @@ plt.axvline(0, linewidth=0.5, zorder=0)
 
 # Pol(e) – etwas größer und nach vorne
 plt.scatter(pole_real, pole_imag,
-            marker=‚x‘, s=150,
-            label=‚Pole‘, zorder=3)
+            marker='x', s=150,
+            label='Pole', zorder=3)
 
 # Nullstelle(n) – deutlich sichtbar
 plt.scatter(zero_real, zero_imag,
-            marker=‚o‘, s=150,
-            facecolors=‚none‘, edgecolors=‚red‘,
+            marker='o', s=150,
+            facecolors='none', edgecolors='red',
             linewidths=2,
-            label=‚Zero‘, zorder=4)
+            label='Zero', zorder=4)
 
-plt.xlabel(‚Re{s}‘)
-plt.ylabel(‚Im{s}‘)
-plt.title(‚Pole-Zero Plot (s-Ebene) eines Hochpassfilters erster Ordnung‘)
-plt.grid(True, linestyle=‚--‘)
+plt.xlabel('Re{s}')
+plt.ylabel('Im{s}')
+plt.title('Pole-Zero Plot (s-Ebene) eines Hochpassfilters erster Ordnung')
+plt.grid(True, linestyle='--')
 plt.legend()
 plt.tight_layout()
-plt.savefig(‚highpass_pz_plot.svg‘, format=‚svg‘)
+plt.savefig('highpass_pz_plot.svg', format='svg')
 plt.show()
 
 {{</highlight>}}

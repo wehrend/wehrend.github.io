@@ -64,7 +64,7 @@ Wie sich herausstellt, tritt dieser Fehler nur auf, weil Debian den Namen der Ne
 jedoch erwartet, dass er an dieser Stelle steht. Er schreibt ihn sogar selbst auf die Support-Seite, wenn Sie Lizenzprobleme eingeben:
 
 ----
-"--Wenn Sie die Fehlermeldung ‚Ungültiger Host. Die Host-ID dieses Systems stimmt nicht mit der Host-ID überein (Fehlercode -9)‘ erhalten, da Lattice-Tools den fest codierten Netzwerkschnittstellennamen (eth0) verwenden und der aktive Netzwerkschnittstellenname auf dem System auf einen anderen als eth0 eingestellt ist, kann die Lizenzdatei nicht überprüft werden und der obige Fehler wird generiert. Um dies zu vermeiden, müssen Sie den aktiven Netzwerkschnittstellennamen wie folgt in eth0 umbenennen:
+"--Wenn Sie die Fehlermeldung 'Ungültiger Host. Die Host-ID dieses Systems stimmt nicht mit der Host-ID überein (Fehlercode -9)' erhalten, da Lattice-Tools den fest codierten Netzwerkschnittstellennamen (eth0) verwenden und der aktive Netzwerkschnittstellenname auf dem System auf einen anderen als eth0 eingestellt ist, kann die Lizenzdatei nicht überprüft werden und der obige Fehler wird generiert. Um dies zu vermeiden, müssen Sie den aktiven Netzwerkschnittstellennamen wie folgt in eth0 umbenennen:
 
 1). Führen Sie den folgenden Befehl mit Root-Rechten aus:
 
@@ -74,13 +74,13 @@ b). vi 70-persistent-net.rules
 
 In der Datei 70-persistent-net.rules sehen Sie einen Wert wie:
 
-NAME =„<active NIC name (for example p6p1,em1 etc)“ ändern Sie ihn in NAME=„eth0“ und speichern Sie die Datei
+NAME ="<active NIC name (for example p6p1,em1 etc)" ändern Sie ihn in NAME="eth0" und speichern Sie die Datei
 
 2). Starten Sie das System neu.
 
 --Bitte überprüfen Sie, ob die MAC-Adresse, die Sie auf unserer Website erhalten haben, die MAC-ID Ihrer Ethernet-LAN-Karte ist.
 
---Bevor Sie den Fall einreichen, geben Sie uns bitte die Informationen zur Linux-Version, einen Screenshot der Fehlermeldung, einen Screenshot des Befehls „ifconfig -a“ und Ihre aktuelle Lizenz.
+--Bevor Sie den Fall einreichen, geben Sie uns bitte die Informationen zur Linux-Version, einen Screenshot der Fehlermeldung, einen Screenshot des Befehls "ifconfig -a" und Ihre aktuelle Lizenz.
 
 "
 ----
@@ -92,7 +92,7 @@ nano /etc/udev/rules.d/70-persistent-net.rules
 
 und geben Sie den folgenden Text ein – natürlich mit Ihrer physischen Mac-Adresse/Host-ID, wie in ip addr show angezeigt:
 
-    SUBSYSTEM==„net“, ACTION==„add“, DRIVERS==„?*“, ATTR{address}==„<your-mac-address>“, ATTR{dev_id}==„0x0“, ATTR{type}==„1“,
+    SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="<your-mac-address>", ATTR{dev_id}=="0x0", ATTR{type}=="1",
 KERNEL==„enp11s*“, NAME=„eth0“
 
 Schließen Sie dann die Datei und starten Sie den Computer neu. Beim nächsten Öffnen von icecube2 sollte es funktionieren und wie erwartet starten.

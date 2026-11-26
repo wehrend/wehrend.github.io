@@ -107,10 +107,10 @@ Die Exklusiv-Oder-Operation xor, die auch als Antivalenz bezeichnet wird,
 | 0 | 0 | 0
 | 0 | 1 | 1
 | 1 | 0 | 1
-| 1 | 1 | 1 | 0 | 1
-| =================
+| 1 | 1 | 0
+|================
 
-Bild:./images/how_does_cpu/xor_symbol.svg[width=200]
+image:../images/how_does_cpu/xor_symbol.svg[width=200]
 
 Es gibt viele wichtige Anwendungen für die Exklusiv-Oder-Operation,
  wie man es von einer so grundlegenden und fundamentalen Operation erwarten kann, aber dennoch
