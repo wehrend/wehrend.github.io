@@ -6,3 +6,4 @@ resources/
 *.log
 *.net
 *.plt
+*.patch
