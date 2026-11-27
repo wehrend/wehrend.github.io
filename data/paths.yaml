@@ -9,6 +9,7 @@
     - /pages/electronics-100
     - /pages/000_digital_logic_1
     - /pages/10_digital_logic_2
+    - /pages/20_digital_logic_3
     - /pages/adc_dac
     - [/pages/mcu_vs_cpu, /pages/interrupts]
 
