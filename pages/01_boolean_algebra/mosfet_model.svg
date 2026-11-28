@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="150px"
+   height="100px"
+   viewBox="0.0 0.0 150.00 100.00"
+   viewPort="0 0 150 100"
+   version="1.1"
+   id="svg50"
+   sodipodi:docname="mosfet_model.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata56">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs54" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1381"
+     id="namedview52"
+     showgrid="false"
+     inkscape:zoom="11.200571"
+     inkscape:cx="62.540358"
+     inkscape:cy="85.995289"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg50" />
+  <rect
+     x="30"
+     y="30"
+     width="80"
+     height="30"
+     style="stroke:lightblue;fill:lightblue"
+     id="rect2" />
+  <path
+     style="fill:#008000;stroke:#008000;stroke-width:1.09754097"
+     d="m 53.031566,30.03737 v 8.131821 c 0,1.084218 -0.872854,1.957071 -1.957071,1.957071 H 34.988637 c -1.084217,0 -1.957071,-0.872853 -1.957071,-1.957071 V 30.03737 c 7.226653,0.02694 8.105356,0.01716 20,0 z"
+     id="rect4"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="csssscc" />
+  <text
+     x="77.62178"
+     y="38.112309"
+     font-size="6"
+     id="text10"
+     style="font-size:6px" />
+  <line
+     x1="60"
+     y1="29"
+     x2="80"
+     y2="29"
+     style="stroke:grey;"
+     id="line12" />
+  <text
+     x="78"
+     y="28"
+     font-size="4"
+     id="text14">SiO2</text>
+  <text
+     x="70"
+     y="50"
+     font-size="6"
+     id="text16"
+     style="font-size:6px">p</text>
+  <!--Source-->
+  <rect
+     x="38"
+     y="28"
+     width="10"
+     height="1"
+     style="stroke:black;fill:black"
+     id="rect18" />
+  <line
+     x1="43"
+     y1="18"
+     x2="43"
+     y2="28"
+     style="stroke:black"
+     id="line20" />
+  <circle
+     cx="43"
+     cy="16"
+     r="2"
+     style="stroke:black;fill:none"
+     id="circle22" />
+  <text
+     x="35"
+     y="10"
+     font-size="6"
+     id="text24">Source</text>
+  <!--Gate-->
+  <rect
+     x="65"
+     y="27"
+     width="10"
+     height="1"
+     style="stroke:black;fill:black"
+     id="rect26" />
+  <line
+     x1="70"
+     y1="18"
+     x2="70"
+     y2="28"
+     style="stroke:black"
+     id="line28" />
+  <circle
+     cx="70"
+     cy="16"
+     r="2"
+     style="stroke:black;fill:none"
+     id="circle30" />
+  <text
+     x="65"
+     y="10"
+     font-size="6"
+     id="text32">Gate</text>
+  <!--Drain-->
+  <rect
+     x="92"
+     y="28"
+     width="10"
+     height="1"
+     style="stroke:black;fill:black"
+     id="rect34" />
+  <line
+     x1="97"
+     y1="18"
+     x2="97"
+     y2="28"
+     style="stroke:black"
+     id="line36" />
+  <circle
+     cx="97"
+     cy="16"
+     r="2"
+     style="stroke:black;fill:none"
+     id="circle38" />
+  <text
+     x="90"
+     y="10"
+     font-size="6"
+     id="text40">Drain</text>
+  <!--Bulk-->
+  <line
+     x1="30"
+     y1="61"
+     x2="110"
+     y2="61"
+     style="stroke:black;stroke-width:2px;stroke-linecap:butt;fill:none;"
+     id="line42" />
+  <line
+     x1="70"
+     y1="62"
+     x2="70"
+     y2="70"
+     style="stroke:black"
+     id="line44" />
+  <circle
+     cx="70"
+     cy="72"
+     r="2"
+     style="stroke:black;fill:none"
+     id="circle46" />
+  <text
+     x="65"
+     y="80"
+     font-size="6"
+     id="text48">Bulk</text>
+  <path
+     style="fill:#008000;stroke:#008000;stroke-width:1.09754097"
+     d="m 107.19065,30.026023 v 8.131821 c 0,1.084218 -0.87285,1.957071 -1.95707,1.957071 H 89.147728 c -1.084217,0 -1.957071,-0.872853 -1.957071,-1.957071 v -8.131821 c 7.226653,0.02694 8.105357,0.01716 19.999993,0 z"
+     id="rect4-3"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="csssscc" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:6.66666667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+     x="95.887962"
+     y="35.806847"
+     id="text887"><tspan
+       sodipodi:role="line"
+       id="tspan885"
+       x="95.887962"
+       y="35.806847">n</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:6.66666651px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     x="40.81208"
+     y="35.441677"
+     id="text887-3"><tspan
+       sodipodi:role="line"
+       id="tspan885-6"
+       x="40.81208"
+       y="35.441677">n</tspan></text>
+</svg>

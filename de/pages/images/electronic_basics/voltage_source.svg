@@ -1,0 +1,13 @@
+<svg width="50.00" height="50.00" 
+     viewBox="0.0 0.0 50.0 50.0" 
+     viewPort="0 0 50px 50px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <circle cx="15" cy="25" r="9" style="stroke:black;fill:white;"/>
+    <line x1="15" y1="5" x2="15" y2="45" style="stroke:black;"/>
+    <line x1="30" y1="18" x2="30" y2="31" style="stroke:black;"/>
+    <polygon points="28,28 32,28 30,32 28,28" style="fill:black;"/> 
+    <text x="32" y="30" font-size="5">U</text>
+    <text x="36" y="30" font-size="3">q</text>
+</svg>

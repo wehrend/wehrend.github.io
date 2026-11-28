@@ -1,0 +1,44 @@
+<svg width="120.0" height="70.0" viewBox="0.0 0.0 120.0 70.0"
+     xmlns="http://www.w3.org/2000/svg" 
+     version="1.1">
+    <defs>
+        <marker id="arrow" markerWidth="5" markerHeight="8" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L3,3z" fill="black" />
+        </marker>
+    </defs>
+    <symbol id="register">
+        <rect x="18" y="10" width="14" height="25" style="fill:lightskyblue;stroke:black;stroke-width:0.5px;"/>
+        <polyline points="18,10 21,14 24,10 18,10" style="fill:lightskyblue;stroke:black;stroke-width:0.5px;"/>
+        <text x="19.2" y="24" font-size="3.5">Speicher</text>
+        <text x="19.2" y="30" font-size="3.5">n-Bit</text>
+    </symbol>
+    <rect x="10" y="10" width="100"  height="50" style="fill:lightgreen;stroke:black;stroke-width:0.5px;"/>
+    <text x="4" y="35" font-size="4">m</text>
+    <text x="7" y="36" font-size="8">:</text>
+    <line x1="5" y1="30" x2="115" y2="30" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <line x1="5" y1="38" x2="115" y2="38" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <rect x="20" y="24" width="20" height="20" style="fill:white;stroke:black;stroke-width:0.5px;"/>
+    <text x="26" y="36" font-size="8">δ</text>
+    <text x="44" y="35" font-size="4">n</text>
+    <text x="47" y="36" font-size="8">:</text>
+    <text x="52" y="5" font-size="3.5">Takt</text>
+    <line x1="54" y1="5" x2="54" y2="25" style="fill:lightskyblue;stroke:black;stroke-width:0.5px;" />
+    <use x="33" y="10" href="#register"/>
+    <text x="74" y="35" font-size="4">n</text>
+    <text x="77" y="36" font-size="8">:</text>
+    <rect x="80" y="24" width="20" height="20" style="fill:white;stroke:black;stroke-width:0.5px;"/>
+    <text x="87" y="36" font-size="8">ω</text>
+    <text x="115" y="35" font-size="4">o</text>
+    <text x="112" y="36" font-size="8">:</text>
+    <circle cx="68" cy="30" r="0.5px" style="fill:black;stroke:black;"/>
+    <circle cx="72" cy="38" r="0.5px" style="fill:black;stroke:black;"/>
+    <polyline points="68,30 68,50 31,50 31,44" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="72,38 72,54 25,54 25,44" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <text x="26" y="46" font-size="8">..</text>
+    <text x="40" y="65" font-size="6">Mealy Automat</text>
+
+    <circle cx="18" cy="30" r="0.5px" style="fill:black;stroke:black;"/>
+    <circle cx="14" cy="38" r="0.5px" style="fill:black;stroke:black;"/>
+    <polyline points="18,30 18,17 92,17 92,24" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    <polyline points="14,38 14,14 96,14 96,24" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+</svg>

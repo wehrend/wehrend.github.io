@@ -1,0 +1,10 @@
+// Example program from chapters 15 and 17: counts from 1 to 10
+// and writes every value to data memory address 4.
+// One instruction (32 bit) per line, starting at address 0x00.
+00000093  // 0x00:        addi x1, x0, 0      x1 = 0  (counter)
+00100113  // 0x04:        addi x2, x0, 1      x2 = 1  (step)
+00a00193  // 0x08:        addi x3, x0, 10     x3 = 10 (end value)
+002080b3  // 0x0C: loop:  add  x1, x1, x2     x1 = x1 + x2
+00102223  // 0x10:        sw   x1, 4(x0)      memory[4] = x1
+fe309ce3  // 0x14:        bne  x1, x3, loop   offset -8
+00000063  // 0x18: done:  beq  x0, x0, done   endless loop, offset 0

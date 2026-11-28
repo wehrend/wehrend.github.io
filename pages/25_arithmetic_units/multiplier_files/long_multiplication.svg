@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="396" viewBox="0 0 720 396" font-family="Liberation Serif, Times New Roman, serif">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="black"/></marker></defs>
+<text x="30" y="30" font-size="17" text-anchor="start" fill="black" font-weight="bold">Long multiplication in binary: 13 · 11 = 143</text>
+<text x="330" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="308" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="286" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="264" y="80" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="370" y="80" font-size="14" text-anchor="start" fill="black" >a = 13 (multiplicand)</text>
+<text x="238" y="112" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace">×</text>
+<text x="330" y="112" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="308" y="112" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="286" y="112" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="264" y="112" font-size="18" text-anchor="middle" fill="black" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="370" y="112" font-size="14" text-anchor="start" fill="black" >b = 11 (multiplier)</text>
+<line x1="164" y1="124" x2="342" y2="124" stroke="black" stroke-width="1.6"/>
+<text x="330" y="154" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="308" y="154" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="286" y="154" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="264" y="154" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="370" y="154" font-size="14" text-anchor="start" fill="#1a8a3a" >b0 = 1  →  a AND b0, shifted left by 0</text>
+<text x="308" y="186" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="286" y="186" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="264" y="186" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="242" y="186" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="330" y="186" font-size="18" text-anchor="middle" fill="#bbb" font-family="DejaVu Sans Mono, monospace">·</text>
+<text x="370" y="186" font-size="14" text-anchor="start" fill="#1a8a3a" >b1 = 1  →  a AND b1, shifted left by 1</text>
+<text x="286" y="218" font-size="18" text-anchor="middle" fill="#777" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="264" y="218" font-size="18" text-anchor="middle" fill="#777" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="242" y="218" font-size="18" text-anchor="middle" fill="#777" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="220" y="218" font-size="18" text-anchor="middle" fill="#777" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="330" y="218" font-size="18" text-anchor="middle" fill="#bbb" font-family="DejaVu Sans Mono, monospace">·</text>
+<text x="308" y="218" font-size="18" text-anchor="middle" fill="#bbb" font-family="DejaVu Sans Mono, monospace">·</text>
+<text x="370" y="218" font-size="14" text-anchor="start" fill="#777" >b2 = 0  →  a AND b2, shifted left by 2</text>
+<text x="264" y="250" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="242" y="250" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">0</text>
+<text x="220" y="250" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="198" y="250" font-size="18" text-anchor="middle" fill="#1a8a3a" font-family="DejaVu Sans Mono, monospace">1</text>
+<text x="330" y="250" font-size="18" text-anchor="middle" fill="#bbb" font-family="DejaVu Sans Mono, monospace">·</text>
+<text x="308" y="250" font-size="18" text-anchor="middle" fill="#bbb" font-family="DejaVu Sans Mono, monospace">·</text>
+<text x="286" y="250" font-size="18" text-anchor="middle" fill="#bbb" font-family="DejaVu Sans Mono, monospace">·</text>
+<text x="370" y="250" font-size="14" text-anchor="start" fill="#1a8a3a" >b3 = 1  →  a AND b3, shifted left by 3</text>
+<line x1="164" y1="262" x2="342" y2="262" stroke="black" stroke-width="1.6"/>
+<text x="330" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="308" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="286" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="264" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="242" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="220" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="198" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">0</text>
+<text x="176" y="288" font-size="18" text-anchor="middle" fill="#1f5fbf" font-family="DejaVu Sans Mono, monospace" font-weight="bold">1</text>
+<text x="370" y="288" font-size="14" text-anchor="start" fill="#1f5fbf" >sum of all rows = 143</text>
+<text x="30" y="332" font-size="14" text-anchor="start" fill="black" >Every row is a partial product: the multiplicand if the bit of b is 1, zeros if it is 0.</text>
+<text x="30" y="354" font-size="14" text-anchor="start" fill="black" >In binary, a partial product is just an AND of a with one bit of b.</text>
+<text x="30" y="376" font-size="14" text-anchor="start" fill="black" >4 bit · 4 bit gives up to 8 bit: the result needs twice as many bits (15 · 15 = 225).</text>
+</svg>

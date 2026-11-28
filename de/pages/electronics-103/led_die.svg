@@ -1,0 +1,55 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" role="img" aria-labelledby="title desc">
+  <title id="title">LED-Die Querschnitt</title>
+  <desc id="desc">Detailansicht des LED-Chips mit Substrat, n-Schicht, dünner p-Schicht, Bonddraht und Kontakten.</desc>
+
+  <style>
+    .label { font: 12px sans-serif; fill:#111; }
+    .callout { stroke:#444; stroke-width:1; fill:none; }
+    .dot { fill:#444; }
+  </style>
+
+  <!-- Substrat / Kathodenpad -->
+  <rect x="100" y="200" width="300" height="30" fill="#9aa3aa" stroke="#666"></rect>
+
+  <!-- LED-Chip (n-Schicht Hauptkörper) -->
+  <rect x="200" y="150" width="100" height="50" fill="#3a86ff" stroke="#1e3a8a" stroke-width="1.2"></rect>
+
+  <!-- Dünne p-Schicht (oben) -->
+  <rect x="200" y="140" width="100" height="10" fill="#ef4444" stroke="#991b1b" stroke-width="0.8"></rect>
+
+  <!-- Kontaktmetallisierung (oben auf p-Schicht) -->
+  <rect x="220" y="140" width="60" height="4" fill="#cbd5e1" stroke="#94a3b8"></rect>
+
+  <!-- Bonddraht zur Anode -->
+  <path d="M250 140 Q310 60 370 120" fill="none" stroke="#d4af37" stroke-width="3"></path>
+
+  <!-- Bondpad (Anodenanschluss) -->
+  <rect x="360" y="115" width="20" height="10" fill="#b8c0c7" stroke="#666"></rect>
+
+  <!-- Beschriftungen -->
+  <!-- Substrat -->
+  <circle class="dot" cx="120" cy="215" r="3"></circle>
+  <path class="callout" d="M120 215 L70 215"></path>
+  <text class="label" x="65" y="215" text-anchor="end">Substrat / Kathodenpad</text>
+
+  <!-- n-Schicht -->
+  <circle class="dot" cx="250" cy="175" r="3"></circle>
+  <path class="callout" d="M250 175 L140 185"></path>
+  <text class="label" x="135" y="185" text-anchor="end">n-Schicht</text>
+
+  <!-- p-Schicht -->
+  <circle class="dot" cx="250" cy="145" r="3"></circle>
+  <path class="callout" d="M250 145 L140 135"></path>
+  <text class="label" x="135" y="135" text-anchor="end">p-Schicht (dünn)</text>
+
+  <!-- Bonddraht -->
+  <circle class="dot" cx="310" cy="90" r="3"></circle>
+  <path class="callout" d="M310 90 L440 70"></path>
+  <text class="label" x="445" y="70">Bonddraht</text>
+
+  <!-- Bondpad -->
+  <circle class="dot" cx="370" cy="120" r="3"></circle>
+  <path class="callout" d="M370 120 L440 120"></path>
+  <text class="label" x="445" y="120">Bondpad / Anode</text>
+</svg>

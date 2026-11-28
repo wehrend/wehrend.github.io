@@ -1,0 +1,199 @@
+= Integrierte NF-Verstärker
+
+Vielbenötigte Elektronikfunktionen wie z.B. NF-Verstärker werden heute überwiegend nicht mehr aus "diskreten" (von lat. discretum = getrennt)
+Bauelementen aufgebaut, sondern durch integrierte Schaltugen (lat. integrare = vereinigen) ersetzt; ungangsprachlich heißen sie IC
+(von engl. integrated circuit = integrierte Schaltung). Besonders verbreitet sind die monolithisch integrierten Schaltungen (von griech. monos = ein,
+griech. lithos = Stein, Kristall). Hier sind auf einem einzigen Siliziumplättchen von einem oder wenigen mm² Größe in Planartechnik eine Fülle von
+Transistoren, Dioden, Widerständen und Kondensatoren kleiner Kapazität untergebracht, die zusammen eine Gesamtfunktion erfüllen, z.B.
+die eines kompletten NF-Verstärkers, Empfängers, Zeitschalters, Rechners, einer Uhr usw. Nur größere Bauelemente wie Kondensatoren großer Kapazität,
+Spulen, und natürlich die ausführenden Organe wie Lautsprecher, Ziffernanzeigen usw. werden diskret hinzugefügt. Integrierte Schaltungen
+arbeiten außerordentlich zuverlässig, denn in ihnen kann auf geringstem Raum ein elektronischer Aufwand getrieben werden, der mitr diskreten
+Bauelementen kaum zu finanzieren wäre. In einem IC kostet eine Transistorfunktion Zehntelcent.
+Auch in der Unterhaltungselektronik verdrängen ICs immer mehr diskret aufgebaute Schaltungen. Integrierte NF-VErstärker bestehen meist im
+Wesentlichen aus einem Operationsverstärker als Vorverstärker und einer Gegentaktendstufe. Eine besondere Eigenschaft des Operationsverstärkers
+ist seine als Diffferenzverstärker aufgebaute Eingangsstufe. Daher erörtern wir im folgenden zunächst das Prinzip des Differenzverstärkers,
+anschließend die Grundeigenschaften des Operationsverstärkers, soweit sie zum Verständnis der integrierten NF-BAusteine erforderlich ist.
+
+== Der Differenzverstärker
+
+Der Differenzverstärker besteht aus zwei Transistoren in Emittterschaltung. Die Kollektor-Emitter-Strecken der Transistoren sind
+steuerbare Widerstände. Die Schaltung bietet also eine Widerstandsbrücke, bestehend aus R1/T1 als linkem und R2/T2 als rechtem Spannungsteiler.
+Der gemeinsame Emitterwiderstand R_{E} dient zur Stabilisierung. Er kann auch durch eine weitere Transistorschaltung ersetzt werden.
+
+Die Brückendiagonale besteht zwischen den Ausgängen A1 und A2. Unter der Vorraussetzung, dass R1 unf R2 bzw. T1 und T2 untereinander gleich
+sind, befindet sich die Brücke so lange im Glecihgewicht (keine Spannung zwischen A1 und A2), wie die Basen die gleiche Steuerspannung erhalten,
+unabhängig davon, ob es sich um Gleich- oder Wechselspannung handelt. Bei gleicher Ansteuerung ändeert sich auch die Widerstände der Transistoren
+in gleicher Weise, daher ändern sich die Widerstandsverhältnisse der Brücke nicht. Der "Gleichtakt" der Steuerspannungen an E1 / E2
+wirkt sich in der Brückendiagonale A1 / A2 nicht aus. Die Gleichtaktunterdrückung ist eine der wichtigsten Eigenschaften des Differenzverstärkers-.
+
+image:./differential_amplifier.svg[width="450px"]
+
+Besteht aber zwischen den Eingägen eine Spannungsdifferenz, so steuern die Transistoren verschieden durch, d.h. sie ändern ihre Widerstandswerte
+unterschiedlich. Die Brücke gerät aus dem Gleichgewicht, und in der Brückendiagonale entsteht eine Spannungsdifferenz, die Ausgangsspannung U_{a}.
+U_{a} ist die verstärkte Differenz der Eingangsspannungen. Da dieser Verstärker nur die Spannungsdifferenz zwischen den Eingängen verstärkt,
+heißt er Differenzverstärker.
+
+Der Differenzverstärker diente ursprünglich als Meßverstärker, hat aber inzwischen wegen seiner hervorragenden Eigenschaften, insbesondere seiner
+Stabilität und der Gleichtaktunterdrückung alle Bereiche der analogen Schaltung erobert. Änderungen der Betriebsspannung wirken sich auf das Gleich-
+gewicht der Brücke nicht aus. In integrierten Schaltungen unterliegen beide Transistoren, wegen ihrer Unterbringung auf einem gemeinsamen Kristall
+den gleichen Temperaturänderungen, weswegen die Brücke weitgehend temperaturstabil ist.
+
+Die Bedeutung der Gleichtaktunterdrüclkung sei an einem Beispiel erläutert: Zwischen den Meßwertaufnehmern eines Rauchdichtemessers, einer
+Temperaturüberwachung, eines EKG-Geräts usw. liegen in der Regel größere Entfernungen, die mit entsprechend langen Leitungen überbrückt werden
+müssen. Das Meßsignal wird als Differenz auf die beiden EIngänge geschaltet. Die oft sehr hohen Störspannungen (Brummeinstreuungen usw.)
+betreffen beide Leitungen, liegen an den Eingängen im Gleichtakt und werden somit unterdrückt.
+In einem normalen Eintaktverstärker würden sie mitverstärkt und zu erheblichen Verfälschungen des Meßsignals führen.
+
+== Der Operationsverstärker
+
+Operationsverstärker sind Differenzverstärker die durch zusätzliche Stufen zur Verstärkungserhöhung,
+Verrringerung der Empfindlichkeit bei Schwankungen der Speisespannung, Temperatur, usw. erweitert sind.
+Ursprünglich wurden sie für den Einsatz in Analog-Rechnern entwickelt in denen man mit ihnen Rechenoperationen
+wie Addieren, Subtrahieren, Multiplizieren, Dividieren, Integrieren und Differenzieren ausführen kann.
+Daher stammt auch ihr Name "Operationsverstärker", umgangssprachlich kurz OpAmp (von engl. operational amplifier).
+Operationsverstärker sind nahezu ideale Verstärker, deren Eigenschaften sich durch äußere Beschaltung in vielfältigeer
+Weise bestimmen lassen. Daher ist heute die Rechentechnik nur noch ein Anwendungsgebiet  unter vielen.
+
+=== Allgemeine Eigenschaften
+
+1. Operationsverstärker sind Gleichspannungsverstärker. Sie zeichnen sich durch außerordentlich hohe Spannungsverstärkung aus
+(V_{Uo}= 10^3 bis 10^5-fach und mehr  = 60 bis 100 dB). V_{Uo} ist die "Leerlaufverstärkung". Sie wird praktisch kaum genutzt.
+Man setzt sie durch Gegenkopplung auf 20... 40dB herab und erreicht dadurch sehr stabile Verhältnisse. Weichen die V_{Uo} zweier
+Operationsverstärker durch Fertigunstoleranzen um 30% voneinander ab, so weicht im stark gegengekoppelten Verstärker V_{U} nur um ca.
+0,1 % ab.
+
+2. Operationsverstärker benötigen in der Regel eine doppelte Spannungsversorgung; dadurch kann die Ausgangsspannung zu 0 positive oder
+negative Werte annehmen (wichtig bei Rechneranwendungen). Bei bestimmten Anwendungen lässt sich die doppelte Spannungsversorgung mit
+Hilfe eines Spannungsteilers umgehen.
+
+3. Operationsverstärker haben zwei Eingänge und (meist) einen Ausgang, dazu hisweilen einen oder mehrere Hilfsanschlüsse.
+Die Eingänge tragen die Bezeichnung + (I) und - (I/). Der Ausgang trägt die Bezeichnung Q.
+Die beiden Eingänge bestimmen das Verhalten des Ausgangs. Wird nur ein Eingang beschaltet, so muß der andere einen Strompfad nach 0 haben.
+"+" ist der nichtinvertierende Eingang. Erhält "-" eine zu 0 positive Spannung U_{1}, so steigt auch die Ausgangsspanung U_{Q} der
+Spannungsverstärkung entsprechend positiv an. Bei sinkender U_{1} fällt auch U_{Q}. Der Ausgang folgt also phasengleich dem Eingang.
+In Stromlaufplänen wird der nichtinvertierende Eingang mit dem Zeichen "+" angegeben.
+Dies bedeutet keine Spannungsangabe sondern nur die Funktion "nichtinvertierend".
+"-" ist der invertierende Eingang. Steigt seine Eingangssapnnung U_{-} nach positiven Werten, so fällt U_{Q} nach negativen; wird U_{-} negativ,
+so steigt U_{Q} nach positiven Werten. Der Ausgang verhält sich also umgekehrt wie der invertierende Eingang; zwischen - unf Q entsteht eine
+Phasendrehung von 180°. In Stromlaufplänen enthält der ivertiernde Eingang das Zeichen "-", welches keine Spannungsangabe und lediglich auf die Funktion
+"invertierend" hinweist.
+Werden beide Eingänge beschaltet, so ist die Differenz von U_{+} und U_{-} für das Verhalten des Ausgangs maßgeblich. Sind U_{+}  und U_{-} gleich,
+so geschieht am Ausgang nichts, der Ausgang geht auf O  (Gleichtaktunterdrückung, engl. common mode rejection).
+Die vielfältigen Anwendungen des Operationnsverstärkers ergeben sich aus dem entgegengesetzten Verhalten der Eingänge.
+Führt man U_{Q} auf (-) zurück, so entsteht eine Gegenkopplung mit allen Möglichkeiten, Verstärkungsfaktor, Frequenzgang usw. zu variieren.
+Führt man U_{Q} auf (+) zurück, so entsteht eine Mitkopplung - man erhält Schwing- und Kippschaltungen mit weiten Einstellmöglcihkeiten.
+Das Grundverhalten des Operationsverstärkers sollte man experimentell studieren (s. unten).
+
+4. Auch der beste Operationsverstärker ist nicht vollkommen. Bei der Fertigung entstehen unvermeidbare Asymmetrien, die sich vor allem im Differenzverstärker
+bemerkbar machen. Damit der Eingang wirklich auf 0 geht, muß zwischen den Eingängen eine geringe Spannung stehen. Man nennt sie "Eingangsfehlspannung",
+"Eingangs-Nullspannung" oder "Offset-Spannung" (engl. input offset voltage = Eingangsabweichungsspannung) U_{EOS}. Die Offsetspannung bewegt sich in der
+Größenordnung von wenigen mV. Der Eingangs-Offset kann bei vielen Operationsverstärkern über die bereits erwähnten Hilfsanschlüsse ausgeglichen werden.
+
+5. Jedes Transistorsystem hat an seinen pn-Übergängen Kapazitäten die wechselstrommäßig auch gegen 0 ("Masse") wirken. In Verbindung mit den Widerständen ergeben
+sie Tiefpässe, die einerseits die Verstärkung hoher Frequenzen schwächen, andererseits die Phasenlage des Ausgangs zum Eingang mit steigender Frequenz drehen.
+Durch die Folge mehrerer Stufen im Operationsverstärker addieren sich die Phasendrehungen, so dass bei sehr hohen Frequenzen aus der Gegenkopplung eine
+Mitkopplung werden kann und der Verstärker instabil wird, u. U. sogar schwingt.
+Abhilfe schafft die sog. "Frequenzkompensation". Durch einen zusätzlichen Kondensator oder ein RC-Glied an den Hailfsanschlüssen wirkt man der Pahsendrehung
+entgegen und setzt die Verstärkung hoher Frequenzen herab, in der Regel auf einen Verstärkungsabfall von 6 dB pro Oktave (eine Oktave ist die Verdoppelung der Frequenz.
+Die erforderliche Beschaltung wird jeweils vom Hersteller angegeben. Viele Operationsverstärker sinf bereits intern frequenzkompensiert.
+
+=== Bauformen
+
+
+=== Eigenschaften und Grundschaltungen
+
+image:./op-amp-test-circuit.svg[width="450px"]
+
+Obige Abbildung zeigt einen Versuchsbaustein, an dem sich das Grundverhalten des Opeerationsverstärkers erproben läßt.
+Der Baustein ist später ald Verstärkerbaustein zu verwenden.
+
+1. Versuch (Offset-Spannung und Leerlaufverstärkung):
+
+Der Operationsverstärker wird ohne zusätzliche Bauelemente (also auch ohne Trimmer zum Offset-Abgleich) an zwei Batterien, bzw. eine symmetrische Spannungsversorgung
+von +/- neun bis +/- zwölf Volt angeschlossen. Die Ausgangsspannung wird mit einem Spannungsmesser beobachtet. Steht kein Spannungsmesser zur Verfügung, so reichen zur Not auch
+zwei antiparallel geschaltete LED (D1/D2). Die sonst notweendigen Vorwiderstände kann man sparen, da der 741 den Ausgangsstrom auf ca. 18 mA begrenzt und damit weder er
+noch die LED überlastet werden können. Es können statt zwei antiparalell geschaltete LED auch eine bipoLar-LED verwendet werden.
+Nach dem Anschließen der Spannungsquelle(n) nimmt der Ausgang einen extremen Zustand (+ oder -) an, obwohl beide Eingänge offen sind.
+Verbindet man beide Eingänge über kurze (!) Prüfkabel mit 0, so ändert sich am Ausgang nichts. Der Grund dafür ist die Offset-Spannung U_{EOS}.
+Der 741 hat eine Leelaufverstärkung von ca. 200 000. Beträgt U_{EOS} auch nur 1 mV, so bedeutet das am Ausgang rechnerisch eine Spannung vom 200 V, was die Betriebsspannung
+freilich nicht zuläßt. Diese Rechnung soll nur verdeutlichen, wie stark damit der Operationsversärker übersteuert wird.
+
+2. Versuch (Offset-Abgleich):
+
+Nun wird der Trimmer an die Offset-Abgleichanschlüsse 5 und 1 angeschlossen. Durch Verstellen des Trimmers ist der Ausgang aus einem Extrem ins andere zu kippen.
+Die Ausgangsspannung U_{a} = 0 ist nur mit sehr viel Feingefühl einzustellen. Der Grund dafür ist wieder die hohe Leerlaufverstärkung des Operationsverstärkers.
+Bei diesem Operationsverstärker (741) ist der Offset-Abgleich (durch den Innenaufbau) über eigene Anschlüsse möglich. Wenn diese Möglichkeit nicht vorbereitet ist,
+stellt man den Offset-Abgleich durch Verschieben eines Eingangs her (siehe unten). Die beiden Dioden stabilisieren einen Teil der Spannung um den 0-Punkt herum;
+mit dem Trimmer kann die Offsetspannung eingestellt werden.
+
+image:./offset-adjustment.svg[width="450px"]
+
+3. Versuch (Gegenkopplung):
+
+Die volle Spannungsverstärkung V_{uo} wird außerordentlich selten genutzt. Man setzt daher V_{uo} mittels Gegenkopplung auf das gewünschte Maß herab, indem man die Ausgangsspannung
+teilweise auf den invertierenden Eingang (-) zurückführt. V_{u} wird nur durch den Grad der Gegenkopplung bestimmt, der sich aus dem Grad der Gegenkoppplung bestimmt, der sich aus dem
+Spannungsteilerverhältnis ergibt (s. u.).
+Je nachdem, ob man den nichtinvertierenden (+) Eingang oder den invertierenden (-) Eingang ansteuert, heißt die Betrriebsart "nichtinvertierender" oder "invertierender" Verstärker.
+Für den nichtinvertierenden Verstärker gilt
+
+[role="image", "./noninverting-amplifier.svg", imgfmt="svg"]
+\large \[V_{u} = \frac{R_{1} \cdot R_{2}}{R_{1}} =1 + \frac{R_{2}}{R_{1}}\]
+
+Auf die "1" kann man in Überschlagsrechnungen verzichten (sie macht nicht viel aus). Wird V_{u} auf 100 (~40dB) eingestellt, so bedeutet die 1 nur 1 %.
+Wird der Spannungsteiler aus zwei Widerständen der E-12 Reihe (5% Toleranz) zusammengestellt, so kann die Abwecihung von der Rechnung durch die Fertigungstoleranzen der Widerstände im
+ungünstigen Fall 10 % betragen. (Man beachte hierbei,dass der Ursprungstext schon deutlich älter ist; die preisunterschiedw zwichen Kohle- (5% Toleanz) und Metallschichtwiderstämde (1% Toleranz)
+sind heutzutage nahezu insignifikant.)
+
+Ein Sonderfall liegt vor, wenn die Ausgangsspsnnung ungeteilt entweder über eine direkte Verbindung oder über einen Widerstand auf den invertierenden Eingang (-) zurückgeführt wird ( s.u.)
+R_{2} darf sehr hochohmig sein (bis 1 MOhm), weil sehr Strom in den Eingang fließt;
+er ändert den Grad der Gegenkopplung von 100% nicht nennenswert. V_{u} beträgt bei dieser Schaltungsart 1.
+
+
+image:./voltage-follower.svg[voltage-follower,width="400px"]
+
+Diese Schaltung heißt "Spannungsfolger" und wird als Impedanzwandler eingesetzt. Dem sehr hohem Eingangswiderstand steht ein niedriger Ausgangswiderstand gegenüber. Zur Anwendung sieher auch
+Versuche 5 und 6.
+
+Für die invertierenden Verstärker gilt
+
+
+[role="image", "./inverting-amplifier.svg", imgfmt="svg"]
+\large \[V_{u} = \frac{R_{2}}{R_{1}} .
+
+Wir setzen nun den Spannungsteiler in den Baustein ein (siehe unten): R2 = 100kOhm (C -B) und R1 = 10 kOhm (B-A)
+verbinden A mit 0 und B mit dem invertierenden Eingang (-). Damit ist V_{u} = 11. Der nichtinvertierende Eingang (+) erhält einen Strompfad nach 0 bzw. Masse, entweder über einen Widerstand
+(Größenrordnung R1 || R2) oder, was hier ausreicht über ein kurzes (!) Prüfkabel. Wir versuchen wieder, durch den Offset-Abgleich mit dem Trimmer am Ausgang 0V herzustellen, was diesmal leicht gelingt,
+weil die Vestärkung gewaltig hearbgesetzt wurde.
+Die Eigenschaften des Operationsverstärkers werden in weitestem Umfang durch Grad und Art der Gegenkopplung bestimmt. In diesem Beispiel wurde U_{a}  über einem ohmschen Widerstand zurückgeführt.
+Zur Rückkopplung eignet sich aber auch jeder Scheinwiderstand: Besteht die Rückkopplung beispielsweise aus einem Tiefpass, so werden die hohen Frequenzen bevorzugt verstärkt, weil sie weniger stark
+gegengekoppelt sind. Führt der R>ückweg über einen Hochpass, so werden die tiefen Frequenzen bevorzugt verstärkt. Auf diese Weise ist z.B. die Höhen- und Tiefeneinstellung in HiFi-Verstärkern möglich.
+Die Möglichkeiten sind außerordentlich zahlreich, sie sollen hier nur angedeutet sein. Dass sich die Verstärkung über einen Trimmer (an Stelle R2) kontinuierlich einstellen lässt,sei nur am Rande erwähnt.
+
+
+
+4. Versuch (Der Betrieb als nichtinvertierender Verstärker):
+
+Zur Ansteuerung der Eingäng bauen wir mit einem Potentiometer ca. 10... 50 kOhm lin. einen Spannungsteiler auf (siehe Bild). Der Spannungsteiler ermöglicht es, die Eingänge mit positiv und negativ variablen Spannungen
+anzusteuern. Die Vorgänge am Ausgang lassen sich noch leichter beobachten, wenn man V_{u} weiter herabsetzt, z. B. durch Verringern des Widerstands R2 von 100 kOhm auf 22 kOhm.
+
+Wir verbinden den Schleifer des Potentiometers mit dem nichtinvertierenden Eingang und messen U_{a} (ein vom vorherign Versuch etwa noch vorhandener Kurzschluss nach 0 muß natürlich beseitigt sein).
+Dreht man den Schleifer nach positiven Werten, so erhält der Eingang positiv steigende Spannung U_{e}, U_{a} steigt nach positiven Werten mit. Breht man den Schleifer zurück, so sinkt U_{e} und steigt
+nach Durchlaufen der Spannung 0 Volt nach negativen Werten an. U_{a} sinkt ebenfalls, durchläuft 0 Volt und steigt nach negativen Werten an. Im Betrieb alas nichtinvertierender Verstärker folgt U_{a}
+- um V_{u} vergrößert - der Eingsangsspannung phasengleich.
+
+[role="image", "./inverting-amplifier2.svg", imgfmt="svg"]
+\large \[U_{a} = U_{e} \cdot ( 1 + \frac{R_{2}}{R_{1}}) .
+
+
+5. Versuch (Der Betrieb als invertierender Verstärker):
+
+Nun steuern wir mit dem Spannungsteiler aus Versuch den invertierenden Eingang (-) an. V_{u} wird wieder auf ~10 eigestellt. Der nichtinvertierende Eingang erhält einen Strompfad nach 0.
+Wird U_{e} am invertierenden Eingang positiv, so wird U_{a} negativ, andersrum nimmt bei negativeen Werten U_{e} nimmmt U_{a} positive Werte an.
+Im Betrieb als invertierender Verstärker folgt U_{a} der Eingangsspannung mit umgekehrten Vorzeichen, d.h. um 180° phasenveschoben.
+Das Verhalten ist dem des Transistors in https://wehrend.github.io/pages/electronics-103/#_transistor_in_emitter_circuit[der Emittesschaltung] vergleichbar.
+
+[role="image", "./inverting-amplifier3.svg", imgfmt="svg"]
+\large \[U_{a} =  - \frac{R_{2}}{R_{1}}) \cdot U_{e}
+
+Das Minuszeichen deutet die Phasenumkehr an.
+

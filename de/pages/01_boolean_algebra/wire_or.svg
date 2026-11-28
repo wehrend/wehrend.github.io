@@ -1,0 +1,22 @@
+<svg width="100px" height="100px" viewBox="0.0 0.0 100.00 100.00" viewPort = "0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    
+    <symbol id="diode">
+     <g id="diode" rotate="180">
+        <line x1="10" y1="10" x2="40" y2="10" stroke="black" stroke-linecap="round"/>
+        <polygon points="20,5 25,10  20,15 20,5" stroke="black"/>
+        <line x1="25" y1="5" x2="25" y2="15" stroke="black"/>
+     </g>
+    </symbol>
+    <use href="#diode" x="10" y="20"/>
+    <use href="#diode" x="10" y="40"/>
+    <rect x="47" y="60" width="6" height="18" style="stroke:black;fill:none"/>
+    <circle cx="50" cy="50" r="2" style="stroke:black;fill:black"/>
+    <line x1="50" y1="50" x2="70" y2="50" style="stroke:black;fill:none;"/>
+    <line x1="50" y1="30" x2="50" y2="60" style="stroke:black;fill:none"/>
+    <text x="10" y="30" font-size="10">A</text>
+    <text x="10" y="50" font-size="10">B</text>
+    <text x="70" y="50" font-size="10">Q</text>
+    <line x1="50" y1="78" x2="50" y2="90" style="stroke:black;fill:black"/>
+    <!--ground-->
+    <line x1="45" y1="90" x2="55" y2="90" style="stroke:black;fill:none;stroke-width:2px"/>
+</svg>

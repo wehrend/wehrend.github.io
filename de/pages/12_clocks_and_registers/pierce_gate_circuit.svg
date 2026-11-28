@@ -1,0 +1,69 @@
+<svg width="50.00" height="60.00" 
+     viewBox="0.0 0.0 50.0 60.0" 
+     viewPort="0 0 50px 60px" 
+     version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns="http://www.w3.org/2000/svg">
+    <symbol id="inverter">
+        <line x1="5" y1="12.5" x2="10" y2="12.5" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+        <polyline points="10,17.5 10,7.5 20,12.5 10,17.5" style="fill:none;stroke:black;stroke-width:0.8px;stroke-linecap:round;"/>
+        <circle cx="21" cy="12.5" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+        <line x1="22" y1="12.5" x2="30" y2="12.5" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    </symbol>
+    <symbol id="xtal">
+        <line x1="0" y1="10" x2="8" y2="10" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+        <line x1="8" y1="7" x2="8" y2="13" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+        <rect x="9.5" y="7" width="2" height="6" style="stroke:black;stroke-width:0.5px;fill:none;"/>
+        <line x1="13" y1="7" x2="13" y2="13" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+        <line x1="13" y1="10" x2="20" y2="10" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+         <text x="10" y="16" font-size="3">X
+            <tspan dx="0" dy="1">1
+            </tspan>
+        </text>
+    </symbol>
+    <text x="8" y="4" font-size="4">Pierce Oscillator</text>
+<!--         Rf -->
+    <rect x="17" y="6.5" width="7" height="3" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <text x="20" y="13" font-size="3">R
+            <tspan dx="0" dy="1">f
+            </tspan>
+        </text>
+    <polyline points="17,8 10,8 10,42" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <polyline points="24,8 30,8 30,27" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    
+    <circle cx="10" cy="22.5" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <use href="#inverter" x="5" y="10"/>
+    <circle cx="30" cy="22.5" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <circle cx="35.5" cy="22.5" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <text x="37" y="23.5" font-size="4">Clk</text>
+    
+    <!--Rs-->
+    <rect x="28.5" y="27" width="3" height="7" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <line x1="30" y1="34" x2="30" y2="42" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <text x="32.5" y="35" font-size="3">R
+            <tspan dx="0" dy="1">s
+            </tspan>
+        </text>
+    <!--    C's -->
+    <line x1="7" y1="42" x2="13" y2="42" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <line x1="7" y1="43.5" x2="13" y2="43.5" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <text x="13" y="45" font-size="3">C
+            <tspan dx="0" dy="1">1
+            </tspan>
+        </text>
+    
+    <line x1="27" y1="42" x2="33" y2="42" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <line x1="27" y1="43.5" x2="33" y2="43.5" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <text x="33" y="45" font-size="3">C
+            <tspan dx="0" dy="1">2
+            </tspan>
+        </text>
+    
+    <polyline points="10,43.5 10,50 30,50 30,43.5" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <circle cx="20" cy="50" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <line x1="20" y1="50" x2="20" y2="53" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <polyline points="18,53 22,53 20,55 18,53 22,53" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <circle cx="10" cy="38" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+    <use href="#xtal" x="10" y="28"/>
+    <circle cx="30" cy="38" r="0.8" style="fill:none;stroke:black;stroke-width:0.8px;"/>
+</svg>
