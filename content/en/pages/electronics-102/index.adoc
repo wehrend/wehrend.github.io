@@ -246,7 +246,7 @@ frequency response
 
 cutoff frequency (with example values of R=1kOhm, C= 1µF)
 [role="image","../images/electronic_basics/cutoff_fr.svg", imgfmt="svg"]
-\[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^(-6)}= 10^3= 1000 \cdot 1/s\]
+\[ \omega_g = \frac{1}{RC} = \frac{1}{1 \cdot 10^3 \cdot 1 \cdot 10^{-6}}= 10^3= 1000 \cdot 1/s\]
 
 
 
@@ -366,7 +366,7 @@ image:./highpass.svg[width="400px"]
 frequency response
 
 [role="image","../images/electronic_basics/highpass_fr.svg", imgfmt="svg"]
-\[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{R}{R+ 1/j\omega C} = \frac{j \omega C}{1+ j \omega RC} =
+\[ H(\omega) = \frac{U_{out}}{U_{in}} = \frac{R}{R+ 1/j\omega C} = \frac{j \omega RC}{1+ j \omega RC} =
 \frac{j\omega / \omega_g}{1+ j\omega/ \omega_g}\]
 
 cutoff frequency (with example values of R=1kOhm, C= 1µF)
@@ -533,7 +533,7 @@ Which results in the following values for the particular components:
 
 image:./twin_t_notch.png[width="1400px"]
 
-link:./twin_notch.asc[LTSpice - notch filter]
+link:./twin-notch.asc[LTSpice - notch filter]
 
 === Lookahead (active Filters)
 

@@ -123,7 +123,7 @@
 <circle cx="66.0" cy="22.29" r="2" style="stroke:blue;fill:blue;"/>
 <circle cx="74.51" cy="29.43" r="2" style="stroke:blue;fill:blue;"/>
 <circle cx="80.07" cy="39.06" r="2" style="stroke:blue;fill:blue;"/>
-
+    <circle cx="50" cy="50" r="40" style="stroke:khaki;stroke-width:6px;fill:none;opacity:0.7;"/>
   </g>
   <g>
     <circle cx="50" cy="50" r="40" style="stroke:black;fill:none;opacity:0.7;"/>
@@ -132,6 +132,7 @@
     <circle cx="50" cy="90" r="2" style="stroke:blue;fill:blue;"/>
     <circle cx="10" cy="50" r="2" style="stroke:blue;fill:blue;"/>
   </g>
+
 
   <!-- Beschriftung -->
   <rect x="72" y="80" width="2" height="8" style="stroke:none;fill:khaki;opacity:0.7;"/>

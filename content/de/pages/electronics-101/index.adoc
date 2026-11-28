@@ -65,7 +65,7 @@ die einen guten Kontakt verhindert. Wir werden solche Effekte später noch disku
 2+>| Leiter
 | image:./atomic_model_Al.svg[width="300px"]
 | image:./atomic_model_Cu.svg[width="300px"]
-| Atommodell von Aluminium (13) | Atommodell von Kupfer (28)
+| Atommodell von Aluminium (13) | Atommodell von Kupfer (29)
 | Valenzschale / freie Elektronen: 3 (3) | Valenzschale / freie Elektronen: 1 (1)
 |=====
 
@@ -83,7 +83,9 @@ image:./simple_circuit.svg[width="400px"]
 Die zweite Gruppe von Elementen, die wir hier vorstellen möchten, sind Elemente, deren
 Leitfähigkeit (stark) von ihrem Reinheitsgrad und Umweltfaktoren
 wie der Temperatur abhängt. Vertreter dieser Gruppe werden als Halbleiter bezeichnet.
-Kohlenstoff und Silizium sind Beispiele, die im Periodensystem zu finden sind.
+Silizium und Germanium sind Beispiele, die im Periodensystem zu finden sind.
+Auch Kohlenstoff hat vier Valenzelektronen, ist aber ein Sonderfall: Als Diamant ist er ein Isolator,
+als Graphit leitet er (wie wir in der Messübung weiter unten sehen werden).
 Der Autor hat diese beiden Elemente ausgewählt, da sie sehr interessante Eigenschaften
 in Bezug auf – aber nicht nur – die Leitfähigkeit aufweisen. Dies ist auf die Anzahl der Valenzelektronen
 in der Außenhülle zurückzuführen.
@@ -92,25 +94,25 @@ in der Außenhülle zurückzuführen.
 [width="100%" cols="a,a"]
 |=====
 2+>| Halbleiter
-| image:./atomic_model_C.svg[width="300px"]
 | image:./atomic_model_Si.svg[width="300px"]
-| Atommodell von Kohlenstoff (6) | Atommodell von Silizium (14)
+| image:./atomic_model_Ge.svg[width="300px"]
+| Atommodell von Silizium (14) | Atommodell von Germanium (32)
 | Valenzschale / freie Elektronen: 4 (0) | Valenzschale / freie Elektronen: 4 (0)
 |=====
 
 
-Warum haben Kohlenstoff und Silizium trotz ihrer vier Elektronen
+Warum haben Silizium und Germanium trotz ihrer vier Elektronen
 in der Valenzschale so schlechte Leitfähigkeitseigenschaften im Vergleich zu Kupfer?
 
-Die Antwort liegt in der einfachen Tatsache, dass sowohl Kohlenstoff als auch Silizium ein Gitter bilden, das alle Elektronen der Valenzschale
+Die Antwort liegt in der einfachen Tatsache, dass sowohl Silizium als auch Germanium ein Gitter bilden, das alle Elektronen der Valenzschale
 verbraucht.
 
 
 [width="100%" cols="a,a"]
 |=====
-| kovalente Bindung von Kohlenstoff | kovalente Bindung von Silizium
-| image:./covalent_bonding_c.svg[width="400px"]
+| kovalente Bindung von Silizium | kovalente Bindung von Germanium
 | image:./covalent_bonding_si.svg[width="400px"]
+| image:./covalent_bonding_Ge.svg[width="400px"]
 2+>|Halbleiter
 |=====
 
@@ -215,7 +217,7 @@ Erklärung für Parallelschaltung hinzufügen
 ////
 
 
-Wir haben also festgestellt, dass sich die Materialien in ihrer elektrischen Leitfähigkeit unterscheiden – die der Kehrwert des elektrischen Widerstands ist.
+Wir haben also festgestellt, dass sich die Materialien in ihrer elektrischen Leitfähigkeit σ unterscheiden – sie ist der Kehrwert des spezifischen Widerstands ρ (der Kehrwert eines Widerstands R heißt Leitwert G).
 Einige sind gut (Leiter), andere ziemlich schlecht und unbrauchbar (Nichtleiter), aber dennoch als Dielektrikum nützlich, wie wir im
 nächsten Abschnitt sehen werden, und einige liegen dazwischen.
 Wir müssen natürlich auch beachten, dass die Leitfähigkeit nicht nur vom Material selbst abhängt, sondern auch von seiner Geometrie (außerdem hängt sie
@@ -304,7 +306,7 @@ Das erste Gesetz von Kirchhoff besagt: Die Summe aller vorzeichenbehafteten Str�
 \large \[ \sum_{i=1}^{n} I_i = 0\]
 
 Ein Knotenpunkt ist jeder Verbindungspunkt von Leitungen in einem Stromkreis. Da an einem Knotenpunkt keine Ladungen erzeugt, verloren oder gespeichert werden,
-muss die Menge der Ladungen, die während der Zeit \Delta t in den Knotenpunkt fließen, gleich der Summe der Ladungen sein, die aus dem Knotenpunkt fließen.
+muss die Menge der Ladungen, die während der Zeit \(\Delta t\) in den Knotenpunkt fließen, gleich der Summe der Ladungen sein, die aus dem Knotenpunkt fließen.
 
 
 ==== Kirchhoffsches zweites Gesetz

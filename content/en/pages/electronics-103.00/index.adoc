@@ -179,7 +179,10 @@ You can take a resistor from 1kOhm to 10kOhm,the precise vale is in most csases 
 But for you to verify the equation is as follows:
 
 [image src="./pre-resistor.svg" format="svg" alt="pre-resistor"]
-\large \[ R_{V} = \frac{U_{\text{Total}} - U_{R}}{I} \]
+\large \[ R_{V} = \frac{U_{\text{Total}} - U_{F}}{I_{F}} \]
+
+Here U~F~ is the forward voltage of the LED (roughly 1.8 V for red and 3 V for blue or white LEDs, see the datasheet)
+and I~F~ the desired LED current.
 
 With that equation we can calculate the value for the resistor - after calculation we just use the next-higher available resistor
 in the E24 series. In most cases you can simply choose 1kOm resistor that will do it,
@@ -191,7 +194,8 @@ image:./simple_led_circuit_reversed.svg[width="350px"]
 
 LEDs came in a big variety of different sizes, shapes and colors, for example size differs in different smd sizes e.g.
 0805 as well as in different shapes (see https://makezine.com/article/craft/what-shape-of-led-should-i-use-for-my-project/[here]).
-But first and foremost color is crucial. The different dotation make up for different colors.
+But first and foremost color is crucial. The color is determined by the semiconductor material and its band gap
+(e.g. GaAsP or AlInGaP for red to yellow, InGaN for green to blue), not by the doping.
 
 [cols="2"]
 |===
@@ -637,8 +641,8 @@ It is used as handyman. The other both circuits (base and collector circuit) are
 for special occasions...
 The emitter circuit gains both current and voltage, it is also the circuit with the biggest
 power amplification. The input impedance consists of the BE-Diode and fluctuates between very
-small (big $I_B$ ) and big values (minimal $I_B$). The output voltage builds up on R_{L}.
-It is measured against the common ground (practically U_{CE}= U_{b} - U_{RL}).
+small (big \(I_B\) ) and big values (minimal \(I_B\)). The output voltage builds up on \(R_{L}\).
+It is measured against the common ground (practically \(U_{CE}\)= \(U_{b} - U_{RL}\)).
 Thus, there is a phase lag of 180° from the input voltage to the output voltage.
 For "normal" amplifiers this id not very interesting. But this changes as soon as the output
 signal is feedback to the input again...
@@ -651,7 +655,7 @@ image:./emitter_circuit.png[width="750px"]
 === Transistor in base circuit
 The base circuit has an extremely low input impedance, which is also minimized by the parallel connected
 necessary low emitter resistance. The output impedance however is very high. The current gain is always
-smaller 1 (<1), due to the emitter current (=I_{B}+I_{C}) which is always bigger then the current collector
+smaller 1 (<1), due to the emitter current (=\(I_{B}+I_{C}\)) which is always bigger then the current collector
 respectively the output current. The advantage of the base circuit is that she can manage the highest frequency.
 Also, this circuit has the smallest influences to the input. Thus, the typically applications are receiver
 for very high frequencies.
@@ -666,16 +670,16 @@ image:./base_circuit.png[width="750px"]
 
 The collector circuit is awarded by a high input - but low output impedance.
 The high input impedance is caused by the input current as well as the output current which flows over
-the common emitter resistor (R_{L}). A low base current calls for a \beta multiplied collector / emitter current;
-which is caused by R_{L}. This ends up in voltage drop over the input impedance.
+the common emitter resistor (\(R_{L}\)). A low base current calls for a \(\beta\) multiplied collector / emitter current;
+which is caused by \(R_{L}\). This ends up in voltage drop over the input impedance.
 If a small current causes a big voltage drop at the resistor, the resistance has to be big.
-Without considering the base current it amounts to \beta \cdot R_{L} -
-The output voltage u_{2} is always smaller than then the input voltage u_{1} - its amount is the threshold
-voltage from the BE-Diode.If u_{1} becomes bigger, the bigger amounts the voltage drop at R_{L} becomes due to
-the bigger emitter current. If u_{1} drops, so u_{2} drops due to the lower emitter current.
+Without considering the base current it amounts to \(\beta \cdot R_{L}\) -
+The output voltage \(u_{2}\) is always smaller than then the input voltage \(u_{1}\) - its amount is the threshold
+voltage from the BE-Diode.If \(u_{1}\) becomes bigger, the bigger amounts the voltage drop at \(R_{L}\) becomes due to
+the bigger emitter current. If \(u_{1}\) drops, so \(u_{2}\) drops due to the lower emitter current.
 
-Thus this circuit is also called emitter follower. There is no voltage gain in this circuit (u_{2}
-is allways smaller than u_{1}). Only the current gain gets \beta times multiplied
+Thus this circuit is also called emitter follower. There is no voltage gain in this circuit (\(u_{2}\)
+is allways smaller than \(u_{1}\)). Only the current gain gets \(\beta\) times multiplied
 The emitter follower is often used in amplifier inputs for his big input impedance but low output impedance.
 
 
@@ -758,7 +762,7 @@ If the (negative) gate voltage is increased, more and more electrons are displac
 certain gate voltage (the “cut-off voltage”), all electrons are finally displaced at one point, the channel is “cut off,” and it no longer conducts.
 
 The control also works in reverse: a very weakly doped p-channel is initially non-conductive. A positive gate voltage draws electrons into the channel
-and makes it conductive. The channel resistance decreases with increasing U_{GS}.
+and makes it conductive. The channel resistance decreases with increasing \(U_{GS}\).
 '‘’
 The FET is a resistor that can be controlled by the field strength of the control voltage.
 ‘’'
@@ -774,7 +778,7 @@ acts as insulation. This group of field-effect transistors is therefore called a
 
 image:./JFET.jpg[width=“750px”]
 
-The function is again illustrated using the n-channel FET (see image above): U_{DS} lies between D and S. The electrons flow from S to D. Now the voltage U_{GS}
+The function is again illustrated using the n-channel FET (see image above): \(U_{DS}\) lies between D and S. The electrons flow from S to D. Now the voltage \(U_{GS}\)
 (negative pole at G) is applied to the gate. The pn junction between G and the channel is in the reverse direction. As with the https://en.wikipedia.org/wiki/Varicap[capacitance diode],
  the barrier layer becomes wider as the voltage increases. Since the channel is weakly doped in relation to the gate, the barrier layer grows predominantly into the channel, i.e.
 the electrons are displaced from part of the channel. This part becomes non-conductive as pure crystal. The conductive part of the channel becomes narrower, its resistance increases,
@@ -784,7 +788,7 @@ leakage current present in all diodes. The p-channel JFET works in exactly the s
 
 == The MOSFET
 
-In the second group of FETs, the insulation between the gate and the channel consists of an extremely thin layer of silicon dioxide (SiO_{2});
+In the second group of FETs, the insulation between the gate and the channel consists of an extremely thin layer of silicon dioxide (SiO~2~);
 the gate is designed as a metallic coating (vacuum-deposited Al). According to their structure, these FETs are named after the metal of the gate, the oxide of the insulating layer, and the semiconductor
 of the channel: MOS-FET.
 
@@ -795,14 +799,14 @@ is connected to S internally or by external wiring.
 
 
 Regardless of how voltage is applied to S and D, one of the pn junctions between the channel and the connection island is in the reverse direction. The MOSFET blocks if no voltage is applied to G.
-If G receives a positive voltage U_{GS}, the holes as positive charge carriers are immediately displaced from the channel area opposite the gate electrode, electrons from the substrate present with S (negative pole
+If G receives a positive voltage \(U_{GS}\), the holes as positive charge carriers are immediately displaced from the channel area opposite the gate electrode, electrons from the substrate present with S (negative pole
 of the voltage source) are attracted, so that an n-conducting bridge, the “inversion layer,” is formed between D and S opposite G.
-The resistance of this layer decreases as U_{GS} increases.
+The resistance of this layer decreases as \(U_{GS}\) increases.
 This type of MOSFET only becomes conductive when the channel region is enriched with electrons; it is therefore called an “enrichment type” and is also self-blocking because it does not conduct when the gate is open
-or U_{GS} = 0V.
-Another type is manufactured in such a way that the channel region is already weakly n-doped. When G is open or U_{GS} = 0V, it conducts; it is “self-conducting.” With negative U_{GS}, the electrons can be displaced from
-the channel region until they are cut off; with positive U_{GS}, electrons can be sucked into the channel area, so that the channel resistance decreases further and I_{D} increases accordingly.
-Control with negative U_{GS}, i.e., with the displacement of electrons, is preferred. Therefore, this family of MOSFETs is called “depletion type.”
+or \(U_{GS}\) = 0V.
+Another type is manufactured in such a way that the channel region is already weakly n-doped. When G is open or \(U_{GS}\) = 0V, it conducts; it is “self-conducting.” With negative \(U_{GS}\), the electrons can be displaced from
+the channel region until they are cut off; with positive \(U_{GS}\), electrons can be sucked into the channel area, so that the channel resistance decreases further and \(I_{D}\) increases accordingly.
+Control with negative \(U_{GS}\), i.e., with the displacement of electrons, is preferred. Therefore, this family of MOSFETs is called “depletion type.”
 The special feature of self-conducting MOSFETs is that they can be controlled by both positive and negative gate voltages.
 
 The other MOSFET types are derivatives of the two main groups above, which will not be described in this introduction.

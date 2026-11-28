@@ -181,7 +181,10 @@ Sie können einen Widerstand von 1 kOhm bis 10 kOhm nehmen, der genaue Wert ist 
 Zur Überprüfung gilt jedoch folgende Gleichung:
 
 [image src="./pre-resistor.svg" format="svg" alt="Vorwiderstand"]
-\large \[ R_{V} = \frac{U_{\text{Total}} - U_{R}}{I} \]
+\large \[ R_{V} = \frac{U_{\text{Total}} - U_{F}}{I_{F}} \]
+
+Dabei ist U~F~ die Flussspannung der LED (etwa 1,8 V bei roten und 3 V bei blauen oder weißen LEDs, siehe Datenblatt)
+und I~F~ der gewünschte LED-Strom.
 
 Mit dieser Gleichung können wir den Wert für den Widerstand berechnen – nach der Berechnung verwenden wir einfach den nächsthöheren verfügbaren Widerstand
 in der E24-Serie. In den meisten Fällen können Sie einfach einen 1-kOhm-Widerstand wählen, der ausreicht.
@@ -193,7 +196,8 @@ image:./simple_led_circuit_reversed.svg[width="350px"]
 
 LEDs gibt es in einer Vielzahl unterschiedlicher Größen, Formen und Farben, beispielsweise unterscheiden sich die Größen in verschiedenen SMD-Größen, z. B.
 0805, sowie in verschiedenen Formen (siehe https://makezine.com/article/craft/what-shape-of-led-should-i-use-for-my-project/[hier]).
-Aber in erster Linie ist die Farbe entscheidend. Die unterschiedlichen Dotierungen sorgen für unterschiedliche Farben.
+Aber in erster Linie ist die Farbe entscheidend. Sie wird durch das Halbleitermaterial und seine Bandlücke bestimmt
+(z. B. GaAsP oder AlInGaP für Rot bis Gelb, InGaN für Grün bis Blau), nicht durch die Dotierung.
 
 [cols="2"]
 |===
@@ -638,8 +642,8 @@ Sie wird als Allrounder eingesetzt. Die beiden anderen Schaltungen (Basis- und K
 in besonderen Fällen verwendet...
 Die Emitterschaltung verstärkt sowohl Strom als auch Spannung und ist außerdem die Schaltung mit der größten
 Leistungsverstärkung. Die Eingangsimpedanz besteht aus der BE-Diode und schwankt zwischen sehr
-kleinen (großes $I_B$) und großen Werten (minimales $I_B$). Die Ausgangsspannung baut sich an R_{L} auf.
-Sie wird gegen die gemeinsame Masse gemessen (praktisch U_{CE}= U_{b} - U_{RL}).
+kleinen (großes \(I_B\)) und großen Werten (minimales \(I_B\)). Die Ausgangsspannung baut sich an \(R_{L}\) auf.
+Sie wird gegen die gemeinsame Masse gemessen (praktisch \(U_{CE}\)= \(U_{b} - U_{RL}\)).
 Somit besteht eine Phasenverschiebung von 180° zwischen der Eingangsspannung und der Ausgangsspannung.
 Für „normale” Verstärker ist dies nicht besonders interessant. Dies ändert sich jedoch, sobald das Ausgangssignal
 wieder zum Eingang zurückgeführt wird...
@@ -653,7 +657,7 @@ image:./emitter_circuit.png[width="750px"]
 === Transistor in Basisschaltung
 Die Basisschaltung hat eine extrem niedrige Eingangsimpedanz, die durch den parallel geschalteten
 notwendigen niedrigen Emitterwiderstand zusätzlich minimiert wird. Die Ausgangsimpedanz ist jedoch sehr hoch. Die Stromverstärkung ist immer
-kleiner als 1 (<1), da der Emitterstrom (=I_{B}+I_{C}) immer größer ist als der Kollektorstrom
+kleiner als 1 (<1), da der Emitterstrom (=\(I_{B}+I_{C}\)) immer größer ist als der Kollektorstrom
 bzw. der Ausgangsstrom. Der Vorteil der Basisschaltung besteht darin, dass sie die höchsten Frequenzen verarbeiten kann.
 Außerdem hat diese Schaltung den geringsten Einfluss auf den Eingang. Daher sind die typischen Anwendungen Empfänger
 für sehr hohe Frequenzen.
@@ -668,16 +672,16 @@ image:./base_circuit.png[width="750px"]
 
 Die Kollektorschaltung zeichnet sich durch eine hohe Eingangsimpedanz, aber eine niedrige Ausgangsimpedanz aus.
 Die hohe Eingangsimpedanz wird sowohl durch den Eingangsstrom als auch durch den Ausgangsstrom verursacht, der über
-den gemeinsamen Emitterwiderstand (R_{L}) fließt. Ein niedriger Basisstrom erfordert einen mit \beta multiplizierten Kollektor-/Emitterstrom,
-der durch R_{L} verursacht wird. Dies führt zu einem Spannungsabfall über der Eingangsimpedanz.
+den gemeinsamen Emitterwiderstand (\(R_{L}\)) fließt. Ein niedriger Basisstrom erfordert einen mit \(\beta\) multiplizierten Kollektor-/Emitterstrom,
+der durch \(R_{L}\) verursacht wird. Dies führt zu einem Spannungsabfall über der Eingangsimpedanz.
 Wenn ein kleiner Strom einen großen Spannungsabfall am Widerstand verursacht, muss der Widerstand groß sein.
-Ohne Berücksichtigung des Basisstroms beträgt er \beta \cdot R_{L} -
-Die Ausgangsspannung u_{2} ist immer kleiner als die Eingangsspannung u_{1} – ihr Wert entspricht der Schwellenspannung
-der BE-Diode. Wenn u_{1} größer wird, wird der Spannungsabfall an R_{L} aufgrund des
-größeren Emitterstroms größer. Wenn u_{1} sinkt, sinkt auch u_{2} aufgrund des geringeren Emitterstroms.
+Ohne Berücksichtigung des Basisstroms beträgt er \(\beta \cdot R_{L}\) -
+Die Ausgangsspannung \(u_{2}\) ist immer kleiner als die Eingangsspannung \(u_{1}\) – ihr Wert entspricht der Schwellenspannung
+der BE-Diode. Wenn \(u_{1}\) größer wird, wird der Spannungsabfall an \(R_{L}\) aufgrund des
+größeren Emitterstroms größer. Wenn \(u_{1}\) sinkt, sinkt auch \(u_{2}\) aufgrund des geringeren Emitterstroms.
 
-Daher wird diese Schaltung auch als Emitterfolger bezeichnet. In dieser Schaltung gibt es keine Spannungsverstärkung (u_{2}
-ist immer kleiner als u_{1}). Nur die Stromverstärkung wird um den Faktor \beta multipliziert
+Daher wird diese Schaltung auch als Emitterfolger bezeichnet. In dieser Schaltung gibt es keine Spannungsverstärkung (\(u_{2}\)
+ist immer kleiner als \(u_{1}\)). Nur die Stromverstärkung wird um den Faktor \(\beta\) multipliziert
 Der Emitterfolger wird aufgrund seiner hohen Eingangsimpedanz und niedrigen Ausgangsimpedanz häufig in Verstärkereingängen verwendet.
 
 
@@ -759,7 +763,7 @@ Wird die (negative) Gate-Spannung erhöht, werden immer mehr Elektronen aus dem 
 bestimmten Gate-Spannung (der „Cut-off-Spannung”) werden schließlich alle Elektronen verdrängt, der Kanal wird „abgeschnitten” und leitet nicht mehr.
 
 Die Steuerung funktioniert auch umgekehrt: Ein sehr schwach dotierter p-Kanal ist zunächst nicht leitfähig. Eine positive Gate-Spannung zieht Elektronen in den Kanal
-und macht ihn leitfähig. Der Kanalwiderstand nimmt mit steigendem U_{GS} ab.
+und macht ihn leitfähig. Der Kanalwiderstand nimmt mit steigendem \(U_{GS}\) ab.
 ''
 Der FET ist ein Widerstand, der durch die Feldstärke der Steuerspannung gesteuert werden kann.
 ‚‘
@@ -775,7 +779,7 @@ als Isolierung wirkt. Diese Gruppe von Feldeffekttransistoren wird daher als Jun
 
 image:./JFET.jpg[width="750px"]
 
-Die Funktion wird erneut anhand des n-Kanal-FET (siehe Bild oben) veranschaulicht: U_{DS} liegt zwischen D und S. Die Elektronen fließen von S nach D. Nun wird die Spannung U_{GS}
+Die Funktion wird erneut anhand des n-Kanal-FET (siehe Bild oben) veranschaulicht: \(U_{DS}\) liegt zwischen D und S. Die Elektronen fließen von S nach D. Nun wird die Spannung \(U_{GS}\)
 (Minuspol an G) an das Gate angelegt. Der pn-Übergang zwischen G und dem Kanal liegt in Sperrrichtung. Wie bei der Kapazitätsdiode (https://en.wikipedia.org/wiki/Varicap)
  wird die Barriereschicht mit steigender Spannung breiter. Da der Kanal im Verhältnis zum Gate schwach dotiert ist, wächst die Barriereschicht vorwiegend in den Kanal hinein, d. h.
 die Elektronen werden aus einem Teil des Kanals verdrängt. Dieser Teil wird wie reiner Kristall nichtleitend. Der leitende Teil des Kanals wird schmaler, sein Widerstand steigt,
@@ -785,7 +789,7 @@ Leckstroms, der in allen Dioden vorhanden ist. Der p-Kanal-JFET funktioniert gen
 
 == Der MOSFET
 
-Bei der zweiten Gruppe von FETs besteht die Isolierung zwischen Gate und Kanal aus einer extrem dünnen Schicht aus Siliziumdioxid (SiO_{2});
+Bei der zweiten Gruppe von FETs besteht die Isolierung zwischen Gate und Kanal aus einer extrem dünnen Schicht aus Siliziumdioxid (SiO~2~);
 das Gate ist als metallische Beschichtung (vakuumbeschichtetes Al) ausgeführt. Entsprechend ihrer Struktur werden diese FETs nach dem Metall des Gates, dem Oxid der Isolierschicht und dem Halbleiter
 des Kanals benannt: MOS-FET.
 
@@ -796,14 +800,14 @@ ist intern oder durch externe Verdrahtung mit S verbunden.
 
 
 Unabhängig davon, wie Spannung an S und D angelegt wird, befindet sich einer der pn-Übergänge zwischen dem Kanal und der Verbindungsinsel in Sperrrichtung. Der MOSFET blockiert, wenn keine Spannung an G angelegt wird.
-Erhält G eine positive Spannung U_{GS}, werden die Löcher als positive Ladungsträger sofort aus dem Kanalbereich gegenüber der Gate-Elektrode verdrängt, Elektronen aus dem Substrat, das mit S (negativer Pol
+Erhält G eine positive Spannung \(U_{GS}\), werden die Löcher als positive Ladungsträger sofort aus dem Kanalbereich gegenüber der Gate-Elektrode verdrängt, Elektronen aus dem Substrat, das mit S (negativer Pol
 der Spannungsquelle) vorhanden ist, werden angezogen, so dass sich zwischen D und S gegenüber G eine n-leitende Brücke, die „Inversionsschicht”, bildet.
-Der Widerstand dieser Schicht nimmt mit steigendem U_{GS} ab.
+Der Widerstand dieser Schicht nimmt mit steigendem \(U_{GS}\) ab.
 Dieser MOSFET-Typ wird nur leitfähig, wenn der Kanalbereich mit Elektronen angereichert ist; er wird daher als „Anreicherungstyp” bezeichnet und ist außerdem selbstblockierend, da er nicht leitet, wenn das Gate offen ist
-oder U_{GS} = 0 V.
-Ein anderer Typ wird so hergestellt, dass der Kanalbereich bereits schwach n-dotiert ist. Wenn G offen ist oder U_{GS} = 0 V, leitet er; er ist „selbstleitend”. Bei negativem U_{GS} können die Elektronen aus
-dem Kanalbereich verdrängt werden, bis sie abgeschnitten sind; bei positivem U_{GS} können Elektronen in den Kanalbereich gesaugt werden, so dass der Kanalwiderstand weiter abnimmt und I_{D} entsprechend zunimmt.
-Die Steuerung mit negativem U_{GS}, d. h. mit der Verdrängung von Elektronen, wird bevorzugt. Daher wird diese Familie von MOSFETs als „Verarmungstyp” bezeichnet.
+oder \(U_{GS}\) = 0 V.
+Ein anderer Typ wird so hergestellt, dass der Kanalbereich bereits schwach n-dotiert ist. Wenn G offen ist oder \(U_{GS}\) = 0 V, leitet er; er ist „selbstleitend”. Bei negativem \(U_{GS}\) können die Elektronen aus
+dem Kanalbereich verdrängt werden, bis sie abgeschnitten sind; bei positivem \(U_{GS}\) können Elektronen in den Kanalbereich gesaugt werden, so dass der Kanalwiderstand weiter abnimmt und \(I_{D}\) entsprechend zunimmt.
+Die Steuerung mit negativem \(U_{GS}\), d. h. mit der Verdrängung von Elektronen, wird bevorzugt. Daher wird diese Familie von MOSFETs als „Verarmungstyp” bezeichnet.
 Die Besonderheit selbstleitender MOSFETs besteht darin, dass sie sowohl durch positive als auch durch negative Gate-Spannungen gesteuert werden können.
 
 Die anderen MOSFET-Typen sind Ableitungen der beiden oben genannten Hauptgruppen, die in dieser Einführung nicht beschrieben werden.

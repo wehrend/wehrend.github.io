@@ -64,7 +64,7 @@ preventing a good contact. We might discuss such effects later. For now just let
 2+>| conductor
 | image:./atomic_model_Al.svg[width="300px"]
 | image:./atomic_model_Cu.svg[width="300px"]
-| atomic model of aluminium (13) | atomic model of copper (28)
+| atomic model of aluminium (13) | atomic model of copper (29)
 | valence shell / free electron(s): 3 (3) | valence shell / free electron(s): 1 (1)
 |=====
 
@@ -84,7 +84,9 @@ image:./simple_circuit.svg[width="400px"]
 The second group of elements we want to introduce here are elements which
 conductivity is (highly) dependent on its purity degree and environment
 factors like temperature. Representations of this group are called semiconductors.
-Carbon and silicon are examples showing up on the periodic table.
+Silicon and germanium are examples showing up on the periodic table.
+Carbon also has four valence electrons, but it is a special case: as diamond it is an insulator,
+as graphite it conducts (as we will see in the measurement exercise below).
 The author picked those two elements as they have very exciting properties
 in regards to - but not limited to - conductivity. This is due to the number of valence
 electrons on the outer shell.
@@ -93,25 +95,25 @@ electrons on the outer shell.
 [width="100%" cols="a,a"]
 |=====
 2+>| semiconductor
-| image:./atomic_model_C.svg[width="300px"]
 | image:./atomic_model_Si.svg[width="300px"]
-| atomic model of carbon (6) | atomic model of silicon (14)
+| image:./atomic_model_Ge.svg[width="300px"]
+| atomic model of silicon (14) | atomic model of germanium (32)
 | valence shell / free electron(s): 4 (0) | valence shell / free electron(s): 4 (0)
 |=====
 
 
-So why does carbon and silicon have so poor conductivity properties compared to copper despite their four electrons
+So why do silicon and germanium have so poor conductivity properties compared to copper despite their four electrons
 on the valence shell electrons?
 
-The answer lies in the simple fact, that both carbon as well as silicon form a lattice, using up all electrons of the valence
+The answer lies in the simple fact, that both silicon as well as germanium form a lattice, using up all electrons of the valence
 shell.
 
 
 [width="100%" cols="a,a"]
 |=====
-| covalent bonding of carbon | covalent bonding of silicon
-| image:./covalent_bonding_c.svg[width="400px"]
+| covalent bonding of silicon | covalent bonding of germanium
 | image:./covalent_bonding_si.svg[width="400px"]
+| image:./covalent_bonding_Ge.svg[width="400px"]
 2+>|semiconductor
 |=====
 
@@ -215,7 +217,7 @@ Add explanation for parallel connection
 ////
 
 
-So we discovered that the materials differ in their electrical conductivity - which is the reciprocal of the electrical resistance -
+So we discovered that the materials differ in their electrical conductivity σ - which is the reciprocal of the resistivity ρ (the reciprocal of a resistance R is called conductance G) -
 some are good (conductor) some are pretty bad and unusable (non-conductor) but nevertheless useful as dielectric, as we will see in
 the next section and some in between.
 We also need to note, of course that the conductivity is not only dependent on the material itself but also its geometries (further it is
@@ -304,7 +306,7 @@ Kirchhoff's 1st law states: The sum of all signed currents belonging to a node i
 \large \[ \sum_{i=1}^{n} I_i = 0\]
 
 A node is any connection point of lines in an electrical circuit. Since no charges are generated, lost, or stored at a node,
-the amount of charge flowing into the node during the time \Delta t must be equal to the sum of the charges flowing out of the node.
+the amount of charge flowing into the node during the time \(\Delta t\) must be equal to the sum of the charges flowing out of the node.
 
 
 ==== Kirchhoff's Second Law
